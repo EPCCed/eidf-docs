@@ -8,7 +8,7 @@ the [EIDF website](https://www.ed.ac.uk/edinburgh-international-data-facility/ov
 
 ## What the documentation covers
 
-This documentation is in development and more content will be added soon.
+This documentation is in development and content will be added soon.
 
 ## Contributing to the documentation
 
