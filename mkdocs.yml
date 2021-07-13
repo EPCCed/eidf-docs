@@ -1,7 +1,5 @@
 theme:
   name: material
-  favicon: favicon.ico
-  logo: images/archer2_white_transparent.png
   palette:
     scheme: default
   features:
@@ -9,100 +7,16 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-extra_css:
-  - stylesheets/archer2.css
 
-site_name: ARCHER2 User Documentation
-repo_url: https://github.com/ARCHER2-HPC/archer2-docs
-repo_name: ARCHER2-HPC/archer2-docs
+site_name: EIDF User Documentation
+repo_url: https://github.com/EPCCed/eidf-docs.git
+repo_name: EPCCed/eidf-docs.git
 edit_uri: edit/main/docs/
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/ARCHER2-HPC
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/ARCHER2_HPC
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/groups/13848871/
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
 
-google_analytics:
-  - UA-165933823-2
-  - auto
-
 nav:
   - "Documentation overview": index.md
-  - "Quickstart":
-    - "Overview": quick-start/overview.md
-    - "Quickstart for users": quick-start/quickstart-users.md
-    - "Quickstart for developers": quick-start/quickstart-developers.md
-  - "ARCHER2 Known Issues": known-issues/index.md
-  - "ARCHER2 Frequently Asked Questions": faq/index.md
-  - "User and Best Practice Guide":
-    - "Overview": user-guide/index.md
-    - "Connecting to ARCHER2": user-guide/connecting.md
-    - "Data management and transfer": user-guide/data.md
-    - "Software environment": user-guide/sw-environment.md
-    - "Running jobs on ARCHER2": user-guide/scheduler.md
-    - "I/O and file systems": user-guide/io.md
-    - "Application development environment": user-guide/dev-environment.md
-    - "Containers": user-guide/containers.md
-    - "Using Python": user-guide/python.md
-    - "Data analysis": user-guide/analysis.md
-    - "Debugging": user-guide/debug.md
-    - "Profiling": user-guide/profile.md
-    - "Performance tuning": user-guide/tuning.md
-  - "Research Software":
-    - "Overview": research-software/index.md
-    - "CASTEP": research-software/castep/castep.md
-    - "Chemshell": research-software/chemshell/chemshell.md
-    - "Code_Saturne": research-software/code-saturne/code-saturne.md
-    - "CP2K": research-software/cp2k/cp2k.md
-    - "ELK": research-software/elk/elk.md
-    - "FEniCS": research-software/fenics/fenics.md
-    - "GROMACS": research-software/gromacs/gromacs.md
-    - "LAMMPS": research-software/lammps/lammps.md
-    - "MITgcm": research-software/mitgcm/mitgcm.md
-    - "Met Office Unified Model": research-software/mo-unified-model/mo-unified-model.md
-    - "NAMD": research-software/namd/namd.md
-    - "Nektar++": research-software/nektarplusplus/nektarplusplus.md
-    - "NEMO": research-software/nemo/nemo.md
-    - "NWChem": research-software/nwchem/nwchem.md
-    - "ONETEP": research-software/onetep/onetep.md
-    - "OpenFOAM": research-software/openfoam/openfoam.md
-    - "Quantum Espresso": research-software/qe/qe.md
-    - "VASP": research-software/vasp/vasp.md
-  - "Software Libraries":
-    - "Overview": software-libraries/index.md
-    - "HPE Cray LibSci: BLAS, LAPACK, ScaLAPACK": software-libraries/libsci.md
-    - "FFTW": software-libraries/fftw.md
-    - "HDF5": software-libraries/hdf5.md
-    - "NetCDF": software-libraries/netcdf.md
-    - "ADIOS": software-libraries/adios.md
-    - "Boost": software-libraries/boost.md
-    - "GLM":   software-libraries/glm.md
-    - "HYPRE": software-libraries/hypre.md
-    - "Matio": software-libraries/matio.md
-    - "Intel MKL": software-libraries/mkl.md
-    - "MUMPS": software-libraries/mumps.md
-    - "PETSc": software-libraries/petsc.md
-    - "Metis/Parmetis": software-libraries/metis.md
-    - "Scotch/PT-Scotch": software-libraries/scotch.md
-    - "SLEPc" : software-libraries/slepc.md
-    - "SuperLU/SuperLU_DIST": software-libraries/superlu.md
-    - "Trilinos": software-libraries/trilinos.md
-  - "Data Analysis and Tools": 
-    - "Overview": data-tools/index.md
-    - "R": data-tools/cray-r.md
-    - "VisiData": data-tools/visidata.md
-  - "Essential Skills": essentials/index.md
-  - "Other Software":
-    - "Overview": other-software/index.md  
-    - "CRYSTAL": other-software/crystal.md
-
-
-
