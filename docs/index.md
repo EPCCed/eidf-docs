@@ -16,11 +16,11 @@ The source for this documentation is publicly available in the [EIDF
 documentation Github
 repository](https://github.com/EPCCed/eidf-docs) so that anyone
 can contribute to improve the documentation for the service.
-Contributions can be in the form of improvements or addtions to the
-content and/or addtion of Issues providing suggestions for how it can be
+Contributions can be in the form of improvements or additions to the
+content and/or addition of Issues providing suggestions for how it can be
 improved.
 
-Full details of how to contribute can be found in the `README.md` file of
+Full details of how to contribute can be found in the [`README.md`](https://github.com/EPCCed/eidf-docs/blob/main/README.md) file of
 the repository.
 
 ## Credits
