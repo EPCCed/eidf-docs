@@ -56,4 +56,4 @@ like is to read the Markdown files already in the repository.
 
 A short list of style guidance:
 
-  - Headings should be in sentance case
+  - Headings should be in sentence case
