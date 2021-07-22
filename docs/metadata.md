@@ -49,5 +49,5 @@ Full legal code: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 ## I'm stuck! How do I get help?
 
-Contact Chris Wood via eidf@epcc.ed.ac.uk 
+Contact the EIDF Service Team via eidf@epcc.ed.ac.uk 
 
