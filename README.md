@@ -11,17 +11,17 @@ to a rendered version currently hosted on Github pages.
 
 ## Rendered documentation
 
-  - [EIDF Documentation (HTML)](https://epcced.github.io/eidf-docs/)
+- [EIDF Documentation (HTML)](https://epcced.github.io/eidf-docs/)
 
 ## How to contribute
 
-We welcome contributions from the EIDF community and beyond. Contributions can take many different
+We welcome contributions from the EIDF community and beyond.
+Contributions can take many different
 forms, some examples are:
 
 - Raising Issues if you spot a mistake or something that could be improved
 - Adding/updating material via a Pull Request
 - Adding your thoughts and ideas to any open issues
-
 
 To contribute content to this documentation, first you have to fork it
 on GitHub and clone it to your machine, see [Fork a
@@ -42,7 +42,6 @@ Request](https://help.github.com/articles/using-pull-requests/).
 Once Material for mkdocs is installed, you can preview the site locally using the
 [instructions in the Material for mkdocs documentation](https://squidfunk.github.io/mkdocs-material/creating-your-site/#previewing-as-you-write).
 
-
 ## Making changes and style guide
 
 The documentation consists of a series of Markdown files which have the `.md`
@@ -56,4 +55,4 @@ like is to read the Markdown files already in the repository.
 
 A short list of style guidance:
 
-  - Headings should be in sentence case
+- Headings should be in sentence case
