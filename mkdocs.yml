@@ -1,5 +1,7 @@
 theme:
   name: material
+  favicon: images/favicon.ico
+  logo: images/eidf_rgb.png
   palette:
     scheme: default
   features:
@@ -7,6 +9,8 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
+extra_css:
+  - stylesheets/eidf.css
 
 site_name: EIDF User Documentation
 repo_url: https://github.com/EPCCed/eidf-docs.git
