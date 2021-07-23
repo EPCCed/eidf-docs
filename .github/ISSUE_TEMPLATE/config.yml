@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: EIDF
+    url: https://www.ed.ac.uk/edinburgh-international-data-facility
+    about: EIDF Services and Contact
+  - name: EPCC 
+    url: http://www.epcc.ed.ac.uk/contact
+    about: EPCC Contact Details
