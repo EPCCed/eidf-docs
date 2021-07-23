@@ -4,12 +4,12 @@
 
 1. Identify Contribution - look at open issues, review existing documentation, look for gaps in documentation.
 1. Fork the documentation repository on GitHub and clone the fork to your local system. See [Fork a GitHub Repository](https://help.github.com/articles/fork-a-repo/).
-1. Make Edits and Additions to local copy. See below for setting up an editting environment.
+1. Make Edits and Additions to local copy. See below for setting up an editing environment.
 1. Proof read and run pre-commit tests on local copy.
 1. Update your forked repository on Github.
 1. Create a Pull Request to merge your changes to the main documentation repository. Where possible you can assign this to a member of the EIDF Service team for review and merging, do not merge your own pull requests. See [Open a Pull Request](https://help.github.com/articles/using-pull-requests/).
 
-## Setting up an editting environment
+## Setting up an editing environment
 
 ### Requirements
 
@@ -42,7 +42,7 @@ Material contains guidance on how to operate via Docker.
 Once Material for mkdocs is installed, you can preview the site locally using the
 [instructions in the Material for mkdocs documentation](https://squidfunk.github.io/mkdocs-material/creating-your-site/#previewing-as-you-write).
 
-### Local install quickstart
+### Local install quick start
 
 In the root directory of your cloned repository, you can run:
 
