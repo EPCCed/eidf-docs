@@ -24,4 +24,4 @@ markdown_extensions:
 
 nav:
   - "Documentation overview": index.md
-  - "Metdata information": metadata.md
+  - "Metadata information": metadata.md
