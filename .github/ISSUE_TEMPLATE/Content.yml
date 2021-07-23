@@ -1,12 +1,12 @@
-name: Content Report
+name: Documentation Report
 description: File a report about incorrect, incomplete or missing documentation content
-title: "[Content]: "
-labels: [content, triage]
+title: "[Documentation]: "
+labels: [documentation]
 body:
   - type: markdown
     attributes:
       value: |
-        EIDF Content Issue Report
+        EIDF Documentation Content Issue Report
   - type: dropdown
     id: issue_type
     attributes:
