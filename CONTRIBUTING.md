@@ -66,7 +66,7 @@ like is to read the Markdown files already in the repository.
 
 ## Pre-commit
 
-The pre-commit will run a markdown linter configured with current rules
+Pre-commit will run a markdown linter configured with current rules
 for the EIDF documentation. Your pull request should indicate that you have done this and fixed issues that arise.
 
 ## Style Guide
