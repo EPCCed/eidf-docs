@@ -1,0 +1,29 @@
+name: Content Report
+description: File a report about incorrect, incomplete or missing documentation content
+title: "[Content]: "
+labels: [content, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        EIDF Content Issue Report
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What documentation issue are you reporting
+      multiple: true
+      options:
+        - Incorrect Documentation
+        - Incomplete Documentation
+        - Missing Documentation
+        - Formatting
+  - type: textarea
+    id: content-issue
+    attributes:
+      label: Issue
+      description: Describe concisely the issue, including service and location if applicable.
+      placeholder: Describe the issue you want to be addressed, including anything you want added.
+      value: "Issue Reported"
+    validations:
+      required: true
+
