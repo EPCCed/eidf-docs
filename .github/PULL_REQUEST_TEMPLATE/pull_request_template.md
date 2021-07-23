@@ -27,6 +27,7 @@ List the pages/sections that are to be reviewed.
 ## Checklist
 
 - [ ] Documentation follows the project style guidelines
+- [ ] Ensure Contact details contain Service Emails and Numbers
+- [ ] Self-review of documentation using mkdocs on local system
 - [ ] Spellcheck has been performed
-- [ ] Self-review of documentation
-- [ ] Tested via mkdocs on local system
+- [ ] Pre-commit has been run and passed

@@ -20,8 +20,11 @@ Contributions can be in the form of improvements or additions to the
 content and/or addition of Issues providing suggestions for how it can be
 improved.
 
-Full details of how to contribute can be found in the [`README.md`](https://github.com/EPCCed/eidf-docs/blob/main/README.md) file of
+Full details of how to contribute can be found in the
+[`README.md`](https://github.com/EPCCed/eidf-docs/blob/main/README.md) file of
 the repository.
+
+Further additions to be added.
 
 ## Credits
 
