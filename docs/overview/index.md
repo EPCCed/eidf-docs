@@ -1,4 +1,4 @@
-# A unique service for academia and industry
+# A Unique Service for Academia and Industry
 
 Built and operated by EPCC at the University of Edinburgh, EIDF is a place to store, find and work with data of all kinds.
 
@@ -8,7 +8,7 @@ The Edinburgh International Data Facility (EIDF) supports learners, researchers 
 
 Most users of the EIDF  work in the Data Service Cloud, which offers a rich set of data science and analytics tools: from browser-based notebooks to full desktop environments.
 
-The Data Service Cloud sits on top of an Analytics-Ready Data Layer(ARD Layer), where EIDF data can be shared and re-used for science and innovation. This ARD Layer will grow over time as more and more data are collected in the EIDF. Innovators and researchers looking for data can search and browse through the Data Catalogue to discover just what analytics-ready data EIDF has, and how they can get access.
+The Data Service Cloud sits on top of an Analytics-Ready Data Layer (ARD Layer), where EIDF data can be shared and re-used for science and innovation. This ARD Layer will grow over time as more and more data are collected in the EIDF. Innovators and researchers looking for data can search and browse through the Data Catalogue to discover just what analytics-ready data EIDF has, and how they can get access.
 
 EIDF data managers work with data depositors at the Data Ingest Gateway, ensuring that incoming data are safely stored in the Data Lake Archive Layer, and well-described in the Data Catalogue. Data in the Data Lake are stored for the long term using best practices in digital preservation.
 
@@ -16,11 +16,11 @@ EIDF data wranglers work in the Data Preparation Layer, often in collaboration w
 
 ## Safe Haven Services
 
-EIDF provides Safe Haven services to health and government users, following best practice in independent governance and supporting the linkage of complex personal data for public benefit research and policy-making under national and regional safeguards. Safe Haven services can also be created for organisations wishing to host and govern access to their data assets in a highly secure environment.
+EIDF provides Safe Haven services to health and government users, following best practice in independent governance and supporting the linkage of complex personal data for public benefit research and policy making under national and regional safeguards. Safe Haven services can also be created for organisations wishing to host and govern access to their data assets in a highly secure environment.
 
 Safe Havens are isolated from the rest of EIDF, with user approvals, data ingress and egress, and permitted software all controlled by information governance bodies independent of the infrastructure itself.
 
-## EIDF and the Data-Driven Innovation initiative
+## EIDF and the Data-Driven Innovation Initiative
 
 Launched at the end of 2018, the Data-Driven Innovation (DDI) initiative is one of six funded within the Edinburgh & South-East Scotland City Region Deal. The DDI initiative aims to make Edinburgh the “Data Capital of Europe”, with ambitious targets to support, enhance and improve talent, research, commercial adoption and entrepreneurship across the region through better use of data.
 
