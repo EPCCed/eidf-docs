@@ -1,7 +1,7 @@
 theme:
   name: material
   favicon: images/favicon.ico
-  logo: images/eidf_rgb.png
+  logo: images/EIDF_rgb.png
   palette:
     scheme: default
   features:
@@ -13,6 +13,7 @@ extra_css:
   - stylesheets/eidf.css
 
 site_name: EIDF User Documentation
+site_url: https://epcced.github.io/eidf-docs/
 repo_url: https://github.com/EPCCed/eidf-docs.git
 repo_name: EPCCed/eidf-docs.git
 edit_uri: edit/main/docs/
@@ -24,4 +25,24 @@ markdown_extensions:
 
 nav:
   - "Documentation overview": index.md
-  - "Metadata information": metadata.md
+  - "EIDF":
+    - "Introduction": overview/index.md
+    - "Acknowledgements": overview/acknowledgements.md
+    - "Contact": overview/contacts.md
+  - "Accessing EIDF Services": access/index.md
+  - "Services":
+    - "OpenStack Virtual Machines":
+      - "QuickStart": services/virtualmachines/quickstart.md
+      - "Tutorial": services/virtualmachines/tutorial.md
+      - "Documentation": services/virtualmachines/docs.md
+    - "Managed JupyterHub":
+      - "QuickStart": services/jhub/quickstart.md
+      - "Tutorial": services/jhub/tutorial.md
+      - "Documentation": services/jhub/docs.md
+    - "Data Catalogue":
+      - "QuickStart": services/datacatalogue/quickstart.md
+      - "Tutorial": services/datacatalogue/tutorial.md
+      - "Documentation": services/datacatalogue/docs.md
+      - "Metadata information": services/datacatalogue/metadata.md
+  - "EIDF Known Issues": known-issues/index.md
+  - "EIDF Frequently Asked Questions": faq/index.md
