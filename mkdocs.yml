@@ -39,6 +39,10 @@ nav:
       - "QuickStart": services/jhub/quickstart.md
       - "Tutorial": services/jhub/tutorial.md
       - "Documentation": services/jhub/docs.md
+    - "Managed RStudio Server":
+      - "QuickStart": services/rstudioserver/quickstart.md
+      - "Tutorial": services/rstudioserver/tutorial.md
+      - "Documentation": services/rstudioserver/docs.md
     - "Data Catalogue":
       - "QuickStart": services/datacatalogue/quickstart.md
       - "Tutorial": services/datacatalogue/tutorial.md
