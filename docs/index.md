@@ -6,6 +6,8 @@ EIDF is a place to store, find and work with data of all kinds. You
 can find more information on the service and the research it supports on
 the [EIDF website](https://www.ed.ac.uk/edinburgh-international-data-facility/overview).
 
+For more information or for support with our services, please email `eidf@epcc.ed.ac.uk` in the first instance.
+
 ## What the documentation covers
 
 This documentation is in development and content will be added soon.
