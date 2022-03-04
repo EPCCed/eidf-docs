@@ -24,6 +24,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
+  - "Service Status": status/index.md
   - "Documentation overview": index.md
   - "EIDF":
     - "Introduction": overview/index.md
