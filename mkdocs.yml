@@ -32,6 +32,12 @@ nav:
     - "Contact": overview/contacts.md
   - "Accessing EIDF Services": access/index.md
   - "Services":
+    - "Cerebras CS-1":
+      - "Get Access": services/cs1/access.md
+      - "Running codes": services/cs1/run.md
+    - "Ultra2":
+      - "Get Access": services/ultra2/access.md
+      - "Running codes": services/ultra2/run.md      
     - "OpenStack Virtual Machines":
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Tutorial": services/virtualmachines/tutorial.md
