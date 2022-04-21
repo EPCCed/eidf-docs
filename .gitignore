@@ -2,3 +2,4 @@
 .DS_Store
 _build/
 site/
+.idea/
