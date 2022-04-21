@@ -22,6 +22,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
 
 nav:
   - "Service Status": status/index.md
