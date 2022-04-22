@@ -49,7 +49,7 @@ on the next page
 ### <a id="request-project-membership"></a>Request Project Membership
 1. While logged into SAFE, select the ‘Request Access’ menu item from the 'Projects' menu in the top menu bar
 2. This will open the 'Apply for project membership' page
-3. Enter the appropriate project ID<sup>[1](#footnote-1)</sup> into the ‘Project’ field and click the ‘Next’ button
+3. Enter the appropriate project ID into the ‘Project’ field and click the ‘Next’ button
 
     ![SAFE-apply01-screenshot](/eidf-docs/images/SAFE_Apply_Project_01.png){: class="borderimg1"}
 
@@ -64,6 +64,3 @@ on the next page
 ## Connecting to a VM
 
 ## Further information
-
-
-<sup><a id="footnote-1"></a>1</sup> For Ed-DaSH workshop users, the project ID is 'eidf006'
