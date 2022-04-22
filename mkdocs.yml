@@ -22,6 +22,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
 
 nav:
   - "Service Status": status/index.md
@@ -30,7 +31,9 @@ nav:
     - "Introduction": overview/index.md
     - "Acknowledgements": overview/acknowledgements.md
     - "Contact": overview/contacts.md
-  - "Accessing EIDF Services": access/index.md
+  - "Accessing EIDF Services":
+    - "Access Overview": access/index.md
+    - "Virtual Desktop Interface": access/virtualmachines-vdi.md
   - "Services":
     - "Cerebras CS-1":
       - "Get Access": services/cs1/access.md
