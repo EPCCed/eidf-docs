@@ -34,7 +34,8 @@ nav:
   - "Accessing EIDF Services":
     - "Access Overview": access/index.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
-    - "JupyterHub and Notebook Service Access": access/jhub-git.md
+    - "JupyterHub Notebook Service Access": access/jhub-git.md
+    - "Workshops": access/workshops.md
   - "Services":
     - "Cerebras CS-1":
       - "Get Access": services/cs1/access.md
