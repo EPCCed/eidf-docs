@@ -94,7 +94,8 @@ We will be using the RStudio Server service provided by the [Edinburgh Internati
 (EIDF)](https://www.ed.ac.uk/edinburgh-international-data-facility/overview). Follow the steps listed below to gain
 access.
 
-1. Visit <span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP</span> in your browser
+1. Visit <span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP</span>, e.g.
+[https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
 2. Click on the ![GitHub-Signin-Button](/eidf-docs/images/access/github-signin-btn.png){: class="inline-img"} button
 3. You will be asked to sign in to GitHub, as shown in the form below
 
