@@ -43,7 +43,7 @@ Please follow the sequence of instructions described in the sections below to ge
 
 1. [Accessing the EIDF RStudio Server Service for the First Time](#access-rstudio-server)
 2. [Login to EIDF JupyterHub](#login-jupyterhub)
-3. [Creating a New R Script](/eidf-docs/services/rstudioserver/quickstart#create-script)
+3. [Creating a New R Script](#create-script)
 
 #### <a id="access-rstudio-server"></a> 1. Accessing the EIDF RStudio Server Service for the First Time
 We will be using the RStudio Server service provided by the [Edinburgh International Data Facility
