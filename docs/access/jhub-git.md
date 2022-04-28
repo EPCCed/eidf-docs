@@ -37,6 +37,11 @@ as RStudio Server.
 ## Workshops
 ### Accessing
 
+| Workshop                                                                                           | Login URL                                                                            |
+|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| [Ed-DaSH Introduction to Statistics](https://edcarp.github.io/2022-05-03_ed-dash_intro-statistics) | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) |
+| [Ed-DaSH High-Dimensional Statistics](https://edcarp.github.io/2022-05-17_ed-dash_high-dim-stats)  | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | 
+
 In order to access the EIDF JupyterHub, authentication is through GitHub, so you must have an account on 
 [https://github.com](https://github.com) and that account must be a member of the appropriate organization in GitHub. Please ask your project
 admin or workshop instructor for the workshop GitHub organization details. Please follow the relevant steps listed below
