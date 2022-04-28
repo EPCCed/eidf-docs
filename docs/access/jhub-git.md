@@ -34,7 +34,7 @@
 Using the EIDF JupyterHub, users can access a range of services including standard interactive Python notebooks as well
 as RStudio Server.
 
-## Workshops
+## <a id="workshops"></a> Workshops
 ### Accessing
 
 In order to access the EIDF JupyterHub, authentication is through GitHub, so you must have an account on 

@@ -30,7 +30,7 @@
 </style>
 
 # Workshop Setup
-<span class="bold">Please follow the instructions in [JupyterHub Notebook Service Access](/eidf-docs/access/jhub-git)
+<span class="bold">Please follow the instructions in [JupyterHub Notebook Service Access](/eidf-docs/access/jhub-git#workshops)
 to arrange access to the EIDF Notebook service before continuing.</span>
 
 
