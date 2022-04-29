@@ -50,7 +50,7 @@ We will be using the RStudio Server service provided by the [Edinburgh Internati
 (EIDF)](https://www.ed.ac.uk/edinburgh-international-data-facility/overview). Follow the steps listed below to gain
 access.
 
-1. Visit <span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP</span>, e.g.
+1. Visit <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;</span>, e.g.
 [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
 2. Click on the ![GitHub-Signin-Button](/eidf-docs/images/access/github-signin-btn.png){: class="inline-img"} button
 3. You will be asked to sign in to GitHub, as shown in the form below
@@ -78,12 +78,12 @@ to join the workshop organization as in the prerequisite instructions
 Now that you have completed registration with the workshop GitHub organization, you can access the workshop RStudio
 Server in EIDF.
 
-1. Return to the <span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP</span> and you will now be redirected
-to the <span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP/hub/spawn-pending/GITHUB_USERNAME</span> page
+1. Return to the <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;</span> and you will now be redirected
+to the <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;/hub/spawn-pending/&lt;GITHUB_USERNAME&gt;</span> page
 2. You will see a message stating that your server is launching. If the page has not updated after 10 seconds, simply
 refresh the page with the <CTRL> + R or <F5> keys in Windows, or <CMD> + R in macOS
 3. Finally, you will be redirected to
-<span class="fake-link">https://secure.epcc.ed.ac.uk/WORKSHOP/user/GITHUB_USERNAME/rstudio/</span> and presented with
+<span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;/user/&lt;GITHUB_USERNAME&gt;/rstudio/</span> and presented with
 the RStudio Server UI as shown below
 
    ![RStudio-Server-Screen](/eidf-docs/images/access/rstudio-server-screen.png){: class="border-img center"}

@@ -68,11 +68,11 @@ username, and ask for an invitation to the workshop GitHub organization
     ![GitHub-Invitation](/eidf-docs/images/access/github-invitation.png){: class="border-img center"}
 
 4. Clicking on the button in the email will open a new web page at
-<span class="fake-link">https://github.com/orgs/WORKSHOP_ORG_ID/invitation?via_email=1</span>
+<span class="fake-link">https://github.com/orgs/&lt;WORKSHOP_ORG_ID&gt;/invitation?via_email=1</span>
 with another form as shown below
 
     ![GitHub-Invitation-2](/eidf-docs/images/access/github-invitation-2.png){: class="border-img center"}
 
 5. Again, click on the ![Join-GitHub-Org-Button](/eidf-docs/images/access/join-btn.png){: class="inline-img"} button to
-confirm, then the <span class="fake-link">https://github.com/WORKSHOP_ORG_ID</span> organization page will open
+confirm, then the <span class="fake-link">https://github.com/&lt;WORKSHOP_ORG_ID&gt;</span> organization page will open
 
