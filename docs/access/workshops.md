@@ -31,13 +31,13 @@
 
 # Workshop Setup
 <span class="bold">Please follow the instructions in [JupyterHub Notebook Service Access](/eidf-docs/access/jhub-git#workshops)
-to arrange access to the EIDF Notebook service before continuing.</span>
+to arrange access to the EIDF Notebook service before continuing. The table below provides the login URL and the relevant
+GitHub organization to register with.</span>
 
-
-| Workshop                                                                                           | Login URL                                                                            |
-|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| [Ed-DaSH Introduction to Statistics](https://edcarp.github.io/2022-05-03_ed-dash_intro-statistics) | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) |
-| [Ed-DaSH High-Dimensional Statistics](https://edcarp.github.io/2022-05-17_ed-dash_high-dim-stats)  | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) |
+| Workshop                                                                                           | Login URL                                                                            | GitHub Organization                                     |
+|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------|
+| [Ed-DaSH Introduction to Statistics](https://edcarp.github.io/2022-05-03_ed-dash_intro-statistics) | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
+| [Ed-DaSH High-Dimensional Statistics](https://edcarp.github.io/2022-05-17_ed-dash_high-dim-stats)  | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
 
 Please follow the sequence of instructions described in the sections below to get ready for the workshop:
 
@@ -69,8 +69,9 @@ shown below
 8. At this point, you will receive an email to the email address that you registered with in GitHub, stating that
 “A third-party OAuth application has been added to your account” for the workshop
 9. If you receive a ‘403 : Forbidden’ error message on the next screen (if you did not already do so as in step 4 of the
-prerequisites section) send an email to eidf@epcc.ed.ac.uk from your GitHub registered email address, including your
-GitHub username, and ask for an invitation to the workshop organization. Otherwise, skip to the next step.
+prerequisites section) send an email to <span class="fake-link">eidf@epcc.ed.ac.uk</span> from your GitHub registered
+email address, including your GitHub username, and ask for an invitation to the workshop organization. Otherwise, skip
+to the next step.
 10. If you receive a ‘400 : Bad Request’ error message, you need to accept the invitation that has been emailed to you
 to join the workshop organization as in the prerequisite instructions
 
