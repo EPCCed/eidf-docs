@@ -1,3 +1,1 @@
 # Tutorial
-
-## First VM
