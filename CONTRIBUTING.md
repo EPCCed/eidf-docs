@@ -73,8 +73,8 @@ To install:
 ```
 pip install pre-commit
 ```
-1. Run 'pre-commit install' (if you want to run on commit)
-1. To test before commit run `pre-commit run --all-files`
+- Run 'pre-commit install' if you want to run on commit
+- To test before commit run `pre-commit run --all-files`
 
 ## Style Guide
 
