@@ -21,7 +21,8 @@ log in directly [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.a
 1. Choose the SSH connection to log in for the first time. You will be asked to reset the password.
 
 !!! warning
-    Do not use RDP to login for the first time as you have to reset your password. Always use SSH.
+    Do not use RDP to login for the first time as you have to reset your password. 
+    Always use SSH to login to the VM for the first time.
 
 ## Further information
 
