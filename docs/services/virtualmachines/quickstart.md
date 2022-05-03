@@ -16,7 +16,8 @@ at [https://eidf-vdi.epcc.ed.ac.uk/approval/project/](https://eidf-vdi.epcc.ed.a
 with this account, and look up the temporary password allocated to the account.
 
 1. Follow the link to the Guacamole login or
-log in directly [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.ac.uk/vdi/)
+log in directly at [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.ac.uk/vdi/).
+Please see the [VDI](/access/virtualmachines-vdi/#navigating-the-eidf-vdi) guide for more information.
 
 1. Choose the SSH connection to log in for the first time. You will be asked to reset the password.
 
