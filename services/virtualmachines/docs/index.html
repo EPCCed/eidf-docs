@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/virtualmachines/docs/">
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -640,6 +640,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-management-guide" class="md-nav__link">
+    Project Management Guide
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Management Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-vm" class="md-nav__link">
+    Create a VM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota" class="md-nav__link">
+    Quota
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-machine-with-safe" class="md-nav__link">
+    Register machine with SAFE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-user-account" class="md-nav__link">
+    Add a user account
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-access-to-the-vm-for-a-user" class="md-nav__link">
+    Adding Access to the VM for a User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-login" class="md-nav__link">
+    First login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-rdp-access-to-the-vm" class="md-nav__link">
+    Adding RDP Access to the VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#online-support" class="md-nav__link">
     Online support
   </a>
@@ -964,6 +1026,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-management-guide" class="md-nav__link">
+    Project Management Guide
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Management Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-vm" class="md-nav__link">
+    Create a VM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota" class="md-nav__link">
+    Quota
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-machine-with-safe" class="md-nav__link">
+    Register machine with SAFE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-user-account" class="md-nav__link">
+    Add a user account
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-access-to-the-vm-for-a-user" class="md-nav__link">
+    Adding Access to the VM for a User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-login" class="md-nav__link">
+    First login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-rdp-access-to-the-vm" class="md-nav__link">
+    Adding RDP Access to the VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#online-support" class="md-nav__link">
     Online support
   </a>
@@ -989,6 +1113,93 @@
 
 
 <h1 id="service-documentation">Service Documentation</h1>
+<h2 id="project-management-guide">Project Management Guide</h2>
+<h3 id="create-a-vm">Create a VM</h3>
+<p>VMs can only be created by a project manager (PM) or by the principal investigator (PI) of the project.</p>
+<p>To create a new VM:</p>
+<ol>
+<li>Select the project from the list of your projects, e.g. <code>eidfxxx</code></li>
+<li>Click on the 'New Machine' button</li>
+<li>
+<p>Complete the 'Create Machine' form as follows:</p>
+<ol>
+<li>Provide an appropriate name, e.g. <code>dev-01</code>. The project code will be prepended automatically
+    to your VM name, in this case your VM would be named <code>eidfxxx-dev-01</code>.</li>
+<li>Select a suitable operating system</li>
+<li>Select a machine specification that is suitable</li>
+<li>Choose the required disk size (in GB) or leave blank for the default</li>
+</ol>
+</li>
+<li>
+<p>Click on 'Create'</p>
+</li>
+<li>You should see the new VM listed under the 'Machines' table on the project page and the status as 'Creating'</li>
+<li>Wait for a few minutes while the job to launch the VM completes.
+    You have to reload the page to see updates.</li>
+<li>Once the job has completed the status shows as 'Success' in the list of machines.</li>
+</ol>
+<p>In the list of 'Machines' in the project page in the portal, click on the name of new VM
+and check it has the correct configuration,
+including a <code>10.24.*.*</code> IP address and a default SSH Guacamole connection.</p>
+<h3 id="quota">Quota</h3>
+<p>Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
+You may not be able to create a VM if it exceeds the quota.</p>
+<p>Please contact the helpdesk if your quota requirements have changed.</p>
+<h3 id="register-machine-with-safe">Register machine with SAFE</h3>
+<p>To manage the user accounts in your project and allow users to access a VM,
+you have to register it as a "SAFE machine".</p>
+<ol>
+<li>Open the details page for the VM by clicking on its name in the 'Machines' table</li>
+<li>Click 'Register SAFE machine' to enable central account management</li>
+</ol>
+<h3 id="add-a-user-account">Add a user account</h3>
+<p>User accounts allow project members to log in to the VMs in a project.
+The Project PI and project managers manage user accounts for each member of the project.
+Users usually use one account (username and password) to log in to all the VMs that they can access,
+however a user may have multiple accounts in a project, for example for different roles.</p>
+<ol>
+<li>From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom</li>
+<li>
+<p>Complete the 'Create User Account' form as follows:</p>
+<ol>
+<li>Choose 'Account user name': this could be something sensible like the first and last names
+concatenated (or initials) together with the project name.
+The username is unique across all EPCC systems so the user will not be able to reuse this name
+in another project once it has been assigned.</li>
+<li>Select the project member from the 'Account owner' drop-down field</li>
+<li>Click 'Create'</li>
+</ol>
+</li>
+</ol>
+<p>The new account is allocated a temporary password which the account owner can view
+in their account details.</p>
+<h2 id="adding-access-to-the-vm-for-a-user">Adding Access to the VM for a User</h2>
+<p>User accounts can be granted or denied access to existing VMs that are registered as SAFE machines.</p>
+<ol>
+<li>Click on an existing user account in the 'Project Accounts' table on the project page</li>
+<li>Click 'Manage'</li>
+<li>Select the checkboxes next to the VMs that this account should have access to
+or uncheck the ones without access</li>
+<li>Click the 'Update' button</li>
+<li>After a few minutes, the job to give them access to the selected VMs will complete</li>
+</ol>
+<p>At this point, if the user logs into <a href="https://eidf-vdi.epcc.ed.ac.uk/vdi">https://eidf-vdi.epcc.ed.ac.uk/vdi</a>,
+they will be automatically directed to the VM with the default SSH connection (unless they have other connections available in Guacamole)</p>
+<h2 id="first-login">First login</h2>
+<p>A new user account is allocated a temporary password which the user must reset before they
+can log in for the first time.
+The password reset will not work when logging in via RDP -
+they must use a SSH connection in the VDI.</p>
+<p>The user can view the temporary password in their account details page.</p>
+<h2 id="adding-rdp-access-to-the-vm">Adding RDP Access to the VM</h2>
+<p>To configure the VM for access via RDP:</p>
+<ol>
+<li>Open the VM details page by selecting the name on the project page</li>
+<li>Click on 'Configure RDP'</li>
+<li>The configuration job runs for a few minutes.</li>
+</ol>
+<p>Once the RDP job is completed, all users that are allowed to access the VM
+will also be permitted to use the RDP connection.</p>
 <h2 id="online-support">Online support</h2>
 
               
@@ -1058,7 +1269,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
     
   </body>
