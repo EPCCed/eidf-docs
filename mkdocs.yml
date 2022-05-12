@@ -14,7 +14,7 @@ extra_css:
 
 site_name: EIDF User Documentation
 site_url: https://epcced.github.io/eidf-docs/
-repo_url: https://github.com/EPCCed/eidf-docs.git
+repo_url: https://github.com/EPCCed/eidf-docs/
 repo_name: EPCCed/eidf-docs.git
 edit_uri: edit/main/docs/
 
@@ -42,7 +42,7 @@ nav:
       - "Running codes": services/cs1/run.md
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
-      - "Running codes": services/ultra2/run.md      
+      - "Running codes": services/ultra2/run.md
     - "OpenStack Virtual Machines":
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Tutorial": services/virtualmachines/tutorial.md
