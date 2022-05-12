@@ -42,7 +42,7 @@ nav:
       - "Running codes": services/cs1/run.md
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
-      - "Running codes": services/ultra2/run.md      
+      - "Running codes": services/ultra2/run.md
     - "OpenStack Virtual Machines":
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Tutorial": services/virtualmachines/tutorial.md

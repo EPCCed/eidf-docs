@@ -13,17 +13,17 @@
 }
 </style>
 
-# Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI) 
+# Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)
 
 Using the EIDF VDI, members of EIDF projects can connect to VMs that they have been granted access to. The EIDF VDI is
-a web portal that displays the connections to VMs a user has available to them, and then those connections can be easily 
-initiated by clicking on them in the user interface. Once connected to the target VM, all interactions are mediated 
+a web portal that displays the connections to VMs a user has available to them, and then those connections can be easily
+initiated by clicking on them in the user interface. Once connected to the target VM, all interactions are mediated
 through the user's web browser by the EIDF VDI.
 
 ## Accessing
 
-In order to access the EIDF VDI and connect to EIDF data science cloud VMs, you need to have an active 
-[SAFE](https://safe.epcc.ed.ac.uk) account. If you already have a SAFE account, you can skip ahead to the 
+In order to access the EIDF VDI and connect to EIDF data science cloud VMs, you need to have an active
+[SAFE](https://safe.epcc.ed.ac.uk) account. If you already have a SAFE account, you can skip ahead to the
 [Request Project Membership](#request-project-membership) instructions. Otherwise, follow the
 [Register Account in EPCC SAFE](#register-safe-account) instructions immediately below to create the account.
 
