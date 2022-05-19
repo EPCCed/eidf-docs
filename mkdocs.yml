@@ -34,6 +34,7 @@ nav:
   - "Accessing EIDF Services":
     - "Access Overview": access/index.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+    - "SSH Access": access/ssh.md
     - "JupyterHub Notebook Service Access": access/jhub-git.md
     - "Workshops": access/workshops.md
   - "Services":

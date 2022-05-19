@@ -60,6 +60,7 @@ on the next page
 5. The project owner will then receive notification of the application and accept your request
 
 ## Navigating the EIDF VDI
+Aaron Added
 
 ## Connecting to a VM
 
