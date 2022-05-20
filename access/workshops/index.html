@@ -428,15 +428,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-accessing-the-eidf-rstudio-server-service-for-the-first-time" class="md-nav__link">
-     1. Accessing the EIDF RStudio Server Service for the First Time
+  <a href="#1-accessing-the-eidf-notebook-service-for-the-first-time" class="md-nav__link">
+     1. Accessing the EIDF Notebook Service for the First Time
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-login-to-the-eidf-jupyterhub" class="md-nav__link">
-     2. Login to the EIDF JupyterHub
+  <a href="#2-login-to-the-eidf-notebook-service" class="md-nav__link">
+     2. Login to the EIDF Notebook Service
   </a>
   
 </li>
@@ -990,15 +990,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-accessing-the-eidf-rstudio-server-service-for-the-first-time" class="md-nav__link">
-     1. Accessing the EIDF RStudio Server Service for the First Time
+  <a href="#1-accessing-the-eidf-notebook-service-for-the-first-time" class="md-nav__link">
+     1. Accessing the EIDF Notebook Service for the First Time
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-login-to-the-eidf-jupyterhub" class="md-nav__link">
-     2. Login to the EIDF JupyterHub
+  <a href="#2-login-to-the-eidf-notebook-service" class="md-nav__link">
+     2. Login to the EIDF Notebook Service
   </a>
   
 </li>
@@ -1082,6 +1082,11 @@ GitHub organization to register with.</span></p>
 <td><a href="https://secure.epcc.ed.ac.uk/ed-dash-hub">https://secure.epcc.ed.ac.uk/ed-dash-hub</a></td>
 <td><a href="https://github.com/Ed-DaSH-Training">Ed-DaSH-Training</a></td>
 </tr>
+<tr>
+<td><a href="https://edcarp.github.io/2022-08-23_ed-dash_machine_learning/">Ed-DaSH Introduction to Machine Learning with Python</a></td>
+<td><a href="https://secure.epcc.ed.ac.uk/ed-dash-hub">https://secure.epcc.ed.ac.uk/ed-dash-hub</a></td>
+<td><a href="https://github.com/Ed-DaSH-Training">Ed-DaSH-Training</a></td>
+</tr>
 </tbody>
 </table>
 <p>Please follow the sequence of instructions described in the sections below to get ready for the workshop:</p>
@@ -1090,8 +1095,8 @@ GitHub organization to register with.</span></p>
 <li><a href="#login-jupyterhub">Login to EIDF JupyterHub</a></li>
 <li><a href="#create-script">Creating a New R Script</a></li>
 </ol>
-<h4 id="1-accessing-the-eidf-rstudio-server-service-for-the-first-time"><a id="access-rstudio-server"></a> 1. Accessing the EIDF RStudio Server Service for the First Time</h4>
-<p>We will be using the RStudio Server service provided by the <a href="https://www.ed.ac.uk/edinburgh-international-data-facility/overview">Edinburgh International Data Facility
+<h4 id="1-accessing-the-eidf-notebook-service-for-the-first-time"><a id="access-rstudio-server"></a> 1. Accessing the EIDF Notebook Service for the First Time</h4>
+<p>We will be using the Notebook service provided by the <a href="https://www.ed.ac.uk/edinburgh-international-data-facility/overview">Edinburgh International Data Facility
 (EIDF)</a>. Follow the steps listed below to gain
 access.</p>
 <ol>
@@ -1116,23 +1121,29 @@ shown below</li>
 <li>If you receive a ‘403 : Forbidden’ error message on the next screen (if you did not already do so as in step 4 of the
 prerequisites section) send an email to <span class="fake-link">j.hay@epcc.ed.ac.uk</span> from your GitHub registered
 email address, including your GitHub username, and ask for an invitation to the workshop organization. Otherwise, skip
-to the next step.</li>
+to the next step. <b>N.B. If you are accessing the service from outside of the UK, you may see this error; if so, please
+contact <span class="fake-link">j.hay@epcc.ed.ac.uk</span> to enable access</b></li>
 <li>If you receive a ‘400 : Bad Request’ error message, you need to accept the invitation that has been emailed to you
 to join the workshop organization as in the prerequisite instructions</li>
 </ol>
-<h4 id="2-login-to-the-eidf-jupyterhub"><a id="login-jupyterhub"></a> 2. Login to the EIDF JupyterHub</h4>
+<h4 id="2-login-to-the-eidf-notebook-service"><a id="login-jupyterhub"></a> 2. Login to the EIDF Notebook Service</h4>
 <p>Now that you have completed registration with the workshop GitHub organization, you can access the workshop RStudio
 Server in EIDF.</p>
 <ol>
-<li>Return to the <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;</span> and you will now be redirected
+<li>Return to the <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;</span></li>
+<li>You will be presented with a choice of server as a list of radio buttons. Select the appropriate one as labelled for
+your workshop and press the orange 'Start' button</li>
+<li>You will now be redirected
 to the <span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;/hub/spawn-pending/&lt;GITHUB_USERNAME&gt;</span> page</li>
 <li>You will see a message stating that your server is launching. If the page has not updated after 10 seconds, simply
 refresh the page with the <CTRL> + R or <F5> keys in Windows, or <CMD> + R in macOS</li>
-<li>Finally, you will be redirected to
-<span class="fake-link">https://secure.epcc.ed.ac.uk/&lt;WORKSHOP&gt;/user/&lt;GITHUB_USERNAME&gt;/rstudio/</span> and presented with
-the RStudio Server UI as shown below</li>
+<li>Finally, you will be redirected to either the RStudio Server if it's a statistics workshop, or the Jupyter Lab
+dashboard otherwise, as shown in the screenshots below</li>
 </ol>
-<p><img alt="RStudio-Server-Screen" class="border-img center" src="/eidf-docs/images/access/rstudio-server-screen.png" /></p>
+<p><img alt="RStudio-Server-Screen" class="border-img center" src="/eidf-docs/images/access/rstudio-server-screen.png" />
+    <figcaption>The RStudio Server UI</figcaption></p>
+<p><img alt="Jupyter-Lab-Dashboard" class="border-img center" src="/eidf-docs/images/access/jupyterlab-dashboard.png" />
+    <figcaption>The Jupyter Lab Dashboard</figcaption></p>
 <h4 id="3-creating-a-new-r-script"><a id="create-script"></a> 3. Creating a New R Script</h4>
 <p>Follow these <a href="/eidf-docs/services/rstudioserver/quickstart#create-script">quickstart instructions</a> to create your first
 R script in RStudio Server!</p>
