@@ -352,6 +352,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../project/" class="md-nav__link">
+        EIDF Portal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../virtualmachines-vdi/" class="md-nav__link">
         Virtual Desktop Interface
       </a>
@@ -1085,7 +1099,7 @@ The gateway is currently only accessible from University of Edinburgh IP Address
 <li>Search ‘OpenSSH Client’</li>
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
 <li>Once this is installed, you can reach your VM by opening CMD and running</li>
-<li>$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]</li>
+<li><code>$ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]</code></li>
 </ol>
 <h3 id="installing-mobaxterm">Installing MobaXTerm</h3>
 <ol>
@@ -1104,10 +1118,12 @@ The gateway is currently only accessible from University of Edinburgh IP Address
 </ol>
 <h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
 <p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below. <br>
-$ ssh -J [username]@jumphost [username]@target</p>
-<p>To access the EIDF Services; <br>
-$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]</p>
+The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.
+<div class="highlight"><pre><span></span><code>$ ssh -J [username]@jumphost [username]@target
+</code></pre></div></p>
+<p>To access the EIDF Services;
+<div class="highlight"><pre><span></span><code>$ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
+</code></pre></div></p>
 
               
             </article>
