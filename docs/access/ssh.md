@@ -31,7 +31,7 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 6.	Search ‘OpenSSH Client’
 7.	Select the check box next to ‘OpenSSH Client’ and click ‘Install’
 8.	Once this is installed, you can reach your VM by opening CMD and running
-9.	$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
+9.	`$ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]`
 
 ### Installing MobaXTerm
 1.	Download MobaXTerm from https://mobaxterm.mobatek.net/
@@ -51,8 +51,12 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 ## Accessing From MacOS/Linux
 
 OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below. <br>
+The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.
+```
 $ ssh -J [username]@jumphost [username]@target
+```
 
-To access the EIDF Services; <br>
-$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
+To access the EIDF Services;
+```
+$ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
+```
