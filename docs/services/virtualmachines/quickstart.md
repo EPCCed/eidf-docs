@@ -22,7 +22,7 @@ Please see the [VDI](/access/virtualmachines-vdi/#navigating-the-eidf-vdi) guide
 1. Choose the SSH connection to log in for the first time. You will be asked to reset the password.
 
 !!! warning
-    Do not use RDP to login for the first time as you have to reset your password.
+    Do not use VDI to login for the first time as you have to reset your password.
     Always use SSH to login to the VM for the first time.
 
 ## Further information
