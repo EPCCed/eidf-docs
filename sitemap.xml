@@ -2,152 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://epcced.github.io/eidf-docs/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/jhub-git/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/project/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/ssh/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/virtualmachines-vdi/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/access/workshops/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/faq/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/known-issues/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/overview/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/overview/acknowledgements/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/overview/contacts/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/cs1/access/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/cs1/run/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/datacatalogue/docs/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/datacatalogue/metadata/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/datacatalogue/quickstart/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/datacatalogue/tutorial/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/jhub/docs/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/jhub/quickstart/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/jhub/tutorial/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/rstudioserver/docs/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/rstudioserver/quickstart/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/rstudioserver/tutorial/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/ultra2/access/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/ultra2/run/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/docs/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/quickstart/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/tutorial/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/status/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <lastmod>2022-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
