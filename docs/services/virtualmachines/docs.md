@@ -47,7 +47,7 @@ you have to register it as a "SAFE machine".
 
 User accounts allow project members to log in to the VMs in a project.
 The Project PI and project managers manage user accounts for each member of the project.
-Users usually use one account (username and password) to log in to all the VMs that they can access,
+Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
 however a user may have multiple accounts in a project, for example for different roles.
 
 1. From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom
@@ -75,7 +75,7 @@ or uncheck the ones without access
 1. After a few minutes, the job to give them access to the selected VMs will complete
 
 At this point, if the user logs into [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi),
-they will be automatically directed to the VM with the default SSH connection (unless they have other connections available in Guacamole)
+they will be automatically directed to the VM with the default SSH connection (unless they have other connections available in the VDI).
 
 ## First login
 
@@ -97,4 +97,6 @@ To configure the VM for access via RDP:
 Once the RDP job is completed, all users that are allowed to access the VM
 will also be permitted to use the RDP connection.
 
+<!--
 ## Online support
+-->
