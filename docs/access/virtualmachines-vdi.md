@@ -40,10 +40,14 @@ In order to access the EIDF VDI and connect to EIDF data science cloud VMs, you 
     1. Your Email should be the one you used to register for the EIDF service (or Ed-DaSH workshop)
     1. Institution for reporting should always be 'University of Edinburgh'
     1. Department should always be '**EIDF**'
+
     ![SAFE-signup-screenshot](/eidf-docs/images/SAFE_website_signup.png){: class="borderimg1"}
+
 1. Submit the form, then accept the [SAFE Acceptable Use policy](https://www.archer2.ac.uk/about/policies/safe_acceptable_use_policy.html)
    on the next page
+
     ![SAFE-policy-screenshot](/eidf-docs/images/SAFE_acceptable_use.png){: class="borderimg1"}
+
 1. After you have completed the registration form and accepted the policy, you will receive an email from
    [support@archer2.ac.uk](mailto:support@archer2.ac.uk) with a password reset URL
 1. Visit the link in the email and generate a new password, then submit the form
