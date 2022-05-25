@@ -6,6 +6,11 @@ In order to access the EIDF VDI and connect to EIDF data science cloud VMs, you 
 [Register Account in EPCC SAFE](#step-1-register-account-in-epcc-safe) instructions immediately below to create the
 account.
 
+!!! info
+    Please also see [Register](https://epcced.github.io/safe-docs/safe-for-users/#register) and
+    [Join a project](https://epcced.github.io/safe-docs/safe-for-users/#how-to-request-to-join-a-project) in the SAFE
+    documentation for more information.
+
 ## Step 1: Register Account in EPCC SAFE
 
 1. Go to [SAFE signup](https://safe.epcc.ed.ac.uk/signup.jsp) and complete the registration form
