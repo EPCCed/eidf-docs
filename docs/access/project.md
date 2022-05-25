@@ -7,7 +7,6 @@ Projects for the Openstack Virtual Machine service are accessed via the
     Currently the EIDF Portal can only be accessed from University of Edinburgh IP addresses
     so the appropriate VPN will need to be used if accessing outside of campus.
 
-
 To log in you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
 If you do not have a SAFE account follow the instructions in the
 [SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)

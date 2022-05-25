@@ -70,9 +70,11 @@ Pre-commit will run a markdown linter configured with current rules
 for the EIDF documentation. Your pull request should indicate that you have done this and fixed issues that arise.
 
 To install:
-```
+
+```bash
 pip install pre-commit
 ```
+
 - Run 'pre-commit install' if you want to run on commit
 - To test before commit run `pre-commit run --all-files`
 
