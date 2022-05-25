@@ -19,7 +19,7 @@ Please follow the sequence of instructions described in the sections below to ge
 ## Step 1: Accessing the EIDF Notebook Service for the First Time
 
 We will be using the Notebook service provided by the [Edinburgh International Data Facility
-(EIDF)](https://www.ed.ac.uk/edinburgh-international-data-facility/overview). Follow the steps listed below to gain
+(EIDF)](https://www.ed.ac.uk/edinburgh-international-data-facility). Follow the steps listed below to gain
 access.
 
 1. Visit [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
