@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/eidf.css">
     
+      <link rel="stylesheet" href="../../stylesheets/access.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -400,29 +402,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#accessing" class="md-nav__link">
-    Accessing
+  <a href="#login-to-the-eidf-vdi" class="md-nav__link">
+    Login to the EIDF VDI
   </a>
-  
-    <nav class="md-nav" aria-label="Accessing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#register-account-in-epcc-safe" class="md-nav__link">
-    Register Account in EPCC SAFE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#request-project-membership" class="md-nav__link">
-    Request Project Membership
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -475,9 +457,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Workshops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workshops" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workshops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../jhub-git/" class="md-nav__link">
-        JupyterHub Notebook Service Access
+      <a href="../workshops/workshops/" class="md-nav__link">
+        Ed-DaSH Notebook Service
       </a>
     </li>
   
@@ -490,9 +498,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshops/" class="md-nav__link">
-        Workshops
+      <a href="../workshops/safe-registration/" class="md-nav__link">
+        Ed-DaSH Virtual Machines
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/jhub-git/" class="md-nav__link">
+        JupyterHub Notebook Service Access
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1031,29 +1060,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#accessing" class="md-nav__link">
-    Accessing
+  <a href="#login-to-the-eidf-vdi" class="md-nav__link">
+    Login to the EIDF VDI
   </a>
-  
-    <nav class="md-nav" aria-label="Accessing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#register-account-in-epcc-safe" class="md-nav__link">
-    Register Account in EPCC SAFE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#request-project-membership" class="md-nav__link">
-    Request Project Membership
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1096,73 +1105,32 @@
 
 
 
-<style>
-.borderimg1 {
-  border: 5px solid transparent;
-  padding: 5px;
-  /*margin: 15px;*/
-  border-color: rgba(192, 192, 192, 0.1);
-  border-radius: 10px;
-}
-
-.bold {
-  font-weight: bold;
-  color: blue;
-}
-</style>
-
 <h1 id="virtual-machines-vms-and-the-eidf-virtual-desktop-interface-vdi">Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)</h1>
 <p>Using the EIDF VDI, members of EIDF projects can connect to VMs that they have been granted access to. The EIDF VDI is
 a web portal that displays the connections to VMs a user has available to them, and then those connections can be easily
 initiated by clicking on them in the user interface. Once connected to the target VM, all interactions are mediated
 through the user's web browser by the EIDF VDI.</p>
-<h2 id="accessing">Accessing</h2>
-<p>In order to access the EIDF VDI and connect to EIDF data science cloud VMs, you need to have an active
-<a href="https://safe.epcc.ed.ac.uk">SAFE</a> account. If you already have a SAFE account, you can skip ahead to the
-<a href="#request-project-membership">Request Project Membership</a> instructions. Otherwise, follow the
-<a href="#register-safe-account">Register Account in EPCC SAFE</a> instructions immediately below to create the account.</p>
-<h3 id="register-account-in-epcc-safe"><a id="register-safe-account"></a>Register Account in EPCC SAFE</h3>
-<ol>
-<li>
-<p>Go to <a href="https://safe.epcc.ed.ac.uk/signup.jsp">SAFE signup</a> and complete the registration form</p>
-<ol>
-<li>Mandatory fields are: Email, Nationality, First name, Last name, Institution for reporting, Department, and Gender</li>
-<li>Your Email should be the one you used to register for the EIDF service (or Ed-DaSH workshop)</li>
-<li>Institution for reporting should always be 'University of Edinburgh'</li>
-<li>Department should always be '<strong>EIDF</strong>'</li>
-</ol>
-<p><img alt="SAFE-signup-screenshot" class="borderimg1" src="/eidf-docs/images/SAFE_website_signup.png" /></p>
-</li>
-<li>
-<p>Submit the form, then accept the <a href="https://www.archer2.ac.uk/about/policies/safe_acceptable_use_policy.html">SAFE Acceptable Use policy</a>
-on the next page</p>
-<p><img alt="SAFE-policy-screenshot" class="borderimg1" src="/eidf-docs/images/SAFE_acceptable_use.png" /></p>
-</li>
-<li>
-<p>After you have completed the registration form and accepted the policy, you will receive an email from
-<span class="bold">support@archer2.ac.uk</span> with a password reset URL</p>
-</li>
-<li>Visit the link in the email and generate a new password, then submit the form</li>
-<li>You will now be logged into your new account in SAFE</li>
-</ol>
-<h3 id="request-project-membership"><a id="request-project-membership"></a>Request Project Membership</h3>
-<ol>
-<li>While logged into SAFE, select the ‘Request Access’ menu item from the 'Projects' menu in the top menu bar</li>
-<li>This will open the 'Apply for project membership' page</li>
-<li>
-<p>Enter the appropriate project ID into the ‘Project’ field and click the ‘Next’ button</p>
-<p><img alt="SAFE-apply01-screenshot" class="borderimg1" src="/eidf-docs/images/SAFE_Apply_Project_01.png" /></p>
-</li>
-<li>
-<p>In the 'Access route' drop down field that appears, select 'Request membership' (not 'Request machine account')</p>
-<p><img alt="SAFE-apply01-screenshot" class="borderimg1" src="/eidf-docs/images/SAFE_Apply_Project_02.png" /></p>
-</li>
-<li>
-<p>The project owner will then receive notification of the application and accept your request</p>
-</li>
-</ol>
+<h2 id="login-to-the-eidf-vdi">Login to the EIDF VDI</h2>
+<p>Once your membership request to join the appropriate EIDF project has been approved, you will be able to login to the
+EIDF VDI at <a href="https://eidf-vdi.epcc.ed.ac.uk/vdi">https://eidf-vdi.epcc.ed.ac.uk/vdi</a>. Authentication to the VDI is
+provided by SAFE, so if you do not have an active web browser session in SAFE, you will be redirected to the SAFE login
+page.</p>
 <h2 id="navigating-the-eidf-vdi">Navigating the EIDF VDI</h2>
+<p>After you have been authenticated through SAFE and logged into the EIDF VDI, if you have multiple connections available
+to you that have been associated with your user (typically in the case of research projects), you will be presented with
+the VDI home screen as shown below</p>
+<p><img alt="VDI-home-screen" class="border-img" src="/eidf-docs/images/access/vdi-home-screen.png" />
+   <em>VDI home page with list of available VM connections</em></p>
 <h2 id="connecting-to-a-vm">Connecting to a VM</h2>
+<p>If you have only one connection associated with your VDI user account (typically in the case of workshops), you will be
+automatically connected to the target VM's virtual desktop. Once you are connected to the VM, you will be asked for your
+username and password as shown below (if you are participating in a workshop, then you may not be asked for credentials)</p>
+<p><img alt="VM-VDI-connection-login" class="border-img" src="/eidf-docs/images/access/vm-vdi-connection-login.png" />
+   <em>VM virtual desktop connection user account login screen</em></p>
+<p>Once your credentials have been accepted, you will be connected to your VM's desktop environment. For instance, the
+screenshot below shows a resulting connection to a Xubuntu 20.04 VM with the Xfce desktop environment.</p>
+<p><img alt="VM-VDI-connection" class="border-img" src="/eidf-docs/images/access/vm-vdi-connection.png" />
+   <em>VM virtual desktop</em></p>
 <h2 id="further-information">Further information</h2>
 
               

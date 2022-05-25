@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/eidf.css">
     
+      <link rel="stylesheet" href="../../stylesheets/access.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -423,7 +425,7 @@
         
           <li class="md-nav__item">
   <a href="#installing-and-using-openssh" class="md-nav__link">
-    Installing and using OpenSSH
+    Installing and Using OpenSSH
   </a>
   
 </li>
@@ -461,9 +463,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Workshops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workshops" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workshops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../jhub-git/" class="md-nav__link">
-        JupyterHub Notebook Service Access
+      <a href="../workshops/workshops/" class="md-nav__link">
+        Ed-DaSH Notebook Service
       </a>
     </li>
   
@@ -476,9 +504,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshops/" class="md-nav__link">
-        Workshops
+      <a href="../workshops/safe-registration/" class="md-nav__link">
+        Ed-DaSH Virtual Machines
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/jhub-git/" class="md-nav__link">
+        JupyterHub Notebook Service Access
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1026,7 +1075,7 @@
         
           <li class="md-nav__item">
   <a href="#installing-and-using-openssh" class="md-nav__link">
-    Installing and using OpenSSH
+    Installing and Using OpenSSH
   </a>
   
 </li>
@@ -1068,28 +1117,14 @@
 
 
 
-<style>
-.borderimg1 {
-  border: 5px solid transparent;
-  padding: 5px;
-  /*margin: 15px;*/
-  border-color: rgba(192, 192, 192, 0.1);
-  border-radius: 10px;
-}
-
-.bold {
-  font-weight: bold;
-  color: blue;
-}
-</style>
-
-<h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines using the EIDF-Gateway Jump Host</h1>
-<p>The EIDF-Gateway is a method of accessing EIDF Services through SSH for a terminal experience. The user can connect to their VM through the jump host using their given accounts.
-The gateway cannot be 'landed' on, a user can only pass through it. So the destination has to be known for the service to work.
-The gateway is currently only accessible from University of Edinburgh IP Addresses, so the appropriate VPN will need to be used if accessing outside of campus.</p>
+<h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines Using the EIDF-Gateway Jump Host</h1>
+<p>The EIDF-Gateway is a method of accessing EIDF Services through SSH for a terminal experience. The user can connect to
+their VM through the jump host using their given accounts. The gateway cannot be 'landed' on, a user can only pass
+through it. So the destination has to be known for the service to work. The gateway is currently only accessible from
+University of Edinburgh IP Addresses, so the appropriate VPN will need to be used if accessing outside of campus.</p>
 <h2 id="accessing-from-windows">Accessing from Windows</h2>
 <p>Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH. Putty can also be used but won’t be covered in this tutorial.</p>
-<h3 id="installing-and-using-openssh">Installing and using OpenSSH</h3>
+<h3 id="installing-and-using-openssh">Installing and Using OpenSSH</h3>
 <ol>
 <li>Click the ‘Start’ button at the bottom of the screen</li>
 <li>Click the ‘Settings’ cog icon</li>
@@ -1103,7 +1138,7 @@ The gateway is currently only accessible from University of Edinburgh IP Address
 </ol>
 <h3 id="installing-mobaxterm">Installing MobaXTerm</h3>
 <ol>
-<li>Download MobaXTerm from https://mobaxterm.mobatek.net/</li>
+<li>Download MobaXTerm from <a href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></li>
 <li>Once installed click the ‘Session’ button in the top left corner</li>
 <li>Click ‘SSH’</li>
 <li>In the ‘Remote Host’ section, specify the VM name or IP</li>
@@ -1117,13 +1152,16 @@ The gateway is currently only accessible from University of Edinburgh IP Address
 <li>For the VM login, use your VM credentials from within SAFE</li>
 </ol>
 <h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.
-<div class="highlight"><pre><span></span><code>$ ssh -J [username]@jumphost [username]@target
-</code></pre></div></p>
-<p>To access the EIDF Services;
-<div class="highlight"><pre><span></span><code>$ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
-</code></pre></div></p>
+<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
+The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified
+host like the example below.</p>
+<div class="highlight"><pre><span></span><code>$ ssh -J <span class="o">[</span>username<span class="o">]</span>@jumphost <span class="o">[</span>username<span class="o">]</span>@target
+password:
+</code></pre></div>
+<p>To access the EIDF Services:</p>
+<div class="highlight"><pre><span></span><code>$ ssh -J <span class="o">[</span>gateway-username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk <span class="o">[</span>VM-username<span class="o">]</span>@<span class="o">[</span>VM/IP<span class="o">]</span>
+password:
+</code></pre></div>
 
               
             </article>
@@ -1153,13 +1191,13 @@ The '-J' flag is use to specify that we will access the second specified host by
       
       
         
-        <a href="../jhub-git/" class="md-footer__link md-footer__link--next" aria-label="Next: JupyterHub Notebook Service Access" rel="next">
+        <a href="../workshops/workshops/" class="md-footer__link md-footer__link--next" aria-label="Next: Ed-DaSH Notebook Service" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              JupyterHub Notebook Service Access
+              Ed-DaSH Notebook Service
             </div>
           </div>
           <div class="md-footer__button md-icon">
