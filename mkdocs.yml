@@ -11,6 +11,7 @@ theme:
 
 extra_css:
   - stylesheets/eidf.css
+  - stylesheets/access.css
 
 site_name: EIDF User Documentation
 site_url: https://epcced.github.io/eidf-docs/
@@ -36,8 +37,10 @@ nav:
     - "EIDF Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
     - "SSH Access": access/ssh.md
-    - "JupyterHub Notebook Service Access": access/jhub-git.md
-    - "Workshops": access/workshops.md
+    - "Workshops":
+      - "Ed-DaSH Notebook Service": access/workshops/workshops.md
+      - "Ed-DaSH Virtual Machines": access/workshops/safe-registration.md
+      - "JupyterHub Notebook Service Access": access/workshops/jhub-git.md
   - "Services":
     - "Cerebras CS-1":
       - "Get Access": services/cs1/access.md
