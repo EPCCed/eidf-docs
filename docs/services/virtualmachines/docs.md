@@ -69,8 +69,7 @@ User accounts can be granted or denied access to existing VMs that are registere
 
 1. Click on an existing user account in the 'Project Accounts' table on the project page
 1. Click 'Manage'
-1. Select the checkboxes next to the VMs that this account should have access to
-or uncheck the ones without access
+1. Select the checkboxes next to the VMs that this account should have access to or uncheck the ones without access
 1. Click the 'Update' button
 1. After a few minutes, the job to give them access to the selected VMs will complete
 
