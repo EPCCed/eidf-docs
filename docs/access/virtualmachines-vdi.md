@@ -19,6 +19,7 @@ to you that have been associated with your user (typically in the case of resear
 the VDI home screen as shown below
 
    ![VDI-home-screen](/eidf-docs/images/access/vdi-home-screen.png){: class="border-img"}
+   *VDI home page with list of available VM connections*
 
 ## Connecting to a VM
 
@@ -27,10 +28,12 @@ automatically connected to the target VM's virtual desktop. Once you are connect
 username and password as shown below (if you are participating in a workshop, then you may not be asked for credentials)
 
    ![VM-VDI-connection-login](/eidf-docs/images/access/vm-vdi-connection-login.png){: class="border-img"}
+   *VM virtual desktop connection user account login screen*
 
 Once your credentials have been accepted, you will be connected to your VM's desktop environment. For instance, the
 screenshot below shows a resulting connection to a Xubuntu 20.04 VM with the Xfce desktop environment.
 
    ![VM-VDI-connection](/eidf-docs/images/access/vm-vdi-connection.png){: class="border-img"}
+   *VM virtual desktop*
 
 ## Further information

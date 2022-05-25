@@ -16,7 +16,7 @@ relevant steps listed below to prepare.
    described in [Step 1: Creating a GitHub Account](#step-1-creating-a-github-account)
 1. If you do already have a GitHub account associated with the email address you registered for the workshop with,
    follow the steps described in
-[Step 2: Registering with the Workshop GitHub Organization](#step-2-registering-with-the-workshop-github-organization)
+   [Step 2: Registering with the Workshop GitHub Organization](#step-2-registering-with-the-workshop-github-organization)
 
 #### Step 1: Creating a GitHub Account
 
@@ -36,12 +36,10 @@ relevant steps listed below to prepare.
    username, and ask for an invitation to the workshop GitHub organization
 1. Once you have been invited to the GitHub organization, you will receive an email with the invitation; click on the
    ![GitHub-Org-Button](/eidf-docs/images/access/github-btn.png){: class="inline-img"} button as shown
-
-    ![GitHub-Invitation](/eidf-docs/images/access/github-invitation.png){: class="border-img center"}
-
+   ![GitHub-Invitation](/eidf-docs/images/access/github-invitation.png){: class="border-img center"}
+   *Invitation to join the workshop GitHub organization*
 1. Clicking on the button in the email will open a new web page with another form as shown below
-
-    ![GitHub-Invitation-2](/eidf-docs/images/access/github-invitation-2.png){: class="border-img center"}
-
+   ![GitHub-Invitation-2](/eidf-docs/images/access/github-invitation-2.png){: class="border-img center"}
+   *Form to accept the invitation to join the GitHub organization*
 1. Again, click on the ![Join-GitHub-Org-Button](/eidf-docs/images/access/join-btn.png){: class="inline-img"} button to
    confirm, then the Ed-DaSH-Training GitHub organization page will open

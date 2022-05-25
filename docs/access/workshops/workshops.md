@@ -12,7 +12,7 @@ GitHub organization to register with.**
 
 Please follow the sequence of instructions described in the sections below to get ready for the workshop:
 
-1. [Step 1: Accessing the EIDF RStudio Server Service for the First Time](#step-1-accessing-the-eidf-notebook-service-for-the-first-time)
+1. [Step 1: Accessing the EIDF Notebook Service for the First Time](#step-1-accessing-the-eidf-notebook-service-for-the-first-time)
 1. [Step 2: Login to EIDF JupyterHub](#step-2-login-to-the-eidf-notebook-service)
 1. [Step 3: Creating a New R Script](#step-3-creating-a-new-r-script)
 
@@ -25,27 +25,25 @@ access.
 1. Visit [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
 1. Click on the ![GitHub-Signin-Button](/eidf-docs/images/access/github-signin-btn.png){: class="inline-img"} button
 1. You will be asked to sign in to GitHub, as shown in the form below
-
    ![GitHub-Signin](/eidf-docs/images/access/github-signin.png){: class="border-img center"}
-
+   *GitHub sign in form for access to EIDF Notebook Service*
 1. Enter your GitHub credentials, or click on the ‘Create an account’ link if you do not already have one, and follow
    the prerequisite instructions to register with GitHub and join the workshop organization
 1. Click on the ‘Sign in’ button
 1. On the next page, you will be asked whether to authorize the workshop organization to access your GitHub account as
    shown below
-
    ![GitHub-Authorize](/eidf-docs/images/access/github-authorize.png){: class="border-img center"}
-
+   *GitHub form requesting authorization for the workshop organization*
 1. Click on the ![GitHub-Authorize-Button](/eidf-docs/images/access/authorize-btn.png){: class="inline-img"} button
 1. At this point, you will receive an email to the email address that you registered with in GitHub, stating that
    “A third-party OAuth application has been added to your account” for the workshop
 1. If you receive a ‘403 : Forbidden’ error message on the next screen (if you did not already do so as in step 4 of the
-   prerequisites section) send an email to [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) from your GitHub registered
-   email address, including your GitHub username, and ask for an invitation to the workshop organization. Otherwise, skip
-   to the next step. **N.B. If you are accessing the service from outside of the UK, you may see this error; if so, please
-   contact [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) to enable access**
+    prerequisites section) send an email to [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) from your GitHub registered
+    email address, including your GitHub username, and ask for an invitation to the workshop organization. Otherwise, skip
+    to the next step. **N.B. If you are accessing the service from outside of the UK, you may see this error; if so, please
+    contact [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) to enable access**
 1. If you receive a ‘400 : Bad Request’ error message, you need to accept the invitation that has been emailed to you
-   to join the workshop organization as in the prerequisite instructions
+    to join the workshop organization as in the prerequisite instructions
 
 ## Step 2: Login to the EIDF Notebook Service
 
@@ -60,16 +58,12 @@ Server in EIDF.
    refresh the page with the &lt;CTRL&gt; + R or &lt;F5&gt; keys in Windows, or &lt;CMD&gt; + R in macOS
 1. Finally, you will be redirected to either the RStudio Server if it's a statistics workshop, or the Jupyter Lab
    dashboard otherwise, as shown in the screenshots below
-
-   | ![RStudio-Server-Screen](/eidf-docs/images/access/rstudio-server-screen.png){: class="border-img center"} |
-   | :--: |
-   | *The RStudio Server UI* |
-
-   | ![Jupyter-Lab-Dashboard](/eidf-docs/images/access/jupyterlab-dashboard.png){: class="border-img center"} |
-   | :--: |
-   | *The Jupyter Lab Dashboard* |
+   ![RStudio-Server-Screen](/eidf-docs/images/access/rstudio-server-screen.png){: class="border-img center"}
+   *The RStudio Server UI*
+   ![Jupyter-Lab-Dashboard](/eidf-docs/images/access/jupyterlab-dashboard.png){: class="border-img center"}
+   *The Jupyter Lab Dashboard*
 
 ## Step 3: Creating a New R Script
 
-Follow these [quickstart instructions](/eidf-docs/services/rstudioserver/quickstart#create-script) to create your first
+Follow these [quickstart instructions](/eidf-docs/services/rstudioserver/quickstart#creating-a-new-r-script) to create your first
 R script in RStudio Server!

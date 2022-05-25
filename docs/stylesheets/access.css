@@ -26,3 +26,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* captions under images */
+img + em {
+  display: block;
+  text-align: center;
+}
