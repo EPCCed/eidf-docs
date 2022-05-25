@@ -27,7 +27,7 @@ This may be enforced via SLURM in the future.
 
 
 ### MPI jobs
-An example script to run a multi-process MPI "Hello world" example is shown. 
+An example script to run a multi-process MPI "Hello world" example is shown.
 
 ```bash
 #!/usr/bin/env bash
@@ -53,4 +53,3 @@ fi
 # mpirun invocation for Intel suite.
 mpirun -n ${mpi_threads} ./helloworld.exe
 ```
-

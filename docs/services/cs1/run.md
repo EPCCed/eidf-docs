@@ -36,5 +36,5 @@ The following will run the above PyTorch example on the CS-1 - note the `--cs_ip
 #SBATCH --gres=cs:1               # Request CS-1 system
 #SBATCH --output=example_%j.log   # Standard output and error log
 
-csrun_wse python-pt run.py --mode train --cs_ip 172.24.102.121:9000 --params configs/<name-of-the-params-file.yaml> 
+csrun_wse python-pt run.py --mode train --cs_ip 172.24.102.121:9000 --params configs/<name-of-the-params-file.yaml>
 ```
