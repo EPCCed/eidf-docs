@@ -82,7 +82,7 @@ and you will be notified of the outcome of your application.
 ### Approved Project
 
 If your application was approved, follow the
-[Openstack Virtual Machines Quickstart](http://localhost:8000/eidf-docs/services/virtualmachines/quickstart/)
+[Openstack Virtual Machines Quickstart](../../services/virtualmachines/quickstart/)
 on how to view your project and the
-[Openstack Virtual Machines Documentation](http://localhost:8000/eidf-docs/services/virtualmachines/docs/)
+[Openstack Virtual Machines Documentation](../../services/virtualmachines/docs/)
 on how to manage a project and create virtual machines and accounts.
