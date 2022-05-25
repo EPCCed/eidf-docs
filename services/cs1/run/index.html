@@ -1141,18 +1141,18 @@
 You can then login directly to the host via: <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code></p>
 <h2 id="running-jobs">Running Jobs</h2>
 <p>All jobs must be run via SLURM to avoid inconveniencing other users of the system. The <code>csrun_cpu</code> and <code>csrun_wse</code> scripts themselves contain calls to <code>srun</code> to work with the SLURM system, so note the omission of <code>srun</code> in the below examples.
-Users can either copy these files from <code>/home/y26/shared/bin</code> to their own home directory should they wish, or use the centrally supplied vesion. In either case, ensure they are in your <code>PATH</code> before execution, eg:
+Users can either copy these files from <code>/home/y26/shared/bin</code> to their own home directory should they wish, or use the centrally supplied version. In either case, ensure they are in your <code>PATH</code> before execution, eg:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/y26/shared/bin
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="run-on-the-host">Run on the host</h3>
-<p>Jobs can be run on the host system (eg simulations, test scripts) using the <code>csrun_cpu</code> wrapper. Here is the example from the Cerebras documentation on PyTorch. Note that this assumes csrun_cpu is in your path.
+<p>Jobs can be run on the host system (eg simulations, test scripts) using the <code>csrun_cpu</code> wrapper. Here is the example from the Cerebras documentation on PyTorch. Note that this assumes csrun_cpu is in your path.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --job-name=Example        # Job name</span>
 <span class="c1">#SBATCH --cpus-per-task=2         # Request 2 cores</span>
 <span class="c1">#SBATCH --output=example_%j.log   # Standard output and error log</span>
 
 csrun_cpu python-pt run.py --mode train --compile_only --params configs/&lt;name-of-the-params-file.yaml&gt;
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="run-on-the-cs-1">Run on the CS-1</h3>
 <p>The following will run the above PyTorch example on the CS-1 - note the <code>--cs_ip</code> argument with port number passed in via the command line, and the inclusion of the <code>--gres</code> option to request use of the CS-1 via SLURM.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>

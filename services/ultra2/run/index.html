@@ -1171,9 +1171,9 @@
 You can then login directly to the host via: <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code></p>
 <h2 id="software">Software</h2>
 <p>The primary software provided is Intel's OneAPI suite containing mpi compilers and runtimes, debuggers and the vTune performance analyser. Standard GNU compilers are also available.
-The OneAPI suite can be loaded by sourcing the shell script:
+The OneAPI suite can be loaded by sourcing the shell script:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span>  /opt/intel/oneapi/setvars.sh
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="running-jobs">Running Jobs</h2>
 <p>All jobs must be run via SLURM to avoid inconveniencing other users of the system. Users should not run jobs directly. Note that the system has one logical processor with a large number of threads and thus appears to SLURM as a single node. This is intentional.</p>
 <h2 id="queue-limits">Queue limits</h2>
