@@ -17,7 +17,7 @@
 
 1. Follow the link to the Guacamole login or
    log in directly at [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.ac.uk/vdi/).
-   Please see the [VDI](/access/virtualmachines-vdi/#navigating-the-eidf-vdi) guide for more information.
+   Please see the [VDI](/eidf-docs/access/virtualmachines-vdi/#navigating-the-eidf-vdi) guide for more information.
 
 1. Choose the SSH connection to log in for the first time. You will be asked to reset the password.
 
