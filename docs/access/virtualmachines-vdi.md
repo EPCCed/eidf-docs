@@ -8,9 +8,14 @@ through the user's web browser by the EIDF VDI.
 ## Login to the EIDF VDI
 
 Once your membership request to join the appropriate EIDF project has been approved, you will be able to login to the
-EIDF VDI at [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi). Authentication to the VDI is
-provided by SAFE, so if you do not have an active web browser session in SAFE, you will be redirected to the SAFE login
-page.
+EIDF VDI at [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi).
+
+Authentication to the VDI is provided by SAFE, so if you do not have an active web browser session in SAFE,
+you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
+If you do not have a SAFE account follow the instructions in the
+[SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
+how to register and receive your password.
+
 
 ## Navigating the EIDF VDI
 
