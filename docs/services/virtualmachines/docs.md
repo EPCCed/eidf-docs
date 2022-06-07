@@ -28,10 +28,14 @@ In the list of 'Machines' in the project page in the portal, click on the name o
 and check it has the correct configuration,
 including a `10.24.*.*` IP address and a default SSH Guacamole connection.
 
-### Quota
+### Quota and Usage
 
 Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
-You may not be able to create a VM if it exceeds the quota.
+You will not be able to create a VM if it exceeds the quota.
+
+You can view and refresh the project usage compared to the quota near the bottom of the project page.
+Note that the quota is not refreshed automatically when VMs are created or removed,
+you have to do this explicitly by pressing the "Refresh" button at the top of the table.
 
 Please contact the helpdesk if your quota requirements have changed.
 
@@ -73,15 +77,16 @@ User accounts can be granted or denied access to existing VMs that are registere
 1. Click the 'Update' button
 1. After a few minutes, the job to give them access to the selected VMs will complete
 
-At this point, if the user logs into [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi),
-they will be automatically directed to the VM with the default SSH connection (unless they have other connections available in the VDI).
+If a user only has one connection available and logs on to the VDI at
+[https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi),
+they will be automatically directed to the VM with the default SSH connection.
 
 ## First login
 
 A new user account is allocated a temporary password which the user must reset before they
 can log in for the first time.
 The password reset will not work when logging in via RDP -
-they must use a SSH connection in the VDI.
+they must use a SSH connection, either in the VDI or via an SSH gateway.
 
 The user can view the temporary password in their account details page.
 
