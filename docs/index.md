@@ -10,7 +10,8 @@ For more information or for support with our services, please email `eidf@epcc.e
 
 ## What the documentation covers
 
-This documentation is in development and content will be added soon.
+This documentation gives more in-depth coverage of current EIDF
+services. It is aimed primarily at developers or power users.
 
 ## Contributing to the documentation
 
@@ -26,7 +27,7 @@ Full details of how to contribute can be found in the
 [`README.md`](https://github.com/EPCCed/eidf-docs/blob/main/README.md) file of
 the repository.
 
-Further additions to be added.
+This documentation set is a work in progress.
 
 ## Credits
 
