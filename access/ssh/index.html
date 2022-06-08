@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/access/ssh/">
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.3">
     
     
       
@@ -19,11 +19,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1c3799f8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1144,12 +1145,12 @@ University of Edinburgh IP Addresses, so the appropriate VPN will need to be use
 <li>In the ‘Remote Host’ section, specify the VM name or IP</li>
 <li>Click the ‘Network Settings’ Tab</li>
 <li>Click the ‘SSH Gateway (jump host)’ button in the middle</li>
-<li>Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk</li>
-<li>Under Username, specify your SAFE Username</li>
+<li>Under Gateway Host, specify: <code>eidf-gateway.epcc.ed.ac.uk</code></li>
+<li>Under Username, specify your EIDF-Gateway username</li>
 <li>Click ‘OK’</li>
 <li>Click ‘OK’ to launch the session</li>
-<li>For the EIDF-Gateway login prompt, use your SAFE credentials</li>
-<li>For the VM login, use your VM credentials from within SAFE</li>
+<li>For the EIDF-Gateway login prompt, use your EIDF-Gateway credentials</li>
+<li>For the VM login, use your VM credentials</li>
 </ol>
 <h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
 <p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
@@ -1162,9 +1163,16 @@ password:
 <div class="highlight"><pre><span></span><code>$ ssh -J <span class="o">[</span>gateway-username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk <span class="o">[</span>VM-username<span class="o">]</span>@<span class="o">[</span>VM/IP<span class="o">]</span>
 password:
 </code></pre></div>
+<p>You have to configure the SSH config, usually located at <code>~/.ssh/config</code>,
+to disable strict host key checking and storing the host key for EIDF VMs, as follows:
+<div class="highlight"><pre><span></span><code>Host 10.24.*
+     StrictHostKeyChecking no
+     UserKnownHostsFile /dev/null
+</code></pre></div></p>
 
               
             </article>
+            
           </div>
         </div>
         
@@ -1172,7 +1180,8 @@ password:
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../virtualmachines-vdi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Virtual Desktop Interface" rel="prev">
@@ -1227,10 +1236,10 @@ password:
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
       
     
   </body>
