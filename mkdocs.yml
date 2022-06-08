@@ -28,42 +28,39 @@ markdown_extensions:
 nav:
   - "Service Status": status/index.md
   - "Documentation overview": index.md
-  - "EIDF":
+  - "About EIDF":
     - "Introduction": overview/index.md
     - "Acknowledgements": overview/acknowledgements.md
     - "Contact": overview/contacts.md
-  - "Accessing EIDF Services":
-    - "Access Overview": access/index.md
-    - "EIDF Portal": access/project.md
+  - "Service Access":
+    - "Web vs SSH": access/index.md
+    - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
-    - "SSH Access": access/ssh.md
-    - "Workshops":
-      - "Ed-DaSH Notebook Service": access/workshops/workshops.md
-      - "Ed-DaSH Virtual Machines": access/workshops/safe-registration.md
-      - "JupyterHub Notebook Service Access": access/workshops/jhub-git.md
-  - "Services":
+  - "Computing Services":
+    - "Data Science Virtual Desktops":
+      - "QuickStart": services/virtualmachines/quickstart.md
+      - "Managing VMs": services/virtualmachines/docs.md
+      - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+      - "SSH Access to VMs": access/ssh.md
+    - "Managed JupyterHub":
+      - "QuickStart": services/jhub/quickstart.md
+      - "Tutorial": services/jhub/tutorial.md
+      - "Documentation": services/jhub/docs.md
     - "Cerebras CS-1":
       - "Get Access": services/cs1/access.md
       - "Running codes": services/cs1/run.md
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
       - "Running codes": services/ultra2/run.md
-    - "OpenStack Virtual Machines":
-      - "QuickStart": services/virtualmachines/quickstart.md
-      - "Tutorial": services/virtualmachines/tutorial.md
-      - "Documentation": services/virtualmachines/docs.md
-    - "Managed JupyterHub":
-      - "QuickStart": services/jhub/quickstart.md
-      - "Tutorial": services/jhub/tutorial.md
-      - "Documentation": services/jhub/docs.md
-    - "Managed RStudio Server":
-      - "QuickStart": services/rstudioserver/quickstart.md
-      - "Tutorial": services/rstudioserver/tutorial.md
-      - "Documentation": services/rstudioserver/docs.md
+  - "Data Management Services":
     - "Data Catalogue":
       - "QuickStart": services/datacatalogue/quickstart.md
       - "Tutorial": services/datacatalogue/tutorial.md
       - "Documentation": services/datacatalogue/docs.md
       - "Metadata information": services/datacatalogue/metadata.md
+  - "Bespoke Services":
+    - "Ed-DaSH Workshops: Notebook Service": access/workshops/workshops.md
+    - "Ed-DaSH Workshops: Virtual Machines": access/workshops/safe-registration.md
+    - "JupyterHub Notebook Service Access": access/workshops/jhub-git.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
