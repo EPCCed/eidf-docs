@@ -1,20 +1,23 @@
 # EIDF Portal
 
-Projects for the Openstack Virtual Machine service are accessed via the
+Projects using the Virtual Desktop cloud service are accessed via the
 [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/).
 
 !!! info
     Currently the EIDF Portal can only be accessed from University of Edinburgh IP addresses
     so the appropriate VPN will need to be used if accessing outside of campus.
 
-To log in you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
-If you do not have a SAFE account follow the instructions in the
-[SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
-how to register and receive your password.
+The EIDF Portal uses EPCC's SAFE service management software to manage
+user accounts across all EPCC services. To log in to the Portal you
+will first be redirected to the [SAFE log on
+page](https://safe.epcc.ed.ac.uk).  If you do not have a SAFE account
+follow the instructions in the [SAFE
+documentation](https://epcced.github.io/safe-docs/safe-for-users/) how
+to register and receive your password.
 
 ## How to request to join a project
 
-Login to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/) and
+Log in to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/) and
 navigate to "Projects" and choose "Request access".
 Select the project that you want to join in the "Project" dropdown list -
 you can search for the project name or the project code, e.g. "eidf0123".
@@ -25,12 +28,8 @@ Now you have to wait for your PI or project manager to accept your request to re
 
 ### Create a new project application
 
-Navigate to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/).
-To log in you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
-
-If you do not have a SAFE account follow the instructions in the
-[SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
-how to register and receive your password.
+Navigate to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/) and log
+in via SAFE if necessary (see above).
 
 Once you have logged in click on "Applications" in the menu and choose "New Application".
 

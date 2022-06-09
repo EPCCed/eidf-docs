@@ -27,4 +27,6 @@
 
 ## Further information
 
-[Documentation](../docs): Creating, configuring and removing VMs and managing user accounts
+[Managing VMs](./docs.md): Creating, configuring and removing VMs and managing user accounts.
+
+[Virtual Desktop Interface](/eidf-docs/access/virtualmachines-vdi.md): Working with the VDI interface.
