@@ -16,7 +16,6 @@ If you do not have a SAFE account follow the instructions in the
 [SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
 how to register and receive your password.
 
-
 ## Navigating the EIDF VDI
 
 After you have been authenticated through SAFE and logged into the EIDF VDI, if you have multiple connections available

@@ -56,7 +56,8 @@ password:
 
 You have to configure the SSH config, usually located at `~/.ssh/config`,
 to disable strict host key checking and storing the host key for EIDF VMs, as follows:
-```
+
+```bash
 Host 10.24.*
      StrictHostKeyChecking no
      UserKnownHostsFile /dev/null
