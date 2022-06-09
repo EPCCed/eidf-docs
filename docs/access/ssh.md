@@ -29,12 +29,12 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 1. In the ‘Remote Host’ section, specify the VM name or IP
 1. Click the ‘Network Settings’ Tab
 1. Click the ‘SSH Gateway (jump host)’ button in the middle
-1. Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk
-1. Under Username, specify your SAFE Username
+1. Under Gateway Host, specify: `eidf-gateway.epcc.ed.ac.uk`
+1. Under Username, specify your EIDF-Gateway username
 1. Click ‘OK’
 1. Click ‘OK’ to launch the session
-1. For the EIDF-Gateway login prompt, use your SAFE credentials
-1. For the VM login, use your VM credentials from within SAFE
+1. For the EIDF-Gateway login prompt, use your EIDF-Gateway credentials
+1. For the VM login, use your VM credentials
 
 ## Accessing From MacOS/Linux
 
@@ -52,4 +52,12 @@ To access the EIDF Services:
 ```shell
 $ ssh -J [gateway-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]
 password:
+```
+
+You have to configure the SSH config, usually located at `~/.ssh/config`,
+to disable strict host key checking and storing the host key for EIDF VMs, as follows:
+```
+Host 10.24.*
+     StrictHostKeyChecking no
+     UserKnownHostsFile /dev/null
 ```
