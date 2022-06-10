@@ -80,8 +80,8 @@ and you will be notified of the outcome of your application.
 
 ### Approved Project
 
-If your application was approved, follow the
-[Openstack Virtual Machines Quickstart](../../services/virtualmachines/quickstart/)
-on how to view your project and the
-[Openstack Virtual Machines Documentation](../../services/virtualmachines/docs/)
-on how to manage a project and create virtual machines and accounts.
+If your application was approved, refer to
+[Data Science Virtual Desktops: Quickstart](../../services/virtualmachines/quickstart/)
+how to view your project and to
+[Data Science Virtual Desktops: Managing VMs](../../services/virtualmachines/docs/)
+how to manage a project and how to create virtual machines and user accounts.
