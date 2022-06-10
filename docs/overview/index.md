@@ -10,8 +10,6 @@ the spectrum, with services from data discovery through simple
 learn-as-you-play-with-data notebooks to GPU-enabled machine-learning
 platforms for driving AI application development.
 
-
-
 ## EIDF and the Data-Driven Innovation Initiative
 
 Launched at the end of 2018, the Data-Driven Innovation (DDI)
@@ -25,5 +23,3 @@ The programme targets ten industry sectors, with interactions managed
 through five DDI Hubs: the Bayes Centre, the Usher Institute,
 Edinburgh Futures Institute, the National Robotarium, and Easter
 Bush. The activities of these Hubs are underpinned by EIDF.
-
-
