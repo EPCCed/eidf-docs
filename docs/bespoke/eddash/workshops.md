@@ -1,6 +1,6 @@
 # Workshop Setup
 
-**Please follow the instructions in [JupyterHub Notebook Service Access](/eidf-docs/access/workshops/jhub-git#ed-dash-workshops)
+**Please follow the instructions in [JupyterHub Notebook Service Access](../jhub-git/#ed-dash-workshops)
 to arrange access to the EIDF Notebook service before continuing. The table below provides the login URL and the relevant
 GitHub organization to register with.**
 
