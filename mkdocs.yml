@@ -25,6 +25,7 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
 
+
 nav:
   - "Service Status": status/index.md
   - "Documentation overview": index.md
@@ -33,7 +34,7 @@ nav:
     - "Acknowledgements": overview/acknowledgements.md
     - "Contact": overview/contacts.md
   - "Service Access":
-    - "Web vs SSH": access/index.md
+    - "Web and SSH": access/index.md
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
   - "Computing Services":
@@ -56,8 +57,9 @@ nav:
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
   - "Bespoke Services":
-    - "Ed-DaSH Workshops: Notebook Service": access/workshops/workshops.md
-    - "Ed-DaSH Workshops: Virtual Machines": access/workshops/safe-registration.md
-    - "JupyterHub Notebook Service Access": access/workshops/jhub-git.md
+     - "Ed-DaSH":
+        - "Workshop Notebook Service": bespoke/eddash/workshops.md
+        - "Workshop Virtual Machines": bespoke/eddash/safe-registration.md
+        - "JupyterHub Notebook Service Access": bespoke/eddash/jhub-git.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
