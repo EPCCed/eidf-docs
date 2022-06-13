@@ -1,6 +1,4 @@
-# Known Issues
-
-EIDF Service Status
+# EIDF Service Status
 
 The below represents the broad status of each service.
 
