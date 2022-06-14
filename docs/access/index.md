@@ -32,5 +32,5 @@ Users with the appropriate permissions can also [use `ssh` to login to Virtual D
 
 To login to most command-line services with `ssh` you should use the username and password
 you obtained from SAFE when you applied for access, along with the SSH Key you
-registered when creating the account. You can then login directly to the host
-with `ssh <username>@<hostname>.epcc.ed.ac.uk`
+registered when creating the account. You can then login to the host following the appropriately linked instructions
+above.
