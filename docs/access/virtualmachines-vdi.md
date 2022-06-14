@@ -40,4 +40,48 @@ screenshot below shows a resulting connection to a Xubuntu 20.04 VM with the Xfc
    ![VM-VDI-connection](/eidf-docs/images/access/vm-vdi-connection.png){: class="border-img"}
    *VM virtual desktop*
 
+## VDI Features for the Virtual Desktop
+
+The EIDF VDI is an instance of the [Apache Guacamole](https://guacamole.apache.org/) clientless remote desktop gateway.
+Since the connection to your VM virtual desktop is entirely managed through Guacamole in the web browser, there are some
+additional features to be aware of that may assist you when using the VDI.
+
+### The VDI Menu
+
+The [Guacamole menu](https://guacamole.apache.org/doc/gug/using-guacamole.html#the-guacamole-menu) is a sidebar which
+is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu
+by pressing &lt;Ctrl&gt; + &lt;Alt&gt; + &lt;Shift&gt; on a Windows PC client, or &lt;Ctrl&gt; + &lt;Command&gt; +
+&lt;Shift&gt; on a Mac client. To hide the menu, you press the same key combination once again. The menu provides various
+options, including:
+
+* [Reading from (and writing to) the clipboard of the remote desktop](https://guacamole.apache.org/doc/gug/using-guacamole.html#copying-pasting-text)
+* [Uploading and downloading files](https://guacamole.apache.org/doc/gug/using-guacamole.html#file-transfer)
+* [Zooming in and out of the remote display](https://guacamole.apache.org/doc/gug/using-guacamole.html#scaling-display)
+
+### Clipboard Copy and Paste Functionality
+
+After you have activated the Guacamole menu using the key combination above, at the top of the menu is a text area
+labeled “clipboard” along with some basic instructions:
+
+> Text copied/cut within Guacamole will appear here. Changes to the text below will affect the remote clipboard.
+
+The text area functions as an interface between the remote clipboard and the local clipboard. Text from the local
+clipboard can be pasted into the text area, causing that text to be sent to the clipboard of the remote desktop.
+Similarly, if you copy or cut text within the remote desktop, you will see that text within the text area, and can
+manually copy it into the local clipboard if desired.
+
+You can use the standard keyboard shortcuts to copy text from your client PC or Mac to the Guacamole menu clipboard,
+then again copy that text from the Guacamole menu clipboard into an application or CLI terminal on the VM's remote
+desktop. An example of using the copy and paste clipboard is shown in the screenshot below.
+
+   ![EIDF-VDI-Clipboard](/eidf-docs/images/access/vm-vdi-copy-paste.png){: class="border-img center"}
+   *The EIDF VDI Clipboard*
+
+### Keyboard Language and Layout Settings
+
+For users who do not have standard `English (UK)` keyboard layouts, key presses can have unexpected translations as they
+are transmitted to your VM. Please contact the EIDF helpdesk at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) if you
+are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
+in the Guacamole VDI connection configuration.
+
 ## Further information
