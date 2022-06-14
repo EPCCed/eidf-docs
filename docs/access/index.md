@@ -24,11 +24,10 @@ Users with the appropriate permissions can also [use `ssh` to login to Virtual D
 
 ## SSH Access to Computing Services
 
-!!! info
-    Includes access to the following services:
+Includes access to the following services:
 
-      * [Cerebras CS-1](../../services/cs1/index/)
-      * [Ultra2](../../services/ultra2/index/)
+* [Cerebras CS-1](../../services/cs1/index/)
+* [Ultra2](../../services/ultra2/index/)
 
 To login to most command-line services with `ssh` you should use the username and password
 you obtained from SAFE when you applied for access, along with the SSH Key you
