@@ -38,7 +38,7 @@ nav:
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
   - "Computing Services":
-    - "Data Science Virtual Desktops":
+    - "Virtual Desktops":
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Managing VMs": services/virtualmachines/docs.md
       - "Virtual Desktop Interface": access/virtualmachines-vdi.md
@@ -55,9 +55,6 @@ nav:
       - "Running codes": services/ultra2/run.md
   - "Data Management Services":
     - "Data Catalogue":
-      - "QuickStart": services/datacatalogue/quickstart.md
-      - "Tutorial": services/datacatalogue/tutorial.md
-      - "Documentation": services/datacatalogue/docs.md
       - "Metadata information": services/datacatalogue/metadata.md
   - "Bespoke Services":
      - "Ed-DaSH":
