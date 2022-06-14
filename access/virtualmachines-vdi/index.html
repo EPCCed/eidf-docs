@@ -420,6 +420,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vdi-features-for-the-virtual-desktop" class="md-nav__link">
+    VDI Features for the Virtual Desktop
+  </a>
+  
+    <nav class="md-nav" aria-label="VDI Features for the Virtual Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-vdi-menu" class="md-nav__link">
+    The VDI Menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipboard-copy-and-paste-functionality" class="md-nav__link">
+    Clipboard Copy and Paste Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-language-and-layout-settings" class="md-nav__link">
+    Keyboard Language and Layout Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#further-information" class="md-nav__link">
     Further information
   </a>
@@ -584,6 +618,40 @@
   <a href="#connecting-to-a-vm" class="md-nav__link">
     Connecting to a VM
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vdi-features-for-the-virtual-desktop" class="md-nav__link">
+    VDI Features for the Virtual Desktop
+  </a>
+  
+    <nav class="md-nav" aria-label="VDI Features for the Virtual Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-vdi-menu" class="md-nav__link">
+    The VDI Menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipboard-copy-and-paste-functionality" class="md-nav__link">
+    Clipboard Copy and Paste Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-language-and-layout-settings" class="md-nav__link">
+    Keyboard Language and Layout Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1095,6 +1163,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vdi-features-for-the-virtual-desktop" class="md-nav__link">
+    VDI Features for the Virtual Desktop
+  </a>
+  
+    <nav class="md-nav" aria-label="VDI Features for the Virtual Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-vdi-menu" class="md-nav__link">
+    The VDI Menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipboard-copy-and-paste-functionality" class="md-nav__link">
+    Clipboard Copy and Paste Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-language-and-layout-settings" class="md-nav__link">
+    Keyboard Language and Layout Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#further-information" class="md-nav__link">
     Further information
   </a>
@@ -1148,6 +1250,41 @@ username and password as shown below (if you are participating in a workshop, th
 screenshot below shows a resulting connection to a Xubuntu 20.04 VM with the Xfce desktop environment.</p>
 <p><img alt="VM-VDI-connection" class="border-img" src="/eidf-docs/images/access/vm-vdi-connection.png" />
    <em>VM virtual desktop</em></p>
+<h2 id="vdi-features-for-the-virtual-desktop">VDI Features for the Virtual Desktop</h2>
+<p>The EIDF VDI is an instance of the <a href="https://guacamole.apache.org/">Apache Guacamole</a> clientless remote desktop gateway.
+Since the connection to your VM virtual desktop is entirely managed through Guacamole in the web browser, there are some
+additional features to be aware of that may assist you when using the VDI.</p>
+<h3 id="the-vdi-menu">The VDI Menu</h3>
+<p>The <a href="https://guacamole.apache.org/doc/gug/using-guacamole.html#the-guacamole-menu">Guacamole menu</a> is a sidebar which
+is hidden until explicitly shown. On a desktop or other device which has a hardware keyboard, you can show this menu
+by pressing &lt;Ctrl&gt; + &lt;Alt&gt; + &lt;Shift&gt; on a Windows PC client, or &lt;Ctrl&gt; + &lt;Command&gt; +
+&lt;Shift&gt; on a Mac client. To hide the menu, you press the same key combination once again. The menu provides various
+options, including:</p>
+<ul>
+<li><a href="https://guacamole.apache.org/doc/gug/using-guacamole.html#copying-pasting-text">Reading from (and writing to) the clipboard of the remote desktop</a></li>
+<li><a href="https://guacamole.apache.org/doc/gug/using-guacamole.html#file-transfer">Uploading and downloading files</a></li>
+<li><a href="https://guacamole.apache.org/doc/gug/using-guacamole.html#scaling-display">Zooming in and out of the remote display</a></li>
+</ul>
+<h3 id="clipboard-copy-and-paste-functionality">Clipboard Copy and Paste Functionality</h3>
+<p>After you have activated the Guacamole menu using the key combination above, at the top of the menu is a text area
+labeled “clipboard” along with some basic instructions:</p>
+<blockquote>
+<p>Text copied/cut within Guacamole will appear here. Changes to the text below will affect the remote clipboard.</p>
+</blockquote>
+<p>The text area functions as an interface between the remote clipboard and the local clipboard. Text from the local
+clipboard can be pasted into the text area, causing that text to be sent to the clipboard of the remote desktop.
+Similarly, if you copy or cut text within the remote desktop, you will see that text within the text area, and can
+manually copy it into the local clipboard if desired.</p>
+<p>You can use the standard keyboard shortcuts to copy text from your client PC or Mac to the Guacamole menu clipboard,
+then again copy that text from the Guacamole menu clipboard into an application or CLI terminal on the VM's remote
+desktop. An example of using the copy and paste clipboard is shown in the screenshot below.</p>
+<p><img alt="EIDF-VDI-Clipboard" class="border-img center" src="/eidf-docs/images/access/vm-vdi-copy-paste.png" />
+   <em>The EIDF VDI Clipboard</em></p>
+<h3 id="keyboard-language-and-layout-settings">Keyboard Language and Layout Settings</h3>
+<p>For users who do not have standard <code>English (UK)</code> keyboard layouts, key presses can have unexpected translations as they
+are transmitted to your VM. Please contact the EIDF helpdesk at <a href="mailto:eidf@epcc.ed.ac.uk">eidf@epcc.ed.ac.uk</a> if you
+are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
+in the Guacamole VDI connection configuration.</p>
 <h2 id="further-information">Further information</h2>
 
               
