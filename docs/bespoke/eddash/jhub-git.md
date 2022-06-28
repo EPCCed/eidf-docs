@@ -23,8 +23,8 @@ relevant steps listed below to prepare.
 1. Visit [https://github.com/signup](https://github.com/signup) in your browser
 1. Enter the email address that you used to register for the workshop
 1. Complete the remaining steps of the GitHub registration process
-1. Send an email to [j.hay@epcc.ed.ac.uk](mailto: j.hay@epcc.ed.ac.uk) from your GitHub registered email address,
-   including your GitHub username, and ask for an invitation to the workshop GitHub organization
+1. Send an email to [ed-dash-support@mlist.is.ed.ac.uk](mailto:ed-dash-support@mlist.is.ed.ac.uk) from your GitHub
+   registered email address, including your GitHub username, and ask for an invitation to the workshop GitHub organization
 1. Wait for an email from GitHub inviting you to join the organization, then follow the steps in
    [Step 2: Registering with the Workshop GitHub Organization](#step-2-registering-with-the-workshop-github-organization)
 
@@ -32,8 +32,8 @@ relevant steps listed below to prepare.
 
 1. If you already have a GitHub account associated with the email address that you registered for the workshop with, you
    should have received an email inviting you to join the relevant GitHub organization. If you have not, email
-   [j.hay@epcc.ed.ac.uk](mailto: j.hay@epcc.ed.ac.uk) from your GitHub registered email address, including your GitHub
-   username, and ask for an invitation to the workshop GitHub organization
+   [ed-dash-support@mlist.is.ed.ac.uk](mailto:ed-dash-support@mlist.is.ed.ac.uk) from your GitHub registered email
+   address, including your GitHub username, and ask for an invitation to the workshop GitHub organization
 1. Once you have been invited to the GitHub organization, you will receive an email with the invitation; click on the
    ![GitHub-Org-Button](/eidf-docs/images/access/github-btn.png){: class="inline-img"} button as shown
    ![GitHub-Invitation](/eidf-docs/images/access/github-invitation.png){: class="border-img center"}
