@@ -22,7 +22,16 @@ We will be using the Notebook service provided by the [Edinburgh International D
 (EIDF)](https://www.ed.ac.uk/edinburgh-international-data-facility). Follow the steps listed below to gain
 access.
 
-1. Visit [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
+* Visit [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) in your browser
+
+!!! warning
+    If you are receiving an error response such as '403: Forbidden' when you try to access
+    [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub), please send an email to
+    [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) to request access and also include your IP address which you
+    can find by visiting [https://whatismyipaddress.com/](https://whatismyipaddress.com/) in your browser. Please be
+    aware that if you accessing the service from outside of the UK, your access might be blocked until you have
+    emailed us with your IP address.
+
 1. Click on the ![GitHub-Signin-Button](/eidf-docs/images/access/github-signin-btn.png){: class="inline-img"} button
 1. You will be asked to sign in to GitHub, as shown in the form below
    ![GitHub-Signin](/eidf-docs/images/access/github-signin.png){: class="border-img center"}
@@ -43,7 +52,7 @@ access.
     to the next step. **N.B. If you are accessing the service from outside of the UK, you may see this error; if so, please
     contact [j.hay@epcc.ed.ac.uk](mailto:j.hay@epcc.ed.ac.uk) to enable access**
 1. If you receive a ‘400 : Bad Request’ error message, you need to accept the invitation that has been emailed to you
-    to join the workshop organization as in the prerequisite instructions
+     to join the workshop organization as in the prerequisite instructions
 
 ## Step 2: Login to the EIDF Notebook Service
 
