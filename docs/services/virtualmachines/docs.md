@@ -112,8 +112,3 @@ even if you didn't select a package when first creating the machine.
 1. Click on 'Software Catalogue'
 1. Select the configuration you wish to install and press 'Submit'
 1. The configuration job runs for a few minutes.
-
-
-<!--
-## Online support
--->
