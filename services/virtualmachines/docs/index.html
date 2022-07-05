@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/virtualmachines/docs/">
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -515,13 +515,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#register-machine-with-safe" class="md-nav__link">
-    Register machine with SAFE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-a-user-account" class="md-nav__link">
     Add a user account
   </a>
@@ -548,9 +541,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adding-rdp-access-to-the-vm" class="md-nav__link">
-    Adding RDP Access to the VM
+  <a href="#updating-an-existing-machine" class="md-nav__link">
+    Updating an existing machine
   </a>
+  
+    <nav class="md-nav" aria-label="Updating an existing machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-rdp-access" class="md-nav__link">
+    Adding RDP Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-catalogue" class="md-nav__link">
+    Software catalogue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1070,13 +1083,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#register-machine-with-safe" class="md-nav__link">
-    Register machine with SAFE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-a-user-account" class="md-nav__link">
     Add a user account
   </a>
@@ -1103,9 +1109,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adding-rdp-access-to-the-vm" class="md-nav__link">
-    Adding RDP Access to the VM
+  <a href="#updating-an-existing-machine" class="md-nav__link">
+    Updating an existing machine
   </a>
+  
+    <nav class="md-nav" aria-label="Updating an existing machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-rdp-access" class="md-nav__link">
+    Adding RDP Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-catalogue" class="md-nav__link">
+    Software catalogue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1143,33 +1169,33 @@
 <li>Select a suitable operating system</li>
 <li>Select a machine specification that is suitable</li>
 <li>Choose the required disk size (in GB) or leave blank for the default</li>
+<li>Tick the checkbox "Configure RDP access" if you would like to install RDP
+   and configure VDI connections via RDP for your VM.</li>
+<li>Select the package installations from the software catalogue drop-down list,
+   or "None" if you don't require any pre-installed packages</li>
 </ol>
 </li>
 <li>
 <p>Click on 'Create'</p>
 </li>
 <li>You should see the new VM listed under the 'Machines' table on the project page and the status as 'Creating'</li>
-<li>Wait for a few minutes while the job to launch the VM completes.
-    You have to reload the page to see updates.</li>
-<li>Once the job has completed the status shows as 'Success' in the list of machines.</li>
+<li>Wait while the job to launch the VM completes.
+   This may take up to 10 minutes, depending on the configuration you requested.
+   You have to reload the page to see updates.</li>
+<li>Once the job has completed successfully the status shows as 'Active' in the list of machines.</li>
 </ol>
-<p>In the list of 'Machines' in the project page in the portal, click on the name of new VM
-and check it has the correct configuration,
-including a <code>10.24.*.*</code> IP address and a default SSH Guacamole connection.</p>
+<p>You may wish to ensure that the machine size selected (number of CPUs and RAM) does not
+exceed your remaining quota before you press Create, otherwise the request will fail.</p>
+<p>In the list of 'Machines' in the project page in the portal,
+click on the name of new VM to see the configuration and properties,
+including the machine specification, its <code>10.24.*.*</code> IP address and any configured VDI connections.</p>
 <h3 id="quota-and-usage">Quota and Usage</h3>
 <p>Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
 You will not be able to create a VM if it exceeds the quota.</p>
-<p>You can view and refresh the project usage compared to the quota near the bottom of the project page.
-Note that the quota is not refreshed automatically when VMs are created or removed,
-you have to do this explicitly by pressing the "Refresh" button at the top of the table.</p>
+<p>You can view and refresh the project usage compared to the quota in a table near the bottom of the project page.
+This table will be updated automatically when VMs are created or removed, and
+you can refresh it manually by pressing the "Refresh" button at the top of the table.</p>
 <p>Please contact the helpdesk if your quota requirements have changed.</p>
-<h3 id="register-machine-with-safe">Register machine with SAFE</h3>
-<p>To manage the user accounts in your project and allow users to access a VM,
-you have to register it as a "SAFE machine".</p>
-<ol>
-<li>Open the details page for the VM by clicking on its name in the 'Machines' table</li>
-<li>Click 'Register SAFE machine' to enable central account management</li>
-</ol>
 <h3 id="add-a-user-account">Add a user account</h3>
 <p>User accounts allow project members to log in to the VMs in a project.
 The Project PI and project managers manage user accounts for each member of the project.
@@ -1209,8 +1235,9 @@ can log in for the first time.
 The password reset will not work when logging in via RDP -
 they must use a SSH connection, either in the VDI or via an SSH gateway.</p>
 <p>The user can view the temporary password in their account details page.</p>
-<h2 id="adding-rdp-access-to-the-vm">Adding RDP Access to the VM</h2>
-<p>To configure the VM for access via RDP:</p>
+<h2 id="updating-an-existing-machine">Updating an existing machine</h2>
+<h3 id="adding-rdp-access">Adding RDP Access</h3>
+<p>If you did not select RDP access when you created the VM you can add it later:</p>
 <ol>
 <li>Open the VM details page by selecting the name on the project page</li>
 <li>Click on 'Configure RDP'</li>
@@ -1218,9 +1245,15 @@ they must use a SSH connection, either in the VDI or via an SSH gateway.</p>
 </ol>
 <p>Once the RDP job is completed, all users that are allowed to access the VM
 will also be permitted to use the RDP connection.</p>
-<!--
-## Online support
--->
+<h3 id="software-catalogue">Software catalogue</h3>
+<p>You can install packages from the software catalogue at a later time,
+even if you didn't select a package when first creating the machine.</p>
+<ol>
+<li>Open the VM details page by selecting the name on the project page</li>
+<li>Click on 'Software Catalogue'</li>
+<li>Select the configuration you wish to install and press 'Submit'</li>
+<li>The configuration job runs for a few minutes.</li>
+</ol>
 
               
             </article>
@@ -1291,7 +1324,7 @@ will also be permitted to use the RDP connection.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>
