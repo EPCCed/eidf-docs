@@ -17,35 +17,35 @@ To create a new VM:
     1. Select a suitable operating system
     1. Select a machine specification that is suitable
     1. Choose the required disk size (in GB) or leave blank for the default
+    1. Tick the checkbox "Configure RDP access" if you would like to install RDP
+       and configure VDI connections via RDP for your VM.
+    1. Select the package installations from the software catalogue drop-down list,
+       or "None" if you don't require any pre-installed packages
 
 1. Click on 'Create'
 1. You should see the new VM listed under the 'Machines' table on the project page and the status as 'Creating'
-1. Wait for a few minutes while the job to launch the VM completes.
-    You have to reload the page to see updates.
-1. Once the job has completed the status shows as 'Success' in the list of machines.
+1. Wait while the job to launch the VM completes.
+   This may take up to 10 minutes, depending on the configuration you requested.
+   You have to reload the page to see updates.
+1. Once the job has completed successfully the status shows as 'Active' in the list of machines.
 
-In the list of 'Machines' in the project page in the portal, click on the name of new VM
-and check it has the correct configuration,
-including a `10.24.*.*` IP address and a default SSH Guacamole connection.
+You may wish to ensure that the machine size selected (number of CPUs and RAM) does not
+exceed your remaining quota before you press Create, otherwise the request will fail.
+
+In the list of 'Machines' in the project page in the portal,
+click on the name of new VM to see the configuration and properties,
+including the machine specification, its `10.24.*.*` IP address and any configured VDI connections.
 
 ### Quota and Usage
 
 Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
 You will not be able to create a VM if it exceeds the quota.
 
-You can view and refresh the project usage compared to the quota near the bottom of the project page.
-Note that the quota is not refreshed automatically when VMs are created or removed,
-you have to do this explicitly by pressing the "Refresh" button at the top of the table.
+You can view and refresh the project usage compared to the quota in a table near the bottom of the project page.
+This table will be updated automatically when VMs are created or removed, and
+you can refresh it manually by pressing the "Refresh" button at the top of the table.
 
 Please contact the helpdesk if your quota requirements have changed.
-
-### Register machine with SAFE
-
-To manage the user accounts in your project and allow users to access a VM,
-you have to register it as a "SAFE machine".
-
-1. Open the details page for the VM by clicking on its name in the 'Machines' table
-1. Click 'Register SAFE machine' to enable central account management
 
 ### Add a user account
 
@@ -90,9 +90,11 @@ they must use a SSH connection, either in the VDI or via an SSH gateway.
 
 The user can view the temporary password in their account details page.
 
-## Adding RDP Access to the VM
+## Updating an existing machine
 
-To configure the VM for access via RDP:
+### Adding RDP Access
+
+If you did not select RDP access when you created the VM you can add it later:
 
 1. Open the VM details page by selecting the name on the project page
 1. Click on 'Configure RDP'
@@ -101,6 +103,12 @@ To configure the VM for access via RDP:
 Once the RDP job is completed, all users that are allowed to access the VM
 will also be permitted to use the RDP connection.
 
-<!--
-## Online support
--->
+### Software catalogue
+
+You can install packages from the software catalogue at a later time,
+even if you didn't select a package when first creating the machine.
+
+1. Open the VM details page by selecting the name on the project page
+1. Click on 'Software Catalogue'
+1. Select the configuration you wish to install and press 'Submit'
+1. The configuration job runs for a few minutes.
