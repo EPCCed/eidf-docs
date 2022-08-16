@@ -69,17 +69,29 @@ in their account details.
 
 ## Adding Access to the VM for a User
 
-User accounts can be granted or denied access to existing VMs that are registered as SAFE machines.
+User accounts can be granted or denied access to existing VMs.
 
-1. Click on an existing user account in the 'Project Accounts' table on the project page
-1. Click 'Manage'
-1. Select the checkboxes next to the VMs that this account should have access to or uncheck the ones without access
+1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page, or click on the account name and then 'Manage' on the account details page
+1. Select the checkboxes in the column "Access" for the VMs to which this account should have access or uncheck the ones without access
 1. Click the 'Update' button
-1. After a few minutes, the job to give them access to the selected VMs will complete
+1. After a few minutes, the job to give them access to the selected VMs will complete and the account status will show as "Active".
 
 If a user only has one connection available and logs on to the VDI at
 [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi),
-they will be automatically directed to the VM with the default SSH connection.
+they will be automatically directed to the VM with the default connection.
+
+### Sudo permissions
+
+A project manager or PI may also grant sudo permissions to users on selected VMs.
+This must be requested in the project application - if it was not requested or the request was denied the functionality described below is not available.
+
+1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page
+1. Select the checkboxes in the column "Sudo" for the VMs on which this account is granted sudo permissions or uncheck to remove permissions
+1. Make sure "Access" is also selected for the sudo VMs to allow login
+1. Click the 'Update' button
+
+After a few minutes, the job to give the user account sudo permissions on the selected VMs will complete.
+On the account detail page a "sudo" badge will appear next to the selected VMs.
 
 ## First login
 
