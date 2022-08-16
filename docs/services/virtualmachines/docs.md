@@ -83,7 +83,7 @@ they will be automatically directed to the VM with the default connection.
 ### Sudo permissions
 
 A project manager or PI may also grant sudo permissions to users on selected VMs.
-This must be requested in the project application - if it was not requested or the request was denied the functionality described below is not available.
+Management of sudo permissions must be requested in the project application - if it was not requested or the request was denied the functionality described below is not available.
 
 1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page
 1. Select the checkboxes in the column "Sudo" for the VMs on which this account is granted sudo permissions or uncheck to remove permissions
@@ -92,6 +92,8 @@ This must be requested in the project application - if it was not requested or t
 
 After a few minutes, the job to give the user account sudo permissions on the selected VMs will complete.
 On the account detail page a "sudo" badge will appear next to the selected VMs.
+
+Please contact the helpdesk if sudo permission management is required but is not available in your project.
 
 ## First login
 
