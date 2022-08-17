@@ -531,6 +531,19 @@
     Adding Access to the VM for a User
   </a>
   
+    <nav class="md-nav" aria-label="Adding Access to the VM for a User">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sudo-permissions" class="md-nav__link">
+    Sudo permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1099,6 +1112,19 @@
     Adding Access to the VM for a User
   </a>
   
+    <nav class="md-nav" aria-label="Adding Access to the VM for a User">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sudo-permissions" class="md-nav__link">
+    Sudo permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1218,17 +1244,28 @@ in another project once it has been assigned.</li>
 <p>The new account is allocated a temporary password which the account owner can view
 in their account details.</p>
 <h2 id="adding-access-to-the-vm-for-a-user">Adding Access to the VM for a User</h2>
-<p>User accounts can be granted or denied access to existing VMs that are registered as SAFE machines.</p>
+<p>User accounts can be granted or denied access to existing VMs.</p>
 <ol>
-<li>Click on an existing user account in the 'Project Accounts' table on the project page</li>
-<li>Click 'Manage'</li>
-<li>Select the checkboxes next to the VMs that this account should have access to or uncheck the ones without access</li>
+<li>Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page, or click on the account name and then 'Manage' on the account details page</li>
+<li>Select the checkboxes in the column "Access" for the VMs to which this account should have access or uncheck the ones without access</li>
 <li>Click the 'Update' button</li>
-<li>After a few minutes, the job to give them access to the selected VMs will complete</li>
+<li>After a few minutes, the job to give them access to the selected VMs will complete and the account status will show as "Active".</li>
 </ol>
 <p>If a user only has one connection available and logs on to the VDI at
 <a href="https://eidf-vdi.epcc.ed.ac.uk/vdi">https://eidf-vdi.epcc.ed.ac.uk/vdi</a>,
-they will be automatically directed to the VM with the default SSH connection.</p>
+they will be automatically directed to the VM with the default connection.</p>
+<h3 id="sudo-permissions">Sudo permissions</h3>
+<p>A project manager or PI may also grant sudo permissions to users on selected VMs.
+Management of sudo permissions must be requested in the project application - if it was not requested or the request was denied the functionality described below is not available.</p>
+<ol>
+<li>Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page</li>
+<li>Select the checkboxes in the column "Sudo" for the VMs on which this account is granted sudo permissions or uncheck to remove permissions</li>
+<li>Make sure "Access" is also selected for the sudo VMs to allow login</li>
+<li>Click the 'Update' button</li>
+</ol>
+<p>After a few minutes, the job to give the user account sudo permissions on the selected VMs will complete.
+On the account detail page a "sudo" badge will appear next to the selected VMs.</p>
+<p>Please contact the helpdesk if sudo permission management is required but is not available in your project.</p>
 <h2 id="first-login">First login</h2>
 <p>A new user account is allocated a temporary password which the user must reset before they
 can log in for the first time.
