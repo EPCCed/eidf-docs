@@ -3,10 +3,6 @@
 Projects using the Virtual Desktop cloud service are accessed via the
 [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/).
 
-!!! info
-    Currently the EIDF Portal can only be accessed from University of Edinburgh IP addresses
-    so the appropriate VPN will need to be used if accessing outside of campus.
-
 The EIDF Portal uses EPCC's SAFE service management software to manage
 user accounts across all EPCC services. To log in to the Portal you
 will first be redirected to the [SAFE log on
