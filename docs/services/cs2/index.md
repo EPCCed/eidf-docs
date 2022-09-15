@@ -1,4 +1,4 @@
-# Cerebras CS-1
+# Cerebras CS-2
 
 [Get Access](./access/)
 

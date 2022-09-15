@@ -8,7 +8,7 @@ The below represents the broad status of each service.
 | VM SSH Gateway  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/sshgateway.json) |
 | VM VDI Gateway | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/vdigateway.json) |
 | Virtual Desktops | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/virtualmachines.json) |
-| Cerebras CS-1 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/cerebras.json) |
+| Cerebras CS-2 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/cerebras.json) |
 | SuperDome Flex (SDF-CS1 / Ultra2) | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/superdome.json) |
 
 ## Maintenance Sessions

@@ -6,7 +6,7 @@
 
 [Managed JupyterHub](./jhub/)
 
-[Cerebras CS-1](./cs1/)
+[Cerebras CS-2](./cs2/)
 
 [Ultra2](./ultra2/)
 

@@ -26,7 +26,7 @@ Users with the appropriate permissions can also [use `ssh` to login to Virtual D
 
 Includes access to the following services:
 
-* [Cerebras CS-1](../../services/cs1/index/)
+* [Cerebras CS-2](../../services/cs2/index/)
 * [Ultra2](../../services/ultra2/index/)
 
 To login to most command-line services with `ssh` you should use the username and password

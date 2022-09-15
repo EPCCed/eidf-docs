@@ -47,9 +47,9 @@ nav:
       - "QuickStart": services/jhub/quickstart.md
       - "Tutorial": services/jhub/tutorial.md
       - "Documentation": services/jhub/docs.md
-    - "Cerebras CS-1":
-      - "Get Access": services/cs1/access.md
-      - "Running codes": services/cs1/run.md
+    - "Cerebras CS-2":
+      - "Get Access": services/cs2/access.md
+      - "Running codes": services/cs2/run.md
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
       - "Running codes": services/ultra2/run.md
