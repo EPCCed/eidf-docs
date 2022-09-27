@@ -20,10 +20,13 @@ how to register and receive your password.
 
 After you have been authenticated through SAFE and logged into the EIDF VDI, if you have multiple connections available
 to you that have been associated with your user (typically in the case of research projects), you will be presented with
-the VDI home screen as shown below
+the VDI home screen as shown below:
 
    ![VDI-home-screen](/eidf-docs/images/access/vdi-home-screen.png){: class="border-img"}
    *VDI home page with list of available VM connections*
+
+!!! note "Adding connections"
+    Note that if a project manager has added a new connection for you it may not appear in the list of connections immediately. You must log out and log in again to refresh your connections list.
 
 ## Connecting to a VM
 
