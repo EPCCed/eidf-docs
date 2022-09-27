@@ -26,7 +26,7 @@ the VDI home screen as shown below:
    *VDI home page with list of available VM connections*
 
 !!! note "Adding connections"
-    Note that if a project manager has added a new connection for you it may not appear in the list of connections immediately. You must log out and log in again to refresh your connections list, or wait until your login token is refreshed automatically which may take a while.
+    Note that if a project manager has added a new connection for you it may not appear in the list of connections immediately. You must log out and log in again to refresh your connections list.
 
 ## Connecting to a VM
 
