@@ -76,9 +76,11 @@ User accounts can be granted or denied access to existing VMs.
 1. Click the 'Update' button
 1. After a few minutes, the job to give them access to the selected VMs will complete and the account status will show as "Active".
 
-If a user only has one connection available and logs on to the VDI at
-[https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi),
-they will be automatically directed to the VM with the default connection.
+If a user is logged in already to the VDI at [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi)
+newly added connections may not appear in their connections list immediately.
+They must log out and log in again to refresh the connection information, or wait until the login token expires and is refreshed automatically - this might take a while.
+
+If a user only has one connection available in the VDI they will be automatically directed to the VM with the default connection.
 
 ### Sudo permissions
 
