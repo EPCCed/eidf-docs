@@ -2,9 +2,12 @@
 
 ## Project Management Guide
 
+### Required Member Permissions
+
+VMs and user acccounts can only be managed by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). In SAFE, the PI can designate project managers, and the PI and PMs can grant a project member the **Cloud Admin** role: [How can I designate a user as a project manager?](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager)
+
 ### Create a VM
 
-VMs can only be created by a project manager (PM) or by the principal investigator (PI) of the project.
 
 To create a new VM:
 
