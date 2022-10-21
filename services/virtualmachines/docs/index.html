@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/virtualmachines/docs/">
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a952b86.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -501,6 +501,13 @@
   
     <nav class="md-nav" aria-label="Project Management Guide">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-member-permissions" class="md-nav__link">
+    Required Member Permissions
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-a-vm" class="md-nav__link">
@@ -1084,6 +1091,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#required-member-permissions" class="md-nav__link">
+    Required Member Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create-a-vm" class="md-nav__link">
     Create a VM
   </a>
@@ -1185,8 +1199,15 @@
 
 <h1 id="service-documentation">Service Documentation</h1>
 <h2 id="project-management-guide">Project Management Guide</h2>
+<h3 id="required-member-permissions">Required Member Permissions</h3>
+<p>VMs and user accounts can only be managed by project members with <strong>Cloud Admin</strong> permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the <strong>Cloud Admin</strong> role:</p>
+<ol>
+<li>Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)</li>
+<li>On the project management page in SAFE, scroll down to "Manage Members"</li>
+<li>Click <em>Add project manager</em> or <em>Set member permissions</em></li>
+</ol>
+<p>For details please refer to the SAFE documentation: <a href="https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager">How can I designate a user as a project manager?</a></p>
 <h3 id="create-a-vm">Create a VM</h3>
-<p>VMs can only be created by a project manager (PM) or by the principal investigator (PI) of the project.</p>
 <p>To create a new VM:</p>
 <ol>
 <li>Select the project from the list of your projects, e.g. <code>eidfxxx</code></li>
@@ -1372,7 +1393,7 @@ even if you didn't select a package when first creating the machine.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
       
     
   </body>
