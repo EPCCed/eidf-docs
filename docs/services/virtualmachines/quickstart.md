@@ -2,11 +2,11 @@
 
 ## Accessing a Project
 
-1. Log into the portal at [https://eidf-vdi.epcc.ed.ac.uk/approval/](https://eidf-vdi.epcc.ed.ac.uk/approval/).
+1. Log into the portal at [https://portal.eidf.ac.uk/](https://portal.eidf.ac.uk/).
    The login will redirect you to the [SAFE](https://safe.epcc.ed.ac.uk/).
 
 1. View the projects that you have access to
-   at [https://eidf-vdi.epcc.ed.ac.uk/approval/project/](https://eidf-vdi.epcc.ed.ac.uk/approval/project/)
+   at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
 
 ## Accessing a VM
 
