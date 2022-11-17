@@ -1,7 +1,7 @@
 # EIDF Portal
 
 Projects using the Virtual Desktop cloud service are accessed via the
-[EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/).
+[EIDF Portal](https://portal.eidf.ac.uk/).
 
 The EIDF Portal uses EPCC's SAFE service management software to manage
 user accounts across all EPCC services. To log in to the Portal you
@@ -13,7 +13,7 @@ to register and receive your password.
 
 ## How to request to join a project
 
-Log in to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/) and
+Log in to the [EIDF Portal](https://portal.eidf.ac.uk/) and
 navigate to "Projects" and choose "Request access".
 Select the project that you want to join in the "Project" dropdown list -
 you can search for the project name or the project code, e.g. "eidf0123".
@@ -24,7 +24,7 @@ Now you have to wait for your PI or project manager to accept your request to re
 
 ### Create a new project application
 
-Navigate to the [EIDF Portal](https://eidf-vdi.epcc.ed.ac.uk/approval/) and log
+Navigate to the [EIDF Portal](https://portal.eidf.ac.uk/) and log
 in via SAFE if necessary (see above).
 
 Once you have logged in click on "Applications" in the menu and choose "New Application".
@@ -37,7 +37,7 @@ Once the application has been created you see an overview of the form you are
 required to fill in. You can revisit the application at any time by clicking on
 "Applications" and choosing "Your applications" to display all your current and past
 applications and their status, or follow the link
-[https://eidf-vdi.epcc.ed.ac.uk/approval/proposal/](https://eidf-vdi.epcc.ed.ac.uk/approval/proposal/).
+[https://portal.eidf.ac.uk/proposal/](https://portal.eidf.ac.uk/proposal/).
 
 ### Populate a project application
 
