@@ -6,7 +6,7 @@ The Cerebras CS-2 system is attached to the SDF-CS1 (Ultra2) system which serves
 
 ## Login
 
-To login to the host system, use the username and password you obtain from [SAFE](https://www.safe.epcc.ed.ac.uk), along with the SSH Key you registered when creating the account.
+To login to the host system, use the username and password you obtain from [SAFE](https://safe.epcc.ed.ac.uk), along with the SSH Key you registered when creating the account.
 You can then login directly to the host via: `ssh <username>@sdf-cs1.epcc.ed.ac.uk`
 
 ## Running Jobs
