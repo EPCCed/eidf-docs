@@ -1093,7 +1093,7 @@
 <h2 id="introduction">Introduction</h2>
 <p>The Cerebras CS-2 system is attached to the SDF-CS1 (Ultra2) system which serves as a host, provides access to files, the SLURM batch system etc.</p>
 <h2 id="login">Login</h2>
-<p>To login to the host system, use the username and password you obtain from <a href="https://www.safe.epcc.ed.ac.uk">SAFE</a>, along with the SSH Key you registered when creating the account.
+<p>To login to the host system, use the username and password you obtain from <a href="https://safe.epcc.ed.ac.uk">SAFE</a>, along with the SSH Key you registered when creating the account.
 You can then login directly to the host via: <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code></p>
 <h2 id="running-jobs">Running Jobs</h2>
 <p>All jobs must be run via SLURM to avoid inconveniencing other users of the system. The <code>csrun_cpu</code> and <code>csrun_wse</code> scripts themselves contain calls to <code>srun</code> to work with the SLURM system, so note the omission of <code>srun</code> in the below examples.
