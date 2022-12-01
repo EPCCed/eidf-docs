@@ -4,11 +4,12 @@
 to arrange access to the EIDF Notebook service before continuing. The table below provides the login URL and the relevant
 GitHub organization to register with.**
 
-| Workshop                                                                                                              | Login URL                                                                            | GitHub Organization                                     |
-|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------|
-| [Ed-DaSH Introduction to Statistics](https://edcarp.github.io/2022-05-03_ed-dash_intro-statistics)                    | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
-| [Ed-DaSH High-Dimensional Statistics](https://edcarp.github.io/2022-05-17_ed-dash_high-dim-stats)                     | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
-| [Ed-DaSH Introduction to Machine Learning with Python](https://edcarp.github.io/2022-08-23_ed-dash_machine_learning/) | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
+| Workshop                                                                                                                         | Login URL                                                                            | GitHub Organization                                     |
+|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------|
+| [Ed-DaSH Introduction to Statistics](https://edcarp.github.io/2022-05-03_ed-dash_intro-statistics)                               | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
+| [Ed-DaSH High-Dimensional Statistics](https://edcarp.github.io/2022-05-17_ed-dash_high-dim-stats)                                | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
+| [Ed-DaSH Introduction to Machine Learning with Python](https://edcarp.github.io/2022-08-23_ed-dash_machine_learning/)            | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
+| [N8 CIR Introduction to Artificial Neural Networks in Python](https://n8cir.org.uk/events/introduction-machine-learning-python/) | [https://secure.epcc.ed.ac.uk/ed-dash-hub](https://secure.epcc.ed.ac.uk/ed-dash-hub) | [Ed-DaSH-Training](https://github.com/Ed-DaSH-Training) |
 
 Please follow the sequence of instructions described in the sections below to get ready for the workshop:
 
