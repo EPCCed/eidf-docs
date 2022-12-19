@@ -46,6 +46,6 @@ Now you have to wait for your PI or project manager to accept your request to jo
 
 ## Further information
 
-[Managing VMs](./docs.md): Creating, configuring and removing VMs and managing user accounts.
+[Managing VMs](./docs.md): Project management guide to creating, configuring and removing VMs and managing user accounts in the portal.
 
-[Virtual Desktop Interface](/eidf-docs/access/virtualmachines-vdi.md): Working with the VDI interface.
+[Virtual Desktop Interface](/eidf-docs/access/virtualmachines-vdi/): Working with the VDI interface.
