@@ -27,6 +27,7 @@ Jobs can be run on the host system (eg simulations, test scripts) using the `csr
 #SBATCH --job-name=Example        # Job name
 #SBATCH --cpus-per-task=2         # Request 2 cores
 #SBATCH --output=example_%j.log   # Standard output and error log
+#SBATCH --time=01:00:00           # Set time limit for this job to 1 hour
 
 csrun_cpu python-pt run.py --mode train --compile_only --params configs/<name-of-the-params-file.yaml>
 ```
@@ -42,6 +43,8 @@ The following will run the above PyTorch example on the CS-2 - note the `--cs_ip
 #SBATCH --cpus-per-task=16        # Each cpu is a core
 #SBATCH --gres=cs:1               # Request CS-2 system
 #SBATCH --output=example_%j.log   # Standard output and error log
+#SBATCH --time=01:00:00           # Set time limit for this job to 1 hour
+
 
 csrun_wse python-pt run.py --mode train --cs_ip 172.24.102.121:9000 --params configs/<name-of-the-params-file.yaml>
 ```
