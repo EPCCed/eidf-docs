@@ -19,6 +19,42 @@ The gateway cannot be 'landed' on, a user can only pass through it. So the desti
 The gateway is currently only accessible from University of Edinburgh IP Addresses, so the appropriate VPN will need to be used if accessing outside of campus.
 
 
+## Generating and Adding an SSH Key
+In order to make use of the EIDF-Gateway, your SAFE account needs an SSH-Key associated with it.
+If you added one while creating your EIDF account in SAFE, you can skip this step.
+
+### Check for existing SSH Key
+To check if you have an SSH Key associated with your account:
+
+1. Login to https://safe.epcc.ed.ac.uk
+2. Select 'Login Accounts'
+3. Select [username]@eidf
+
+If there is an entry under 'Account Credentials' with type 'sshkey', then you're all setup.
+If not, you'll need to generate an SSH-Key, to do this:
+
+### Generate New SSH Key
+1. Open a new window of whatever terminal you will use to SSH to EIDF.
+2. Generate a new SSH Key:  
+$ ssh-keygen
+3. Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later
+4. Press enter to finish generating the key
+
+### Add the new SSH Key to SAFE
+1. Login to SAFE at https://safe.epcc.ed.ac.uk
+2. Select 'Login Accounts'
+3. Select '[username]@eidf'
+4. Select 'Add Credential'
+5. Ensure the 'Credential Type' is set to 'SSH Public Key' and select 'Next'
+6. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
+7. Click 'Add'
+
+### Using the SSH-Key to access EIDF - Windows and Linux
+1. From your local terminal, import the SSH Key you generated above:  
+$ ssh-add [sshkey]
+2. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
+
+
 ## Accessing from Windows
 Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH. Putty can also be used but won’t be covered in this tutorial.
 
