@@ -11,6 +11,7 @@ theme:
 
 extra_css:
   - stylesheets/eidf.css
+  - stylesheets/access.css
 
 site_name: EIDF User Documentation
 site_url: https://epcced.github.io/eidf-docs/
@@ -24,42 +25,41 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
 
+
 nav:
   - "Service Status": status/index.md
   - "Documentation overview": index.md
-  - "EIDF":
+  - "About EIDF":
     - "Introduction": overview/index.md
     - "Acknowledgements": overview/acknowledgements.md
     - "Contact": overview/contacts.md
-  - "Accessing EIDF Services":
-    - "Access Overview": access/index.md
+  - "Service Access":
+    - "Web and SSH": access/index.md
+    - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
-    - "SSH Access": access/ssh.md
-    - "JupyterHub Notebook Service Access": access/jhub-git.md
-    - "Workshops": access/workshops.md
-  - "Services":
-    - "Cerebras CS-1":
-      - "Get Access": services/cs1/access.md
-      - "Running codes": services/cs1/run.md
-    - "Ultra2":
-      - "Get Access": services/ultra2/access.md
-      - "Running codes": services/ultra2/run.md
-    - "OpenStack Virtual Machines":
+  - "Computing Services":
+    - "Virtual Desktops":
       - "QuickStart": services/virtualmachines/quickstart.md
-      - "Tutorial": services/virtualmachines/tutorial.md
-      - "Documentation": services/virtualmachines/docs.md
+      - "Managing VMs": services/virtualmachines/docs.md
+      - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+      - "SSH Access to VMs": access/ssh.md
     - "Managed JupyterHub":
       - "QuickStart": services/jhub/quickstart.md
       - "Tutorial": services/jhub/tutorial.md
       - "Documentation": services/jhub/docs.md
-    - "Managed RStudio Server":
-      - "QuickStart": services/rstudioserver/quickstart.md
-      - "Tutorial": services/rstudioserver/tutorial.md
-      - "Documentation": services/rstudioserver/docs.md
+    - "Cerebras CS-2":
+      - "Get Access": services/cs2/access.md
+      - "Running codes": services/cs2/run.md
+    - "Ultra2":
+      - "Get Access": services/ultra2/access.md
+      - "Running codes": services/ultra2/run.md
+  - "Data Management Services":
     - "Data Catalogue":
-      - "QuickStart": services/datacatalogue/quickstart.md
-      - "Tutorial": services/datacatalogue/tutorial.md
-      - "Documentation": services/datacatalogue/docs.md
       - "Metadata information": services/datacatalogue/metadata.md
+  - "Bespoke Services":
+     - "Ed-DaSH":
+        - "Workshop Notebook Service": bespoke/eddash/workshops.md
+        - "Workshop Virtual Machines": bespoke/eddash/safe-registration.md
+        - "JupyterHub Notebook Service Access": bespoke/eddash/jhub-git.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
