@@ -14,9 +14,9 @@
 </style>
 
 # SSH Access to Virtual Machines using the EIDF-Gateway Jump Host
-The EIDF-Gateway is a method of accessing EIDF Services through SSH for a terminal experience. The user can connect to their VM through the jump host using their given accounts.
-The gateway cannot be 'landed' on, a user can only pass through it. So the destination has to be known for the service to work.
-The gateway is currently only accessible from University of Edinburgh IP Addresses, so the appropriate VPN will need to be used if accessing outside of campus.
+The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
+
+The gateway is currently only accessible from University of Edinburgh IP Addresses, an appropriate VPN will need to be used if accessing outside of campus.
 
 
 ## Generating and Adding an SSH Key
