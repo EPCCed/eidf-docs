@@ -28,7 +28,7 @@ To check if you have an SSH Key associated with your account:
 
 1. Login to the [Portal](https://portal.eidf.ac.uk)
 2. Select 'Your Projects'
-3. Select your project anme
+3. Select your project name
 4. Select your username
 
 If there is an entry under 'Credentials', then you're all setup.
