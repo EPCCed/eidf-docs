@@ -48,7 +48,10 @@ $ ssh-keygen
 4. Select your username
 5. Select the plus button under  'Credentials'
 6. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
-7. Click 'Upload Credential'
+7. Click 'Upload Credential'  <br>
+It should look something like this:  
+
+![eidf-portal-ssh](/eidf-docs/images/access/eidf-portal-ssh.png){: class="border-img"}
 
 #### Adding a new SSH Key via SAFE
 This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.  
