@@ -56,6 +56,12 @@ nav:
   - "Data Management Services":
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
+  - "Safe Haven Services":
+     - "Overview": safe-haven-services/overview.md
+     - "Network Access Controls": safe-haven-services/network-access-controls.md
+     - "Safe Haven Access": safe-haven-services/safe-haven-access.md
+     - "Virtual Desktop Connections": safe-haven-services/virtual-desktop-connections.md
+     - "Using the HPC Cluster": safe-haven-services/using-the-hpc-cluster.md
   - "Bespoke Services":
      - "Ed-DaSH":
         - "Workshop Notebook Service": bespoke/eddash/workshops.md
