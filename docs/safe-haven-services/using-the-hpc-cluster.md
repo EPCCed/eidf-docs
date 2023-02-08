@@ -6,7 +6,7 @@ The TRE HPC system, also called the SuperDome Flex, is a single node, large memo
 
 ## Specifications
 
-The system is an HPE SuperDome Flex configured with 1152 hyper-threaded cores (576 physical cores) and 18TB of memory, of which 17TB is available to users. User home and project data direcories are on network mounted storage pods running the BeeGFS parallel filesystem. This storageis built in blocks of 768TB per pod. Multiple pods are available in the TRE for use by the HPC system and the total storage available will vary depending on the project configuration.
+The system is an HPE SuperDome Flex configured with 1152 hyper-threaded cores (576 physical cores) and 18TB of memory, of which 17TB is available to users. User home and project data directories are on network mounted storage pods running the BeeGFS parallel filesystem. This storage is built in blocks of 768TB per pod. Multiple pods are available in the TRE for use by the HPC system and the total storage available will vary depending on the project configuration.
 
 The HPC system runs Red Hat Enterprise Linux, which is not the same flavour of Linux as the Ubuntu distribution running on the desktop VMs. However, most jobs in the TRE run Python and R, and there are few issues moving between the two version of Linux. Use of virtual environments is strongly encouraged to ensure there are no differences between the desktop and HPC runtimes.  
 
@@ -24,9 +24,9 @@ To login to the HPC cluster from the project VMs use `ssh shs-sdf01` from an xte
 
 ## Running Jobs
 
-To use the HPC system fully and fairly, all jobs must be run using the SLURM job manager. More information [about SLURM, running batch jobs and running interactive jobs can be found here](https://slurm.schedmd.com/quickstart.html). Please read this carefully before using the cluster if you have not used SLURM before. The SLURM site also has a set ot useful tutorials on HPC clusters and job scheduling.
+To use the HPC system fully and fairly, all jobs must be run using the SLURM job manager. More information [about SLURM, running batch jobs and running interactive jobs can be found here](https://slurm.schedmd.com/quickstart.html). Please read this carefully before using the cluster if you have not used SLURM before. The SLURM site also has a set of useful tutorials on HPC clusters and job scheduling.
 
-All analysis and processing jobs must be run via SLURM. SLURM manages access to all the cores on the system beyond the first 32. If SLURM is not used and programs are run directly from the command line, then there are only 32 cores available and these are shared by the other users. Normal code development, short test runs, and debugging can be done from the command line witout using SLURM.
+All analysis and processing jobs must be run via SLURM. SLURM manages access to all the cores on the system beyond the first 32. If SLURM is not used and programs are run directly from the command line, then there are only 32 cores available, and these are shared by the other users. Normal code development, short test runs, and debugging can be done from the command line without using SLURM.
 
 !!! warning "There is only one node" 
     The HPC system is a single node with all cores sharing all the available memory. SLURM jobs should always specify '#SBATCH --nodes=1' to run correctly.
@@ -35,9 +35,9 @@ SLURM email alerts for job status change events are not supported in the TRE.
 
 ### Resource Limits
 
-There are no resource constraints imposed on the default SLURM partition at present. There are user limits (see the output of `ulimit -a`). If a project has a requirement for more than 200cores, more than 4TB of memory, or more elapsed runtime than 96 hours, a resource reservation request should be made by the researchers through email to the service help desk.
+There are no resource constraints imposed on the default SLURM partition at present. There are user limits (see the output of `ulimit -a`). If a project has a requirement for more than 200 cores, more than 4TB of memory, or an elapsed runtime of more than 96 hours, a resource reservation request should be made by the researchers through email to the service help desk.
 
-There are no storage quotas enforced in the HPC cluster storage at present. The project storage requirements are negotiated and space allocated before the project accounts are released. Storage use is monitored and guidance will be issued before quotas are imposed on projects.
+There are no storage quotas enforced in the HPC cluster storage at present. The project storage requirements are negotiated, and space allocated before the project accounts are released. Storage use is monitored, and guidance will be issued before quotas are imposed on projects.
 
 The HPC system is managed in the spirit of utilising it as fully as possible and as fairly as possible. This approach works best when researchers are aware of their project workload demands and cooperate rather than compete for cluster resources.
 

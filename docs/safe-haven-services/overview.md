@@ -1,6 +1,6 @@
 # Safe Haven Services
 
-The EIDF [Trusted Research Environment (TRE)](https://zenodo.org/record/4594704) hosts a number of Safe Haven services permitting researchers to work with sensitive data in a secure environment. These services are operated by EPCC in partnership with Safe Haven controllers who manage the Information Governance (IG) appropriate for the research activities and the data access of their Safe Haven service.
+The EIDF [Trusted Research Environment (TRE)](https://zenodo.org/record/4594704) hosts several Safe Haven services that enable researchers to work with sensitive data in a secure environment. These services are operated by EPCC in partnership with Safe Haven controllers who manage the Information Governance (IG) appropriate for the research activities and the data access of their Safe Haven service.
 
 It is the responsibility of EPCC as the Safe Haven operator to design, implement and administer the technical controls required to deliver the Safe Haven security regime demanded by the Safe Haven controller.
 
