@@ -1,9 +1,9 @@
 # EIDF Service Status
 
-The below represents the broad status of each service.
+The table below represents the broad status of each EIDF service.
 
 | Service | Status |
-|:--------:|:------:|
+|:--------|:------|
 | EIDF Portal  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/portal.json) |
 | VM SSH Gateway  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/sshgateway.json) |
 | VM VDI Gateway | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/vdigateway.json) |
