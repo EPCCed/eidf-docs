@@ -31,6 +31,13 @@ file is provided in the repository. You can install these requirements using Pip
    pip install -r requirements.txt
 ```
 
+Users can also create the mkdocs environment using Conda and the requirements.yaml file.
+
+```bash
+   conda env create -f requirements.yaml
+   conda activate mkdocs
+```
+
 ### Docker Materials for mkdocs
 
 You can use [Material for mkdocs](https://squidfunk.github.io/mkdocs-material/getting-started/)
