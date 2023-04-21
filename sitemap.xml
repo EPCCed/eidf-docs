@@ -201,11 +201,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/</loc>
-         <lastmod>2023-04-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/docs/</loc>
          <lastmod>2023-04-21</lastmod>
          <changefreq>daily</changefreq>
@@ -217,11 +212,6 @@
     </url>
     <url>
          <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/quickstart/</loc>
-         <lastmod>2023-04-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://epcced.github.io/eidf-docs/services/virtualmachines/tutorial/</loc>
          <lastmod>2023-04-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
