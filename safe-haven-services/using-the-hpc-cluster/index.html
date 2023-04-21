@@ -504,6 +504,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/virtualmachines/flavours/" class="md-nav__link">
+        VM Flavours
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1269,7 +1283,7 @@
 <p>The TRE HPC system, also called the SuperDome Flex, is a single node, large memory HPC system. It is provided for compute and data intensive workloads that require more CPU, memory, and better IO performance than can be provided by the project VMs, which have the performance equivalent of small rack mount servers.</p>
 <h2 id="specifications">Specifications</h2>
 <p>The system is an HPE SuperDome Flex configured with 1152 hyper-threaded cores (576 physical cores) and 18TB of memory, of which 17TB is available to users. User home and project data directories are on network mounted storage pods running the BeeGFS parallel filesystem. This storage is built in blocks of 768TB per pod. Multiple pods are available in the TRE for use by the HPC system and the total storage available will vary depending on the project configuration.</p>
-<p>The HPC system runs Red Hat Enterprise Linux, which is not the same flavour of Linux as the Ubuntu distribution running on the desktop VMs. However, most jobs in the TRE run Python and R, and there are few issues moving between the two version of Linux. Use of virtual environments is strongly encouraged to ensure there are no differences between the desktop and HPC runtimes.  </p>
+<p>The HPC system runs Red Hat Enterprise Linux, which is not the same flavour of Linux as the Ubuntu distribution running on the desktop VMs. However, most jobs in the TRE run Python and R, and there are few issues moving between the two version of Linux. Use of virtual environments is strongly encouraged to ensure there are no differences between the desktop and HPC runtimes.</p>
 <h2 id="software-management">Software Management</h2>
 <p>All system level software installed and configured on the TRE HPC system is managed by the TRE admin team. Software installation requests may be made by the Safe Haven IG controllers, research project co-ordinators, and researchers by submitting change requests through the dedicated service help desk via email.</p>
 <p>Minor software changes will be made as soon as admin effort can be allocated. Major changes are likely to be scheduled for the TRE monthly maintenance session on the first Thursday of each month.</p>
@@ -1307,7 +1321,7 @@ hostname
 date<span class="w"> </span><span class="s2">&quot;+DATE: %d/%m/%Y TIME: %H:%M:%S&quot;</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running job on a single CPU core&quot;</span>
 
-<span class="c1"># Create the job’s virtual environment  </span>
+<span class="c1"># Create the job’s virtual environment</span>
 <span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/my_venv/bin/activate
 
 <span class="c1"># Run the job code</span>
@@ -1347,9 +1361,9 @@ mpirun<span class="w"> </span><span class="si">${</span><span class="nv">HOME</s
 <ol>
 <li>The <strong>desktop VM /home file system</strong>. This can only be used when you login to the VM remote desktop. This file system is local to the VM and is not backed up.</li>
 <li>The <strong>HPC system /home file system</strong>. This can only be used when you login to the HPC system using SSH from the desktop VM. This file system is local to the HPC cluster and is not backed up.</li>
-<li>The <strong>project file and data space in the /safe_data file system</strong>. This file system can only be used when you login to a VM remote desktop session. This file system is backed up. </li>
+<li>The <strong>project file and data space in the /safe_data file system</strong>. This file system can only be used when you login to a VM remote desktop session. This file system is backed up.</li>
 </ol>
-<p>The /safe_data file system with the project data cannot be used by the HPC system. The /safe_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system. </p>
+<p>The /safe_data file system with the project data cannot be used by the HPC system. The /safe_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system.</p>
 <p>The process to use the TRE HPC service is to copy and synchronise the project code and data files on the /safe_data file system with the HPC /home file system before and after login sessions and job runs on the HPC cluster. Assuming all the code and data required for the job is in a directory 'current_wip' on the project VM, the workflow is as follows:</p>
 <ol>
 <li>Copy project code and data to the HPC cluster (from the desktop VM)

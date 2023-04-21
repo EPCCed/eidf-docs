@@ -14,7 +14,7 @@
         <link rel="prev" href="../virtualmachines-vdi/">
       
       
-        <link rel="next" href="../../services/jhub/quickstart/">
+        <link rel="next" href="../../services/virtualmachines/flavours/">
       
       <link rel="icon" href="../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
@@ -625,6 +625,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/virtualmachines/flavours/" class="md-nav__link">
+        VM Flavours
+      </a>
     </li>
   
 
@@ -1338,7 +1352,7 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <h3 id="generate-a-new-ssh-key">Generate a new SSH Key</h3>
 <ol>
 <li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
-<li>Generate a new SSH Key:<br />
+<li>Generate a new SSH Key:
 $ ssh-keygen</li>
 <li>Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later</li>
 <li>Press enter to finish generating the key</li>
@@ -1352,16 +1366,16 @@ $ ssh-keygen</li>
 <li>Select the plus button under  'Credentials'</li>
 <li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.</li>
 <li>Click 'Upload Credential'  <br>
-It should look something like this:  </li>
+It should look something like this:</li>
 </ol>
 <p><img alt="eidf-portal-ssh" class="border-img" src="/eidf-docs/images/access/eidf-portal-ssh.png" /></p>
 <h4 id="adding-a-new-ssh-key-via-safe">Adding a new SSH Key via SAFE</h4>
-<p>This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.<br />
-If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a><br />
+<p>This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
+If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a>
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.</p>
 <h3 id="using-the-ssh-key-to-access-eidf-windows-and-linux">Using the SSH-Key to access EIDF - Windows and Linux</h3>
 <ol>
-<li>From your local terminal, import the SSH Key you generated above:<br />
+<li>From your local terminal, import the SSH Key you generated above:
 $ ssh-add [sshkey]</li>
 <li>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</li>
 </ol>

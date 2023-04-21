@@ -8,16 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/rstudioserver/docs/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/virtualmachines/flavours/">
       
       
+        <link rel="prev" href="../../../access/ssh/">
+      
+      
+        <link rel="next" href="../../jhub/quickstart/">
       
       <link rel="icon" href="../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Service Documentation - EIDF User Documentation</title>
+        <title>VM Flavours - EIDF User Documentation</title>
       
     
     
@@ -69,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-documentation" class="md-skip">
+        <a href="#flavours" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Documentation
+              VM Flavours
             
           </span>
         </div>
@@ -394,14 +398,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -410,7 +416,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Computing Services
@@ -421,14 +427,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
       
       
       
@@ -437,7 +445,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           Virtual Desktops
@@ -450,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../virtualmachines/quickstart/" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         QuickStart
       </a>
     </li>
@@ -464,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../virtualmachines/docs/" class="md-nav__link">
+      <a href="../docs/" class="md-nav__link">
         Managing VMs
       </a>
     </li>
@@ -504,11 +512,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../virtualmachines/flavours/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         VM Flavours
       </a>
+      
     </li>
   
 
@@ -1076,21 +1094,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#online-support" class="md-nav__link">
-    Online support
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1107,8 +1110,119 @@
   
 
 
-<h1 id="service-documentation">Service Documentation</h1>
-<h2 id="online-support">Online support</h2>
+<h1 id="flavours">Flavours</h1>
+<p>These are the current Virtual Machine (VM) flavours (configurations) avaiable on the the Virtual Desktop cloud service. Note that all VMs are built and configured using the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a> by PIs of projects, except GPU flavours which much be reqested via the <a href="mailto:eidf@epcc.ed.ac.uk">helpdesk</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Flavour Name</th>
+<th>vCPUs</th>
+<th>DRAM</th>
+<th>Pinned Cores</th>
+<th>GPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eidf_flavour_general_tiny_2</td>
+<td>1</td>
+<td>2048</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_general_small_2</td>
+<td>2</td>
+<td>4096</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_general_medium_2</td>
+<td>4</td>
+<td>8192</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_general_large_2</td>
+<td>8</td>
+<td>16384</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_general_xlarge_2</td>
+<td>16</td>
+<td>32768</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_capability_8_2</td>
+<td>8</td>
+<td>114688</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_capability_16_2</td>
+<td>16</td>
+<td>229376</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_capability_32_2</td>
+<td>32</td>
+<td>458752</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_capability_48_2</td>
+<td>48</td>
+<td>688128</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_capability_64_2</td>
+<td>64</td>
+<td>917504</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>eidf_flavour_gpu_8</td>
+<td>8</td>
+<td>131072</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>eidf_flavour_gpu_16</td>
+<td>16</td>
+<td>262144</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>eidf_flavour_gpu_32</td>
+<td>32</td>
+<td>524288</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>eidf_flavour_gpu_48</td>
+<td>48</td>
+<td>786432</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 
 
 
