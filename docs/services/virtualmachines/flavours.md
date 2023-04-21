@@ -19,5 +19,3 @@ These are the current Virtual Machine (VM) flavours (configurations) avaiable on
 | eidf_flavour_gpu_16           | 16    | 262144 | Yes          | Yes |
 | eidf_flavour_gpu_32           | 32    | 524288 | Yes          | Yes |
 | eidf_flavour_gpu_48           | 48    | 786432 | Yes          | Yes |
-
-
