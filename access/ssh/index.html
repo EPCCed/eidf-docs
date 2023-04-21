@@ -1335,7 +1335,6 @@
 
 <h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines using the EIDF-Gateway Jump Host</h1>
 <p>The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.</p>
-<p>The gateway is currently only accessible from University of Edinburgh IP Addresses, an appropriate VPN will need to be used if accessing outside of campus.</p>
 <h2 id="generating-and-adding-an-ssh-key">Generating and Adding an SSH Key</h2>
 <p>In order to make use of the EIDF-Gateway, your EIDF account needs an SSH-Key associated with it.
 If you added one while creating your EIDF account, you can skip this step.</p>
@@ -1353,7 +1352,7 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <ol>
 <li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
 <li>Generate a new SSH Key:
-$ ssh-keygen</li>
+<code>$ ssh-keygen</code></li>
 <li>Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later</li>
 <li>Press enter to finish generating the key</li>
 </ol>
@@ -1375,8 +1374,7 @@ If you need to add an SSH Key directly to SAFE, you can follow this <a href="htt
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.</p>
 <h3 id="using-the-ssh-key-to-access-eidf-windows-and-linux">Using the SSH-Key to access EIDF - Windows and Linux</h3>
 <ol>
-<li>From your local terminal, import the SSH Key you generated above:
-$ ssh-add [sshkey]</li>
+<li>From your local terminal, import the SSH Key you generated above: <code>$ ssh-add [sshkey]</code></li>
 <li>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</li>
 </ol>
 <h2 id="accessing-from-windows">Accessing from Windows</h2>
@@ -1390,30 +1388,29 @@ $ ssh-add [sshkey]</li>
 <li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button</li>
 <li>Search ‘OpenSSH Client’</li>
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
-<li>Once this is installed, you can reach your VM by opening CMD and running</li>
-<li>$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]</li>
+<li>Once this is installed, you can reach your VM by opening CMD and running:<br>
+<code>$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]</code></li>
 </ol>
 <h3 id="installing-mobaxterm">Installing MobaXTerm</h3>
 <ol>
 <li>Download <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a> from https://mobaxterm.mobatek.net/</li>
 <li>Once installed click the ‘Session’ button in the top left corner</li>
 <li>Click ‘SSH’</li>
-<li>In the ‘Remote Host’ section, specify the VM name or IP</li>
+<li>In the ‘Remote Host’ section, specify the VM IP</li>
 <li>Click the ‘Network Settings’ Tab</li>
 <li>Click the ‘SSH Gateway (jump host)’ button in the middle</li>
 <li>Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk</li>
-<li>Under Username, specify your SAFE Username</li>
+<li>Under Username, specify your username</li>
 <li>Click ‘OK’</li>
 <li>Click ‘OK’ to launch the session</li>
-<li>For the EIDF-Gateway login prompt, use your SAFE credentials</li>
-<li>For the VM login, use your VM credentials from within SAFE</li>
+<li>For the EIDF-Gateway and VM login prompts, use your password</li>
 </ol>
 <h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
 <p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below. <br>
-$ ssh -J [username]@jumphost [username]@target</p>
-<p>To access the EIDF Services; <br>
-$ ssh -J [SAFE-username]@eidf-gateway.epcc.ed.ac.uk [VM-username]@[VM/IP]</p>
+The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.<br>
+<code>$ ssh -J [username]@jumphost [username]@target</code></p>
+<p>To access EIDF Services:<br>
+<code>$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]</code></p>
 
 
 
