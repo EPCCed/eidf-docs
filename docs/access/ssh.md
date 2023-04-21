@@ -36,7 +36,7 @@ If not, you'll need to generate an SSH-Key, to do this:
 
 ### Generate a new SSH Key
 1. Open a new window of whatever terminal you will use to SSH to EIDF.
-2. Generate a new SSH Key:  
+2. Generate a new SSH Key:
 $ ssh-keygen
 3. Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later
 4. Press enter to finish generating the key
@@ -49,17 +49,17 @@ $ ssh-keygen
 5. Select the plus button under  'Credentials'
 6. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
 7. Click 'Upload Credential'  <br>
-It should look something like this:  
+It should look something like this:
 
 ![eidf-portal-ssh](/eidf-docs/images/access/eidf-portal-ssh.png){: class="border-img"}
 
 #### Adding a new SSH Key via SAFE
-This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.  
-If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)  
+This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
+If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
 
 ### Using the SSH-Key to access EIDF - Windows and Linux
-1. From your local terminal, import the SSH Key you generated above:  
+1. From your local terminal, import the SSH Key you generated above:
 $ ssh-add [sshkey]
 2. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
 
