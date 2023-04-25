@@ -1,10 +1,41 @@
-# SuperDome Flex for Data Scientists Practical 4: Dask
+# Parallelised Python analysis with Dask
 
 ## Introduction
 
-In this exercise we are going to try using Dask to parallelise some Python programs.
+Python does not have native support for parallelisation.
+Python contains a Global Interpreter Lock (GIL) which means the python interpreter only allows one thread to execute at a time.
+The advantage of the GIL is that C libraries can be easily integrated into Python scripts without checking if they are thread-safe.
+However, this means that most common python modules cannot be easily parallelised.
+Fortunately, there are now several re-implementations of common python modules that work around the GIL and are therefore parallelisable.
+Dask is a python module that contains a parallelised version of the pandas data frame as well as a general format for parallelising any python code.  
 
 ## Dask
+
+Dask enables thread-safe parallelised python execution by creating task graphs (a graph of the dependencies of the inputs and outputs of each function) and then deducing which ones can be run separately. 
+This lesson introduces some general concepts required for programming using Dask.
+There are also some exercises with example answers to help you write your first parallelised python scripts. 
+
+## Arrays, data frames and bags
+
+Dask contains three data objects to enable parallelised analysis of large data sets in a way familiar to most python programmers. 
+If the same operations are being applied to a large data set then Dask can split up the data set and apply the operations in parallel. 
+The three data objects that Dask can easily split up are:
+
+- arrays
+
+Contains large numbers of elements in multiple dimensions, but each element must be of the same type. Each element has a unique index that allows users to specify changes to individual elements.
+
+- data frames
+
+Contains large numbers of elements which are typically highly structured with multiple object types allowed together. Each element has a unique index that allows users to specify changes to individual elements.
+
+- bags 
+
+Contains large numbers of elements which are semi/un-structured. Elements are immutable once inside the bag. Bags are useful for conducting initial analysis/wrangling of raw data before more complex analysis is performed.
+
+
+### Example Dask array 
+
 Try running the following Python using dask:
 
     import dask.array as da
@@ -12,14 +43,14 @@ Try running the following Python using dask:
     x = da.random.random((10000, 10000), chunks=(1000, 1000)) 
 
     print(x)
-
+	
     print(x.compute())
 
     print(x.sum())
 
     print(x.sum().compute())
 
-This should demonstrate that dask is both straight forward to implement simple parallelism, but also lazy in that it does not compute anything until you force it to with the .compute() function.
+This should demonstrate that dask is both straightforward to implement simple parallelism, but also lazy in that it does not compute anything until you force it to with the .compute() function.
 
 You can also try out dask DataFrames, using the following code:
 
@@ -30,9 +61,7 @@ You can also try out dask DataFrames, using the following code:
     df.head()
     df.tail()
 
-    df.weight.max().visualize()
-
-The visualize() function call may not work for you if you do not have the graphviz or dot libraries installed, do not worry about this if it does not work.
+    df.weight.max().compute()
 
 You can try using different blocksizes when reading in the csv file, and then undertaking an operation on the data, as follows:
 Experiment with varying blocksizes, although you should be aware that making your block size too small is likely to cause poor performance (the blocksize affects the number of bytes read in at each operation).
@@ -72,7 +101,7 @@ Dask delayed lets you construct your own task graphs/parallelism from Python fun
     
     print(total)
 
-If you are struggling with this task you can ask for help, and there are example solutions available in the repository for this course.
+
 ## Mandelbrot Exercise
 The code below calculates the members of a Mandelbrot set using Python functions:
 
@@ -171,3 +200,9 @@ In that case you need to encapsulate your code within a main function, using som
     if __name__ == "__main__":
 
 If you are struggling with this exercise then there is a solution available for you in the dask-pi.py file.
+
+## Signposting
+
+- More information on parallelised python code can be found in the carpentries lesson https://carpentries-incubator.github.io/lesson-parallel-python/
+
+- Dask itself has several detailed tutorials https://www.dask.org/get-started

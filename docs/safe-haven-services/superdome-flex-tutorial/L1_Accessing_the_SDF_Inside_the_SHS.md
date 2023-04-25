@@ -38,7 +38,7 @@ Users can only access the SDF by ssh-ing into it via their VM desktop.
 
 ## SDF vs VM file systems
 
-The SDF file system is separate from the VM file system, which is again separate from the project data space. Files need to be transferred between the three systems in order for any analysis to be completed within the SDF.
+The SDF file system is separate from the VM file system, which is again separate from the project data space. Files need to be transferred between the three systems for any analysis to be completed within the SDF.
 
 ### Example showing separate SDF and VM file systems
 
