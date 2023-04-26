@@ -31,10 +31,10 @@ file is provided in the repository. You can install these requirements using Pip
    pip install -r requirements.txt
 ```
 
-Users can also create the mkdocs environment using Conda and the requirements.yaml file.
+Users can also create the mkdocs environment using Conda and the conda-requirements.yaml file.
 
 ```bash
-   conda env create -f requirements.yaml
+   conda env create -f conda-requirements.yaml
    conda activate mkdocs
 ```
 
