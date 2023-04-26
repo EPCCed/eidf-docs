@@ -4,7 +4,9 @@
 
 ### How do I contact the EIDF Helpdesk?
 
-Email us at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
+Submit a query in the [EIDF Portal](https://portal.eidf.ac.uk/) by selecting "Submit a Support Request" in the "Help and Support" menu and filling in [this form](https://portal.eidf.ac.uk/queries/submit).
+
+You can also email us at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
 
 ### New VMs and VDI connections
 
