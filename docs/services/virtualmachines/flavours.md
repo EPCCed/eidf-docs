@@ -1,6 +1,6 @@
 # Flavours
 
-These are the current Virtual Machine (VM) flavours (configurations) avaiable on the the Virtual Desktop cloud service. Note that all VMs are built and configured using the [EIDF Portal](https://portal.eidf.ac.uk/) by PIs of projects, except GPU flavours which much be reqested via the [helpdesk](mailto:eidf@epcc.ed.ac.uk).
+These are the current Virtual Machine (VM) flavours (configurations) available on the the Virtual Desktop cloud service. Note that all VMs are built and configured using the [EIDF Portal](https://portal.eidf.ac.uk/) by PIs/Cloud Admins of projects, except GPU flavours which must be requested via the [helpdesk](mailto:eidf@epcc.ed.ac.uk) or the [support request form](https://portal.eidf.ac.uk/queries/submit).
 
 | Flavour Name            | vCPUs | DRAM in GB | Pinned Cores | GPU |
 |-------------------------|------:|-----------:|--------------|-----|
