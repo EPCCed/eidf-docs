@@ -11,7 +11,7 @@ to a rendered version currently hosted on Github pages.
 
 ## Rendered documentation
 
-- [EIDF Documentation (HTML)](https://epcced.github.io/eidf-docs/)
+- [EIDF Documentation (HTML)](https://dimmestp.github.io/eidf-docs/)
 
 ## How to contribute
 
