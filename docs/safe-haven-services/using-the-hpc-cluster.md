@@ -8,7 +8,7 @@ The TRE HPC system, also called the SuperDome Flex, is a single node, large memo
 
 The system is an HPE SuperDome Flex configured with 1152 hyper-threaded cores (576 physical cores) and 18TB of memory, of which 17TB is available to users. User home and project data directories are on network mounted storage pods running the BeeGFS parallel filesystem. This storage is built in blocks of 768TB per pod. Multiple pods are available in the TRE for use by the HPC system and the total storage available will vary depending on the project configuration.
 
-The HPC system runs Red Hat Enterprise Linux, which is not the same flavour of Linux as the Ubuntu distribution running on the desktop VMs. However, most jobs in the TRE run Python and R, and there are few issues moving between the two version of Linux. Use of virtual environments is strongly encouraged to ensure there are no differences between the desktop and HPC runtimes.  
+The HPC system runs Red Hat Enterprise Linux, which is not the same flavour of Linux as the Ubuntu distribution running on the desktop VMs. However, most jobs in the TRE run Python and R, and there are few issues moving between the two version of Linux. Use of virtual environments is strongly encouraged to ensure there are no differences between the desktop and HPC runtimes.
 
 ## Software Management
 
@@ -28,7 +28,7 @@ To use the HPC system fully and fairly, all jobs must be run using the SLURM job
 
 All analysis and processing jobs must be run via SLURM. SLURM manages access to all the cores on the system beyond the first 32. If SLURM is not used and programs are run directly from the command line, then there are only 32 cores available, and these are shared by the other users. Normal code development, short test runs, and debugging can be done from the command line without using SLURM.
 
-!!! warning "There is only one node" 
+!!! warning "There is only one node"
     The HPC system is a single node with all cores sharing all the available memory. SLURM jobs should always specify '#SBATCH --nodes=1' to run correctly.
 
 SLURM email alerts for job status change events are not supported in the TRE.
@@ -63,7 +63,7 @@ hostname
 date "+DATE: %d/%m/%Y TIME: %H:%M:%S"
 echo "Running job on a single CPU core"
 
-# Create the job’s virtual environment  
+# Create the job’s virtual environment
 source ${HOME}/my_venv/bin/activate
 
 # Run the job code
@@ -109,9 +109,9 @@ There are three file systems to manage in the VM and HPC environment.
 
 1. The **desktop VM /home file system**. This can only be used when you login to the VM remote desktop. This file system is local to the VM and is not backed up.
 2. The **HPC system /home file system**. This can only be used when you login to the HPC system using SSH from the desktop VM. This file system is local to the HPC cluster and is not backed up.
-3. The **project file and data space in the /safe\_data file system**. This file system can only be used when you login to a VM remote desktop session. This file system is backed up. 
+3. The **project file and data space in the /safe\_data file system**. This file system can only be used when you login to a VM remote desktop session. This file system is backed up.
 
-The /safe\_data file system with the project data cannot be used by the HPC system. The /safe\_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system. 
+The /safe\_data file system with the project data cannot be used by the HPC system. The /safe\_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system.
 
 The process to use the TRE HPC service is to copy and synchronise the project code and data files on the /safe\_data file system with the HPC /home file system before and after login sessions and job runs on the HPC cluster. Assuming all the code and data required for the job is in a directory 'current\_wip' on the project VM, the workflow is as follows:
 
@@ -121,4 +121,3 @@ The process to use the TRE HPC service is to copy and synchronise the project co
 3. Copy any changed project code and data back to /safe\_data (from the desktop VM)
 `rsync -avPz -e ssh shs-sdf01:current_wip /safe_data/my_project`
 4. Optionally delete the code and data from the HPC cluster working directory.
-

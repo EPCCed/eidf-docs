@@ -4,7 +4,7 @@ Sessions on project VMs may be either remote desktop (RDP) logins or SSH termina
 
 ## First Time Login and Account Password Changes
 
-!!! warning "Account Password Changes" 
+!!! warning "Account Password Changes"
     Note that first time account login cannot be through RDP as a password change is required. Password reset logins must be SSH terminal sessions as password changes can only be made through SSH connections.
 
 ## Connecting to a Remote SSH Session
@@ -13,7 +13,7 @@ When a VM SSH connection is selected the browser screen becomes a text terminal 
 
 ## Connecting to a Remote Desktop Session
 
-Remote desktop connections work best by first placing the browser in Full Screen mode and leaving it in this mode for the entire duration of the Safe Haven session. 
+Remote desktop connections work best by first placing the browser in Full Screen mode and leaving it in this mode for the entire duration of the Safe Haven session.
 
 When a VM RDP connection is selected the browser screen becomes a remote desktop presenting the login screen shown below.
 
