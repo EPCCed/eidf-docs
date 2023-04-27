@@ -1368,11 +1368,9 @@ mpirun<span class="w"> </span><span class="si">${</span><span class="nv">HOME</s
 <p>The /safe_data file system with the project data cannot be used by the HPC system. The /safe_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system.</p>
 <p>The process to use the TRE HPC service is to copy and synchronise the project code and data files on the /safe_data file system with the HPC /home file system before and after login sessions and job runs on the HPC cluster. Assuming all the code and data required for the job is in a directory 'current_wip' on the project VM, the workflow is as follows:</p>
 <ol>
-<li>Copy project code and data to the HPC cluster (from the desktop VM)
-<code>rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01:</code></li>
+<li>Copy project code and data to the HPC cluster (from the desktop VM) <code>rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01:</code></li>
 <li>Run jobs/tests/analysis <code>ssh shs-sdf01</code>, <code>cd current_wip</code>, <code>sbatch/srun my_job</code></li>
-<li>Copy any changed project code and data back to /safe_data (from the desktop VM)
-<code>rsync -avPz -e ssh shs-sdf01:current_wip /safe_data/my_project</code></li>
+<li>Copy any changed project code and data back to /safe_data (from the desktop VM) <code>rsync -avPz -e ssh shs-sdf01:current_wip /safe_data/my_project</code></li>
 <li>Optionally delete the code and data from the HPC cluster working directory.</li>
 </ol>
 
