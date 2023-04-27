@@ -8,6 +8,12 @@ Submit a query in the [EIDF Portal](https://portal.eidf.ac.uk/) by selecting "Su
 
 You can also email us at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
 
+### How do I request more resources for my project? Can I extend my project?
+
+Submit a support request: In the [form](https://portal.eidf.ac.uk/queries/submit) select the project that your request relates to and select "EIDF Project extension: duration and quota" from the dropdown list of categories. Then enter the new quota or extension date in the description text box below and submit the request.
+
+The EIDF approval team will consider the extension and you will be notified of the outcome.
+
 ### New VMs and VDI connections
 
 My project manager gave me access to a VM but the connection doesn't show up in the VDI connections list?
