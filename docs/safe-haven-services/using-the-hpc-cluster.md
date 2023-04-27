@@ -108,16 +108,14 @@ mpirun ${HOME}/test_mpi
 There are three file systems to manage in the VM and HPC environment.
 
 1. The **desktop VM /home file system**. This can only be used when you login to the VM remote desktop. This file system is local to the VM and is not backed up.
-2. The **HPC system /home file system**. This can only be used when you login to the HPC system using SSH from the desktop VM. This file system is local to the HPC cluster and is not backed up.
-3. The **project file and data space in the /safe\_data file system**. This file system can only be used when you login to a VM remote desktop session. This file system is backed up.
+1. The **HPC system /home file system**. This can only be used when you login to the HPC system using SSH from the desktop VM. This file system is local to the HPC cluster and is not backed up.
+1. The **project file and data space in the /safe\_data file system**. This file system can only be used when you login to a VM remote desktop session. This file system is backed up.
 
 The /safe\_data file system with the project data cannot be used by the HPC system. The /safe\_data file system has restricted access and a relatively slow IO performance compared to the parallel BeeGFS file system storage on the HPC system.
 
 The process to use the TRE HPC service is to copy and synchronise the project code and data files on the /safe\_data file system with the HPC /home file system before and after login sessions and job runs on the HPC cluster. Assuming all the code and data required for the job is in a directory 'current\_wip' on the project VM, the workflow is as follows:
 
-1. Copy project code and data to the HPC cluster (from the desktop VM)
-`rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01:`
-2. Run jobs/tests/analysis `ssh shs-sdf01`, `cd current_wip`, `sbatch/srun my_job`
-3. Copy any changed project code and data back to /safe\_data (from the desktop VM)
-`rsync -avPz -e ssh shs-sdf01:current_wip /safe_data/my_project`
-4. Optionally delete the code and data from the HPC cluster working directory.
+1. Copy project code and data to the HPC cluster (from the desktop VM) `rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01:`
+1. Run jobs/tests/analysis `ssh shs-sdf01`, `cd current_wip`, `sbatch/srun my_job`
+1. Copy any changed project code and data back to /safe\_data (from the desktop VM) `rsync -avPz -e ssh shs-sdf01:current_wip /safe_data/my_project`
+1. Optionally delete the code and data from the HPC cluster working directory.

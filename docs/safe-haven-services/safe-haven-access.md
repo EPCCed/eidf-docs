@@ -1,10 +1,18 @@
 # Safe Haven Service Access
 
-Safe Haven services are accessed from a registered network connection address using a browser. The service URL will be "https://shs.epcc.ed.ac.uk/<service\>" where <service\> is the Safe Haven service name. The Safe Haven access process is in three stages from multi-factor authentication to project desktop login. Researchers who are active in many research projects and in more than one Safe Haven will need to pay attention to the service they connect to, the project desktop they login to, and the accounts and identities they are using.
+Safe Haven services are accessed from a registered network connection address using a browser. The service URL will be "[https://shs.epcc.ed.ac.uk/<service\>](https://shs.epcc.ed.ac.uk/<service\>)" where <service\> is the Safe Haven service name.
+
+The Safe Haven access process is in three stages from multi-factor authentication to project desktop login.
+
+Researchers who are active in many research projects and in more than one Safe Haven will need to pay attention to the service they connect to, the project desktop they login to, and the accounts and identities they are using.
 
 ## Safe Haven Login
 
-The first step in the process prompts the user for a Safe Haven username and then for a session PIN code sent via SMS text to the mobile number registered for the username. Valid PIN code entry allows the user access to all of the Safe Haven service remote desktop gateways for up to 24 hours without entry of a new PIN code. Hence, a user who has successfully entered a PIN code once can access shs.epcc.ed.ac.uk/haven1 and shs.epcc.ed.ac.uk/haven2 without repeating PIN code identity verification. When a valid PIN code is accepted, the user is prompted to accept the service use terms and conditions.
+The first step in the process prompts the user for a Safe Haven username and then for a session PIN code sent via SMS text to the mobile number registered for the username.
+
+Valid PIN code entry allows the user access to all of the Safe Haven service remote desktop gateways for up to 24 hours without entry of a new PIN code. A user who has successfully entered a PIN code once can access shs.epcc.ed.ac.uk/haven1 and shs.epcc.ed.ac.uk/haven2 without repeating PIN code identity verification.
+
+When a valid PIN code is accepted, the user is prompted to accept the service use terms and conditions.
 
 Registration of the user mobile phone number is managed by the Safe Haven IG controller and research project co-ordination teams by submitting and confirming user account changes through the dedicated service help desk via email.
 
