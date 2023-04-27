@@ -1,5 +1,7 @@
 # Parallelised R Analysis
 
+This lesson is adapted from a workshop introducing users to [running R scripts on ARCHER2](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/practical5.pdf) as developed by Adrian Jackson.
+
 ## Introduction
 In this exercise we are going to try different methods of parallelising R on the SDF. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes in the system.
 ## R

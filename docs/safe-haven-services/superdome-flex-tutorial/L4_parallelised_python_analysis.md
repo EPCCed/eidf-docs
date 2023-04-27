@@ -1,5 +1,7 @@
 # Parallelised Python analysis with Dask
 
+This lesson is adapted from a workshop introducing users to [running python scripts on ARCHER2](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/practical4.pdf) as developed by Adrian Jackson.
+
 ## Introduction
 
 Python does not have native support for parallelisation.

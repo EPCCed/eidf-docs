@@ -23,7 +23,7 @@ Conda should run out of the box on the Desktop VMs, but some configuration is re
 
 	exit()
 
-The base conda environment is now available but note that the python and gcc compilers are out of date (Python 3.9.7 and gcc 7.5.0).
+The base conda environment is now available but note that the python and gcc compilers are not the latest (Python 3.9.7 and gcc 7.5.0).
 
 ## Getting an up-to-date python version
 
