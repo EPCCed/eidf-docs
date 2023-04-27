@@ -1,6 +1,7 @@
-# SDF for Data Scientists Practical 4: R
+# Parallelised R Analysis
+
 ## Introduction
-In this exercise we are going to try different methods of parallelising R on teh SDF. This will include single node parallelisation functionality (i.e. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes in the system.
+In this exercise we are going to try different methods of parallelising R on the SDF. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes in the system.
 ## R
 Try running the following R script using R on the SDF login node:
 
@@ -50,7 +51,7 @@ Once you have installed data.table you can experiment with the following code:
     Country = rep(c("England","Scotland","Wales","NorthernIreland"), 50000000))
     system.time(venue_data[, mean(Capacity), by = Country])
 
-This creates some random data in a large data table and then performs a calculation on it. Try running R with varying numbers of threads to see what impact that has on performance. Remember, you can vary the number of threads R uses by setting OMP_NUM_THREADS= before you run R. If you want to try easily varying the number of threads you can save the above code into a script and run it using Rscript, changing OMP_NUM_THREADS each time you run it, i.e.:
+This creates some random data in a large data table and then performs a calculation on it. Try running R with varying numbers of threads to see what impact that has on performance. Remember, you can vary the number of threads R uses by setting OMP_NUM_THREADS= before you run R. If you want to try easily varying the number of threads you can save the above code into a script and run it using Rscript, changing OMP_NUM_THREADS each time you run it, e.g.:
 
     export OMP_NUM_THREADS=1
 
@@ -63,10 +64,14 @@ This creates some random data in a large data table and then performs a calculat
 The elapsed time that is printed out when the calculation is run represents how long the script/program took to run. It’s important to bear in mind that, as with the matrix multiplication exercise, not everything will be parallelised. Creating the data table is done in serial so does not benefit from the addition of more threads.
 
 ## Loop and function parallelism
-R provides a number of different functions to run loops or functions in parallel. One of the commonest functions is to use are the `{X}apply` functions:
+R provides a number of different functions to run loops or functions in parallel. One of the most common functions is to use are the `{X}apply` functions:
+
 - `apply` Apply a function over a matrix or data frame
+
 - `lapply` Apply a function over a list, vector, or data frame
+
 - `sapply` Same as `lapply` but returns a vector
+
 - `vapply` Same as `sapply` but with a specified return type that improves safety and can improve speed
 
 For example:
@@ -84,11 +89,11 @@ There are a number of mechanisms that can be used to implement parallelism using
     sqrt(i) 
     })
 
-Try experimenting with the above functions on large numbers of iterations, both with lapply and mclapply. Can you achieve better performance using the MC_CORES environment variable to specify how many parallel processes R uses to complete these calculations. The default on the SDF is 2 cores, but you can increase this in the same way we did for OMP_NUM_THREADS, i.e.:
+Try experimenting with the above functions on large numbers of iterations, both with lapply and mclapply. Can you achieve better performance using the MC_CORES environment variable to specify how many parallel processes R uses to complete these calculations? The default on the SDF is 2 cores, but you can increase this in the same way we did for OMP_NUM_THREADS, e.g.:
 
     export MC_CORES=16
 
-Try different numbers of iterations of the functions (i.e. change 1:3 in the code to something much larger), and different numbers of parallel processes, i.e.:
+Try different numbers of iterations of the functions (e.g. change 1:3 in the code to something much larger), and different numbers of parallel processes, e.g.:
 
     export MC_CORES=2
 
@@ -96,7 +101,7 @@ Try different numbers of iterations of the functions (i.e. change 1:3 in the cod
 
     export MC_CORES=16
 
-If you have separate functions then the above approach will provide a simple method for parallelising using the resources within a single node. However, if your functionality is more loop based, then you may not wish to have to package this up into separate functions to parallelise.
+If you have separate functions then the above approach will provide a simple method for parallelising using the resources within a single node. However, if your functionality is more loop-based, then you may not wish to have to package this up into separate functions to parallelise.
 
 The `foreach` package can be used to parallelise loops as well as functions. Consider a loop of the following form:
 
@@ -131,24 +136,24 @@ To exploit the parallelism with `dopar` we need to provide parallel execution fu
     library(doParallel)
     registerDoParallel(8)
 
-Does this now improve performance when running the `randomForest` example? Experiment with different numbers of workers by changing the number set in `registerDoParallel(8)` to see what kind of performance you can get. Note, you may also need to change the number of clusters used in the foreach, i.e. what is specified in the `rep(250, 4)` part of the code, to enable more than 4 different sets to be run at once if using more than 4 workers. The amount of parallel workers you can use is dependent on the hardware you have access to, the number of workers you specify when you setup your parallel backend, and the amount of chunks of work you have to distribute with your foreach configuration.
+Does this now improve performance when running the `randomForest` example? Experiment with different numbers of workers by changing the number set in `registerDoParallel(8)` to see what kind of performance you can get. Note, you may also need to change the number of clusters used in the foreach, e.g. what is specified in the `rep(250, 4)` part of the code, to enable more than 4 different sets to be run at once if using more than 4 workers. The amount of parallel workers you can use is dependent on the hardware you have access to, the number of workers you specify when you setup your parallel backend, and the amount of chunks of work you have to distribute with your foreach configuration.
 
-It is possible to use different parallel backends for `foreach`. The one we have used in the example above creates new worker processes to provide the parallelism, but you can also use larger numbers of workers through a parallel cluster, i.e.:
+It is possible to use different parallel backends for `foreach`. The one we have used in the example above creates new worker processes to provide the parallelism, but you can also use larger numbers of workers through a parallel cluster, e.g.:
 
     my.cluster <- parallel::makeCluster(8) 
     registerDoParallel(cl = my.cluster)
  
-By default `makeCluster` creates a socket cluster, where each worker is a new independent process. This can enable running the same R program across a range of systems, as it works on Linux and Windows (and other clients). However, you can also fork the existing R process to create your new workers, i.e.:
+By default `makeCluster` creates a socket cluster, where each worker is a new independent process. This can enable running the same R program across a range of systems, as it works on Linux and Windows (and other clients). However, you can also fork the existing R process to create your new workers, e.g.:
 
     cl <-makeCluster(5, type="FORK")
 
 This saves you from having to create the variables or objects that were setup in the R program/script prior to the creation of the cluster, as they are automatically copied to the workers when using this forking mode. However, it is limited to Linux style systems and cannot scale beyond a single node.
 
-Once you have finished using a parallel cluster you should shut it down to free up computational resources, using `stopCluster`, i.e.:
+Once you have finished using a parallel cluster you should shut it down to free up computational resources, using `stopCluster`, e.g.:
 
     stopCluster(cl)
 
-When using clusters without the forking approach, you need to distribute objects and variables from the main process to the workers using the `clusterExport` function, i.e.:
+When using clusters without the forking approach, you need to distribute objects and variables from the main process to the workers using the `clusterExport` function, e.g.:
 
     library(parallel)
     variableA <- 10
@@ -158,7 +163,7 @@ When using clusters without the forking approach, you need to distribute objects
 
 The program above will fail because `variableA` and `variableB` are not present on the cluster workers. Try the above on the SDF and see what result you get.
 
-To fix this issue you can modify the program using `clusterExport` to send `variableA` and `variableB` to the workers, prior to running the `parSapply` i.e.:
+To fix this issue you can modify the program using `clusterExport` to send `variableA` and `variableB` to the workers, prior to running the `parSapply` e.g.:
 
     clusterExport(cl=cl, c('variableA', 'variableB'))
     

@@ -1,8 +1,8 @@
-# Accessing the Superdome Flex inside the Safe Haven Service
+# Accessing the Superdome Flex inside the EPCC Trusted Research Environment
 
 ## What is the Superdome Flex?
 
-The [Superdome Flex (SDF)](https://www.hpe.com/psnow/doc/a00026242enw) is a high-performance computing cluster manufactured by Hewlett Packard Enterprise. It has been designed to handle multi-core, high-memory tasks in environments where security is paramount. The hardware specifications of the SDF within the Safe Haven Service (SHS) are:
+The [Superdome Flex (SDF)](https://www.hpe.com/psnow/doc/a00026242enw) is a high-performance computing cluster manufactured by Hewlett Packard Enterprise. It has been designed to handle multi-core, high-memory tasks in environments where security is paramount. The hardware specifications of the SDF within the Trusted Research Environment (TRE) are as follows:
 
 - 576 physical cores (1152 hyper-threaded cores)
 - 18TB of dynamic memory (17 TB available to users)
@@ -19,7 +19,7 @@ The software specification of the SDF are:
 
 **Key Point** 
 
-`The SDF is within the Safe Haven Service. Therefore, the same restrictions apply, i.e. the SDF is isolated from the internet (no downloading code from public GitHub repos) and copying/recording/extracting anything on the SDF outside of the SHS is strictly prohibited unless through approved processes.`
+`The SDF is within the TRE. Therefore, the same restrictions apply, i.e. the SDF is isolated from the internet (no downloading code from public GitHub repos) and copying/recording/extracting anything on the SDF outside of the TRE is strictly prohibited unless through approved processes.`
 
 ## Accessing the SDF
 

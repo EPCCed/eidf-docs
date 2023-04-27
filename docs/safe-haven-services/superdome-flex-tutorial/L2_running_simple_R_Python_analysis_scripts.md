@@ -1,8 +1,8 @@
 # Running Simple R/Python Scripts
 
 Running analysis scripts on the SDF is slightly different to running scripts on the Desktop VMs. 
-The Linux distribution differs between the two with the SDF using Red Hat Enterprise (RHE) and the Desktop VMs using Ubuntu. 
-Therefore, it is highly advisable to use virtual environments (i.e. conda environments) to complete any analysis and aid the transition between the two distributions.
+The Linux distribution differs between the two with the SDF using Red Hat Enterprise Linux (RHEL) and the Desktop VMs using Ubuntu. 
+Therefore, it is highly advisable to use virtual environments (e.g. conda environments) to complete any analysis and aid the transition between the two distributions.
 Conda should run out of the box on the Desktop VMs, but some configuration is required on the SDF. 
 
 ## Setting up conda environments on the SDF

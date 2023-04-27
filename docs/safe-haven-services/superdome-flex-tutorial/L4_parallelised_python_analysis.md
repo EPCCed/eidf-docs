@@ -21,17 +21,11 @@ Dask contains three data objects to enable parallelised analysis of large data s
 If the same operations are being applied to a large data set then Dask can split up the data set and apply the operations in parallel. 
 The three data objects that Dask can easily split up are:
 
-- arrays
+- **Arrays:** Contains large numbers of elements in multiple dimensions, but each element must be of the same type. Each element has a unique index that allows users to specify changes to individual elements.
 
-Contains large numbers of elements in multiple dimensions, but each element must be of the same type. Each element has a unique index that allows users to specify changes to individual elements.
+- **Data frames:** Contains large numbers of elements which are typically highly structured with multiple object types allowed together. Each element has a unique index that allows users to specify changes to individual elements.
 
-- data frames
-
-Contains large numbers of elements which are typically highly structured with multiple object types allowed together. Each element has a unique index that allows users to specify changes to individual elements.
-
-- bags 
-
-Contains large numbers of elements which are semi/un-structured. Elements are immutable once inside the bag. Bags are useful for conducting initial analysis/wrangling of raw data before more complex analysis is performed.
+- **Bags:** Contains large numbers of elements which are semi/un-structured. Elements are immutable once inside the bag. Bags are useful for conducting initial analysis/wrangling of raw data before more complex analysis is performed.
 
 
 ### Example Dask array 
@@ -203,6 +197,6 @@ If you are struggling with this exercise then there is a solution available for 
 
 ## Signposting
 
-- More information on parallelised python code can be found in the carpentries lesson https://carpentries-incubator.github.io/lesson-parallel-python/
+- More information on parallelised python code can be found in the [carpentries lesson](https://carpentries-incubator.github.io/lesson-parallel-python/)
 
-- Dask itself has several detailed tutorials https://www.dask.org/get-started
+- Dask itself has several detailed [tutorials](https://www.dask.org/get-started)
