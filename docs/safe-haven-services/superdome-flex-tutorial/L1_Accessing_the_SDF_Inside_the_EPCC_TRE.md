@@ -15,26 +15,26 @@ The software specification of the SDF are:
 - Access to local copies of R (CRAN) and python (conda) repositories
 - [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) container platform
 
-
-
-**Key Point** 
+### Key Point
 
 `The SDF is within the TRE. Therefore, the same restrictions apply, i.e. the SDF is isolated from the internet (no downloading code from public GitHub repos) and copying/recording/extracting anything on the SDF outside of the TRE is strictly prohibited unless through approved processes.`
 
 ## Accessing the SDF
 
-Users can only access the SDF by ssh-ing into it via their VM desktop. 
+Users can only access the SDF by ssh-ing into it via their VM desktop.
 
 ### Hello world
 
-	**** On the VM desktop terminal ****
+```bash
+**** On the VM desktop terminal ****
 
-	ssh shs-sdf01
-	<Enter VM password>
+ssh shs-sdf01
+<Enter VM password>
 
-	echo "Hello World"
-	
-	exit
+echo "Hello World"
+
+exit
+```
 
 ## SDF vs VM file systems
 
@@ -42,42 +42,46 @@ The SDF file system is separate from the VM file system, which is again separate
 
 ### Example showing separate SDF and VM file systems
 
-	**** On the VM desktop terminal ****
-	
-	cd ~ 
-	touch test.txt
-	ls
+```bash
+**** On the VM desktop terminal ****
 
-	ssh shs-sdf01
-	<Enter VM password>
+cd ~
+touch test.txt
+ls
 
-	ls # test.txt is not here
-	exit
+ssh shs-sdf01
+<Enter VM password>
 
-	scp test.txt shs-sdf01
+ls # test.txt is not here
+exit
 
-	ssh shs-sdf01
-	<Enter VM password>
-	
-	ls # test.txt is here
+scp test.txt shs-sdf01
+
+ssh shs-sdf01
+<Enter VM password>
+
+ls # test.txt is here
+```
 
 ### Example copying data between project data space and SDF
 
 Transferring and synchronising data sets between the project data space and the SDF is easier with the rsync command (rather than manually checking and copying files/folders with scp). rsync only transfers files that are different between the two targets, more details in its manual.
 
-	**** On the VM desktop terminal ****
+```bash
+**** On the VM desktop terminal ****
 
-	man rsync # check instructions for using rsync
+man rsync # check instructions for using rsync
 
-	rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project folder and SDF home folder
-	
-	ssh shs-sdf01
-	<Enter VM password>
+rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project folder and SDF home folder
 
-	*** Conduct analysis on SDF ***
+ssh shs-sdf01
+<Enter VM password>
 
-	exit
+*** Conduct analysis on SDF ***
 
-	rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project file and ssh home page # re-syncronise project folder and SDF home folder
+exit
 
-	*** Optionally remove the project folder on SDF ***
+rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project file and ssh home page # re-syncronise project folder and SDF home folder
+
+*** Optionally remove the project folder on SDF ***
+```
