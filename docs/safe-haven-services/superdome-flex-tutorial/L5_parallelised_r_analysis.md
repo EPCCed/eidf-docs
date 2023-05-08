@@ -4,9 +4,15 @@ This lesson is adapted from a workshop introducing users to [running R scripts o
 
 ## Introduction
 
-In this exercise we are going to try different methods of parallelising R on the SDF. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes in the system.
+In this exercise we are going to try different methods of parallelising R on the SDF. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes.
 
-## R
+## Example parallelised R code
+
+You may need to activate an R conda environment.
+
+```bash
+conda activate r-v4.2
+```
 
 Try running the following R script using R on the SDF login node:
 
@@ -48,19 +54,13 @@ export OMP_NUM_THREADS=2
 
 You may also notice that not all the R script is parallelised. Only the actual matrix multiplication is undertaken in parallel, the initialisation/creation of the matrices is done in serial.
 
+## Parallelisation with data.tables
+
 We can also experiment with the implicit parallelism in other libraries, such as data.table. You will first need to install this library on the SDF. To do this you can simply run the following command:
 
 ```r
 install.packages(data.table)
 ```
-
-However, if you intend to use R on the compute nodes, you will need to ensure that the library is installed on the /work filesystem so it is accessible from both login and compute nodes. You can do this by setting the following variable before you run R:
-
-```bash
-    export R_LIBS_USER=/work/ta055/ta055/$USER/Rinstall
-```
-
-This instructs R to install and use libraries from the above directory. You do not need to call it Rinstall, it can be called any name you like, but it will need to be on the /work filesystem to be accessible from the compute nodes.
 
 Once you have installed data.table you can experiment with the following code:
 
@@ -135,6 +135,8 @@ export MC_CORES=16
 
 If you have separate functions then the above approach will provide a simple method for parallelising using the resources within a single node. However, if your functionality is more loop-based, then you may not wish to have to package this up into separate functions to parallelise.
 
+### Parallelisation with foreach
+
 The `foreach` package can be used to parallelise loops as well as functions. Consider a loop of the following form:
 
 ```r
@@ -171,6 +173,8 @@ print(rf)
 
 Implement the above code and run with a `system.time` to see how long it takes. Once you have done this you can change the `%do%` to a `%dopar%` and re-run. Does this provide any performance benefits?
 
+### Parallelisation with doParallel
+
 To exploit the parallelism with `dopar` we need to provide parallel execution functionality and configure it to use extra cores on the system. One method to do this is using the `doParallel` package.
 
 ```r
@@ -182,6 +186,8 @@ Does this now improve performance when running the `randomForest` example?
 Experiment with different numbers of workers by changing the number set in `registerDoParallel(8)` to see what kind of performance you can get.
 Note, you may also need to change the number of clusters used in the foreach, e.g. what is specified in the `rep(250, 4)` part of the code, to enable more than 4 different sets to be run at once if using more than 4 workers.
 The amount of parallel workers you can use is dependent on the hardware you have access to, the number of workers you specify when you setup your parallel backend, and the amount of chunks of work you have to distribute with your foreach configuration.
+
+## Cluster parallelism
 
 It is possible to use different parallel backends for `foreach`. The one we have used in the example above creates new worker processes to provide the parallelism, but you can also use larger numbers of workers through a parallel cluster, e.g.:
 

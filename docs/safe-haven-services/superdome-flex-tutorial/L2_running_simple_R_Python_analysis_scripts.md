@@ -5,7 +5,7 @@ The Linux distribution differs between the two with the SDF using Red Hat Enterp
 Therefore, it is highly advisable to use virtual environments (e.g. conda environments) to complete any analysis and aid the transition between the two distributions.
 Conda should run out of the box on the Desktop VMs, but some configuration is required on the SDF.
 
-## Setting up conda environments on the SDF
+## Setting up conda environments on you first connection to the SDF
 
 ```bash
 *** SDF Terminal ***
@@ -35,6 +35,8 @@ Fortunately, conda has an updated gcc toolset that can be installed.
 ```bash
 *** SDF Terminal ***
 
+conda activate base # If conda isn't already active
+
 conda create -n python-v3.11 gcc_linux-64=11.2.0 python=3.11.3
 
 conda activate python-v3.11
@@ -46,7 +48,7 @@ exit()
 
 ## Running R scripts on the SDF
 
-There is a default version of R available on the SDF v4.1.2. Alternative R versions can be installed using conda similar to the python conda environment above.
+The default version of R available on the SDF is v4.1.2. Alternative R versions can be installed using conda similar to the python conda environment above.
 
 ```bash
 conda create -n r-v4.3 gcc_linux-64=11.2.0 r-base=4.3

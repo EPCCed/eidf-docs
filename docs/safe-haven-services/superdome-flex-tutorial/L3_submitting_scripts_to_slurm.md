@@ -129,11 +129,11 @@ Although submitting job steps containing python/R analysis scripts can be done w
 ```bash
 **** Python code job submission ****
 
-srun --job-name=my_first_python_job --nodes 1 --ntasks 10 --cpus-per-task 2 --mem 10G python example_script.py
+srun --job-name=my_first_python_job --nodes 1 --ntasks 10 --cpus-per-task 2 --mem 10G python3 example_script.py
 
 **** R code job submission ****
 
-srun --job-name=my_first_r_job --nodes 1 --ntasks 10 --cpus-per-task 2 --mem 10G Rscript -e example_script.R
+srun --job-name=my_first_r_job --nodes 1 --ntasks 10 --cpus-per-task 2 --mem 10G Rscript example_script.R
 ```
 
 ## Signposting

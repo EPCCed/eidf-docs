@@ -55,7 +55,7 @@ ssh shs-sdf01
 ls # test.txt is not here
 exit
 
-scp test.txt shs-sdf01
+scp test.txt shs-sdf01:/home/<USERNAME>/
 
 ssh shs-sdf01
 <Enter VM password>
@@ -72,7 +72,7 @@ Transferring and synchronising data sets between the project data space and the 
 
 man rsync # check instructions for using rsync
 
-rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project folder and SDF home folder
+rsync -avPz -e ssh /safe_data/my_project/ shs-sdf01:/home/<USERNAME>/my_project/ # sync project folder and SDF home folder
 
 ssh shs-sdf01
 <Enter VM password>
@@ -81,7 +81,7 @@ ssh shs-sdf01
 
 exit
 
-rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01: # sync project file and ssh home page # re-syncronise project folder and SDF home folder
+rsync -avPz -e ssh /safe_data/my_project/current_wip shs-sdf01:/home/<USERNAME>/my_project/ # sync project file and ssh home page # re-syncronise project folder and SDF home folder
 
 *** Optionally remove the project folder on SDF ***
 ```

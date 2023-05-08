@@ -31,6 +31,14 @@ The three data objects that Dask can easily split up are:
 
 ### Example Dask array
 
+You may need to install dask or create a new conda environment with it in.
+
+```bash
+conda create -n dask-env gcc_linux-64=11.2.0 python=3.11.3 dask
+
+conda activate dask-env
+```
+
 Try running the following Python using dask:
 
 ```python
@@ -75,13 +83,15 @@ You can also experiment with Dask Bags to see how that functionality works:
 ```python
 import dask.bag as db
 from operator import add
-    b = db.from_sequence([1, 2, 3, 4, 5], npartitions=2)
-    print(b.compute())
+b = db.from_sequence([1, 2, 3, 4, 5], npartitions=2)
+print(b.compute())
 ```
 
 ## Dask Delayed
 
-Dask delayed lets you construct your own task graphs/parallelism from Python functions. Try parallelising the code below using the .delayed function or the @delayed decorator:
+Dask delayed lets you construct your own task graphs/parallelism from Python functions.
+You can find out more about dask delayed from the [dask documentation](https://docs.dask.org/en/stable/delayed.html)
+Try parallelising the code below using the .delayed function or the @delayed decorator, an example answer can be found [here](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/dask/delayed_functions.py).
 
 ```python
 def inc(x):
@@ -158,7 +168,7 @@ print(time)
 Your task is to parallelise this code using Dask Array functionality.
 Using the base python code above, extend it with Dask Array for the main arrays in the computation. Remember you need to specify a chunk size with Dask Arrays, and you will also need to call compute at some point to force Dask to actually undertake the computation. Note, depending on where you run this you may not see any actual speed up of the computation. You need access to extra resources (compute cores) for the calculation to go faster.
 If in doubt, submit a python script of your solution to the SDF compute nodes to see if you see speed up there.
-If you are struggling with this parallelisation exercise, there is a solution available for you in the dask- mandel.py file.
+If you are struggling with this parallelisation exercise, there is a solution available for you [here](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/dask/dask-mandel.py).
 
 ## Pi Exercise
 
@@ -219,7 +229,7 @@ In that case you need to encapsulate your code within a main function, using som
 if __name__ == "__main__":
 ```
 
-If you are struggling with this exercise then there is a solution available for you in the dask-pi.py file.
+If you are struggling with this exercise then there is a solution available for you [here](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/dask/dask-pi.py).
 
 ## Signposting
 
