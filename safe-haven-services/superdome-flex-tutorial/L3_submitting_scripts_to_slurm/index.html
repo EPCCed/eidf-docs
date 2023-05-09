@@ -8,23 +8,27 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/jhub/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/">
       
       
+        <link rel="prev" href="../L2_running_R_Python_analysis_scripts/">
       
-      <link rel="icon" href="../../images/favicon.ico">
+      
+        <link rel="next" href="../L4_parallelised_python_analysis/">
+      
+      <link rel="icon" href="../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>EIDF Jupyterhub - EIDF User Documentation</title>
+        <title>Submitting Scripts to Slurm - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a6bdf11c.min.css">
       
       
 
@@ -40,11 +44,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/eidf.css">
+      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
     
-      <link rel="stylesheet" href="../../stylesheets/access.css">
+      <link rel="stylesheet" href="../../../stylesheets/access.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eidf-jupyterhub" class="md-skip">
+        <a href="#submitting-scripts-to-slurm" class="md-skip">
           Skip to content
         </a>
       
@@ -85,9 +89,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -103,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EIDF Jupyterhub
+              Submitting Scripts to Slurm
             
           </span>
         </div>
@@ -184,9 +188,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     EIDF User Documentation
@@ -214,7 +218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../status/" class="md-nav__link">
+      <a href="../../../status/" class="md-nav__link">
         Service Status
       </a>
     </li>
@@ -229,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Documentation overview
       </a>
     </li>
@@ -271,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+      <a href="../../../overview/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -285,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/acknowledgements/" class="md-nav__link">
+      <a href="../../../overview/acknowledgements/" class="md-nav__link">
         Acknowledgements
       </a>
     </li>
@@ -299,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/contacts/" class="md-nav__link">
+      <a href="../../../overview/contacts/" class="md-nav__link">
         Contact
       </a>
     </li>
@@ -348,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/" class="md-nav__link">
+      <a href="../../../access/" class="md-nav__link">
         Web and SSH
       </a>
     </li>
@@ -362,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/project/" class="md-nav__link">
+      <a href="../../../access/project/" class="md-nav__link">
         EIDF Web Portal
       </a>
     </li>
@@ -376,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         Virtual Desktop Interface
       </a>
     </li>
@@ -452,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/quickstart/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/quickstart/" class="md-nav__link">
         QuickStart
       </a>
     </li>
@@ -466,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/docs/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/docs/" class="md-nav__link">
         Managing VMs
       </a>
     </li>
@@ -480,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         Virtual Desktop Interface
       </a>
     </li>
@@ -494,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../../access/ssh/" class="md-nav__link">
         SSH Access to VMs
       </a>
     </li>
@@ -508,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/flavours/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/flavours/" class="md-nav__link">
         VM Flavours
       </a>
     </li>
@@ -556,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart/" class="md-nav__link">
+      <a href="../../../services/jhub/quickstart/" class="md-nav__link">
         QuickStart
       </a>
     </li>
@@ -570,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorial/" class="md-nav__link">
+      <a href="../../../services/jhub/tutorial/" class="md-nav__link">
         Tutorial
       </a>
     </li>
@@ -584,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docs/" class="md-nav__link">
+      <a href="../../../services/jhub/docs/" class="md-nav__link">
         Documentation
       </a>
     </li>
@@ -632,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cs2/access/" class="md-nav__link">
+      <a href="../../../services/cs2/access/" class="md-nav__link">
         Get Access
       </a>
     </li>
@@ -646,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cs2/run/" class="md-nav__link">
+      <a href="../../../services/cs2/run/" class="md-nav__link">
         Running codes
       </a>
     </li>
@@ -694,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/access/" class="md-nav__link">
+      <a href="../../../services/ultra2/access/" class="md-nav__link">
         Get Access
       </a>
     </li>
@@ -708,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/run/" class="md-nav__link">
+      <a href="../../../services/ultra2/run/" class="md-nav__link">
         Running codes
       </a>
     </li>
@@ -791,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datacatalogue/metadata/" class="md-nav__link">
+      <a href="../../../services/datacatalogue/metadata/" class="md-nav__link">
         Metadata information
       </a>
     </li>
@@ -818,14 +822,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
       
       
       
@@ -834,7 +840,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Safe Haven Services
@@ -847,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -861,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/network-access-controls/" class="md-nav__link">
+      <a href="../../network-access-controls/" class="md-nav__link">
         Network Access Controls
       </a>
     </li>
@@ -875,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/safe-haven-access/" class="md-nav__link">
+      <a href="../../safe-haven-access/" class="md-nav__link">
         Safe Haven Access
       </a>
     </li>
@@ -889,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/virtual-desktop-connections/" class="md-nav__link">
+      <a href="../../virtual-desktop-connections/" class="md-nav__link">
         Virtual Desktop Connections
       </a>
     </li>
@@ -903,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/using-the-hpc-cluster/" class="md-nav__link">
+      <a href="../../using-the-hpc-cluster/" class="md-nav__link">
         Using the HPC Cluster
       </a>
     </li>
@@ -915,14 +921,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
       
       
       
@@ -931,7 +939,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7_6">
           <span class="md-nav__icon md-icon"></span>
           Superdome Flex Tutorial
@@ -944,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
+      <a href="../L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
         Accessing the SDF Inside the EPCC TRE
       </a>
     </li>
@@ -958,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+      <a href="../L2_running_R_Python_analysis_scripts/" class="md-nav__link">
         Running R/Python Scripts
       </a>
     </li>
@@ -970,11 +978,114 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Submitting Scripts to Slurm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Submitting Scripts to Slurm
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-slurm" class="md-nav__link">
+    What is Slurm?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-you-need-to-use-slurm" class="md-nav__link">
+    Why do you need to use Slurm?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-basics" class="md-nav__link">
+    Slurm basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-a-simple-job" class="md-nav__link">
+    Submitting a simple job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-a-batch-job" class="md-nav__link">
+    Submitting a batch job
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting a batch job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-job-script" class="md-nav__link">
+    Example Job Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-job-script-submission" class="md-nav__link">
+    Example job script submission
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submitting-pythonr-code-to-slurm" class="md-nav__link">
+    Submitting python/R code to Slurm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signposting" class="md-nav__link">
+    Signposting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -986,7 +1097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../L4_parallelised_python_analysis/" class="md-nav__link">
         Parallelised Python Analysis
       </a>
     </li>
@@ -1000,7 +1111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../L5_parallelised_r_analysis/" class="md-nav__link">
         Parallelised R Analysis
       </a>
     </li>
@@ -1083,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/workshops/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/workshops/" class="md-nav__link">
         Workshop Notebook Service
       </a>
     </li>
@@ -1097,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/safe-registration/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/safe-registration/" class="md-nav__link">
         Workshop Virtual Machines
       </a>
     </li>
@@ -1111,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/jhub-git/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/jhub-git/" class="md-nav__link">
         JupyterHub Notebook Service Access
       </a>
     </li>
@@ -1140,7 +1251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../known-issues/" class="md-nav__link">
+      <a href="../../../known-issues/" class="md-nav__link">
         EIDF Known Issues
       </a>
     </li>
@@ -1155,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         EIDF Frequently Asked Questions
       </a>
     </li>
@@ -1182,6 +1293,83 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-slurm" class="md-nav__link">
+    What is Slurm?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-you-need-to-use-slurm" class="md-nav__link">
+    Why do you need to use Slurm?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-basics" class="md-nav__link">
+    Slurm basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-a-simple-job" class="md-nav__link">
+    Submitting a simple job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-a-batch-job" class="md-nav__link">
+    Submitting a batch job
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting a batch job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-job-script" class="md-nav__link">
+    Example Job Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-job-script-submission" class="md-nav__link">
+    Example job script submission
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submitting-pythonr-code-to-slurm" class="md-nav__link">
+    Submitting python/R code to Slurm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signposting" class="md-nav__link">
+    Signposting
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1198,10 +1386,133 @@
   
 
 
-<h1 id="eidf-jupyterhub">EIDF Jupyterhub</h1>
-<p><a href="./quickstart/">QuickStart</a></p>
-<p><a href="./tutorial/">Tutorial</a></p>
-<p><a href="./docs/">Documentation</a></p>
+<h1 id="submitting-scripts-to-slurm">Submitting Scripts to Slurm</h1>
+<h2 id="what-is-slurm">What is Slurm?</h2>
+<p>Slurm is a workload manager that schedules jobs submitted to a shared resource.
+Slurm is a well-developed tool that can manage large computing clusters, such as ARCHER2, with thousands of users each with different priorities and allocated computing hours.
+Inside the TRE, Slurm is used to help ensure all users of the SDF get equitable access.
+Therefore, users who are submitting jobs with high resource requirements (&gt;80 cores, &gt;1TB of memory) may have to wait longer for resource allocation to enable users with lower resource demands to continue their work.</p>
+<p>Slurm is currently set up so all users have equal priority and there is no limit to the total number of CPU hours allocated to a user per month.
+However, there are limits to the maximum amount of resources that can be allocated to an individual job.
+Jobs that require more than 200 cores, more than 4TB of memory, or an elapsed runtime of more than 96 hours will be rejected.
+If users need to submit jobs with large resource demand, they need to submit a resource reservation request by emailing their project's service desk.</p>
+<h2 id="why-do-you-need-to-use-slurm">Why do you need to use Slurm?</h2>
+<p>The SDF is a resource shared across all projects within the TRE and all users should have equal opportunity to use the SDF to complete resource-intense tasks appropriate to their projects.
+Users of the SDF are required to consider the needs of the wider community by:</p>
+<ul>
+<li>
+<p>requesting resources appropriate to their intended task and timeline.</p>
+</li>
+<li>
+<p>submitting resource requests via Slurm to enable automatic scheduling and fair allocation alongside other user requests.</p>
+</li>
+</ul>
+<p>Users can develop code, complete test runs, and debug from the SDF command line without using Slurm.
+However, only 32 of the 512 cores are accessible without submitting a job request to Slurm.
+These cores are accessible to all users simultaneously.</p>
+<h2 id="slurm-basics">Slurm basics</h2>
+<p>Slurm revolves around four main entities: nodes, partitions, jobs and job steps.
+Nodes and partitions are relevant for more complex distributed computing clusters so Slurm can allocate appropriate resources to jobs across multiple pieces of hardware.
+Jobs are requests for resources and job steps are what need to be completed once the resources have been allocated (completed in sequence or parallel).
+Job steps can be further broken down into tasks.</p>
+<p>There are four key commands for Slurm users:</p>
+<ul>
+<li>
+<p>squeue: get details on a job or job step, i.e. has a job been allocated resources or is it still pending?</p>
+</li>
+<li>
+<p>srun: initiate a job step or execute a job. A versatile function that can initiate job steps as part of a larger batch job or submit a job itself to get resources and run a job step. This is useful for testing job steps, experimenting with different resource allocations or running job steps that require large resources but are relatively easy to define in a line or two (i.e. running a sequence alignment).</p>
+</li>
+<li>
+<p>scancel: stop a job from continuing.</p>
+</li>
+<li>
+<p>sbatch: submit a job script containing multiple steps (i.e. srun) to be completed with the defined resources. This is the typical function for submitting jobs to Slurm.</p>
+</li>
+</ul>
+<p>More details on these functions (and several not mentioned here) can be seen on the <a href="https://slurm.schedmd.com/quickstart.html">Slurm website</a>.</p>
+<h2 id="submitting-a-simple-job">Submitting a simple job</h2>
+<div class="highlight"><pre><span></span><code>***<span class="w"> </span>SDF<span class="w"> </span>Terminal<span class="w"> </span>***
+
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="c1"># Check if there are jobs already queued or running for you</span>
+
+srun<span class="w"> </span>--job-name<span class="o">=</span>my_first_slurm_job<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--ntasks<span class="w"> </span><span class="m">10</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span>
+
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>--state<span class="o">=</span>CD<span class="w"> </span><span class="c1"># List all completed jobs</span>
+</code></pre></div>
+<p>In this instance, the srun command completes two steps: job submission and job step execution. First, it submits a job request to be allocated 10 CPUs (1 CPU for each of the 10 tasks). Once the resources are available, it executes the job step consisting of 10 tasks each running the 'echo "Hello World"' function.</p>
+<p>srun accepts a wide variety of options to specify the resources required to complete its job step.
+Within the SDF, you must always request 1 node (as there is only one node) and never use the --exclusive option (as no one will have exclusive access to this shared resource).
+Notice that running srun blocks your terminal from accepting any more commands and the output from each task in the job step, i.e. Hello World in the above example, outputs to your terminal.
+We will compare this to running a sbatch command.</p>
+<h2 id="submitting-a-batch-job">Submitting a batch job</h2>
+<p>Batch jobs are incredibly useful because they run in the background without blocking your terminal. Batch jobs also output the results to a log file rather than straight to your terminal.
+This allows you to check a job was completed successfully at a later time so you can move on to other things whilst waiting for a job to complete.</p>
+<p>A batch job can be submitted to Slurm by passing a job script to the sbatch command. The first few lines of a job script outline the resources to be requested as part of the job. The remainder of a job script consists of one or more srun commands outlining the job steps that need to be completed (in sequence or parallel) once the resources are available. There are numerous options for defining the resource requirements of a job including:</p>
+<ul>
+<li>The number of CPUs available for each active task: --ncpus-per-task</li>
+<li>The amount of memory available per CPU (in MB by default but can be in GB if G is appended to the number): --mem-per-cpu</li>
+<li>The total amount of memory (in MB by default but can be in GB if G is appended to the number): --mem</li>
+<li>The maximum number of tasks invoked at one time: --ntasks</li>
+<li>The number of nodes (Always 1 when using SDF): --nodes</li>
+<li>If the job requires exclusive access to all the resources of a node (never part of job request, but required for parallel job steps within batch scripts): --exclusive</li>
+</ul>
+<p>More information on the various options are in the <a href="https://slurm.schedmd.com/sbatch.html">sbatch documentation</a>.</p>
+<h3 id="example-job-script">Example Job Script</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">#SBATCH -J HelloWorld</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --tasks-per-node=10</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+
+%<span class="w"> </span>Run<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>task<span class="w"> </span><span class="k">in</span><span class="w"> </span>sequence
+
+srun<span class="w"> </span>--ntasks<span class="w"> </span><span class="m">5</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Series Task A. Time: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+”%H:%M:%S”<span class="k">)</span>
+
+srun<span class="w"> </span>--ntasks<span class="w"> </span><span class="m">5</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Series Task B. Time: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+”%H:%M:%S”<span class="k">)</span>
+
+%<span class="w"> </span>Run<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>task<span class="w"> </span><span class="k">in</span><span class="w"> </span>parallel<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>ampersand<span class="w"> </span>character
+
+srun<span class="w"> </span>--exclusive<span class="w"> </span>--ntasks<span class="w"> </span><span class="m">5</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Parallel Task A. Time: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+”%H:%M:%S”<span class="k">)</span><span class="w"> </span><span class="p">&amp;</span>
+
+srun<span class="w"> </span>--exclusive<span class="w"> </span>--ntasks<span class="w"> </span><span class="m">5</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Parallel Task B. Time: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+”%H:%M:%S”<span class="k">)</span>
+</code></pre></div>
+<h3 id="example-job-script-submission">Example job script submission</h3>
+<div class="highlight"><pre><span></span><code>***<span class="w"> </span>SDF<span class="w"> </span>Terminal<span class="w"> </span>***
+
+nano<span class="w"> </span>example_job_script.sh
+
+***<span class="w"> </span>Copy<span class="w"> </span>example<span class="w"> </span>job<span class="w"> </span>script<span class="w"> </span>above<span class="w"> </span>***
+
+sbatch<span class="w"> </span>example_job_script.sh
+
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-r<span class="w"> </span><span class="m">5</span>
+
+***<span class="w"> </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>completed<span class="w"> </span>***
+
+cat<span class="w"> </span>example_job_script.log<span class="w"> </span><span class="c1"># The series tasks should be grouped together and the parallel tasks interspersed.</span>
+</code></pre></div>
+<p>The example batch job is intended to show two things: 1) the usefulness of the sbatch command and 2) the versatility of a job script. As the sbatch command allows you to submit scripts and check their outcome at your own discretion, it is the most common way of interacting with Slurm. Meanwhile, the job script command allows you to specify one global resource request and break it up into multiple job steps with different resource demands that can be completed in parallel or in sequence.</p>
+<h3 id="submitting-pythonr-code-to-slurm">Submitting python/R code to Slurm</h3>
+<p>Although submitting job steps containing python/R analysis scripts can be done with srun directly, as below, it is more common to submit bash scripts that call the analysis scripts after setting up the environment (i.e. after calling conda activate).</p>
+<div class="highlight"><pre><span></span><code>****<span class="w"> </span>Python<span class="w"> </span>code<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>****
+
+srun<span class="w"> </span>--job-name<span class="o">=</span>my_first_python_job<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--ntasks<span class="w"> </span><span class="m">10</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="w"> </span>10G<span class="w"> </span>python3<span class="w"> </span>example_script.py
+
+****<span class="w"> </span>R<span class="w"> </span>code<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>****
+
+srun<span class="w"> </span>--job-name<span class="o">=</span>my_first_r_job<span class="w"> </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--ntasks<span class="w"> </span><span class="m">10</span><span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="w"> </span>10G<span class="w"> </span>Rscript<span class="w"> </span>example_script.R
+</code></pre></div>
+<h2 id="signposting">Signposting</h2>
+<p>Useful websites for learning more about Slurm:</p>
+<ul>
+<li>
+<p>The <a href="https://slurm.schedmd.com/documentation.html">Slurm documentation website</a></p>
+</li>
+<li>
+<p>The <a href="https://carpentries-incubator.github.io/hpc-intro/13-scheduler/index.html">Introduction to HPC carpentries lesson on Slurm</a></p>
+</li>
+</ul>
 
 
 
@@ -1239,10 +1550,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fac441b0.min.js"></script>
       
     
   </body>

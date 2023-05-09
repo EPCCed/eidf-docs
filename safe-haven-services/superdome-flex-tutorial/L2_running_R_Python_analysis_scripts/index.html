@@ -8,23 +8,27 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/jhub/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/">
       
       
+        <link rel="prev" href="../L1_Accessing_the_SDF_Inside_the_EPCC_TRE/">
       
-      <link rel="icon" href="../../images/favicon.ico">
+      
+        <link rel="next" href="../L3_submitting_scripts_to_slurm/">
+      
+      <link rel="icon" href="../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>EIDF Jupyterhub - EIDF User Documentation</title>
+        <title>Running R/Python Scripts - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a6bdf11c.min.css">
       
       
 
@@ -40,11 +44,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/eidf.css">
+      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
     
-      <link rel="stylesheet" href="../../stylesheets/access.css">
+      <link rel="stylesheet" href="../../../stylesheets/access.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eidf-jupyterhub" class="md-skip">
+        <a href="#running-rpython-scripts" class="md-skip">
           Skip to content
         </a>
       
@@ -85,9 +89,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -103,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EIDF Jupyterhub
+              Running R/Python Scripts
             
           </span>
         </div>
@@ -184,9 +188,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     EIDF User Documentation
@@ -214,7 +218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../status/" class="md-nav__link">
+      <a href="../../../status/" class="md-nav__link">
         Service Status
       </a>
     </li>
@@ -229,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Documentation overview
       </a>
     </li>
@@ -271,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+      <a href="../../../overview/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -285,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/acknowledgements/" class="md-nav__link">
+      <a href="../../../overview/acknowledgements/" class="md-nav__link">
         Acknowledgements
       </a>
     </li>
@@ -299,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/contacts/" class="md-nav__link">
+      <a href="../../../overview/contacts/" class="md-nav__link">
         Contact
       </a>
     </li>
@@ -348,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/" class="md-nav__link">
+      <a href="../../../access/" class="md-nav__link">
         Web and SSH
       </a>
     </li>
@@ -362,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/project/" class="md-nav__link">
+      <a href="../../../access/project/" class="md-nav__link">
         EIDF Web Portal
       </a>
     </li>
@@ -376,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         Virtual Desktop Interface
       </a>
     </li>
@@ -452,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/quickstart/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/quickstart/" class="md-nav__link">
         QuickStart
       </a>
     </li>
@@ -466,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/docs/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/docs/" class="md-nav__link">
         Managing VMs
       </a>
     </li>
@@ -480,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         Virtual Desktop Interface
       </a>
     </li>
@@ -494,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../../access/ssh/" class="md-nav__link">
         SSH Access to VMs
       </a>
     </li>
@@ -508,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines/flavours/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/flavours/" class="md-nav__link">
         VM Flavours
       </a>
     </li>
@@ -556,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart/" class="md-nav__link">
+      <a href="../../../services/jhub/quickstart/" class="md-nav__link">
         QuickStart
       </a>
     </li>
@@ -570,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorial/" class="md-nav__link">
+      <a href="../../../services/jhub/tutorial/" class="md-nav__link">
         Tutorial
       </a>
     </li>
@@ -584,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docs/" class="md-nav__link">
+      <a href="../../../services/jhub/docs/" class="md-nav__link">
         Documentation
       </a>
     </li>
@@ -632,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cs2/access/" class="md-nav__link">
+      <a href="../../../services/cs2/access/" class="md-nav__link">
         Get Access
       </a>
     </li>
@@ -646,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cs2/run/" class="md-nav__link">
+      <a href="../../../services/cs2/run/" class="md-nav__link">
         Running codes
       </a>
     </li>
@@ -694,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/access/" class="md-nav__link">
+      <a href="../../../services/ultra2/access/" class="md-nav__link">
         Get Access
       </a>
     </li>
@@ -708,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/run/" class="md-nav__link">
+      <a href="../../../services/ultra2/run/" class="md-nav__link">
         Running codes
       </a>
     </li>
@@ -791,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datacatalogue/metadata/" class="md-nav__link">
+      <a href="../../../services/datacatalogue/metadata/" class="md-nav__link">
         Metadata information
       </a>
     </li>
@@ -818,14 +822,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
       
       
       
@@ -834,7 +840,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Safe Haven Services
@@ -847,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -861,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/network-access-controls/" class="md-nav__link">
+      <a href="../../network-access-controls/" class="md-nav__link">
         Network Access Controls
       </a>
     </li>
@@ -875,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/safe-haven-access/" class="md-nav__link">
+      <a href="../../safe-haven-access/" class="md-nav__link">
         Safe Haven Access
       </a>
     </li>
@@ -889,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/virtual-desktop-connections/" class="md-nav__link">
+      <a href="../../virtual-desktop-connections/" class="md-nav__link">
         Virtual Desktop Connections
       </a>
     </li>
@@ -903,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/using-the-hpc-cluster/" class="md-nav__link">
+      <a href="../../using-the-hpc-cluster/" class="md-nav__link">
         Using the HPC Cluster
       </a>
     </li>
@@ -915,14 +921,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
       
       
       
@@ -931,7 +939,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7_6">
           <span class="md-nav__icon md-icon"></span>
           Superdome Flex Tutorial
@@ -944,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
+      <a href="../L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
         Accessing the SDF Inside the EPCC TRE
       </a>
     </li>
@@ -956,11 +964,73 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Running R/Python Scripts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Running R/Python Scripts
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-conda-environments-on-you-first-connection-to-the-sdf" class="md-nav__link">
+    Setting up conda environments on you first connection to the SDF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-up-to-date-python-version" class="md-nav__link">
+    Getting an up-to-date python version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-r-scripts-on-the-sdf" class="md-nav__link">
+    Running R scripts on the SDF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-points" class="md-nav__link">
+    Final points
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -972,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+      <a href="../L3_submitting_scripts_to_slurm/" class="md-nav__link">
         Submitting Scripts to Slurm
       </a>
     </li>
@@ -986,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../L4_parallelised_python_analysis/" class="md-nav__link">
         Parallelised Python Analysis
       </a>
     </li>
@@ -1000,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../L5_parallelised_r_analysis/" class="md-nav__link">
         Parallelised R Analysis
       </a>
     </li>
@@ -1083,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/workshops/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/workshops/" class="md-nav__link">
         Workshop Notebook Service
       </a>
     </li>
@@ -1097,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/safe-registration/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/safe-registration/" class="md-nav__link">
         Workshop Virtual Machines
       </a>
     </li>
@@ -1111,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bespoke/eddash/jhub-git/" class="md-nav__link">
+      <a href="../../../bespoke/eddash/jhub-git/" class="md-nav__link">
         JupyterHub Notebook Service Access
       </a>
     </li>
@@ -1140,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../known-issues/" class="md-nav__link">
+      <a href="../../../known-issues/" class="md-nav__link">
         EIDF Known Issues
       </a>
     </li>
@@ -1155,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         EIDF Frequently Asked Questions
       </a>
     </li>
@@ -1182,6 +1252,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-conda-environments-on-you-first-connection-to-the-sdf" class="md-nav__link">
+    Setting up conda environments on you first connection to the SDF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-up-to-date-python-version" class="md-nav__link">
+    Getting an up-to-date python version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-r-scripts-on-the-sdf" class="md-nav__link">
+    Running R scripts on the SDF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-points" class="md-nav__link">
+    Final points
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1198,10 +1304,63 @@
   
 
 
-<h1 id="eidf-jupyterhub">EIDF Jupyterhub</h1>
-<p><a href="./quickstart/">QuickStart</a></p>
-<p><a href="./tutorial/">Tutorial</a></p>
-<p><a href="./docs/">Documentation</a></p>
+<h1 id="running-rpython-scripts">Running R/Python Scripts</h1>
+<p>Running analysis scripts on the SDF is slightly different to running scripts on the Desktop VMs.
+The Linux distribution differs between the two with the SDF using Red Hat Enterprise Linux (RHEL) and the Desktop VMs using Ubuntu.
+Therefore, it is highly advisable to use virtual environments (e.g. conda environments) to complete any analysis and aid the transition between the two distributions.
+Conda should run out of the box on the Desktop VMs, but some configuration is required on the SDF.</p>
+<h2 id="setting-up-conda-environments-on-you-first-connection-to-the-sdf">Setting up conda environments on you first connection to the SDF</h2>
+<div class="highlight"><pre><span></span><code>***<span class="w"> </span>SDF<span class="w"> </span>Terminal<span class="w"> </span>***
+
+conda<span class="w"> </span>activate<span class="w"> </span>base<span class="w"> </span><span class="c1"># Test conda environment</span>
+
+<span class="c1"># Conda command will not be found. There is no need to install!</span>
+
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/opt/anaconda3/bin/conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># Tells your terminal where conda is</span>
+
+conda<span class="w"> </span>init<span class="w"> </span><span class="c1"># changes your .bashrc file so conda is automatically available in the future</span>
+
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="c1"># stop conda base from being activated on startup</span>
+
+python<span class="w"> </span><span class="c1"># note python version</span>
+
+exit<span class="o">()</span>
+</code></pre></div>
+<p>The base conda environment is now available but note that the python and gcc compilers are not the latest (Python 3.9.7 and gcc 7.5.0).</p>
+<h2 id="getting-an-up-to-date-python-version">Getting an up-to-date python version</h2>
+<p>In order to get an up-to-date python version we first need to use an updated gcc version.
+Fortunately, conda has an updated gcc toolset that can be installed.</p>
+<div class="highlight"><pre><span></span><code>***<span class="w"> </span>SDF<span class="w"> </span>Terminal<span class="w"> </span>***
+
+conda<span class="w"> </span>activate<span class="w"> </span>base<span class="w"> </span><span class="c1"># If conda isn&#39;t already active</span>
+
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>python-v3.11<span class="w"> </span>gcc_linux-64<span class="o">=</span><span class="m">11</span>.2.0<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11.3
+
+conda<span class="w"> </span>activate<span class="w"> </span>python-v3.11
+
+python
+
+exit<span class="o">()</span>
+</code></pre></div>
+<h2 id="running-r-scripts-on-the-sdf">Running R scripts on the SDF</h2>
+<p>The default version of R available on the SDF is v4.1.2. Alternative R versions can be installed using conda similar to the python conda environment above.</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>r-v4.3<span class="w"> </span>gcc_linux-64<span class="o">=</span><span class="m">11</span>.2.0<span class="w"> </span>r-base<span class="o">=</span><span class="m">4</span>.3
+
+conda<span class="w"> </span>activate<span class="w"> </span>r-v4.3
+
+R
+
+q<span class="o">()</span>
+</code></pre></div>
+<h2 id="final-points">Final points</h2>
+<ul>
+<li>
+<p>The SDF, like the rest of the SHS, is separated from the internet. The installation of python/R libraries to your environment is from a local copy of the respective conda/CRAN library repositories. Therefore, not all packages may be available and not all package versions may be available.</p>
+</li>
+<li>
+<p>It is discouraged to run extensive python/R analyses without submitting them as job requests using Slurm.</p>
+</li>
+</ul>
 
 
 
@@ -1239,10 +1398,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fac441b0.min.js"></script>
       
     
   </body>
