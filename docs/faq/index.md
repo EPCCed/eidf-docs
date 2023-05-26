@@ -31,3 +31,9 @@ ssh -o ProxyCommand="ssh -i ~/.ssh/<gateway_private_key> -W %h:%p <gateway_usern
 ```
 
 Note that for the majority of users, gateway_username and vm_username are the same, as are gateway_private_key and vm_private_key
+
+### Username Policy
+
+I already have an EIDF username for project Y, can I use this for project X?
+
+We mandate that every username must be unique across our estate. EPCC machines including EIDF services such as the SDF and DSC VMs, and HPC services such as Cirrus require you to create a new machine account with a unique username for each project you work on. Usernames cannot be used on multiple projects, even if the previous project has finished. However, some projects span multiple machines so you may be able to login to multiple machines with the same username.
