@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
     
     
       
@@ -1226,6 +1226,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#username-policy" class="md-nav__link">
+    Username Policy
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1301,6 +1308,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#username-policy" class="md-nav__link">
+    Username Policy
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1341,6 +1355,9 @@
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">&quot;ssh -i ~/.ssh/&lt;gateway_private_key&gt; -W %h:%p &lt;gateway_username&gt;@eidf-gateway.epcc.ed.ac.uk&quot;</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/&lt;vm_private_key&gt;<span class="w"> </span>&lt;vm_username&gt;@&lt;vm_ip&gt;
 </code></pre></div>
 <p>Note that for the majority of users, gateway_username and vm_username are the same, as are gateway_private_key and vm_private_key</p>
+<h3 id="username-policy">Username Policy</h3>
+<p>I already have an EIDF username for project Y, can I use this for project X?</p>
+<p>We mandate that every username must be unique across our estate. EPCC machines including EIDF services such as the SDF and DSC VMs, and HPC services such as Cirrus require you to create a new machine account with a unique username for each project you work on. Usernames cannot be used on multiple projects, even if the previous project has finished. However, some projects span multiple machines so you may be able to login to multiple machines with the same username.</p>
 
 
 
@@ -1381,7 +1398,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>
