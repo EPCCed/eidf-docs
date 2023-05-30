@@ -44,6 +44,10 @@ nav:
       - "Virtual Desktop Interface": access/virtualmachines-vdi.md
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
+    - "Managed File Transfer":
+        - "Quickstart": services/mft/quickstart.md
+        - "Using the MFT": services/mft/using-the-mft.md
+        - "SFTP": services/mft/sftp.md
     - "Managed JupyterHub":
       - "QuickStart": services/jhub/quickstart.md
       - "Tutorial": services/jhub/tutorial.md
