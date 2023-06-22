@@ -54,6 +54,12 @@ nav:
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
       - "Running codes": services/ultra2/run.md
+    - "Container Service":
+      - "Overview": services/containerservice/index.md
+      - "Tutorial":
+         - "Getting Started": services/containerservice/training/L1_getting_started.md
+         - "Persistent Volumes": services/containerservice/training/L2_requesting_persistent_volumes.md
+         - "Running a Pytorch Pod": services/containerservice/training/L3_running_a_pytorch_task.md
   - "Data Management Services":
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
