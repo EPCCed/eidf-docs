@@ -49,85 +49,85 @@ This example uses their CUDA sample code simulating nbody interactions.
 Note how you specify the use of a GPU by setting `limits: nvidia.com/gpu: 1`.
 
 1. Open an editor of your choice and create the file test_NBody.yml
-2. Copy the following in to the file:
+1. Copy the following in to the file:
 
-``` yaml
-apiVersion: v1
-kind: Pod
-metadata:
- generateName: first-pod-
-spec:
- restartPolicy: OnFailure
- containers:
-  - name: cudasample
-    image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
-    args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
-    resources:
-     limits:
-       nvidia.com/gpu: 1
-```
+    ``` yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    generateName: first-pod-
+    spec:
+    restartPolicy: OnFailure
+    containers:
+    - name: cudasample
+        image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
+        args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
+        resources:
+        limits:
+        nvidia.com/gpu: 1
+    ```
 
-3. Save the file and exit the editor
-4. Run `kubectl create -f test_NBody.yml'
-5. This will output something like:
+1. Save the file and exit the editor
+1. Run `kubectl create -f test_NBody.yml'
+1. This will output something like:
 
-``` bash
-pod/first-pod-7gdtb created
-```
+    ``` bash
+    pod/first-pod-7gdtb created
+    ```
 
-6. Run `kubectl get pods`
-7. This will output something like:
+1. Run `kubectl get pods`
+1. This will output something like:
 
-``` bash
-pi-tt9kq                                                          0/1     Completed   0              24h
-first-pod-24n7n                                                   0/1     Completed   0              24h
-first-pod-2j5tc                                                   0/1     Completed   0              24h
-first-pod-2kjbx                                                   0/1     Completed   0              24h
-sample-2mnvg                                                      0/1     Completed   0              24h
-sample-4sng2                                                      0/1     Completed   0              24h
-sample-5h6sr                                                      0/1     Completed   0              24h
-sample-6bqql                                                      0/1     Completed   0              24h
-first-pod-7gdtb                                                   0/1     Completed   0              39s
-sample-8dnht                                                      0/1     Completed   0              24h
-sample-8pxz4                                                      0/1     Completed   0              24h
-sample-bphjx                                                      0/1     Completed   0              24h
-sample-cp97f                                                      0/1     Completed   0              24h
-sample-gcbbb                                                      0/1     Completed   0              24h
-sample-hdlrr                                                      0/1     Completed   0              24h
-```
+    ``` bash
+    pi-tt9kq                                                          0/1     Completed   0              24h
+    first-pod-24n7n                                                   0/1     Completed   0              24h
+    first-pod-2j5tc                                                   0/1     Completed   0              24h
+    first-pod-2kjbx                                                   0/1     Completed   0              24h
+    sample-2mnvg                                                      0/1     Completed   0              24h
+    sample-4sng2                                                      0/1     Completed   0              24h
+    sample-5h6sr                                                      0/1     Completed   0              24h
+    sample-6bqql                                                      0/1     Completed   0              24h
+    first-pod-7gdtb                                                   0/1     Completed   0              39s
+    sample-8dnht                                                      0/1     Completed   0              24h
+    sample-8pxz4                                                      0/1     Completed   0              24h
+    sample-bphjx                                                      0/1     Completed   0              24h
+    sample-cp97f                                                      0/1     Completed   0              24h
+    sample-gcbbb                                                      0/1     Completed   0              24h
+    sample-hdlrr                                                      0/1     Completed   0              24h
+    ```
 
-8. View the logs of the pod you ran `kubectl logs first-pod-7gdtb`
-9. This will output something like:
+1. View the logs of the pod you ran `kubectl logs first-pod-7gdtb`
+1. This will output something like:
 
-``` bash
-Run "nbody -benchmark [-numbodies=<numBodies>]" to measure performance.
-    -fullscreen       (run n-body simulation in fullscreen mode)
-    -fp64             (use double precision floating point values for simulation)
-    -hostmem          (stores simulation data in host memory)
-    -benchmark        (run benchmark to measure performance)
-    -numbodies=<N>    (number of bodies (>= 1) to run in simulation)
-    -device=<d>       (where d=0,1,2.... for the CUDA device to use)
-    -numdevices=<i>   (where i=(number of CUDA devices > 0) to use for simulation)
-    -compare          (compares simulation results running once on the default GPU and once on the CPU)
-    -cpu              (run n-body simulation on the CPU)
-    -tipsy=<file.bin> (load a tipsy model file for simulation)
+    ``` bash
+    Run "nbody -benchmark [-numbodies=<numBodies>]" to measure performance.
+        -fullscreen       (run n-body simulation in fullscreen mode)
+        -fp64             (use double precision floating point values for simulation)
+        -hostmem          (stores simulation data in host memory)
+        -benchmark        (run benchmark to measure performance)
+        -numbodies=<N>    (number of bodies (>= 1) to run in simulation)
+        -device=<d>       (where d=0,1,2.... for the CUDA device to use)
+        -numdevices=<i>   (where i=(number of CUDA devices > 0) to use for simulation)
+        -compare          (compares simulation results running once on the default GPU and once on the CPU)
+        -cpu              (run n-body simulation on the CPU)
+        -tipsy=<file.bin> (load a tipsy model file for simulation)
 
-NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
+    NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
 
-> Fullscreen mode
-> Simulation data stored in video memory
-> Double precision floating point simulation
-> 1 Devices used for simulation
-GPU Device 0: "Ampere" with compute capability 8.0
+    > Fullscreen mode
+    > Simulation data stored in video memory
+    > Double precision floating point simulation
+    > 1 Devices used for simulation
+    GPU Device 0: "Ampere" with compute capability 8.0
 
-> Compute 8.0 CUDA device: [NVIDIA A100-SXM4-40GB]
-number of bodies = 512000
-512000 bodies, total time for 10 iterations: 10570.778 ms
-= 247.989 billion interactions per second
-= 7439.679 double-precision GFLOP/s at 30 flops per interaction
-```
+    > Compute 8.0 CUDA device: [NVIDIA A100-SXM4-40GB]
+    number of bodies = 512000
+    512000 bodies, total time for 10 iterations: 10570.778 ms
+    = 247.989 billion interactions per second
+    = 7439.679 double-precision GFLOP/s at 30 flops per interaction
+    ```
 
-10. delete your pod with `kubectl delete pod first-pod-7gdtb`
+1. delete your pod with `kubectl delete pod first-pod-7gdtb`
 
 ## Specifying GPU requirements
 
