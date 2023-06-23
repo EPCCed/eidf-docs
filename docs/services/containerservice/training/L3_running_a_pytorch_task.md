@@ -142,23 +142,23 @@ spec:
 
 This is not intended to be an introduction to PyTorch, please see the [online tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html) for details about the model.
 
-1) Check model ran to completion
+1. Check model ran to completion
 
-```bash
-kubectl logs <pytorch-pod-name>
-```
+    ```bash
+    kubectl logs <pytorch-pod-name>
+    ```
 
-1) Spin up lightweight pod to retrieve results
+1. Spin up lightweight pod to retrieve results
 
-```bash
-kubectl create -f lightweight-pod.yaml
-```
+    ```bash
+    kubectl create -f lightweight-pod.yaml
+    ```
 
-1) Copy trained model back to the head node
+1. Copy trained model back to the head node
 
-```bash
-kubectl cp lightweight-pod:/mnt/ceph_rbd/example_pytorch_code.py ./
-```
+    ```bash
+    kubectl cp lightweight-pod:mnt/ceph_rbd/model.pth model.pth
+    ```
 
 ## Clean up
 
