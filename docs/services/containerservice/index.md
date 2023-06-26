@@ -1,17 +1,19 @@
 # Overview
 
 The EIDF Container Service (EIDFCS) uses Nvidia A100 GPUs as accelerators.
-Full Nvidia A100 GPUs are either connected to 40GBs or 80GBs of dynamic memory.
+
+Full Nvidia A100 GPUs are either connected to 40GBs of dynamic memory.
+
 Multi-instance usage (MIG) GPUs allow multiple tasks or users to share the same GPU (similar to CPU threading).
+
 There are two types of MIG GPUs inside the EIDFCS the Nvidia A100 3G.20GB GPUs and the Nvidia A100 1G.5GB GPUs which equate to ~1/2 and ~1/7 of a full Nvidia A100 40 GB GPU.
 
 The current specification of the EIDFCS is:
 
-- 2368 CPU Cores
-- 12 TiB Memory
-- Local Disk Space (Node Image Cache and Local Workspace) - 28 TiB
+- 1856 CPU Cores
+- 8.7 TiB Memory
+- Local Disk Space (Node Image Cache and Local Workspace) - 21 TiB
 - Ceph Persistent Volumes (Long Term Data) - up to 100TiB
-- 32 Nvidia A100 80 GB GPUs
 - 70 Nvidia A100 40 GB GPUs
 - 14 MIG Nvidia A100 40 GB GPUs equating to 28 Nvidia A100 3G.20GB GPUs
 - 20 MIG Nvidia A100 40 GB GPU equating to 140 A100 1G.5GB GPUs
