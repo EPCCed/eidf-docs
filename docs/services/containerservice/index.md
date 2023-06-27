@@ -28,6 +28,16 @@ Project Leads will be able to have access to the EIDFCS added to their project d
 
 Each project will be given a namespace to operate in and a kubeconfig file in a Virtual Machine on the EIDF DSC - information on access to VMs is [available here](../../access/virtualmachines-vdi.md).
 
+## Project Quotas
+
+A standard project namespace has the following initial quota (subject to ongoing review):
+
+- CPU: 100 Cores
+- Memory: 1TiB
+- GPU: 12
+
+Note these quotas are maximum use by a single project, and that during periods of high usage Kubernetes Jobs maybe queued waiting for resource to become available on the cluster.
+
 ## EIDF Container Service Tutorial
 
 This tutorial teaches users how to submit tasks to the EIDFCS, but it is not a comprehensive overview of Kubernetes.
