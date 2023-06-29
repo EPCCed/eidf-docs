@@ -131,31 +131,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://epcced.github.io/eidf-docs/services/containerservice/</loc>
-         <lastmod>2023-06-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://epcced.github.io/eidf-docs/services/containerservice/training/L1_getting_started/</loc>
-         <lastmod>2023-06-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://epcced.github.io/eidf-docs/services/containerservice/training/L2_requesting_persistent_volumes/</loc>
-         <lastmod>2023-06-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://epcced.github.io/eidf-docs/services/containerservice/training/L3_running_a_pytorch_task/</loc>
-         <lastmod>2023-06-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://epcced.github.io/eidf-docs/services/containerservice/training/L4_template_workflow/</loc>
-         <lastmod>2023-06-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://epcced.github.io/eidf-docs/services/cs2/</loc>
          <lastmod>2023-06-29</lastmod>
          <changefreq>daily</changefreq>
