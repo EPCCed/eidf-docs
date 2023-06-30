@@ -25,7 +25,7 @@ how to register and receive your password.
 1. Select the project that you want to join in the "Project" dropdown list -
    you can search for the project name or the project code, e.g. "eidf0123".
 
-Now you have to wait for your PI or project manager to accept your request to join.
+The project PI or manager will then need to accept your request to join the project.
 
 ## Accessing a VM
 
@@ -41,8 +41,12 @@ Now you have to wait for your PI or project manager to accept your request to jo
 1. Choose the SSH connection to log in for the first time. You will be asked to reset the password.
 
 !!! warning
-    Do not use RDP to login for the first time as you have to reset your password.
-    Always use SSH to login to the VM for the first time.
+    The first time you log in to a new project you are required to change your one-time password.
+    The password is visible through the project page of the [EIDF Portal](https://portal.eidf.ac.uk/)
+    or via [SAFE](https://safe.epcc.ed.ac.uk/). The password
+    cannot be changed using the RDP login, or by using a direct SSH via the [jumphost](../../access/ssh.md) and you must 
+    use SSH via [VDI](https://eidf-vdi.epcc.ed.ac.uk/vdi/) in the
+    web browser.
 
 ## Further information
 
