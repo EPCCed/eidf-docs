@@ -54,7 +54,7 @@ nav:
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
       - "Running codes": services/ultra2/run.md
-    - "Container Service":
+    - "GPU Service":
       - "Overview": services/containerservice/index.md
       - "Tutorial":
          - "Getting Started": services/containerservice/training/L1_getting_started.md

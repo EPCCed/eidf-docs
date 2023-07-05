@@ -6,7 +6,7 @@ Kubernetes (K8s) is a systems administration tool originally developed by Google
 
 Nvidia have created drivers to officially support clusters of Nvidia GPUs managed by K8s.
 
-Using K8s to manage the EIDFCS provides two key advantages:
+Using K8s to manage the EIDFGPUS provides two key advantages:
 
 - native support for containers enabling reproducible analysis whilst minimising demand on system admin.
 - automated resource allocation for GPUs and storage volumes that are shared across multiple users.

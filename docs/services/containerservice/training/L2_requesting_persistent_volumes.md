@@ -1,6 +1,6 @@
 # Requesting Persistent Volumes With Kubernetes
 
-Pods in the K8s EIDFCS are intentionally ephemeral.
+Pods in the K8s EIDFGPUS are intentionally ephemeral.
 
 They only last as long as required to complete the task that they were created for.
 
@@ -20,11 +20,11 @@ Before a persistent volume can be mounted to a pod, the required storage resourc
 
 A PersistentVolumeClaim (PVC) needs to be submitted to K8s to request the storage resources.
 
-The storage resources are held on a Ceph server which can accept requests up 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDFCS. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.
+The storage resources are held on a Ceph server which can accept requests up 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDFGPUS. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.
 
 Example PVCs can be seen on the [Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) documentation page.
 
-All PVCs on the EIDFCS must use the `csi-rbd-sc` storage class.
+All PVCs on the EIDFGPUS must use the `csi-rbd-sc` storage class.
 
 ### Example PersistentVolumeClaim
 

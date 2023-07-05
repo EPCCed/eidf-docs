@@ -1,6 +1,6 @@
 # Running a PyTorch task
 
-In the following lesson, we’ll build a NLP neural network and train it using the EIDFCS.
+In the following lesson, we’ll build a NLP neural network and train it using the EIDFGPUS.
 
 The model was taken from the [PyTorch Tutorials](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
@@ -8,7 +8,7 @@ The lesson will be split into three parts:
 
 - Requesting a persistent volume and transferring code/data to it
 - Creating a pod with a PyTorch container downloaded from DockerHub
-- Submitting pod to the EIDFCS and retrieving the results
+- Submitting pod to the EIDFGPUS and retrieving the results
 
 ## Load training data and ML code into a persistent volume
 
