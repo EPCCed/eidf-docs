@@ -2,7 +2,7 @@
 
 The EIDF GPU Service (EIDFGPUS) uses Nvidia A100 GPUs as accelerators.
 
-Full Nvidia A100 GPUs are either connected to 40GBs of dynamic memory.
+Full Nvidia A100 GPUs are connected to 40GB of dynamic memory.
 
 Multi-instance usage (MIG) GPUs allow multiple tasks or users to share the same GPU (similar to CPU threading).
 
