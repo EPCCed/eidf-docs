@@ -54,6 +54,12 @@ nav:
     - "Ultra2":
       - "Get Access": services/ultra2/access.md
       - "Running codes": services/ultra2/run.md
+    - "GPU Service":
+      - "Overview": services/gpuservice/index.md
+      - "Tutorial":
+         - "Getting Started": services/gpuservice/training/L1_getting_started.md
+         - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
+         - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
   - "Data Management Services":
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
@@ -76,3 +82,6 @@ nav:
         - "JupyterHub Notebook Service Access": bespoke/eddash/jhub-git.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
+
+
+dev_addr: 0.0.0.0:8000
