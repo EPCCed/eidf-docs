@@ -38,6 +38,10 @@ A standard project namespace has the following initial quota (subject to ongoing
 
 Note these quotas are maximum use by a single project, and that during periods of high usage Kubernetes Jobs maybe queued waiting for resource to become available on the cluster.
 
+## Additional Service Policy Information
+
+Additional information on service policies can be found [here](policies.md).
+
 ## EIDF GPU Service Tutorial
 
 This tutorial teaches users how to submit tasks to the EIDFGPUS, but it is not a comprehensive overview of Kubernetes.
