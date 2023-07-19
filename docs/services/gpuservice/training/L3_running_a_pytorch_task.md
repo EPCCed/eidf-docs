@@ -89,6 +89,10 @@ spec:
    resources:
     requests:
      cpu: 1
+     memory: "1Gi"
+    limits:
+     cpu: 1
+     memory: "1Gi"
    volumeMounts:
    - mountPath: /mnt/ceph_rbd
      name: volume
@@ -128,7 +132,12 @@ spec:
    - mountPath: /mnt/ceph_rbd
      name: volume
    resources:
+    requests:
+     cpu: 2
+     memory: "1Gi"
     limits:
+     cpu: 4
+     memory: "4Gi"
      nvidia.com/gpu: 1
  nodeSelector:
   nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
