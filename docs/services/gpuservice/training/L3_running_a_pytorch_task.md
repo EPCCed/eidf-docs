@@ -1,14 +1,14 @@
 # Running a PyTorch task
 
-In the following lesson, we’ll build a NLP neural network and train it using the EIDFGPUS.
+In the following lesson, we'll build a NLP neural network and train it using the EIDFGPUS.
 
 The model was taken from the [PyTorch Tutorials](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
 The lesson will be split into three parts:
 
-- Requesting a persistent volume and transferring code/data to it
-- Creating a pod with a PyTorch container downloaded from DockerHub
-- Submitting pod to the EIDFGPUS and retrieving the results
+-   Requesting a persistent volume and transferring code/data to it
+-   Creating a pod with a PyTorch container downloaded from DockerHub
+-   Submitting a job to the EIDFGPUS and retrieving the results
 
 ## Load training data and ML code into a persistent volume
 
@@ -16,13 +16,13 @@ The lesson will be split into three parts:
 
 Request memory from the Ceph server by submitting a PVC to K8s (example pvc spec yaml below).
 
-```bash
+``` bash
 kubectl create -f <pvc-spec-yaml>
 ```
 
 ### Example PyTorch PersistentVolumeClaim
 
-```yaml
+``` yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -38,45 +38,45 @@ spec:
 
 ### Transfer code/data to persistent volume
 
-1. Check PVC has been created
+1.  Check PVC has been created
 
-    ```bash
+    ``` bash
     kubectl get pvc <pv-name>
     ```
 
-1. Create a lightweight pod with PV mounted (example pod below)
+2.  Create a lightweight pod with PV mounted (example pod below)
 
-    ```bash
+    ``` bash
     kubectl create -f lightweight-pod.yaml
     ```
 
-1. Download the pytorch code
+3.  Download the pytorch code
 
-    ```bash
+    ``` bash
     wget https://github.com/EPCCed/eidf-docs/raw/main/docs/services/gpuservice/training/resources/example_pytorch_code.py
     ```
 
-1. Copy python script into the PV
+4.  Copy python script into the PV
 
-    ```bash
+    ``` bash
     kubectl cp example_pytorch_code.py lightweight-pod:/mnt/ceph_rbd/
     ```
 
-1. Check files were transferred successfully
+5.  Check files were transferred successfully
 
-    ```bash
+    ``` bash
     kubectl exec lightweight-pod -- ls /mnt/ceph_rbd
     ```
 
-1. Delete lightweight pod
+6.  Delete lightweight pod
 
-    ```bash
+    ``` bash
     kubectl delete pod lightweight-pod
     ```
 
 ### Example lightweight pod specification
 
-```yaml
+``` yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -106,13 +106,13 @@ The PyTorch container will be held within a pod that has the persistent volume m
 
 Submit the specification file to K8s to create the pod.
 
-```bash
+``` bash
 kubectl create -f <pytorch-pod-yaml>
 ```
 
 ### Example PyTorch Pod Specification File
 
-```yaml
+``` yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -142,27 +142,72 @@ spec:
 
 This is not intended to be an introduction to PyTorch, please see the [online tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html) for details about the model.
 
-1. Check model ran to completion
+1.  Check model ran to completion
 
-    ```bash
+    ``` bash
     kubectl logs <pytorch-pod-name>
     ```
 
-1. Spin up lightweight pod to retrieve results
+2.  Spin up lightweight pod to retrieve results
 
-    ```bash
+    ``` bash
     kubectl create -f lightweight-pod.yaml
     ```
 
-1. Copy trained model back to the head node
+3.  Copy trained model back to the head node
 
-    ```bash
+    ``` bash
     kubectl cp lightweight-pod:mnt/ceph_rbd/model.pth model.pth
     ```
 
+## Using a Kubernetes job to train the pytorch model
+
+A common ML training workflow may consist of training multiple iterations of a model: such as models with different hyperparameters or models trained on multiple different data sets.
+
+A Kubernetes job can create and manage multiple pods with identical or different initial parameters.
+
+NVIDIA provide a detailed tutorial on how to conduct a ML hyperparameter search with a [Kubernetes job](https://developer.nvidia.com/blog/kubernetes-ai-hyperparameter-search-experiments/).
+
+Below is an example job yaml for running the pytorch model which will continue to create pods until three have successfully completed the task of training the model.
+
+``` yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: pytorch-job
+spec:
+ completions: 3
+ parallelism: 1
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+   - name: pytorch-con
+     image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+     command: ["python3"]
+     args: ["/mnt/ceph_rbd/example_pytorch_code.py"]
+     volumeMounts:
+     - mountPath: /mnt/ceph_rbd
+       name: volume
+     resources:
+      requests:
+       cpu: 1
+       memory: "4Gi"
+      limits:
+       cpu: 1
+       memory: "8Gi"
+       nvidia.com/gpu: 1
+   nodeSelector:
+    nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+   volumes:
+   - name: volume
+     persistentVolumeClaim:
+      claimName: pytorch-pvc
+```
+
 ## Clean up
 
-```bash
+``` bash
 kubectl delete pod pytorch-pod
 
 kubectl delete pv pytorch-pvc
