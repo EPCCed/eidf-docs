@@ -219,5 +219,7 @@ spec:
 ``` bash
 kubectl delete pod pytorch-pod
 
+kubectl delete pod pytorch-job
+
 kubectl delete pv pytorch-pvc
 ```
