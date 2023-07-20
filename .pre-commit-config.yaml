@@ -1,12 +1,11 @@
 repos:
   # Various built-in pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: "v4.0.1"
+    rev: "v4.4.0"
     hooks:
       # General
       - id: check-added-large-files
       - id: check-case-conflict
-      - id: check-executables-have-shebangs
       - id: check-json
       - id: check-merge-conflict
       - id: check-yaml
@@ -14,8 +13,10 @@ repos:
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
+      - id: no-commit-to-branch
+      - id: requirements-txt-fixer
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: "2.1.5"
+  - repo: https://github.com/agngrant/pre-commit-hooks
+    rev: "0.0.1"
     hooks:
       - id: markdownlint
