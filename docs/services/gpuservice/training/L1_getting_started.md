@@ -46,25 +46,42 @@ The list of docker images is available on their [website](https://catalog.ngc.nv
 
 This example uses their CUDA sample code simulating nbody interactions.
 
-Note how you specify the use of a GPU by setting `limits: nvidia.com/gpu: 1`.
-
 1. Open an editor of your choice and create the file test_NBody.yml
 1. Copy the following in to the file:
+
+The pod resources are defined with the `requests` and `limits` tags.
+
+Resources defined in the `requests` tags are the minimum possible resources required for the pod to run. 
+
+If a pod is assigned to an unused node then it may use resources beyond those requested.
+
+This may allow the task within the pod to run faster, but it also runs the risk of unnecessarily blocking off resources for future pod requests.
+
+The `limits` tag specifies the maximum resources that can be assigned to a pod.
+
+The EIDFGPUS cluster requires all pods to have `requests` and `limits` tags for cpu and memory resources in order to be accepted.
+
+Finally, it optional to define GPU resources but only the `limits` tag is used to specify the use of a GPU, `limits: nvidia.com/gpu: 1`.
 
     ``` yaml
     apiVersion: v1
     kind: Pod
     metadata:
-    generateName: first-pod-
+     generateName: first-pod-
     spec:
-    restartPolicy: OnFailure
-    containers:
-    - name: cudasample
-        image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
-        args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
-        resources:
+     restartPolicy: OnFailure
+     containers:
+     - name: cudasample
+       image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
+       args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
+       resources:
+        requests:
+         cpu: 2
+         memory: "1Gi"
         limits:
-        nvidia.com/gpu: 1
+         cpu: 4
+         memory: "4Gi"
+         nvidia.com/gpu: 1
     ```
 
 1. Save the file and exit the editor
@@ -156,7 +173,12 @@ spec:
     image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
     args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
     resources:
+     requests:
+      cpu: 2
+      memory: "1Gi"
      limits:
+      cpu: 4
+      memory: "4Gi"
       nvidia.com/gpu: 1
  nodeSelector:
   nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
