@@ -56,6 +56,7 @@ nav:
       - "Running codes": services/ultra2/run.md
     - "GPU Service":
       - "Overview": services/gpuservice/index.md
+      - "Policies": services/gpuservice/policies.md
       - "Tutorial":
          - "Getting Started": services/gpuservice/training/L1_getting_started.md
          - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
