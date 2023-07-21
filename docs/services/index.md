@@ -4,6 +4,8 @@
 
 [Data Science Virtual Desktops](./virtualmachines/)
 
+[Managed File Transfer](./mft/)
+
 [Managed JupyterHub](./jhub/)
 
 [Cerebras CS-2](./cs2/)

@@ -43,6 +43,7 @@ Now you have to wait for your PI or project manager to accept your request to jo
 !!! warning
     Do not use RDP to login for the first time as you have to reset your password.
     Always use SSH to login to the VM for the first time.
+    This can be done either via the VDI or the EIDF-Gateway Jump Host as described [here.](https://epcced.github.io/eidf-docs/access/ssh/)
 
 ## Further information
 
