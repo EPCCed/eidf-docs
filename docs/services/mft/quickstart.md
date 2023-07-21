@@ -1,6 +1,7 @@
 # Managed File Transfer
 
 ## Getting to the MFT
+
 The EIDF MFT can be accessed at [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk)
 
 ## How it works
@@ -15,5 +16,6 @@ Others = r
 Once the file is opened on the VM, the user that opened it will become the owner and they can make further changes.
 
 ## Gaining access to the MFT
+
 By default a project won't have access to the MFT, this has to be enabled. Currently this can be done by the PI sending a request to the EIDF Helpdesk.
 Once the project is enabled within the MFT, every user with the project will be able to log into the MFT using their usual EIDF credentials.

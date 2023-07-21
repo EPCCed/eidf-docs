@@ -102,10 +102,10 @@ The '-J' flag is use to specify that we will access the second specified host by
 To access EIDF Services: <br> ```$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]```
 
 ## Password Resets via the EIDF-Gateway
+
 You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly:
 
 ```$ ssh [username]@eidf-gateway.epcc.ed.ac.uk```
-
 
 Your first attempt to log in to your account using the SSH Gateway will prompt you for your initial password (provided in the portal) like a normal login. If this is successful you will choose a new password. You will be asked for your initial password again, followed by two entries of your new password. This will reset the password to your account for both the gateway and the VM. Once this reset has been completed, the session will disconnect and you can login via SSH again using the newly set password.
 You will not be able to directly connect to the gateway again, so to connect to your VM, jump through the SSH Gateway: <br>
