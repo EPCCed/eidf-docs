@@ -221,6 +221,26 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://epcced.github.io/eidf-docs/services/mft/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://epcced.github.io/eidf-docs/services/mft/quickstart/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://epcced.github.io/eidf-docs/services/mft/sftp/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://epcced.github.io/eidf-docs/services/mft/using-the-mft/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://epcced.github.io/eidf-docs/services/rstudioserver/</loc>
          <lastmod>2023-07-21</lastmod>
          <changefreq>daily</changefreq>
