@@ -7,7 +7,7 @@
 These situations are most likely to come about during one of the following scenarios:
 
 1. The retirement of project (usually one month after project end)
-1. A PI tidying up a project requesting the removal of user(s) no longer working on the project
+1. A Principal Investigator (PI) tidying up a project requesting the removal of user(s) no longer working on the project
 1. A user wishing their own account to be removed
 1. A failure by a user to respond to the annual request to verify their email address held in the SAFE
 
