@@ -48,6 +48,7 @@ nav:
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
     #    - "SFTP": services/mft/sftp.md
+      - "Policies": services/virtualmachines/policies.md
     - "Managed JupyterHub":
       - "QuickStart": services/jhub/quickstart.md
       - "Tutorial": services/jhub/tutorial.md
