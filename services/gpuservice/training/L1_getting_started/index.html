@@ -909,6 +909,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-multiple-pods-with-k8s-jobs" class="md-nav__link">
+    Running multiple pods with K8s jobs
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1466,6 +1473,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-multiple-pods-with-k8s-jobs" class="md-nav__link">
+    Running multiple pods with K8s jobs
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1643,6 +1657,38 @@ number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies<
 <span class="w">      </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w"> </span><span class="nt">nodeSelector</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB-MIG-1g.5gb</span>
+</code></pre></div>
+<h2 id="running-multiple-pods-with-k8s-jobs">Running multiple pods with K8s jobs</h2>
+<p>A typical use case of the EIDFGPUS cluster will not consist of sending pod requests directly to Kubernetes.</p>
+<p>Instead, users will use a job request which wraps around a pod specification and provide several useful attributes.</p>
+<p>Firstly, if a pod is assigned to a node that dies then the pod itself will fail and the user has to manually restart it.</p>
+<p>Wrapping a pod within a job enables the self-healing mechanism within K8s so that if a node dies with the job's pod on it then the job will find a new node to automatically restart the pod.</p>
+<p>Furthermore, jobs allow users to define multiple pods that can run in parallel or series and will continue to spawn pods until a specific number of pods successfully terminate.</p>
+<p>See below for an example K8s pod that requires three pods to successfully complete the example CUDA code before the job itself ends.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobtest-</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-test</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 </code></pre></div>
 
 

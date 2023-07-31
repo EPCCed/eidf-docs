@@ -965,6 +965,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-a-kubernetes-job-to-train-the-pytorch-model" class="md-nav__link">
+    Using a Kubernetes job to train the pytorch model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clean-up" class="md-nav__link">
     Clean up
   </a>
@@ -1528,6 +1535,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-a-kubernetes-job-to-train-the-pytorch-model" class="md-nav__link">
+    Using a Kubernetes job to train the pytorch model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clean-up" class="md-nav__link">
     Clean up
   </a>
@@ -1553,13 +1567,13 @@
 
 
 <h1 id="running-a-pytorch-task">Running a PyTorch task</h1>
-<p>In the following lesson, we’ll build a NLP neural network and train it using the EIDFGPUS.</p>
+<p>In the following lesson, we'll build a NLP neural network and train it using the EIDFGPUS.</p>
 <p>The model was taken from the <a href="https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html">PyTorch Tutorials</a>.</p>
 <p>The lesson will be split into three parts:</p>
 <ul>
 <li>Requesting a persistent volume and transferring code/data to it</li>
 <li>Creating a pod with a PyTorch container downloaded from DockerHub</li>
-<li>Submitting pod to the EIDFGPUS and retrieving the results</li>
+<li>Submitting a job to the EIDFGPUS and retrieving the results</li>
 </ul>
 <h2 id="load-training-data-and-ml-code-into-a-persistent-volume">Load training data and ML code into a persistent volume</h2>
 <h3 id="create-a-persistent-volume">Create a persistent volume</h3>
@@ -1692,8 +1706,48 @@
 </code></pre></div>
 </li>
 </ol>
+<h2 id="using-a-kubernetes-job-to-train-the-pytorch-model">Using a Kubernetes job to train the pytorch model</h2>
+<p>A common ML training workflow may consist of training multiple iterations of a model: such as models with different hyperparameters or models trained on multiple different data sets.</p>
+<p>A Kubernetes job can create and manage multiple pods with identical or different initial parameters.</p>
+<p>NVIDIA provide a detailed tutorial on how to conduct a ML hyperparameter search with a <a href="https://developer.nvidia.com/blog/kubernetes-ai-hyperparameter-search-experiments/">Kubernetes job</a>.</p>
+<p>Below is an example job yaml for running the pytorch model which will continue to create pods until three have successfully completed the task of training the model.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-job</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-con</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;python3&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/mnt/ceph_rbd/example_pytorch_code.py&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">nodeSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB-MIG-1g.5gb</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
+</code></pre></div>
 <h2 id="clean-up">Clean up</h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>pytorch-pod
+
+kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>pytorch-job
 
 kubectl<span class="w"> </span>delete<span class="w"> </span>pv<span class="w"> </span>pytorch-pvc
 </code></pre></div>
