@@ -51,7 +51,7 @@ This example uses their CUDA sample code simulating nbody interactions.
 
 The pod resources are defined with the `requests` and `limits` tags.
 
-Resources defined in the `requests` tags are the minimum possible resources required for the pod to run. 
+Resources defined in the `requests` tags are the minimum possible resources required for the pod to run.
 
 If a pod is assigned to an unused node then it may use resources beyond those requested.
 
@@ -63,26 +63,26 @@ The EIDFGPUS cluster requires all pods to have `requests` and `limits` tags for 
 
 Finally, it optional to define GPU resources but only the `limits` tag is used to specify the use of a GPU, `limits: nvidia.com/gpu: 1`.
 
-    ``` yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-     generateName: first-pod-
-    spec:
-     restartPolicy: OnFailure
-     containers:
-     - name: cudasample
-       image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
-       args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
-       resources:
-        requests:
-         cpu: 2
-         memory: "1Gi"
-        limits:
-         cpu: 4
-         memory: "4Gi"
-         nvidia.com/gpu: 1
-    ```
+``` yaml
+apiVersion: v1
+kind: Pod
+metadata:
+generateName: first-pod-
+spec:
+ restartPolicy: OnFailure
+ containers:
+ - name: cudasample
+   image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
+   args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
+   resources:
+    requests:
+     cpu: 2
+     memory: "1Gi"
+    limits:
+     cpu: 4
+     memory: "4Gi"
+     nvidia.com/gpu: 1
+```
 
 1. Save the file and exit the editor
 1. Run `kubectl create -f test_NBody.yml'
