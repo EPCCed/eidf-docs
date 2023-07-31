@@ -17,7 +17,7 @@
         <link rel="next" href="../L2_requesting_persistent_volumes/">
       
       <link rel="icon" href="../../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
@@ -1516,29 +1516,38 @@ Useful commands are:</p>
 <p>Nvidia have several prebuilt docker images to perform different tasks on their GPU hardware.</p>
 <p>The list of docker images is available on their <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/cuda-sample/tags">website</a>.</p>
 <p>This example uses their CUDA sample code simulating nbody interactions.</p>
-<p>Note how you specify the use of a GPU by setting <code>limits: nvidia.com/gpu: 1</code>.</p>
 <ol>
 <li>Open an editor of your choice and create the file test_NBody.yml</li>
-<li>
-<p>Copy the following in to the file:</p>
+<li>Copy the following in to the file:</li>
+</ol>
+<p>The pod resources are defined with the <code>requests</code> and <code>limits</code> tags.</p>
+<p>Resources defined in the <code>requests</code> tags are the minimum possible resources required for the pod to run.</p>
+<p>If a pod is assigned to an unused node then it may use resources beyond those requested.</p>
+<p>This may allow the task within the pod to run faster, but it also runs the risk of unnecessarily blocking off resources for future pod requests.</p>
+<p>The <code>limits</code> tag specifies the maximum resources that can be assigned to a pod.</p>
+<p>The EIDFGPUS cluster requires all pods to have <code>requests</code> and <code>limits</code> tags for cpu and memory resources in order to be accepted.</p>
+<p>Finally, it optional to define GPU resources but only the <code>limits</code> tag is used to specify the use of a GPU, <code>limits: nvidia.com/gpu: 1</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">first-pod-</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
-<span class="nt">containers</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">args</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
+<span class="w"> </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">   </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
+<span class="w">   </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">     </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
 <span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">     </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">     </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">     </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
-</li>
-<li>
-<p>Save the file and exit the editor</p>
-</li>
+<ol>
+<li>Save the file and exit the editor</li>
 <li>Run `kubectl create -f test_NBody.yml'</li>
 <li>
 <p>This will output something like:</p>
@@ -1625,7 +1634,12 @@ number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies<
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
 <span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
 <span class="w">     </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
 <span class="w">      </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w"> </span><span class="nt">nodeSelector</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB-MIG-1g.5gb</span>
