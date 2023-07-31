@@ -198,7 +198,7 @@ Furthermore, jobs allow users to define multiple pods that can run in parallel o
 
 See below for an example K8s pod that requires three pods to successfully complete the example CUDA code before the job itself ends.
 
-```
+``` yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
