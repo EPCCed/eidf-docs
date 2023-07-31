@@ -65,6 +65,13 @@ spec:
  - name: trial
    image: busybox
    command: ["sleep", "infinity"]
+   resources:
+    requests:
+     cpu: 1
+     memory: "1Gi"
+    limits:
+     cpu: 1
+     memory: "1Gi"
    volumeMounts:
    - mountPath: /mnt/ceph_rbd
      name: volume
