@@ -183,3 +183,44 @@ spec:
  nodeSelector:
   nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
 ```
+
+## Running multiple pods with K8s jobs
+
+A typical use case of the EIDFGPUS cluster will not consist of sending pod requests directly to Kubernetes.
+
+Instead, users will use a job request which wraps around a pod specification and provide several useful attributes.
+
+Firstly, if a pod is assigned to a node that dies then the pod itself will fail and the user has to manually restart it.
+
+Wrapping a pod within a job enables the self-healing mechanism within K8s so that if a node dies with the job's pod on it then the job will find a new node to automatically restart the pod.
+
+Furthermore, jobs allow users to define multiple pods that can run in parallel or series and will continue to spawn pods until a specific number of pods successfully terminate.
+
+See below for an example K8s pod that requires three pods to successfully complete the example CUDA code before the job itself ends.
+
+``` yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+ generateName: jobtest-
+spec:
+ completions: 3
+ parallelism: 1
+ template:
+  metadata:
+   name: job-test
+  spec:
+   containers:
+   - name: cudasample
+     image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
+     args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
+     resources:
+      requests:
+       cpu: 2
+       memory: '1Gi'
+      limits:
+       cpu: 2
+       memory: '4Gi'
+       nvidia.com/gpu: 1
+   restartPolicy: Never
+```
