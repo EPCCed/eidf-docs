@@ -6,9 +6,9 @@ The model was taken from the [PyTorch Tutorials](https://pytorch.org/tutorials/b
 
 The lesson will be split into three parts:
 
--   Requesting a persistent volume and transferring code/data to it
--   Creating a pod with a PyTorch container downloaded from DockerHub
--   Submitting a job to the EIDFGPUS and retrieving the results
+- Requesting a persistent volume and transferring code/data to it
+- Creating a pod with a PyTorch container downloaded from DockerHub
+- Submitting a job to the EIDFGPUS and retrieving the results
 
 ## Load training data and ML code into a persistent volume
 
@@ -38,37 +38,37 @@ spec:
 
 ### Transfer code/data to persistent volume
 
-1.  Check PVC has been created
+1. Check PVC has been created
 
     ``` bash
     kubectl get pvc <pv-name>
     ```
 
-2.  Create a lightweight pod with PV mounted (example pod below)
+1. Create a lightweight pod with PV mounted (example pod below)
 
     ``` bash
     kubectl create -f lightweight-pod.yaml
     ```
 
-3.  Download the pytorch code
+1. Download the pytorch code
 
     ``` bash
     wget https://github.com/EPCCed/eidf-docs/raw/main/docs/services/gpuservice/training/resources/example_pytorch_code.py
     ```
 
-4.  Copy python script into the PV
+1. Copy python script into the PV
 
     ``` bash
     kubectl cp example_pytorch_code.py lightweight-pod:/mnt/ceph_rbd/
     ```
 
-5.  Check files were transferred successfully
+1. Check files were transferred successfully
 
     ``` bash
     kubectl exec lightweight-pod -- ls /mnt/ceph_rbd
     ```
 
-6.  Delete lightweight pod
+1. Delete lightweight pod
 
     ``` bash
     kubectl delete pod lightweight-pod
@@ -151,19 +151,19 @@ spec:
 
 This is not intended to be an introduction to PyTorch, please see the [online tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html) for details about the model.
 
-1.  Check model ran to completion
+1. Check model ran to completion
 
     ``` bash
     kubectl logs <pytorch-pod-name>
     ```
 
-2.  Spin up lightweight pod to retrieve results
+1. Spin up lightweight pod to retrieve results
 
     ``` bash
     kubectl create -f lightweight-pod.yaml
     ```
 
-3.  Copy trained model back to the head node
+1. Copy trained model back to the head node
 
     ``` bash
     kubectl cp lightweight-pod:mnt/ceph_rbd/model.pth model.pth
