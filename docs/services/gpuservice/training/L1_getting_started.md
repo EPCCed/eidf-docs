@@ -11,6 +11,10 @@ Using K8s to manage the EIDFGPUS provides two key advantages:
 - native support for containers enabling reproducible analysis whilst minimising demand on system admin.
 - automated resource allocation for GPUs and storage volumes that are shared across multiple users.
 
+## Setting up K8s on your virtual machine
+
+To access the GPU system through Kubernetes you will need a virtual machine setup in the EIDF infrastructure.
+
 ## Interacting with a K8s cluster
 
 An overview of the key components of a K8s container can be seen on the [Kubernetes docs website](https://kubernetes.io/docs/concepts/overview/components/).
