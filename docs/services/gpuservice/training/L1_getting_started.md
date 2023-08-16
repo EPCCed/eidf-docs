@@ -84,8 +84,8 @@ spec:
      nvidia.com/gpu: 1
 ```
 
-1. Save the file and exit the editor
-1. Run `kubectl create -f test_NBody.yml`
+1. Save the file (we are assuming you will use the fule `test_NBody.yml`, if you use a different filename you will need to update the command below) and exit the editor
+1. Run `kubectl create -f test_NBody.yml -n projectnamens` (the `-n projectnamens` specifies the namespace to use for permissions to create the pod, this should be your EIDF project name plus the letters "ns" at the end, i.e. eidf069ns) 
 1. This will output something like:
 
     ``` bash
