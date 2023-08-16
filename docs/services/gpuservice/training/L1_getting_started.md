@@ -85,7 +85,7 @@ spec:
 ```
 
 1. Save the file and exit the editor
-1. Run `kubectl create -f test_NBody.yml'
+1. Run `kubectl create -f test_NBody.yml`
 1. This will output something like:
 
     ``` bash
