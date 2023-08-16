@@ -67,7 +67,7 @@ Finally, it optional to define GPU resources but only the `limits` tag is used t
 apiVersion: v1
 kind: Pod
 metadata:
-generateName: first-pod-
+  generateName: first-pod-
 spec:
  restartPolicy: OnFailure
  containers:
