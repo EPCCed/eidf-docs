@@ -158,7 +158,7 @@ This is because K8s is allocating the pod to any free node irrespective of wheth
 
 The GPU resource request can be more specific by adding the type of product the pod is requesting to the node selector:
 
-- `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-80GB'`
+- `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-80GB'` (not all users have access to these GPUs)
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB'`
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB-MIG-3g.20gb'`
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB-MIG-1g.5gb'`
