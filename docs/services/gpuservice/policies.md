@@ -22,6 +22,6 @@ Note: This policy is automated and does not require users to change their job sp
 
 ## Kubernetes Active Deadline Seconds
 
-All Kubernetes User Pods submitted to the service will have an Active Deadline Seconds (ADS) applied via "spec.spec.activeDeadlineSeconds" automatically. The default ADS for pods using the service will be 5 days (43200 seconds). A pod will be terminated 5 days after execution has begun. This will reduce the number of unused pods remaining on the service.
+All Kubernetes User Pods submitted to the service will have an Active Deadline Seconds (ADS) applied via "spec.spec.activeDeadlineSeconds" automatically. The default ADS for pods using the service will be 5 days (432000 seconds). A pod will be terminated 5 days after execution has begun. This will reduce the number of unused pods remaining on the service.
 
 Note: This policy is automated and does not require users to change their job or pod specifications.
