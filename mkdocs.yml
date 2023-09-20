@@ -39,6 +39,7 @@ nav:
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
   - "Computing Services":
     - "Virtual Desktops":
+      - "Overview": services/virtualmachines/index.md
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Managing VMs": services/virtualmachines/docs.md
       - "Virtual Desktop Interface": access/virtualmachines-vdi.md
