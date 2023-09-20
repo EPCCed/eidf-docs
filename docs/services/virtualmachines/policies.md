@@ -26,3 +26,10 @@ A project manager or the PI can revoke a user's access accounts within their pro
 A user may give up access to an account and return it to the control of the project at any time.
 
 When a project is due to end, the PI will receive notification of the closure of the project and its accounts one month before all project accounts and DSC resources (VMs, data volumes) are closed and cleaned or removed.
+
+## Backup policies
+
+The content of VM disk images is not backed up
+The VM disk images are not backed up
+
+We strongly advise that you keep copies of any critical data on on an alternative system that is fully backed up.
