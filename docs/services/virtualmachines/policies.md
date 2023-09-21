@@ -29,7 +29,9 @@ When a project is due to end, the PI will receive notification of the closure of
 
 ## Backup policies
 
-The content of VM disk images is not backed up
-The VM disk images are not backed up
+The current policy is:
+
+* The content of VM disk images is not backed up
+* The VM disk images are not backed up
 
 We strongly advise that you keep copies of any critical data on on an alternative system that is fully backed up.

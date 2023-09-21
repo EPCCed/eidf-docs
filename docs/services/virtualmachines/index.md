@@ -10,7 +10,6 @@ The service currenly has a mixture of hardware node types which host VMs of vari
 
 The shapes and sizes of the flavours are based on subdivisions of this hardware, noting that CPUs are 4x oversubscribed for mcomp nodes (general VM flavours).
 
-
 ## Service Access
 
 Users should have an EIDF account - [EIDF Accounts](../../access/project.md).
