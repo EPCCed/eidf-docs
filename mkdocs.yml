@@ -68,6 +68,14 @@ nav:
          - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
          - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
       - "GPU Service FAQ": services/gpuservice/faq.md
+    - "Graphcore Bow Pod64":
+      - "Overview": services/graphcore/index.md
+      - "Tutorial":
+         - "Getting Started": services/graphcore/training/L1_getting_started.md
+         - "Multi-IPU Jobs": services/graphcore/training/L2_multiple_IPU.md
+         - "Profiling": services/graphcore/training/L3_profiling.md
+         - "Other Frameworks": services/graphcore/training/L4_other_frameworks.md
+      - "Graphcore FAQ": services/graphcore/faq.md
   - "Data Management Services":
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
