@@ -77,6 +77,7 @@ nav:
      - "Safe Haven Access": safe-haven-services/safe-haven-access.md
      - "Virtual Desktop Connections": safe-haven-services/virtual-desktop-connections.md
      - "Using the HPC Cluster": safe-haven-services/using-the-hpc-cluster.md
+     - "Web Proxy": safe-haven-services/web-proxy.md
      - "Superdome Flex Tutorial":
        - "Accessing the SDF Inside the EPCC TRE": safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE.md
        - "Running R/Python Scripts": safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts.md
