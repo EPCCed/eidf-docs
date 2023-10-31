@@ -34,7 +34,7 @@ The password is not the same as either the VM or VDI password, and there is no n
     These credentials should not be shared with anyone under any circumstances.
 
 !!! note
-    Firefox does not automatically use these variables, meaning that Researchers cannot access web proxy URLs in the browser. Usually there is no need for this, but Firefox can be configured to make use of the web proxy if desired, following [this](https://support.mozilla.org/en-US/kb/connection-settings-firefox) guide and using the credentials in their [`~/.bashrc`][bashrc] file.
+    Firefox does not automatically use these variables, meaning that Researchers cannot access web proxy URLs in the browser. Usually there is no need for this, but Firefox can be configured to make use of the web proxy if desired, following [this][firefox_conf] guide and using the credentials in their [`~/.bashrc`][bashrc] file.
 
 ## FAQ
 
@@ -44,3 +44,4 @@ Any such requests should be raised directly with your Research Coordinator. Not 
 
 <!-- Links -->
 [bashrc]: https://carpentries-incubator.github.io/shell-extras/07-aliases/index.html#bash-customization-files
+[firefox_conf]: https://support.mozilla.org/en-US/kb/connection-settings-firefox
