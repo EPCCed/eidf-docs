@@ -20,12 +20,7 @@ kind: IPUJob
 metadata:
   name: mnist-training-profiling
 spec:
-  # jobInstances defines the number of job instances.
-  # More than 1 job instance is usually useful for inference jobs only.
   jobInstances: 1
-  # ipusPerJobInstance refers to the number of IPUs required per job instance.
-  # A separate IPU partition of this size will be created by the IPU Operator
-  # for each job instance.
   ipusPerJobInstance: "1"
   workers:
     template:
@@ -33,8 +28,19 @@ spec:
         containers:
         - name: mnist-training-profiling
           image: graphcore/pytorch:3.3.0
-          command: ["bash"]
-          args: ["-c", "cd && mkdir build && cd build && git clone https://github.com/graphcore/examples.git && cd examples/tutorials/simple_applications/pytorch/mnist && python -m pip install -r requirements.txt &&  sed -i '131i training_opts = training_opts.enableProfiling()' mnist_poptorch_code_only.py && python mnist_poptorch_code_only.py --epochs 1 && echo 'RUNNING ls ./training' && ls training"]
+          command: [/bin/bash, -c, --]
+          args:
+            - |
+              cd;
+              mkdir build;
+              cd build;
+              git clone https://github.com/graphcore/examples.git;
+              cd examples/tutorials/simple_applications/pytorch/mnist;
+              python -m pip install -r requirements.txt;
+              sed -i '131i training_opts = training_opts.enableProfiling()' mnist_poptorch_code_only.py;
+              python mnist_poptorch_code_only.py --epochs 1;
+              echo 'RUNNING ls ./training';
+              ls training
         restartPolicy: Never
 ```
 

@@ -45,8 +45,19 @@ spec:
         containers:
         - name: tensorflow-example
           image: graphcore/tensorflow:2
-          command: ["bash"]
-          args: ["-c", "apt update && apt upgrade -y && apt install git -y && cd && mkdir build && cd build && git clone https://github.com/graphcore/examples.git && cd examples/tutorials/simple_applications/tensorflow2/mnist && python -m pip install -r requirements.txt &&  python mnist_code_only.py --epochs 1"]
+          command: [/bin/bash, -c, --]
+          args:
+            - |
+              apt update;
+              apt upgrade -y;
+              apt install git -y;
+              cd;
+              mkdir build;
+              cd build;
+              git clone https://github.com/graphcore/examples.git;
+              cd examples/tutorials/simple_applications/tensorflow2/mnist;
+              python -m pip install -r requirements.txt;
+              python mnist_code_only.py --epochs 1
         restartPolicy: Never
 ```
 
@@ -96,8 +107,19 @@ spec:
         containers:
         - name: popart-example
           image: graphcore/popart:3.3.0
-          command: ["bash"]
-          args: ["-c", "cd && mkdir build && cd build && git clone https://github.com/graphcore/tutorials.git && cd tutorials && git checkout sdk-release-3.1 && cd simple_applications/popart/mnist && python3 -m pip install -r requirements.txt && ./get_data.sh && python3 popart_mnist.py --epochs 1"]
+          command: [/bin/bash, -c, --]
+          args:
+            - |
+              cd ;
+              mkdir build;
+              cd build ;
+              git clone https://github.com/graphcore/tutorials.git;
+              cd tutorials;
+              git checkout sdk-release-3.1;
+              cd simple_applications/popart/mnist;
+              python3 -m pip install -r requirements.txt;
+              ./get_data.sh;
+              python3 popart_mnist.py --epochs 1
         restartPolicy: Never
 ```
 

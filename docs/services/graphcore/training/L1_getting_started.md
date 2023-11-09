@@ -6,12 +6,7 @@ This guide assumes basic familiarity with Kubernetes (K8s) and usage of `kubectl
 
 Graphcore provides prebuilt docker containers (full lists [here](https://hub.docker.com/u/graphcore)) which contain the required libraries (pytorch, tensorflow, poplar etc.) and can be used directly within the K8s to run on the Graphcore IPUs.
 
-There are two ways of running an IPU training job:
-
-1. a single `Worker` Pod
-1. multiple `Worker` Pods with a dedicated `Launcher` Pod
-
-In this tutorial we will cover the first scenario, which is suitable for training with a single IPU. The subsequent tutorial will cover the second scenario, which can be used for distrubed training jobs.
+In this tutorial we will cover running training with a single IPU. The subsequent tutorial will cover using multiple IPUs, which can be used for distrubed training jobs.
 
 ## Creating your first IPU job
 
@@ -40,9 +35,30 @@ To get started:
             containers:
             - name: mnist-training
               image: graphcore/pytorch:3.3.0
-              command: ["bash"]
-              args: ["-c", "cd && mkdir build && cd build && git clone https://github.com/graphcore/examples.git && cd examples/tutorials/simple_applications/pytorch/mnist && python -m pip install -r requirements.txt &&  python mnist_poptorch_code_only.py --epochs 1"]
+              command: [/bin/bash, -c, --]
+              args:
+                - |
+                  cd;
+                  mkdir build;
+                  cd build;
+                  git clone https://github.com/graphcore/examples.git;
+                  cd examples/tutorials/simple_applications/pytorch/mnist;
+                  python -m pip install -r requirements.txt;
+                  python mnist_poptorch_code_only.py --epochs 1
+              securityContext:
+                capabilities:
+                  add:
+                  - IPC_LOCK
+              volumeMounts:
+              - mountPath: /dev/shm
+                name: devshm
             restartPolicy: Never
+            hostIPC: true
+            volumes:
+            - emptyDir:
+                medium: Memory
+                sizeLimit: 10Gi
+              name: devshm
     ```
 
 1. to submit the job - run `kubectl create -f mnist-training-ipujob.yaml`, which will give the following output:
