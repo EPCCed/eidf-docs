@@ -22,7 +22,7 @@ spec:
     template:
       spec:
         containers:
-        - name: mnist-training-profiling-alex-2
+        - name: bert-training-multi-ipu
           image: graphcore/pytorch:3.3.0
           command: [/bin/bash, -c, --]
           args:
