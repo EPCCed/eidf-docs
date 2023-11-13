@@ -77,9 +77,8 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button
 1. Search ‘OpenSSH Client’
 1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
-1. Once this is installed, you can reach your VM by opening CMD and running: <br> ```$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]```
 
-### Accessing via a Terminal
+### Accessing EIDF via a Terminal
 <i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br>
 
 1. Open either Powershell (the Windows Terminal) or a WSL Linux Terminal
