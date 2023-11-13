@@ -79,38 +79,34 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
 1. Once this is installed, you can reach your VM by opening CMD and running: <br> ```$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]```
 
-### Installing MobaXTerm
+### Accessing via a Terminal
+<i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br>
 
-1. Download [MobaXTerm](https://mobaxterm.mobatek.net/) from [https://mobaxterm.mobatek.net/](https://mobaxterm.mobatek.net/)
-1. Once installed click the ‘Session’ button in the top left corner
-1. Click ‘SSH’
-1. In the ‘Remote Host’ section, specify the VM IP
-1. Click the ‘Network Settings’ Tab
-1. Click the ‘SSH Gateway (jump host)’ button in the middle
-1. Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk
-1. Under Username, specify your username
-1. Click ‘OK’
-1. Click ‘OK’ to launch the session
-1. For the EIDF-Gateway and VM login prompts, use your password
-
-## Accessing From MacOS/Linux
-
-OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.
-
-```bash
-ssh -J [username]@jumphost [username]@target
-```
-
-To access EIDF Services:
+1. Open either Powershell (the Windows Terminal) or a WSL Linux Terminal
+1. Import the SSH Key you generated above: ```$ ssh-add [/path/to/sshkey]```
+1. This should return "Identity added [Path to SSH Key]" if successful.
+1. Login by jumping through the gateway.
 
 ```bash
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
 
-## Password Resets via the EIDF-Gateway
 
-You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly:
+## Accessing From MacOS/Linux
+<i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br>
+
+OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
+Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below. <br>
+```bash
+ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+```
+<i>The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host.</i><br>
+
+
+## First Password Setting and Password Resets via the EIDF-Gateway
+
+You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly.
+<br>You will need to pass your accounts SSH key using either the '-i' flag or running 'ssh-add /path/to/key' first.
 
 ```bash
 ssh [username]@eidf-gateway.epcc.ed.ac.uk
