@@ -79,6 +79,7 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
 
 ### Accessing EIDF via a Terminal
+
 <i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br>
 
 1. Open either Powershell (the Windows Terminal) or a WSL Linux Terminal
@@ -90,17 +91,18 @@ Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH.
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
 
-
 ## Accessing From MacOS/Linux
+
 <i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br>
 
 OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
 Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below. <br>
+
 ```bash
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
-<i>The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host.</i><br>
 
+<i>The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host.</i><br>
 
 ## First Password Setting and Password Resets via the EIDF-Gateway
 
