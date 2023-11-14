@@ -741,8 +741,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-mobaxterm" class="md-nav__link">
-    Installing MobaXTerm
+  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
+    Accessing EIDF via a Terminal
   </a>
   
 </li>
@@ -760,8 +760,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#password-resets-via-the-eidf-gateway" class="md-nav__link">
-    Password Resets via the EIDF-Gateway
+  <a href="#first-password-setting-and-password-resets-via-the-eidf-gateway" class="md-nav__link">
+    First Password Setting and Password Resets via the EIDF-Gateway
   </a>
   
 </li>
@@ -1985,8 +1985,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-mobaxterm" class="md-nav__link">
-    Installing MobaXTerm
+  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
+    Accessing EIDF via a Terminal
   </a>
   
 </li>
@@ -2004,8 +2004,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#password-resets-via-the-eidf-gateway" class="md-nav__link">
-    Password Resets via the EIDF-Gateway
+  <a href="#first-password-setting-and-password-resets-via-the-eidf-gateway" class="md-nav__link">
+    First Password Setting and Password Resets via the EIDF-Gateway
   </a>
   
 </li>
@@ -2096,32 +2096,27 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 <li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button</li>
 <li>Search ‘OpenSSH Client’</li>
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
-<li>Once this is installed, you can reach your VM by opening CMD and running: <br> <code>$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]</code></li>
 </ol>
-<h3 id="installing-mobaxterm">Installing MobaXTerm</h3>
+<h3 id="accessing-eidf-via-a-terminal">Accessing EIDF via a Terminal</h3>
+<p><i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br></p>
 <ol>
-<li>Download <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a> from <a href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></li>
-<li>Once installed click the ‘Session’ button in the top left corner</li>
-<li>Click ‘SSH’</li>
-<li>In the ‘Remote Host’ section, specify the VM IP</li>
-<li>Click the ‘Network Settings’ Tab</li>
-<li>Click the ‘SSH Gateway (jump host)’ button in the middle</li>
-<li>Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk</li>
-<li>Under Username, specify your username</li>
-<li>Click ‘OK’</li>
-<li>Click ‘OK’ to launch the session</li>
-<li>For the EIDF-Gateway and VM login prompts, use your password</li>
+<li>Open either Powershell (the Windows Terminal) or a WSL Linux Terminal</li>
+<li>Import the SSH Key you generated above: <code>$ ssh-add [/path/to/sshkey]</code></li>
+<li>This should return "Identity added [Path to SSH Key]" if successful.</li>
+<li>Login by jumping through the gateway.</li>
 </ol>
-<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@jumphost<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@target
-</code></pre></div>
-<p>To access EIDF Services:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
 </code></pre></div>
-<h2 id="password-resets-via-the-eidf-gateway">Password Resets via the EIDF-Gateway</h2>
-<p>You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly:</p>
+<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
+<p><i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br></p>
+<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
+Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below. <br></p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+</code></pre></div>
+<p><i>The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host.</i><br></p>
+<h2 id="first-password-setting-and-password-resets-via-the-eidf-gateway">First Password Setting and Password Resets via the EIDF-Gateway</h2>
+<p>You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly.
+<br>You will need to pass your accounts SSH key using either the '-i' flag or running 'ssh-add /path/to/key' first.</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk
 </code></pre></div>
 <p>Your first attempt to log in to your account using the SSH Gateway will prompt you for your initial password (provided in the portal) like a normal login. If this is successful you will choose a new password. You will be asked for your initial password again, followed by two entries of your new password. This will reset the password to your account for both the gateway and the VM. Once this reset has been completed, the session will disconnect and you can login via SSH again using the newly set password.</p>
