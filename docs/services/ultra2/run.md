@@ -83,7 +83,7 @@ Remember, you will need to use both an SSH key and Time-based one-time password 
 
 ### SSH Login
 
-To login to the host system, you will need to use the SSH Key and TOTP token you registered when creating the account [SAFE](https://www.safe.epcc.ed.ac.uk), along with the SSH Key you registered when creating the account. For example, with the appropriate key loaded<br>`ssh <username>@sdf-cs1.epcc.ed.ac.uk` will then prompt you, once per 24 hours, for your TOTP code.
+To login to the host system, you will need to use the SSH Key and TOTP token you registered when creating the account [SAFE](https://www.safe.epcc.ed.ac.uk), along with the SSH Key you registered when creating the account. For example, with the appropriate key loaded<br>`ssh <username>@sdf-cs1.epcc.ed.ac.uk` will then prompt you, roughly once per day, for your TOTP code.
 
 ## Software
 
