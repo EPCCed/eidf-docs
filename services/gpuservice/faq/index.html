@@ -1966,7 +1966,7 @@
 <p>The current version verified to operate with the GPU Service is v1.24.10. kubectl and the Kubernetes API version can suffer from version skew if not with a defined number of releases. More information can be found on this under the <a href="https://kubernetes.io/releases/version-skew-policy/">Kubernetes Version Skew Policy</a>.</p>
 <h3 id="insufficient-shared-memory-size">Insufficient Shared Memory Size</h3>
 <p>My SHM is very small, and it causes "OSError: [Errno 28] No space left on device" when I train a model using multi-GPU. How to increase SHM size?</p>
-<p>The default size of SHM is only 64M. You can mount an empty dir to /dev/shm to solve this problem:
+<p>The default size of SHM is only 64M. You can mount an empty dir to /dev/shm to solve this problem:</p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">     </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">NAME</span><span class="p p-Indicator">]</span>
@@ -1978,7 +1978,7 @@
 <span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dshm</span>
 <span class="w">         </span><span class="nt">emptyDir</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">medium</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Memory</span>
-</code></pre></div></p>
+</code></pre></div>
 
 
 

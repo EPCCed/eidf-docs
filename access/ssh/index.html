@@ -726,6 +726,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accessing-from-macoslinux" class="md-nav__link">
+    Accessing From MacOS/Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accessing-from-windows" class="md-nav__link">
     Accessing from Windows
   </a>
@@ -753,15 +760,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
-    Accessing From MacOS/Linux
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-password-setting-and-password-resets-via-the-eidf-gateway" class="md-nav__link">
-    First Password Setting and Password Resets via the EIDF-Gateway
+  <a href="#first-password-setting-and-password-resets" class="md-nav__link">
+    First Password Setting and Password Resets
   </a>
   
 </li>
@@ -1970,6 +1970,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accessing-from-macoslinux" class="md-nav__link">
+    Accessing From MacOS/Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accessing-from-windows" class="md-nav__link">
     Accessing from Windows
   </a>
@@ -1997,15 +2004,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
-    Accessing From MacOS/Linux
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-password-setting-and-password-resets-via-the-eidf-gateway" class="md-nav__link">
-    First Password Setting and Password Resets via the EIDF-Gateway
+  <a href="#first-password-setting-and-password-resets" class="md-nav__link">
+    First Password Setting and Password Resets
   </a>
   
 </li>
@@ -2061,8 +2061,12 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <h3 id="generate-a-new-ssh-key">Generate a new SSH Key</h3>
 <ol>
 <li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
-<li>Generate a new SSH Key: <code>$ ssh-keygen</code></li>
-<li>Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later</li>
+<li>Generate a new SSH Key:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>ssh-keygen
+</code></pre></div>
+<ol>
+<li>It is fine to accept the default name and path for the key unless you manage a number of keys.</li>
 <li>Press enter to finish generating the key</li>
 </ol>
 <h3 id="adding-the-new-ssh-key-to-your-account-via-the-portal">Adding the new SSH Key to your account via the Portal</h3>
@@ -2073,9 +2077,9 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <li>Select your username</li>
 <li>Select the plus button under  'Credentials'</li>
 <li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.</li>
-<li>Click 'Upload Credential'  <br> It should look something like this:</li>
+<li>Click 'Upload Credential' - it should look something like this:
+   <img alt="eidf-portal-ssh" class="border-img" src="../../images/access/eidf-portal-ssh.png" /></li>
 </ol>
-<p><img alt="eidf-portal-ssh" class="border-img" src="/eidf-docs/images/access/eidf-portal-ssh.png" /></p>
 <h4 id="adding-a-new-ssh-key-via-safe">Adding a new SSH Key via SAFE</h4>
 <p>This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
 If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a>
@@ -2085,8 +2089,18 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 <li>From your local terminal, import the SSH Key you generated above: <code>$ ssh-add [sshkey]</code></li>
 <li>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</li>
 </ol>
+<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+</div>
+<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.</p>
+<p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+</code></pre></div>
+<p>The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
 <h2 id="accessing-from-windows">Accessing from Windows</h2>
-<p>Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH. Putty can also be used but won’t be covered in this tutorial.</p>
+<p>Windows will require the installation of OpenSSH-Server to use SSH. Putty or MobaXTerm can also be used but won’t be covered in this tutorial.</p>
 <h3 id="installing-and-using-openssh">Installing and using OpenSSH</h3>
 <ol>
 <li>Click the ‘Start’ button at the bottom of the screen</li>
@@ -2098,7 +2112,10 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
 </ol>
 <h3 id="accessing-eidf-via-a-terminal">Accessing EIDF via a Terminal</h3>
-<p><i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+</div>
 <ol>
 <li>Open either Powershell (the Windows Terminal) or a WSL Linux Terminal</li>
 <li>Import the SSH Key you generated above: <code>$ ssh-add [/path/to/sshkey]</code></li>
@@ -2107,22 +2124,8 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 </ol>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
 </code></pre></div>
-<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<p><i>If this is your first time connecting to EIDF, see the 'First Password Setting and Password Resets via the EIDF-Gateway' section below.</i><br></p>
-<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below. <br></p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
-</code></pre></div>
-<p><i>The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host.</i><br></p>
-<h2 id="first-password-setting-and-password-resets-via-the-eidf-gateway">First Password Setting and Password Resets via the EIDF-Gateway</h2>
-<p>You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly.
-<br>You will need to pass your accounts SSH key using either the '-i' flag or running 'ssh-add /path/to/key' first.</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk
-</code></pre></div>
-<p>Your first attempt to log in to your account using the SSH Gateway will prompt you for your initial password (provided in the portal) like a normal login. If this is successful you will choose a new password. You will be asked for your initial password again, followed by two entries of your new password. This will reset the password to your account for both the gateway and the VM. Once this reset has been completed, the session will disconnect and you can login via SSH again using the newly set password.</p>
-<p>You will not be able to directly connect to the gateway again, so to connect to your VM, jump through the SSH Gateway:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
-</code></pre></div>
+<h2 id="first-password-setting-and-password-resets">First Password Setting and Password Resets</h2>
+<p>Before logging in for the first time you have to reset the password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 
 
 
