@@ -1002,6 +1002,47 @@
     Login
   </a>
   
+    <nav class="md-nav" aria-label="Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-credentials" class="md-nav__link">
+    Access credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-key-pairs" class="md-nav__link">
+    SSH Key Pairs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-public-part-of-key-pair-to-safe" class="md-nav__link">
+    Upload public part of key pair to SAFE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-based-one-time-password-totp" class="md-nav__link">
+    Time-based one-time password (TOTP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-login" class="md-nav__link">
+    SSH Login
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1894,6 +1935,47 @@
     Login
   </a>
   
+    <nav class="md-nav" aria-label="Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-credentials" class="md-nav__link">
+    Access credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-key-pairs" class="md-nav__link">
+    SSH Key Pairs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-public-part-of-key-pair-to-safe" class="md-nav__link">
+    Upload public part of key pair to SAFE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-based-one-time-password-totp" class="md-nav__link">
+    Time-based one-time password (TOTP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-login" class="md-nav__link">
+    SSH Login
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1954,8 +2036,69 @@
 <h2 id="specifications">Specifications</h2>
 <p>The system is a HPE SuperDome Flex containing 576 individual cores in a SMT-1 arrangement (1 thread per core). The system has 18TB of memory available to users. Home directories are network mounted from the EIDF e1000 Lustre filesystem, although some local NVMe storage is available for temporary file storage during runs.</p>
 <h2 id="login">Login</h2>
-<p>To login to the host system, use the username and password you obtain from <a href="https://www.safe.epcc.ed.ac.uk">SAFE</a>, along with the SSH Key you registered when creating the account.
-You can then login directly to the host via: <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code></p>
+<p>Login is via SSH only via <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code>. See below for details on the credentials required to access the system.</p>
+<h3 id="access-credentials">Access credentials</h3>
+<p>To access Ultra2, you need to use two credentials: your SSH key pair protected by a passphrase <strong>and</strong> a Time-based one-time password (TOTP).</p>
+<h3 id="ssh-key-pairs">SSH Key Pairs</h3>
+<p>You will need to generate an SSH key pair protected by a passphrase to access Ultra2.</p>
+<p>Using a terminal (the command line), set up a key pair that contains your e-mail address and enter a passphrase you will use to unlock the key:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your@email.com&quot;</span>
+<span class="w">    </span>...
+<span class="w">    </span>-bash-4.1$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your@email.com&quot;</span>
+<span class="w">    </span>Generating<span class="w"> </span>public/private<span class="w"> </span>rsa<span class="w"> </span>key<span class="w"> </span>pair.
+<span class="w">    </span>Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/Home/user/.ssh/id_rsa<span class="o">)</span>:<span class="w"> </span><span class="o">[</span>Enter<span class="o">]</span>
+<span class="w">    </span>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:<span class="w"> </span><span class="o">[</span>Passphrase<span class="o">]</span>
+<span class="w">    </span>Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:<span class="w"> </span><span class="o">[</span>Passphrase<span class="o">]</span>
+<span class="w">    </span>Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Home/user/.ssh/id_rsa.
+<span class="w">    </span>Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Home/user/.ssh/id_rsa.pub.
+<span class="w">    </span>The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
+<span class="w">    </span><span class="m">03</span>:d4:c4:6d:58:0a:e2:4a:f8:73:9a:e8:e3:07:16:c8<span class="w"> </span>your@email.com
+<span class="w">    </span>The<span class="w"> </span>key<span class="err">&#39;</span>s<span class="w"> </span>randomart<span class="w"> </span>image<span class="w"> </span>is:
+<span class="w">    </span>+--<span class="o">[</span><span class="w"> </span>RSA<span class="w"> </span><span class="m">2048</span><span class="o">]</span>----+
+<span class="w">    </span><span class="p">|</span><span class="w">    </span>.<span class="w"> </span>...+o++++.<span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>.<span class="w"> </span>.<span class="w"> </span>.<span class="w"> </span><span class="o">=</span>o..<span class="w">      </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span>+<span class="w"> </span>.<span class="w"> </span>.<span class="w"> </span>.......o<span class="w"> </span>o<span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span>oE<span class="w"> </span>.<span class="w">   </span>.<span class="w">         </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="nv">o</span><span class="w"> </span><span class="o">=</span><span class="w">     </span>.<span class="w">   </span>S<span class="w">    </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span>.<span class="w">    </span>+.+<span class="w">     </span>.<span class="w">   </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span>.<span class="w">  </span>oo<span class="w">            </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span>.<span class="w">  </span>.<span class="w">             </span><span class="p">|</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>..<span class="w">              </span><span class="p">|</span>
+<span class="w">    </span>+-----------------+
+</code></pre></div>
+<p>(remember to replace "<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#111;&#117;&#114;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#121;&#111;&#117;&#114;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>" with your e-mail address).</p>
+<h3 id="upload-public-part-of-key-pair-to-safe">Upload public part of key pair to SAFE</h3>
+<p>You should now upload the public part of your SSH key pair to the SAFE by following the instructions at:</p>
+<p><a href="https://safe.epcc.ed.ac.uk/">Login to SAFE</a>. Then:</p>
+<ol>
+<li>Go to the Menu <em>Login accounts</em> and select the Ultra2 account you want to add the SSH key to</li>
+<li>On the subsequent Login account details page click the <em>Add Credential</em> button</li>
+<li>Select <em>SSH public key</em> as the Credential Type and click <em>Next</em></li>
+<li>Either copy and paste the public part of your SSH key into the <em>SSH Public key</em> box or use the button to select the public key file on your computer.</li>
+<li>Click <em>Add</em> to associate the public SSH key part with your account</li>
+</ol>
+<p>Once you have done this, your SSH key will be added to your Ultra2 account.</p>
+<h3 id="time-based-one-time-password-totp">Time-based one-time password (TOTP)</h3>
+<p>Remember, you will need to use both an SSH key and Time-based one-time password to log into Ultra2 so you will also need to <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account">set up your TOTP</a> before you can log into Ultra2.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you <strong>first</strong> log into Ultra2, you will be prompted to change your initial password. This is a three step process:</p>
+<ol>
+<li>
+<p>When promoted to enter your <em>password</em>: Enter the password  which you <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-can-i-pick-up-my-password-for-the-service-machine">retrieve from SAFE</a></p>
+</li>
+<li>
+<p>When prompted to enter your new password: type in a new password</p>
+</li>
+<li>
+<p>When prompted to re-enter the new password: re-enter the new password</p>
+</li>
+</ol>
+<p>Your password has now been changed<br>
+You will <strong>not</strong> use your password when logging on to Ultra2 after the initial logon.</p>
+</div>
+<h3 id="ssh-login">SSH Login</h3>
+<p>To login to the host system, you will need to use the SSH Key and TOTP token you registered when creating the account <a href="https://www.safe.epcc.ed.ac.uk">SAFE</a>, along with the SSH Key you registered when creating the account. For example, with the appropriate key loaded<br><code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code> will then prompt you, roughly once per day, for your TOTP code.</p>
 <h2 id="software">Software</h2>
 <p>The primary software provided is Intel's OneAPI suite containing mpi compilers and runtimes, debuggers and the vTune performance analyser. Standard GNU compilers are also available.
 The OneAPI suite can be loaded by sourcing the shell script:</p>

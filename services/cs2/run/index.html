@@ -907,8 +907,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
-    Login
+  <a href="#connecting-to-the-cs-2" class="md-nav__link">
+    Connecting to the CS-2
   </a>
   
 </li>
@@ -1869,8 +1869,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
-    Login
+  <a href="#connecting-to-the-cs-2" class="md-nav__link">
+    Connecting to the CS-2
   </a>
   
 </li>
@@ -1922,10 +1922,9 @@
 
 <h1 id="cerebras-cs-2">Cerebras CS-2</h1>
 <h2 id="introduction">Introduction</h2>
-<p>The Cerebras CS-2 system is attached to the SDF-CS1 (Ultra2) system which serves as a host, provides access to files, the SLURM batch system etc.</p>
-<h2 id="login">Login</h2>
-<p>To login to the host system, use the username and password you obtain from <a href="https://safe.epcc.ed.ac.uk">SAFE</a>, along with the SSH Key you registered when creating the account.
-You can then login directly to the host via: <code>ssh &lt;username&gt;@sdf-cs1.epcc.ed.ac.uk</code></p>
+<p>The Cerebras CS-2 system is attached to the Ultra2 system which serves as a host, provides access to files, the SLURM batch system etc.</p>
+<h2 id="connecting-to-the-cs-2">Connecting to the CS-2</h2>
+<p>To gain access to the CS-2 you need to login to the host system, Ultra2 (also called SDF-CS1). See the <a href="../../ultra2/run/#login">documentation for Ultra2</a>.</p>
 <h2 id="running-jobs">Running Jobs</h2>
 <p>All jobs must be run via SLURM to avoid inconveniencing other users of the system. The <code>csrun_cpu</code> and <code>csrun_wse</code> scripts themselves contain calls to <code>srun</code> to work with the SLURM system, so note the omission of <code>srun</code> in the below examples.
 Users can either copy these files from <code>/home/y26/shared/bin</code> to their own home directory should they wish, or use the centrally supplied version. In either case, ensure they are in your <code>PATH</code> before execution, eg:</p>
