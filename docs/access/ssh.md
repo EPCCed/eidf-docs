@@ -38,9 +38,11 @@ If not, you'll need to generate an SSH-Key, to do this:
 
 1. Open a new window of whatever terminal you will use to SSH to EIDF.
 1. Generate a new SSH Key:
-   ```
+
+   ```bash
    ssh-keygen
    ```
+
 1. It is fine to accept the default name and path for the key unless you manage a number of keys.
 1. Press enter to finish generating the key
 
