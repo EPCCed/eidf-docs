@@ -30,12 +30,12 @@ There may be an issue with the kubectl version that is being run. This can occur
 
 The current version verified to operate with the GPU Service is v1.24.10. kubectl and the Kubernetes API version can suffer from version skew if not with a defined number of releases. More information can be found on this under the [Kubernetes Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/).
 
-
 ### Insufficient Shared Memory Size
 
 My SHM is very small, and it causes "OSError: [Errno 28] No space left on device" when I train a model using multi-GPU. How to increase SHM size?
 
 The default size of SHM is only 64M. You can mount an empty dir to /dev/shm to solve this problem:
+
 ```yaml
    spec:
      containers:

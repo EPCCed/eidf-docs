@@ -72,8 +72,7 @@ however a user may have multiple accounts in a project, for example for differen
     1. Select the project member from the 'Account owner' drop-down field
     1. Click 'Create'
 
-The new account is allocated a temporary password which the account owner can view
-in their account details.
+The user can now set the password for their new account on the account details page.
 
 ## Adding Access to the VM for a User
 
@@ -107,12 +106,9 @@ Please contact the helpdesk if sudo permission management is required but is not
 
 ## First login
 
-A new user account is allocated a temporary password which the user must reset before they
-can log in for the first time.
-The password reset will not work when logging in via RDP -
-they must use a SSH connection, either in the VDI or via an SSH gateway.
+A new user account must reset the password before they can log in for the first time.
 
-The user can view the temporary password in their account details page.
+The user can reset the password in their account details page.
 
 ## Updating an existing machine
 

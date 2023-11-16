@@ -76,7 +76,7 @@ and you will be notified of the outcome of your application.
 ### Approved Project
 
 If your application was approved, refer to
-[Data Science Virtual Desktops: Quickstart](../../services/virtualmachines/quickstart/)
+[Data Science Virtual Desktops: Quickstart](../services/virtualmachines/quickstart.md)
 how to view your project and to
-[Data Science Virtual Desktops: Managing VMs](../../services/virtualmachines/docs/)
+[Data Science Virtual Desktops: Managing VMs](../services/virtualmachines/docs.md)
 how to manage a project and how to create virtual machines and user accounts.
