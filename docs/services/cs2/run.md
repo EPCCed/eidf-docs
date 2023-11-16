@@ -2,12 +2,11 @@
 
 ## Introduction
 
-The Cerebras CS-2 system is attached to the SDF-CS1 (Ultra2) system which serves as a host, provides access to files, the SLURM batch system etc.
+The Cerebras CS-2 system is attached to the Ultra2 system which serves as a host, provides access to files, the SLURM batch system etc.
 
-## Login
+## Connecting to the CS-2
 
-To login to the host system, use the username and password you obtain from [SAFE](https://safe.epcc.ed.ac.uk), along with the SSH Key you registered when creating the account.
-You can then login directly to the host via: `ssh <username>@sdf-cs1.epcc.ed.ac.uk`
+To gain access to the CS-2 you need to login to the host system, Ultra2 (also called SDF-CS1). See the [documentation for Ultra2](../ultra2/run.md#login).
 
 ## Running Jobs
 
