@@ -12,6 +12,8 @@
 
 [Ultra2](./ultra2/)
 
+[Graphcore Bow Pod64](./graphcore/)
+
 ## Data Management Services
 
 [Data Catalogue](./datacatalogue/)
