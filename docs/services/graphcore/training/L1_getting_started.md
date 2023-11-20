@@ -1,6 +1,6 @@
 # Getting started with Graphcore IPU Jobs
 
-This guide assumes basic familiarity with Kubernetes (K8s) and usage of `kubectl`. See [GPU service tutorial](../gpuservice/training/L1_getting_started.md) to get started.
+This guide assumes basic familiarity with Kubernetes (K8s) and usage of `kubectl`. See [GPU service tutorial](../../gpuservice/training/L1_getting_started.md) to get started.
 
 ## Introduction
 
