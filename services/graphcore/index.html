@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.9">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.78cf6014.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
@@ -2129,11 +2129,14 @@
 </ul>
 <p>For more details about the IPU architecture, see <a href="https://docs.graphcore.ai/projects/ipu-programmers-guide/en/latest/about_ipu.html#">documentation from Graphcore</a>.</p>
 <p>The smallest unit of compute resource that can be requested is a single IPU.</p>
-<p>Similarly to the EIDF GPU Service, usage of the graphcore is managed using <a href="https://kubernetes.io">Kubernetes</a>.</p>
+<p>Similarly to the EIDF GPU Service, usage of the Graphcore is managed using <a href="https://kubernetes.io">Kubernetes</a>.</p>
 <h2 id="service-access">Service Access</h2>
+<p>Access to the Graphcore accelerator is provisioning through the EIDF GPU Service.</p>
+<p>Users should apply for access to Graphcore via the <a href="../gpuservice/">EIDF GPU Service</a>.</p>
 <h2 id="project-quotas">Project Quotas</h2>
+<p>Currently there is no active quota mechanism on the Graphcore accelerator. IPUJobs should be actively using partitions on the Graphcore.</p>
 <h2 id="graphcore-tutorial">Graphcore Tutorial</h2>
-<p>The following tutorial teaches users how to submit tasks to the graphcore system. This tutorial assumes basic familiary with submitting jobs via Kubernetes. For a tutorial on using Kubernetes, see the <a href="../gpuservice/training/L1_getting_started/">GPU service tutorial</a>. For more in-depth lessons about developing applications for graphcore, see <a href="https://docs.graphcore.ai/en/latest/">the general documentation</a> and <a href="https://docs.graphcore.ai/projects/kubernetes-user-guide/en/latest/creating-ipujob.html">guide for creating IPU jobs via Kubernetes</a>.</p>
+<p>The following tutorial teaches users how to submit tasks to the Graphcore system. This tutorial assumes basic familiary with submitting jobs via Kubernetes. For a tutorial on using Kubernetes, see the <a href="../gpuservice/training/L1_getting_started/">GPU service tutorial</a>. For more in-depth lessons about developing applications for Graphcore, see <a href="https://docs.graphcore.ai/en/latest/">the general documentation</a> and <a href="https://docs.graphcore.ai/projects/kubernetes-user-guide/en/latest/creating-ipujob.html">guide for creating IPU jobs via Kubernetes</a>.</p>
 <table>
 <thead>
 <tr>
@@ -2166,7 +2169,7 @@
 <p>The <a href="https://docs.graphcore.ai/en/latest/">Graphcore documentation</a> provides information about using the Graphcore system.</p>
 </li>
 <li>
-<p>The <a href="https://github.com/graphcore/examples/tree/master">Graphcore examples repository on github</a> provides a catalogue of application examples that have been optimised to run on Graphcore IPUs for both training and inference. It also contains tutorials for using various frameworks.</p>
+<p>The <a href="https://github.com/graphcore/examples/tree/master">Graphcore examples repository on GitHub</a> provides a catalogue of application examples that have been optimised to run on Graphcore IPUs for both training and inference. It also contains tutorials for using various frameworks.</p>
 </li>
 </ul>
 
