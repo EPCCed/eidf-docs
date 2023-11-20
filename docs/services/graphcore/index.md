@@ -13,15 +13,21 @@ For more details about the IPU architecture, see [documentation from Graphcore](
 
 The smallest unit of compute resource that can be requested is a single IPU.
 
-Similarly to the EIDF GPU Service, usage of the graphcore is managed using [Kubernetes](https://kubernetes.io).
+Similarly to the EIDF GPU Service, usage of the Graphcore is managed using [Kubernetes](https://kubernetes.io).
 
 ## Service Access
 
+Access to the Graphcore accelerator is provisioning through the EIDF GPU Service.
+
+Users should apply for access to Graphcore via the [EIDF GPU Service](../gpuservice/index.md).
+
 ## Project Quotas
+
+Currently there is no active quota mechanism on the Graphcore accelerator. IPUJobs should be actively using partitions on the Graphcore.
 
 ## Graphcore Tutorial
 
-The following tutorial teaches users how to submit tasks to the graphcore system. This tutorial assumes basic familiary with submitting jobs via Kubernetes. For a tutorial on using Kubernetes, see the [GPU service tutorial](../gpuservice/training/L1_getting_started.md). For more in-depth lessons about developing applications for graphcore, see [the general documentation](https://docs.graphcore.ai/en/latest/) and [guide for creating IPU jobs via Kubernetes](https://docs.graphcore.ai/projects/kubernetes-user-guide/en/latest/creating-ipujob.html).
+The following tutorial teaches users how to submit tasks to the Graphcore system. This tutorial assumes basic familiary with submitting jobs via Kubernetes. For a tutorial on using Kubernetes, see the [GPU service tutorial](../gpuservice/training/L1_getting_started.md). For more in-depth lessons about developing applications for Graphcore, see [the general documentation](https://docs.graphcore.ai/en/latest/) and [guide for creating IPU jobs via Kubernetes](https://docs.graphcore.ai/projects/kubernetes-user-guide/en/latest/creating-ipujob.html).
 
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
@@ -34,4 +40,4 @@ The following tutorial teaches users how to submit tasks to the graphcore system
 
 - The [Graphcore documentation](https://docs.graphcore.ai/en/latest/) provides information about using the Graphcore system.
 
-- The [Graphcore examples repository on github](https://github.com/graphcore/examples/tree/master) provides a catalogue of application examples that have been optimised to run on Graphcore IPUs for both training and inference. It also contains tutorials for using various frameworks.
+- The [Graphcore examples repository on GitHub](https://github.com/graphcore/examples/tree/master) provides a catalogue of application examples that have been optimised to run on Graphcore IPUs for both training and inference. It also contains tutorials for using various frameworks.
