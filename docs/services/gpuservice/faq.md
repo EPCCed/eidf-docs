@@ -49,3 +49,30 @@ The default size of SHM is only 64M. You can mount an empty dir to /dev/shm to s
          emptyDir:
             medium: Memory
 ```
+
+### Pytorch Slow Performance Issues
+
+Pytorch on Kubernetes may operate slower than expected - much slower than an equivalent VM setup.
+
+Pytorch defaults to auto-detecting the number of OMP Threads and it will report an incorrect number of potential threads compared to your requested CPU core count. This is a consequence in operating in a container environment, the CPU information is reported by standard libraries and tools will be the node level information rather than your container.
+
+To help correct this issue, the environment variable OMP_NUM_THREADS should be set in the job submission file to the number of cores requested or less.
+
+This has been tested using:
+
+- OMP_NUM_THREADS=1
+- OMP_NUM_THREADS=(number of requested cores).
+
+Example fragment for a Bash command start:
+
+```yaml
+  containers:
+    - args:
+        - >
+          export OMP_NUM_THREADS=1;
+          python mypytorchprogram.py;
+      command:
+        - /bin/bash
+        - '-c'
+        - '--'
+```
