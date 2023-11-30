@@ -14,7 +14,7 @@ To get started, save and create an IPUJob with the following `.yaml` file:
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: bert-training-multi-ipu
+  generateName: bert-training-multi-ipu-
 spec:
   jobInstances: 1
   ipusPerJobInstance: "4"
@@ -37,6 +37,10 @@ spec:
               DEBIAN_FRONTEND=noninteractive TZ='Europe/London' apt install $(< required_apt_packages.txt) -y ;
               pip3 install -r requirements.txt ;
               python3 run_pretraining.py --dataset generated --config pretrain_base_128_pod4 --training-steps 1
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
           securityContext:
             capabilities:
               add:
@@ -53,7 +57,7 @@ spec:
           name: devshm
 ```
 
-Running the above IPUJob and querying the log via `kubectl logs pod/bert-training-multi-ipu-worker-0` should give:
+Running the above IPUJob and querying the log via `kubectl logs pod/bert-training-multi-ipu-<random string>-worker-0` should give:
 
 ``` bash
 ...
@@ -162,7 +166,7 @@ In this case, [Poprun](https://docs.graphcore.ai/projects/poprun-user-guide/en/l
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: bert-poprun-64ipus
+  generateName: bert-poprun-64ipus-
 spec:
   jobInstances: 1
   modelReplicasPerWorker: "16"
@@ -196,6 +200,10 @@ spec:
               python3 run_pretraining.py \
               --config pretrain_large_128_POD64 \
               --dataset generated --training-steps 1
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
           securityContext:
             capabilities:
               add:

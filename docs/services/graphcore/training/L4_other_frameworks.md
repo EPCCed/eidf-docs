@@ -35,7 +35,7 @@ For a quick example, we will run an example script from <https://github.com/grap
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: tensorflow-example
+  generateName: tensorflow-example-
 spec:
   jobInstances: 1
   ipusPerJobInstance: "1"
@@ -58,7 +58,24 @@ spec:
               cd examples/tutorials/simple_applications/tensorflow2/mnist;
               python -m pip install -r requirements.txt;
               python mnist_code_only.py --epochs 1
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
+          securityContext:
+            capabilities:
+              add:
+              - IPC_LOCK
+          volumeMounts:
+          - mountPath: /dev/shm
+            name: devshm
         restartPolicy: Never
+        hostIPC: true
+        volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 10Gi
+          name: devshm
 ```
 
 Running `kubectl logs <pod>` should show the results similar to the following
@@ -97,7 +114,7 @@ For a quick example, we will run an example script from <https://github.com/grap
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: popart-example
+  generateName: popart-example-
 spec:
   jobInstances: 1
   ipusPerJobInstance: "1"
@@ -120,7 +137,24 @@ spec:
               python3 -m pip install -r requirements.txt;
               ./get_data.sh;
               python3 popart_mnist.py --epochs 1
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
+          securityContext:
+            capabilities:
+              add:
+              - IPC_LOCK
+          volumeMounts:
+          - mountPath: /dev/shm
+            name: devshm
         restartPolicy: Never
+        hostIPC: true
+        volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 10Gi
+          name: devshm
 ```
 
 Running `kubectl logs <pod>` should show the results similar to the following
@@ -166,7 +200,7 @@ For a quick example, we will run an example from <https://github.com/graphcore/e
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: poplib-example
+  generateName: poplib-example-
 spec:
   jobInstances: 1
   ipusPerJobInstance: "1"
@@ -178,7 +212,24 @@ spec:
           image: graphcore/poplar:3.3.0
           command: ["bash"]
           args: ["-c", "cd && mkdir build && cd build && git clone https://github.com/graphcore/examples.git && cd examples/tutorials/simple_applications/poplar/mnist/ && ./get_data.sh && make &&  ./regression-demo -IPU 1 50"]
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
+          securityContext:
+            capabilities:
+              add:
+              - IPC_LOCK
+          volumeMounts:
+          - mountPath: /dev/shm
+            name: devshm
         restartPolicy: Never
+        hostIPC: true
+        volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 10Gi
+          name: devshm
 ```
 
 Running `kubectl logs <pod>` should show the results similar to the following
