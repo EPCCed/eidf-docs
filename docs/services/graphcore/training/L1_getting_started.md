@@ -20,7 +20,7 @@ To get started:
     apiVersion: graphcore.ai/v1alpha1
     kind: IPUJob
     metadata:
-    generateName: mnist-training-
+        generateName: mnist-training-
     spec:
     # jobInstances defines the number of job instances.
     # More than 1 job instance is usually useful for inference jobs only.
