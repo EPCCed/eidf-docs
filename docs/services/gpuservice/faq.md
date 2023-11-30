@@ -42,8 +42,8 @@ The default size of SHM is only 64M. You can mount an empty dir to /dev/shm to s
        - name: [NAME]
          image: [IMAGE]
          volumeMounts:
-           - mountPath: /dev/shm
-             name: dshm
+         - mountPath: /dev/shm
+           name: dshm
      volumes:
        - name: dshm
          emptyDir:
