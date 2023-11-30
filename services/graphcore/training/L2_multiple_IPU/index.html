@@ -2226,7 +2226,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphcore.ai/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPUJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bert-training-multi-ipu</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bert-training-multi-ipu-</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jobInstances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">ipusPerJobInstance</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
@@ -2249,6 +2249,10 @@
 <span class="w">              </span><span class="no">DEBIAN_FRONTEND=noninteractive TZ=&#39;Europe/London&#39; apt install $(&lt; required_apt_packages.txt) -y ;</span>
 <span class="w">              </span><span class="no">pip3 install -r requirements.txt ;</span>
 <span class="w">              </span><span class="no">python3 run_pretraining.py --dataset generated --config pretrain_base_128_pod4 --training-steps 1</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Gi</span>
 <span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">add</span><span class="p">:</span>
@@ -2264,7 +2268,7 @@
 <span class="w">            </span><span class="nt">sizeLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devshm</span>
 </code></pre></div>
-<p>Running the above IPUJob and querying the log via <code>kubectl logs pod/bert-training-multi-ipu-worker-0</code> should give:</p>
+<p>Running the above IPUJob and querying the log via <code>kubectl logs pod/bert-training-multi-ipu-&lt;random string&gt;-worker-0</code> should give:</p>
 <div class="highlight"><pre><span></span><code>...
 Data<span class="w"> </span>loaded<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">8</span>.559805537108332<span class="w"> </span>secs
 -----------------------------------------------------------
@@ -2344,7 +2348,7 @@ Training<span class="w"> </span>time:<span class="w"> </span><span class="m">16<
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphcore.ai/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPUJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bert-poprun-64ipus</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bert-poprun-64ipus-</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jobInstances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">modelReplicasPerWorker</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16&quot;</span>
@@ -2378,6 +2382,10 @@ Training<span class="w"> </span>time:<span class="w"> </span><span class="m">16<
 <span class="w">              </span><span class="no">python3 run_pretraining.py \</span>
 <span class="w">              </span><span class="no">--config pretrain_large_128_POD64 \</span>
 <span class="w">              </span><span class="no">--dataset generated --training-steps 1</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Gi</span>
 <span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">add</span><span class="p">:</span>
