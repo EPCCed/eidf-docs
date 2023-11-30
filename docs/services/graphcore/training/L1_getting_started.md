@@ -20,37 +20,41 @@ To get started:
     apiVersion: graphcore.ai/v1alpha1
     kind: IPUJob
     metadata:
-      name: mnist-training
+    generateName: mnist-training-
     spec:
-      # jobInstances defines the number of job instances.
-      # More than 1 job instance is usually useful for inference jobs only.
-      jobInstances: 1
-      # ipusPerJobInstance refers to the number of IPUs required per job instance.
-      # A separate IPU partition of this size will be created by the IPU Operator
-      # for each job instance.
-      ipusPerJobInstance: "1"
-      workers:
+    # jobInstances defines the number of job instances.
+    # More than 1 job instance is usually useful for inference jobs only.
+    jobInstances: 1
+    # ipusPerJobInstance refers to the number of IPUs required per job instance.
+    # A separate IPU partition of this size will be created by the IPU Operator
+    # for each job instance.
+    ipusPerJobInstance: "1"
+    workers:
         template:
-          spec:
+        spec:
             containers:
             - name: mnist-training
-              image: graphcore/pytorch:3.3.0
-              command: [/bin/bash, -c, --]
-              args:
+            image: graphcore/pytorch:3.3.0
+            command: [/bin/bash, -c, --]
+            args:
                 - |
-                  cd;
-                  mkdir build;
-                  cd build;
-                  git clone https://github.com/graphcore/examples.git;
-                  cd examples/tutorials/simple_applications/pytorch/mnist;
-                  python -m pip install -r requirements.txt;
-                  python mnist_poptorch_code_only.py --epochs 1
-              securityContext:
+                cd;
+                mkdir build;
+                cd build;
+                git clone https://github.com/graphcore/examples.git;
+                cd examples/tutorials/simple_applications/pytorch/mnist;
+                python -m pip install -r requirements.txt;
+                python mnist_poptorch_code_only.py --epochs 1
+            resources:
+                limits:
+                cpu: 32
+                memory: 200Gi
+            securityContext:
                 capabilities:
-                  add:
-                  - IPC_LOCK
-              volumeMounts:
-              - mountPath: /dev/shm
+                add:
+                - IPC_LOCK
+            volumeMounts:
+            - mountPath: /dev/shm
                 name: devshm
             restartPolicy: Never
             hostIPC: true
@@ -58,23 +62,23 @@ To get started:
             - emptyDir:
                 medium: Memory
                 sizeLimit: 10Gi
-              name: devshm
+            name: devshm
     ```
 
 1. to submit the job - run `kubectl create -f mnist-training-ipujob.yaml`, which will give the following output:
 
     ``` bash
-    ipujob.graphcore.ai/mnist-training created
+    ipujob.graphcore.ai/mnist-training-<random string> created
     ```
 
 1. to monitor progress of the job - run `kubectl get pods`, which will give the following output
 
     ``` bash
     NAME                      READY   STATUS      RESTARTS   AGE
-    mnist-training-worker-0   0/1     Completed   0          2m56s
+    mnist-training-<random string>-worker-0   0/1     Completed   0          2m56s
     ```
 
-1. to read the result - run `kubectl logs mnist-training-worker-0`, which will give the following output (or similar)
+1. to read the result - run `kubectl logs mnist-training-<random string>-worker-0`, which will give the following output (or similar)
 
    ``` bash
    ...
@@ -93,9 +97,9 @@ NAME             STATUS      CURRENT   DESIRED   LASTMESSAGE          AGE
 mnist-training   Completed   0         1         All instances done   10m
 ```
 
-To delete the `IPUjob`, run `kubectl delete ipujobs <job-name>`, e.g. `kubectl delete ipujobs mnist-training`. This will also delete the associated worker pod `mnist-training-worker-0`.
+To delete the `IPUjob`, run `kubectl delete ipujobs <job-name>`, e.g. `kubectl delete ipujobs mnist-training-<random string>`. This will also delete the associated worker pod `mnist-training-<random string>-worker-0`.
 
-Note: simply deleting the pod via `kubectl delete pods mnist-training-worker-0` does not delete the IPU job, which will need to be deleted separately.
+Note: simply deleting the pod via `kubectl delete pods mnist-training-<random-string>-worker-0` does not delete the IPU job, which will need to be deleted separately.
 
 Note: you can list all pods via `kubectl get all` or `kubectl get pods`, but they do not show the ipujobs. These can be obtained using `kubectl get ipujobs`.
 

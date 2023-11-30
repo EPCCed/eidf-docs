@@ -18,7 +18,7 @@ Save and run `kubectl create -f <yaml-file>` on the following:
 apiVersion: graphcore.ai/v1alpha1
 kind: IPUJob
 metadata:
-  name: mnist-training-profiling
+  generateName: mnist-training-profiling-
 spec:
   jobInstances: 1
   ipusPerJobInstance: "1"
@@ -41,7 +41,24 @@ spec:
               python mnist_poptorch_code_only.py --epochs 1;
               echo 'RUNNING ls ./training';
               ls training
+          resources:
+            limits:
+              cpu: 32
+              memory: 200Gi
+          securityContext:
+            capabilities:
+              add:
+              - IPC_LOCK
+          volumeMounts:
+          - mountPath: /dev/shm
+            name: devshm
         restartPolicy: Never
+        hostIPC: true
+        volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 10Gi
+          name: devshm
 ```
 
 After completion, using `kubectl logs <pod-name>`, we can see the following result
