@@ -2214,56 +2214,56 @@
 <p>For our first IPU job, we will be using the Graphcore PyTorch (PopTorch) container image (<code>graphcore/pytorch:3.3.0</code>) to run a simple example of training a neural network for classification on the MNIST dataset, which is provided <a href="https://github.com/graphcore/examples/tree/master/tutorials/simple_applications/pytorch/mnist">here</a>. More applications can be found in the repository <a href="https://github.com/graphcore/examples">https://github.com/graphcore/examples</a>.</p>
 <p>To get started:</p>
 <ol>
-<li>
-<p>to specify the job - create the file <code>mnist-training-ipujob.yaml</code>, then copy and save the following content into the file:</p>
+<li>to specify the job - create the file <code>mnist-training-ipujob.yaml</code>, then copy and save the following content into the file:</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphcore.ai/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPUJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mnist-training-</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mnist-training-</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="c1"># jobInstances defines the number of job instances.</span>
-<span class="c1"># More than 1 job instance is usually useful for inference jobs only.</span>
-<span class="nt">jobInstances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="c1"># ipusPerJobInstance refers to the number of IPUs required per job instance.</span>
-<span class="c1"># A separate IPU partition of this size will be created by the IPU Operator</span>
-<span class="c1"># for each job instance.</span>
-<span class="nt">ipusPerJobInstance</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="nt">workers</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># jobInstances defines the number of job instances.</span>
+<span class="w">  </span><span class="c1"># More than 1 job instance is usually useful for inference jobs only.</span>
+<span class="w">  </span><span class="nt">jobInstances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="c1"># ipusPerJobInstance refers to the number of IPUs required per job instance.</span>
+<span class="w">  </span><span class="c1"># A separate IPU partition of this size will be created by the IPU Operator</span>
+<span class="w">  </span><span class="c1"># for each job instance.</span>
+<span class="w">  </span><span class="nt">ipusPerJobInstance</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">workers</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mnist-training</span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphcore/pytorch:3.3.0</span>
-<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">/bin/bash</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-c</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">--</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphcore/pytorch:3.3.0</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">/bin/bash</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-c</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">--</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">cd;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">mkdir build;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">cd build;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/graphcore/examples.git;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">cd examples/tutorials/simple_applications/pytorch/mnist;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">python -m pip install -r requirements.txt;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">python mnist_poptorch_code_only.py --epochs 1</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">              </span><span class="no">cd;</span>
+<span class="w">              </span><span class="no">mkdir build;</span>
+<span class="w">              </span><span class="no">cd build;</span>
+<span class="w">              </span><span class="no">git clone https://github.com/graphcore/examples.git;</span>
+<span class="w">              </span><span class="no">cd examples/tutorials/simple_applications/pytorch/mnist;</span>
+<span class="w">              </span><span class="no">python -m pip install -r requirements.txt;</span>
+<span class="w">              </span><span class="no">python mnist_poptorch_code_only.py --epochs 1</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
-<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Gi</span>
-<span class="w">        </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Gi</span>
+<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">add</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span>
-<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/shm</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devshm</span>
+<span class="w">              </span><span class="nt">add</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/shm</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devshm</span>
 <span class="w">        </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 <span class="w">        </span><span class="nt">hostIPC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">emptyDir</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">medium</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Memory</span>
 <span class="w">            </span><span class="nt">sizeLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devshm</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devshm</span>
 </code></pre></div>
-</li>
+<ol>
 <li>
 <p>to submit the job - run <code>kubectl create -f mnist-training-ipujob.yaml</code>, which will give the following output:</p>
 <div class="highlight"><pre><span></span><code>ipujob.graphcore.ai/mnist-training-&lt;random<span class="w"> </span>string&gt;<span class="w"> </span>created
