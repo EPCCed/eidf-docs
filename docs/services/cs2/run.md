@@ -25,14 +25,14 @@ This is based on the sample job from the Cerebras documentation [Cerebras docume
 #SBATCH --gres=cs:1               # Request CS-2 system
 
 source venv_cerebras_pt/bin/activate
-srun python run.py \
-     CSX \
-     --params params.yaml \
-     --num_csx=1 \
-     --model_dir model_dir \
-     --mode {train,eval,eval_all,train_and_eval} \
-     --mount_dirs {paths to modelzoo and to data} \
-     --python_paths {paths to modelzoo and other python code if used}
+python run.py \
+       CSX \
+       --params params.yaml \
+       --num_csx=1 \
+       --model_dir model_dir \
+       --mode {train,eval,eval_all,train_and_eval} \
+       --mount_dirs {paths to modelzoo and to data} \
+       --python_paths {paths to modelzoo and other python code if used}
 ```
 
 ## Creating an environment
