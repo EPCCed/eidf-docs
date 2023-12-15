@@ -34,6 +34,7 @@ python run.py \
        --mount_dirs {paths to modelzoo and to data} \
        --python_paths {paths to modelzoo and other python code if used}
 ```
+See the 'Troubleshooting' section below for known issues.
 
 ## Creating an environment
 
@@ -63,14 +64,14 @@ cerebras_install_check
 
 ## Troubleshooting
 
-### "Failed to transfer X out of 1943 weight tensors"
+### "Failed to transfer X out of 1943 weight tensors with modelzoo"
 Sometimes jobs receive an error during the 'Transferring weights to server' like below:
 ```
 2023-12-14 16:00:19,066 ERROR:   Failed to transfer 5 out of 1943 weight tensors. Raising the first error encountered.
 2023-12-14 16:00:19,118 ERROR:   Initiating shutdown sequence due to error: Attempting to materialize deferred tensor with key “state.optimizer.state.214.beta1_power” from file model_dir/cerebras_logs/device_data_jxsi5hub/initial_state.hdf5, but the file has since been modified. The loaded tensor value may be different from originally loaded tensor. Please refrain from modifying the file while the run is in progress.
 ``` 
 
-If this occurs, follow the below steps to fix it:
+Cerebras are aware of this issue and are working on a fix, however in the mean time follow the below workaround:
 
 1. From within your python venv, edit the <venv>/lib64/python3.8/site-packages/cerebras_pytorch/storage.py file
 ```bash
