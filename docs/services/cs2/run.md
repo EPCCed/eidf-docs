@@ -106,3 +106,5 @@ if modified_time > self._last_modified:
 ```
 
 1. Save the file
+
+1. Re-run the job
