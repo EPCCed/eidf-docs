@@ -16,11 +16,11 @@
 </style>
 
 The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
-You will require three things to use the gateway: 
+You will require three things to use the gateway:
 
-1. A user within a project allowed to access the gateway and a password set. 
-1. An SSH-key linked to this account, used to authenticate against the gateway. 
-1. Have MFA setup with your project account via SAFE. 
+1. A user within a project allowed to access the gateway and a password set.
+1. An SSH-key linked to this account, used to authenticate against the gateway.
+1. Have MFA setup with your project account via SAFE.
 
 Steps to meet all of these requirements are explained below.
 
