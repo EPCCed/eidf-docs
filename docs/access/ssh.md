@@ -19,7 +19,7 @@ The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a co
 You will require three things to use the gateway: 
 
 1. A user within a project allowed to access the gateway and a password set. 
-1. An SSH-key linked to this account, used to authenticate against the gateway 
+1. An SSH-key linked to this account, used to authenticate against the gateway. 
 1. Have MFA setup with your project account via SAFE. 
 
 Steps to meet all of these requirements are explained below.
