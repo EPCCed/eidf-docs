@@ -16,6 +16,13 @@
 </style>
 
 The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
+You will require three things to use the gateway: 
+
+1. A user within a project allowed to access the gateway and a password set. 
+1. An SSH-key linked to this account, used to authenticate against the gateway 
+1. Have MFA setup with your project account via SAFE. 
+
+Steps to meet all of these requirements are explained below.
 
 ## Generating and Adding an SSH Key
 
@@ -63,7 +70,13 @@ This should not be necessary for most users, so only follow this process if you 
 If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
 
-### Using the SSH-Key to access EIDF - Windows and Linux
+## Enabling MFA via SAFE
+
+A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
+To enable this for your EIDF account, follow the safe guide: [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account)
+
+
+### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
 1. From your local terminal, import the SSH Key you generated above: ```$ ssh-add [sshkey]```
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
@@ -82,6 +95,8 @@ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
 
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
+
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Applicaiton.
 
 ## Accessing from Windows
 
@@ -110,6 +125,8 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 ```bash
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
+
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Applicaiton.
 
 ## First Password Setting and Password Resets
 
