@@ -62,6 +62,7 @@ If not, you'll need to generate an SSH-Key, to do this:
 1. Select the plus button under  'Credentials'
 1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
 1. Click 'Upload Credential' - it should look something like this:
+
    ![eidf-portal-ssh](../images/access/eidf-portal-ssh.png){: class="border-img"}
 
 #### Adding a new SSH Key via SAFE
@@ -73,12 +74,13 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 ## Enabling MFA via SAFE
 
 A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
-To enable this for your EIDF account, follow the safe guide: [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account)
 
+To enable this for your EIDF account, follow the safe guide: [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account)
 
 ### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
 1. From your local terminal, import the SSH Key you generated above: ```$ ssh-add [sshkey]```
+
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
 
 ## Accessing From MacOS/Linux
@@ -126,7 +128,7 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
 
-You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Applicaiton.
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
 
 ## First Password Setting and Password Resets
 
