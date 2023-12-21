@@ -2,11 +2,17 @@
 
 The EIDF GPU Service (EIDFGPUS) uses Nvidia A100 GPUs as accelerators.
 
+The EIDF GPU Service is a shared resource which allows for larger GPU resource allocations.
+
+However, during periods of high usage Kubernetes Jobs may be queued whilst waiting for resources to become available on the cluster.
+
+This service is separate to the EIDF OpenStack provisioning with GPUs mounted directly to project VMs which only offers 2 GPUs per VM.
+
 Full Nvidia A100 GPUs are connected to 40GB of dynamic memory.
 
 Multi-instance usage (MIG) GPUs allow multiple tasks or users to share the same GPU (similar to CPU threading).
 
-There are two types of MIG GPUs inside the EIDFGPUS the Nvidia A100 3G.20GB GPUs and the Nvidia A100 1G.5GB GPUs which equate to ~1/2 and ~1/7 of a full Nvidia A100 40 GB GPU.
+The current cluster architecture does not contain any MIGs, but this may change in the future.
 
 The current specification of the EIDFGPUS is:
 
@@ -15,8 +21,6 @@ The current specification of the EIDFGPUS is:
 - Local Disk Space (Node Image Cache and Local Workspace) - 21 TiB
 - Ceph Persistent Volumes (Long Term Data) - up to 100TiB
 - 70 Nvidia A100 40 GB GPUs
-- 14 MIG Nvidia A100 40 GB GPUs equating to 28 Nvidia A100 3G.20GB GPUs
-- 20 MIG Nvidia A100 40 GB GPU equating to 140 A100 1G.5GB GPUs
 
 The EIDFGPUS is managed using [Kubernetes](https://kubernetes.io), with up to 8 GPUs being on a single node.
 
@@ -36,7 +40,7 @@ A standard project namespace has the following initial quota (subject to ongoing
 - Memory: 1TiB
 - GPU: 12
 
-Note these quotas are maximum use by a single project, and that during periods of high usage Kubernetes Jobs maybe queued waiting for resource to become available on the cluster.
+Note these quotas are the maximum used by a single project summed over all submitted jobs.
 
 ## Additional Service Policy Information
 
