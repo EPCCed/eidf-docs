@@ -55,7 +55,7 @@ spec:
 1. Download data set (If the data set download time is estimated to be hours or days you may want to run this code within a [screen](https://www.gnu.org/software/screen/manual/screen.html) instance on your VM so you can track the progress asynchronously)
 
     ``` bash
-    kubectl exec lightweight-pod -- wget <dataset-web-address> /mnt/ceph_rdb/<dataset_name>
+    kubectl exec lightweight-pod -- curl <dataset-web-address> /mnt/ceph_rbd/<dataset_name>
     ```
 
 1. Delete lightweight pod
@@ -74,7 +74,7 @@ metadata:
 spec:
  containers:
  - name: data-loader
-   image: ubuntu-latest
+   image: alpine/curl:latest
    command: ["sleep", "infinity"]
    resources:
     requests:
