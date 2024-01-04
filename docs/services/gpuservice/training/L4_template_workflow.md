@@ -134,7 +134,7 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
 
 ### Create a job that downloads and runs the latest code version at runtime
 
-1) Create a standard job with the required resources and custom docker image (example below)
+1) Write a standard yaml file for a k8s job with the required resources and custom docker image (example below)
 
     ```yaml
     apiVersion: batch/v1
@@ -272,6 +272,11 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
        - name: github-code
          emptyDir:
           sizeLimit: 1Gi
+    ```
+    
+1) Submit the yaml file to kubernetes
+    ```bash
+    kubectl create -f <job-yaml-file>
     ```
     
 ### Setup GitHub actions to build and publish any changes to a Dockerfile 
