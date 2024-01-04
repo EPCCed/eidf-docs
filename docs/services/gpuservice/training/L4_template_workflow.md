@@ -140,31 +140,31 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
     apiVersion: batch/v1
     kind: Job
     metadata:
-    name: template-workflow-job
+     name: template-workflow-job
     spec:
-    completions: 1
-    parallelism: 1
-    template:
+     completions: 1
+     parallelism: 1
+     template:
       spec:
-      restartPolicy: Never
-      containers:
-      - name: template-docker-image
-        image: <dockerhub-user>/template-docker-image:latest
-        command: ["sleep", "infinity"]
-        resources:
+       restartPolicy: Never
+       containers:
+       - name: template-docker-image
+         image: <dockerhub-user>/template-docker-image:latest
+         command: ["sleep", "infinity"]
+         resources:
           requests:
-          cpu: 10
-          memory: "40Gi"
+           cpu: 10
+           memory: "40Gi"
           limits:
-          cpu: 10
-          memory: "80Gi"
-          nvidia.com/gpu: 1
-        volumeMounts:
-        - mountPath: /mnt/ceph_rbd
-          name: volume
-      volumes:
-      - name: volume
-        persistentVolumeClaim:
+           cpu: 10
+           memory: "80Gi"
+           nvidia.com/gpu: 1
+         volumeMounts:
+         - mountPath: /mnt/ceph_rbd
+           name: volume
+       volumes:
+       - name: volume
+         persistentVolumeClaim:
           claimName: template-workflow-pvc
     ```
 
