@@ -22,7 +22,7 @@ Request memory from the Ceph server by submitting a PVC to K8s (example pvc spec
 kubectl create -f <pvc-spec-yaml>
 ```
 
-#### Example PyTorch PersistentVolumeClaim
+#### Example PersistentVolumeClaim
 
 ``` yaml
 kind: PersistentVolumeClaim
