@@ -51,13 +51,13 @@ spec:
     ``` bash
     kubectl create -f lightweight-pod.yaml
     ```
-    
+
 1. Download data set (If the data set download time is estimated to be hours or days you may want to run this code within a [screen](https://www.gnu.org/software/screen/manual/screen.html) instance on your VM so you can track the progress asynchronously)
 
     ``` bash
     kubectl exec lightweight-pod -- wget <dataset-web-address> /mnt/ceph_rdb/<dataset_name>
     ```
-    
+
 1. Delete lightweight pod
 
     ``` bash
@@ -99,7 +99,7 @@ Kubernetes requires Docker images to be pre-built and available for download fro
 1. Select a suitable base image (The [Nvidia container catalog](https://catalog.ngc.nvidia.com/containers) is often a useful starting place for GPU accelerated tasks)
 
 1. Create a [Dockerfile](https://docs.docker.com/engine/reference/builder/) to add any additional packages required to the base image
-    
+
     ```txt
     FROM nvcr.io/nvidia/rapidsai/base:23.12-cuda12.0-py3.10
     RUN pip install pandas
@@ -122,11 +122,11 @@ Kubernetes requires Docker images to be pre-built and available for download fro
 
 A rapid development cycle from code writing to testing requires some initial setup within k8s.
 
-The first step is to automatically pull the latest code version before running any tests in a pod. 
+The first step is to automatically pull the latest code version before running any tests in a pod.
 
 This allows development to be conducted on any device/VM with access to the repo (GitHub/GitLab) and testing to be completed on the cluster with just one `kubectl create` command.
 
-This allows custom code/models to be prototyped on the cluster, but typically within a standard base image. 
+This allows custom code/models to be prototyped on the cluster, but typically within a standard base image.
 
 However, if the Docker container also needs to be developed then GitHub actions can be used to automatically build a new image and publish it to Docker Hub if any changes to a Dockerfile is detected.
 
@@ -210,7 +210,7 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /code 
+         - mountPath: /code
            name: github-code
        volumes:
        - name: volume
@@ -263,7 +263,7 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /code 
+         - mountPath: /code
            name: github-code
        volumes:
        - name: volume
@@ -273,13 +273,14 @@ A template GitHub repo with sample code, k8s yaml files and github actions is av
          emptyDir:
           sizeLimit: 1Gi
     ```
-    
+
 1. Submit the yaml file to kubernetes
+
     ```bash
     kubectl create -f <job-yaml-file>
     ```
-    
-### Setup GitHub actions to build and publish any changes to a Dockerfile 
+
+### Setup GitHub actions to build and publish any changes to a Dockerfile
 
 1. Create two [GitHub secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) to securely provide your Docker Hub username and access token.
 
