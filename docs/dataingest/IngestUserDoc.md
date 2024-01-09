@@ -4,7 +4,7 @@ The _Edinburgh International Data Facility_ (EIDF) can host your data for the li
 
 ## Overview
 
-The EIDF provides two complementary services: **Archive** and **Analytics-Ready Data** (ARD). The ARD hosted by the EIDF are publicly available to EIDF data service cloud users. ARD are indexed and searchable on the EIDF Metadata Catalogue.
+The EIDF provides two complementary services: **Archive** and **Analytics-Ready Data** (ARD). The ARD hosted by the EIDF are available to EIDF Data Science cCoud users. ARD are indexed and searchable on the EIDF Data Catalogue.
 
 In the following, a dataset is a collection of data resources (or files), together with a description and other information (what is known as metadata).
 
@@ -14,16 +14,16 @@ To set up automated ingestion:
 1. An ingest workflow is set up for the dataset.
 
 Automated ingestion of each batch of data then proceeds as follows:
-1. The data provider uploads a batch of data files (_raw data_) and corresponding _metadata_ to the "landing zone" for this dataset, accessed via the managed file transfer (MFT) service.
+1. The data provider uploads a batch of data files (_raw data_) and corresponding _metadata_ to a "landing zone" for this dataset, accessed via the Managed File Transfer (MFT) service.
 1. If archiving is required, copies of the raw data files are deposited in the EIDF archive.
 1. The raw data may be processed and transformed to ARD format, if requested by the data provider.
 1. The analytics ready data is published on the ARD service.
-1. The uploaded metadata is updated with download links and is published in the EIDF metadata catalogue.
+1. The uploaded metadata is updated with download links and is published in the EIDF Data Catalogue.
 1. A report is created and dispatched to the data provider.
 
 ## Application
 
-Apply for a data ingest project to publish analytics ready data in the EIDF. A data ingest project may contain many datasets.
+In order to ingest data into the EIDF, you need to apply for a data ingest project to publish analytics ready data in the EIDF. A data ingest project may contain many datasets. Please follow the workflow below:
 
 1. If you do not already have an EPCC SAFE account you will need to create one.
 1. Once you have an EPCC SAFE account use this to login to the EIDF portal.
@@ -39,7 +39,7 @@ Create accounts for data providers to have access to the MFT service.
 
 ### CKAN organisation
 
-The EIDF data catalogue is a CKAN instance.
+The EIDF Data Catalogue is a CKAN instance.
 
 We map an EIDF project to a CKAN organisation.
 Your CKAN organisation will be created if your application is successful. The title of your organisation is the title of your project and you may also provide a description.
@@ -51,20 +51,20 @@ An EIDF dataset consists of descriptive metadata to allow researchers to find yo
 You will need to create an ingest dataset for each dataset that you wish to publish or archive and provide the necessary metadata, by filling in a form in the EIDF Portal.
 
 1. Choose create dataset.
-1. Provide the top level metadata to create your Dataset:
-    * Title
-    * Description
-    * Contact Point
+1. Provide the following top-level metadata to create your Dataset:
+    * **Title**:  the name of your dataset. 
+    * **Description**:  human readable description of your dataset.
+    * **Contact Point**:  who should be contacted regarding any enquiries or requests for access if your dataset has restricted access.
 
-   There is also a number of optional fields that you may wish to provide to make it easier for your data to be discovered.
+   There is also several optional fields that you may wish to provide to make it easier for your data to be discovered.
 1. (Optional) Indicate whether archival is required.
-1. (Optional) Add the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or Github `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. See below for instructions on how to create the container image.
+1. (Optional) Add the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. See below for instructions on how to create the container image.
 
 We will set up the ingest process and you will be provided with a link to upload the data.
 
 ### Pre-processing container
 
-Unless the data that you are providing is already in ARD format (the format your end data consumer will access), you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
+Unless the data that you are providing is already in ARD format (that is the format that your end data consumer will access), you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
 
 See the page [Pre-processing Container](./PreprocessingContainer.md) for guidance on how to create the preprocessing container image.
 
@@ -72,7 +72,7 @@ See the page [Pre-processing Container](./PreprocessingContainer.md) for guidanc
 
 **Data**
 
-A data file can be any format, for example CSV, JSON, or even in a raw binary format. We recommend limiting the number of resources within a dataset to less than 100 to keep the data catalogue entries manageable. For example, when publishing timeseries data, a file resource may be a week's worth of data and a dataset contains 52 resources, i.e. 1 year.
+A data file can be in any format, for example CSV, JSON, or even in a raw binary format (such as raw data or it could be a zip file of CSV or JSON files). We recommend limiting the number of resources within a dataset to less than 100 to keep the data catalogue entries manageable. For example, when publishing timeseries data, a file resource may be a week's worth of data and a dataset contains 52 resources, i.e. 1 year.
 
 Data files can be organised in a directory tree.
 
@@ -89,7 +89,7 @@ Providing detailed metadata will make it easier for researchers to discover and 
 
 ## Data upload
 
-The data ingestion process starts with a data upload.
+The data ingestion process starts with a data upload. Please do the following:
 
 1. Open the upload link that was provided for your dataset.
 1. Log in with the upload account that was created in your ingest project.
@@ -111,12 +111,13 @@ If the processing is successful:
 
 ## EIDF Data Catalogue
 
-Users of the data science cloud (DSC) can view and search the ARD metadata in the EIDF data catalogue.
+Users of the EIDF Data Science Cloud (DSC) can view and search the ARD metadata in the EIDF Data Catalogue.
 Each organisation has a number of datasets.
-The dataset lists the data resources (files) available and provides a download link.
+Each dataset lists the data resources (files) available and provides a download link.
 
 ## Data access
 
 Users of the DSC have anonymous access to public ARD datasets in EIDF S3, using the download link from the EIDF data catalogue.
 
-Access permissions for non-public ARD datasets may be managed by granting access to a set of projects using the SAFE. It is implemented using S3 policies on buckets.
+Access permissions for non-public ARD datasets may be managed by granting access to a set of projects using the SAFE. It is implemented using S3 policies on buckets. The EIDF supports UK government policy positions on Open Data, and encourages its users to provide access to data sets under the most open (unencumbered) licences legally and ethically possible. 
+
