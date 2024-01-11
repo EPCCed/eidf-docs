@@ -10,7 +10,7 @@ In the following, a dataset is a collection of data resources (or files), togeth
 
 To set up automated ingestion:
 
-1. The data provider creates an empty dataset.
+1. The data provider creates an empty dataset in the EIDF portal.
 1. An ingest workflow is set up for the dataset.
 
 Automated ingestion of each batch of data then proceeds as follows:
