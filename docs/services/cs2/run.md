@@ -43,7 +43,7 @@ To run a job on the cluster, you must create a Python virtual environment (venv)
 1. Create the venv
 
 ```bash
-/opt/python3.8/bin/python3.8 -m venv venv_cerebras_pt
+python3.8 -m venv venv_cerebras_pt
 ```
 
 1. Install the dependencies
