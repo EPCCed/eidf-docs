@@ -111,7 +111,7 @@ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
-You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Applicaiton.
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
 
 ## Accessing from Windows
 
