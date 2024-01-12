@@ -71,7 +71,7 @@ This should not be necessary for most users, so only follow this process if you 
 If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
 
-## Enabling MFA via SAFE
+## Enabling MFA via the Portal
 
 A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
 
