@@ -75,7 +75,20 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 
 A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
 
-To enable this for your EIDF account, follow the safe guide: [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account)
+To enable this for your EIDF account:
+
+1. Login to the [portal.](https://portal.eidf.ac.uk)
+1. Select 'Projects' then 'Your Projects'
+1. Select the project containing the account you'd like to add MFA to.
+1. Under 'Your Accounts', select the account you would like to add MFA to.
+1. Select 'Set MFA Token'
+1. Within your chosen MFA application, scan the QR Code or enter the key and add the token.
+1. Enter the code displayed in the app into the 'Verification Code' box and select 'Set Token'
+1. You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.
+
+!!! note
+    TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.<br>
+    An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.
 
 ### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
