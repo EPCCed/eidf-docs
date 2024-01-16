@@ -46,11 +46,12 @@ Additional information on service policies can be found [here](policies.md).
 
 This tutorial teaches users how to submit tasks to the EIDFGPUS, but it is not a comprehensive overview of Kubernetes.
 
-| Lesson                                                                                                   | Objective                                                                                                      |
-|-----------------------------------|-------------------------------------|
-| [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
-| [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
-| [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results. |
+| Lesson                                                                                        | Objective                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.                                                                              |
+| [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                                                                                                      |
+| [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results.                                                                           |
+| [Devspace](training/L5_devspace.md)                                                           | a. `devspace` a tool for helping you manage and interact with Kubernetes.<br>b. One line GPU notebook with `devspace`.<br>c. Using `devspace` to create and interact with a Dask cluster. |
 
 ## Further Reading and Help
 
