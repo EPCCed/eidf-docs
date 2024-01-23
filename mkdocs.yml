@@ -67,6 +67,7 @@ nav:
          - "Getting Started": services/gpuservice/training/L1_getting_started.md
          - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
          - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
+         - "Setting up DevSpace": services/gpuservice/training/L5_devspace.md
       - "GPU Service FAQ": services/gpuservice/faq.md
     - "Graphcore Bow Pod64":
       - "Overview": services/graphcore/index.md
