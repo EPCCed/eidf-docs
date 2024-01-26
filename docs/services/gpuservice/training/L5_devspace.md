@@ -12,9 +12,6 @@ Things such as:
 
 Although DevSpace automates the configuration process, you will still need to specify and parameterise yaml manifests or helm charts for specific services and pods that you require.
 
-> DevSpace should not be used to sync data between your VM/Project and one or more containers.
-Large datasets should be moved to a provisioned PV, accessed from network supported file systems mounted to your pods or shared via a network attached DBMS from your project.
-
 This guide aims to help you get started with DevSpace but it is not a comprehensive guide or configuration manual.
 You can discover more about how to configure DevSpace from the [documentation](https://www.devspace.sh/docs/getting-started/introduction).
 
@@ -23,138 +20,136 @@ You can discover more about how to configure DevSpace from the [documentation](h
 Follow the installation instructions for DevSpace [here](https://www.devspace.sh/docs/getting-started/installation?x0=5).
 If you don't have sudo access, you can place `devspace` in your home directory or `~/bin`.
 
-You can now configure your project manually following the setup guide below or you can clone our template [repository]() to get started.
-The template mirrors the initial setup described below and creates a GPU enabled [RAPIDS]() Jupyter notebook server that can be accessed from your EIDF VM.
+Once you have DevSpace installed you will be able to check for DevSpace commands and options
+using `devspace --help`.
 
-## Setting up DevSpace in your project
+## First steps - a Jupyter Notebooks on the cluster
 
-To start using DevSpace in your project, create a `devspace.yaml` file at the top level of your project directory/repo.
-It should contain
+To help get you started, we have created a template DevSpace 
+[repository](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids) 
+that contains the necessary configuration to launch and access a Jupyter Lab session
+running on a GPU node in the Kubernetes (K8s) cluster. DevSpace is configured in this
+example to do a few admin tasks for us.
 
-``` yaml
-version: v2beta1
-name: <the-name-of-your-project>
+ - It will submit a request to the  K8s cluster for a pod running a single container with a GPU.
+ - It will start the Jupyter lab server with the right command options.
+ - It will automatically forward the Stdout from the container and connect a port to our
+    local VM so we can connect to the server like normal in our browser.
+ - Allows us to make patches to pod Kubernetes specifications at run time.
+ - Finally, it will sync files from specified locations on our local VM with the 
+    running pod so we can access and edit them locally or from the pod.
 
-# Use defined variables that can be used in this configuration file.
-vars:
-  IMAGEREG_NAME: $(echo registry-$(whoami))
-  IMAGEREG_DEVSPACE: ../eidf-devspace-imagereg/
+First, clone the template repository to your EIDF VM.
 
-# Imports from other devspaces. This one is for patching the image registry.
-imports:
-  - path: ${IMAGEREG_DEVSPACE}
+```bash
+git clone https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids.git
 ```
 
-The `version` is mandatory and directly from the DevSpace configuration spec.
-The `vars` are EIDF specific and help us to manage the local image registry.
-`imports` includes our customised template for the DevSpace image registry to make it compatible with EIDFGPUS K8s.
+> The repository is called `rapids` because it is based upon the RAPIDS image supplied
+> by NVIDIA for ML and data science workflows using their hardware. Discover more at
+> the [RAPIDS website](https://rapids.ai/). We recommend that users build their 
+> GPU workflows from the RAPIDS container image bases, as drivers, configuration
+> and package integration testing are handled by NVIDIA. Details about 
+> customising containers can be found [here](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html#custcontfrm) and are also covered in the 
+> advanced DevSpace topic of this guide.
 
-## Adding customised container images to your DevSpace
+Once you have cloned the repository, enter the directory and run `devspace dev` to
+start your Jupyter lab session on the cluster. If everything goes to plan, you
+will see output like the following
 
-Images can be customised using Docker files.
-Any number of images can be built and utilised by your DevSpace.
-Normally, images would be built manually by the user and submitted to an image registry online such as Docker Hub.
-This can be slow for large images (both upload and download) and it is typically more efficient to keep the images local to the cluster.
+```bash
 
-You can deploy a local image registry to your project `NameSpace` in the K8s cluster using DevSpace and the example `eidf-devspace-imagereg` repository.
-Image building and storage is then handled by the cluster.
-You do not need to install `docker` on your VM.
-
-To include an image in your DevSpace project, add the following to your `devspace.yaml`.
-
-``` yaml
-images:
-  rapids:
-    image: ${USER}/rapids
-    dockerfile: rapids/docker/Dockerfile
 ```
 
-The specification of `images` is available in the DevSpace [documentation](https://www.devspace.sh/docs/configuration/images/).
+which will eventually be cleared and replaced by something like this
 
-In short, `images` contains a mapping of image names (`rapids` is one) with the `image` name and a relative path to a `Dockerfile`.
-`image` may also be a direct link to an online image and tag if you wish to cache the image locally.
+```bash
+     %########%      
+     %###########%       ____                 _____                      
+         %#########%    |  _ \   ___ __   __ / ___/  ____    ____   ____ ___ 
+         %#########%    | | | | / _ \\ \ / / \___ \ |  _ \  / _  | / __// _ \
+     %#############%    | |_| |(  __/ \ V /  ____) )| |_) )( (_| |( (__(  __/
+     %#############%    |____/  \___|  \_/   \____/ |  __/  \__,_| \___\\___|
+ %###############%                                  |_|
+ %###########%
 
-Our `Dockerfile` can modify the image in anyway.
-We start by specify the image we wish to use as a base. here that is the `rapidsai-core` image.
-Additional software or settings can be applied in the `CUSTOMIZE` section, but in this case we simply create and enter a new directory called `/app`.
 
-``` dockerfile
-# https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers/rapidsai-core/tags
-FROM nvcr.io/nvidia/rapidsai/rapidsai-core:cuda11.8-runtime-ubuntu22.04-py3.10
+Welcome to your development container!
 
-### CUSTOMIZE HERE
+This is how you can work with it:
+- Files will be synchronized between your local machine and this container
+- Some ports will be forwarded, so you can access this container via localhost
+- Run `python main.py` to start the application
 
-### END CUSTOMIZATION
+[I 2024-01-25 12:29:35.744 ServerApp] Package jupyterlab took 0.0000s to import
+[I 2024-01-25 12:29:36.297 ServerApp] Package dask_labextension took 0.5523s to import
 
-RUN mkdir /app
-WORKDIR /app
+... lots more Jupyter output
+
+    To access the server, open this file in a browser:
+        file:///root/.local/share/jupyter/runtime/jpserver-619-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/lab?token=1a9f3a61261fa36c23674129d45561f133c9c6530e3d2793
+        http://127.0.0.1:8888/lab?token=1a9f3a61261fa36c23674129d45561f133c9c6530e3d2793
+[I 2024-01-25 12:27:48.122 LabApp] Build is up to date
 ```
 
-More information on customising the image is available in the template repository [here]().
+you should now be able to click on or copy the `http` links into your browser and access your lab session. The root directory of the session is the `app` folder of this template.
 
-## Starting a Jupyter notebook
+## Understanding what DevSpace just did
 
-To use DevSpace to setup and interact with a Jupyter notebook we need to create three new sections in our `devspace.yaml`.
-The first is a deployment. Deployments in devspace describe either a Helm chart with specific values or a Kubernetes manifest.
-Think of a deployment as what you need to run an application.
-For Jupyter, we can use a convenient Helm chart provided DevSpace called a [component-chart](https://www.devspace.sh/component-chart/docs/introduction).
+DevSpace has just done a lot of work for you but we will try to unpack the important
+bits for this example.
 
-We add our deployment definition and component-chart values to our `devspace.yaml`.
+Firstly, the `devspace.yaml` contains a `deployments` section.
+This contains the description of the resources we want to request from the K8s cluster
+and any special details, like the image we want our container/pod to run and the
+type of GPU we want. Think of deployments as the production version of your container,
+this is how the service or application would run without you in a batch style mode.
 
-``` yaml
+Our `deployments` section looks like this
+
+```yaml
 deployments:
-  rapids: # our deployment name
+  rapids:
+    # This deployment uses `helm` but you can also define `kubectl` deployments or kustomizations
     helm:
+      # We are deploying this project with the devspace component chart
+      # For configuration of this chart: https://www.devspace.sh/component-chart/docs/introduction
       chart:
         name: component-chart
         repo: https://charts.devspace.sh
-      values: # values for our helm chart
+      # Under `values` we can define the values for this Helm chart used during `helm install/upgrade`
+      # You may also use `valuesFiles` to load values from files, e.g. valuesFiles: ["values.yaml"]
+      values:
         containers:
-          - image: ${USER}/rapids # the name of our image from the local registry
+          - image: nvcr.io/nvidia/rapidsai/notebooks:23.12-cuda11.8-py3.10
             resources:
               limits:
-                cpu: 4
-                memory: 20Gi
-                nvidia.com/gpu: 1
-              requests:
-                cpu: 2
+                cpu: 1
                 memory: 1Gi
-                nvidia.com/gpu: 1
+              requests:
+                cpu: 1
+                memory: 1Gi
         nodeSelector:
-          nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
+          nvidia/gpu.product: "NVIDIA-H100-80GB-HBM3"
+          # alt values | NVIDIA-A100-SXM4-40GB | NVIDIA-A100-SXM4-40GB-MIG-3g.20gb | NVIDIA-H100-80GB-HBM3
         labels:
           eidf/user: ${USER}
 ```
 
-In this case, we specify the mandatory resources definitions, and a single container which references our image from our local registry (or any remote registry).
-The `nodeSelector` section allows us to specify the type of GPU we wish to secure, otherwise the first available GPU will be provided.
+Deployments in devspace describe either a Helm chart (a Kubernetes manifest templating framework) with specific values or a static Kubernetes manifest.
+For Jupyter, we can use a convenient Helm chart provided DevSpace called a [component-chart](https://www.devspace.sh/component-chart/docs/introduction). We then specify the `image` we want to
+use and the node type we want to run on `NVIDIA-H100-80GB-HBM3`. The resource limits
+here are less important because we don't plan to run our DevSpace in a batch mode.
+Not requesting a GPU makes this container quick to schedule and start. We will
+ask for a GPU in the `dev` section. Finally, we add a label unique to us so that
+we don't get confused with other DevSpaces in our K8s namespace.
 
-We can check our deployment using the command
+The `dev` section allows us to modify the `deployment` and begin the
+useful features of our DevSpace (interactivity, port-forwarding, file syncing, specify pod environment variables, patches etc.). Our `dev` section looks like this
 
-``` bash
-$ devspace deploy
-```
-
-This will provide a fair amount of output and take a while, especially if it is the first time the image has been build. When the build is finished, DevSpace will create the deployment.
-
-Checkout the deployment status with
-
-``` bash
-$ kubectl get pods
-NAME                         READY   STATUS    RESTARTS   AGE
-pod/rapids-7f9dc7d65-mh2n8   1/1     Running   0          51s
-pod/registry-thgcd-0         2/2     Running   0          45m
-```
-
-This shows the rapids pod is up and running with our image.
-
-To access the Jupyter notebook we must now add one more section to our `devspace.yaml`.
-The first modifies the deployment and includes the following configuration:
-
-- The syncing of files between our VM to the container.
-- The forwarding of the port where our Jupyter server is running to our local VM.
-
-``` yaml
+```yaml
 dev:
   rapids:
     # Search for the container that runs this image
@@ -162,37 +157,173 @@ dev:
        app.kubernetes.io/component: rapids
        eidf/user: ${USER}
     # Replace the container image with this dev-optimized image (allows to skip image building during development)
-    devImage: ${USER}/rapids
-    terminal:
-      command: jupyter lab --allow-root
+    devImage: nvcr.io/nvidia/rapidsai/notebooks:23.12-cuda11.8-py3.10
+    env:
+      - name: JUPYTER_PORT
+        value: 8888
+    workingDir: /app
     resources:
       limits:
         cpu: 4
         memory: 20Gi
         nvidia.com/gpu: 1
       requests:
-        cpu: 2
-        memory: 1Gi
+        cpu: 4
+        memory: 20Gi
         nvidia.com/gpu: 1
-    # Sync files between the devspace folder and the development container
+    # Sync files between the local filesystem and the development container
     sync:
-      - path: ./:/app
+      - path: ./app:/app
+      - path: rapids/environment.yml:/opt/rapids/environment.yml
+      - path: ./devspace_start_rapids.sh:/devspace_start_rapids.sh
+      - path: ./devspace_start_jupyter.sh:/devspace_start_jupyter.sh
+      - path: ./devspace_start.sh:/devspace_start.sh
+    # Forward some ports between Pod and Localhost
     ports:
-      # remote:local
-      - port: "8888:8888"
+      - port: 8888:8888
+    # Open a terminal and use the following command to start it
+    terminal:
+      command: /devspace_start_jupyter.sh
+    # Inject a lightweight SSH server into the container (so your IDE can connect to the remote dev env)
+    ssh:
+      enabled: true
+    # Make the following commands from my local machine available inside the dev container
+    proxyCommands:
+      - command: devspace
+      - command: kubectl
+      - command: helm
+      - gitCredentials: true
+    patches:
+      - op: replace
+        path: spec.securityContext
+        value:
+          runAsUser: 0
+          runAsGroup: 0
 ```
 
-To start the development modifications, use the command `devspace deploy`.
+There is quite a bit going on here, so lets start at the top.
 
-> The template repository uses a slightly different approach.
-`devspace dev` will return a shell session on the rapids container.
-To get Jupyter, use the command `devspace dev -p jupyter`.
+First we specify a `dev` which we call `rapids`. Then we must specify some label
+selectors so that DevSpace can find the `deployment` we want to replace. This is
+where our `${USER}` label comes in handy. The `image` is then specified again
+which can be the same or different from the `deployment`. The `workingDir` is where
+we would like our default working directory to be on the container. Here we set to `/app` which
+is one of synchronised directories (keep reading).
 
-You should now be able to use the output of Jupyter server you see (including the token) to access your Jupyter lab instance.
+Now for the interesting stuff. The `resources` section here allows us to redefine
+our resources which now include a GPU request. On nodes with multiple GPUs you
+may request more than one. Generally, it is a good idea to make the requests and
+limits the same.
 
-> If other people are forwarding ports to the same VM, you may need to modify your local port to an alternative.
+The `sync` section specifies either files or directories we wish to have synchronised.
+In this case we synchronise a few different objects but the general form is
+
+```yaml
+sync:
+  - path: <local>:<remote>
+```
+
+you can read more about syncing in the DevSpace docs [here](https://www.devspace.sh/docs/configuration/dev/connections/file-sync). Essentially, DevSpace automatically watches both files (local and remote) and if one updates it will perform a `kubectl cp` operation to
+automatically copy the new file to the other location. This allows you to develop
+content either on your VM or in the container simultaneously, and ensures that if
+the container/pod is lost or shutdown that the work is synchronised to your VM.
+
+> Try creating a new Notebook in your lab session. You should see this notebook created locally
+in your `./app` folder even though it is running on the cluster. Similarly, if you create
+a text file in `./app` on your local VM, you should see the file appear in the explorer
+of the Jupyter lab session.
+
+> DevSpace should not be used to sync large datasets or application output between your VM/Project and one or more containers.
+> Large datasets should be moved to a provisioned PV, accessed from network supported file systems mounted to your pods or shared via a network attached DBMS from your project. The `app` folder or any synced resource using DevSpace is primarily suited for small text files during development and testing.
+
+The `ports` sections of your `dev` allows the user to specify ports that should
+automatically be forwarded from the development pod/container to the local machine
+(where you started `devspace dev`). Because Jupyter Lab is served via a micro-webserver
+on port `8888` we can forward that port to our local VM and access it via the
+VMs web browser. The web application is rendered locally for us to interact with
+but all the commands and cells we run are executing on the remote development
+container we started on the cluster with DevSpace. Some applications have dashboards
+and these can also be forwarded by specify a `ports` entry for those developments.
+
+One might also forward ports manually using `kubectl port-forward` but this must be
+run each time the development container is started. DevSpace just handles it for
+us.
+
+> If other people are forwarding ports to the same VM, you may need to modify your local port to an alternative. Change `8888:8888` to `8888:8889` for example. You should change the `http` links
+> as well to `localhost:8889` in this case.
+
+When docker images are build, they have a `CMD` directive that tells them what to
+run when starting up. Sometimes an image we're using may not run the command we want,
+or we might need to modify the command for development purposes. The `terminal` section
+allows us specify the command, in this case `/devspace_start_jupyter.sh` which is
+a special file we've copied from our template repository using `sync`.
+
+The file sources the standard `/devspace_start.sh`, then sources the profile files specific to the RAPIDS image we are using and finally executes a `jupyter lab` server with the necessary
+arguments. In this case we needed to leverage the bash profile and entrypoint from NVIDIA which comes pre-loaded
+on the image to ensure the `rapids` conda environment is active and configured correctly when we start Jupyter.
+
+> We could also use a different script at start up of our container. Try changing
+> `/devspace_start_jupyter.sh` to `/devspace_start_rapids.sh`. This just loads the
+> entry point setup and returns a shell session you can interact with. Use `conda list`
+> to explore what packages are installed in the container by default.
+
+One can also enter a shell on a container using the command `devspace enter`, which
+will present the user with a list of containers to chose from.
+
+So that is more or less, what DevSpace has done in this example. DevSpace can do
+quite a bit more but that will be covered in other examples or you can learn more by
+investigating the DevSpace [documentation](https://www.devspace.sh/docs/getting-started/introduction).
+
+One last thing of note. At the end of our development section is a `patch`.
+Patches allow us to modify aspects of the Kubernetes manifest which describes the pod configuration at runtime. NVIDIA have migrated their RAPIDS
+images to a model that uses a `rapids` user. While this is fine and proper for production containers it isn't compatible with DevSpace or easy development. So we apply a patch to alter the `securityContext` of this pod to use `root` user instead. Depending on the
+image you use, this may or may not be necessary.
+
+```yaml
+patches:
+  - op: replace
+    path: spec.securityContext
+    value:
+      runAsUser: 0
+      runAsGroup: 0
+```
 
 ## Cleaning up DevSpace
 
 To remove your running deployments from the server, use the command `devspace purge`.
-This does not remove the image registry, which must be removed using the command `devspace cleanup local-registry`.
+
+## Known Issues
+
+ - Port conflicts may occur on shared VMs. Adjust your forward port options to avoid this.
+ - If the resources you request are not available in a short amount of time. Your 
+    `devspace dev` command may timeout.
+ - DevSpace relies on running the development container as `root` user. If the container image you 
+
+## Making modifications to the template
+
+### Resources
+
+One can specify the required resources in this template as long as they do not
+exceed what is available on a single K8s node. Refer to the GPU service documentation
+for more details.
+
+### PVC volumes
+
+If you require stateful (containers with disk space) sessions on the K8s cluster
+you will need to specify a PVC volume for the container to mount.
+
+*Create example*
+
+### Additional Python packages
+
+Additional Python packages can be installed in three ways.
+
+ - Using a shell, or your notebook, install packages to the container directly.
+   The packages will need to be reinstalled each time you launch the container.
+ - Specify the resources you require in the file `./rapids/environment.yml`. This
+   is a customisation option supported by the rapids containers.
+
+### Shell instead of Notebook
+
+### 
+
