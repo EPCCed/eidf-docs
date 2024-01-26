@@ -58,7 +58,31 @@ start your Jupyter lab session on the cluster. If everything goes to plan, you
 will see output like the following
 
 ```bash
-
+$ devspace dev
+info Using namespace 'testtony'
+info Using kube context 'devgpu'
+deploy:rapids Deploying chart /home/eidf076/eidf076/thgcd/.devspace/component-chart/component-chart-0.9.1.tgz (rapids) with helm...
+deploy:rapids Deployed helm chart (Release revision: 1)
+deploy:rapids Successfully deployed rapids with helm
+dev:rapids Waiting for pod to become ready...
+dev:rapids Selected pod rapids-devspace-7866d5fcff-dxl8z
+dev:rapids ports Port forwarding started on: 8889 -> 8889
+dev:rapids sync  Sync started on: ./devspace_start.sh <-> /devspace_start.sh
+dev:rapids sync  Waiting for initial sync to complete
+dev:rapids sync  Sync started on: ./devspace_start_rapids.sh <-> /devspace_start_rapids.sh
+dev:rapids sync  Waiting for initial sync to complete
+dev:rapids sync  Sync started on: ./devspace_start_jupyter.sh <-> /devspace_start_jupyter.sh
+dev:rapids sync  Waiting for initial sync to complete
+dev:rapids sync  Sync started on: ./app <-> /app
+dev:rapids sync  Waiting for initial sync to complete
+dev:rapids sync  Initial sync completed
+dev:rapids sync  Initial sync completed
+dev:rapids sync  Initial sync completed
+dev:rapids sync  Initial sync completed
+dev:rapids ssh   Port forwarding started on: 10616 -> 8022
+dev:rapids proxy Port forwarding started on: 10925 <- 10567
+dev:rapids ssh   Use 'ssh rapids.eidf-devspace-rapids.devspace' to connect via SSH
+dev:rapids term  Opening shell to container-0:rapids-devspace-7866d5fcff-dxl8z (pod:container)
 ```
 
 which will eventually be cleared and replaced by something like this
