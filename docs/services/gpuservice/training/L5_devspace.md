@@ -10,7 +10,7 @@ Things such as:
 - Automatically syncing files between your local repository (on your VM) and the DevSpace managed containers (but not big data).
 - Capturing services logic (e.g. a Dask/Ray cluster) for reuse.
 
-Although DevSpace automates the configuration process, you will still need to specify and parameterise yaml manifests or helm charts for specific services and pods that you require.
+Although DevSpace automates the configuration and deployment process, you will still need to specify and parameterise yaml manifests or helm charts for specific services and pods that you require.
 
 This guide aims to help you get started with DevSpace but it is not a comprehensive guide or configuration manual.
 You can discover more about how to configure DevSpace from the [documentation](https://www.devspace.sh/docs/getting-started/introduction).
@@ -23,7 +23,7 @@ If you don't have sudo access, you can place `devspace` in your home directory o
 Once you have DevSpace installed you will be able to check for DevSpace commands and options
 using `devspace --help`.
 
-## First steps - a Jupyter Notebooks on the cluster
+## First steps - Jupyter Notebooks on the cluster
 
 To help get you started, we have created a template DevSpace 
 [repository](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids) 
@@ -292,11 +292,7 @@ on the image to ensure the `rapids` conda environment is active and configured c
 > to explore what packages are installed in the container by default.
 
 One can also enter a shell on a container using the command `devspace enter`, which
-will present the user with a list of containers to chose from.
-
-So that is more or less, what DevSpace has done in this example. DevSpace can do
-quite a bit more but that will be covered in other examples or you can learn more by
-investigating the DevSpace [documentation](https://www.devspace.sh/docs/getting-started/introduction).
+will present the user with a list of containers to chose from (if there is more than one).
 
 One last thing of note. At the end of our development section is a `patch`.
 Patches allow us to modify aspects of the Kubernetes manifest which describes the pod configuration at runtime. NVIDIA have migrated their RAPIDS
@@ -312,6 +308,10 @@ patches:
       runAsGroup: 0
 ```
 
+So that is more or less, what DevSpace has done in this example. DevSpace can do
+quite a bit more but that will be covered in other examples or you can learn more by
+investigating the DevSpace [documentation](https://www.devspace.sh/docs/getting-started/introduction).
+
 ## Cleaning up DevSpace
 
 To remove your running deployments from the server, use the command `devspace purge`.
@@ -321,7 +321,7 @@ To remove your running deployments from the server, use the command `devspace pu
  - Port conflicts may occur on shared VMs. Adjust your forward port options to avoid this.
  - If the resources you request are not available in a short amount of time. Your 
     `devspace dev` command may timeout.
- - DevSpace relies on running the development container as `root` user. If the container image you 
+ - DevSpace relies on running the development container as `root` user. If the container image you use does not have a `root` user by default, you can modify the development or deploying using the K8s `securityContext` controls (our patch in this example).
 
 ## Making modifications to the template
 
@@ -336,7 +336,68 @@ for more details.
 If you require stateful (containers with disk space) sessions on the K8s cluster
 you will need to specify a PVC volume for the container to mount.
 
-*Create example*
+**Pre-existing PVC**
+
+Lets assume you have already created a PVC using a manifest like this
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ceph-ns-store
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: ceph-rbd-sc
+```
+
+To make this claim available on the container we can add two patches
+to our `deployments`. The first patch specifies the PVC that already
+exists.
+
+```yaml
+- op: add
+  path: spec.volumes
+  value: [{"name": "ceph-ns-store", "persistentVolumeClaim": {"claimName": "ceph-ns-store"}}]
+```
+
+and the second patch mounts it to `/data` on our pod.
+
+```yaml
+- op: add
+  path: spec.containers[*].volumeMounts
+  value: [{"mountPath": "/data", "name": "ceph-ns-store", "readOnly": false}]
+```
+
+Any changes you make to data on the pod in `/data` will not be persisted between development sessions. You can also use `kubectl cp` to copy data out of the PVC back to your VM.
+
+**Personal PVC**
+
+In the case where you do not have a pre-existing PVC DevSpace can handle
+the creation and management of the PVC for us.
+
+In the `deployments` section of your `devspace.yaml` modify the `values` section to add the following.
+
+```yaml
+volumes:
+  - name: my-devspace-volume
+    size: "10Gi"
+```
+
+Then add the `volumeMounts` to the `containers` that need access.
+
+```yaml
+containers:
+  - image: ...
+    volumeMounts:
+      - containerPath: /data
+        volume:
+          name: my-devspace-volume
+          readOnly: false
+```
 
 ### Additional Python packages
 
@@ -348,6 +409,8 @@ Additional Python packages can be installed in three ways.
    is a customisation option supported by the rapids containers.
 
 ### Shell instead of Notebook
+
+The DevSpace `dev` section for rapids should use the `devspace_start_rapids.sh` script instead.
 
 ### 
 
