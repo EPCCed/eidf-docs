@@ -4,75 +4,157 @@ In the last section we saw how to use DevSpace to launch a simple Jupyter Notebo
 project on the K8s cluster with GPU support. In this section we will discuss
 further configuration of DevSpace including
 
-  - how to use it to manage a local image cluster and build custom docker images
+  - how to use it to manage a local image registry and build custom docker images
   - how to deploy cluster frameworks like dask
   - how to customise your resource requests
 
-## Setting up DevSpace in your project
+This project uses a branch of the rapids repository from the last tutorial.
+First clone the repository (to a new folder if necessary) and then `git checkout` the feature branch.
 
-To start using DevSpace in your project, create a `devspace.yaml` file at the top level of your project directory/repo.
-It should contain
+```bash
+git clone https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids.git
+cd eidf-devspace-rapids
+git checkout feat_wimage_reg
+```
 
-``` yaml
-version: v2beta1
-name: <the-name-of-your-project>
+## Using a local image registry
 
-# Use defined variables that can be used in this configuration file.
-vars:
-  IMAGEREG_NAME: $(echo registry-$(whoami))
-  IMAGEREG_DEVSPACE: ../eidf-devspace-imagereg/
+You might be wondering why it is a good idea to run a local image repository
+when you can just get images from any container registry off the internet.
+If you are just using vanilla images, this is probably OK but sometimes we
+need to make changes to our images or add files and code to them to use them. Take for example the moments in the [previous example](./L5_devspace.md#making-modifications-to-the-template) where we added
+additional packages at runtime. If you have just a few packages, maybe this
+isn't a big deal, but if you have many, this can slow down the startup and
+readiness of your container. A better option is to pre-install the packages to
+the image by customising the image. If you are using an internet based container
+registry, this requires you to have an account, build the image locally, push it
+to the container registry and then download it back to the cluster for your
+deployment. Doing this once is OK, but if you have to make many changes to
+the image, not so much.
 
-# Imports from other devspaces. This one is for patching the image registry.
+Enter a local registry, with a local registry housed in the K8s cluster you
+get many benefits.
+
+ - Images are built in the cluster by the cluster so they don't burden your
+   local machine.
+ - Iterating on your image files is faster and more direct.
+ - Image downloads after they have been built are much faster, because the image
+   is stored locally.
+ - You don't need to make an account or remember credentials to upload the
+   image.
+ - You can store source code or other things you might not want to store on
+   a public image registry in your container as they are not getting pushed
+   to the internet.
+
+Using DevSpace's local image registry functionality is a little tricky due
+to the requirement for resource limits on the EIDF cluster in all 
+deployment specs. This isn't done or supported by DevSpace but a custom
+DevSpace has been created to overcome this (multiple DevSpaces can be 
+dependencies or imported into each other, but that is another topic).
+
+We have setup and tested a patch for the default DevSpace image registry deployment which you can get by importing the DevSpace [`eidf-devspace-imagereg`](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-imagereg). Add the import to your `devspace.yaml`.
+
+```yaml
 imports:
-  - path: ${IMAGEREG_DEVSPACE}
+  - git: https://devspace_user:fgaTxAUNkBRh8d1rS7Th@git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-imagereg.git
 ```
 
-The `version` is mandatory and directly from the DevSpace configuration spec.
-The `vars` are EIDF specific and help us to manage the local image registry.
-`imports` includes our customised template for the DevSpace image registry to make it compatible with EIDFGPUS K8s.
+To start the local image registry use the command (you must have an image to build - [next section](#building-docker-images-with-devspace))
 
-## Adding customised container images to your DevSpace
-
-Images can be customised using Docker files.
-Any number of images can be built and utilised by your DevSpace.
-Normally, images would be built manually by the user and submitted to an image registry online such as Docker Hub.
-This can be slow for large images (both upload and download) and it is typically more efficient to keep the images local to the cluster.
-
-You can deploy a local image registry to your project `NameSpace` in the K8s cluster using DevSpace and the example `eidf-devspace-imagereg` repository.
-Image building and storage is then handled by the cluster.
-You do not need to install `docker` on your VM.
-
-To include an image in your DevSpace project, add the following to your `devspace.yaml`.
-
-``` yaml
-images:
-  rapids:
-    image: ${USER}/rapids
-    dockerfile: rapids/docker/Dockerfile
+```bash
+devspace build
 ```
 
-The specification of `images` is available in the DevSpace [documentation](https://www.devspace.sh/docs/configuration/images/).
+the DevSpace command will get stuck with the output `local-registry: Starting Local Image Registry`. Hit <kbd>Ctrl</kbd>+<kbd>c</kbd>, and then run the command
 
-In short, `images` contains a mapping of image names (`rapids` is one) with the `image` name and a relative path to a `Dockerfile`.
-`image` may also be a direct link to an online image and tag if you wish to cache the image locally.
+```bash
+devspace run patch-imagereg
+```
 
-Our `Dockerfile` can modify the image in anyway.
-We start by specify the image we wish to use as a base. here that is the `rapidsai-core` image.
-Additional software or settings can be applied in the `CUSTOMIZE` section, but in this case we simply create and enter a new directory called `/app`.
+This is a custom command defined in the imported DevSpace. It changes the deployment spec slightly to allow the local image registry to run.
 
-``` dockerfile
-# https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers/rapidsai-core/tags
-FROM nvcr.io/nvidia/rapidsai/rapidsai-core:cuda11.8-runtime-ubuntu22.04-py3.10
+If it was successful your image registry pod (`registry-<username>-<N>`) should be running.
+
+```bash
+kubectl get pods
+
+NAME               READY   STATUS    RESTARTS   AGE
+registry-thgcd-0   2/2     Running   0          20m
+```
+
+You can then run the `deploy` or `build` commands with DevSpace.
+Your custom image will then be build for the first time in the cluster, and
+you will get some output from the `Dockerfile` image build.
+
+```bash
+deploy:rapids Deploying chart /home/eidf076/eidf076/thgcd/.devspace/component-chart/component-chart-0.9.1.tgz (rapids) with helm...
+deploy:image-registry Deploying chart  (image-registry) with helm...
+deploy:rapids Deployed helm chart (Release revision: 2)
+deploy:rapids Successfully deployed rapids with helm
+deploy:image-registry Deployed helm chart (Release revision: 4)
+deploy:image-registry Successfully deployed image-registry with helm
+info Using namespace 'testtony'
+info Using kube context 'devgpu'
+local-registry: Starting Local Image Registry
+build:dask-rapids Building image 'thgcd.kubernetes.tld/rapids:MNxndGt' with engine 'localregistry'
+build:dask-rapids #1 [internal] load remote build context
+build:dask-rapids Sending build context to Docker daemon  182.3kB
+build:dask-rapids #1 CACHED
+build:dask-rapids 
+build:dask-rapids #2 copy /context /
+
+... more docker output
+
+build:dask-rapids #5 pushing manifest for localhost:5000/rapids:MNxndGt@sha256:efb36151048f8681517292cc07e2338634003b70c267a006d90fbaf2a88f1a22 0.0s done
+build:dask-rapids Done processing image 'thgcd.kubernetes.tld/rapids'
+```
+
+The local image registry has now stored our custom image on the cluster in a PVC and future references to the image will be access it from the local
+registry.
+
+## Building Docker images with DevSpace
+
+DevSpace can automatically build and publish docker images for you, either 
+to a local or public container registry. DevSpace ensures that the container
+in your deployments is up-to-date by checking for changes to your `Dockerfiles`.
+
+For this example we will use the `Dockerfile` located in `./rapids/docker/Dockerfile`, which has the contents
+
+```dockerfile
+# https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers
+FROM nvcr.io/nvidia/rapidsai/notebooks:23.12-cuda11.8-py3.10
 
 ### CUSTOMIZE HERE
-
+RUN mamba install -y pytorch torchvision torchaudio
 ### END CUSTOMIZATION
-
-RUN mkdir /app
-WORKDIR /app
 ```
 
-More information on customising the image is available in the template repository [here]().
+Covering `Dockerfile`s is beyond this tutorial but here, we simply extend a base image by adding some new conda packages (`pytorch`, `torchvision` and `torchaudio`). `mamba` is a more performant installer for conda included with this image.
+
+To add the custom image to our `devspace.yaml` build we must add the `images` section. The specification of `images` is available in the DevSpace [documentation](https://www.devspace.sh/docs/configuration/images/).
+
+To specify a `Dockerfile` for DevSpace use the `images` section in your `devspace.yaml`. Our example looks like this.
+
+```yaml
+images:
+  dask-rapids: # name
+    image: ${USER}.kubernetes.tld/rapids # full cr name (can be remote)
+    dockerfile: rapids/docker/Dockerfile # Dockerfile to build
+```
+
+The `image` is how we will identify this image in other sections of our 
+`devspace.yaml` and the `dockerfile` is the aforementioned image definition 
+to build. The `image` also tells DevSpace where to push the image to after
+the build completes. If the local registry is running then you do not need
+to worry about authentication, but remote registries will require you to 
+login following the DevSpace documentation [authentication](https://www.devspace.sh/docs/configuration/images/push#authentication).
+
+## Multi-deployments (e.g. dask)
+
+
+## Scaling deployments
+
+
 
 ## Starting a Jupyter notebook
 
@@ -174,7 +256,7 @@ You should now be able to use the output of Jupyter server you see (including th
 
 
 
-## Cleaning up DevSpace
+## Cleaning up DevSpace (and the local image registry)
 
 To remove your running deployments from the server, use the command `devspace purge`.
 This does not remove the image registry, which must be removed using the command `devspace cleanup local-registry`.
