@@ -12,7 +12,7 @@ This project uses a branch of the rapids repository from the last tutorial.
 First clone the repository (to a new folder if necessary) and then `git checkout` the feature branch.
 
 ```bash
-git clone https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids.git
+git clone https://devspace_user:fgaTxAUNkBRh8d1rS7Th@git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids.git
 cd eidf-devspace-rapids
 git checkout feat_wimage_reg
 ```
@@ -151,110 +151,97 @@ login following the DevSpace documentation [authentication](https://www.devspace
 
 ## Multi-deployments (e.g. dask)
 
+In some scenarios, you may need to manage multiple deployments to run your application. 
+A good example of this is a Notebook server for your interactive
+session and a dask cluster for your compute. Of course, you could create a single pod with a large resource request and boot a local dask cluster but
+that solution will not scale beyond a single Kubernetes node.
+Instead, a dask worker needs to be started on each node you wish to request
+resources from.
 
-## Scaling deployments
+A DevSpace template for a dask cluster in the EIDF is [available](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-dask)
+and it is used in this tutorial to demonstrate a deployment.
 
+First, include the dask template as a dependency in your `devspace.yaml`.
 
-
-## Starting a Jupyter notebook
-
-To use DevSpace to setup and interact with a Jupyter notebook we need to create three new sections in our `devspace.yaml`.
-The first is a deployment. Deployments in devspace describe either a Helm chart with specific values or a Kubernetes manifest.
-Think of a deployment as what you need to run an application.
-For Jupyter, we can use a convenient Helm chart provided DevSpace called a [component-chart](https://www.devspace.sh/component-chart/docs/introduction).
-
-We add our deployment definition and component-chart values to our `devspace.yaml`.
-
-``` yaml
-deployments:
-  rapids: # our deployment name
-    helm:
-      chart:
-        name: component-chart
-        repo: https://charts.devspace.sh
-      values: # values for our helm chart
-        containers:
-          - image: ${USER}/rapids # the name of our image from the local registry
-            resources:
-              limits:
-                cpu: 4
-                memory: 20Gi
-                nvidia.com/gpu: 1
-              requests:
-                cpu: 2
-                memory: 1Gi
-                nvidia.com/gpu: 1
-        nodeSelector:
-          nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
-        labels:
-          eidf/user: ${USER}
+```yaml
+dependencies:
+  dask:
+    git: https://devspace_user:fgaTxAUNkBRh8d1rS7Th@git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-dask.git
 ```
 
-In this case, we specify the mandatory resources definitions, and a single container which references our image from our local registry (or any remote registry).
-The `nodeSelector` section allows us to specify the type of GPU we wish to secure, otherwise the first available GPU will be provided.
+Now when you run `devspace deploy` or `devspace dev` the dask deployment from the template DevSpace will be included.
 
-We can check our deployment using the command
+The access point for the dask cluster from your container running your application is given by the service name. Services are named endpoints that
+automatically connect your pods to discoverable network location. For this
+DevSpace we can see the service name `dask-thgcd-scheduler` and the exposed ports. `8786` is the scheduler and `8787` is the dashboard.
 
-``` bash
-$ devspace deploy
+```bash
+kubectl get services
+
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+dask-thgcd-scheduler   ClusterIP   10.43.255.206   <none>        8786/TCP,8787/TCP   6m53s
 ```
 
-This will provide a fair amount of output and take a while, especially if it is the first time the image has been build. When the build is finished, DevSpace will create the deployment.
+To connect to the cluster from python one would use
 
-Checkout the deployment status with
-
-``` bash
-$ kubectl get pods
-NAME                         READY   STATUS    RESTARTS   AGE
-pod/rapids-7f9dc7d65-mh2n8   1/1     Running   0          51s
-pod/registry-thgcd-0         2/2     Running   0          45m
+```python
+from dask.distributed import Client
+client = Client(address='dask-thgcd-scheduler:8786')
 ```
 
-This shows the rapids pod is up and running with our image.
+**Scaling deployments**
 
-To access the Jupyter notebook we must now add one more section to our `devspace.yaml`.
-The first modifies the deployment and includes the following configuration:
+You can scale the deployments up or down at anytime using `kubectl scale`.
 
-- The syncing of files between our VM to the container.
-- The forwarding of the port where our Jupyter server is running to our local VM.
+Check the name of your dask deployment
 
-``` yaml
-dev:
-  rapids:
-    # Search for the container that runs this image
-    labelSelector:
-       app.kubernetes.io/component: rapids
-       eidf/user: ${USER}
-    # Replace the container image with this dev-optimized image (allows to skip image building during development)
-    devImage: ${USER}/rapids
-    terminal:
-      command: jupyter lab --allow-root
-    resources:
-      limits:
-        cpu: 4
-        memory: 20Gi
-        nvidia.com/gpu: 1
-      requests:
-        cpu: 2
-        memory: 1Gi
-        nvidia.com/gpu: 1
-    # Sync files between the devspace folder and the development container
-    sync:
-      - path: ./:/app
-    ports:
-      # remote:local
-      - port: "8888:8888"
+```bash
+kubectl get deployments
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+dask-thgcd-scheduler   1/1     1            1           13m
+dask-thgcd-worker      2/2     2            2           13m
+rapids                 0/0     0            0           13m
+rapids-devspace        0/1     1            0           13m
 ```
 
-To start the development modifications, use the command `devspace deploy`.
+In this instance, if we want two more workers, we must set the number of replicas to 4.
 
-> The template repository uses a slightly different approach.
-`devspace dev` will return a shell session on the rapids container.
-To get Jupyter, use the command `devspace dev -p jupyter`.
+```bash
+kubectl scale --replicas=4 deployment dask-thgcd-worker
+```
 
-You should now be able to use the output of Jupyter server you see (including the token) to access your Jupyter lab instance.
+Check that the number of running worker pods is now four
 
+```bash
+kubectl get pods
 
+NAME                                       READY   STATUS             RESTARTS        AGE
+pod/dask-thgcd-scheduler-8586d48dd-b5lz4   1/1     Running            0               14m
+pod/dask-thgcd-worker-79849ff445-dccv2     1/1     Running            0               14m
+pod/dask-thgcd-worker-79849ff445-qb2vz     1/1     Running            0               17s
+pod/dask-thgcd-worker-79849ff445-stmzd     1/1     Running            0               14m
+pod/dask-thgcd-worker-79849ff445-wzrf6     1/1     Running            0               17s
+```
+
+**Sharing Data**
+
+It is generally not a good idea to provision data to a Dask cluster via the
+scheduler. Instead, individual workers should load data from a distributed
+file system individually. To do this, a shared mount must be available for
+each dask worker pod, either as a PVC from the K8s cluster or another networked
+resource. Adding mounted volumes will require you to **Modify the deployment**.
+
+**Modify the deployment**
+
+If you need to modify the deployment, you should clone the dask DevSpace template 
+repository to your VM and modify the DevSpace `devspace.yaml` before declaring it
+as a local dependency for your application `devspace.yaml`.
+
+The template uses a slightly modified Helm chart from Dask which you
+can supply additional values to or modify to meet your needs. You
+can also modify the `Dockerfile` which defines the scheduler and worker 
+container images.
 
 ## Cleaning up DevSpace (and the local image registry)
 
