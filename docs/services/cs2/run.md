@@ -41,50 +41,41 @@ See the 'Troubleshooting' section below for known issues.
 
 To run a job on the cluster, you must create a Python virtual environment (venv) and install the dependencies. The Cerebras documentation contains generic instructions to do this [Cerebras setup environment docs](https://docs.cerebras.net/en/latest/wsc/getting-started/setup-environment.html) however our host system is slightly different so we recommend the following:
 
-1. Create the venv
+### Create the venv
 
 ```bash
 python3.8 -m venv venv_cerebras_pt
 ```
 
-1. Install the dependencies
+### Install the dependencies
 
 ```bash
 source venv_cerebras_pt/bin/activate
 pip install --upgrade pip
-pip install cerebras_pytorch==2.0.2
+pip install cerebras_pytorch==2.1.1
 ```
 
-1. Validate the setup
+### Validate the setup
 
 ```bash
 source venv_cerebras_pt/bin/activate
 cerebras_install_check
 ```
 
-## Troubleshooting
-
-### "Failed to transfer X out of 1943 weight tensors with modelzoo"
-
-Sometimes jobs receive an error during the 'Transferring weights to server' like below:
-
-```bash
-2023-12-14 16:00:19,066 ERROR:   Failed to transfer 5 out of 1943 weight tensors. Raising the first error encountered.
-2023-12-14 16:00:19,118 ERROR:   Initiating shutdown sequence due to error: Attempting to materialize deferred tensor with key “state.optimizer.state.214.beta1_power” from file model_dir/cerebras_logs/device_data_jxsi5hub/initial_state.hdf5, but the file has since been modified. The loaded tensor value may be different from originally loaded tensor. Please refrain from modifying the file while the run is in progress.
-```
+### Modify venv files to remove clock sync check on EPCC system.
 
 Cerebras are aware of this issue and are working on a fix, however in the mean time follow the below workaround:
 
-1. From within your python venv, edit the <venv>/lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py file
+### From within your python venv, edit the <venv>/lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py file
 
 ```bash
 vi <venv>/lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py
 ```
 
-1. Navigate to line 672
+### Navigate to line 530
 
 ```bash
-:672
+:530
 ```
 
 The section should look like this:
@@ -100,7 +91,7 @@ if modified_time > self._last_modified:
     )
 ```
 
-1. Comment out the whole section
+### Comment out the whole section
 
 ```python
  #if modified_time > self._last_modified:
@@ -113,10 +104,42 @@ if modified_time > self._last_modified:
         #    )
 ```
 
-1. Save the file
+### Navigate to line 774
 
-1. Re-run the job
+```bash
+:774
+```
 
-### Paths, PYTHONPATH and mount_dirs
+The section should look like this:
+
+```python
+   if stat.st_mtime_ns > self._stat.st_mtime_ns:
+        raise RuntimeError(
+            f"Attempting to {msg} deferred tensor with key "
+            f"\"{self._key}\" from file {self._filepath}, but the file has "
+            f"since been modified. The loaded tensor value may be "
+            f"different from originally loaded tensor. Please refrain "
+            f"from modifying the file while the run is in progress."
+       )
+```
+
+### Comment out the whole section
+
+```python
+   #if stat.st_mtime_ns > self._stat.st_mtime_ns:
+   #     raise RuntimeError(
+   #         f"Attempting to {msg} deferred tensor with key "
+   #         f"\"{self._key}\" from file {self._filepath}, but the file has "
+   #         f"since been modified. The loaded tensor value may be "
+   #         f"different from originally loaded tensor. Please refrain "
+   #         f"from modifying the file while the run is in progress."
+   #    )
+```
+
+### Save the file
+
+### Run jobs as per existing documentation.
+
+## Paths, PYTHONPATH and mount_dirs
 
 There can be some confusion over the correct use of the parameters supplied to the run.py script. There is a helpful explanation page from Cerebras which explains these parameters and how they should be used. [Python, paths and mount directories.](https://docs.cerebras.net/en/latest/wsc/getting-started/mount_dir.html?highlight=mount#python-paths-and-mount-directories)
