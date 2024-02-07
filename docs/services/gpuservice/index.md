@@ -33,6 +33,11 @@ The current full specification of the EIDF GPU Service as of 14 February 2024:
 
     Changes to the default quota must be discussed and agreed with the EIDF Services team.
 
+> **NOTE**
+>
+> If you request a GPU on the EIDF GPU Service you will be assigned one at random unless you specify a GPU type.
+> Please see [Getting started with Kubernetes](training/L1_getting_started.md) to learn about specifying GPU resources.
+
 ## Service Access
 
 Users should have an [EIDF Account](../../access/project.md).
