@@ -6,7 +6,7 @@ An example workflow for code development using K8s is outlined below.
 
 In theory, users can create docker images with all the code, software and data included to complete their analysis.
 
-In practice, docker images with the required software alone can be several gigabytes in size and can be lead to unacceptable download times when ~100GB of data and code is included.
+In practice, docker images with the required software alone can be several gigabytes in size which can lead to unacceptable download times when ~100GB of data and code is included.
 
 Therefore, it is recommended to separate code, software and data preparation into distinct steps:
 
@@ -332,6 +332,8 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     kind: Job
     metadata:
      name: template-workflow-job
+     labels:
+      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
     spec:
      completions: 1
      parallelism: 1
@@ -344,12 +346,11 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
          command: ["sleep", "infinity"]
          resources:
           requests:
-           cpu: 10
-           memory: "40Gi"
+           cpu: 1
+           memory: "4Gi"
           limits:
-           cpu: 10
-           memory: "80Gi"
-           nvidia.com/gpu: 1
+           cpu: 1
+           memory: "8Gi"
          volumeMounts:
          - mountPath: /mnt/ceph_rbd
            name: volume
@@ -366,6 +367,8 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     kind: Job
     metadata:
      name: template-workflow-job
+     labels:
+      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
     spec:
      completions: 1
      parallelism: 1
@@ -378,12 +381,11 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
          command: ["sleep", "infinity"]
          resources:
           requests:
-           cpu: 10
-           memory: "40Gi"
+           cpu: 1
+           memory: "4Gi"
           limits:
-           cpu: 10
-           memory: "80Gi"
-           nvidia.com/gpu: 1
+           cpu: 1
+           memory: "8Gi"
          volumeMounts:
          - mountPath: /mnt/ceph_rbd
            name: volume
@@ -406,19 +408,22 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        volumes:
        - name: volume
          persistentVolumeClaim:
-          claimName: benchmark-imagenet-pvc
+          claimName: template-workflow-pvc
        - name: github-code
          emptyDir:
           sizeLimit: 1Gi
     ```
 
-1. Change the command argument in the main container to run the code once started.
+1. Change the command argument in the main container to run the code once started. 
+Add the URL of the GitHub repo of interest to the `initContainers: command:` tag.
 
     ```yaml
     apiVersion: batch/v1
     kind: Job
     metadata:
      name: template-workflow-job
+     labels:
+      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
     spec:
      completions: 1
      parallelism: 1
@@ -459,7 +464,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        volumes:
        - name: volume
          persistentVolumeClaim:
-          claimName: benchmark-imagenet-pvc
+          claimName: template-workflow-pvc
        - name: github-code
          emptyDir:
           sizeLimit: 1Gi
