@@ -70,7 +70,6 @@ Remember, you will need to use both an SSH key and Time-based one-time password 
 
 ---
 !!! note "First Login"
-
     When you **first** log into Ultra2, you will be prompted to change your initial password. This is a three step process:
 
      1. When promoted to enter your *password*: Enter the password which you [retrieve from SAFE](https://epcced.github.io/safe-docs/safe-for-users/#how-can-i-pick-up-my-password-for-the-service-machine)

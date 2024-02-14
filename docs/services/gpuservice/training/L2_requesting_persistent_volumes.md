@@ -1,6 +1,6 @@
 # Requesting Persistent Volumes With Kubernetes
 
-Pods in the K8s EIDFGPUS are intentionally ephemeral.
+Pods in the K8s EIDF GPU Service are intentionally ephemeral.
 
 They only last as long as required to complete the task that they were created for.
 
@@ -10,9 +10,9 @@ However, this means the default storage volumes within a pod are temporary.
 
 If multiple pods require access to the same large data set or they output large files, then computationally costly file transfers need to be included in every pod instance.
 
-Instead, K8s allows you to request persistent volumes that can be mounted to multiple pods to share files or collate outputs.
+K8s allows you to request persistent volumes that can be mounted to multiple pods to share files or collate outputs.
 
-These persistent volumes will remain even if the pods it is mounted to are deleted, are updated or crash.
+These persistent volumes will remain even if the pods they are mounted to are deleted, are updated or crash.
 
 ## Submitting a Persistent Volume Claim
 
@@ -20,11 +20,11 @@ Before a persistent volume can be mounted to a pod, the required storage resourc
 
 A PersistentVolumeClaim (PVC) needs to be submitted to K8s to request the storage resources.
 
-The storage resources are held on a Ceph server which can accept requests up 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDFGPUS. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.
+The storage resources are held on a Ceph server which can accept requests up to 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDF GPU Service. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.
 
 Example PVCs can be seen on the [Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) documentation page.
 
-All PVCs on the EIDFGPUS must use the `csi-rbd-sc` storage class.
+All PVCs on the EIDF GPU Service must use the `csi-rbd-sc` storage class.
 
 ### Example PersistentVolumeClaim
 
@@ -42,12 +42,12 @@ spec:
  storageClassName: csi-rbd-sc
 ```
 
-You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl create <PV specification yaml>`
+You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl create <PVC specification yaml>`
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:
 
-- `kubectl delete pvc <PV name>`
-- `kubectl get pvc <PV name>`
-- `kubectl apply -f <PV specification yaml>`
+- `kubectl delete pvc <PVC name>`
+- `kubectl get pvc <PVC name>`
+- `kubectl apply -f <PVC specification yaml>`
 
 ## Mounting a persistent Volume to a Pod
 
@@ -56,29 +56,37 @@ Introducing a persistent volume to a pod requires the addition of a volumeMount 
 ### Example pod specification yaml with mounted persistent volume
 
 ``` yaml
-apiVersion: v1
-kind: Pod
+apiVersion: batch/v1
+kind: Job
 metadata:
- name: test-ceph-pvc-pod
+    name: test-ceph-pvc-job
+    labels:
+        kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
 spec:
- containers:
- - name: trial
-   image: busybox
-   command: ["sleep", "infinity"]
-   resources:
-    requests:
-     cpu: 1
-     memory: "1Gi"
-    limits:
-     cpu: 1
-     memory: "1Gi"
-   volumeMounts:
-   - mountPath: /mnt/ceph_rbd
-     name: volume
- volumes:
- - name: volume
-   persistentVolumeClaim:
-    claimName: test-ceph-pvc
+    completions: 1
+    template:
+        metadata:
+            name: test-ceph-pvc-pod
+        spec:
+            containers:
+            - name: cudasample
+              image: busybox
+              args: ["sleep", "infinity"]
+              resources:
+                    requests:
+                        cpu: 2
+                        memory: '1Gi'
+                    limits:
+                        cpu: 2
+                        memory: '4Gi'
+              volumeMounts:
+                    - mountPath: /mnt/ceph_rbd
+                      name: volume
+            restartPolicy: Never
+            volumes:
+                - name: volume
+                  persistentVolumeClaim:
+                    claimName: test-ceph-pvc
 ```
 
 ## Accessing the persistent volume outside a pod
@@ -86,8 +94,8 @@ spec:
 To move files in/out of the persistent volume from outside a pod you can use the kubectl cp command.
 
 ```bash
-*** On Login Node ***
-kubectl cp /home/data/test_data.csv test-ceph-pvc-pod:/mnt/ceph_rbd
+*** On Login Node - replacing pod name with your pod name ***
+kubectl cp /home/data/test_data.csv test-ceph-pvc-job-8c9cc:/mnt/ceph_rbd
 ```
 
 For more complex file transfers and synchronisation, create a low resource pod with the persistent volume mounted.
@@ -97,7 +105,7 @@ The bash command rsync can be amended to manage file transfers into the mounted 
 ## Clean up
 
 ```bash
-kubectl delete pod test-ceph-pvc-pod
+kubectl delete job test-ceph-pvc-job
 
 kubectl delete pvc test-ceph-pvc
 ```

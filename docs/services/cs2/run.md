@@ -62,7 +62,7 @@ source venv_cerebras_pt/bin/activate
 cerebras_install_check
 ```
 
-### Modify venv files to remove clock sync check on EPCC system.
+### Modify venv files to remove clock sync check on EPCC system
 
 Cerebras are aware of this issue and are working on a fix, however in the mean time follow the below workaround:
 
@@ -91,7 +91,7 @@ if modified_time > self._last_modified:
     )
 ```
 
-### Comment out the whole section
+### Comment out the section `if modified_time > self._last_modified`
 
 ```python
  #if modified_time > self._last_modified:
@@ -123,7 +123,7 @@ The section should look like this:
        )
 ```
 
-### Comment out the whole section
+### Comment out the section `if stat.st_mtime_ns > self._stat.st_mtime_ns`
 
 ```python
    #if stat.st_mtime_ns > self._stat.st_mtime_ns:
@@ -138,7 +138,7 @@ The section should look like this:
 
 ### Save the file
 
-### Run jobs as per existing documentation.
+### Run jobs as per existing documentation
 
 ## Paths, PYTHONPATH and mount_dirs
 
