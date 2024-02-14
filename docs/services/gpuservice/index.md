@@ -1,32 +1,50 @@
 # Overview
 
-The EIDF GPU Service (EIDFGPUS) uses Nvidia A100 GPUs as accelerators.
+The EIDF GPU Service (EIDF GPU Service) provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
 
-Full Nvidia A100 GPUs are connected to 40GB of dynamic memory.
+MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion.
 
-Multi-instance usage (MIG) GPUs allow multiple tasks or users to share the same GPU (similar to CPU threading).
+The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU.
 
-There are two types of MIG GPUs inside the EIDFGPUS the Nvidia A100 3G.20GB GPUs and the Nvidia A100 1G.5GB GPUs which equate to ~1/2 and ~1/7 of a full Nvidia A100 40 GB GPU.
+The service provides access to:
 
-The current specification of the EIDFGPUS is:
+- Nvidia A100 40GB
+- Nvidia 80GB
+- Nvidia MIG A100 1G.5GB
+- Nvidia MIG A100 3G.20GB
+- Nvidia H100 80GB
 
-- 1856 CPU Cores
-- 8.7 TiB Memory
-- Local Disk Space (Node Image Cache and Local Workspace) - 21 TiB
+The current full specification of the EIDF GPU Service as of 14 February 2024:
+
+- 4912 CPU Cores (AMD EPYC and Intel Xeon)
+- 23 TiB Memory
+- Local Disk Space (Node Image Cache and Local Workspace) - 40 TiB
 - Ceph Persistent Volumes (Long Term Data) - up to 100TiB
-- 70 Nvidia A100 40 GB GPUs
-- 14 MIG Nvidia A100 40 GB GPUs equating to 28 Nvidia A100 3G.20GB GPUs
-- 20 MIG Nvidia A100 40 GB GPU equating to 140 A100 1G.5GB GPUs
+- 112 Nvidia A100 40 GB
+- 39 Nvidia A100 80 GB
+- 16 Nvidia A100 3G.20GB
+- 56 Nvidia A100 1G.5GB
+- 32 Nvidia H100 80 GB
 
-The EIDFGPUS is managed using [Kubernetes](https://kubernetes.io), with up to 8 GPUs being on a single node.
+!!! Quotas
+    This is the full configuration of the cluster. Each project will have access to a quota across this shared configuration. This quota is agreed with the EIDF Services team.
 
 ## Service Access
 
 Users should have an EIDF account - [EIDF Accounts](../../access/project.md).
 
-Project Leads will be able to have access to the EIDFGPUS added to their project during the project application process or through a request to the EIDF helpdesk.
+Project Leads will be able to request access to the EIDF GPU Service for their project either during the project application process or through a service request to the EIDF helpdesk.
 
-Each project will be given a namespace to operate in and a kubeconfig file in a Virtual Machine on the EIDF DSC - information on access to VMs is [available here](../../access/virtualmachines-vdi.md).
+Each project will be given a namespace to operate in and the ability to add a kubeconfig file to any of their Virtual Machines in their EIDF project - information on access to VMs is [available here](../../access/virtualmachines-vdi.md).
+
+All EIDF virtual machines can be set up to access the EIDF GPU Service. The Virtual Machine does not require to be GPU-enabled.
+
+!!! Important
+    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs. This allows a project to access multiple GPUs of different types.
+
+    An EIDF Virtual Desktop GPU-enabled VM is be limited to a small number (1-2) of GPUs of a single type.
+
+    Projects do not have to apply for a GPU-enabled VM to access the GPU Service.
 
 ## Project Quotas
 
@@ -36,7 +54,12 @@ A standard project namespace has the following initial quota (subject to ongoing
 - Memory: 1TiB
 - GPU: 12
 
-Note these quotas are maximum use by a single project, and that during periods of high usage Kubernetes Jobs maybe queued waiting for resource to become available on the cluster.
+!!! Important
+    A project quota is the maximum proportion of the service available for use by that project.
+
+    During periods of high demand, Jobs will queued awaiting resource availability on the Service.
+
+    This means that a project has access up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
 ## Additional Service Policy Information
 
@@ -44,7 +67,7 @@ Additional information on service policies can be found [here](policies.md).
 
 ## EIDF GPU Service Tutorial
 
-This tutorial teaches users how to submit tasks to the EIDFGPUS, but it is not a comprehensive overview of Kubernetes.
+This tutorial teaches users how to submit tasks to the EIDF GPU Service, but it is not a comprehensive overview of Kubernetes.
 
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
