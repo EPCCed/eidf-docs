@@ -43,7 +43,7 @@ example to do a few admin tasks for us.
  - It will start the Jupyter lab server with the right command options.
  - It will automatically forward the Stdout from the container and connect a port to our
     local VM so we can connect to the server like normal in our browser.
- - Allows us to make patches to pod Kubernetes specifications at run time.
+ - Allows us to make patches to Kubernetes pod specifications at run time.
  - Finally, it will sync files from specified locations on our local VM with the
     running pod so we can access and edit them locally or from the pod.
 
@@ -164,21 +164,21 @@ deployments:
                 cpu: 1
                 memory: 1Gi
         nodeSelector:
-          nvidia/gpu.product: "NVIDIA-H100-80GB-HBM3"
+          nvidia.com/gpu.product: "NVIDIA-A100-SXM4-40GB-MIG-3g.20gb"
           # alt values | NVIDIA-A100-SXM4-40GB | NVIDIA-A100-SXM4-40GB-MIG-3g.20gb | NVIDIA-H100-80GB-HBM3
         labels:
           eidf/user: ${USER}
 ```
 
 Deployments in devspace describe either a Helm chart (a Kubernetes manifest templating framework) with specific values or a static Kubernetes manifest.
-For Jupyter, we can use a convenient Helm chart provided DevSpace called a [component-chart](https://www.devspace.sh/component-chart/docs/introduction). We then specify the `image` we want to
-use and the node type we want to run on `NVIDIA-H100-80GB-HBM3`. The resource limits
+For Jupyter, we can use a convenient Helm chart provided with DevSpace called a [component-chart](https://www.devspace.sh/component-chart/docs/introduction). We then specify the `image` we want to
+use and the node type we want to run on `NVIDIA-A100-SXM4-40GB-MIG-3g.20gb`. The resource limits
 here are less important because we don't plan to run our DevSpace in a batch mode.
 Not requesting a GPU makes this container quick to schedule and start. We will
-ask for a GPU in the `dev` section. Finally, we add a label unique to us so that
+ask for one or more GPUs in the `dev` section. Finally, we add a label unique to us so that
 we don't get confused with other DevSpaces in our K8s namespace.
 
-The `dev` section allows us to modify the `deployment` and begin the
+The `dev` section allows us to modify the `deployment` and specify the more
 useful features of our DevSpace (interactivity, port-forwarding, file syncing, specify pod environment variables, patches etc.). Our `dev` section looks like this
 
 ```yaml
@@ -225,6 +225,7 @@ dev:
       - command: kubectl
       - command: helm
       - gitCredentials: true
+    # parts of devspace requires us to run the container as root user, which is not the default
     patches:
       - op: replace
         path: spec.securityContext
@@ -246,6 +247,9 @@ Now for the interesting stuff. The `resources` section here allows us to redefin
 our resources which now include a GPU request. On nodes with multiple GPUs you
 may request more than one. Generally, it is a good idea to make the requests and
 limits the same.
+
+> Note that multi GPU containers `gpu >= 2` can be requested but require nodes with multiple available
+> GPUs. Currently, H100 nodes are the only nodes with `gpu >= 2`.
 
 The `sync` section specifies either files or directories we wish to have synchronised.
 In this case we synchronise a few different objects but the general form is
@@ -275,14 +279,17 @@ on port `8888` we can forward that port to our local VM and access it via the
 VMs web browser. The web application is rendered locally for us to interact with
 but all the commands and cells we run are executing on the remote development
 container we started on the cluster with DevSpace. Some applications have dashboards
-and these can also be forwarded by specify a `ports` entry for those developments.
+and these can also be forwarded by specifying a `ports` entry for those developments.
 
 One might also forward ports manually using `kubectl port-forward` but this must be
 run each time the development container is started. DevSpace just handles it for
 us.
 
-> If other people are forwarding ports to the same VM, you may need to modify your local port to an alternative. Change `8888:8888` to `8888:8889` for example. You should change the `http` links
-> as well to `localhost:8889` in this case.
+> If other people are forwarding ports to the same VM, you may need to modify your local port to an
+> alternative. There is a variable defined at the top of the `devspace.yaml` called `JUPYTER_PORT`.
+> Change this to another value (`>1000`) such as `8889` to use a different port on your VM. You can
+> see how this variable is used in the `devspace.yaml` by searching for instances of `${JUPYTER_PORT}`.
+> For more details on `devspace.yaml` variables and their use, consult the DevSpace documentation.
 
 When docker images are built, they have a `CMD` directive that tells them what to
 run when starting up. Sometimes an image we're using may not run the command we want,
@@ -380,7 +387,7 @@ and the second patch mounts it to `/data` on our pod.
   value: [{"mountPath": "/data", "name": "ceph-ns-store", "readOnly": false}]
 ```
 
-Any changes you make to data on the pod in `/data` will not be persisted between development sessions. You can also use `kubectl cp` to copy data out of the PVC back to your VM.
+Any changes you make to data on the pod in `/data` will now be persisted between development sessions. You can also use `kubectl cp` to copy data out of the PVC back to your VM.
 
 **Personal PVC**
 
@@ -415,6 +422,8 @@ Additional Python packages can be installed in three ways.
    The packages will need to be reinstalled each time you launch the container.
  - Specify the resources you require in the file `./rapids/environment.yml`. This
    is a customisation option supported by the rapids containers.
+ - Create a derivative container image with the required packages installed. This
+   is an advanced topic covered in the next section.
 
 ### Shell instead of Notebook
 
