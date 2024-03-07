@@ -4,9 +4,8 @@ In the last section we saw how to use DevSpace to launch a simple Jupyter Notebo
 project on the K8s cluster with GPU support. In this section we will discuss
 further configuration of DevSpace including
 
-  - how to use it to manage a local image registry and build custom docker images
-  - how to deploy cluster frameworks like dask
-  - how to customise your resource requests
+  - How to use it to manage a local image registry and build custom container images.
+  - How to deploy cluster frameworks like Dask.
 
 This project uses a branch of the rapids repository from the last tutorial.
 First clone the repository (to a new folder if necessary) and then `git checkout` the feature branch.
@@ -49,7 +48,7 @@ get many benefits.
 Using DevSpace's local image registry functionality is a little tricky due
 to the requirement for resource limits on the EIDF cluster in all 
 deployment specs. This isn't done or supported by DevSpace but a custom
-DevSpace has been created to overcome this (multiple DevSpaces can be 
+DevSpace configuration has been created to overcome this (multiple DevSpaces can be 
 dependencies or imported into each other, but that is another topic).
 
 We have setup and tested a patch for the default DevSpace image registry deployment which you can get by importing the DevSpace [`eidf-devspace-imagereg`](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-imagereg). Add the import to your `devspace.yaml`.
@@ -83,7 +82,7 @@ registry-thgcd-0   2/2     Running   0          20m
 ```
 
 You can then run the `deploy` or `build` commands with DevSpace.
-Your custom image will then be build for the first time in the cluster, and
+Your custom image will then be built for the first time in the cluster, and
 you will get some output from the `Dockerfile` image build.
 
 ```bash
@@ -109,8 +108,8 @@ build:dask-rapids #5 pushing manifest for localhost:5000/rapids:MNxndGt@sha256:e
 build:dask-rapids Done processing image 'thgcd.kubernetes.tld/rapids'
 ```
 
-The local image registry has now stored our custom image on the cluster in a PVC and future references to the image will be access it from the local
-registry.
+The local image registry has now stored our custom image on the cluster in a PVC
+and future references to the image will access it from the local registry.
 
 ## Building Docker images with DevSpace
 
@@ -129,11 +128,15 @@ RUN mamba install -y pytorch torchvision torchaudio
 ### END CUSTOMIZATION
 ```
 
-Covering `Dockerfile`s is beyond this tutorial but here, we simply extend a base image by adding some new conda packages (`pytorch`, `torchvision` and `torchaudio`). `mamba` is a more performant installer for conda included with this image.
+Covering `Dockerfile`s in any depth is beyond the scope of this tutorial. Suffice
+it to say, here we simply extend a base image by adding some new conda packages (`pytorch`, `torchvision` and `torchaudio`). `mamba` is a more performant installer for conda included with this image.
 
-To add the custom image to our `devspace.yaml` build we must add the `images` section. The specification of `images` is available in the DevSpace [documentation](https://www.devspace.sh/docs/configuration/images/).
+To add the custom image to our `devspace.yaml` build we must add the `images` 
+section. The specification of `images` is available in the DevSpace 
+[documentation](https://www.devspace.sh/docs/configuration/images/).
 
-To specify a `Dockerfile` for DevSpace use the `images` section in your `devspace.yaml`. Our example looks like this.
+To specify a `Dockerfile` for DevSpace use the `images` section in your 
+`devspace.yaml`. Our example looks like this.
 
 ```yaml
 images:
@@ -172,7 +175,7 @@ dependencies:
 Now when you run `devspace deploy` or `devspace dev` the dask deployment from the template DevSpace will be included.
 
 The access point for the dask cluster from your container running your application is given by the service name. Services are named endpoints that
-automatically connect your pods to discoverable network location. For this
+automatically connect your pods to discoverable network locations. For this
 DevSpace we can see the service name `dask-thgcd-scheduler` and the exposed ports. `8786` is the scheduler and `8787` is the dashboard.
 
 ```bash

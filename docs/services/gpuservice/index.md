@@ -52,7 +52,7 @@ This tutorial teaches users how to submit tasks to the EIDFGPUS, but it is not a
 | [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                                                                                                      |
 | [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results.                                                                           |
 | [Devspace](training/L5_devspace.md)                                                           | a. `devspace` a tool for helping you manage and interact with Kubernetes.<br>b. One line GPU notebook with `devspace`.<br>c. Using `devspace` to create and interact with a Dask cluster. |
-| [Devspace 2](training/L6_devspace_adv.md)                                                     | a. Setting up a cluster based image registry with DevSpace. <br>b. Mutli-deployment with DevSpace - Dask example.                                                                         |
+| [Advanced usage of DevSpace](training/L6_devspace_adv.md)                                     | a. Setting up a cluster based image registry with DevSpace. <br>b. Building custom container images with DevSpace <br>c. Mutli-deployment with DevSpace - Dask example.                   |
 
 ## Further Reading and Help
 
