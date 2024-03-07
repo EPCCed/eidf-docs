@@ -10,10 +10,18 @@ Things such as:
 - Automatically syncing files between your local repository (on your VM) and the DevSpace managed containers (but not big data).
 - Capturing services logic (e.g. a Dask/Ray cluster) for reuse.
 
+**Disclaimers**
+
 Although DevSpace automates the configuration and deployment process, you will still need to specify and parameterise yaml manifests or helm charts for specific services and pods that you require.
 
 This guide aims to help you get started with DevSpace but it is not a comprehensive guide or configuration manual.
 You can discover more about how to configure DevSpace from the [documentation](https://www.devspace.sh/docs/getting-started/introduction).
+
+DevSpace uses Kubernetes deployments rather than Jobs. This means that when you submit requests to
+the cluster via DevSpace, the consumed resources will come out of our project allocation. However,
+the resources do not interact with the `kueue` service for K8s batch jobs. If you share resources with
+other users in your project you might need to internally discuss how best to balance different demands
+between using `kueue` and DevSpace interactive sessions.
 
 ## Install DevSpace to your VM
 
@@ -25,8 +33,8 @@ using `devspace --help`.
 
 ## First steps - Jupyter Notebooks on the cluster
 
-To help get you started, we have created a template DevSpace 
-[repository](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids) 
+To help get you started, we have created a template DevSpace
+[repository](https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids)
 that contains the necessary configuration to launch and access a Jupyter Lab session
 running on a GPU node in the Kubernetes (K8s) cluster. DevSpace is configured in this
 example to do a few admin tasks for us.
@@ -36,7 +44,7 @@ example to do a few admin tasks for us.
  - It will automatically forward the Stdout from the container and connect a port to our
     local VM so we can connect to the server like normal in our browser.
  - Allows us to make patches to pod Kubernetes specifications at run time.
- - Finally, it will sync files from specified locations on our local VM with the 
+ - Finally, it will sync files from specified locations on our local VM with the
     running pod so we can access and edit them locally or from the pod.
 
 First, clone the template repository to your EIDF VM.
@@ -47,10 +55,10 @@ git clone https://git.ecdf.ed.ac.uk/epcc_k8s/devspace/eidf-devspace-rapids.git
 
 > The repository is called `rapids` because it is based upon the RAPIDS image supplied
 > by NVIDIA for ML and data science workflows using their hardware. Discover more at
-> the [RAPIDS website](https://rapids.ai/). We recommend that users build their 
+> the [RAPIDS website](https://rapids.ai/). We recommend that users build their
 > GPU workflows from the RAPIDS container image bases, as drivers, configuration
-> and package integration testing are handled by NVIDIA. Details about 
-> customising containers can be found [here](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html#custcontfrm) and are also covered in the 
+> and package integration testing are handled by NVIDIA. Details about
+> customising containers can be found [here](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html#custcontfrm) and are also covered in the
 > advanced DevSpace topic of this guide.
 
 Once you have cloned the repository, enter the directory and run `devspace dev` to
@@ -88,9 +96,9 @@ dev:rapids term  Opening shell to container-0:rapids-devspace-7866d5fcff-dxl8z (
 which will eventually be cleared and replaced by something like this
 
 ```bash
-     %########%      
-     %###########%       ____                 _____                      
-         %#########%    |  _ \   ___ __   __ / ___/  ____    ____   ____ ___ 
+     %########%
+     %###########%       ____                 _____
+         %#########%    |  _ \   ___ __   __ / ___/  ____    ____   ____ ___
          %#########%    | | | | / _ \\ \ / / \___ \ |  _ \  / _  | / __// _ \
      %#############%    | |_| |(  __/ \ V /  ____) )| |_) )( (_| |( (__(  __/
      %#############%    |____/  \___|  \_/   \____/ |  __/  \__,_| \___\\___|
@@ -276,7 +284,7 @@ us.
 > If other people are forwarding ports to the same VM, you may need to modify your local port to an alternative. Change `8888:8888` to `8888:8889` for example. You should change the `http` links
 > as well to `localhost:8889` in this case.
 
-When docker images are build, they have a `CMD` directive that tells them what to
+When docker images are built, they have a `CMD` directive that tells them what to
 run when starting up. Sometimes an image we're using may not run the command we want,
 or we might need to modify the command for development purposes. The `terminal` section
 allows us specify the command, in this case `/devspace_start_jupyter.sh` which is
@@ -319,7 +327,7 @@ To remove your running deployments from the server, use the command `devspace pu
 ## Known Issues
 
  - Port conflicts may occur on shared VMs. Adjust your forward port options to avoid this.
- - If the resources you request are not available in a short amount of time. Your 
+ - If the resources you request are not available in a short amount of time. Your
     `devspace dev` command may timeout.
  - DevSpace relies on running the development container as `root` user. If the container image you use does not have a `root` user by default, you can modify the development or deploying using the K8s `securityContext` controls (our patch in this example).
 
@@ -412,5 +420,5 @@ Additional Python packages can be installed in three ways.
 
 The DevSpace `dev` section for rapids should use the `devspace_start_rapids.sh` script instead.
 
-### 
+###
 
