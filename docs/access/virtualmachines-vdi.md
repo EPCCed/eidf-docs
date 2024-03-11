@@ -58,7 +58,6 @@ by pressing &lt;Ctrl&gt; + &lt;Alt&gt; + &lt;Shift&gt; on a Windows PC client, o
 options, including:
 
 * [Reading from (and writing to) the clipboard of the remote desktop](https://guacamole.apache.org/doc/gug/using-guacamole.html#copying-pasting-text)
-* [Uploading and downloading files](https://guacamole.apache.org/doc/gug/using-guacamole.html#file-transfer)
 * [Zooming in and out of the remote display](https://guacamole.apache.org/doc/gug/using-guacamole.html#scaling-display)
 
 ### Clipboard Copy and Paste Functionality
@@ -87,4 +86,3 @@ are transmitted to your VM. Please contact the EIDF helpdesk at [eidf@epcc.ed.ac
 are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
 in the Guacamole VDI connection configuration.
 
-## Further information
