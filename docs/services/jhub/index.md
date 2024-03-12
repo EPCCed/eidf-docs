@@ -4,4 +4,4 @@
 
 [Tutorial](./tutorial/)
 
-[Documesdgfghagdntation](./docs/)
+[Documentation](./docs/)

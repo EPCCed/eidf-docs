@@ -82,7 +82,7 @@ This tutorial teaches users how to submit tasks to the EIDF GPU Service, but it 
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
 | [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
 | [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results. |
-| [Setting up a Globus endpoint](training/L4_setting_up_a_globus_endpoint.md)                   | a. IDK ask what does here|
+| [Setting up a Globus endpoint](training/L4_setting_up_a_globus_endpoint.md)                   | a. Creating the Service, Volume and Container.  <br>b. Creating/Configuring the Endpoint.  <br>c. Making the Setup Permanent using PVC.  <br>d. Accessing Data on the Persistent Storage.  |
 
 ## Further Reading and Help
 
