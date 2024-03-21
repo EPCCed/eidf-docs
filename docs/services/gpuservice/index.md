@@ -61,8 +61,8 @@ If this is first time you have connected to the GPU service the response should 
 
 !!! important "EIDF GPU Service vs EIDF GPU-Enabled VMs"
 
-    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs. 
-    
+    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs.
+
     This allows a project to access multiple GPUs of different types.
 
     An EIDF Virtual Desktop GPU-enabled VM is limited to a small number (1-2) of GPUs of a single type.
@@ -78,11 +78,11 @@ A standard project namespace has the following initial quota (subject to ongoing
 - GPU: 12
 
 !!! important "Quota is a maximum on a Shared Resource"
-    
+
     A project quota is the maximum proportion of the service available for use by that project.
-    
+
     This is a sum of all requested resources across all submitted jobs/pods/deployments within a project.
-    
+
     Any submitted resource requests that would exceed the total project quota will be rejected.
 
 ## Project Queues
@@ -92,9 +92,9 @@ EIDF GPU Service is introducing the Kueue system in February 2024. The use of th
 !!! important "Job Queuing"
 
     During periods of high demand, jobs will be queued awaiting resource availability on the Service.
-    
-    As a general rule, the higher the GPU/CPU/Memory resource request of a single job the longer it will wait in the queue before enough resources are free on a single node for it be allocated. 
-    
+
+    As a general rule, the higher the GPU/CPU/Memory resource request of a single job the longer it will wait in the queue before enough resources are free on a single node for it be allocated.
+
     GPUs in high demand, such as Nvidia H100s, typically have longer wait times.
 
     Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
