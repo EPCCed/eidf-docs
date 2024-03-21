@@ -6,9 +6,9 @@ An example workflow for code development using K8s is outlined below.
 
 In theory, users can create docker images with all the code, software and data included to complete their analysis.
 
-In practice, docker images with the required software alone can be several gigabytes in size which can lead to unacceptable download times when ~100GB of data and code is included.
+In practice, docker images with the required software can be several gigabytes in size which can lead to unacceptable download times when ~100GB of data and code is then added.
 
-Therefore, it is recommended to separate code, software and data preparation into distinct steps:
+Therefore, it is recommended to separate code, software, and data preparation into distinct steps:
 
 1. Data Loading: Loading large data sets asynchronously.
 
@@ -26,18 +26,20 @@ Some strategies in the workflow require a [GitHub](https://github.com) account a
 
 The EIDF GPU service contains GPUs with 40Gb/80Gb of on board memory and it is expected that data sets of > 100 Gb will be loaded onto the service to utilise this hardware.
 
-Ensure persistent volume claims are of sufficient size to hold the input data, any expected output data and a small amount of additional empty space to facilitate IO.
+Persistent volume claims need to be of sufficient size to hold the input data, any expected output data and a small amount of additional empty space to facilitate IO.
 
 Read the [requesting persistent volumes with Kubernetes](L2_requesting_persistent_volumes.md) lesson to learn how to request and mount persistent volumes to pods.
 
-Downloading data sets of 1/2 TB or more to a persistent volume often takes several hours or days and needs to be completed asynchronously.
+It often takes several hours or days to download data sets of 1/2 TB or more to a persistent volume.
+
+Therefore, the data download step needs to be completed asynchronously as maintaining a contention to the server for long periods of time can be unreliable.
 
 ### Asynchronous data downloading with a lightweight job
 
 1. Check a PVC has been created.
 
     ``` bash
-    kubectl get pvc template-workflow-pvc
+    kubectl -n <project-gpu-namespace> get pvc template-workflow-pvc
     ```
     
 1. Write a job yaml with PV mounted and a command to download the data. Change the curl URL to your data set of interest.
@@ -80,19 +82,19 @@ Downloading data sets of 1/2 TB or more to a persistent volume often takes sever
 1. Run the data download job.
 
     ``` bash
-    kubectl create -f lightweight-pod.yaml
+    kubectl -n <project-gpu-namespace> create -f lightweight-pod.yaml
     ```
 
 1. Check if the download has completed.
 
     ``` bash
-    kubectl get jobs
+    kubectl -n <project-gpu-namespace> get jobs
     ```
 
 1. Delete lightweight job once completed.
 
     ``` bash
-    kubectl delete job lightweight-job
+    kubectl -n <project-gpu-namespace> delete job lightweight-job
     ```
 
 ### Asynchronous data downloading within a screen session
@@ -153,7 +155,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Download data set. Change the curl URL to your data set of interest.
 
     ``` bash
-    kubectl exec <LIGHTWEIGHT_POD_NAME> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
+    kubectl -n <project-gpu-namespace> exec <LIGHTWEIGHT_POD_NAME> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
     ```
 
 1. Exit the remote session by either ending the session or `ctrl-a d`. 
@@ -169,9 +171,9 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Check the download was successful and delete the job.
 
     ```bash
-    kubectl exec <LIGHTWEIGHT_POD_NAME> -- ls /mnt/ceph_rbd/
+    kubectl -n <project-gpu-namespace> exec <LIGHTWEIGHT_POD_NAME> -- ls /mnt/ceph_rbd/
     
-    kubectl delete job lightweight-job
+    kubectl -n <project-gpu-namespace> delete job lightweight-job
     ```
 
 1. Exit the screen session.
@@ -473,5 +475,5 @@ Add the URL of the GitHub repo of interest to the `initContainers: command:` tag
 1. Submit the yaml file to kubernetes
 
     ```bash
-    kubectl create -f <job-yaml-file>
+    kubectl -n <project-gpu-namespace> create -f <job-yaml-file>
     ```
