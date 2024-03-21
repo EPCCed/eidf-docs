@@ -9,7 +9,7 @@ The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximate
 The service provides access to:
 
 - Nvidia A100 40GB
-- Nvidia 80GB
+- Nvidia A100 80GB
 - Nvidia MIG A100 1G.5GB
 - Nvidia MIG A100 3G.20GB
 - Nvidia H100 80GB
@@ -27,6 +27,7 @@ The current full specification of the EIDF GPU Service as of 14 February 2024:
 - 32 Nvidia H100 80 GB
 
 !!! important "Quotas"
+
     This is the full configuration of the cluster.
 
     Each project will have access to a quota across this shared configuration.
@@ -40,16 +41,29 @@ The current full specification of the EIDF GPU Service as of 14 February 2024:
 
 ## Service Access
 
-Users should have an [EIDF Account](../../access/project.md).
+Users should have an [EIDF Account](../../access/project.md) as access to the EIDF GPU Service can only be obtained through an EIDF virtual machine.
 
-Project Leads will be able to request access to the EIDF GPU Service for their project either during the project application process or through a service request to the EIDF helpdesk.
+Project Leads can request access to the EIDF GPU Service from VMs in an existing project through a service request to the EIDF helpdesk.
 
-Each project will be given a namespace to operate in and the ability to add a kubeconfig file to any of their Virtual Machines in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
+Otherwise, Project Leads need to apply for a new EIDF project and specify access to the EIDF GPU service.
 
-All EIDF virtual machines can be set up to access the EIDF GPU Service. The Virtual Machine does not require to be GPU-enabled.
+Each project will be given a namespace within the EIDF GPU service to operate in.
+
+Once access to the EIDF GPU service has been confirmed, Project Leads will be give the ability to add a kubeconfig file to any of the VMs in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
+
+All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl API.
+
+The VM does not require to be GPU-enabled.
+
+A quick check to see if a VM has access to the EIDF GPU service can be completed by typing `kubectl -n <project-gpu-service-namespace> get jobs` in to the command line.
+
+If this is first time you have connected to the GPU service the response should be `No resources found in <project-gpu-service-namespace> namespace`.
 
 !!! important "EIDF GPU Service vs EIDF GPU-Enabled VMs"
-    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs. This allows a project to access multiple GPUs of different types.
+
+    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs. 
+    
+    This allows a project to access multiple GPUs of different types.
 
     An EIDF Virtual Desktop GPU-enabled VM is limited to a small number (1-2) of GPUs of a single type.
 
@@ -64,15 +78,26 @@ A standard project namespace has the following initial quota (subject to ongoing
 - GPU: 12
 
 !!! important "Quota is a maximum on a Shared Resource"
+    
     A project quota is the maximum proportion of the service available for use by that project.
-
-    During periods of high demand, Jobs will be queued awaiting resource availability on the Service.
-
-    This means that a project has access up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
+    
+    This is a sum of all requested resources across all submitted jobs/pods/deployments within a project.
+    
+    Any submitted resource requests that would exceed the total project quota will be rejected.
 
 ## Project Queues
 
 EIDF GPU Service is introducing the Kueue system in February 2024. The use of this is detailed in the [Kueue](kueue.md).
+
+!!! important "Job Queuing"
+
+    During periods of high demand, jobs will be queued awaiting resource availability on the Service.
+    
+    As a general rule, the higher the GPU/CPU/Memory resource request of a single job the longer it will wait in the queue before enough resources are free on a single node for it be allocated. 
+    
+    GPUs in high demand, such as Nvidia H100s, typically have longer wait times.
+
+    Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
 ## Additional Service Policy Information
 

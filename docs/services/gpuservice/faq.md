@@ -10,6 +10,12 @@ The default access route to the GPU Service is via an EIDF DSC VM. The DSC VM wi
 
 Project Leads and Managers can access the kubeconfig file from the Project page in the Portal. Project Leads and Managers can provide the file on any of the project VMs or give it to individuals within the project.
 
+### Access to GPU Service resources in default namespace is 'Forbidden'
+
+```Error from server (Forbidden): error when creating <manifest-filename>: jobs is forbidden: User <user> cannot create resource "jobs" in API group "" in the namespace "default"```
+
+Some version of the above error is common when submitting jobs/pods to the GPU cluster using the kubectl command. This arises when you forgot to specify you are submitting job/pods to your project namespace, not the "default" namespace which you do not have permissions to use. Resubmitting the job/pod with `kubectl -n <project-gpu-service-namespace> create <manifest-filename>` should solve the issue.
+
 ### I can't mount my PVC in multiple containers or pods at the same time
 
 The current PVC provisioner is based on Ceph RBD. The block devices provided by Ceph to the Kubernetes PV/PVC providers cannot be mounted in multiple pods at the same time. They can only be accessed by one pod at a time, once a pod has unmounted the PVC and terminated, the PVC can be reused by another pod. The service development team is working on new PVC provider systems to alleviate this limitation.
