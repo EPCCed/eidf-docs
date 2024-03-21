@@ -49,6 +49,8 @@ Otherwise, Project Leads need to apply for a new EIDF project and specify access
 
 Each project will be given a namespace within the EIDF GPU service to operate in.
 
+Typically, the namespace is the same as the EIDF project code but with 'ns' appended, i.e. `eidf989ns` for a project with code 'eidf989'.
+
 Once access to the EIDF GPU service has been confirmed, Project Leads will be give the ability to add a kubeconfig file to any of the VMs in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
 
 All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl API.
