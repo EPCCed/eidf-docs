@@ -92,7 +92,7 @@ To enable this for your EIDF account:
 
 ### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
-1. From your local terminal, import the SSH Key you generated above: ```$ ssh-add [sshkey]```
+1. From your local terminal, import the SSH Key you generated above: ```ssh-add /path/to/ssh-key```
 
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
 
@@ -103,10 +103,26 @@ To enable this for your EIDF account:
 
 OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
 
-Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below.
+Ensure you have created and added an ssh key as specified in the 'Generate a new SSH Key' section above, then follow the below steps:
+
+1. Add your SSH-Key to the SSH-Agent
+
+```
+ssh-add /path/to/ssh-key
+```
+
+!!! info
+    If the above command fails saying the SSH Agent is not running, run the below command: <br>
+    ``` eval `ssh-agent` ``` <br>
+    Then re-run the ssh-add command above
+
+Now you can ssh to your VM using the below command
 
 ```bash
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
+
+For example:
+ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 ```
 
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
@@ -137,8 +153,12 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 1. This should return "Identity added [Path to SSH Key]" if successful.
 1. Login by jumping through the gateway.
 
+
 ```bash
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
+
+For example:
+ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 ```
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
