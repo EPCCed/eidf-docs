@@ -63,20 +63,20 @@ Some of the kubectl commands are restricted on the EIDF cluster in order to ensu
 
     `kubectl` will attempt to interact with the `default` namespace which will return a permissions error if it is not told otherwise.
 
-    `kubectl -n <project-gpu-service-namespace> <command>` will tell kubectl to pass the commands to the correct namespace.
+    `kubectl -n <project-namespace> <command>` will tell kubectl to pass the commands to the correct namespace.
 
 Useful commands are:
 
-- `kubectl -n <project-gpu-service-namespace> create -f <job definition yaml>`: Create a new job with requested resources. Returns an error if a job with the same name already exists.
-- `kubectl -n <project-gpu-service-namespace> apply -f <job definition yaml>`: Create a new job with requested resources. If a job with the same name already exists it updates that job with the new resource/container requirements outlined in the yaml.
-- `kubectl -n <project-gpu-service-namespace> delete pod <pod name>`: Delete a pod from the cluster.
-- `kubectl -n <project-gpu-service-namespace> get pods`: Summarise all pods the namespace has active (or pending).
-- `kubectl -n <project-gpu-service-namespace> describe pods`: Verbose description of all pods the namespace has active (or pending).
-- `kubectl -n <project-gpu-service-namespace> describe pod <pod name>`: Verbose summary of the specified pod.
-- `kubectl -n <project-gpu-service-namespace> logs <pod name>`: Retrieve the log files associated with a running pod.
-- `kubectl -n <project-gpu-service-namespace> get jobs`:  List all jobs the namespace has active (or pending).
-- `kubectl -n <project-gpu-service-namespace> describe job <job name>`: Verbose summary of the specified job.
-- `kubectl -n <project-gpu-service-namespace> delete job <job name>`: Delete a job from the cluster.
+- `kubectl -n <project-namespace> create -f <job definition yaml>`: Create a new job with requested resources. Returns an error if a job with the same name already exists.
+- `kubectl -n <project-namespace> apply -f <job definition yaml>`: Create a new job with requested resources. If a job with the same name already exists it updates that job with the new resource/container requirements outlined in the yaml.
+- `kubectl -n <project-namespace> delete pod <pod name>`: Delete a pod from the cluster.
+- `kubectl -n <project-namespace> get pods`: Summarise all pods the namespace has active (or pending).
+- `kubectl -n <project-namespace> describe pods`: Verbose description of all pods the namespace has active (or pending).
+- `kubectl -n <project-namespace> describe pod <pod name>`: Verbose summary of the specified pod.
+- `kubectl -n <project-namespace> logs <pod name>`: Retrieve the log files associated with a running pod.
+- `kubectl -n <project-namespace> get jobs`:  List all jobs the namespace has active (or pending).
+- `kubectl -n <project-namespace> describe job <job name>`: Verbose summary of the specified job.
+- `kubectl -n <project-namespace> delete job <job name>`: Delete a job from the cluster.
 
 ## Creating your first pod template within a job yaml file
 
@@ -92,7 +92,7 @@ kind: Job
 metadata:
  generateName: jobtest-
  labels:
-  kueue.x-k8s.io/queue-name:  <namespace>-user-queue
+  kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
  completions: 1
  template:
@@ -133,9 +133,9 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
 ## Submitting your first job
 
 1. Open an editor of your choice and create the file test_NBody.yml
-1. Copy the above job yaml in to the file, filling in `<namespace>-user-queue`, e.g. eidf001ns-user-queue:
+1. Copy the above job yaml in to the file, filling in `<project-namespace>-user-queue`, e.g. eidf001ns-user-queue:
 1. Save the file and exit the editor
-1. Run `kubectl -n <project-gpu-service-namespace> create -f test_NBody.yml`
+1. Run `kubectl -n <project-namespace> create -f test_NBody.yml`
 1. This will output something like:
 
     ``` bash
@@ -144,7 +144,7 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
 
     The five character code appended to the job name, i.e. `b92qg`, is randomly generated and will differ from your run.
 
-1. Run `kubectl -n <project-gpu-service-namespace> get jobs`
+1. Run `kubectl -n <project-namespace> get jobs`
 1. This will output something like:
 
     ```bash
@@ -154,7 +154,7 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
 
     There may be more than one entry as this displays all the jobs in the current namespace, starting with their name, number of completions against required completions, duration and age.
 
-1. Inspect your job further using the command `kubectl -n <project-gpu-service-namespace> describe job jobtest-b92qg`, updating the job name with your five character code.
+1. Inspect your job further using the command `kubectl -n <project-namespace> describe job jobtest-b92qg`, updating the job name with your five character code.
 1. This will output something like:
 
     ```bash
@@ -206,7 +206,7 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
     Normal  Completed         7m12s  job-controller              Job completed
     ```
 
-1. Run `kubectl -n <project-gpu-service-namespace> get pods`
+1. Run `kubectl -n <project-namespace> get pods`
 1. This will output something like:
 
     ``` bash
@@ -217,7 +217,7 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
     Again, there may be more than one entry as this displays all the jobs in the current namespace.
     Also, each pod within a job is given another unique 5 character code appended to the job name.
 
-1. View the logs of a pod from the job you ran `kubectl -n <project-gpu-service-namespace> logs jobtest-b92qg-lh64s` - again update with you run's pod and job five letter code.
+1. View the logs of a pod from the job you ran `kubectl -n <project-namespace> logs jobtest-b92qg-lh64s` - again update with you run's pod and job five letter code.
 1. This will output something like:
 
     ``` bash
@@ -248,7 +248,7 @@ The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting you
     = 7439.679 double-precision GFLOP/s at 30 flops per interaction
     ```
 
-1. Delete your job with `kubectl -n <project-gpu-service-namespace> delete job jobtest-b92qg` - this will delete the associated pods as well.
+1. Delete your job with `kubectl -n <project-namespace> delete job jobtest-b92qg` - this will delete the associated pods as well.
 
 ## Specifying GPU requirements
 
@@ -281,7 +281,7 @@ kind: Job
 metadata:
     generateName: jobtest-
     labels:
-        kueue.x-k8s.io/queue-name:  <namespace>-user-queue
+        kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
     completions: 1
     template:
@@ -321,7 +321,7 @@ kind: Job
 metadata:
  generateName: jobtest-
  labels:
-    kueue.x-k8s.io/queue-name:  <namespace>-user-queue
+    kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
  completions: 3
  parallelism: 1
@@ -346,7 +346,7 @@ spec:
 
 ## Change the default kubectl namespace in the project kubeconfig file
 
-  Passing the `-n <project-gpu-service-namespace>` flag every time you want to interact with the cluster can be cumbersome.
+  Passing the `-n <project-namespace>` flag every time you want to interact with the cluster can be cumbersome.
 
   You can alter the kubeconfig on your VM to send commands to your project namespace by default.
 
@@ -377,7 +377,7 @@ spec:
     - name: "eidf-general-prod"
       context:
         user: "eidf-general-prod"
-        namespace: "<project-gpu-service-namespace>" # INSERT LINE
+        namespace: "<project-namespace>" # INSERT LINE
         cluster: "eidf-general-prod"
 
     *** MORE CONFIG ***
