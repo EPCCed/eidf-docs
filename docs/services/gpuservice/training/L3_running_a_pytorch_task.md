@@ -1,6 +1,12 @@
 # Running a PyTorch task
 
-In the following lesson, we'll build a NLP neural network and train it using the EIDF GPU Service.
+## Requirements
+
+It is recommended that users complete [Getting started with Kubernetes](L1_getting_started.md) and [Requesting persistent volumes With Kubernetes](L3_running_a_pytorch_task.md) before proceeding with this tutorial.
+
+## Overview
+
+In the following lesson, we'll build a CNN neural network and train it using the EIDF GPU Service.
 
 The model was taken from the [PyTorch Tutorials](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
@@ -17,7 +23,7 @@ The lesson will be split into three parts:
 Request memory from the Ceph server by submitting a PVC to K8s (example pvc spec yaml below).
 
 ``` bash
-kubectl create -f <pvc-spec-yaml>
+kubectl -n <project-namespace> create -f <pvc-spec-yaml>
 ```
 
 ### Example PyTorch PersistentVolumeClaim
@@ -41,13 +47,13 @@ spec:
 1. Check PVC has been created
 
     ``` bash
-    kubectl get pvc <pv-name>
+    kubectl -n <project-namespace> get pvc <pv-name>
     ```
 
 1. Create a lightweight job with pod with PV mounted (example job below)
 
     ``` bash
-    kubectl create -f lightweight-pod-job.yaml
+    kubectl -n <project-namespace> create -f lightweight-pod-job.yaml
     ```
 
 1. Download the PyTorch code
@@ -59,19 +65,19 @@ spec:
 1. Copy the Python script into the PV
 
     ``` bash
-    kubectl cp example_pytorch_code.py lightweight-job-<identifier>:/mnt/ceph_rbd/
+    kubectl -n <project-namespace> cp example_pytorch_code.py lightweight-job-<identifier>:/mnt/ceph_rbd/
     ```
 
 1. Check whether the files were transferred successfully
 
     ``` bash
-    kubectl exec lightweight-job-<identifier> -- ls /mnt/ceph_rbd
+    kubectl -n <project-namespace> exec lightweight-job-<identifier> -- ls /mnt/ceph_rbd
     ```
 
 1. Delete the lightweight job
 
     ``` bash
-    kubectl delete job lightweight-job-<identifier>
+    kubectl -n <project-namespace> delete job lightweight-job-<identifier>
     ```
 
 ### Example lightweight job specification
@@ -119,7 +125,7 @@ The PyTorch container will be held within a pod that has the persistent volume m
 Submit the specification file below to K8s to create the job, replacing the queue name with your project namespace queue name.
 
 ``` bash
-kubectl create -f <pytorch-job-yaml>
+kubectl -n <project-namespace> create -f <pytorch-job-yaml>
 ```
 
 ### Example PyTorch Job Specification File
@@ -169,19 +175,19 @@ This is not intended to be an introduction to PyTorch, please see the [online tu
 1. Check that the model ran to completion
 
     ``` bash
-    kubectl logs <pytorch-pod-name>
+    kubectl -n <project-namespace> logs <pytorch-pod-name>
     ```
 
 1. Spin up a lightweight pod to retrieve results
 
     ``` bash
-    kubectl create -f lightweight-pod-job.yaml
+    kubectl -n <project-namespace> create -f lightweight-pod-job.yaml
     ```
 
 1. Copy the trained model back to your access VM
 
     ``` bash
-    kubectl cp lightweight-job-<identifier>:mnt/ceph_rbd/model.pth model.pth
+    kubectl -n <project-namespace> cp lightweight-job-<identifier>:mnt/ceph_rbd/model.pth model.pth
     ```
 
 ## Using a Kubernetes job to train the pytorch model multiple times
@@ -235,7 +241,7 @@ spec:
 ## Clean up
 
 ``` bash
-kubectl delete pod pytorch-job
+kubectl -n <project-namespace> delete pod pytorch-job
 
-kubectl delete pvc pytorch-pvc
+kubectl -n <project-namespace> delete pvc pytorch-pvc
 ```
