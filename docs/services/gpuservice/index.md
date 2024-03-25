@@ -57,9 +57,9 @@ All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU
 
 The VM does not require to be GPU-enabled.
 
-A quick check to see if a VM has access to the EIDF GPU service can be completed by typing `kubectl -n <project-gpu-service-namespace> get jobs` in to the command line.
+A quick check to see if a VM has access to the EIDF GPU service can be completed by typing `kubectl -n <project-namespace> get jobs` in to the command line.
 
-If this is first time you have connected to the GPU service the response should be `No resources found in <project-gpu-service-namespace> namespace`.
+If this is first time you have connected to the GPU service the response should be `No resources found in <project-namespace> namespace`.
 
 !!! important "EIDF GPU Service vs EIDF GPU-Enabled VMs"
 
