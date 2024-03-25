@@ -4,7 +4,7 @@ The _Edinburgh International Data Facility_ (EIDF) can host your data for the li
 
 ## Overview
 
-The EIDF provides two complementary services: **Archive** and **Analytics-Ready Data** (ARD). The ARD hosted by the EIDF are available to EIDF Data Science cCoud users. ARD are indexed and searchable on the EIDF Data Catalogue.
+The EIDF provides two complementary services: **Archive** and **Analytics-Ready Data** (ARD). The ARD hosted by the EIDF are available to EIDF Data Science Cloud users. ARD are indexed and searchable on the EIDF Data Catalogue.
 
 In the following, a dataset is a collection of data resources (or files), together with a description and other information (what is known as metadata).
 
