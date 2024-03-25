@@ -39,7 +39,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
 1. Check a PVC has been created.
 
     ``` bash
-    kubectl -n <project-gpu-namespace> get pvc template-workflow-pvc
+    kubectl -n <project-namespace> get pvc template-workflow-pvc
     ```
     
 1. Write a job yaml with PV mounted and a command to download the data. Change the curl URL to your data set of interest.
@@ -82,19 +82,19 @@ Therefore, the data download step needs to be completed asynchronously as mainta
 1. Run the data download job.
 
     ``` bash
-    kubectl -n <project-gpu-namespace> create -f lightweight-pod.yaml
+    kubectl -n <project-namespace> create -f lightweight-pod.yaml
     ```
 
 1. Check if the download has completed.
 
     ``` bash
-    kubectl -n <project-gpu-namespace> get jobs
+    kubectl -n <project-namespace> get jobs
     ```
 
 1. Delete lightweight job once completed.
 
     ``` bash
-    kubectl -n <project-gpu-namespace> delete job lightweight-job
+    kubectl -n <project-namespace> delete job lightweight-job
     ```
 
 ### Asynchronous data downloading within a screen session
@@ -155,7 +155,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Download data set. Change the curl URL to your data set of interest.
 
     ``` bash
-    kubectl -n <project-gpu-namespace> exec <LIGHTWEIGHT_POD_NAME> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
+    kubectl -n <project-namespace> exec <LIGHTWEIGHT_POD_NAME> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
     ```
 
 1. Exit the remote session by either ending the session or `ctrl-a d`. 
@@ -171,9 +171,9 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Check the download was successful and delete the job.
 
     ```bash
-    kubectl -n <project-gpu-namespace> exec <LIGHTWEIGHT_POD_NAME> -- ls /mnt/ceph_rbd/
+    kubectl -n <project-namespace> exec <LIGHTWEIGHT_POD_NAME> -- ls /mnt/ceph_rbd/
     
-    kubectl -n <project-gpu-namespace> delete job lightweight-job
+    kubectl -n <project-namespace> delete job lightweight-job
     ```
 
 1. Exit the screen session.
@@ -475,5 +475,5 @@ Add the URL of the GitHub repo of interest to the `initContainers: command:` tag
 1. Submit the yaml file to kubernetes
 
     ```bash
-    kubectl -n <project-gpu-namespace> create -f <job-yaml-file>
+    kubectl -n <project-namespace> create -f <job-yaml-file>
     ```
