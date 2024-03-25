@@ -12,9 +12,10 @@ In order to follow this tutorial on the EIDF GPU Cluster you will need to have:
 
 - The EIDF GPU Service queue name associated with the project, e.g. eidf001ns-user-queue.
 
-- Downloaded the kubeconfig file to a VM with the project along with the kubectl API.
+- Downloaded the kubeconfig file to a Project VM along with the kubectl API.
 
 !!! Important "Downloading the kubeconfig file and kubectl API"
+
     Project Leads should use the 'Download kubeconfig' button on the EIDF Portal to complete this step to ensure the correct kubeconfig file and kubectl version is installed.
 
 ## Introduction
