@@ -87,6 +87,7 @@ This tutorial teaches users how to submit tasks to the EIDF GPU Service, but it 
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
 | [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
 | [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results. |
+| [Template workflow](training/L4_template workflow.md)                               | a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job. |
 
 ## Further Reading and Help
 
