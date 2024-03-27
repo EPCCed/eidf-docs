@@ -41,19 +41,19 @@ The current full specification of the EIDF GPU Service as of 14 February 2024:
 
 ## Service Access
 
-Users should have an [EIDF Account](../../access/project.md) as access to the EIDF GPU Service can only be obtained through an EIDF virtual machine.
+Users should have an [EIDF Account](../../access/project.md) as the EIDF GPU Service is only accessible through EIDF Virtual Machines.
 
-Project Leads can request access to the EIDF GPU Service from VMs in an existing project through a service request to the EIDF helpdesk.
+Existing projects can request access to the EIDF GPU Service through a service request to the [EIDF helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing eidf@epcc.ed.ac.uk .
 
-Otherwise, Project Leads need to apply for a new EIDF project and specify access to the EIDF GPU service.
+New projects wanting to using the GPU Service should include this in their EIDF Project Application.
 
 Each project will be given a namespace within the EIDF GPU service to operate in.
 
-Typically, the namespace is the same as the EIDF project code but with 'ns' appended, i.e. `eidf989ns` for a project with code 'eidf989'.
+This namespace will normally be the EIDF Project code appended with ’ns’, i.e. `eidf989ns` for a project with code 'eidf989'.
 
 Once access to the EIDF GPU service has been confirmed, Project Leads will be give the ability to add a kubeconfig file to any of the VMs in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
 
-All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl API.
+All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl command line tool.
 
 The VM does not require to be GPU-enabled.
 
@@ -83,9 +83,7 @@ A standard project namespace has the following initial quota (subject to ongoing
 
     A project quota is the maximum proportion of the service available for use by that project.
 
-    This is a sum of all requested resources across all submitted jobs/pods/deployments within a project.
-
-    Any submitted resource requests that would exceed the total project quota will be rejected.
+    Any submitted job requests that would exceed the total project quota will be queued.
 
 ## Project Queues
 
