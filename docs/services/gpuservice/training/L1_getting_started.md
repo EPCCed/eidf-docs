@@ -349,26 +349,18 @@ spec:
   Passing the `-n <project-namespace>` flag every time you want to interact with the cluster can be cumbersome.
 
   You can alter the kubeconfig on your VM to send commands to your project namespace by default.
+  
+  Only users with sudo privileges can change the root kubectl config file.
 
-1. Open the command line on your EIDF VM with access to the EIDF GPU Service
+1. Open the command line on your EIDF VM with access to the EIDF GPU Service.
 
-1. Create a folder to hold your adapted kubeconfig file
-
-    ```bash
-    mkdir ~/.kube
-    ```
-
-1. Create a copy of shared kubeconfig file to your home directory.
+1. Open the root kubeconfig file with sudo privileges.
 
     ```bash
-    cp /kubenetes/config ~/.kube/<username>_config
+    sudo nano /kubernetes/config
     ```
 
-1. Add the namespace line with your project's kubernetes namespace to the "eidf-general-prod" context entry in your copy of the config file
-
-    ```bash
-    nano ~/.kube/<username>_config
-    ```
+1. Add the namespace line with your project's kubernetes namespace to the "eidf-general-prod" context entry in your copy of the config file.
 
     ```txt
     *** MORE CONFIG ***
@@ -383,20 +375,7 @@ spec:
     *** MORE CONFIG ***
     ```
 
-1. Changing the KUBECONFIG bash variable to point to the amended file in your home directory by adding the following lines to the end of the .bashrc file.
-
-    ```bash
-    nano ~/.bashrc
-    ```
-
-    ```txt
-    *** END OF .bashrc ***
-
-    # Add correct K8s config credentials
-    export KUBECONFIG=<absolute_path_to_<username>_config_file>
-    ```
-
-1. Check kubectl connects to the cluster. If this does not work you can return to the original kubeconfig file by removing the above export line from the .bashrc file and restarting the terminal.
+1. Check kubectl connects to the cluster. If this does not work you delete and re-download the kubeconfig file using the button on the project page of the EIDF portal.
 
     ```bash
     kubectl get pods
