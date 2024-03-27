@@ -237,11 +237,6 @@ The GPU resource requests can be made more specific by adding the type of GPU pr
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB-MIG-1g.5gb'`
 - `nvidia.com/gpu.product: 'NVIDIA-H100-80GB-HBM3'`
 
-> **WARNING**
->
-> If you request a GPU but do not specify a GPU type you will be assigned one at random.
-> Please check you are requesting a GPU with the correct memory and double check spelling. 
-
 ### Example yaml file
 
 ```yaml
