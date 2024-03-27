@@ -95,7 +95,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
     kubectl -n <project-namespace> get jobs
     ```
 
-1. Delete lightweight job once completed.
+1. Delete the lightweight job once completed.
 
     ``` bash
     kubectl -n <project-namespace> delete job lightweight-job
@@ -200,7 +200,7 @@ This is not an introduction to building docker images, please see the [Docker tu
 
 ### Manually building a Docker image locally
 
-1. Select a suitable base image (The [Nvidia container catalog](https://catalog.ngc.nvidia.com/containers) is often a useful starting place for GPU accelerated tasks). We'll use to base [RAPIDS image](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers/base).
+1. Select a suitable base image (The [Nvidia container catalog](https://catalog.ngc.nvidia.com/containers) is often a useful starting place for GPU accelerated tasks). We'll use the base [RAPIDS image](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers/base).
 
 1. Create a [Dockerfile](https://docs.docker.com/engine/reference/builder/) to add any additional packages required to the base image.
 
@@ -263,7 +263,7 @@ This is not an introduction to building docker images, please see the [Docker tu
 
 In cases where the Docker image needs to be built and tested iteratively (i.e. to check for comparability issues), git version control and [GitHub Actions](https://github.com/features/actions) can simplify the build process.
 
-A GitHub action can build and push a Docker image to Docker Hub whenever it detects a git push that changes the dockerfile in a git repo.
+A GitHub action can build and push a Docker image to Docker Hub whenever it detects a git push that changes the docker file in a git repo.
 
 This process requires you to already have a [GitHub](https://github.com) and [Docker Hub](https://hub.docker.com) account.
 
