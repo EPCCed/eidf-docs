@@ -1,4 +1,10 @@
-# Requesting Persistent Volumes With Kubernetes
+# Requesting persistent volumes With Kubernetes
+
+## Requirements
+
+It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) before proceeding with this tutorial.
+
+## Overview
 
 Pods in the K8s EIDF GPU Service are intentionally ephemeral.
 
@@ -42,12 +48,12 @@ spec:
  storageClassName: csi-rbd-sc
 ```
 
-You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl create <PVC specification yaml>`
+You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl -n <project-namespace> create <PVC specification yaml>`
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:
 
-- `kubectl delete pvc <PVC name>`
-- `kubectl get pvc <PVC name>`
-- `kubectl apply -f <PVC specification yaml>`
+- `kubectl -n <project-namespace> delete pvc <PVC name>`
+- `kubectl -n <project-namespace> get pvc <PVC name>`
+- `kubectl -n <project-namespace> apply -f <PVC specification yaml>`
 
 ## Mounting a persistent Volume to a Pod
 
@@ -95,7 +101,7 @@ To move files in/out of the persistent volume from outside a pod you can use the
 
 ```bash
 *** On Login Node - replacing pod name with your pod name ***
-kubectl cp /home/data/test_data.csv test-ceph-pvc-job-8c9cc:/mnt/ceph_rbd
+kubectl -n <project-namespace> cp /home/data/test_data.csv test-ceph-pvc-job-8c9cc:/mnt/ceph_rbd
 ```
 
 For more complex file transfers and synchronisation, create a low resource pod with the persistent volume mounted.
@@ -105,7 +111,7 @@ The bash command rsync can be amended to manage file transfers into the mounted 
 ## Clean up
 
 ```bash
-kubectl delete job test-ceph-pvc-job
+kubectl -n <project-namespace> delete job test-ceph-pvc-job
 
-kubectl delete pvc test-ceph-pvc
+kubectl -n <project-namespace> delete pvc test-ceph-pvc
 ```
