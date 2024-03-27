@@ -1,5 +1,9 @@
 # Template workflow
 
+## Requirements
+
+ It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L2_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
+ 
 ## Overview
 
 An example workflow for code development using K8s is outlined below.
@@ -50,7 +54,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
     metadata:
      name: lightweight-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec: 
      completions: 1
      parallelism: 1
@@ -123,7 +127,7 @@ Using screen rather than a single download job can be helpful if downloading mul
     metadata:
      name: lightweight-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec: 
      completions: 1
      parallelism: 1
@@ -155,7 +159,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Download data set. Change the curl URL to your data set of interest.
 
     ``` bash
-    kubectl -n <project-namespace> exec <LIGHTWEIGHT_POD_NAME> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
+    kubectl -n <project-namespace> exec <lightweight-pod-name> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
     ```
 
 1. Exit the remote session by either ending the session or `ctrl-a d`. 
@@ -171,7 +175,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 1. Check the download was successful and delete the job.
 
     ```bash
-    kubectl -n <project-namespace> exec <LIGHTWEIGHT_POD_NAME> -- ls /mnt/ceph_rbd/
+    kubectl -n <project-namespace> exec <lightweight-pod-name> -- ls /mnt/ceph_rbd/
     
     kubectl -n <project-namespace> delete job lightweight-job
     ```
@@ -209,22 +213,22 @@ This is not an introduction to building docker images, please see the [Docker tu
 1. Build the Docker container locally (You will need to install [Docker](https://docs.docker.com/))
 
     ```bash
-    cd <DOCKERGILE_FOLDER>
+    cd <dockerfile-folder>
     
-    docker build . -t <DOCKER_HUB_USERNAME>/template-docker-image:latest
+    docker build . -t <docker-hub-username>/template-docker-image:latest
     ```
     
-    > **NOTE**
-    >
-    > Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.
-    > If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function. 
+!!! important "Building images for different CPU architectures"
+    Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.
+
+    If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function. 
     
 1. Create a repository to hold the image on [Docker Hub](https://hub.docker.com) (You will need to create and setup an account).
 
 1. Push the Docker image to the repository.
 
     ```bash
-    docker push <DOCKER_HUB_USERNAME>/template-docker-image:latest
+    docker push <docker-hub-username>/template-docker-image:latest
     ```
     
 1. Finally, specify your Docker image in the `image:` tag of the job specification yaml file.
@@ -235,7 +239,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     metadata:
      name: template-workflow-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
      parallelism: 1
@@ -244,7 +248,7 @@ This is not an introduction to building docker images, please see the [Docker tu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <DOCKER_HUB_USERNAME>/template-docker-image:latest
+         image: <docker-hub-username>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -335,7 +339,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     metadata:
      name: template-workflow-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
      parallelism: 1
@@ -344,7 +348,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <dockerhub-user>/template-docker-image:latest
+         image: <docker-hub-username>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -370,7 +374,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     metadata:
      name: template-workflow-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
      parallelism: 1
@@ -379,7 +383,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <dockerhub-user>/template-docker-image:latest
+         image: <docker-hub-username>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -425,7 +429,7 @@ Add the URL of the GitHub repo of interest to the `initContainers: command:` tag
     metadata:
      name: template-workflow-job
      labels:
-      kueue.x-k8s.io/queue-name: <USER_KUEUE_NAME>
+      kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
      parallelism: 1
@@ -434,7 +438,7 @@ Add the URL of the GitHub repo of interest to the `initContainers: command:` tag
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <dockerhub-user>/template-docker-image:latest
+         image: <docker-hub-username>/template-docker-image:latest
          command: ['sh', '-c', "python3 /code/<python-script>"]
          resources:
           requests:
