@@ -151,27 +151,33 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 1. Import the SSH Key you generated above: 
 
     ```powershell
+
     ssh-add \path\to\sshkey
     
     For Example:
     ssh-add .\.ssh\id_ed25519
+
     ```
 
 1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
 
     ```powershell
+
     Get-Service -Name ssh-agent | Set-Service -StartupType Manual
     Start-Service ssh-agent
     ssh-add \path\to\sshkey
+
     ```
 
 1. Login by jumping through the gateway.
 
     ```bash
+
     ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
 
     For Example:
     ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+
     ```
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
@@ -220,6 +226,7 @@ You can use SSH Aliases to access your VMs with a single word.
 
     For Example:
     ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+
     ```
 
 1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
@@ -233,12 +240,13 @@ You can use SSH Aliases to access your VMs with a single word.
       ProxyCommand ssh eidf-gateway -W %h:%p
 
     For Example:
-    
+
     Host demo
       HostName 10.24.1.1
       User alice
       IdentityFile ~/.ssh/id_ed25519
       ProxyCommand ssh eidf-gateway -W %h:%p
+      
     ```
 
 1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
