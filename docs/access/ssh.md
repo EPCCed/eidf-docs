@@ -115,6 +115,11 @@ ssh-add ~/.ssh/keys/id_ed25519
 ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 ```
 
+!!! info
+    If the ```ssh-add``` command fails saying the SSH Agent is not running, run the below command: <br>
+    ``` eval `ssh-agent` ``` <br>
+    Then re-run the ssh-add command above
+
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
