@@ -249,7 +249,7 @@ You can use SSH Aliases to access your VMs with a single word.
     For Example:
 
     ```
-    
+
     Host demo
       HostName 10.24.1.1
       User alice
