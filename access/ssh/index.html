@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -800,6 +800,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Aliases
+    </span>
+  </a>
   
 </li>
       
@@ -2338,6 +2347,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ssh-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#first-password-setting-and-password-resets" class="md-nav__link">
     <span class="md-ellipsis">
       First Password Setting and Password Resets
@@ -2404,12 +2422,14 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <h3 id="generate-a-new-ssh-key">Generate a new SSH Key</h3>
 <ol>
 <li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
-<li>Generate a new SSH Key:</li>
-</ol>
+<li>
+<p>Generate a new SSH Key:</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen
 </code></pre></div>
-<ol>
-<li>It is fine to accept the default name and path for the key unless you manage a number of keys.</li>
+</li>
+<li>
+<p>It is fine to accept the default name and path for the key unless you manage a number of keys.</p>
+</li>
 <li>Press enter to finish generating the key</li>
 </ol>
 <h3 id="adding-the-new-ssh-key-to-your-account-via-the-portal">Adding the new SSH Key to your account via the Portal</h3>
@@ -2448,7 +2468,7 @@ An MFA token will have to be set for each account you'd like to use to access th
 <h3 id="using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux">Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux</h3>
 <ol>
 <li>
-<p>From your local terminal, import the SSH Key you generated above: <code>$ ssh-add [sshkey]</code></p>
+<p>From your local terminal, import the SSH Key you generated above: <br><code>ssh-add /path/to/ssh-key</code></p>
 </li>
 <li>
 <p>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</p>
@@ -2460,9 +2480,20 @@ An MFA token will have to be set for each account you'd like to use to access th
 <p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 </div>
 <p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.</p>
-<p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below.</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+<p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>/path/to/ssh-key
+ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
 </code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>~/.ssh/keys/id_ed25519
+ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>alice@10.24.1.1
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If the <code>ssh-add</code> command fails saying the SSH Agent is not running, run the below command: <br></p>
+<p><code>eval `ssh-agent`</code></p>
+<p>Then re-run the ssh-add command above.</p>
+</div>
 <p>The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
 <p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
 <h2 id="accessing-from-windows">Accessing from Windows</h2>
@@ -2471,9 +2502,9 @@ An MFA token will have to be set for each account you'd like to use to access th
 <ol>
 <li>Click the ‘Start’ button at the bottom of the screen</li>
 <li>Click the ‘Settings’ cog icon</li>
-<li>Search in the top bar ‘Add or Remove Programs’ and select the entry</li>
-<li>Select the ‘Optional Features’ blue text link</li>
-<li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button</li>
+<li>Select 'System'</li>
+<li>Select the ‘Optional Features’ option at the bottom of the list</li>
+<li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button</li>
 <li>Search ‘OpenSSH Client’</li>
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
 </ol>
@@ -2483,14 +2514,94 @@ An MFA token will have to be set for each account you'd like to use to access th
 <p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 </div>
 <ol>
-<li>Open either Powershell (the Windows Terminal) or a WSL Linux Terminal</li>
-<li>Import the SSH Key you generated above: <code>$ ssh-add [/path/to/sshkey]</code></li>
-<li>This should return "Identity added [Path to SSH Key]" if successful.</li>
-<li>Login by jumping through the gateway.</li>
-</ol>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+<li>Open either Powershell or the Windows Terminal</li>
+<li>
+<p>Import the SSH Key you generated above:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
+
+<span class="k">For</span> <span class="n">Example</span><span class="p">:</span>
+<span class="n">ssh-add</span> <span class="p">.\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
 </code></pre></div>
+</li>
+<li>
+<p>This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="p">|</span> <span class="nb">Set-Service</span> <span class="n">-StartupType</span> <span class="n">Manual</span>
+<span class="nb">Start-Service</span> <span class="n">ssh-agent</span>
+<span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
+</code></pre></div>
+</li>
+<li>
+<p>Login by jumping through the gateway.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+
+For<span class="w"> </span>Example:
+ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>alice@10.24.1.1
+</code></pre></div>
+</li>
+</ol>
 <p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
+<h2 id="ssh-aliases">SSH Aliases</h2>
+<p>You can use SSH Aliases to access your VMs with a single word.</p>
+<ol>
+<li>
+<p>Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:</p>
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>~/.ssh/config
+</code></pre></div>
+</li>
+<li>
+<p>Insert the following lines:</p>
+<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
+<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
+<span class="w">  </span>User<span class="w"> </span>&lt;eidf<span class="w"> </span>project<span class="w"> </span>username&gt;
+<span class="w">  </span>IdentityFile<span class="w"> </span>/path/to/ssh/key
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
+<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
+<span class="w">  </span>User<span class="w"> </span>alice
+<span class="w">  </span>IdentityFile<span class="w"> </span>~/.ssh/id_ed25519
+</code></pre></div>
+</li>
+<li>
+<p>Save and quit the file.</p>
+</li>
+<li>
+<p>Now you can ssh to your VM using the below command:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span><span class="w"> </span>-i<span class="w"> </span>/path/to/ssh/key
+</code></pre></div>
+<p>For Example:</p>
+<div class="highlight"><pre><span></span><code>ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+</code></pre></div>
+</li>
+<li>
+<p>You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:</p>
+<div class="highlight"><pre><span></span><code>Host &lt;vm name/alias&gt;
+  HostName 10.24.VM.IP
+  User &lt;vm username&gt;
+  IdentityFile /path/to/ssh/key
+  ProxyCommand ssh eidf-gateway -W %h:%p
+</code></pre></div>
+<p>For Example:</p>
+<div class="highlight"><pre><span></span><code>Host demo
+  HostName 10.24.1.1
+  User alice
+  IdentityFile ~/.ssh/id_ed25519
+  ProxyCommand ssh eidf-gateway -W %h:%p
+</code></pre></div>
+</li>
+<li>
+<p>Now, by running <code>ssh demo</code> your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
+<br><br>Note for this setup, if your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
+<code>HostKeyAlgorithms +ssh-rsa</code></p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
+This method allows for a much less complicated ssh command to reach your VMs. <br>
+You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
+The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
+</div>
 <h2 id="first-password-setting-and-password-resets">First Password Setting and Password Resets</h2>
 <p>Before logging in for the first time you have to reset the password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 
@@ -2542,7 +2653,7 @@ An MFA token will have to be set for each account you'd like to use to access th
     <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
     
   </body>
