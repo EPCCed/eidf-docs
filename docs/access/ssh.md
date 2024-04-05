@@ -186,7 +186,7 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 
 You can use SSH Aliases to access your VMs with a single word.
 
-1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. In the text editor of your choice (vi used as an example)
+1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:
 
     ```bash
 
@@ -224,7 +224,12 @@ You can use SSH Aliases to access your VMs with a single word.
 
     ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
 
+    ```
+
     For Example:
+
+    ```
+
     ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
 
     ```
@@ -239,14 +244,18 @@ You can use SSH Aliases to access your VMs with a single word.
       IdentityFile /path/to/ssh/key
       ProxyCommand ssh eidf-gateway -W %h:%p
 
+    ```
+    
     For Example:
 
+    ```
+    
     Host demo
       HostName 10.24.1.1
       User alice
       IdentityFile ~/.ssh/id_ed25519
       ProxyCommand ssh eidf-gateway -W %h:%p
-      
+
     ```
 
 1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
