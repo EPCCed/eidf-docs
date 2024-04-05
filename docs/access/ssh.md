@@ -119,8 +119,10 @@ ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 
 !!! info
     If the `ssh-add` command fails saying the SSH Agent is not running, run the below command: <br>
-    ``` eval `ssh-agent` ``` <br>
-    Then re-run the ssh-add command above
+      
+      ``` eval `ssh-agent` ```
+    
+    Then re-run the ssh-add command above.
 
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
@@ -150,11 +152,8 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
     ```powershell
     ssh-add \path\to\sshkey
-    ```
-
-    For Example
-
-    ```powershell
+    
+    For Example:
     ssh-add .\.ssh\id_ed25519
     ```
 
@@ -170,11 +169,8 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
     ```bash
     ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
-    ```
 
-    For example:
-
-    ```bash
+    For Example:
     ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
     ```
 
@@ -187,25 +183,31 @@ You can use SSH Aliases to access your VMs with a single word.
 1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. In the text editor of your choice (vi used as an example)
 
     ```bash
+
     vi ~/.ssh/config
+
     ```
 
 1. Insert the following lines:
 
     ```bash
+
     Host eidf-gateway
       Hostname eidf-gateway.epcc.ed.ac.uk
       User <eidf project username>
       IdentityFile /path/to/ssh/key
+
     ```
 
     For example:
 
     ```bash
+
     Host eidf-gateway
       Hostname eidf-gateway.epcc.ed.ac.uk
       User alice
       IdentityFile ~/.ssh/id_ed25519
+
     ```
 
 1. Save and quit the file.
@@ -213,28 +215,25 @@ You can use SSH Aliases to access your VMs with a single word.
 1. Now you can ssh to your VM using the below command:
 
     ```bash
+
     ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
-    ```
 
-    For example:
-
-    ```bash
+    For Example:
     ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
     ```
 
 1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
 
     ```
+
     Host <vm name/alias>
       HostName 10.24.VM.IP
       User <vm username>
       IdentityFile /path/to/ssh/key
       ProxyCommand ssh eidf-gateway -W %h:%p
-    ```
 
     For Example:
-
-    ```
+    
     Host demo
       HostName 10.24.1.1
       User alice
