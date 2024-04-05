@@ -245,7 +245,7 @@ You can use SSH Aliases to access your VMs with a single word.
       ProxyCommand ssh eidf-gateway -W %h:%p
 
     ```
-    
+
     For Example:
 
     ```
