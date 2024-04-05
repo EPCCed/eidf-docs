@@ -46,7 +46,6 @@ If not, you'll need to generate an SSH-Key, to do this:
 1. Open a new window of whatever terminal you will use to SSH to EIDF.
 1. Generate a new SSH Key:
 
-
     ```bash
     ssh-keygen
     ```
@@ -169,11 +168,10 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 1. Login by jumping through the gateway.
 
-
     ```bash
     ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
     ```
-    
+
     For example:
 
     ```bash
@@ -187,22 +185,22 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 You can use SSH Aliases to access your VMs with a single word.
 
 1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. In the text editor of your choice (vi used as an example)
-    
+
     ```bash
     vi ~/.ssh/config
     ```
 
 1. Insert the following lines:
-  
+
     ```bash
     Host eidf-gateway
       Hostname eidf-gateway.epcc.ed.ac.uk
       User <eidf project username>
       IdentityFile /path/to/ssh/key
     ```
-  
+
     For example:
-  
+
     ```bash
     Host eidf-gateway
       Hostname eidf-gateway.epcc.ed.ac.uk
@@ -213,11 +211,11 @@ You can use SSH Aliases to access your VMs with a single word.
 1. Save and quit the file.
 
 1. Now you can ssh to your VM using the below command:
-    
+
     ```bash
     ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
     ```
-    
+
     For example:
 
     ```bash
@@ -225,7 +223,7 @@ You can use SSH Aliases to access your VMs with a single word.
     ```
 
 1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
-    
+
     ```
     Host <vm name/alias>
       HostName 10.24.VM.IP
@@ -235,7 +233,7 @@ You can use SSH Aliases to access your VMs with a single word.
     ```
 
     For Example:
-    
+
     ```
     Host demo
       HostName 10.24.1.1
