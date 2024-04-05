@@ -111,6 +111,7 @@ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
 For example:
 ```
+ssh-add ~/.ssh/keys/id_ed25519
 ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 ```
 
@@ -138,7 +139,14 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
     If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
 
 1. Open either Powershell or the Windows Terminal
-1. Import the SSH Key you generated above: ```$ ssh-add \path\to\sshkey```
+1. Import the SSH Key you generated above: 
+  ```
+  ssh-add \path\to\sshkey
+  ```
+  For Example
+  ```
+  ssh-add .\.ssh\id_ed25519
+  ```
 1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
 ```powershell
 Get-Service -Name ssh-agent | Set-Service -StartupType Manual
