@@ -108,8 +108,10 @@ Ensure you have created and added an ssh key as specified in the 'Generating and
 ```bash
 ssh-add /path/to/ssh-key
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+
 ```
 For example:
+
 ```
 ssh-add ~/.ssh/keys/id_ed25519
 ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
@@ -145,13 +147,14 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 1. Open either Powershell or the Windows Terminal
 1. Import the SSH Key you generated above: 
-  ```
-  ssh-add \path\to\sshkey
-  ```
-  For Example
-  ```
-  ssh-add .\.ssh\id_ed25519
-  ```
+```
+ssh-add \path\to\sshkey
+```
+For Example
+```
+ssh-add .\.ssh\id_ed25519
+```
+
 1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
 ```powershell
 Get-Service -Name ssh-agent | Set-Service -StartupType Manual
@@ -182,16 +185,16 @@ vi ~/.ssh/config
 1. Insert the following lines:
 ```
 Host eidf-gateway
-    Hostname eidf-gateway.epcc.ed.ac.uk
-    User <eidf project username>
-    IdentityFile /path/to/ssh/key
+  Hostname eidf-gateway.epcc.ed.ac.uk
+  User <eidf project username>
+  IdentityFile /path/to/ssh/key
 ```
 For example:
 ```
 Host eidf-gateway
-    Hostname eidf-gateway.epcc.ed.ac.uk
-    User alice
-    IdentityFile ~/.ssh/id_ed25519
+  Hostname eidf-gateway.epcc.ed.ac.uk
+  User alice
+  IdentityFile ~/.ssh/id_ed25519
 ```
 
 1. Save and quit the file.
@@ -206,21 +209,21 @@ ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
 ```
 
 1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
-    ```
-    Host <vm name/alias>
-      HostName 10.24.VM.IP
-      User <vm username>
-      IdentityFile /path/to/ssh/key
-      ProxyCommand ssh eidf-gateway -W %h:%p
-    ```
-    For Example:
-    ```
-     Host demo
-      HostName 10.24.1.1
-      User alice
-      IdentityFile ~/.ssh/id_ed25519
-      ProxyCommand ssh eidf-gateway -W %h:%p
-    ```
+```
+Host <vm name/alias>
+  HostName 10.24.VM.IP
+  User <vm username>
+  IdentityFile /path/to/ssh/key
+  ProxyCommand ssh eidf-gateway -W %h:%p
+```
+For Example:
+```
+Host demo
+  HostName 10.24.1.1
+  User alice
+  IdentityFile ~/.ssh/id_ed25519
+  ProxyCommand ssh eidf-gateway -W %h:%p
+```
 1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
 <br><br>Note for this setup, if your key is RSA, you will need to add the line ```HostKeyAlgorithms +ssh-rsa``` to the bottom of the 'demo' alias.
 
