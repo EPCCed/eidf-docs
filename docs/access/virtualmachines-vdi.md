@@ -85,4 +85,3 @@ For users who do not have standard `English (UK)` keyboard layouts, key presses 
 are transmitted to your VM. Please contact the EIDF helpdesk at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) if you
 are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
 in the Guacamole VDI connection configuration.
-

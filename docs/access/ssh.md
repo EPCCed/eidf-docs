@@ -46,9 +46,9 @@ If not, you'll need to generate an SSH-Key, to do this:
 1. Open a new window of whatever terminal you will use to SSH to EIDF.
 1. Generate a new SSH Key:
 
-   ```bash
-   ssh-keygen
-   ```
+    ```bash
+    ssh-keygen
+    ```
 
 1. It is fine to accept the default name and path for the key unless you manage a number of keys.
 1. Press enter to finish generating the key
@@ -92,7 +92,7 @@ To enable this for your EIDF account:
 
 ### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
-1. From your local terminal, import the SSH Key you generated above: ```$ ssh-add [sshkey]```
+1. From your local terminal, import the SSH Key you generated above: <br>`ssh-add /path/to/ssh-key`
 
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
 
@@ -103,11 +103,26 @@ To enable this for your EIDF account:
 
 OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
 
-Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the command below.
+Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:
 
 ```bash
+ssh-add /path/to/ssh-key
 ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
 ```
+
+For example:
+
+```bash
+ssh-add ~/.ssh/keys/id_ed25519
+ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+```
+
+!!! info
+    If the `ssh-add` command fails saying the SSH Agent is not running, run the below command: <br>
+
+      ``` eval `ssh-agent` ```
+
+    Then re-run the ssh-add command above.
 
 The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
@@ -121,9 +136,9 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 1. Click the ‘Start’ button at the bottom of the screen
 1. Click the ‘Settings’ cog icon
-1. Search in the top bar ‘Add or Remove Programs’ and select the entry
-1. Select the ‘Optional Features’ blue text link
-1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button
+1. Select 'System'
+1. Select the ‘Optional Features’ option at the bottom of the list
+1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button
 1. Search ‘OpenSSH Client’
 1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
 
@@ -132,16 +147,126 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 !!! warning
     If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
 
-1. Open either Powershell (the Windows Terminal) or a WSL Linux Terminal
-1. Import the SSH Key you generated above: ```$ ssh-add [/path/to/sshkey]```
-1. This should return "Identity added [Path to SSH Key]" if successful.
+1. Open either Powershell or the Windows Terminal
+1. Import the SSH Key you generated above:
+
+    ```powershell
+
+    ssh-add \path\to\sshkey
+
+    For Example:
+    ssh-add .\.ssh\id_ed25519
+
+    ```
+
+1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
+
+    ```powershell
+
+    Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+    Start-Service ssh-agent
+    ssh-add \path\to\sshkey
+
+    ```
+
 1. Login by jumping through the gateway.
 
-```bash
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
-```
+    ```bash
+
+    ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
+
+    For Example:
+    ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+
+    ```
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
+
+## SSH Aliases
+
+You can use SSH Aliases to access your VMs with a single word.
+
+1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:
+
+    ```bash
+
+    vi ~/.ssh/config
+
+    ```
+
+1. Insert the following lines:
+
+    ```bash
+
+    Host eidf-gateway
+      Hostname eidf-gateway.epcc.ed.ac.uk
+      User <eidf project username>
+      IdentityFile /path/to/ssh/key
+
+    ```
+
+    For example:
+
+    ```bash
+
+    Host eidf-gateway
+      Hostname eidf-gateway.epcc.ed.ac.uk
+      User alice
+      IdentityFile ~/.ssh/id_ed25519
+
+    ```
+
+1. Save and quit the file.
+
+1. Now you can ssh to your VM using the below command:
+
+    ```bash
+
+    ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
+
+    ```
+
+    For Example:
+
+    ```
+
+    ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+
+    ```
+
+1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
+
+    ```
+
+    Host <vm name/alias>
+      HostName 10.24.VM.IP
+      User <vm username>
+      IdentityFile /path/to/ssh/key
+      ProxyCommand ssh eidf-gateway -W %h:%p
+
+    ```
+
+    For Example:
+
+    ```
+
+    Host demo
+      HostName 10.24.1.1
+      User alice
+      IdentityFile ~/.ssh/id_ed25519
+      ProxyCommand ssh eidf-gateway -W %h:%p
+
+    ```
+
+1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
+<br><br>Note for this setup, if your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
+`HostKeyAlgorithms +ssh-rsa`
+
+!!! info
+    This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
+    This method allows for a much less complicated ssh command to reach your VMs. <br>
+    You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
+    The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
 ## First Password Setting and Password Resets
 
