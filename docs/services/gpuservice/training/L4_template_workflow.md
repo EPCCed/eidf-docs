@@ -3,7 +3,7 @@
 ## Requirements
 
  It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L2_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
- 
+
 ## Overview
 
 An example workflow for code development using K8s is outlined below.
@@ -20,7 +20,7 @@ Therefore, it is recommended to separate code, software, and data preparation in
 
 1. Code development with K8s: Iteratively changing and testing code in a job.
 
-The workflow describes different strategies to tackle the three common stages in code development and analysis using the EIDF GPU Service. 
+The workflow describes different strategies to tackle the three common stages in code development and analysis using the EIDF GPU Service.
 
 The three stages are interchangeable and may not be relevant to every project.
 
@@ -45,7 +45,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
     ``` bash
     kubectl -n <project-namespace> get pvc template-workflow-pvc
     ```
-    
+
 1. Write a job yaml with PV mounted and a command to download the data. Change the curl URL to your data set of interest.
 
     ``` yaml
@@ -55,7 +55,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
      name: lightweight-job
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
-    spec: 
+    spec:
      completions: 1
      parallelism: 1
      template:
@@ -105,7 +105,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
 
 [Screen](https://www.gnu.org/software/screen/manual/screen.html#Overview) is a window manager available in Linux that allows you to create multiple interactive shells and swap between then.
 
-Screen has the added benefit that if your remote session is interrupted the screen session persists and can be reattached when you manage to reconnect. 
+Screen has the added benefit that if your remote session is interrupted the screen session persists and can be reattached when you manage to reconnect.
 
 This allows you to start a task, such as downloading a data set, and check in on it asynchronously.
 
@@ -128,7 +128,7 @@ Using screen rather than a single download job can be helpful if downloading mul
      name: lightweight-job
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
-    spec: 
+    spec:
      completions: 1
      parallelism: 1
      template:
@@ -162,13 +162,13 @@ Using screen rather than a single download job can be helpful if downloading mul
     kubectl -n <project-namespace> exec <lightweight-pod-name> -- curl https://archive.ics.uci.edu/static/public/53/iris.zip -o /mnt/ceph_rbd/iris.zip
     ```
 
-1. Exit the remote session by either ending the session or `ctrl-a d`. 
+1. Exit the remote session by either ending the session or `ctrl-a d`.
 
 1. Reconnect at a later time and reattach the screen window.
-    
+
     ```bash
     screen -list
-    
+
     screen -r <session-name>
     ```
 
@@ -176,7 +176,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 
     ```bash
     kubectl -n <project-namespace> exec <lightweight-pod-name> -- ls /mnt/ceph_rbd/
-    
+
     kubectl -n <project-namespace> delete job lightweight-job
     ```
 
@@ -188,7 +188,7 @@ Using screen rather than a single download job can be helpful if downloading mul
 
 ## Preparing a custom Docker image
 
-Kubernetes requires Docker images to be pre-built and available for download from a container repository such as Docker Hub. 
+Kubernetes requires Docker images to be pre-built and available for download from a container repository such as Docker Hub.
 
 It does not provide functionality to build images and create pods from docker files.
 
@@ -214,15 +214,15 @@ This is not an introduction to building docker images, please see the [Docker tu
 
     ```bash
     cd <dockerfile-folder>
-    
+
     docker build . -t <docker-hub-username>/template-docker-image:latest
     ```
-    
+
 !!! important "Building images for different CPU architectures"
     Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.
 
-    If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function. 
-    
+    If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function.
+
 1. Create a repository to hold the image on [Docker Hub](https://hub.docker.com) (You will need to create and setup an account).
 
 1. Push the Docker image to the repository.
@@ -230,7 +230,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     ```bash
     docker push <docker-hub-username>/template-docker-image:latest
     ```
-    
+
 1. Finally, specify your Docker image in the `image:` tag of the job specification yaml file.
 
     ```yaml
@@ -258,7 +258,7 @@ This is not an introduction to building docker images, please see the [Docker tu
            cpu: 1
            memory: "8Gi"
     ```
-    
+
 ### Automatically building docker images using GitHub Actions
 
 In cases where the Docker image needs to be built and tested iteratively (i.e. to check for comparability issues), git version control and [GitHub Actions](https://github.com/features/actions) can simplify the build process.
@@ -267,7 +267,7 @@ A GitHub action can build and push a Docker image to Docker Hub whenever it dete
 
 This process requires you to already have a [GitHub](https://github.com) and [Docker Hub](https://hub.docker.com) account.
 
-1. Create an [access token](https://docs.docker.com/security/for-developers/access-tokens/) on your Docker Hub account to allow GitHub to push changes to the Docker Hub image repo. 
+1. Create an [access token](https://docs.docker.com/security/for-developers/access-tokens/) on your Docker Hub account to allow GitHub to push changes to the Docker Hub image repo.
 
 1. Create two [GitHub secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) to securely provide your Docker Hub username and access token.
 
