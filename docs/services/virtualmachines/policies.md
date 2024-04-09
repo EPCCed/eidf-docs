@@ -29,7 +29,13 @@ When a project is due to end, the PI will receive notification of the closure of
 
 ## Backup policies
 
-The content of VM disk images is not backed up
-The VM disk images are not backed up
+The current policy is:
+
+* The content of VM disk images is not backed up
+* The VM disk images are not backed up
 
 We strongly advise that you keep copies of any critical data on on an alternative system that is fully backed up.
+
+## Patching of User VMs
+
+The EIDF team updates and patches the hypervisors and the cloud management software as part of the EIDF Maintenance sessions. It is the responsibility of project PIs to keep the VMs in their projects up to date. VMs running the Ubuntu operating system automatically install security patches and alert users at log-on (via SSH) to reboot as necessary for the changes to take effect. It also encourages users to update packages.

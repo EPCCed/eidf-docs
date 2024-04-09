@@ -16,6 +16,13 @@
 </style>
 
 The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
+You will require three things to use the gateway:
+
+1. A user within a project allowed to access the gateway and a password set.
+1. An SSH-key linked to this account, used to authenticate against the gateway.
+1. Have MFA setup with your project account via SAFE.
+
+Steps to meet all of these requirements are explained below.
 
 ## Generating and Adding an SSH Key
 
@@ -37,8 +44,13 @@ If not, you'll need to generate an SSH-Key, to do this:
 ### Generate a new SSH Key
 
 1. Open a new window of whatever terminal you will use to SSH to EIDF.
-1. Generate a new SSH Key: ```$ ssh-keygen```
-1. Input the directory and filename of they key. It's recommended to make this something like 'eidf-gateway' so it's easier to identify later
+1. Generate a new SSH Key:
+
+    ```bash
+    ssh-keygen
+    ```
+
+1. It is fine to accept the default name and path for the key unless you manage a number of keys.
 1. Press enter to finish generating the key
 
 ### Adding the new SSH Key to your account via the Portal
@@ -49,9 +61,9 @@ If not, you'll need to generate an SSH-Key, to do this:
 1. Select your username
 1. Select the plus button under  'Credentials'
 1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
-1. Click 'Upload Credential'  <br> It should look something like this:
+1. Click 'Upload Credential' - it should look something like this:
 
-![eidf-portal-ssh](/eidf-docs/images/access/eidf-portal-ssh.png){: class="border-img"}
+   ![eidf-portal-ssh](../images/access/eidf-portal-ssh.png){: class="border-img"}
 
 #### Adding a new SSH Key via SAFE
 
@@ -59,67 +71,203 @@ This should not be necessary for most users, so only follow this process if you 
 If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
 
-### Using the SSH-Key to access EIDF - Windows and Linux
+## Enabling MFA via the Portal
 
-1. From your local terminal, import the SSH Key you generated above: ```$ ssh-add [sshkey]```
+A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
+
+To enable this for your EIDF account:
+
+1. Login to the [portal.](https://portal.eidf.ac.uk)
+1. Select 'Projects' then 'Your Projects'
+1. Select the project containing the account you'd like to add MFA to.
+1. Under 'Your Accounts', select the account you would like to add MFA to.
+1. Select 'Set MFA Token'
+1. Within your chosen MFA application, scan the QR Code or enter the key and add the token.
+1. Enter the code displayed in the app into the 'Verification Code' box and select 'Set Token'
+1. You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.
+
+!!! note
+    TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.<br>
+    An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.
+
+### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
+
+1. From your local terminal, import the SSH Key you generated above: <br>`ssh-add /path/to/ssh-key`
+
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
+
+## Accessing From MacOS/Linux
+
+!!! warning
+    If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
+
+OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
+
+Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:
+
+```bash
+ssh-add /path/to/ssh-key
+ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+```
+
+For example:
+
+```bash
+ssh-add ~/.ssh/keys/id_ed25519
+ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+```
+
+!!! info
+    If the `ssh-add` command fails saying the SSH Agent is not running, run the below command: <br>
+
+      ``` eval `ssh-agent` ```
+
+    Then re-run the ssh-add command above.
+
+The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
+
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
 
 ## Accessing from Windows
 
-Windows will require the installation of OpenSSH-Server or MobaXTerm to use SSH. Putty can also be used but won’t be covered in this tutorial.
+Windows will require the installation of OpenSSH-Server to use SSH. Putty or MobaXTerm can also be used but won’t be covered in this tutorial.
 
 ### Installing and using OpenSSH
 
 1. Click the ‘Start’ button at the bottom of the screen
 1. Click the ‘Settings’ cog icon
-1. Search in the top bar ‘Add or Remove Programs’ and select the entry
-1. Select the ‘Optional Features’ blue text link
-1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘Add a Feature’ button
+1. Select 'System'
+1. Select the ‘Optional Features’ option at the bottom of the list
+1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button
 1. Search ‘OpenSSH Client’
 1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
-1. Once this is installed, you can reach your VM by opening CMD and running: <br> ```$ ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]```
 
-### Installing MobaXTerm
+### Accessing EIDF via a Terminal
 
-1. Download [MobaXTerm](https://mobaxterm.mobatek.net/) from [https://mobaxterm.mobatek.net/](https://mobaxterm.mobatek.net/)
-1. Once installed click the ‘Session’ button in the top left corner
-1. Click ‘SSH’
-1. In the ‘Remote Host’ section, specify the VM IP
-1. Click the ‘Network Settings’ Tab
-1. Click the ‘SSH Gateway (jump host)’ button in the middle
-1. Under Gateway Host, specify: eidf-gateway.epcc.ed.ac.uk
-1. Under Username, specify your username
-1. Click ‘OK’
-1. Click ‘OK’ to launch the session
-1. For the EIDF-Gateway and VM login prompts, use your password
+!!! warning
+    If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
 
-## Accessing From MacOS/Linux
+1. Open either Powershell or the Windows Terminal
+1. Import the SSH Key you generated above:
 
-OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal. <br>
-The '-J' flag is use to specify that we will access the second specified host by jumping through the first specified host like the example below.
+    ```powershell
 
-```bash
-ssh -J [username]@jumphost [username]@target
-```
+    ssh-add \path\to\sshkey
 
-To access EIDF Services:
+    For Example:
+    ssh-add .\.ssh\id_ed25519
 
-```bash
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
-```
+    ```
 
-## Password Resets via the EIDF-Gateway
+1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
 
-You will have to connect to your VM via SSH before you can login with RDP as your initial password needs to be reset, which can only be done via SSH. You can reset your password through the SSH Gateway by connecting to it directly:
+    ```powershell
 
-```bash
-ssh [username]@eidf-gateway.epcc.ed.ac.uk
-```
+    Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+    Start-Service ssh-agent
+    ssh-add \path\to\sshkey
 
-Your first attempt to log in to your account using the SSH Gateway will prompt you for your initial password (provided in the portal) like a normal login. If this is successful you will choose a new password. You will be asked for your initial password again, followed by two entries of your new password. This will reset the password to your account for both the gateway and the VM. Once this reset has been completed, the session will disconnect and you can login via SSH again using the newly set password.
+    ```
 
-You will not be able to directly connect to the gateway again, so to connect to your VM, jump through the SSH Gateway:
+1. Login by jumping through the gateway.
 
-```bash
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
-```
+    ```bash
+
+    ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
+
+    For Example:
+    ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+
+    ```
+
+You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
+
+## SSH Aliases
+
+You can use SSH Aliases to access your VMs with a single word.
+
+1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:
+
+    ```bash
+
+    vi ~/.ssh/config
+
+    ```
+
+1. Insert the following lines:
+
+    ```bash
+
+    Host eidf-gateway
+      Hostname eidf-gateway.epcc.ed.ac.uk
+      User <eidf project username>
+      IdentityFile /path/to/ssh/key
+
+    ```
+
+    For example:
+
+    ```bash
+
+    Host eidf-gateway
+      Hostname eidf-gateway.epcc.ed.ac.uk
+      User alice
+      IdentityFile ~/.ssh/id_ed25519
+
+    ```
+
+1. Save and quit the file.
+
+1. Now you can ssh to your VM using the below command:
+
+    ```bash
+
+    ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
+
+    ```
+
+    For Example:
+
+    ```
+
+    ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+
+    ```
+
+1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
+
+    ```
+
+    Host <vm name/alias>
+      HostName 10.24.VM.IP
+      User <vm username>
+      IdentityFile /path/to/ssh/key
+      ProxyCommand ssh eidf-gateway -W %h:%p
+
+    ```
+
+    For Example:
+
+    ```
+
+    Host demo
+      HostName 10.24.1.1
+      User alice
+      IdentityFile ~/.ssh/id_ed25519
+      ProxyCommand ssh eidf-gateway -W %h:%p
+
+    ```
+
+1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
+<br><br>Note for this setup, if your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
+`HostKeyAlgorithms +ssh-rsa`
+
+!!! info
+    This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
+    This method allows for a much less complicated ssh command to reach your VMs. <br>
+    You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
+    The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
+
+## First Password Setting and Password Resets
+
+Before logging in for the first time you have to reset the password using the web form in the EIDF Portal following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
