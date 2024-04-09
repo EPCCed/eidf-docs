@@ -50,10 +50,10 @@ nav:
     #    - "Using the MFT": services/mft/using-the-mft.md
     #    - "SFTP": services/mft/sftp.md
       - "Policies": services/virtualmachines/policies.md
-    - "Managed JupyterHub":
-      - "QuickStart": services/jhub/quickstart.md
-      - "Tutorial": services/jhub/tutorial.md
-      - "Documentation": services/jhub/docs.md
+    # - "Managed JupyterHub":
+    #   - "QuickStart": services/jhub/quickstart.md
+    #   - "Tutorial": services/jhub/tutorial.md
+    #   - "Documentation": services/jhub/docs.md
     - "Cerebras CS-2":
       - "Get Access": services/cs2/access.md
       - "Running codes": services/cs2/run.md
