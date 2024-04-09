@@ -1205,6 +1205,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#load-training-data-and-ml-code-into-a-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
       Load training data and ML code into a persistent volume
@@ -2208,6 +2226,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#load-training-data-and-ml-code-into-a-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
       Load training data and ML code into a persistent volume
@@ -2328,7 +2364,10 @@
 
 
 <h1 id="running-a-pytorch-task">Running a PyTorch task</h1>
-<p>In the following lesson, we'll build a NLP neural network and train it using the EIDF GPU Service.</p>
+<h2 id="requirements">Requirements</h2>
+<p>It is recommended that users complete <a href="../L1_getting_started/#requirements">Getting started with Kubernetes</a> and <a href="../L2_requesting_persistent_volumes/#requirements">Requesting persistent volumes With Kubernetes</a> before proceeding with this tutorial.</p>
+<h2 id="overview">Overview</h2>
+<p>In the following lesson, we'll build a CNN neural network and train it using the EIDF GPU Service.</p>
 <p>The model was taken from the <a href="https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html">PyTorch Tutorials</a>.</p>
 <p>The lesson will be split into three parts:</p>
 <ul>
@@ -2339,7 +2378,7 @@
 <h2 id="load-training-data-and-ml-code-into-a-persistent-volume">Load training data and ML code into a persistent volume</h2>
 <h3 id="create-a-persistent-volume">Create a persistent volume</h3>
 <p>Request memory from the Ceph server by submitting a PVC to K8s (example pvc spec yaml below).</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pvc-spec-yaml&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pvc-spec-yaml&gt;
 </code></pre></div>
 <h3 id="example-pytorch-persistentvolumeclaim">Example PyTorch PersistentVolumeClaim</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
@@ -2358,12 +2397,12 @@
 <ol>
 <li>
 <p>Check PVC has been created</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>&lt;pv-name&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>&lt;pv-name&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Create a lightweight job with pod with PV mounted (example job below)</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
 </code></pre></div>
 </li>
 <li>
@@ -2373,17 +2412,17 @@
 </li>
 <li>
 <p>Copy the Python script into the PV</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>cp<span class="w"> </span>example_pytorch_code.py<span class="w"> </span>lightweight-job-&lt;identifier&gt;:/mnt/ceph_rbd/
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>cp<span class="w"> </span>example_pytorch_code.py<span class="w"> </span>lightweight-job-&lt;identifier&gt;:/mnt/ceph_rbd/
 </code></pre></div>
 </li>
 <li>
 <p>Check whether the files were transferred successfully</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>lightweight-job-&lt;identifier&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/mnt/ceph_rbd
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>lightweight-job-&lt;identifier&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/mnt/ceph_rbd
 </code></pre></div>
 </li>
 <li>
 <p>Delete the lightweight job</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>lightweight-job-&lt;identifier&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>lightweight-job-&lt;identifier&gt;
 </code></pre></div>
 </li>
 </ol>
@@ -2424,7 +2463,7 @@
 <p>We will use the pre-made PyTorch Docker image available on Docker Hub to run the PyTorch ML model.</p>
 <p>The PyTorch container will be held within a pod that has the persistent volume mounted and access a MIG GPU.</p>
 <p>Submit the specification file below to K8s to create the job, replacing the queue name with your project namespace queue name.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pytorch-job-yaml&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pytorch-job-yaml&gt;
 </code></pre></div>
 <h3 id="example-pytorch-job-specification-file">Example PyTorch Job Specification File</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
@@ -2468,17 +2507,17 @@
 <ol>
 <li>
 <p>Check that the model ran to completion</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pytorch-pod-name&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>logs<span class="w"> </span>&lt;pytorch-pod-name&gt;
 </code></pre></div>
 </li>
 <li>
 <p>Spin up a lightweight pod to retrieve results</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
 </code></pre></div>
 </li>
 <li>
 <p>Copy the trained model back to your access VM</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>cp<span class="w"> </span>lightweight-job-&lt;identifier&gt;:mnt/ceph_rbd/model.pth<span class="w"> </span>model.pth
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>cp<span class="w"> </span>lightweight-job-&lt;identifier&gt;:mnt/ceph_rbd/model.pth<span class="w"> </span>model.pth
 </code></pre></div>
 </li>
 </ol>
@@ -2524,9 +2563,9 @@
 <span class="w">                    </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
 </code></pre></div>
 <h2 id="clean-up">Clean up</h2>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>pytorch-job
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>pytorch-job
 
-kubectl<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>pytorch-pvc
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>pytorch-pvc
 </code></pre></div>
 
 

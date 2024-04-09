@@ -1184,6 +1184,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#submitting-a-persistent-volume-claim" class="md-nav__link">
     <span class="md-ellipsis">
       Submitting a Persistent Volume Claim
@@ -2172,6 +2190,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#submitting-a-persistent-volume-claim" class="md-nav__link">
     <span class="md-ellipsis">
       Submitting a Persistent Volume Claim
@@ -2255,7 +2291,10 @@
   
 
 
-<h1 id="requesting-persistent-volumes-with-kubernetes">Requesting Persistent Volumes With Kubernetes</h1>
+<h1 id="requesting-persistent-volumes-with-kubernetes">Requesting persistent volumes With Kubernetes</h1>
+<h2 id="requirements">Requirements</h2>
+<p>It is recommended that users complete <a href="../L1_getting_started/#requirements">Getting started with Kubernetes</a> before proceeding with this tutorial.</p>
+<h2 id="overview">Overview</h2>
 <p>Pods in the K8s EIDF GPU Service are intentionally ephemeral.</p>
 <p>They only last as long as required to complete the task that they were created for.</p>
 <p>Keeping pods ephemeral ensures the cluster resources are released for other users to request.</p>
@@ -2282,12 +2321,12 @@
 <span class="w">   </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
 <span class="w"> </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-rbd-sc</span>
 </code></pre></div>
-<p>You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml <code>kubectl create &lt;PVC specification yaml&gt;</code>
+<p>You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml <code>kubectl -n &lt;project-namespace&gt; create &lt;PVC specification yaml&gt;</code>
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:</p>
 <ul>
-<li><code>kubectl delete pvc &lt;PVC name&gt;</code></li>
-<li><code>kubectl get pvc &lt;PVC name&gt;</code></li>
-<li><code>kubectl apply -f &lt;PVC specification yaml&gt;</code></li>
+<li><code>kubectl -n &lt;project-namespace&gt; delete pvc &lt;PVC name&gt;</code></li>
+<li><code>kubectl -n &lt;project-namespace&gt; get pvc &lt;PVC name&gt;</code></li>
+<li><code>kubectl -n &lt;project-namespace&gt; apply -f &lt;PVC specification yaml&gt;</code></li>
 </ul>
 <h2 id="mounting-a-persistent-volume-to-a-pod">Mounting a persistent Volume to a Pod</h2>
 <p>Introducing a persistent volume to a pod requires the addition of a volumeMount option to the container and a volume option linking to the PVC in the pod specification yaml.</p>
@@ -2327,14 +2366,14 @@ Once you have successfully created a persistent volume you can interact with it 
 <h2 id="accessing-the-persistent-volume-outside-a-pod">Accessing the persistent volume outside a pod</h2>
 <p>To move files in/out of the persistent volume from outside a pod you can use the kubectl cp command.</p>
 <div class="highlight"><pre><span></span><code>***<span class="w"> </span>On<span class="w"> </span>Login<span class="w"> </span>Node<span class="w"> </span>-<span class="w"> </span>replacing<span class="w"> </span>pod<span class="w"> </span>name<span class="w"> </span>with<span class="w"> </span>your<span class="w"> </span>pod<span class="w"> </span>name<span class="w"> </span>***
-kubectl<span class="w"> </span>cp<span class="w"> </span>/home/data/test_data.csv<span class="w"> </span>test-ceph-pvc-job-8c9cc:/mnt/ceph_rbd
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>cp<span class="w"> </span>/home/data/test_data.csv<span class="w"> </span>test-ceph-pvc-job-8c9cc:/mnt/ceph_rbd
 </code></pre></div>
 <p>For more complex file transfers and synchronisation, create a low resource pod with the persistent volume mounted.</p>
 <p>The bash command rsync can be amended to manage file transfers into the mounted PV following <a href="https://github.com/toelke/docker-rsync/#in-kubernetes-cronjob">this GitHub repo</a>.</p>
 <h2 id="clean-up">Clean up</h2>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>test-ceph-pvc-job
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>test-ceph-pvc-job
 
-kubectl<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>test-ceph-pvc
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>test-ceph-pvc
 </code></pre></div>
 
 
