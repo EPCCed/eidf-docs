@@ -349,7 +349,7 @@ spec:
   Passing the `-n <project-namespace>` flag every time you want to interact with the cluster can be cumbersome.
 
   You can alter the kubeconfig on your VM to send commands to your project namespace by default.
-  
+
   Only users with sudo privileges can change the root kubectl config file.
 
 1. Open the command line on your EIDF VM with access to the EIDF GPU Service.
