@@ -12,7 +12,7 @@ Project Leads and Managers can access the kubeconfig file from the Project page 
 
 ### Access to GPU Service resources in default namespace is 'Forbidden'
 
-```Error from server (Forbidden): error when creating "myjobfile.yml": jobs is forbidden: User <user> cannot create resource "jobs" in API group "" in the namespace "default"```
+```<Error from server (Forbidden): error when creating "myjobfile.yml": jobs is forbidden: User <user> cannot create resource "jobs" in API group "" in the namespace "default">```
 
 Some version of the above error is common when submitting jobs/pods to the GPU cluster using the kubectl command. This arises when you forgot to specify you are submitting job/pods to your project namespace, not the "default" namespace which you do not have permissions to use. Resubmitting the job/pod with `kubectl -n <project-namespace> create "myjobfile.yml"` should solve the issue.
 
