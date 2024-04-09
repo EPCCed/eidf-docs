@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/gpuservice/training/L4_template_workflow/">
       
       
+        <link rel="prev" href="../L3_running_a_pytorch_task/">
+      
+      
+        <link rel="next" href="../../faq/">
       
       
       <link rel="icon" href="../../../../images/favicon.ico">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Template workflow - EIDF User Documentation</title>
+        <title>Template K8s Workflow - EIDF User Documentation</title>
       
     
     
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Template workflow
+              Template K8s Workflow
             
           </span>
         </div>
@@ -470,17 +474,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -494,7 +500,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -971,17 +977,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -995,7 +1003,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             GPU Service
@@ -1069,17 +1077,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_4" checked>
         
           
           <label class="md-nav__link" for="__nav_5_5_4" id="__nav_5_5_4_label" tabindex="0">
@@ -1093,7 +1103,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5_4">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -1158,6 +1168,175 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Template K8s Workflow
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Template K8s Workflow
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-data-downloading-with-a-lightweight-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous data downloading with a lightweight job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-data-downloading-within-a-screen-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous data downloading within a screen session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-custom-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing a custom Docker image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a custom Docker image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-building-a-docker-image-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually building a Docker image locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatically-building-docker-images-using-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatically building docker images using GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-development-with-k8s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code development with K8s
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code development with K8s">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-job-that-downloads-and-runs-the-latest-code-version-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a job that downloads and runs the latest code version at runtime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2028,6 +2207,122 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-data-downloading-with-a-lightweight-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous data downloading with a lightweight job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-data-downloading-within-a-screen-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous data downloading within a screen session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-custom-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing a custom Docker image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a custom Docker image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-building-a-docker-image-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually building a Docker image locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatically-building-docker-images-using-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatically building docker images using GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-development-with-k8s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code development with K8s
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code development with K8s">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-job-that-downloads-and-runs-the-latest-code-version-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a job that downloads and runs the latest code version at runtime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2045,6 +2340,445 @@
 
 
 <h1 id="template-workflow">Template workflow</h1>
+<h2 id="requirements">Requirements</h2>
+<p>It is recommended that users complete <a href="../L1_getting_started/#requirements">Getting started with Kubernetes</a> and <a href="../L2_requesting_persistent_volumes/#requirements">Requesting persistent volumes With Kubernetes</a> before proceeding with this tutorial.</p>
+<h2 id="overview">Overview</h2>
+<p>An example workflow for code development using K8s is outlined below.</p>
+<p>In theory, users can create docker images with all the code, software and data included to complete their analysis.</p>
+<p>In practice, docker images with the required software can be several gigabytes in size which can lead to unacceptable download times when ~100GB of data and code is then added.</p>
+<p>Therefore, it is recommended to separate code, software, and data preparation into distinct steps:</p>
+<ol>
+<li>
+<p>Data Loading: Loading large data sets asynchronously.</p>
+</li>
+<li>
+<p>Developing a Docker environment: Manually or automatically building Docker images.</p>
+</li>
+<li>
+<p>Code development with K8s: Iteratively changing and testing code in a job.</p>
+</li>
+</ol>
+<p>The workflow describes different strategies to tackle the three common stages in code development and analysis using the EIDF GPU Service.</p>
+<p>The three stages are interchangeable and may not be relevant to every project.</p>
+<p>Some strategies in the workflow require a <a href="https://github.com">GitHub</a> account and <a href="https://hub.docker.com/">Docker Hub</a> account for automatic building (this can be adapted for other platforms such as GitLab).</p>
+<h2 id="data-loading">Data loading</h2>
+<p>The EIDF GPU service contains GPUs with 40Gb/80Gb of on board memory and it is expected that data sets of &gt; 100 Gb will be loaded onto the service to utilise this hardware.</p>
+<p>Persistent volume claims need to be of sufficient size to hold the input data, any expected output data and a small amount of additional empty space to facilitate IO.</p>
+<p>Read the <a href="../L2_requesting_persistent_volumes/">requesting persistent volumes with Kubernetes</a> lesson to learn how to request and mount persistent volumes to pods.</p>
+<p>It often takes several hours or days to download data sets of 1/2 TB or more to a persistent volume.</p>
+<p>Therefore, the data download step needs to be completed asynchronously as maintaining a contention to the server for long periods of time can be unreliable.</p>
+<h3 id="asynchronous-data-downloading-with-a-lightweight-job">Asynchronous data downloading with a lightweight job</h3>
+<ol>
+<li>
+<p>Check a PVC has been created.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>template-workflow-pvc
+</code></pre></div>
+</li>
+<li>
+<p>Write a job yaml with PV mounted and a command to download the data. Change the curl URL to your data set of interest.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-job</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-loader</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/curl:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/mnt/ceph_rbd;</span><span class="nv"> </span><span class="s">curl</span><span class="nv"> </span><span class="s">https://archive.ics.uci.edu/static/public/53/iris.zip</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">iris.zip&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-pvc</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run the data download job.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Check if the download has completed.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>get<span class="w"> </span><span class="nb">jobs</span>
+</code></pre></div>
+</li>
+<li>
+<p>Delete the lightweight job once completed.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>lightweight-job
+</code></pre></div>
+</li>
+</ol>
+<h3 id="asynchronous-data-downloading-within-a-screen-session">Asynchronous data downloading within a screen session</h3>
+<p><a href="https://www.gnu.org/software/screen/manual/screen.html#Overview">Screen</a> is a window manager available in Linux that allows you to create multiple interactive shells and swap between then.</p>
+<p>Screen has the added benefit that if your remote session is interrupted the screen session persists and can be reattached when you manage to reconnect.</p>
+<p>This allows you to start a task, such as downloading a data set, and check in on it asynchronously.</p>
+<p>Once you have started a screen session, you can create a new window with <code>ctrl-a c</code>, swap between windows with <code>ctrl-a 0-9</code> and exit screen (but keep any task running) with <code>ctrl-a d</code>.</p>
+<p>Using screen rather than a single download job can be helpful if downloading multiple data sets or if you intend to do some simple QC or tidying up before/after downloading.</p>
+<ol>
+<li>
+<p>Start a screen session.</p>
+<div class="highlight"><pre><span></span><code>screen
+</code></pre></div>
+</li>
+<li>
+<p>Create an interactive lightweight job session.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-pod</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-loader</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/curl:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sleep&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;infinity&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-pvc</span>
+</code></pre></div>
+</li>
+<li>
+<p>Download data set. Change the curl URL to your data set of interest.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;lightweight-pod-name&gt;<span class="w"> </span>--<span class="w"> </span>curl<span class="w"> </span>https://archive.ics.uci.edu/static/public/53/iris.zip<span class="w"> </span>-o<span class="w"> </span>/mnt/ceph_rbd/iris.zip
+</code></pre></div>
+</li>
+<li>
+<p>Exit the remote session by either ending the session or <code>ctrl-a d</code>.</p>
+</li>
+<li>
+<p>Reconnect at a later time and reattach the screen window.</p>
+<div class="highlight"><pre><span></span><code>screen<span class="w"> </span>-list
+
+screen<span class="w"> </span>-r<span class="w"> </span>&lt;session-name&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Check the download was successful and delete the job.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;lightweight-pod-name&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/mnt/ceph_rbd/
+
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>lightweight-job
+</code></pre></div>
+</li>
+<li>
+<p>Exit the screen session.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">exit</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="preparing-a-custom-docker-image">Preparing a custom Docker image</h2>
+<p>Kubernetes requires Docker images to be pre-built and available for download from a container repository such as Docker Hub.</p>
+<p>It does not provide functionality to build images and create pods from docker files.</p>
+<p>However, use cases may require some custom modifications of a base image, such as adding a python library.</p>
+<p>These custom images need to be built locally (using docker) or online (using a GitHub/GitLab worker) and pushed to a repository such as Docker Hub.</p>
+<p>This is not an introduction to building docker images, please see the <a href="https://docs.docker.com/get-started/">Docker tutorial</a>  for a general overview.</p>
+<h3 id="manually-building-a-docker-image-locally">Manually building a Docker image locally</h3>
+<ol>
+<li>
+<p>Select a suitable base image (The <a href="https://catalog.ngc.nvidia.com/containers">Nvidia container catalog</a> is often a useful starting place for GPU accelerated tasks). We'll use the base <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/rapidsai/containers/base">RAPIDS image</a>.</p>
+</li>
+<li>
+<p>Create a <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> to add any additional packages required to the base image.</p>
+<div class="highlight"><pre><span></span><code>FROM nvcr.io/nvidia/rapidsai/base:23.12-cuda12.0-py3.10
+RUN pip install pandas
+RUN pip install plotly
+</code></pre></div>
+</li>
+<li>
+<p>Build the Docker container locally (You will need to install <a href="https://docs.docker.com/">Docker</a>)</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;dockerfile-folder&gt;
+
+docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>&lt;docker-hub-username&gt;/template-docker-image:latest
+</code></pre></div>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Building images for different CPU architectures</p>
+<p>Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.</p>
+<p>If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the <code>--platform linux/amd64</code> flag to the build function.</p>
+</div>
+<ol>
+<li>
+<p>Create a repository to hold the image on <a href="https://hub.docker.com">Docker Hub</a> (You will need to create and setup an account).</p>
+</li>
+<li>
+<p>Push the Docker image to the repository.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>push<span class="w"> </span>&lt;docker-hub-username&gt;/template-docker-image:latest
+</code></pre></div>
+</li>
+<li>
+<p>Finally, specify your Docker image in the <code>image:</code> tag of the job specification yaml file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="automatically-building-docker-images-using-github-actions">Automatically building docker images using GitHub Actions</h3>
+<p>In cases where the Docker image needs to be built and tested iteratively (i.e. to check for comparability issues), git version control and <a href="https://github.com/features/actions">GitHub Actions</a> can simplify the build process.</p>
+<p>A GitHub action can build and push a Docker image to Docker Hub whenever it detects a git push that changes the docker file in a git repo.</p>
+<p>This process requires you to already have a <a href="https://github.com">GitHub</a> and <a href="https://hub.docker.com">Docker Hub</a> account.</p>
+<ol>
+<li>
+<p>Create an <a href="https://docs.docker.com/security/for-developers/access-tokens/">access token</a> on your Docker Hub account to allow GitHub to push changes to the Docker Hub image repo.</p>
+</li>
+<li>
+<p>Create two <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions">GitHub secrets</a> to securely provide your Docker Hub username and access token.</p>
+</li>
+<li>
+<p>Add the dockerfile to a code/docker folder within an active GitHub repo.</p>
+</li>
+<li>
+<p>Add the GitHub action yaml file below to the .github/workflow folder to automatically push a new image to Docker Hub if any changes to files in the code/docker folder is detected.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;code/docker/**&#39;</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up QEMU</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/setup-qemu-action@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Docker Buildx</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/setup-buildx-action@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Login to Docker Hub</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/login-action@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_USERNAME }}</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_TOKEN }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and push</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{defaultContext}}:code/docker&quot;</span>
+<span class="w">          </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;target-dockerhub-image-name&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Push a change to the dockerfile and check the Docker Hub image is updated.</p>
+</li>
+</ol>
+<h2 id="code-development-with-k8s">Code development with K8s</h2>
+<p>Production code can be included within a Docker image to aid reproducibility as the specific software versions required to run the code are packaged together.</p>
+<p>However, binding the code to the docker image during development can delay the testing cycle as re-downloading all of the software for every change in a code block can take time.</p>
+<p>If the docker image is consistent across tests, then it can be cached locally on the EIDFGPU Service instead of being re-downloaded (this occurs automatically although the cache is node specific and is not shared across nodes).</p>
+<p>A pod yaml file can be defined to automatically pull the latest code version before running any tests.</p>
+<p>Reducing the download time to fractions of a second allows rapid testing to be completed on the cluster with just the <code>kubectl create</code> command.</p>
+<p>You must already have a <a href="https://github.com">GitHub</a> account to follow this process.</p>
+<p>This process allows code development to be conducted on any device/VM with access to the repo (GitHub/GitLab).</p>
+<p>A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available <a href="https://github.com/DimmestP/template-EIDFGPU-workflow">here</a>.</p>
+<h3 id="create-a-job-that-downloads-and-runs-the-latest-code-version-at-runtime">Create a job that downloads and runs the latest code version at runtime</h3>
+<ol>
+<li>
+<p>Write a standard yaml file for a k8s job with the required resources and custom docker image (example below)</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-pvc</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add an initial container that runs before the main container to download the latest version of the code.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">   </span><span class="nt">initContainers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-git-container</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cicirello/alpine-plus-plus</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-pvc</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">     </span><span class="nt">emptyDir</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sizeLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+</li>
+<li>
+<p>Change the command argument in the main container to run the code once started. Add the URL of the GitHub repo of interest to the <code>initContainers: command:</code> tag.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-job</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;python3</span><span class="nv"> </span><span class="s">/code/&lt;python-script&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;40Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;80Gi&quot;</span>
+<span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">   </span><span class="nt">initContainers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-git-container</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cicirello/alpine-plus-plus</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
+<span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">     </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-workflow-pvc</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
+<span class="w">     </span><span class="nt">emptyDir</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sizeLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+</li>
+<li>
+<p>Submit the yaml file to kubernetes</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;job-yaml-file&gt;
+</code></pre></div>
+</li>
+</ol>
 
 
 
