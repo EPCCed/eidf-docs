@@ -325,8 +325,6 @@ You must already have a [GitHub](https://github.com) account to follow this proc
 
 This process allows code development to be conducted on any device/VM with access to the repo (GitHub/GitLab).
 
-An alternative method for remote code development using the DevSpace toolkit is described is the next lesson, [Getting started with DevSpace](L5_devspace.md).
-
 A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available [here](https://github.com/DimmestP/template-EIDFGPU-workflow).
 
 ### Create a job that downloads and runs the latest code version at runtime
@@ -420,8 +418,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
           sizeLimit: 1Gi
     ```
 
-1. Change the command argument in the main container to run the code once started. 
-Add the URL of the GitHub repo of interest to the `initContainers: command:` tag.
+1. Change the command argument in the main container to run the code once started. Add the URL of the GitHub repo of interest to the `initContainers: command:` tag.
 
     ```yaml
     apiVersion: batch/v1
