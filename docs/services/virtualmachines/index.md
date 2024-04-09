@@ -1,6 +1,6 @@
 # Overview
 
-The EIDF Virtual Machine (VM) Service is the underlying infrastrcture upon which the EIDF Data Science Cloud (DSC) is built.
+The EIDF Virtual Machine (VM) Service is the underlying infrastructure upon which the EIDF Data Science Cloud (DSC) is built.
 
 The service currenly has a mixture of hardware node types which host VMs of various [flavours](flavours.md):
 
