@@ -111,7 +111,7 @@ spec:
        cpu: 2
        memory: '4Gi'
        nvidia.com/gpu: 1
-      restartPolicy: Never
+   restartPolicy: Never
 ```
 
 The pod resources are defined under the `resources` tags using the `requests` and `limits` tags.
