@@ -1,4 +1,4 @@
-# Crib sheet for Henry Thomson
+# Crib sheet for Henry Thompson
 
 **Version 0.1**
 
