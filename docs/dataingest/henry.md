@@ -28,7 +28,11 @@ There is some proto documentation at:
 
 This will need to be updated as the process evolves.
 
-Once your project is approved you will have to go back to EIDF portal (this may have to be a test version of the portal). Use the portal to:
+Once your project is approved go to the testportal at this link (only available on the EdLan network):
+
+* https://projects.eidf.ac.uk/testportal/ingest/
+
+Select your project. The list of datasets will be empty.
 
 * Create a Dataset. You will need to provide the following minimal bits of information:
   * **Name**: The name for your dataset
@@ -42,12 +46,12 @@ This will be used to create your Dataset on CKAN and a data bucket in S3. You ca
 You will need to:
 
 * Create a user account in the portal and notify me (to add access permissions for the MFT, manual at the moment).
-* Upload the data to the MFT into the folder with the UUID of the dataset (not great to use the UUID but should be obvious if there's only one).
+* Upload the data to the MFT into the folder with the name of the dataset (starts with the project code)
 * Configure the dataset and specify a processing container if required (this will be a docker image published in a public location).
 * Trigger the ingest in the portal.
 * Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
 
 Through the CKAN interface you should be able to supplement the:
 
-*  Dataset metadata
+* Dataset metadata
 * Resource metadata
