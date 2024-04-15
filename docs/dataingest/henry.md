@@ -46,10 +46,18 @@ This will be used to create your Dataset on CKAN and a data bucket in S3. You ca
 You will need to:
 
 * Create a user account in the portal and notify me (to add access permissions for the MFT, manual at the moment).
-* Upload the data to the MFT into the folder with the name of the dataset (starts with the project code)
+* Upload the data to the MFT into the folder with the name of the dataset (starts with the project code) 
 * Configure the dataset and specify a processing container if required (this will be a docker image published in a public location).
 * Trigger the ingest in the portal.
 * Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
+
+Upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
+* Data file name (relative to `data`)
+  * `name`: resource name in the catalogue
+  * `resource:identifier`: an identifier for the resource
+  * `resource:description`: description of the resource
+  * `resource:format`: format description, for example `json` or `csv`
+  * `resource:licence`: licence under which the resource is published
 
 Through the CKAN interface you should be able to supplement the:
 
