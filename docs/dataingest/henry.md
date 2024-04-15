@@ -51,9 +51,9 @@ You will need to:
   * Manage -> Create User Account
   * Submit
   * Once you have created the user you can click on their linked username and assign them to a VM if you have created one and give them sudo privileges if appropriate.
-  * You can also use this to connect to the MFT.
+  * You can later also use this to connect to the MFT.
 
-* Upload the data to the MFT into the folder with the name of the dataset (starts with the project code) 
+* Do not perform this step until notfieid as currently a manual step has to be done for you to upload your data using the MFT into the folder with the name of the dataset (starts with the project code) 
   * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan.
 
 * Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
