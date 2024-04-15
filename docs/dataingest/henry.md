@@ -1,6 +1,6 @@
 # Crib sheet for Henry Thompson
 
-**Version 0.1**
+**Version 0.2**
 
 If you already have an account on cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to go on that first:
 
@@ -45,9 +45,21 @@ This will be used to create your Dataset on CKAN and a data bucket in S3. You ca
 
 You will need to:
 
-* Create a user account in the portal and notify me (to add access permissions for the MFT, manual at the moment).
+* Create a user account in the portal and notify mario/amy with the id of the user you created (to add access permissions for the *Managed File Transfer* (MFT), a manual process at the moment).
+  * Go into your project
+  * Scroll down to the project accounts segment
+  * Manage -> Create User Account
+  * Submit
+  * Once you have created the user you can click on their linked username and assign them to a VM if you have created one and give them sudo privileges if appropriate.
+  * You can also use this to connect to the MFT.
+
 * Upload the data to the MFT into the folder with the name of the dataset (starts with the project code) 
-* Configure the dataset and specify a processing container if required (this will be a docker image published in a public location).
+  * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan.
+
+* Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
+  * The container is supposed to map your data to an *Analytics Ready Data* (ARD), the format which your end consumers will use.
+  * If your data is already ARD you do not need to add any content in this page.
+
 * Trigger the ingest in the portal.
 * Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
 
