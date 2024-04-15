@@ -54,17 +54,15 @@ You will need to create an ingest dataset for each dataset that you wish to publ
 1. Provide the following top-level metadata to create your Dataset:
     * **Title**:  the name of your dataset. 
     * **Description**:  human readable description of your dataset.
-    * **Contact Point**:  who should be contacted regarding any enquiries or requests for access if your dataset has restricted access.
-
-   There is also several optional fields that you may wish to provide to make it easier for your data to be discovered.
-1. (Optional) Indicate whether archival is required.
-1. (Optional) Add the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. See below for instructions on how to create the container image.
+    * **URL**: a project URL or contact point regarding any enquiries or requests for access if your dataset has restricted access.
 
 We will set up the ingest process and you will be provided with a link to upload the data.
 
 ### Pre-processing container
 
 Unless the data that you are providing is already in ARD format (that is the format that your end data consumer will access), you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
+
+Press the button "Configure" on the dataset page and provide the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. You can also provide a description.
 
 See the page [Pre-processing Container](./PreprocessingContainer.md) for guidance on how to create the preprocessing container image.
 
