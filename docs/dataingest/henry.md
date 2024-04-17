@@ -2,7 +2,7 @@
 
 **Version 0.2**
 
-If you already have an account on cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to go on that first:
+If you already have an account on Cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to go on that first:
 
 * https://safe.epcc.ed.ac.uk/
 
@@ -10,9 +10,9 @@ If/once you have an account on SAFE go to the EIDF portal and use your SAFE cred
 
 * https://portal.eidf.ac.uk/
 
-Follow the "Your project applications" link. Press on the "New Application" link and put in an application for us to host your data. Currently this more heavily orientated to the compute resources but that is what the EIDF has been mainly used for up to now.
+Follow the "Your project applications" link. Press on the "New Application" link and put in an application for us to host your data. Currently, this more heavily orientated to the compute resources but that is what the EIDF has been mainly used for up to now.
 
-When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can costumise your organisation (at the moment we are mapping an EIDF project to a CKAN organisation).
+When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation (at the moment we are mapping an EIDF project to a CKAN organisation).
 
 * https://projects.eidf.ac.uk/ckan
 
@@ -28,7 +28,7 @@ There is some proto documentation at:
 
 This will need to be updated as the process evolves.
 
-Once your project is approved go to the testportal at this link (only available on the EdLan network):
+Once your project is approved go to the test portal at this link (only available on the EdLan network):
 
 * https://projects.eidf.ac.uk/testportal/ingest/
 
@@ -46,14 +46,14 @@ This will be used to create your Dataset on CKAN and a data bucket in S3. You ca
 You will need to:
 
 * Create a user account in the portal and notify mario/amy with the id of the user you created (to add access permissions for the *Managed File Transfer* (MFT), a manual process at the moment).
-  * Go into your project
+  * Go into your project on the EIDF portal
   * Scroll down to the project accounts segment
   * Manage -> Create User Account
   * Submit
   * Once you have created the user you can click on their linked username and assign them to a VM if you have created one and give them sudo privileges if appropriate.
   * You can later also use this to connect to the MFT.
 
-* Do not perform this step until notfieid as currently a manual step has to be done for you to upload your data using the MFT into the folder with the name of the dataset (starts with the project code) 
+* Do not perform this step until notified as currently a manual step has to be done for you to upload your data using the MFT into the folder with the name of the dataset (starts with the project code) 
   * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan.
 
 * Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
