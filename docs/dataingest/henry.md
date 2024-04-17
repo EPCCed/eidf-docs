@@ -56,7 +56,7 @@ You will need to:
 * Do not perform this step until notified as currently a manual step has to be done for you to upload your data using the MFT into the folder with the name of the dataset (starts with the project code) 
   * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan.
 
-* Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
+* This is an optional step: Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
   * The container is supposed to map your data to an *Analytics Ready Data* (ARD), the format which your end consumers will use.
   * If your data is already ARD you do not need to add any content in this page.
 
