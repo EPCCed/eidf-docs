@@ -71,6 +71,32 @@ Upload the data files into the folder `data` within the dataset folder. The meta
   * `resource:format`: format description, for example `json` or `csv`
   * `resource:licence`: licence under which the resource is published
 
+For example:
+
+Data files:
+* `dataset-name/data/file1.csv`
+* `dataset-name/data/dir1/file2.csv`
+
+Content of the metadata file named `dataset-name/resources.json`:
+```
+{
+  "file1.csv": {
+    "name": "My Name",
+    "resource:identifier": "my-name",
+    "resource:description": "A very important data file",
+    "resource:format": "CSV",
+    "resource:licence": "CC-BY"
+  },
+  "dir1/file2.csv": {
+    "name": "Another File",
+    "resource:identifier": "another-file",
+    "resource:description": "More details about the file",
+    "resource:format": "CSV",
+    "resource:licence": "CC-BY"
+  }
+}
+```
+
 Through the CKAN interface you should be able to supplement the:
 
 * Dataset metadata
