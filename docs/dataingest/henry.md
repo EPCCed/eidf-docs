@@ -1,6 +1,6 @@
 # Crib sheet for Henry Thompson
 
-**Version 0.2**
+**Version 0.3**
 
 If you already have an account on Cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to go on that first:
 
@@ -60,16 +60,13 @@ You will need to:
   * The container is supposed to map your data to an *Analytics Ready Data* (ARD), the format which your end consumers will use.
   * If your data is already ARD you do not need to add any content in this page.
 
-* Trigger the ingest in the portal.
-* Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
-
-Upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
-* Data file name (relative to `data`)
-  * `name`: resource name in the catalogue
-  * `resource:identifier`: an identifier for the resource
-  * `resource:description`: description of the resource
-  * `resource:format`: format description, for example `json` or `csv`
-  * `resource:licence`: licence under which the resource is published
+* Upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
+  * Data file name (relative to `data`)
+    * `name`: resource name in the catalogue
+    * `resource:identifier`: an identifier for the resource
+    * `resource:description`: description of the resource
+    * `resource:format`: format description, for example `json` or `csv`
+    * `resource:licence`: licence under which the resource is published
 
 For example:
 
@@ -96,6 +93,12 @@ Content of the metadata file named `dataset-name/resources.json`:
   }
 }
 ```
+
+* When you the upload is complete and all files are present trigger the ingest in the portal.
+  * We recommend no more than 100 files as CKAN does not handle a large number of resources very well.
+* Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
+
+
 
 Through the CKAN interface you should be able to supplement the:
 
