@@ -54,13 +54,13 @@ You will need to:
   * You can later also use this to connect to the MFT.
 
 * Do not perform this step until notified as currently a manual step has to be done for you to upload your data using the MFT into the folder with the name of the dataset (starts with the project code) 
-  * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan.
+  * [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan. Log in with the user account that you created before (remember to set a password).
 
 * This is an optional step: Configure the dataset and specify a processing container if required (this will be a docker image published in a public location). 
   * The container is supposed to map your data to an *Analytics Ready Data* (ARD), the format which your end consumers will use.
   * If your data is already ARD you do not need to add any content in this page.
 
-* Upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
+* If your data is in ARD format, then upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
   * Data file name (relative to `data`)
     * `name`: resource name in the catalogue
     * `resource:identifier`: an identifier for the resource
