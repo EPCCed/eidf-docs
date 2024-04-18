@@ -24,23 +24,23 @@ Before beginning this setup, it is a good idea to make sure you have a [Globus a
          storage: 50Gi
     ```
 
-4. Run the following commands, replacing “your-namespace” with your namespace on the machine you’re using:- 
+4. Run the following commands, replacing “project_namespace” with your namespace on the machine you’re using:- 
 
     ``` bash
-    kubectl create -f globus-connect-service.yaml -n your_namespace
-    kubectl create -f globus-connect-volume.yaml -n your_namespace
-    kubectl create -f globus-connect.yaml -n your_namespace
+    kubectl create -f globus-connect-service.yaml -n project_namespace
+    kubectl create -f globus-connect-volume.yaml -n project_namespace
+    kubectl create -f globus-connect.yaml -n project_namespace
     ```
     You can then check that your pod is running:- 
 
     ``` bash
-    kubectl get pods -n your_namespace
+    kubectl get pods -n project_namespace
     ```
 
 5. Connect to the pod that you just created:- 
 
     ``` bash
-    kubectl exec -it globus-connect-0 -n your_namespace -- bash
+    kubectl exec -it globus-connect-0 -n project_namespace -- bash
     ```
 
 ## Creating/Configuring the Endpoint
@@ -171,7 +171,7 @@ You can now use a second pod to retrieve transferred data from the PVC.
 1. Delete the statefulset that you created at the start of the guide (this will by default be called globus-connect):-
 
     ``` bash
-    kubectl delete statefulset globus-connect -n your_namespace
+    kubectl delete statefulset globus-connect -n project_namespace
     ```
 
 2. Create a new .yaml file (in this case called accessPod.yaml), and enter the following:-
@@ -206,7 +206,7 @@ You can now use a second pod to retrieve transferred data from the PVC.
 3. Schedule this new pod, ensuring that it is in the same namespace as the Globus endpoint:- 
 
     ``` bash
-    kubectl create -f accessPod.yaml in your_namespace
+    kubectl create -f accessPod.yaml in project_namespace
     ```
 
     You will now be able to connect to this pod and access the data in your endpoint.  
@@ -214,5 +214,5 @@ You can now use a second pod to retrieve transferred data from the PVC.
 4. You can then re-create the globus-connect statefulset by re-entering the following command from the initial setup:-  
 
     ``` bash
-    kubectl create -f globus-connect.yaml -n your_namespace
+    kubectl create -f globus-connect.yaml -n project_namespace
     ```
