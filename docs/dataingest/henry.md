@@ -1,6 +1,6 @@
 # Crib sheet for Henry Thompson
 
-**Version 0.3**
+**Version 0.3.1**
 
 If you already have an account on Cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to go on that first:
 
@@ -20,7 +20,7 @@ When/if your project is approved an organisation will be created on the EIDF dat
 
 * Currently the above URL is only available on the EdLan network so you will need to be on EdLan or use the VPN.
 * Do NOT use the CKAN interface to create Datasets or resources (see below) - the data ingest process will do this for you and associate S3 links with a minimally required Resource metadata subset. The same applies to Datasets. You can provide additional metadata once the records are in CKAN but please do not remove resources or datasets through CKAN and contact us if would like anything removed.
-* This URL will change on (or after) 18th April to https://catalogue.eidf.ac.uk.
+* This URL will change at some future point to https://catalogue.eidf.ac.uk.
 
 There is some proto documentation at:
 
