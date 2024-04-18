@@ -75,7 +75,7 @@ Data files:
 * `dataset-name/data/dir1/file2.csv`
 
 Content of the metadata file named `dataset-name/resources.json`:
-```
+```json
 {
   "file1.csv": {
     "name": "My Name",
