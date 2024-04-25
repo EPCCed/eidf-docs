@@ -50,10 +50,10 @@ nav:
     #    - "Using the MFT": services/mft/using-the-mft.md
     #    - "SFTP": services/mft/sftp.md
       - "Policies": services/virtualmachines/policies.md
-    #- "Managed JupyterHub":
-    #  - "QuickStart": services/jhub/quickstart.md
-    #  - "Tutorial": services/jhub/tutorial.md
-    #  - "Documentation": services/jhub/docs.md
+    # - "Managed JupyterHub":
+    #   - "QuickStart": services/jhub/quickstart.md
+    #   - "Tutorial": services/jhub/tutorial.md
+    #   - "Documentation": services/jhub/docs.md
     - "Cerebras CS-2":
       - "Get Access": services/cs2/access.md
       - "Running codes": services/cs2/run.md
@@ -70,6 +70,7 @@ nav:
          - "Getting Started": services/gpuservice/training/L1_getting_started.md
          - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
          - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
+         - "Template K8s Workflow": services/gpuservice/training/L4_template_workflow.md
       - "GPU Service FAQ": services/gpuservice/faq.md
     - "Graphcore Bow Pod64":
       - "Overview": services/graphcore/index.md

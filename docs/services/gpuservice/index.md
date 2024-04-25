@@ -9,7 +9,7 @@ The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximate
 The service provides access to:
 
 - Nvidia A100 40GB
-- Nvidia 80GB
+- Nvidia A100 80GB
 - Nvidia MIG A100 1G.5GB
 - Nvidia MIG A100 3G.20GB
 - Nvidia H100 80GB
@@ -27,24 +27,45 @@ The current full specification of the EIDF GPU Service as of 14 February 2024:
 - 32 Nvidia H100 80 GB
 
 !!! important "Quotas"
+
     This is the full configuration of the cluster.
 
     Each project will have access to a quota across this shared configuration.
 
     Changes to the default quota must be discussed and agreed with the EIDF Services team.
 
+> **NOTE**
+>
+> If you request a GPU on the EIDF GPU Service you will be assigned one at random unless you specify a GPU type.
+> Please see [Getting started with Kubernetes](training/L1_getting_started.md) to learn about specifying GPU resources.
+
 ## Service Access
 
-Users should have an [EIDF Account](../../access/project.md).
+Users should have an [EIDF Account](../../access/project.md) as the EIDF GPU Service is only accessible through EIDF Virtual Machines.
 
-Project Leads will be able to request access to the EIDF GPU Service for their project either during the project application process or through a service request to the EIDF helpdesk.
+Existing projects can request access to the EIDF GPU Service through a service request to the [EIDF helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing eidf@epcc.ed.ac.uk .
 
-Each project will be given a namespace to operate in and the ability to add a kubeconfig file to any of their Virtual Machines in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
+New projects wanting to using the GPU Service should include this in their EIDF Project Application.
 
-All EIDF virtual machines can be set up to access the EIDF GPU Service. The Virtual Machine does not require to be GPU-enabled.
+Each project will be given a namespace within the EIDF GPU service to operate in.
+
+This namespace will normally be the EIDF Project code appended with ’ns’, i.e. `eidf989ns` for a project with code 'eidf989'.
+
+Once access to the EIDF GPU service has been confirmed, Project Leads will be give the ability to add a kubeconfig file to any of the VMs in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
+
+All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl command line tool.
+
+The VM does not require to be GPU-enabled.
+
+A quick check to see if a VM has access to the EIDF GPU service can be completed by typing `kubectl -n <project-namespace> get jobs` in to the command line.
+
+If this is first time you have connected to the GPU service the response should be `No resources found in <project-namespace> namespace`.
 
 !!! important "EIDF GPU Service vs EIDF GPU-Enabled VMs"
-    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs. This allows a project to access multiple GPUs of different types.
+
+    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs.
+
+    This allows a project to access multiple GPUs of different types.
 
     An EIDF Virtual Desktop GPU-enabled VM is limited to a small number (1-2) of GPUs of a single type.
 
@@ -59,15 +80,24 @@ A standard project namespace has the following initial quota (subject to ongoing
 - GPU: 12
 
 !!! important "Quota is a maximum on a Shared Resource"
+
     A project quota is the maximum proportion of the service available for use by that project.
 
-    During periods of high demand, Jobs will be queued awaiting resource availability on the Service.
-
-    This means that a project has access up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
+    Any submitted job requests that would exceed the total project quota will be queued.
 
 ## Project Queues
 
 EIDF GPU Service is introducing the Kueue system in February 2024. The use of this is detailed in the [Kueue](kueue.md).
+
+!!! important "Job Queuing"
+
+    During periods of high demand, jobs will be queued awaiting resource availability on the Service.
+
+    As a general rule, the higher the GPU/CPU/Memory resource request of a single job the longer it will wait in the queue before enough resources are free on a single node for it be allocated.
+
+    GPUs in high demand, such as Nvidia H100s, typically have longer wait times.
+
+    Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
 ## Additional Service Policy Information
 
@@ -82,7 +112,7 @@ This tutorial teaches users how to submit tasks to the EIDF GPU Service, but it 
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
 | [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
 | [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results. |
-| [Setting up a Globus endpoint](training/L4_setting_up_a_globus_endpoint.md)                   | a. Creating the Service, Volume and Container.  <br>b. Creating/Configuring the Endpoint.  <br>c. Making the Setup Permanent using PVC.  <br>d. Accessing Data on the Persistent Storage.  |
+| [Template workflow](training/L4_template_workflow.md)                               | a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job. |
 
 ## Further Reading and Help
 
