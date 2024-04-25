@@ -94,8 +94,8 @@ Content of the metadata file named `dataset-name/resources.json` (above the `dat
 }
 ```
 
-It is also possible to add an entire directory tree as a single metadata resource:
-```
+It is also possible to add an entire directory tree as a single metadata resource, for example:
+```json
 {
   "dir/": {
     "name": "Many files",
@@ -104,8 +104,9 @@ It is also possible to add an entire directory tree as a single metadata resourc
     "resource:format": "CSV",
     "resource:licence": "CC-BY"
   }
+}
 ```
-This will link to all files in the S3 ARD bucket with the prefix `dir1`.
+This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir1`.
 
 * When you the upload is complete and all files are present press on the `Trigger Ingest` button in the portal.
   * We recommend no more than 100 files as CKAN does not present a large number of resources very well to consumers.
