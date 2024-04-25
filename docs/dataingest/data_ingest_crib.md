@@ -109,7 +109,7 @@ It is also possible to add an entire directory tree as a single metadata resourc
 This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir1`.
 
 * When you the upload is complete and all files are present press on the `Trigger Ingest` button in the portal.
-  * We recommend no more than 100 files as CKAN does not present a large number of resources very well to consumers.
+  * We recommend no more than 100 data resources as CKAN does not present a large number of resources very well to consumers. You can publish as many files as you like as long as they are grouped together as only a few resources. For example, publish one data descriptor or index file as a resource, and a group of data files as another resource.
 * Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
 
 If you feel that the minimal metadata suffices you can add your own fields BUT the above items must be present or you can use the CKAN interface to supplement the metadata. To do so, go to the EIDF data catalogue at:
