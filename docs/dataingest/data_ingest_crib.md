@@ -1,4 +1,4 @@
-# Crib sheet for Henry Thompson
+# Data ingest crib sheet
 
 **Version 0.3.3**
 
