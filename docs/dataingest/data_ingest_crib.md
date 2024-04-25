@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.3**
+**Version 0.3.4**
 
 If you already have an account on Cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to create one there first:
 
@@ -93,6 +93,19 @@ Content of the metadata file named `dataset-name/resources.json` (above the `dat
   }
 }
 ```
+
+It is also possible to add an entire directory tree as a single metadata resource:
+```
+{
+  "dir/": {
+    "name": "Many files",
+    "resource:identifier": "many-files",
+    "resource:description": "A collection of data files in one data resource",
+    "resource:format": "CSV",
+    "resource:licence": "CC-BY"
+  }
+```
+This will link to all files in the S3 ARD bucket with the prefix `dir1`.
 
 * When you the upload is complete and all files are present press on the `Trigger Ingest` button in the portal.
   * We recommend no more than 100 files as CKAN does not present a large number of resources very well to consumers.
