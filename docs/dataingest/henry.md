@@ -1,6 +1,6 @@
 # Crib sheet for Henry Thompson
 
-**Version 0.3.2**
+**Version 0.3.3**
 
 If you already have an account on Cirrus you should already have an account on the EPCC SAFE. If you do not have a SAFE account you will need to create one there first:
 
@@ -36,6 +36,7 @@ Select your project. The list of datasets will be empty.
 
 * Create a Dataset. You will need to provide the following minimal bits of information:
   * **Name**: The name for your dataset.
+  * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can costumise the name for yourself subject to the constraints by editing the link though note if you change the dataset name you will overwrite the S3 bucket name link.
   * **Description**: a description for your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
@@ -61,7 +62,7 @@ You will need to:
   * If your data is already ARD you do not need to add any content to this page.
 
 * If your data is already in ARD format, then upload the data files into the folder `data` within the dataset folder. The metadata file `resources.json` must be organised as follows:
-  * Data file name (relative to `data`)
+  * Data file name (any file names are given relative to the `data` subdirectory)
     * `name`: resource name in the EIDF data catalogue.
     * `resource:identifier`: an identifier for the resource.
     * `resource:description`: a description of the resource.
@@ -73,7 +74,7 @@ For example, for the data files:
 * `dataset-name/data/file1.csv`
 * `dataset-name/data/dir1/file2.csv`
 
-Content of the metadata file named `dataset-name/resources.json`, the path of the files is relative to the `data` directory:
+Content of the metadata file named `dataset-name/resources.json` (above the `data` directory), the path of the files is relative to the `data` directory:
 ```json
 {
   "file1.csv": {
