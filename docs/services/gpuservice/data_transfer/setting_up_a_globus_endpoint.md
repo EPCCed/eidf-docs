@@ -49,7 +49,7 @@ Before beginning this setup, it is a good idea to make sure you have a [Globus a
             - mountPath: /data/datapvc
               name: globus-connect-data
             - mountPath: /data/gridftp-save
-		name: globus-connect-epinfo
+	      name: globus-connect-epinfo
       volumes:
       - name: globus-connect-data
         persistentVolumeClaim:
