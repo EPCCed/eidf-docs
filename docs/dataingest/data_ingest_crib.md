@@ -119,6 +119,28 @@ It is also possible to add an entire directory tree as a single metadata resourc
 ```
 This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir`, you do not have to use the forward slash to indicate a directory.
 
+Once you have your `resources.json` and your data ready, you now have a choice of how to do the upload. You can upload via the web interface at https://eidf-mft.epcc.ed.ac.uk or you can use sftp. Note that if your data is hosted on Cirrus or ARCHER2, you will have to use sftp.
+
+To upload via the web interface
+
+* Login to your account at https://eidf-mft.epcc.ed.ac.uk/
+
+To upload using sftp:
+
+* From a shell running on the machine where your data is hosted, start an sftp session
+
+   ```
+   sftp USERNAME@eidf-mft.epcc.ed.ac.uk
+   USERNAME@eidf-mft.epcc.ed.ac.uk's password: xxxxx
+   Connected to USERNAME@eidf-mft.epcc.ed.ac.uk.
+   sftp> dir
+   [eidfnnn-your-data-set-name]
+   sftp> cd eidfnnn-your-data-set-name
+   sftp> put resources.json
+   ...
+   sftp> [further lcd, put, mkdir, mput commands]
+   ```
+
 When you the upload is complete and all files are present press on the `Trigger Ingest` button in the portal.
 * We recommend no more than 100 data resources as CKAN does not present a large number of resources very well to consumers. You can publish as many files as you like as long as they are grouped together as only a few resources. For example, publish one data descriptor or index file as a resource, and a group of data files as another resource.
 
