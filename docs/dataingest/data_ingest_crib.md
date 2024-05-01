@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.5**
+**Version 0.3.6**
 
 If you do not already have an EPCC SAFE account you will need to create one first:
 
@@ -144,7 +144,7 @@ To upload using sftp:
 When you the upload is complete and all files are present press on the `Trigger Ingest` button in the portal.
 * We recommend no more than 100 data resources as CKAN does not present a large number of resources very well to consumers. You can publish as many files as you like as long as they are grouped together as only a few resources. For example, publish one data descriptor or index file as a resource, and a group of data files as another resource.
 
-* Check progress in the list of processing runs on the dataset page (reload the page to refresh the list).
+* Check progress in the list of processing runs on the dataset page (reload the page to refresh the list or turn on auto-refresh).
 
 If you feel that the minimal metadata suffices you can add your own fields BUT the above items must be present or you can use the CKAN interface to supplement the metadata. To do so, go to the EIDF data catalogue at:
 
@@ -152,3 +152,10 @@ If you feel that the minimal metadata suffices you can add your own fields BUT t
 
 On the top right you will see a `Log in` link. Click on that then use your `SAFE Login` , then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Please do not try to edit the dataset URL or delete the dataset or things will break. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
+Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 service.
+
+For example, using the AWS CLI, the following command lists the objects and prefixes in the bucket: 
+
+```
+aws s3 ls s3://<BUCKET_NAME> --no-sign-request --endpoint-url https://s3.eidf.ac.uk
+```
