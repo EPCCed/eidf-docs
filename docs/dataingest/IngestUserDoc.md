@@ -15,7 +15,6 @@ To set up automated ingestion:
 
 Automated ingestion of each batch of data then proceeds as follows:
 1. The data provider uploads a batch of data files (_raw data_) and corresponding _metadata_ to a "landing zone" for this dataset, accessed via the Managed File Transfer (MFT) service.
-1. If archiving is required, copies of the raw data files are deposited in the EIDF archive.
 1. The raw data may be processed and transformed to ARD format, if requested by the data provider.
 1. The analytics ready data is published on the ARD service.
 1. The uploaded metadata is updated with download links and is published in the EIDF Data Catalogue.
