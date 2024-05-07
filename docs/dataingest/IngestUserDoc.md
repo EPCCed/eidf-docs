@@ -1,12 +1,12 @@
 # Data Ingest
 
-The _Edinburgh International Data Facility_ (EIDF) can host your data for the lifetime of the EIDF service. This documentation describes the data ingestion process.
+The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Ready Data** (ARD) for the lifetime of the EIDF service. ARD is data that is ready, i.e. has been cleaned, is in a suitable format, etc., for your end users to use out of the box. This documentation describes the data ingestion process.
 
 ## Overview
 
-The EIDF provides two complementary services: **Archive** and **Analytics-Ready Data** (ARD). The ARD hosted by the EIDF are available to EIDF Data Science Cloud users. ARD are indexed and searchable on the EIDF Data Catalogue.
+The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue which makes it available to your community and other interested parties world wide. The ARD  is also available to EIDF Data Science Cloud users. 
 
-In the following, a dataset is a collection of data resources (or files), together with a description and other information (what is known as metadata).
+In the following, a dataset is a collection of data resources (e.g. files), together with a description and other information about the data (i.e. metadata).
 
 To set up automated ingestion:
 
