@@ -124,7 +124,7 @@ Once you have your `resources.json` and your data ready, you now have a choice o
 To upload via the web interface
 
 * Login to your account at https://eidf-mft.epcc.ed.ac.uk/
-* Navigate to the directory for your dataset and place your data there
+* Navigate to the directory for your dataset `eidfnnn-your-data-set-name` and place your metadata and data there
 
 To upload using sftp:
 
@@ -154,7 +154,7 @@ If you feel that the minimal metadata suffices you can add your own fields BUT t
 
 On the top right you will see a `Log in` link. Click on that then use your `SAFE Login` , then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Please do not try to edit the dataset URL or delete the dataset or things will break. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
-Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 service, and there are no credentials required.
+Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 client, and there are no credentials required.
 
 For example, using the AWS CLI, the following command lists the objects and prefixes in the bucket `<BUCKET_NAME>`: 
 
