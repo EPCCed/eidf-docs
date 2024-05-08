@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.6**
+**Version 0.3.7**
 
 If you do not already have an EPCC SAFE account you will need to create one first:
 
@@ -49,7 +49,7 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
   
 
-Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login.
+Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 To upload your data you will need to:
 
@@ -65,7 +65,7 @@ However, you will not be able to upload your data/metadata until you are notifie
 
 If your data is not already in an *Analytics Ready Data* (ARD) format, the format which your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
 
-* A public link to a container that maps your data to ARD (go to the main documentation to have more information on the container expectations). Note that the container also needs to also create the meadata (more information on the requirements below).
+* A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the meadata (more information on the requirements below).
 * A description of the process.
 
 Once you have been notfied to upload the ARD and metadata, or the data your container will act on, go to:
