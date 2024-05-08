@@ -1,32 +1,75 @@
 # Overview
 
-The EIDF GPU Service (EIDFGPUS) uses Nvidia A100 GPUs as accelerators.
+The EIDF GPU Service (EIDF GPU Service) provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
 
-Full Nvidia A100 GPUs are connected to 40GB of dynamic memory.
+MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion.
 
-Multi-instance usage (MIG) GPUs allow multiple tasks or users to share the same GPU (similar to CPU threading).
+The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
 
-There are two types of MIG GPUs inside the EIDFGPUS the Nvidia A100 3G.20GB GPUs and the Nvidia A100 1G.5GB GPUs which equate to ~1/2 and ~1/7 of a full Nvidia A100 40 GB GPU.
+The service provides access to:
 
-The current specification of the EIDFGPUS is:
+- Nvidia A100 40GB
+- Nvidia A100 80GB
+- Nvidia MIG A100 1G.5GB
+- Nvidia MIG A100 3G.20GB
+- Nvidia H100 80GB
 
-- 1856 CPU Cores
-- 8.7 TiB Memory
-- Local Disk Space (Node Image Cache and Local Workspace) - 21 TiB
+The current full specification of the EIDF GPU Service as of 14 February 2024:
+
+- 4912 CPU Cores (AMD EPYC and Intel Xeon)
+- 23 TiB Memory
+- Local Disk Space (Node Image Cache and Local Workspace) - 40 TiB
 - Ceph Persistent Volumes (Long Term Data) - up to 100TiB
-- 70 Nvidia A100 40 GB GPUs
-- 14 MIG Nvidia A100 40 GB GPUs equating to 28 Nvidia A100 3G.20GB GPUs
-- 20 MIG Nvidia A100 40 GB GPU equating to 140 A100 1G.5GB GPUs
+- 112 Nvidia A100 40 GB
+- 39 Nvidia A100 80 GB
+- 16 Nvidia A100 3G.20GB
+- 56 Nvidia A100 1G.5GB
+- 32 Nvidia H100 80 GB
 
-The EIDFGPUS is managed using [Kubernetes](https://kubernetes.io), with up to 8 GPUs being on a single node.
+!!! important "Quotas"
+
+    This is the full configuration of the cluster.
+
+    Each project will have access to a quota across this shared configuration.
+
+    Changes to the default quota must be discussed and agreed with the EIDF Services team.
+
+> **NOTE**
+>
+> If you request a GPU on the EIDF GPU Service you will be assigned one at random unless you specify a GPU type.
+> Please see [Getting started with Kubernetes](training/L1_getting_started.md) to learn about specifying GPU resources.
 
 ## Service Access
 
-Users should have an EIDF account - [EIDF Accounts](../../access/project.md).
+Users should have an [EIDF Account](../../access/project.md) as the EIDF GPU Service is only accessible through EIDF Virtual Machines.
 
-Project Leads will be able to have access to the EIDFGPUS added to their project during the project application process or through a request to the EIDF helpdesk.
+Existing projects can request access to the EIDF GPU Service through a service request to the [EIDF helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing eidf@epcc.ed.ac.uk .
 
-Each project will be given a namespace to operate in and a kubeconfig file in a Virtual Machine on the EIDF DSC - information on access to VMs is [available here](../../access/virtualmachines-vdi.md).
+New projects wanting to using the GPU Service should include this in their EIDF Project Application.
+
+Each project will be given a namespace within the EIDF GPU service to operate in.
+
+This namespace will normally be the EIDF Project code appended with ’ns’, i.e. `eidf989ns` for a project with code 'eidf989'.
+
+Once access to the EIDF GPU service has been confirmed, Project Leads will be give the ability to add a kubeconfig file to any of the VMs in their EIDF project - information on access to VMs is available [here](../../access/virtualmachines-vdi.md).
+
+All EIDF VMs with the project kubeconfig file downloaded can access the EIDF GPU Service using the kubectl command line tool.
+
+The VM does not require to be GPU-enabled.
+
+A quick check to see if a VM has access to the EIDF GPU service can be completed by typing `kubectl -n <project-namespace> get jobs` in to the command line.
+
+If this is first time you have connected to the GPU service the response should be `No resources found in <project-namespace> namespace`.
+
+!!! important "EIDF GPU Service vs EIDF GPU-Enabled VMs"
+
+    The EIDF GPU Service is a container based service which is accessed from EIDF Virtual Desktop VMs.
+
+    This allows a project to access multiple GPUs of different types.
+
+    An EIDF Virtual Desktop GPU-enabled VM is limited to a small number (1-2) of GPUs of a single type.
+
+    Projects do not have to apply for a GPU-enabled VM to access the GPU Service.
 
 ## Project Quotas
 
@@ -36,7 +79,25 @@ A standard project namespace has the following initial quota (subject to ongoing
 - Memory: 1TiB
 - GPU: 12
 
-Note these quotas are maximum use by a single project, and that during periods of high usage Kubernetes Jobs maybe queued waiting for resource to become available on the cluster.
+!!! important "Quota is a maximum on a Shared Resource"
+
+    A project quota is the maximum proportion of the service available for use by that project.
+
+    Any submitted job requests that would exceed the total project quota will be queued.
+
+## Project Queues
+
+EIDF GPU Service is introducing the Kueue system in February 2024. The use of this is detailed in the [Kueue](kueue.md).
+
+!!! important "Job Queuing"
+
+    During periods of high demand, jobs will be queued awaiting resource availability on the Service.
+
+    As a general rule, the higher the GPU/CPU/Memory resource request of a single job the longer it will wait in the queue before enough resources are free on a single node for it be allocated.
+
+    GPUs in high demand, such as Nvidia H100s, typically have longer wait times.
+
+    Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
 ## Additional Service Policy Information
 
@@ -44,18 +105,19 @@ Additional information on service policies can be found [here](policies.md).
 
 ## EIDF GPU Service Tutorial
 
-This tutorial teaches users how to submit tasks to the EIDFGPUS, but it is not a comprehensive overview of Kubernetes.
+This tutorial teaches users how to submit tasks to the EIDF GPU Service, but it is not a comprehensive overview of Kubernetes.
 
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
 | [Requesting persistent volumes with Kubernetes](training/L2_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
 | [Running a PyTorch task](training/L3_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the cluster.<br>c. Inspecting the results. |
+| [Template workflow](training/L4_template_workflow.md)                               | a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job. |
 
 ## Further Reading and Help
 
 - The [Nvidia developers blog](https://developer.nvidia.com/blog/search-posts/?q=Kubernetes) provides several examples of how to run ML tasks on a Kubernetes GPU cluster.
 
-- Kubernetes documentation has a useful [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-and-finding-resources)
+- Kubernetes documentation has a useful [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-and-finding-resources).
 
-- More detailed use cases for the `kubectl` can be found in the [Kubernetes documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run)
+- More detailed use cases for the `kubectl` can be found in the [Kubernetes documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run).

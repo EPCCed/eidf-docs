@@ -22,7 +22,7 @@ After you have been authenticated through SAFE and logged into the EIDF VDI, if 
 to you that have been associated with your user (typically in the case of research projects), you will be presented with
 the VDI home screen as shown below:
 
-   ![VDI-home-screen](/eidf-docs/images/access/vdi-home-screen.png){: class="border-img"}
+   ![VDI-home-screen](../images/access/vdi-home-screen.png){: class="border-img"}
    *VDI home page with list of available VM connections*
 
 !!! note "Adding connections"
@@ -34,13 +34,13 @@ If you have only one connection associated with your VDI user account (typically
 automatically connected to the target VM's virtual desktop. Once you are connected to the VM, you will be asked for your
 username and password as shown below (if you are participating in a workshop, then you may not be asked for credentials)
 
-   ![VM-VDI-connection-login](/eidf-docs/images/access/vm-vdi-connection-login.png){: class="border-img"}
+   ![VM-VDI-connection-login](../images/access/vm-vdi-connection-login.png){: class="border-img"}
    *VM virtual desktop connection user account login screen*
 
 Once your credentials have been accepted, you will be connected to your VM's desktop environment. For instance, the
 screenshot below shows a resulting connection to a Xubuntu 20.04 VM with the Xfce desktop environment.
 
-   ![VM-VDI-connection](/eidf-docs/images/access/vm-vdi-connection.png){: class="border-img"}
+   ![VM-VDI-connection](../images/access/vm-vdi-connection.png){: class="border-img"}
    *VM virtual desktop*
 
 ## VDI Features for the Virtual Desktop
@@ -58,7 +58,6 @@ by pressing &lt;Ctrl&gt; + &lt;Alt&gt; + &lt;Shift&gt; on a Windows PC client, o
 options, including:
 
 * [Reading from (and writing to) the clipboard of the remote desktop](https://guacamole.apache.org/doc/gug/using-guacamole.html#copying-pasting-text)
-* [Uploading and downloading files](https://guacamole.apache.org/doc/gug/using-guacamole.html#file-transfer)
 * [Zooming in and out of the remote display](https://guacamole.apache.org/doc/gug/using-guacamole.html#scaling-display)
 
 ### Clipboard Copy and Paste Functionality
@@ -77,7 +76,7 @@ You can use the standard keyboard shortcuts to copy text from your client PC or 
 then again copy that text from the Guacamole menu clipboard into an application or CLI terminal on the VM's remote
 desktop. An example of using the copy and paste clipboard is shown in the screenshot below.
 
-   ![EIDF-VDI-Clipboard](/eidf-docs/images/access/vm-vdi-copy-paste.png){: class="border-img center"}
+   ![EIDF-VDI-Clipboard](../images/access/vm-vdi-copy-paste.png){: class="border-img center"}
    *The EIDF VDI Clipboard*
 
 ### Keyboard Language and Layout Settings
@@ -86,5 +85,3 @@ For users who do not have standard `English (UK)` keyboard layouts, key presses 
 are transmitted to your VM. Please contact the EIDF helpdesk at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) if you
 are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
 in the Guacamole VDI connection configuration.
-
-## Further information
