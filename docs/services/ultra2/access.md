@@ -2,4 +2,4 @@
 
 ## Getting Access
 
-Access to the Ultra2 system (also referred to as the SDF-CS1 system) is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.
+Access to Ultra2 is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.

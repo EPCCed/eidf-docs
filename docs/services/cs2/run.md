@@ -6,7 +6,7 @@ The Cerebras CS-2 Wafer-scale cluster (WSC) uses the Ultra2 system which serves 
 
 ## Connecting to the cluster
 
-To gain access to the CS-2 WSC you need to login to the host system, Ultra2 (also called SDF-CS1). See the [documentation for Ultra2](../ultra2/run.md#login).
+To gain access to the CS-2 WSC you need to login to the host system, Ultra2. See the [documentation for Ultra2](../ultra2/run.md#login).
 
 ## Running Jobs
 
