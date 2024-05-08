@@ -58,12 +58,13 @@ You will need to create an ingest dataset for each dataset that you wish to publ
    * **Link**: a link describing your group/contact information.
    * **Contact email**: a contact email to answer queries about your data set (this is optional).
    
-
 Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 ### Pre-processing container
 
 Unless the data that you are providing is already in ARD format, you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
+
+Press the button "Configure" on the dataset page and provide the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. You can also provide a description.
 
 See the page [Pre-processing Container](./PreprocessingContainer.md) for guidance on how to create the preprocessing container image.
 
