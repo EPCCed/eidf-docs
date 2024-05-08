@@ -4,7 +4,7 @@ The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Rea
 
 ## Overview
 
-The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue which makes it available to your community and other interested parties world wide. The ARD  is also available to EIDF Data Science Cloud users. 
+The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue, a CKAN instance, which makes your data discoverable and available, using S3 links, to your community as well as other world-wide interested parties world. The ARD is also available to EIDF Data Science Cloud users. 
 
 In the following, a dataset is a collection of data resources (e.g. files), together with a description and other information about the data (i.e. metadata).
 
@@ -14,7 +14,7 @@ To set up automated ingestion:
 1. An ingest workflow is set up for the dataset.
 
 Automated ingestion of each batch of data then proceeds as follows:
-1. The data provider uploads a batch of data files (_raw data_) and corresponding _metadata_ to a "landing zone" for this dataset, accessed via the Managed File Transfer (MFT) service.
+1. The data provider uploads a batch of data files (_raw data_ or ARD) and the corresponding _metadata_ to a "landing zone" for this dataset, accessed via the *Managed File Transfer* (MFT) service.
 1. The raw data may be processed and transformed to ARD format, if requested by the data provider.
 1. The analytics ready data is published on the ARD service.
 1. The uploaded metadata is updated with download links and is published in the EIDF Data Catalogue.
@@ -41,29 +41,29 @@ Create accounts for data providers to have access to the MFT service.
 The EIDF Data Catalogue is a CKAN instance.
 
 We map an EIDF project to a CKAN organisation.
-Your CKAN organisation will be created if your application is successful. The title of your organisation is the title of your project and you may also provide a description.
+
+Your CKAN organisation will be created if your application is successful. The title of your organisation is the title of your project and you may also provide a description. You will be given editing rights to your organisation so you can customise your CKAN organisations look and feel and later edit/add metadata but please do not use the CKAN interface to create or delete datasets.
 
 ### Ingest dataset
 
-An EIDF dataset consists of descriptive metadata to allow researchers to find your dataset information via a free text search, and a set of resources which link to the actual data files held within EIDF. Each dataset resource itself consists of searchable metadata, and a link to the data file location within the EIDF ARD service.
+An EIDF dataset consists of descriptive metadata to allow researchers to find your dataset information via a free text search, and a set of resources which link to the actual data files held within EIDF. Each dataset resource itself consists of searchable metadata, and a link to the data file location within the EIDF *ARD service*.
 
 You will need to create an ingest dataset for each dataset that you wish to publish or archive and provide the necessary metadata, by filling in a form in the EIDF Portal.
 
-1. Choose create dataset.
-1. Provide the following top-level metadata to create your Dataset:
-    * **Title**:  the name of your dataset. 
-    * **Description**:  human readable description of your dataset.
-    * **Contact Point**:  who should be contacted regarding any enquiries or requests for access if your dataset has restricted access.
+1. Select the project which you want to use to ingest data. The list of `Ingest Datasets` will be empty unless you have already created Datasets.
+1. Create a Dataset by pressing on the `New` button. You will need to provide the following minimal bits of information:
+    * **Name**: The name for your dataset.
+    * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can costumise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
+    * **Description**: a description for your dataset.
+   * **Link**: a link describing your group/contact information.
+   * **Contact email**: a contact email to answer queries about your data set (this is optional).
+   
 
-   There is also several optional fields that you may wish to provide to make it easier for your data to be discovered.
-1. (Optional) Indicate whether archival is required.
-1. (Optional) Add the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. See below for instructions on how to create the container image.
-
-We will set up the ingest process and you will be provided with a link to upload the data.
+Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 ### Pre-processing container
 
-Unless the data that you are providing is already in ARD format (that is the format that your end data consumer will access), you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
+Unless the data that you are providing is already in ARD format, you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
 
 See the page [Pre-processing Container](./PreprocessingContainer.md) for guidance on how to create the preprocessing container image.
 
@@ -73,7 +73,7 @@ See the page [Pre-processing Container](./PreprocessingContainer.md) for guidanc
 
 A data file can be in any format, for example CSV, JSON, or even in a raw binary format (such as raw data or it could be a zip file of CSV or JSON files). We recommend limiting the number of resources within a dataset to less than 100 to keep the data catalogue entries manageable. For example, when publishing timeseries data, a file resource may be a week's worth of data and a dataset contains 52 resources, i.e. 1 year.
 
-Data files can be organised in a directory tree.
+It is also possible to add an entire directory tree as a single metadata resource.
 
 **Metadata**
 
