@@ -178,6 +178,8 @@ curl -X GET "https://s3.eidf.ac.uk/eidf..."
 
 You will need the quotes or may have to explicitly escape certain characters if present, e.g. `?` -> `\?`, etc.
 
+### Downloading data, an example
+
 As a concrete example if we look at the existing example in the EIDF Data Catalogue:
 
 * https://projects.eidf.ac.uk/ckan/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps
