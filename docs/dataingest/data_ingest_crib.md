@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.7**
+**Version 0.3.8**
 
 If you do not already have an EPCC SAFE account you will need to create one first:
 
@@ -156,8 +156,60 @@ On the top right you will see a `Log in` link. Click on that then use your `SAFE
 
 Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 client, and there are no credentials required.
 
-For example, using the AWS CLI, the following command lists the objects and prefixes in the bucket `<BUCKET_NAME>`: 
+For example, using the [AWS CLI](https://aws.amazon.com/cli/), the following command lists the objects and prefixes in the bucket `<BUCKET_NAME>`: 
 
-```
+```bash
 aws s3 ls s3://<BUCKET_NAME> --no-sign-request --endpoint-url https://s3.eidf.ac.uk
 ```
+
+or using `curl` you can get the bucket listing using:
+
+```bash
+curl -X GET "https://s3.eidf.ac.uk/eidf..."
+```
+
+You will need the quotes or may have to explicitly escape certain characters if present, e.g. `?` -> `\?`, etc.
+
+As a concrete example if we look at the existing example in the EIDF Data Catalogue:
+
+* https://projects.eidf.ac.uk/ckan/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps
+
+Looking at the `Index shards directory` record we get the S3 link:
+
+* https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx
+
+The presence of the `?` means we have to use quotes for the URL. We can make the output human readable using `xmllint` and restrict the output using `head` to the first record but if you don't have these utilities you can look at the output produced by clicking on the s3 link in the EIDF catalogue. The `-s` argument tells `curl` not to produce additional content. Running this we get:
+
+```bash
+curl -sX GET "https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx"\
+| xmllint --format - |head -18
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Name>eidf125-cc-main-2019-35-augmented-index</Name>
+  <Prefix>idx</Prefix>
+  <MaxKeys>1000</MaxKeys>
+  <IsTruncated>false</IsTruncated>
+  <Contents>
+    <Key>idx/cdx-00000.gz</Key>
+    <LastModified>2024-04-30T15:41:18.976Z</LastModified>
+    <ETag>"9df7647798430d78db71afd3ae8c51b5-112"</ETag>
+    <Size>938001370</Size>
+    <StorageClass>STANDARD</StorageClass>
+    <Owner>
+      <ID>eidfarch_ard</ID>
+      <DisplayName>EIDF Archival ARD owner</DisplayName>
+    </Owner>
+    <Type>Normal</Type>
+  </Contents>
+```
+
+So, if we want to download the first file we look in the `Contents` section and the key is `idx/cdx-00000.gz`. In this instance downloading the first file would be done using:
+
+```bash
+curl -sX GET \
+https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index/idx/cdx-00000.gz \
+-o cdx-00000.gz
+```
+
+The `-o` will write the output to a named file. You can use the above pattern to download content.
