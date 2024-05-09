@@ -1,6 +1,8 @@
 # Data ingest crib sheet
 
-**Version 0.3.8**
+**Version 0.3.9**
+
+## Applying for a project
 
 If you do not already have an EPCC SAFE account you will need to create one first:
 
@@ -16,6 +18,8 @@ First apply for an EIDF project.
 * Press on the `New Application` link and put in an application for us to host your data. 
 
 Currently, this is orientated towards the compute resources as that is what the EIDF has been mainly used for up to now. Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project is approved or rejected - someone may be in touch to clarify points in your application.
+
+## Customising your entry in the EIDF Data Catalogue
 
 When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we are mapping an EIDF project to a CKAN organisation).
 
@@ -34,6 +38,8 @@ There is some additional proto documentation about the data ingest process at:
 * https://github.com/EPCCed/eidf-docs/tree/data_ingest/docs/dataingest
 
 This will be updated as the process evolves.
+
+## Uploading your data
 
 Once your project is approved go to the test portal at this link (only available on the EdLan network):
 
@@ -121,16 +127,16 @@ This will create one resource in the catalogue with a link to all files in the S
 
 Once you have your `resources.json` and your data ready, you now have a choice of how to do the upload. You can upload via the web interface at https://eidf-mft.epcc.ed.ac.uk or you can use sftp. Note that if your data is hosted on Cirrus or ARCHER2, you will have to use sftp.
 
-To upload via the web interface
+To upload via the web interface:
 
 * Login to your account at https://eidf-mft.epcc.ed.ac.uk/
 * Navigate to the directory for your dataset `eidfnnn-your-data-set-name` and place your metadata and data there
 
-To upload using sftp:
+To upload using `sftp`:
 
-* From a shell running on the machine where your data is hosted, start an sftp session
+* From a shell running on the machine where your data is hosted, start an `sftp` session:
 
-   ```
+   ```bash
    sftp USERNAME@eidf-mft.epcc.ed.ac.uk
    USERNAME@eidf-mft.epcc.ed.ac.uk's password: xxxxx
    Connected to USERNAME@eidf-mft.epcc.ed.ac.uk.
@@ -153,6 +159,8 @@ If you feel that the minimal metadata suffices you can add your own fields BUT t
 * https://projects.eidf.ac.uk/ckan/
 
 On the top right you will see a `Log in` link. Click on that then use your `SAFE Login` , then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Please do not try to edit the dataset URL or delete the dataset or things will break. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
+
+## Testing your s3 links and downloading
 
 Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 client, and there are no credentials required.
 
