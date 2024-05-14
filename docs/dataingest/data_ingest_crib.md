@@ -178,17 +178,17 @@ curl -X GET "https://s3.eidf.ac.uk/eidf..."
 
 You will need the quotes or may have to explicitly escape certain characters if present, e.g. `?` -> `\?`, etc.
 
-### Downloading data, an example
+### Downloading data, an example using curl
 
-As a concrete example if we look at the existing example in the EIDF Data Catalogue:
+As a concrete example if we look at an existing dataset in the EIDF Data Catalogue:
 
 * https://projects.eidf.ac.uk/ckan/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps
 
-Looking at the `Index shards directory` record we get the S3 link:
+Looking at the `Index shards directory` resource record we get the access/download URL:
 
 * https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx
 
-The presence of the `?` means we have to use quotes for the URL. We can make the output human readable using `xmllint` and restrict the output using `head` to the first record but if you don't have these utilities you can look at the output produced by clicking on the s3 link in the EIDF catalogue. The `-s` argument tells `curl` not to produce additional content. Running this we get:
+The presence of a `?` means we need to use quotes for the URL or escape the question mark when running within a shell. We can make the output human readable using `xmllint`, part of the libxml2-utils package, and reduce the amount of output using `head` to just the first record but if you don't have these utilities you can look at the output produced by clicking on the link above in the EIDF data catalogue. The `-s` argument tells `curl` not to produce additional content. Running this we get:
 
 ```bash
 curl -sX GET "https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx"\
@@ -222,4 +222,31 @@ https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index/idx/cdx-00000.gz \
 -o cdx-00000.gz
 ```
 
-The `-o` will write the output to a named file. You can use the above pattern to download content.
+The `-o` will write the output to a named file. You can use the above pattern to download content. In this instance this will be `cdx-00000.gz` and you can then start playing with the data.
+
+### Inspecting data, an example using Python
+
+```python
+import boto3
+import pandas
+import matplotlib
+
+from botocore import UNSIGNED
+from botocore.config import Config
+from botocore.session import Session
+
+# Get the data
+session = Session()
+config = Config(signature_version=UNSIGNED)
+s3 = boto3.client(service_name='s3',config=config,endpoint_url = 'https://s3.eidf.ac.uk/')
+response = s3.get_object(Bucket="eidf125-cc-main-2019-35-augmented-index", Key="cluster.idx")
+
+# Describe the data
+df = pandas.read_csv(response["Body"], sep='\t', header=None)
+df.describe(include="all")
+print(df[0].head())
+
+# Plot the data
+df[2].hist(bins=100)
+```
+
