@@ -311,6 +311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://epcced.github.io/eidf-docs/services/ultra2/connect/</loc>
+         <lastmod>2024-05-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://epcced.github.io/eidf-docs/services/ultra2/run/</loc>
          <lastmod>2024-05-15</lastmod>
          <changefreq>daily</changefreq>

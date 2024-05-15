@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/cs2/run/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/ultra2/connect/">
       
       
         <link rel="prev" href="../access/">
       
       
-        <link rel="next" href="../../ultra2/access/">
+        <link rel="next" href="../run/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Running codes - EIDF User Documentation</title>
+        <title>Connect - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cerebras-cs-2" class="md-skip">
+        <a href="#login" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running codes
+              Connect
             
           </span>
         </div>
@@ -701,19 +701,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -727,10 +725,97 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             Cerebras CS-2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/run/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ultra2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ultra2
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -745,7 +830,7 @@
         
   
   <span class="md-ellipsis">
-    Get Access
+    Overview
   </span>
   
 
@@ -775,7 +860,7 @@
           
   
   <span class="md-ellipsis">
-    Running codes
+    Connect
   </span>
   
 
@@ -786,7 +871,7 @@
         
   
   <span class="md-ellipsis">
-    Running codes
+    Connect
   </span>
   
 
@@ -808,37 +893,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#access-credentials" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Access credentials
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-the-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connecting to the cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Jobs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running Jobs">
+    <nav class="md-nav" aria-label="Access credentials">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#slurm-example" class="md-nav__link">
+  <a href="#ssh-key" class="md-nav__link">
     <span class="md-ellipsis">
-      SLURM example
+      SSH Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-based-one-time-password-totp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-based one-time password (TOTP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-login-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Login example
     </span>
   </a>
   
@@ -846,129 +931,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-an-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating an environment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating an environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-the-venv" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create the venv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-the-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install the dependencies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#validate-the-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Validate the setup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modify-venv-files-to-remove-clock-sync-check-on-epcc-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modify venv files to remove clock sync check on EPCC system
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#from-within-your-python-venv-edit-the-libpython38site-packagescerebras_pytorchsaverstoragepy-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      From within your python venv, edit the /lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#navigate-to-line-530" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate to line 530
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comment-out-the-section-if-modified_time-self_last_modified" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comment out the section if modified_time &gt; self._last_modified
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#navigate-to-line-774" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate to line 774
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comment-out-the-section-if-statst_mtime_ns-self_statst_mtime_ns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comment out the section if stat.st_mtime_ns &gt; self._stat.st_mtime_ns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#save-the-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Save the file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-jobs-as-per-existing-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run jobs as per existing documentation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paths-pythonpath-and-mount_dirs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paths, PYTHONPATH and mount_dirs
-    </span>
-  </a>
   
 </li>
       
@@ -981,49 +943,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Ultra2
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            Ultra2
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
                 
   
@@ -1031,49 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ultra2/access/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ultra2/connect/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Connect
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ultra2/run/" class="md-nav__link">
+      <a href="../run/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2184,37 +2061,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#access-credentials" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Access credentials
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-the-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connecting to the cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Jobs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running Jobs">
+    <nav class="md-nav" aria-label="Access credentials">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#slurm-example" class="md-nav__link">
+  <a href="#ssh-key" class="md-nav__link">
     <span class="md-ellipsis">
-      SLURM example
+      SSH Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-based-one-time-password-totp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-based one-time password (TOTP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-login-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Login example
     </span>
   </a>
   
@@ -2222,129 +2099,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-an-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating an environment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating an environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-the-venv" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create the venv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-the-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install the dependencies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#validate-the-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Validate the setup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modify-venv-files-to-remove-clock-sync-check-on-epcc-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modify venv files to remove clock sync check on EPCC system
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#from-within-your-python-venv-edit-the-libpython38site-packagescerebras_pytorchsaverstoragepy-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      From within your python venv, edit the /lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#navigate-to-line-530" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate to line 530
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comment-out-the-section-if-modified_time-self_last_modified" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comment out the section if modified_time &gt; self._last_modified
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#navigate-to-line-774" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate to line 774
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comment-out-the-section-if-statst_mtime_ns-self_statst_mtime_ns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comment out the section if stat.st_mtime_ns &gt; self._stat.st_mtime_ns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#save-the-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Save the file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-jobs-as-per-existing-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run jobs as per existing documentation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#paths-pythonpath-and-mount_dirs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paths, PYTHONPATH and mount_dirs
-    </span>
-  </a>
   
 </li>
       
@@ -2366,102 +2120,17 @@
   
 
 
-<h1 id="cerebras-cs-2">Cerebras CS-2</h1>
-<h2 id="introduction">Introduction</h2>
-<p>The Cerebras CS-2 Wafer-scale cluster (WSC) uses the Ultra2 system as a host system which provides login services, access to files, the SLURM batch system etc.</p>
-<h2 id="connecting-to-the-cluster">Connecting to the cluster</h2>
-<p>To gain access to the CS-2 WSC you need to login to the host system, Ultra2. See the <a href="../../ultra2/run/#login">documentation for Ultra2</a>.</p>
-<h2 id="running-jobs">Running Jobs</h2>
-<p>All jobs must be run via SLURM to avoid inconveniencing other users of the system. An example job is shown below.</p>
-<h3 id="slurm-example">SLURM example</h3>
-<p>This is based on the sample job from the Cerebras documentation <a href="https://docs.cerebras.net/en/latest/wsc/getting-started/cs-appliance.html#execute-your-job">Cerebras documentation - Execute your job</a></p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=Example        # Job name</span>
-<span class="c1">#SBATCH --cpus-per-task=2         # Request 2 cores</span>
-<span class="c1">#SBATCH --output=example_%j.log   # Standard output and error log</span>
-<span class="c1">#SBATCH --time=01:00:00           # Set time limit for this job to 1 hour</span>
-<span class="c1">#SBATCH --gres=cs:1               # Request CS-2 system</span>
-
-<span class="nb">source</span><span class="w"> </span>venv_cerebras_pt/bin/activate
-python<span class="w"> </span>run.py<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>CSX<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--params<span class="w"> </span>params.yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--num_csx<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--model_dir<span class="w"> </span>model_dir<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--mode<span class="w"> </span><span class="o">{</span>train,eval,eval_all,train_and_eval<span class="o">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--mount_dirs<span class="w"> </span><span class="o">{</span>paths<span class="w"> </span>to<span class="w"> </span>modelzoo<span class="w"> </span>and<span class="w"> </span>to<span class="w"> </span>data<span class="o">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>--python_paths<span class="w"> </span><span class="o">{</span>paths<span class="w"> </span>to<span class="w"> </span>modelzoo<span class="w"> </span>and<span class="w"> </span>other<span class="w"> </span>python<span class="w"> </span>code<span class="w"> </span><span class="k">if</span><span class="w"> </span>used<span class="o">}</span>
-</code></pre></div>
-<p>See the 'Troubleshooting' section below for known issues.</p>
-<h2 id="creating-an-environment">Creating an environment</h2>
-<p>To run a job on the cluster, you must create a Python virtual environment (venv) and install the dependencies. The Cerebras documentation contains generic instructions to do this <a href="https://docs.cerebras.net/en/latest/wsc/getting-started/setup-environment.html">Cerebras setup environment docs</a> however our host system is slightly different so we recommend the following:</p>
-<h3 id="create-the-venv">Create the venv</h3>
-<div class="highlight"><pre><span></span><code>python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv_cerebras_pt
-</code></pre></div>
-<h3 id="install-the-dependencies">Install the dependencies</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv_cerebras_pt/bin/activate
-pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">cerebras_pytorch</span><span class="o">==</span><span class="m">2</span>.1.1
-</code></pre></div>
-<h3 id="validate-the-setup">Validate the setup</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv_cerebras_pt/bin/activate
-cerebras_install_check
-</code></pre></div>
-<h3 id="modify-venv-files-to-remove-clock-sync-check-on-epcc-system">Modify venv files to remove clock sync check on EPCC system</h3>
-<p>Cerebras are aware of this issue and are working on a fix, however in the mean time follow the below workaround:</p>
-<h3 id="from-within-your-python-venv-edit-the-libpython38site-packagescerebras_pytorchsaverstoragepy-file">From within your python venv, edit the <venv>/lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py file</h3>
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>&lt;venv&gt;/lib/python3.8/site-packages/cerebras_pytorch/saver/storage.py
-</code></pre></div>
-<h3 id="navigate-to-line-530">Navigate to line 530</h3>
-<div class="highlight"><pre><span></span><code>:530
-</code></pre></div>
-<p>The section should look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">modified_time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_modified</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Attempting to materialize deferred tensor with key &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> from file </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="si">}</span><span class="s2">, but the file has &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;since been modified. The loaded tensor value may be &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;different from originally loaded tensor. Please refrain &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;from modifying the file while the run is in progress.&quot;</span>
-    <span class="p">)</span>
-</code></pre></div>
-<h3 id="comment-out-the-section-if-modified_time-self_last_modified">Comment out the section <code>if modified_time &gt; self._last_modified</code></h3>
-<div class="highlight"><pre><span></span><code> <span class="c1">#if modified_time &gt; self._last_modified:</span>
- <span class="c1">#    raise RuntimeError(</span>
- <span class="c1">#        f&quot;Attempting to materialize deferred tensor with key &quot;</span>
- <span class="c1">#       f&quot;\&quot;{self._key}\&quot; from file {self._filepath}, but the file has &quot;</span>
- <span class="c1">#        f&quot;since been modified. The loaded tensor value may be &quot;</span>
- <span class="c1">#        f&quot;different from originally loaded tensor. Please refrain &quot;</span>
- <span class="c1">#        f&quot;from modifying the file while the run is in progress.&quot;</span>
-        <span class="c1">#    )</span>
-</code></pre></div>
-<h3 id="navigate-to-line-774">Navigate to line 774</h3>
-<div class="highlight"><pre><span></span><code>:774
-</code></pre></div>
-<p>The section should look like this:</p>
-<div class="highlight"><pre><span></span><code>   <span class="k">if</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_mtime_ns</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat</span><span class="o">.</span><span class="n">st_mtime_ns</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Attempting to </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> deferred tensor with key &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> from file </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="si">}</span><span class="s2">, but the file has &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;since been modified. The loaded tensor value may be &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;different from originally loaded tensor. Please refrain &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;from modifying the file while the run is in progress.&quot;</span>
-       <span class="p">)</span>
-</code></pre></div>
-<h3 id="comment-out-the-section-if-statst_mtime_ns-self_statst_mtime_ns">Comment out the section <code>if stat.st_mtime_ns &gt; self._stat.st_mtime_ns</code></h3>
-<div class="highlight"><pre><span></span><code>   <span class="c1">#if stat.st_mtime_ns &gt; self._stat.st_mtime_ns:</span>
-   <span class="c1">#     raise RuntimeError(</span>
-   <span class="c1">#         f&quot;Attempting to {msg} deferred tensor with key &quot;</span>
-   <span class="c1">#         f&quot;\&quot;{self._key}\&quot; from file {self._filepath}, but the file has &quot;</span>
-   <span class="c1">#         f&quot;since been modified. The loaded tensor value may be &quot;</span>
-   <span class="c1">#         f&quot;different from originally loaded tensor. Please refrain &quot;</span>
-   <span class="c1">#         f&quot;from modifying the file while the run is in progress.&quot;</span>
-   <span class="c1">#    )</span>
-</code></pre></div>
-<h3 id="save-the-file">Save the file</h3>
-<h3 id="run-jobs-as-per-existing-documentation">Run jobs as per existing documentation</h3>
-<h2 id="paths-pythonpath-and-mount_dirs">Paths, PYTHONPATH and mount_dirs</h2>
-<p>There can be some confusion over the correct use of the parameters supplied to the run.py script. There is a helpful explanation page from Cerebras which explains these parameters and how they should be used. <a href="https://docs.cerebras.net/en/latest/wsc/getting-started/mount_dir.html?highlight=mount#python-paths-and-mount-directories">Python, paths and mount directories.</a></p>
+<h1 id="login">Login</h1>
+<p>The hostname for SSH access to the system is <code>ultra2.eidf.ac.uk</code></p>
+<h2 id="access-credentials">Access credentials</h2>
+<p>To access Ultra2, you need to use two credentials: your SSH key pair protected by a passphrase <strong>and</strong> a Time-based one-time password (TOTP).</p>
+<h3 id="ssh-key">SSH Key</h3>
+<p>You must upload the public part of your SSH key pair to the SAFE by following the <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">instructions from the SAFE documentation</a></p>
+<h3 id="time-based-one-time-password-totp">Time-based one-time password (TOTP)</h3>
+<p>You must set up your TOTP token by following the <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account">instructions from the SAFE documentation</a></p>
+<h3 id="ssh-login-example">SSH Login example</h3>
+<p>To login to Ultra2, you will need to use the SSH Key and TOTP token as noted above.
+With the appropriate key loaded<br><code>ssh &lt;username&gt;@ultra2.eidf.ac.uk</code> will then prompt you, roughly once per day, for your TOTP code.</p>
 
 
 
