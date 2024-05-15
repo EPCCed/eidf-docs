@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Ultra2 system (also called the SDF-CS1) system, is a single logical CPU system based at EPCC. It is suitable for running jobs which require large volumes of non-distributed memory (as opposed to a cluster).
+Ultra2 is a single logical CPU system based at EPCC. It is suitable for running jobs which require large volumes of non-distributed memory (as opposed to a cluster).
 
 ## Specifications
 
@@ -52,34 +52,11 @@ Using a terminal (the command line), set up a key pair that contains your e-mail
 
 ### Upload public part of key pair to SAFE
 
-You should now upload the public part of your SSH key pair to the SAFE by following the instructions at:
-
-[Login to SAFE](https://safe.epcc.ed.ac.uk/). Then:
-
- 1. Go to the Menu *Login accounts* and select the Ultra2 account you want to add the SSH key to
- 1. On the subsequent Login account details page click the *Add Credential* button
- 1. Select *SSH public key* as the Credential Type and click *Next*
- 1. Either copy and paste the public part of your SSH key into the *SSH Public key* box or use the button to select the public key file on your computer.
- 1. Click *Add* to associate the public SSH key part with your account
-
-Once you have done this, your SSH key will be added to your Ultra2 account.
+You should now upload the public part of your SSH key pair to the SAFE by following the [instructions from the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
 
 ### Time-based one-time password (TOTP)
 
 Remember, you will need to use both an SSH key and Time-based one-time password to log into Ultra2 so you will also need to [set up your TOTP](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account) before you can log into Ultra2.
-
----
-!!! note "First Login"
-    When you **first** log into Ultra2, you will be prompted to change your initial password. This is a three step process:
-
-     1. When promoted to enter your *password*: Enter the password which you [retrieve from SAFE](https://epcced.github.io/safe-docs/safe-for-users/#how-can-i-pick-up-my-password-for-the-service-machine)
-     1. When prompted to enter your new password: type in a new password
-     1. When prompted to re-enter the new password: re-enter the new password
-
-    Your password has now been changed
-
-    You will **not** use your password when logging on to Ultra2 after the initial logon.
----
 
 ### SSH Login
 
