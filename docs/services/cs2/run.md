@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Cerebras CS-2 Wafer-scale cluster (WSC) uses the Ultra2 system as a host system which login services, access to files, the SLURM batch system etc.
+The Cerebras CS-2 Wafer-scale cluster (WSC) uses the Ultra2 system as a host system which provides login services, access to files, the SLURM batch system etc.
 
 ## Connecting to the cluster
 
