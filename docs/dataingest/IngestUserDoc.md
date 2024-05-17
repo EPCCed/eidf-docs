@@ -1,10 +1,10 @@
 # Data Ingest
 
-The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Ready Data** (ARD) for the lifetime of the EIDF service. ARD is data that is ready, i.e. has been cleaned, is in a suitable format, etc., for your end users to use out of the box. This documentation describes the data ingestion process.
+The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Ready Data** (ARD) for the lifetime of the EIDF service. ARD is data that is ready, i.e. has been cleaned, is in a suitable format, etc., for your end users to use out of the box. This documentation describes the data ingest process.
 
 ## Overview
 
-The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue, a CKAN instance, which makes your data discoverable and available, using S3 links, to your community as well as other world-wide interested parties world. The ARD is also available to EIDF Data Science Cloud users. 
+The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue, a CKAN instance - see [using CKAN as the EIDF Data Catalogue](eidf-ckan.md) if you want to know more, which makes your data discoverable and available, using S3 links, to your community as well as other world-wide interested parties world. The ARD is also available to EIDF Data Science Cloud users. 
 
 In the following, a dataset is a collection of data resources (e.g. files), together with a description and other information about the data (i.e. metadata).
 
@@ -58,6 +58,7 @@ You will need to create an ingest dataset for each dataset that you wish to publ
    * **Link**: a link describing your group/contact information.
    * **Contact email**: a contact email to answer queries about your data set (this is optional).
    
+
 Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 ### Pre-processing container
