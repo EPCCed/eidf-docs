@@ -157,11 +157,11 @@ When you the upload is complete and all files are present, open the dataset page
 
 * Check progress in the list of processing runs on the dataset page (reload the page to refresh the list or turn on auto-refresh).
 
-If you feel that the minimal metadata suffices you can add your own fields BUT the above items must be present or you can use the CKAN interface to supplement the metadata. To do so, go to the EIDF data catalogue at:
+If you feel that the minimal metadata does not suffice for you dataset you can add your own fields. To do so, go to the EIDF data catalogue at:
 
 * https://projects.eidf.ac.uk/ckan/
 
-On the top right you will see a `Log in` link. Click on that then use your `SAFE Login` , then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Please do not try to edit the dataset URL or delete the dataset or things will break. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
+Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
 ## Testing your s3 links and downloading
 
