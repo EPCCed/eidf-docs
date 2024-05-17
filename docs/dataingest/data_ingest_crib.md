@@ -49,7 +49,7 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
 
 * Create a Dataset by pressing on the `New` button. You will need to provide the following minimal bits of information:
   * **Name**: The name for your dataset.
-  * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can costumise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
+  * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can customise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
   * **Description**: a description for your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
