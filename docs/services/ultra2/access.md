@@ -1,5 +1,11 @@
-# Ultra2 Large Memory System
+# Overview
+
+Ultra2 is a single logical CPU system based at EPCC. It is suitable for running jobs which require large volumes of non-distributed memory (as opposed to a cluster).
+
+## Specifications
+
+The system is a HPE SuperDome Flex containing 576 individual cores in a SMT-1 arrangement (1 thread per core). The system has 18TB of memory available to users. Home directories are network mounted from the EIDF e1000 Lustre filesystem, although some local NVMe storage is available for temporary file storage during runs.
 
 ## Getting Access
 
-Access to the Ultra2 system (also referred to as the SDF-CS1 system) is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.
+Access to Ultra2 is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.
