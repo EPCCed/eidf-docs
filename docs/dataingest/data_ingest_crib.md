@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.9**
+**Version 0.3.10**
 
 ## Applying for a project
 
@@ -54,29 +54,28 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
   
+Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3.
 
-Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3. You can supplement your Dataset with additional metadata through the CKAN interface once you login using your SAFE credentials.
+You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 bucket where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 To upload your data you will need to:
 
-* Create a user account in the portal and notify us with the id of the user you created (to add access permissions for the *Managed File Transfer* (MFT), a manual process at the moment).
+* Create a user account in the portal.
   * Go into your project on the EIDF portal
   * Scroll down to the project accounts segment
   * Manage -> Create User Account
   * Submit
 
-Once you have created the user you can click on their linked username and assign them to a VM if you have created one and give them sudo privileges if appropriate. Note that if you did not apply for a VM when you submitted your project application you will not be able to do this and will get an error. If you would like to create a VM gest in touch with us. You can use this account to login to the MFT. You should now be able to click on a link to your dataset name to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 bucket where your data will live. Once you have uploaded the data you can `Trigger [the] Ingest`.
+Once you have created the user you can click on their linked username and give them access to the managed file transfer service (MFT) by checking the box labelled "eidf-MFT". After setting a password they can use this account to login to the MFT.
 
-However, you will not be able to upload your data/metadata until you are notified. Currently a manual step is involved which has to be done for you to upload your data and metadata using the MFT into the folder with the name you used for your dataset (which will start with the project code). The metadata is important otherwise the data ingest process will fail. 
+### Preprocessing uploaded data (optional)
 
 If your data is not already in an *Analytics Ready Data* (ARD) format, the format which your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
 
 * A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the meadata (more information on the requirements below).
 * A description of the process.
 
-Once you have been notfied to upload the ARD and metadata, or the data your container will act on, go to:
-
-* [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) - you can only access this service within EdLan. Log in with the user account that you created before (remember to set a password).
+### Data format
 
 The metadata file, `resources.json`, must be organised as follows:
 * Data file name (any file names are given relative to the files that would be found in the `data` subdirectory, see below for examples)
@@ -125,11 +124,13 @@ It is also possible to add an entire directory tree as a single metadata resourc
 ```
 This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir`, you do not have to use the forward slash to indicate a directory.
 
-Once you have your `resources.json` and your data ready, you now have a choice of how to do the upload. You can upload via the web interface at https://eidf-mft.epcc.ed.ac.uk or you can use sftp. Note that if your data is hosted on Cirrus or ARCHER2, you will have to use sftp.
+### Upload
+
+Once you have your `resources.json` and your data ready, you now have a choice of how to do the upload. You can upload via the web interface at [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) or you can use sftp. Note that if your data is hosted on Cirrus or ARCHER2, you will have to use sftp.
 
 To upload via the web interface:
 
-* Login to your account at https://eidf-mft.epcc.ed.ac.uk/
+* Login to your account at [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/). You can only access this service within EdLan. Log in with the user account that you created before (remember to set a password).
 * Navigate to the directory for your dataset `eidfnnn-your-data-set-name` and place your metadata and data there
 
 To upload using `sftp`:
@@ -147,6 +148,8 @@ To upload using `sftp`:
    ...
    sftp> [further lcd, put, mkdir, mput commands]
    ```
+
+### Start ingest
 
 When you the upload is complete and all files are present, open the dataset page in the EIDF Portal and press the `Trigger Ingest` button.
 
