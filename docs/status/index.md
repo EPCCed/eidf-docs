@@ -9,7 +9,7 @@ The table below represents the broad status of each EIDF service.
 | VM VDI Gateway | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/vdigateway.json) |
 | Virtual Desktops | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/virtualmachines.json) |
 | Cerebras CS-2 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/cerebras.json) |
-| SuperDome Flex (SDF-CS1 / Ultra2) | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/superdome.json) |
+| Ultra2 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/superdome.json) |
 
 ## Maintenance Sessions
 

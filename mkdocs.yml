@@ -58,7 +58,8 @@ nav:
       - "Get Access": services/cs2/access.md
       - "Running codes": services/cs2/run.md
     - "Ultra2":
-      - "Get Access": services/ultra2/access.md
+      - "Overview": services/ultra2/access.md
+      - "Connect": services/ultra2/connect.md
       - "Running codes": services/ultra2/run.md
     - "GPU Service":
       - "Overview": services/gpuservice/index.md
