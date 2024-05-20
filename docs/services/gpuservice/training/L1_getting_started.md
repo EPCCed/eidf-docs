@@ -18,6 +18,12 @@ In order to follow this tutorial on the EIDF GPU Cluster you will need to have:
 
     Project Leads should use the 'Download kubeconfig' button on the EIDF Portal to complete this step to ensure the correct kubeconfig file and kubectl version is installed.
 
+    Addtionally, Kubectl can be installed manually by running the following commands:-
+    
+    `curl -LO https://dl.k8s.io/release/v1.25.3/bin/linux/amd64/kubectl<https://dl.k8s.io/release/v1.25.3/bin/linux/amd64/kubectl>`
+    `sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl`
+
+
 ## Introduction
 
 Kubernetes (K8s) is a container orchestration system, originally developed by Google, for the deployment, scaling, and management of containerised applications.
