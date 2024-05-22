@@ -27,7 +27,5 @@ erDiagram
 
 **Resources** constitues the granularity at which data files can be accessed or downloaded. A resource must contain at least a minimum set of metadata about the data file, and a link to download the data file.
 
-The EIDF Data Catalogue is located at: 
-
-* https://projects.eidf.ac.uk/ckan/. 
+The EIDF Data Catalogue is located at: https://projects.eidf.ac.uk/ckan/. 
 
