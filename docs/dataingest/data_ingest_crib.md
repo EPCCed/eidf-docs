@@ -2,13 +2,15 @@
 
 **Version 0.3.10**
 
+This document is evolving relatively quickly so keep your eye on the version number to see if it has changed since you last looked at it.
+
 ## Applying for a project
 
-If you do not already have an EPCC SAFE account you will need to create one first:
+If you do not already have an EPCC SAFE account you will need to create one before proceeding:
 
 * https://safe.epcc.ed.ac.uk/
 
-Once you have an account on SAFE go to the EIDF portal and use your SAFE credentials to login.
+Once you have a SAFE account, go to the EIDF portal and use your SAFE credentials to login.
 
 * https://portal.eidf.ac.uk/
 
@@ -17,7 +19,7 @@ First apply for an EIDF project.
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
 
-Currently, this is orientated towards the compute resources as that is what the EIDF has been mainly used for up to now. Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project is approved or rejected - someone may be in touch to clarify points in your application.
+Currently, this process is orientated towards the EIDF compute resources which is where the focus has mainly been up to now. Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project is approved or rejected - someone may be in touch to clarify points in your application.
 
 ## Customising your entry in the EIDF Data Catalogue
 
@@ -54,6 +56,7 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
   
+
 Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3.
 
 You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 bucket where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
