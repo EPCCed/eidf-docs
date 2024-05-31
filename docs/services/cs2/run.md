@@ -52,7 +52,7 @@ python3.8 -m venv venv_cerebras_pt
 ```bash
 source venv_cerebras_pt/bin/activate
 pip install --upgrade pip
-pip install cerebras_pytorch==2.1.1
+pip install cerebras_pytorch==2.2.1
 ```
 
 ### Validate the setup
