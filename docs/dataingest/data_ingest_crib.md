@@ -35,7 +35,7 @@ Login using your SAFE credentials - there is a "Log in" on the top, towards the 
 * Do NOT use the CKAN interface to create Datasets or resources (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset/Resource records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface. Contact us if would like anything removed.
 * The CKAN data catalogue URL will change at some future point to https://catalogue.eidf.ac.uk.
 
-There is some additional proto documentation about the data ingest process at:
+There is some additional early documentation about the data ingest process at:
 
 * https://github.com/EPCCed/eidf-docs/tree/data_ingest/docs/dataingest
 
@@ -69,7 +69,7 @@ To upload your data you will need to:
   * Manage -> Create User Account
   * Submit
 
-Once you have created the user you can click on their linked username and give them access to the managed file transfer service (MFT) by checking the box labelled "eidf-MFT". After setting a password they can use this account to login to the MFT.
+Once you have created the user you can click on their linked username and give them access to the *Managed File Transfer* (MFT) service by checking the box labelled "eidf-MFT". After setting a password you can use this account to login to the MFT.
 
 ### Preprocessing uploaded data (optional)
 
