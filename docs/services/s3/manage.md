@@ -12,11 +12,13 @@ An object store allocation for a project may be requested by contacting the EIDF
 Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
 and jump to "S3 Allocation" on the project page to manage access keys and accounts.
 
+![Portal-S3-Access-Keys](/eidf-docs/images/access/portal-s3-accounts.png){: class="border-img"}
+
 S3 buckets and objects are owned by an account.
 Each account has a quota for storage and the number of buckets that it can create.
-The sum of storage quotas of all accounts is limited by the total quota of the project object store allocation.
+The sum of all account quotas is limited by the total storage quota of the project object store allocation shown at the top.
 
-An account with the minimum storage quota (1kB) and zero buckets is effectively read only
+An account with the minimum storage quota (1B) and zero buckets is effectively read only
 as it may not create new buckets and so cannot upload files.
 
 To create an account:
@@ -26,9 +28,14 @@ To create an account:
 1. Enter:
     * an account name (letters, numbers and underscore `_` only)
     * a description
-    * a quota: must be at least 1kB, a number with a unit B, kB, MB, GB, or TB.
+    * a quota: a number with a unit B, kB, MiB (MB), GiB (GB), or TiB (TB), the minimum is 1B (1 Byte).
     * the number of buckets that the account may create
 1. Click "Create Account"
+
+This will not allow you to create an account with the quota greater than the available storage quota of the project.
+
+It may take a little while for the account to become available.
+Refresh the project page to update the list of accounts.
 
 ## Access keys
 
@@ -47,7 +54,7 @@ Refresh the project page to update the list of keys.
 You can control which project members are allowed to view an access key and secret in the EIDF Portal or the SAFE.
 Project managers and the PI have access to all S3 accounts and associated access keys.
 
-To grant view permissions for an access key:
+To grant view permissions for an access key to a project member:
 
 1. Click on the "Edit" icon next to the key.
 1. Select the project members that will have view permissions for this access key.
