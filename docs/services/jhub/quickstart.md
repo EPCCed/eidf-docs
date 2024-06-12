@@ -2,10 +2,11 @@
 
 ## Accessing
 
-Access the EIDF Notebooks in your browser by opening [https://notebooks.eidf.ac.uk/](https://notebooks.eidf.ac.uk/).
-Click on "Login with SAFE". You will be redirected to the SAFE login page.
+Access the EIDF Notebooks in your browser by opening [https://notebooks.eidf.ac.uk/](https://notebooks.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF Notebook Service.
 
 ![JupyterHub Login Page](../../images/access/jupyterhub-login.png)
+
+Click on "Sign In with SAFE". You will be redirected to the SAFE login page.
 
 Log into the SAFE if you're not logged in already.
 If you have more than one account you will be presented with the form "Approve Token" and a choice of user accounts for the Notebook Service.
@@ -15,7 +16,7 @@ Select the account you would like to use from the dropdown "User Account" at the
 
 ![JupyterHub Login Page](../../images/access/jupyterhub-select-server.png)
 
-Select the environment that you would like to use for your notebooks and press "Start". Now your notebook container will be started. This may take a little while.
+Select the environment that you would like to use for your notebooks and press "Start". Now your notebook container will be launched. This may take a little while.
 
 ![JupyterHub Login Page](../../images/access/jupyterhub-startup.png)
 
@@ -27,7 +28,7 @@ You will be presented with the JupyterLab dashboard view when the container has 
 
 The availability of launchers depends on the environment that you selected.
 
-For example launch a Python 3 notebook or an R notebook. You can also launch a terminal session.
+For example launch a Python 3 notebook or an R notebook from the dashboard. You can also launch a terminal session.
 
 ## Python packages
 
@@ -49,10 +50,10 @@ pip install <package> --user
 
 ## Data
 
-There is a project space mounted in `/project_data`. Here you can exchange data with other members of your project who are using the Notebook Service or a DSC VM. Please contact the helpdesk if you would like to mount this project space on one of your VMs.
+There is a project space mounted in `/project_data`. Only project accounts have permissions to view and write to their project folder in this space. Here you can also share data with DSC VMs in your project. Please contact the helpdesk if you would like to mount this project space to one of your VMs. Data placed in `/project_data/shared` is shared with other notebook users outside your project.
 
 ## Limits
 
 Note that there are limited amounts of memory and cores available per user. Users do not have sudo permissions in the containers so you cannot install any system packages.
 
-Currently there is no access to GPUs. You can submit jobs to the EIDF GPU Service but your Jupyter notebooks do not have interactive access to a GPU.
+Currently there is no access to GPUs. You can submit jobs to the EIDF GPU Service but you cannot run your notebooks on a GPU.
