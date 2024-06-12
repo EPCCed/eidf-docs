@@ -6,7 +6,17 @@ Note that some S3 client libraries do not accept bucket names in this format.
 
 ## AWS CLI
 
-The following examples use the AWS CLI (command line interface) to connect to EIDF S3.
+The following examples use the AWS Command Line Interface (AWS CLI) to connect to EIDF S3.
+
+### Setup
+
+Install with pip
+
+```bash
+python -m pip install awscli
+```
+
+Installers are available for various platforms if you are not using Python: see [https://aws.amazon.com/cli/](https://aws.amazon.com/cli/)
 
 ### Configure
 
@@ -70,7 +80,7 @@ The following examples use the Python library `boto3`.
 Installation:
 
 ```bash
-pip install boto3
+python -m pip install boto3
 ```
 
 ### Usage
