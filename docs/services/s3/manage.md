@@ -1,9 +1,8 @@
 # Manage EIDF S3 access
 
-
 Access keys and accounts for the object store are managed by project managers via the [EIDF Portal](https://portal.eidf.ac.uk/).
 
-## Request an allocation
+## Request an allocation
 
 An object store allocation for a project may be requested by contacting the EIDF helpdesk.
 
@@ -65,7 +64,6 @@ It can take a little while for the permissions update to complete.
 !!! note
     Anyone who knows an access key and secret will be able to perform the associated activities via the S3 API regardless of the view permissions.
 
-
-## Delete an access key
+## Delete an access key
 
 Click on the "Bin" icon next to a key and press "Delete" on the form.

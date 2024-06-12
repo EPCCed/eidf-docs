@@ -8,19 +8,21 @@ Note that some S3 client libraries do not accept bucket names in this format.
 
 The following examples use the AWS CLI (command line interface) to connect to EIDF S3.
 
-### Setup
+### Configure
 
 Set your access key and secret as environment variables or configure a credentials file at `~/.aws/credentials` on Linux or `%USERPROFILE%\.aws\credentials` on Windows.
 
 Credentials file:
-```
+
+```ini
 [default]
 aws_access_key_id=<key>
 aws_secret_access_key=<secret>
 ```
 
 Environment variables:
-```
+
+```bash
 export AWS_ACCESS_KEY_ID=<key>
 export AWS_SECRET_ACCESS_KEY=<secret>
 ```
@@ -48,11 +50,13 @@ aws s3 cp <filename> s3://<bucketname> --endpoint-url https://s3.eidf.ac.uk
 ```
 
 Check that the file above was uploaded successfully by listing objects in the bucket:
+
 ```bash
-aws s3 ls s3://<bucketname> --endpoint-url https://s3.eidf.ac.uk            
+aws s3 ls s3://<bucketname> --endpoint-url https://s3.eidf.ac.uk
 ```
 
 To read from a public bucket without providing credentials, add the option `--no-sign-request` to the call:
+
 ```bash
 aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url https://s3.eidf.ac.uk
 ```
@@ -61,10 +65,11 @@ aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url https://s3.eidf.ac.
 
 The following examples use the Python library `boto3`.
 
-### Setup
+### Install
 
 Installation:
-```
+
+```bash
 pip install boto3
 ```
 
@@ -72,7 +77,7 @@ pip install boto3
 
 By default, the `boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid, so we have to switch off the bucket name validation:
 
-```
+```python
 import boto3
 from botocore.handlers import validate_bucket_name
 
@@ -81,13 +86,15 @@ s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_buck
 ```
 
 List buckets:
-```
+
+```python
 for bucket in s3.buckets.all():
     print(f'{bucket.name}')
 ```
 
 List objects in a bucket:
-```
+
+```python
 project_code = 'eidfXXX'
 bucketname = 'somebucket'
 bucket = s3.Bucket(f'{project_code}:{bucket_name}')
@@ -96,7 +103,8 @@ for obj in bucket.objects.all():
 ```
 
 Upload a file to a bucket:
-```
+
+```python
 bucket = s3.Bucket(f'{project_code}:{bucket_name}')
 bucket.upload_file('./somedata.csv', 'somedata.csv')
 ```
@@ -106,7 +114,7 @@ bucket.upload_file('./somedata.csv', 'somedata.csv')
 Bucket permissions use IAM policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.
 For example to grant permissions to put, get, delete and list objects in bucket `eidfXX1:somebucket` to the account `account2` in project `eidfXX2`:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -134,7 +142,8 @@ For example to grant permissions to put, get, delete and list objects in bucket 
 ```
 
 You can chain multiple policies in the statement array:
-```
+
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -155,7 +164,8 @@ You can chain multiple policies in the statement array:
 ```
 
 Give public read access to a bucket (listing and downloading files):
-```
+
+```json
 {
  "Version": "2012-10-17",
  "Statement": [
@@ -182,14 +192,16 @@ Give public read access to a bucket (listing and downloading files):
 ### Set policy using AWS CLI
 
 Grant permissions stored in an IAM policy file:
-```
+
+```bash
 aws put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
 ```
 
 ### Set policy using Python `boto3`
 
 Grant permissions to another account: In this example we grant `ListBucket` and `GetObject` permissions to account `account1` in project `eidfXX1` and `account2` in project `eidfXX2`.
-```
+
+```python
 import json
 
 bucket_policy = {

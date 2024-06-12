@@ -19,8 +19,8 @@ For each account, the quota and the number of buckets that it is permitted to cr
 Click on "Secret" to view the access secret.
 You will need the access key, the corresponding access secret and the endpoint `https://s3.eidf.ac.uk` to connect to the EIDF S3 Service with an S3 client.
 
-
 ## Further information
+
 [Access management](./manage.md): Project management guide to managing accounts and access permissions for your S3 allocation.
 
 [Tutorial](./tutorial.md): Examples using EIDF S3
