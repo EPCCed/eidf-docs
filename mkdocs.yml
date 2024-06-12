@@ -75,7 +75,7 @@ nav:
          - "Profiling": services/graphcore/training/L3_profiling.md
          - "Other Frameworks": services/graphcore/training/L4_other_frameworks.md
       - "Graphcore FAQ": services/graphcore/faq.md
-    - "Managed JupyterHub":
+    - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
   - "Data Services":
