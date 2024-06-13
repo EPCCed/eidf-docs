@@ -8,21 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/jhub/docs/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/s3/manage/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../tutorial/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
     
     
       
-        <title>Service Documentation - EIDF User Documentation</title>
+        <title>Manage - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.732c4fb1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-documentation" class="md-skip">
+        <a href="#manage-eidf-s3-access" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Documentation
+              Manage
             
           </span>
         </div>
@@ -144,7 +148,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -1359,36 +1363,231 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Data Management Services
+    Data Services
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Data Management Services
+            Data Services
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    S3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            S3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Manage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Manage
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#request-an-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request an allocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-store-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object store accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access keys
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access key permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-access-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an access key
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
             
               
                 
@@ -1404,10 +1603,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1418,8 +1617,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             Data Catalogue
           </label>
@@ -1762,154 +1961,6 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Bespoke Services
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            Bespoke Services
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Ed-DaSH
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_1">
-            <span class="md-nav__icon md-icon"></span>
-            Ed-DaSH
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../bespoke/eddash/workshops/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Workshop Notebook Service
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../bespoke/eddash/safe-registration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Workshop Virtual Machines
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../bespoke/eddash/jhub-git/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    JupyterHub Notebook Service Access
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../../known-issues/" class="md-nav__link">
         
@@ -1971,9 +2022,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#online-support" class="md-nav__link">
+  <a href="#request-an-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Online support
+      Request an allocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-store-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object store accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access keys
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access key permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-access-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an access key
     </span>
   </a>
   
@@ -1997,8 +2084,62 @@
   
 
 
-<h1 id="service-documentation">Service Documentation</h1>
-<h2 id="online-support">Online support</h2>
+<h1 id="manage-eidf-s3-access">Manage EIDF S3 access</h1>
+<p>Access keys and accounts for the object store are managed by project managers via the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>.</p>
+<h2 id="request-an-allocation">Request an allocation</h2>
+<p>An object store allocation for a project may be requested by contacting the EIDF helpdesk.</p>
+<h2 id="object-store-accounts">Object store accounts</h2>
+<p>Select your project at <a href="https://portal.eidf.ac.uk/project/">https://portal.eidf.ac.uk/project/</a>
+and jump to "S3 Allocation" on the project page to manage access keys and accounts.</p>
+<p><img alt="Portal-S3-Access-Keys" class="border-img" src="../../../images/access/portal-s3-accounts.png" /></p>
+<p>S3 buckets and objects are owned by an account.
+Each account has a quota for storage and the number of buckets that it can create.
+The sum of all account quotas is limited by the total storage quota of the project object store allocation shown at the top.</p>
+<p>An account with the minimum storage quota (1B) and zero buckets is effectively read only
+as it may not create new buckets and so cannot upload files.</p>
+<p>To create an account:</p>
+<ol>
+<li>On the project page scroll to "S3 Allocation"</li>
+<li>Click "Add Account"</li>
+<li>Enter:<ul>
+<li>an account name (letters, numbers and underscore <code>_</code> only)</li>
+<li>a description</li>
+<li>a quota: a number with a unit B, kB, MiB (MB), GiB (GB), or TiB (TB), the minimum is 1B (1 Byte).</li>
+<li>the number of buckets that the account may create</li>
+</ul>
+</li>
+<li>Click "Create Account"</li>
+</ol>
+<p>You will not be allowed to create an account with the quota greater than the available storage quota of the project.</p>
+<p>It may take a little while for the account to become available.
+Refresh the project page to update the list of accounts.</p>
+<h2 id="access-keys">Access keys</h2>
+<p>To use S3 (listing or creating buckets, listing objects or uploading and downloading files) you need an access key and a secret.
+An account can own any number of access keys.
+These keys share the account's quota and have access to the same buckets.</p>
+<p>To create an access key:</p>
+<ol>
+<li>Select an account and click "Add Key"</li>
+<li>Click "Create Access Key"</li>
+</ol>
+<p>It can take a little while for the access keys to become available.
+Refresh the project page to update the list of keys.</p>
+<h2 id="access-key-permissions">Access key permissions</h2>
+<p>You can control which project members are allowed to view an access key and secret in the EIDF Portal or the SAFE.
+Project managers and the PI have access to all S3 accounts and can view associated access keys and secrets in the project management view.</p>
+<p>To grant view permissions for an access key to a project member:</p>
+<ol>
+<li>Click on the "Edit" icon next to the key.</li>
+<li>Select the project members that will have view permissions for this access key.</li>
+<li>Press "Update Permissions"</li>
+</ol>
+<p>It can take a little while for the permissions update to complete.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Anyone who knows an access key and secret will be able to perform the associated activities via the S3 API regardless of the view permissions.</p>
+</div>
+<h2 id="delete-an-access-key">Delete an access key</h2>
+<p>Click on the "Bin" icon next to a key and press "Delete" on the form.</p>
 
 
 
@@ -2048,7 +2189,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   </body>
