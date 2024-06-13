@@ -2,18 +2,20 @@
 
 ## Computing Services
 
-[Data Science Virtual Desktops](./virtualmachines/)
+[Data Science Virtual Desktops](./virtualmachines/index.md)
 
-[Managed File Transfer](./mft/)
+[Managed File Transfer](./mft/index.md)
 
-[Managed JupyterHub](./jhub/)
+[Notebooks](./jhub/index.md)
 
-[Cerebras CS-2](./cs2/)
+[Cerebras CS-2](./cs2/index.md)
 
-[Ultra2](./ultra2/)
+[Ultra2](./ultra2/index.md)
 
-[Graphcore Bow Pod64](./graphcore/)
+[Graphcore Bow Pod64](./graphcore/index.md)
 
-## Data Management Services
+## Data Services
 
-[Data Catalogue](./datacatalogue/)
+[S3](./s3/index.md)
+
+[Data Catalogue](./datacatalogue/index.md)
