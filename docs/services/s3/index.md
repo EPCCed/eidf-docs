@@ -13,7 +13,7 @@ Project leads can request an object store allocation through a request to the EI
 Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/).
 Your access keys are displayed in the table at the top of the page.
 
-![Portal-S3-Access-Keys](/eidf-docs/images/access/portal-s3-keys.png){: class="border-img"}
+![Portal-S3-Access-Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
 For each account, the quota and the number of buckets that it is permitted to create is shown, as well as the access keys.
 Click on "Secret" to view the access secret.

@@ -1,3 +1,0 @@
-# Service Documentation
-
-## Online support

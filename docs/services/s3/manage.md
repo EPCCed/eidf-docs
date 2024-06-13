@@ -11,7 +11,7 @@ An object store allocation for a project may be requested by contacting the EIDF
 Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
 and jump to "S3 Allocation" on the project page to manage access keys and accounts.
 
-![Portal-S3-Access-Keys](/eidf-docs/images/access/portal-s3-accounts.png){: class="border-img"}
+![Portal-S3-Access-Keys](../../images/access/portal-s3-accounts.png){: class="border-img"}
 
 S3 buckets and objects are owned by an account.
 Each account has a quota for storage and the number of buckets that it can create.
@@ -31,14 +31,16 @@ To create an account:
     * the number of buckets that the account may create
 1. Click "Create Account"
 
-This will not allow you to create an account with the quota greater than the available storage quota of the project.
+You will not be allowed to create an account with the quota greater than the available storage quota of the project.
 
 It may take a little while for the account to become available.
 Refresh the project page to update the list of accounts.
 
 ## Access keys
 
-An account can have any number of access keys. These keys share the account's quota and have access to the same buckets.
+To use S3 (listing or creating buckets, listing objects or uploading and downloading files) you need an access key and a secret.
+An account can own any number of access keys.
+These keys share the account's quota and have access to the same buckets.
 
 To create an access key:
 
@@ -51,7 +53,7 @@ Refresh the project page to update the list of keys.
 ## Access key permissions
 
 You can control which project members are allowed to view an access key and secret in the EIDF Portal or the SAFE.
-Project managers and the PI have access to all S3 accounts and associated access keys.
+Project managers and the PI have access to all S3 accounts and can view associated access keys and secrets in the project management view.
 
 To grant view permissions for an access key to a project member:
 
