@@ -1,3 +1,0 @@
-# Tutorial
-
-## First Query

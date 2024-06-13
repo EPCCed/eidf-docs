@@ -1,5 +1,7 @@
 # Ultra2 Large Memory System
 
-[Overview](./access/)
-[Connect](./connect/)
-[Running jobs](./run/)
+[Overview](./access.md)
+
+[Connect](./connect.md)
+
+[Running jobs](./run.md)

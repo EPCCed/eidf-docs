@@ -1,5 +1,5 @@
 # Cerebras CS-2
 
-[Get Access](./access/)
+[Get Access](./access.md)
 
-[Running codes](./run/)
+[Running codes](./run.md)
