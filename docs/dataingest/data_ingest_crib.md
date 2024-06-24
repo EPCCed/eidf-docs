@@ -186,7 +186,7 @@ You will need the quotes or may have to explicitly escape certain characters if 
 
 As a concrete example if we look at an existing dataset in the EIDF Data Catalogue:
 
-* https://projects.eidf.ac.uk/ckan/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps
+* https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps
 
 Looking at the `Index shards directory` resource record we get the access/download URL:
 
