@@ -2,7 +2,7 @@
 
 ## Accessing
 
-Access the EIDF Notebooks in your browser by opening [https://notebooks.eidf.ac.uk/](https://notebooks.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF Notebook Service.
+Access the EIDF Notebooks in your browser by opening [https://notebook.eidf.ac.uk/](https://notebook.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF Notebook Service.
 
 ![JupyterHub Login Page](../../images/access/jupyterhub-login.png)
 
@@ -50,7 +50,12 @@ pip install <package> --user
 
 ## Data
 
-There is a project space mounted in `/project_data`. Only project accounts have permissions to view and write to their project folder in this space. Here you can also share data with DSC VMs in your project. Please contact the helpdesk if you would like to mount this project space to one of your VMs. Data placed in `/project_data/shared` is shared with other notebook users outside your project.
+There is a project space mounted in `/project_data`. Only project accounts have permissions to view and write to their project folder in this space.
+Here you can share data with other notebook users in your project.
+Data placed in `/project_data/shared` is shared with other notebook users outside your project.
+
+You can also share data with DSC VMs in your project.
+Please contact the helpdesk if you would like to mount this project space to one of your VMs.
 
 ## Limits
 

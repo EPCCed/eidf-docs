@@ -75,9 +75,9 @@ nav:
          - "Profiling": services/graphcore/training/L3_profiling.md
          - "Other Frameworks": services/graphcore/training/L4_other_frameworks.md
       - "Graphcore FAQ": services/graphcore/faq.md
-    # - "Notebooks":
-    #   - "Overview": services/jhub/index.md
-    #   - "Quickstart": services/jhub/quickstart.md
+    - "Notebooks":
+      - "Overview": services/jhub/index.md
+      - "Quickstart": services/jhub/quickstart.md
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md
