@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.10**
+**Version 0.3.11**
 
 This document is evolving relatively quickly so keep your eye on the version number to see if it has changed since you last looked at it.
 
@@ -25,15 +25,13 @@ Currently, this process is orientated towards the EIDF compute resources which i
 
 When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we are mapping an EIDF project to a CKAN organisation).
 
-* https://projects.eidf.ac.uk/ckan
+* https://catalogue.eidf.ac.uk/
 
 Login using your SAFE credentials - there is a "Log in" on the top, towards the right.
 
 **Note**
 
-* Currently, the above URL is only available on the EdLan network so you will need to be on EdLan or use the UoE VPN.
 * Do NOT use the CKAN interface to create Datasets or resources (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset/Resource records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface. Contact us if would like anything removed.
-* The CKAN data catalogue URL will change at some future point to https://catalogue.eidf.ac.uk.
 
 There is some additional early documentation about the data ingest process at:
 
@@ -162,7 +160,7 @@ When you the upload is complete and all files are present, open the dataset page
 
 If you feel that the minimal metadata does not suffice for you dataset you can add your own fields. To do so, go to the EIDF data catalogue at:
 
-* https://projects.eidf.ac.uk/ckan/
+* https://catalgoue.eidf.ac.uk/
 
 Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
