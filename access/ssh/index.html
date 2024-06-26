@@ -813,9 +813,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#first-password-setting-and-password-resets" class="md-nav__link">
+  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
     <span class="md-ellipsis">
-      First Password Setting and Password Resets
+      sudo, Password Setting and Password Resets
     </span>
   </a>
   
@@ -2335,9 +2335,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#first-password-setting-and-password-resets" class="md-nav__link">
+  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
     <span class="md-ellipsis">
-      First Password Setting and Password Resets
+      sudo, Password Setting and Password Resets
     </span>
   </a>
   
@@ -2454,10 +2454,6 @@ An MFA token will have to be set for each account you'd like to use to access th
 </li>
 </ol>
 <h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
-</div>
 <p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.</p>
 <p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:</p>
 <div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>/path/to/ssh-key
@@ -2488,10 +2484,6 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 <li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
 </ol>
 <h3 id="accessing-eidf-via-a-terminal">Accessing EIDF via a Terminal</h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If this is your first time connecting to EIDF using a new account, you have to set a password as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
-</div>
 <ol>
 <li>Open either Powershell or the Windows Terminal</li>
 <li>
@@ -2520,7 +2512,7 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 </ol>
 <p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
 <h2 id="ssh-aliases">SSH Aliases</h2>
-<p>You can use SSH Aliases to access your VMs with a single word.</p>
+<p>You can use SSH Aliases to access your VMs with a single command.</p>
 <ol>
 <li>
 <p>Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:</p>
@@ -2581,8 +2573,8 @@ This method allows for a much less complicated ssh command to reach your VMs. <b
 You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
 The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
 </div>
-<h2 id="first-password-setting-and-password-resets">First Password Setting and Password Resets</h2>
-<p>Before logging in for the first time you have to reset the password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+<h2 id="sudo-password-setting-and-password-resets">sudo, Password Setting and Password Resets</h2>
+<p>You do not have to set a password to log into virtual machines. However, if you have been given sudo permission, you will need to set a password to be able to make use of sudo. You can set (or reset) a password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 
 
 
