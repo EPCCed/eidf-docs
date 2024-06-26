@@ -160,7 +160,7 @@ When you the upload is complete and all files are present, open the dataset page
 
 If you feel that the minimal metadata does not suffice for you dataset you can add your own fields. To do so, go to the EIDF data catalogue at:
 
-* https://catalgoue.eidf.ac.uk/
+* https://catalogue.eidf.ac.uk/
 
 Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
