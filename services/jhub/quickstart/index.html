@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://epcced.github.io/eidf-docs/services/jhub/quickstart/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../s3/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -470,17 +474,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -494,7 +500,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -1348,6 +1354,178 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notebooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1993,7 +2171,7 @@
 
 <h1 id="quickstart">Quickstart</h1>
 <h2 id="accessing">Accessing</h2>
-<p>Access the EIDF Notebooks in your browser by opening <a href="https://notebooks.eidf.ac.uk/">https://notebooks.eidf.ac.uk/</a>. You must be a member of an active EIDF project and have a user account to use the EIDF Notebook Service.</p>
+<p>Access the EIDF Notebooks in your browser by opening <a href="https://notebook.eidf.ac.uk/">https://notebook.eidf.ac.uk/</a>. You must be a member of an active EIDF project and have a user account to use the EIDF Notebook Service.</p>
 <p><img alt="JupyterHub Login Page" src="../../../images/access/jupyterhub-login.png" /></p>
 <p>Click on "Sign In with SAFE". You will be redirected to the SAFE login page.</p>
 <p>Log into the SAFE if you're not logged in already.
@@ -2019,7 +2197,11 @@ We recommend specifying <code>--user</code> to install packages into your user d
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;<span class="w"> </span>--user
 </code></pre></div>
 <h2 id="data">Data</h2>
-<p>There is a project space mounted in <code>/project_data</code>. Only project accounts have permissions to view and write to their project folder in this space. Here you can also share data with DSC VMs in your project. Please contact the helpdesk if you would like to mount this project space to one of your VMs. Data placed in <code>/project_data/shared</code> is shared with other notebook users outside your project.</p>
+<p>There is a project space mounted in <code>/project_data</code>. Only project accounts have permissions to view and write to their project folder in this space.
+Here you can share data with other notebook users in your project.
+Data placed in <code>/project_data/shared</code> is shared with other notebook users outside your project.</p>
+<p>You can also share data with DSC VMs in your project.
+Please contact the helpdesk if you would like to mount this project space to one of your VMs.</p>
 <h2 id="limits">Limits</h2>
 <p>Note that there are limited amounts of memory and cores available per user. Users do not have sudo permissions in the containers so you cannot install any system packages.</p>
 <p>Currently there is no access to GPUs. You can submit jobs to the EIDF GPU Service but you cannot run your notebooks on a GPU.</p>
