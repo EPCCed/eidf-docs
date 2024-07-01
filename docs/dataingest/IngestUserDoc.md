@@ -1,31 +1,31 @@
 # Data Ingest
 
-The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Ready Data** (ARD) for the lifetime of the EIDF service. ARD is data that is ready, i.e. has been cleaned, is in a suitable format, etc., for your end users to use out of the box. This documentation describes the data ingest process.
+The _Edinburgh International Data Facility_ (EIDF) can host your **Analytics-Ready Data** (ARD) for the lifetime of the EIDF service. ARD is data that is ready, i.e. the data has been cleaned, has the correct data elements, is in a suitable format, has suitable metadata to make your data findable, etc., for your end users to use out of the box. This documentation describes the data ingest process.
 
 ## Overview
 
-The ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue, a CKAN instance - see [using CKAN as the EIDF Data Catalogue](eidf-ckan.md) if you want to know more, which makes your data discoverable and available, using S3 links, to your community as well as other world-wide interested parties world. The ARD is also available to EIDF Data Science Cloud users. 
+The metadata of the ARD hosted by the EIDF is indexed and searchable on the EIDF Data Catalogue, a CKAN instance - see [using CKAN as the EIDF Data Catalogue](eidf-ckan.md) if you want to know more, which makes your data discoverable and available, through S3 links, to your community as well as other world-wide interested parties. The ARD is also made available to EIDF *Data Science Cloud* users. 
 
-In the following, a dataset is a collection of data resources (e.g. files), together with a description and other information about the data (i.e. metadata).
+In the following text, a dataset is a collection of data resources (e.g. files), together with a description and other information about the data (i.e. metadata).
 
-To set up automated ingestion:
+To set up an automated data ingestion:
 
-1. The data provider creates an empty dataset in the EIDF portal.
+1. You need to create an empty dataset in the EIDF portal.
 1. An ingest workflow is set up for the dataset.
 
 Automated ingestion of each batch of data then proceeds as follows:
-1. The data provider uploads a batch of data files (_raw data_ or ARD) and the corresponding _metadata_ to a "landing zone" for this dataset, accessed via the *Managed File Transfer* (MFT) service.
+1. You upload a batch of data files (_raw data_ or ARD) and the corresponding _metadata_ to a "landing zone" for this dataset, accessed via the *Managed File Transfer* (MFT) service.
 1. The raw data may be processed and transformed to ARD format, if requested by the data provider.
 1. The analytics ready data is published on the ARD service.
 1. The uploaded metadata is updated with download links and is published in the EIDF Data Catalogue.
-1. A report is created and dispatched to the data provider.
+1. A report is created and dispatched back to you.
 
 ## Application
 
-In order to ingest data into the EIDF, you need to apply for a data ingest project to publish analytics ready data in the EIDF. A data ingest project may contain many datasets. Please follow the workflow below:
+In order to ingest data into the EIDF, you need to apply for a data ingest project to publish analytics ready data in the EIDF. A data ingest project may contain one or more datasets. Please follow the workflow below:
 
-1. If you do not already have an EPCC SAFE account you will need to create one.
-1. Once you have an EPCC SAFE account use this to login to the EIDF portal.
+1. If you do not already have an [EPCC SAFE account](https://safe.epcc.ed.ac.uk/) you will need to create one.
+1. Once you have an EPCC SAFE account use this to login to the [EIDF portal](https://portal.eidf.ac.uk/).
 1. Apply for a project: https://portal.eidf.ac.uk/proposal/new
    * Fill in a project application and submit it for review.
    * If your application is successful, a project will be created for you.
