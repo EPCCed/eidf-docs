@@ -38,15 +38,15 @@ Create accounts for data providers to have access to the MFT service.
 
 ### CKAN organisation
 
-The EIDF Data Catalogue is a CKAN instance.
+The [EIDF Data Catalogue](https://catalogue.eidf.ac.uk/) is a CKAN instance.
 
 We map an EIDF project to a CKAN organisation.
 
-Your CKAN organisation will be created if your application is successful. The title of your organisation is the title of your project and you may also provide a description. You will be given editing rights to your organisation so you can customise your CKAN organisations look and feel and later edit/add metadata but please do not use the CKAN interface to create or delete datasets.
+A CKAN organisation will be created for your EIDF project if your application is successful. The title of your organisation will be the same as the title of your EIDF project. You may also provide a description. You will be given editing rights to your organisation so you can customise your CKAN organisations look and feel and later edit/add metadata but please do not use the CKAN interface to create or delete datasets.
 
 ### Ingest dataset
 
-An EIDF dataset consists of descriptive metadata to allow researchers to find your dataset information via a free text search, and a set of resources which link to the actual data files held within EIDF. Each dataset resource itself consists of searchable metadata, and a link to the data file location within the EIDF *ARD service*.
+An EIDF dataset consists of descriptive metadata to allow researchers to find your dataset information via a free text search, and a set of resources which link to the actual data files held within EIDF. Each dataset resource itself consists of searchable metadata, and a link to the data file location within the EIDF service.
 
 You will need to create an ingest dataset for each dataset that you wish to publish or archive and provide the necessary metadata, by filling in a form in the EIDF Portal.
 
@@ -63,7 +63,7 @@ Once you are happy with the content press on the `Create` button. This will be u
 
 ### Pre-processing container
 
-Unless the data that you are providing is already in ARD format, you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata).
+Unless the data that you are providing is already in ARD format, you will need to provide a public link to a container image that transforms your raw data to ARD (you will still need to produce resource metadata, metadata about the downloadable elements in your dataset).
 
 Press the button "Configure" on the dataset page and provide the fully qualified name of your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. You can also provide a description.
 
