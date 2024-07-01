@@ -98,9 +98,6 @@ To enable this for your EIDF account:
 
 ## Accessing From MacOS/Linux
 
-!!! warning
-    If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
-
 OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
 
 Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:
@@ -144,9 +141,6 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 ### Accessing EIDF via a Terminal
 
-!!! warning
-    If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
-
 1. Open either Powershell or the Windows Terminal
 1. Import the SSH Key you generated above:
 
@@ -184,7 +178,7 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 
 ## SSH Aliases
 
-You can use SSH Aliases to access your VMs with a single word.
+You can use SSH Aliases to access your VMs with a single command.
 
 1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:
 
@@ -268,6 +262,6 @@ You can use SSH Aliases to access your VMs with a single word.
     You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
     The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
-## First Password Setting and Password Resets
+## sudo, Password Setting and Password Resets
 
-Before logging in for the first time you have to reset the password using the web form in the EIDF Portal following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
+You do not have to set a password to log into virtual machines. However, if you have been given sudo permission, you will need to set a password to be able to make use of sudo. You can set (or reset) a password using the web form in the EIDF Portal following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).

@@ -34,6 +34,9 @@ If you have only one connection associated with your VDI user account (typically
 automatically connected to the target VM's virtual desktop. Once you are connected to the VM, you will be asked for your
 username and password as shown below (if you are participating in a workshop, then you may not be asked for credentials)
 
+!!! warning
+    If this is your first time connecting to EIDF using a new account, you have to set a password as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
+
    ![VM-VDI-connection-login](../images/access/vm-vdi-connection-login.png){: class="border-img"}
    *VM virtual desktop connection user account login screen*
 
