@@ -35,7 +35,7 @@ Example connection to a PostgreSQL database via [psycopg](https://www.psycopg.or
     $ pip install psycopg2
     ```
 
-2. Connect
+1. Connect
 
     ```python
     import psycopg2
