@@ -1,6 +1,6 @@
 # Resource Metadata
 
-When you ingest data into the *EIDF Analytics-Ready Data service*, you need to provide metadata so that your deposited data can be discovered by other researchers. This page aims to describe the minimally required metadata set, and the optional pieces of metadata that you may want to provide. We also aim to provide an evolving set of domain-specfic examples.
+When you ingest data into the *EIDF Analytics-Ready Data service*, you need to provide metadata so that your deposited data can be discovered by other researchers. This page aims to describe the minimally required metadata set, and the optional pieces of metadata that you may want to provide. We also aim to provide an evolving set of domain-specific examples.
 
 ## Overview
 

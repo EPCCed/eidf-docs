@@ -53,7 +53,7 @@ You will need to create an ingest dataset for each dataset that you wish to publ
 1. Select the project which you want to use to ingest data. The list of `Ingest Datasets` will be empty unless you have already created Datasets.
 1. Create a Dataset by pressing on the `New` button. You will need to provide the following minimal bits of information:
     * **Name**: The name for your dataset.
-    * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can costumise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
+    * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can customise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
     * **Description**: a description for your dataset.
    * **Link**: a link describing your group/contact information.
    * **Contact email**: a contact email to answer queries about your data set (this is optional).
@@ -73,7 +73,7 @@ See the page [Pre-processing Container](./PreprocessingContainer.md) for guidanc
 
 **Data**
 
-A data file can be in any format, for example CSV, JSON, or even in a raw binary format (such as raw data or it could be a zip file of CSV or JSON files). We recommend limiting the number of resources within a dataset to less than 100 to keep the data catalogue entries manageable. For example, when publishing timeseries data, a file resource may be a week's worth of data and a dataset contains 52 resources, i.e. 1 year.
+A data file can be in any format, for example CSV, JSON, or even in a raw binary format (such as raw data or it could be a zip file of CSV or JSON files). We recommend limiting the number of resources within a dataset to less than 100 to keep the data catalogue entries manageable. For example, when publishing time series data, a file resource may be a week's worth of data and a dataset contains 52 resources, i.e. 1 year.
 
 It is also possible to add an entire directory tree as a single metadata resource.
 

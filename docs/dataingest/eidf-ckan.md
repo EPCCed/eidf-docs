@@ -25,7 +25,7 @@ erDiagram
    Dataset ||--|{ "Resources":has
 ```
 
-**Resources** constitues the granularity at which data files can be accessed or downloaded. A resource must contain at least a minimum set of metadata about the data file, and a link to download the data file.
+**Resources** constitutes the granularity at which data files can be accessed or downloaded. A resource must contain at least a minimum set of metadata about the data file, and a link to download the data file.
 
 The EIDF Data Catalogue is located at: https://catalogue.eidf.ac.uk/. 
 
