@@ -1,10 +1,10 @@
 # Resource Metadata
 
-When you ingest data into the *EIDF Analytics-Ready Data service*, you need to provide metadata so that your deposited data can be discovered by other researchers. This page aims to describe the minimally required metadata set, and the optional pieces of metadata that you may want to provide. We also aim to provide an evolving set of domain-specific examples.
+When you ingest data into the *EIDF Data Publishing service*, you need to provide metadata so that your deposited data can be discovered by other researchers. This page aims to describe the minimally required metadata set, and the optional pieces of metadata that you may want to provide. We also aim to provide an evolving set of domain-specific examples.
 
 ## Overview
 
-When data is ingested into the EIDF *Analytics-Ready Data service* (ARD), a corresponding record is held in the EIDF Metadata Catalogue. The contents of this record are indexed and made searchable, so that other researchers can find information about your data. You will need to supply your resource metadata as a JSON format file in a file called `resources.json`. The ingest process requires a small set of mandatory information (fields can be in any order but the entries have to be there):
+When data is ingested into the EIDF *Data Publishing service*, a corresponding record is held in the EIDF Metadata Catalogue. The contents of this record are indexed and made searchable, so that other researchers can find information about your data. You will need to supply your resource metadata as a JSON format file in a file called `resources.json`. The ingest process requires a small set of mandatory information (fields can be in any order but the entries have to be there):
 
 ```json
 {
