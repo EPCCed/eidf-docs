@@ -14,7 +14,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest you do not need to apply for a new project. Instead put in a query to eidf@epcc.ed.ac.uk saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN.
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest you do not need to apply for a new project. Instead put in a query to eidf@epcc.ed.ac.uk saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Otherwise, in the EIDF total:
 
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
@@ -50,7 +50,7 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
 * Create a Dataset by pressing on the `New` button. You will need to provide the following minimal bits of information:
   * **Name**: The name for your dataset.
   * **Bucket name**: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can customise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it.
-  * **Description**: a description for your dataset.
+  * **Description**: a description of your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
   
@@ -71,7 +71,7 @@ Once you have created the user you can click on their linked username and give t
 
 ### Preprocessing uploaded data (optional)
 
-If your data is not already in an *Analytics Ready Data* (ARD) format, the format which your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
+If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
 
 * A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the metadata (more information on the requirements below).
 * A description of the process.
@@ -162,7 +162,7 @@ If you feel that the minimal metadata does not suffice for you dataset you can a
 
 * https://catalogue.eidf.ac.uk/
 
-Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on the `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
+Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
 
 ## Testing your s3 links and downloading
 
@@ -192,7 +192,7 @@ Looking at the `Index shards directory` resource record we get the access/downlo
 
 * https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx
 
-The presence of a `?` means we need to use quotes for the URL or escape the question mark when running within a shell. We can make the output human readable using `xmllint`, part of the libxml2-utils package, and reduce the amount of output using `head` to just the first record but if you don't have these utilities you can look at the output produced by clicking on the link above in the EIDF data catalogue. The `-s` argument tells `curl` not to produce additional content. Running this we get:
+The presence of a `?` means we need to use quotes for the URL or escape the question mark when running within a shell. We can make the output human-readable using `xmllint`, part of the libxml2-utils package, and reduce the amount of output using `head` to just the first record but if you don't have these utilities you can look at the output produced by clicking on the link above in the EIDF data catalogue. The `-s` argument tells `curl` not to produce additional content. Running this we get:
 
 ```bash
 curl -sX GET "https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx"\
