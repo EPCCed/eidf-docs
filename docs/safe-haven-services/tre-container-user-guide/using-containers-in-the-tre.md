@@ -1,8 +1,8 @@
-# Using containers in the TRE
+# Using Containers in the TRE
 
 Once you have built and tested your container, you are ready to start using it within the TRE.
 
-## Pulling container into the TRE
+## Pulling a container into the TRE
 
 Containers can only be used on the TRE desktop hosts using shell commands. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE.
 
