@@ -14,7 +14,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest you do not need to apply for a new project. Instead put in a query to eidf@epcc.ed.ac.uk saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Otherwise, in the EIDF total:
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest you do not need to apply for a new project. Instead put in a query to *eidf@epcc.ed.ac.uk* saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Otherwise, in the EIDF portal:
 
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
