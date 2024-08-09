@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://epcced.github.io/eidf-docs/overview/">
+        <link rel="canonical" href="https://epcced.github.io/eidf-docs/safe-haven-services/tre-container-user-guide/building-and-testing-containers/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../advise-ig-required-software-stack/">
       
       
-        <link rel="next" href="acknowledgements/">
+        <link rel="next" href="../using-containers-in-the-tre/">
       
       
-      <link rel="icon" href="../images/favicon.ico">
+      <link rel="icon" href="../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Introduction - EIDF User Documentation</title>
+        <title>Building and Testing Containers - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/eidf.css">
+      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
     
-      <link rel="stylesheet" href="../stylesheets/access.css">
+      <link rel="stylesheet" href="../../../stylesheets/access.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-unique-service-for-academia-and-industry" class="md-skip">
+        <a href="#building-and-testing-containers" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Building and Testing Containers
             
           </span>
         </div>
@@ -198,9 +198,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     EIDF User Documentation
@@ -227,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../status/" class="md-nav__link">
+      <a href="../../../status/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -247,7 +247,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -264,19 +264,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -290,7 +288,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             About EIDF
@@ -301,30 +299,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -333,35 +311,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#eidf-and-the-data-driven-innovation-initiative" class="md-nav__link">
-    <span class="md-ellipsis">
-      EIDF and the Data-Driven Innovation Initiative
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -374,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="acknowledgements/" class="md-nav__link">
+      <a href="../../../overview/acknowledgements/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -395,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contacts/" class="md-nav__link">
+      <a href="../../../overview/contacts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/" class="md-nav__link">
+      <a href="../../../access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -479,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/project/" class="md-nav__link">
+      <a href="../../../access/project/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -598,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/virtualmachines/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -619,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/virtualmachines/quickstart/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -640,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/virtualmachines/docs/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -661,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/ssh/" class="md-nav__link">
+      <a href="../../../access/ssh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -703,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/virtualmachines/flavours/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/flavours/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/virtualmachines/policies/" class="md-nav__link">
+      <a href="../../../services/virtualmachines/policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -788,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/cs2/access/" class="md-nav__link">
+      <a href="../../../services/cs2/access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -809,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/cs2/run/" class="md-nav__link">
+      <a href="../../../services/cs2/run/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -873,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/ultra2/access/" class="md-nav__link">
+      <a href="../../../services/ultra2/access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -894,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/ultra2/connect/" class="md-nav__link">
+      <a href="../../../services/ultra2/connect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/ultra2/run/" class="md-nav__link">
+      <a href="../../../services/ultra2/run/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -979,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/" class="md-nav__link">
+      <a href="../../../services/gpuservice/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1000,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/policies/" class="md-nav__link">
+      <a href="../../../services/gpuservice/policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1021,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/kueue/" class="md-nav__link">
+      <a href="../../../services/gpuservice/kueue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../../services/gpuservice/training/L1_getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1098,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
+      <a href="../../../services/gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1119,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
+      <a href="../../../services/gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1140,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/training/L4_template_workflow/" class="md-nav__link">
+      <a href="../../../services/gpuservice/training/L4_template_workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gpuservice/faq/" class="md-nav__link">
+      <a href="../../../services/gpuservice/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1233,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/" class="md-nav__link">
+      <a href="../../../services/graphcore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1289,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../../services/graphcore/training/L1_getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1310,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/training/L2_multiple_IPU/" class="md-nav__link">
+      <a href="../../../services/graphcore/training/L2_multiple_IPU/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/training/L3_profiling/" class="md-nav__link">
+      <a href="../../../services/graphcore/training/L3_profiling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1352,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/training/L4_other_frameworks/" class="md-nav__link">
+      <a href="../../../services/graphcore/training/L4_other_frameworks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/graphcore/faq/" class="md-nav__link">
+      <a href="../../../services/graphcore/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1445,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/jhub/" class="md-nav__link">
+      <a href="../../../services/jhub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1466,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/jhub/quickstart/" class="md-nav__link">
+      <a href="../../../services/jhub/quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1572,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/s3/" class="md-nav__link">
+      <a href="../../../services/s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1593,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/s3/manage/" class="md-nav__link">
+      <a href="../../../services/s3/manage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1614,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/s3/tutorial/" class="md-nav__link">
+      <a href="../../../services/s3/tutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1678,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/datacatalogue/metadata/" class="md-nav__link">
+      <a href="../../../services/datacatalogue/metadata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1711,17 +1660,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1735,7 +1686,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Safe Haven Services
@@ -1749,7 +1700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1770,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/network-access-controls/" class="md-nav__link">
+      <a href="../../network-access-controls/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1791,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/safe-haven-access/" class="md-nav__link">
+      <a href="../../safe-haven-access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1812,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/virtual-desktop-connections/" class="md-nav__link">
+      <a href="../../virtual-desktop-connections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1833,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/using-the-hpc-cluster/" class="md-nav__link">
+      <a href="../../using-the-hpc-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
+      <a href="../../superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1910,7 +1861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+      <a href="../../superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1931,7 +1882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+      <a href="../../superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1952,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../../superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1973,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../../superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1999,17 +1950,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
@@ -2023,7 +1976,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             TRE Container User Guide
@@ -2037,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/tre-container-user-guide/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/tre-container-user-guide/development-workflow/" class="md-nav__link">
+      <a href="../development-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2079,7 +2032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack/" class="md-nav__link">
+      <a href="../advise-ig-required-software-stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2097,10 +2050,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../safe-haven-services/tre-container-user-guide/building-and-testing-containers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Building and Testing Containers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2109,6 +2082,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#choose-a-container-base-from-dockerhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choose a container base from DockerHub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tre-file-system-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add TRE file system directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-and-copy-project-code-into-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install and copy project code into container
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-container-for-tre-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the container for TRE use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan-container-using-trivy-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan container using Trivy CI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2121,7 +2159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safe-haven-services/tre-container-user-guide/using-containers-in-the-tre/" class="md-nav__link">
+      <a href="../using-containers-in-the-tre/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2157,7 +2195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../known-issues/" class="md-nav__link">
+      <a href="../../../known-issues/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2177,7 +2215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2217,9 +2255,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#eidf-and-the-data-driven-innovation-initiative" class="md-nav__link">
+  <a href="#choose-a-container-base-from-dockerhub" class="md-nav__link">
     <span class="md-ellipsis">
-      EIDF and the Data-Driven Innovation Initiative
+      Choose a container base from DockerHub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tre-file-system-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add TRE file system directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-and-copy-project-code-into-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install and copy project code into container
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-container-for-tre-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the container for TRE use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan-container-using-trivy-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan container using Trivy CI
     </span>
   </a>
   
@@ -2243,26 +2317,65 @@
   
 
 
-<h1 id="a-unique-service-for-academia-and-industry">A Unique Service for Academia and Industry</h1>
-<p><a href="https://www.ed.ac.uk/edinburgh-international-data-facility/">The Edinburgh International Data Facility</a> (EIDF)
-is a growing set of data and compute services developed to support the
-<a href="https://ddi.ac.uk/">Data Driven Innovation Programme</a> at the
-University of Edinburgh.</p>
-<p>Our goal is to support learners, researchers and innovators across
-the spectrum, with services from data discovery through simple
-learn-as-you-play-with-data notebooks to GPU-enabled machine-learning
-platforms for driving AI application development.</p>
-<h2 id="eidf-and-the-data-driven-innovation-initiative">EIDF and the Data-Driven Innovation Initiative</h2>
-<p>Launched at the end of 2018, the Data-Driven Innovation (DDI)
-programme is one of six funded within the Edinburgh &amp; South-East
-Scotland City Region Deal. The DDI programme aims to make Edinburgh
-the “Data Capital of Europe”, with ambitious targets to support,
-enhance and improve talent, research, commercial adoption and
-entrepreneurship across the region through better use of data.</p>
-<p>The programme targets ten industry sectors, with interactions managed
-through five DDI Hubs: the Bayes Centre, the Usher Institute,
-Edinburgh Futures Institute, the National Robotarium, and Easter
-Bush. The activities of these Hubs are underpinned by EIDF.</p>
+<h1 id="building-and-testing-containers">Building and Testing Containers</h1>
+<h2 id="choose-a-container-base-from-dockerhub">Choose a container base from DockerHub</h2>
+<p>Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose. Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach. Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided. Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.</p>
+<p>Examples of batch job container bases are Python and PyTorch, and other language specific and ML software stacks. Examples of interactive container bases are Rocker, Jupyter Docker Stacks, and NVIDIA RAPIDS extended with additional package sets and code required by your project.</p>
+<h2 id="add-tre-file-system-directories">Add TRE file system directories</h2>
+<p>Container images built to run in the TRE must implement the following line in the Dockerfile to interface with the project data and the TRE file system:</p>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/safe_data<span class="w"> </span>/safe_outputs<span class="w"> </span>/scratch
+</code></pre></div>
+<p>The project’s private <code>/safe_data/&lt;project id&gt;</code> directory is mapped to the container’s <code>/safe_data</code> directory. A unique container job output directory is created in the user's home directory and mapped to <code>/safe_outputs</code> in the container. And <code>/scratch</code> is a temporary workspace that is deleted when the container exits. If the container processing uses the <code>TMP</code> environment variable, it should be set to the <code>/scratch</code> volume mount.
+Hence, containers have access to three directories located on the host system as detailed in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Directory on host system</th>
+<th>Directory in container</th>
+<th>Intended use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/safe_data/&lt;your_project_name&gt;/</code></td>
+<td>/<code>safe_data</code></td>
+<td>Read-only access if required by IG, or read-write access, to data and other project files.</td>
+</tr>
+<tr>
+<td><code>~/outputs_&lt;unique_id&gt;</code></td>
+<td><code>/safe_outputs</code></td>
+<td>Will be created at container startup as an empty directory. Intended for any outputs: logs, data, models.</td>
+</tr>
+<tr>
+<td><code>~/scratch_&lt;unique_id&gt;</code></td>
+<td><code>/scratch</code></td>
+<td>Temporary directory that is removed after container termination on the host system. Any temporary files should be placed here.</td>
+</tr>
+</tbody>
+</table>
+<p>Currently, temporary files can also be written into any directory in the container’s internal file system. This is allowed to prevent container software failure when it is dependent on the container file system being writable. However, the use of <code>/scratch</code> is encouraged for two reasons:</p>
+<ol>
+<li>In the future, write access to the container file system might be prevented for security reasons. Further, the space available on the container’s internal file system is limited compared to the space available on <code>/scratch</code>. Writing only to <code>/scratch</code> at runtime is therefore future proof.</li>
+<li>Use of <code>/scratch</code> can be more efficient if the service is able to mount it on high-performing storage devices.</li>
+</ol>
+<h2 id="install-and-copy-project-code-into-container">Install and copy project code into container</h2>
+<p>Research software stacks are complex and dependent on many package sets and libraries, and sometimes on specific version combinations of these. The container build process presents the project team with the opportunity to manage and resolve these dependencies before contact with the project data in the restricted TRE setting.</p>
+<p>Unlike the TRE desktop servers, containers do not have access to external network repositories, and do not have access to external licence servers. Any container software that requires a licence to run must be copied into the container at build time. EPCC are not responsible for verifying that the appropriate licences are installed or that license terms are being met.</p>
+<p>Projects using configuration files for multiple containers, for example ML models, can also import these to the TRE directly by copying them to the project <code>/safe_data</code> file system.</p>
+<p>Batch jobs built to run as containers should start directly from the <code>ENTRYPOINT</code> or <code>CMD</code> section of the Dockerfile. Batch jobs should run without any user interaction after start, should read input from the <code>/safe_data</code> directory and write outputs to the <code>/scratch</code> and <code>/safe_outputs</code> directories.</p>
+<p>Interactive containers should present a connection port for the user session. Once the container is started the user can connect to the session port from the TRE desktop. If code files are being changed during the session these should be saved on the <code>/safe_data</code> or the <code>/safe_outputs</code> directories as the internal container file space is not preserved when the session ends.</p>
+<h2 id="test-the-container-for-tre-use">Test the container for TRE use</h2>
+<p>When the container is running in the TRE it will not have any external network or internet access. If the code, or any of its dependencies, rely on data files downloaded at runtime (for example machine learning models) this will fail in the TRE. Code must be modified to load these files explicitly from a file path which is accessible from inside the container.</p>
+<p>An example of TRE network isolation significance and the considerations arising from this is provided by Hugging Face, where models are cached in the user local <code>~/.cache/huggingface/hub/</code> directory in the container. The environment variable <code>HF_HOME</code> must be set to a directory in a <code>/safe_data</code> project folder and the <code>cache_dir</code> option of the <code>from_pretrained()</code> call used at runtime.</p>
+<p>If a model is downloaded from Hugging Face the advice is to set the environment variable <code>HF_HUB_OFFLINE=1</code> to prevent attempts at contact the Hugging Face Hub. Any connection attempts will take a significant time to elapse and then fail in the TRE setting.</p>
+<p>It is recommended that the checklist for Dockerfile composition is followed: <a href="https://github.com/EPCCed/tre-container-samples/blob/main/docs/container-build-guide.md">Container Build Guide</a></p>
+<p>Information Governance requirements may require a security scan of your container, and <a href="https://trivy.dev/">Trivy</a> is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk. The use of the Trivy misconfiguration tool on Dockerfiles is also recommended. This tool option will highlight many common security issues:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/repo<span class="w"> </span>ghcr.io/aquasecurity/trivy:latest<span class="w"> </span>config<span class="w"> </span><span class="s2">&quot;/repo/Dockerfile&quot;</span>
+</code></pre></div>
+<p>The security posture of containers and the build process may be of interest to IG teams, however, it is not expected that security issues indicated by the tool need to be addressed before the container is run in the TRE unless the IG team issues specific guidance on vulnerability and configuration remediation and mitigation.</p>
+<h2 id="scan-container-using-trivy-ci">Scan container using Trivy CI</h2>
+<p>Trivy can be run manually but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found <a href="https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml">here</a></p>
+<p>The Trivy report can be downloaded as an artifact from the job summary page. Before using a specific container in the TRE it may be necessary to test the security risk and gain IG team approval.</p>
 
 
 
@@ -2309,10 +2422,10 @@ Bush. The activities of these Hubs are underpinned by EIDF.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
