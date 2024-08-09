@@ -97,6 +97,12 @@ nav:
        - "Submitting Scripts to Slurm": safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm.md
        - "Parallelised Python Analysis": safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis.md
        - "Parallelised R Analysis": safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis.md
+     - "TRE Container User Guide":
+       - "Introduction": safe-haven-services/tre-container-user-guide/introduction.md
+       - "Development Workflow": safe-haven-services/tre-container-user-guide/development-workflow.md
+       - "Advising IG of Required Software Stack": safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack.md
+       - "Building and Testing Containers": safe-haven-services/tre-container-user-guide/building-and-testing-containers.md
+       - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
 
