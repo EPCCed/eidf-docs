@@ -6,7 +6,7 @@ The Cerebras CS-2 Wafer-scale cluster (WSC) uses the Ultra2 system as a host sys
 
 ## Connecting to the cluster
 
-To gain access to the CS-2 WSC you need to login to the host system, Ultra2. See the [documentation for Ultra2](../ultra2/run.md#login).
+To gain access to the CS-2 WSC you need to login to the host system, Ultra2. See the [documentation for Ultra2](../ultra2/connect.md#login).
 
 ## Running Jobs
 
@@ -52,7 +52,7 @@ python3.8 -m venv venv_cerebras_pt
 ```bash
 source venv_cerebras_pt/bin/activate
 pip install --upgrade pip
-pip install cerebras_pytorch==2.1.1
+pip install cerebras_pytorch==2.2.1
 ```
 
 ### Validate the setup

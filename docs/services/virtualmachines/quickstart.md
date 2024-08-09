@@ -35,7 +35,7 @@ Now you have to wait for your PI or project manager to accept your request to jo
    with this account, and to change the password for this account.
 
 1. Before you log in for the first time with a new user account, you must change your password as described
-   [below](../../services/virtualmachines/quickstart.md#set-or-change-the-password-for-your-user-account).
+   [below](../../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
 
 1. Follow the link to the Guacamole login or
    log in directly at [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.ac.uk/vdi/).

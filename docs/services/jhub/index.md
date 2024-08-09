@@ -1,7 +1,8 @@
-# EIDF Jupyterhub
+# EIDF Notebook Service
 
-[QuickStart](./quickstart/)
+The EIDF Notebook Service is a scalable Jupyterhub deployment in the EIDF Data Science Cloud.
 
-[Tutorial](./tutorial/)
+The Notebook Service is open to all EIDF users and offers a selection of data science environments
+and user interfaces, including Jupyter notebooks, Jupyter Lab and RStudio.
 
-[Documentation](./docs/)
+Follow [Quickstart](./quickstart.md) to start using the EIDF Notebook Service.
