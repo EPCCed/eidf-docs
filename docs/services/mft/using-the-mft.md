@@ -22,7 +22,6 @@ File egress can be done in the reverse way. By placing the file into the project
 Directories can be created within the project transfer directory, for example with 'Import' and 'Export' to allow for better file management.
 Files deleted from either the MFT portal or from the VM itself will remove it from the other, as both locations point at the same file. It's only stored in one place, so modifications made from either place will remove the file.
 
-
 ## SFTP
 
 Once a project and user have access to the MFT, they can connect to it using SFTP as well as through the web browser.
