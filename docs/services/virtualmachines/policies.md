@@ -44,9 +44,9 @@ The EIDF team updates and patches the hypervisors and the cloud management softw
 
 PIs can apply to run an outward-facing service; that is a webservice on port 443, running on a project-owned VM. The policy requires the customer to accept the following conditions:
 
-Agreement that the customer will automatically apply security patches, run regular maintenance, and have named contacts who can act should we require it.
-Agreement that should EPCC detect any problematic behaviour (of users or code), we reserve the right to remove web access.
-Agreement that the customer understands all access is filtered and gated by EPCC’s Firewalls and NGINX (or other equivalent software) server such that there is no direct exposure to the internet of their application.
-Agreement that the customer owns the data, has permission to expose it, and that it will not bring UoE into disrepute.
+* Agreement that the customer will automatically apply security patches, run regular maintenance, and have named contacts who can act should we require it.
+* Agreement that should EPCC detect any problematic behaviour (of users or code), we reserve the right to remove web access.
+* Agreement that the customer understands all access is filtered and gated by EPCC’s Firewalls and NGINX (or other equivalent software) server such that there is no direct exposure to the internet of their application.
+* Agreement that the customer owns the data, has permission to expose it, and that it will not bring UoE into disrepute.
 
 Pis can apply for such a service on application and also at any time by contacing the EIDF Service Desk.
