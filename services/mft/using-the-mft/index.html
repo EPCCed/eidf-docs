@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -2162,9 +2162,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#logging-in" class="md-nav__link">
+  <a href="#logging-in-to-the-web-browser" class="md-nav__link">
     <span class="md-ellipsis">
-      Logging in
+      Logging in to the web browser
     </span>
   </a>
   
@@ -2197,6 +2197,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SFTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCP
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2216,7 +2234,7 @@
 
 
 <h1 id="using-the-mft-web-portal">Using the MFT Web Portal</h1>
-<h2 id="logging-in">Logging in</h2>
+<h2 id="logging-in-to-the-web-browser">Logging in to the web browser</h2>
 <p>When you reach the MFT <a href="https://eidf-mft.epcc.ed.ac.uk">home page</a> you can log in using your usual VM project credentials.</p>
 <p>You will then be asked what type of session you would like to start. Select New Web Client or Web Client and continue.</p>
 <h2 id="file-ingress">File Ingress</h2>
@@ -2228,6 +2246,18 @@ Click the 'Upload' button under the 'Home' title to open the dialogue for file u
 <h2 id="file-management">File Management</h2>
 <p>Directories can be created within the project transfer directory, for example with 'Import' and 'Export' to allow for better file management.
 Files deleted from either the MFT portal or from the VM itself will remove it from the other, as both locations point at the same file. It's only stored in one place, so modifications made from either place will remove the file.</p>
+<h2 id="sftp">SFTP</h2>
+<p>Once a project and user have access to the MFT, they can connect to it using SFTP as well as through the web browser.</p>
+<p>This can be done by logging into the MFT URL with the user's project account:</p>
+<p>```bash</p>
+<pre><code>sftp [EIDF username]@eidf-mft.epcc.ed.ac.uk
+</code></pre>
+<p>```</p>
+<h2 id="scp">SCP</h2>
+<p>Files can be scripted to be upload to the MFT using SCP.</p>
+<p>To copy a file to the project MFT area using SCP:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>scp<span class="w"> </span>/path/to/file<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@eidf-mft.epcc.ed.ac.uk:/
+</code></pre></div>
 
 
 
@@ -2277,7 +2307,7 @@ Files deleted from either the MFT portal or from the VM itself will remove it fr
     <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
     
   </body>
