@@ -40,7 +40,7 @@ We strongly advise that you keep copies of any critical data on an alternative s
 
 The EIDF team updates and patches the hypervisors and the cloud management software as part of the EIDF Maintenance sessions. It is the responsibility of project PIs to keep the VMs in their projects up to date. VMs running the Ubuntu and Rocky operating systems automatically install security patches and alert users at log-on (via SSH) to reboot as necessary for the changes to take effect. They also encourage users to update packages.
 
-## Customer-run outward facing web services 
+## Customer-run outward facing web services
 
 PIs can apply to run an outward-facing service; that is a webservice on port 443, running on a project-owned VM. The policy requires the customer to accept the following conditions:
 
