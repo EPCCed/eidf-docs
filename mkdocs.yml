@@ -81,9 +81,9 @@ nav:
       - "Tutorial": services/s3/tutorial.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
-    - "Managed File Transfer":
-        - "Quickstart": services/mft/quickstart.md
-        - "Using the MFT": services/mft/using-the-mft.md
+    #- "Managed File Transfer":
+    #    - "Quickstart": services/mft/quickstart.md
+    #    - "Using the MFT": services/mft/using-the-mft.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Network Access Controls": safe-haven-services/network-access-controls.md
