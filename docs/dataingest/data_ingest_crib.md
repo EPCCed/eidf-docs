@@ -39,7 +39,7 @@ There is some additional early documentation about the data ingest process at:
 
 This will be updated as the process evolves.
 
-## Uploading your data
+## Creating a dataset
 
 Once your project is approved go to the test portal at this link (only available on the EdLan network):
 
@@ -53,21 +53,14 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Description**: a description of your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
-  
 
 Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3.
 
 You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 bucket where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
-To upload your data you will need to:
+## Uploading your data
 
-* Create a user account in the portal.
-  * Go into your project on the EIDF portal
-  * Scroll down to the project accounts segment
-  * Manage -> Create User Account
-  * Submit
-
-Once you have created the user you can click on their linked username and give them access to the *Managed File Transfer* (MFT) service by checking the box labelled "eidf-MFT". After setting a password you can use this account to login to the MFT.
+Once this is done please contact us and we will provide credentials for uploading your data to EIDF S3. You need an AWS client for this.
 
 ### Preprocessing uploaded data (optional)
 
