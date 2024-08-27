@@ -6,6 +6,8 @@ Ultra2 is a single logical CPU system based at EPCC. It is suitable for running 
 
 The system is a HPE SuperDome Flex containing 576 individual cores in a SMT-1 arrangement (1 thread per core). The system has 18TB of memory available to users. Home directories are network mounted from the EIDF e1000 Lustre filesystem, although some local NVMe storage is available for temporary file storage during runs.
 
+The `/home` file system, and local NVMe storage, are not backed up.  We strongly advise that you keep copies of any critical data on on an alternative system that is fully backed up.
+
 ## Getting Access
 
 Access to Ultra2 is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.
