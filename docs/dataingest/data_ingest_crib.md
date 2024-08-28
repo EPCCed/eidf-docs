@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.3.13**
+**Version 0.4.0**
 
 This document is evolving relatively quickly so keep your eye on the version number to see if it has changed since you last looked at it.
 
@@ -62,6 +62,10 @@ You should now be able to click on a link to your dataset to see a copy of the i
 
 Once this is done please contact us and we will provide credentials for uploading your data to EIDF S3. You need an AWS client for this.
 
+Your project will have an S3 allocation and an acccount with write permissions to the dataset buckets. (If this is not the case please contact us.)
+
+As a project manager or PI, you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
+
 ### Preprocessing uploaded data (optional)
 
 If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
@@ -117,31 +121,6 @@ It is also possible to add an entire directory tree as a single metadata resourc
 }
 ```
 This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir`, you do not have to use the forward slash to indicate a directory.
-
-### Upload
-
-Once you have your `resources.json` and your data ready, you now have a choice of how to do the upload. You can upload via the web interface at [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/) or you can use sftp. Note that if your data is hosted on Cirrus or ARCHER2, you will have to use sftp.
-
-To upload via the web interface:
-
-* Login to your account at [https://eidf-mft.epcc.ed.ac.uk](https://eidf-mft.epcc.ed.ac.uk/). You can only access this service within EdLan. Log in with the user account that you created before (remember to set a password).
-* Navigate to the directory for your dataset `eidfnnn-your-data-set-name` and place your metadata and data there
-
-To upload using `sftp`:
-
-* From a shell running on the machine where your data is hosted, start an `sftp` session:
-
-   ```bash
-   sftp USERNAME@eidf-mft.epcc.ed.ac.uk
-   USERNAME@eidf-mft.epcc.ed.ac.uk's password: xxxxx
-   Connected to USERNAME@eidf-mft.epcc.ed.ac.uk.
-   sftp> dir
-   [eidfnnn-your-data-set-name]
-   sftp> cd eidfnnn-your-data-set-name
-   sftp> put resources.json
-   ...
-   sftp> [further lcd, put, mkdir, mput commands]
-   ```
 
 ### Start ingest
 
