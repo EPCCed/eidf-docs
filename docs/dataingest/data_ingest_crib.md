@@ -60,20 +60,18 @@ You should now be able to click on a link to your dataset to see a copy of the i
 
 ## Uploading your data
 
-Once this is done please contact us and we will provide credentials for uploading your data to EIDF S3. You need an AWS client for this.
+Once this is done please contact us and we will provide credentials for uploading your data to EIDF S3. You need an AWS client to upload data.
 
-Your project will have an S3 allocation and an acccount with write permissions to the dataset buckets. (If this is not the case please contact us.)
+### Data upload
 
+We provide an S3 acccount with write permissions to the dataset buckets.
 As a project manager or PI, you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
 
-### Preprocessing uploaded data (optional)
+You can use the `aws` command line client to upload data to the bucket.
 
-If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
+There are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
 
-* A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the metadata (more information on the requirements below).
-* A description of the process.
-
-### Data format
+### Metadata format
 
 The metadata file, `resources.json`, must be organised as follows:
 * Data file name (any file names are given relative to the files that would be found in the `data` subdirectory, see below for examples)
@@ -121,6 +119,13 @@ It is also possible to add an entire directory tree as a single metadata resourc
 }
 ```
 This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir`, you do not have to use the forward slash to indicate a directory.
+
+### Preprocessing uploaded data (optional)
+
+If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
+
+* A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the metadata (more information on the requirements below).
+* A description of the process.
 
 ### Start ingest
 
