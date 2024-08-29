@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.0**
+**Version 0.4.1**
 
 This document is evolving relatively quickly so keep your eye on the version number to see if it has changed since you last looked at it.
 
@@ -14,7 +14,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest/publishing you do not need to apply for a new project. Instead put in a query to *eidf@epcc.ed.ac.uk* saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Also, be aware that the data publishing is free subject to your data being under a given threshold - however, associated services will have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so be aware of the services you apply for. If you do not have an existing EIDF project, in the EIDF portal:
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest/publishing you do not need to apply for a new project. Instead put in a query to *eidf@epcc.ed.ac.uk* saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Also, be aware that the data publishing is free subject to your data being under a given threshold - however, associated services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so if you add these a charge will be imposed. If you do not have an existing EIDF project, in the EIDF portal:
 
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
@@ -33,7 +33,7 @@ Login using your SAFE credentials - there is a "Log in" on the top, towards the 
 
 * Do NOT use the CKAN interface to create Datasets or resources (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset/Resource records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface. Contact us if would like anything removed.
 
-There is some additional early documentation about the data ingest process at:
+There is additional early documentation about the data ingest process at:
 
 * https://github.com/EPCCed/eidf-docs/tree/data_ingest/docs/dataingest
 
@@ -65,7 +65,7 @@ Once this is done please contact us and we will provide credentials for uploadin
 ### Data upload
 
 We provide an S3 acccount with write permissions to the dataset buckets.
-As a project manager or PI, you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
+As a project manager or Principal Investigator (PI), you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
 
 You can use the `aws` command line client to upload data to the bucket.
 
