@@ -132,3 +132,38 @@ even if you didn't select a package when first creating the machine.
 1. Click on 'Software Catalogue'
 1. Select the configuration you wish to install and press 'Submit'
 1. The configuration job runs for a few minutes.
+
+### Patching and updating
+
+It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
+
+#### Ubuntu
+
+To patch and update packages on Ubuntu run the following commands (requires sudo permissions):
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+Your system might require a restart after installing updates.
+
+#### Rocky
+
+To patch and update packages on Rocky run the following command (requires sudo permissions):
+
+```bash
+sudo dnf update
+```
+
+Your system might require a restart after installing updates.
+
+### Reboot
+
+When logged in you can reboot a VM with this command (requires sudo permissions):
+
+```bash
+sudo reboot now
+```
+
+or use the reboot button in the EIDF Portal (requires project manager permissions).
