@@ -1,21 +1,19 @@
 {
-    "file1-bucket0.csv": {
+    "bucket-00:file1.csv": {
       "name": "My Name",
-      "bucket": 0,
       "resource:identifier": "my-name",
       "resource:description": "A very important data file",
       "resource:format": "CSV",
       "resource:licence": "CC-BY"
     },
-    "file1-bucket1.csv": {
-      "name": "My Name",
-      "bucket": 1,
-      "resource:identifier": "my-name",
-      "resource:description": "A very important data file",
+    "bucket-01:file2.csv": {
+      "name": "File2 Name",
+      "resource:identifier": "file2-name",
+      "resource:description": "Another very important data file",
       "resource:format": "CSV",
       "resource:licence": "CC-BY"
     },
-    "dir1/file2.csv": {
+    "bucket00:dir1/file2.csv": {
       "name": "Another File",
       "resource:identifier": "another-file",
       "resource:description": "More details about the file",
