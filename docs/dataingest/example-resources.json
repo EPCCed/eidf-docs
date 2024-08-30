@@ -1,0 +1,18 @@
+{
+  "0": {
+    "file1.csv": {
+      "name": "My Name",
+      "resource:identifier": "my-name",
+      "resource:description": "A very important data file",
+      "resource:format": "CSV",
+      "resource:licence": "CC-BY"
+    },
+    "dir1/file2.csv": {
+      "name": "Another File",
+      "resource:identifier": "another-file",
+      "resource:description": "More details about the file",
+      "resource:format": "CSV",
+      "resource:licence": "CC-BY"
+    }
+  }
+}
