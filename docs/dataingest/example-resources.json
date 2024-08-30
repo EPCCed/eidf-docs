@@ -1,6 +1,6 @@
-{
-  "0": {
-    "file1.csv": {
+[
+  {
+    "file1-bucket01.csv": {
       "name": "My Name",
       "resource:identifier": "my-name",
       "resource:description": "A very important data file",
@@ -14,5 +14,14 @@
       "resource:format": "CSV",
       "resource:licence": "CC-BY"
     }
+  },
+  {
+    "file2-bucket02.csv": {
+      "name": "File2 Name",
+      "resource:identifier": "file2-name",
+      "resource:description": "A very important data file",
+      "resource:format": "CSV",
+      "resource:licence": "CC-BY"
+    }
   }
-}
+]
