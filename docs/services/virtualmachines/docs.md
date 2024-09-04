@@ -106,9 +106,12 @@ Please contact the helpdesk if sudo permission management is required but is not
 
 ## First login
 
-A new user account must reset the password before they can log in for the first time.
+A new user account must reset the password before they can log in for the first time. 
+To do this:
 
-The user can reset the password in their account details page.
+1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop down.
+1. From the project page, they can select their account from the 'Your Accounts' table
+1. Finally, click the 'Set Password' button from the 'User Account Info' table. 
 
 ## Updating an existing machine
 
