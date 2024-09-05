@@ -70,9 +70,55 @@ Once this is done please contact us and we will provide credentials for uploadin
 We provide an S3 acccount with write permissions to the dataset buckets.
 As a project manager or Principal Investigator (PI), you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
 
-You can use the `aws` command line client to upload data to the bucket.
+You can use the [`aws` command line client](https://aws.amazon.com/cli/) to upload data to the bucket. For instance,
 
-There are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
+```bash
+$ aws s3 cp ./jobs s3://mario-test1 --recursive --exclude "*" \
+--include "AI*" --endpoint-url https://s3.eidf.ac.uk
+```
+
+Will recursively copy files in the `jobs` directory to the `s3://mario-test1` bucket excluding all files other than those that start with AI with the explicit end point.  You may want to create credentials  `~/.aws/credentials`:
+
+```ini
+[default]
+aws_access_key_id=<key>
+aws_secret_access_key=<secret>
+endpoint_url=https://s3.eidf.ac.uk
+```
+
+The `endpoint_url` means that you do not have to explicitly specify the URL every time or you can use an environment variable:
+
+```bash
+$ export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
+```
+
+You can list the configuration settings - only make sure the `access_key` and the `secret_key`:
+
+```bash
+$ aws configure list
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                <not set>             None    None
+access_key     ****************GF61 shared-credentials-file
+secret_key     ****************oPm8 shared-credentials-file
+    region                <not set>             None    None
+```
+
+You can test your upload (remembering to change the bucket name):
+
+```bash
+$ aws s3 ls --summarize --human-readable --recursive s3://mario-test1/
+2024-06-13 15:57:00    8.6 KiB AIY369
+2024-06-13 15:57:00    8.5 KiB AIY372
+...
+2024-06-13 15:57:00    9.9 KiB AIY827
+2024-06-13 15:57:00    9.0 KiB AIY841
+
+Total Objects: 100
+   Total Size: 895.8 KiB
+```
+
+Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
 
 ### Metadata format
 
