@@ -82,7 +82,7 @@ Once this is done please contact us and we will provide credentials for uploadin
 
 ### Data upload
 
-We provide an S3 acccount with write permissions to the dataset buckets.
+We provide an S3 account with write permissions to the dataset buckets.
 As a project manager or Principal Investigator (PI), you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to view these access credentials.
 
 You can use the [`aws` command line client](https://aws.amazon.com/cli/) to upload data to the bucket. For instance,
@@ -139,7 +139,7 @@ If you do:
 $ aws s3 help
 ```
 
-or if you want more information for a particular subcommand you can do:
+or if you want more information for a particular sub command you can do:
 
 ```bash
 aws s3 ls help
@@ -153,12 +153,12 @@ Alternatively, there are many graphical clients that act as a file browser for S
 
 Metadata for resources in your dataset are added via forms in the EIDF data catalogue.
 
-Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the tab "Resources" and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries are required and these are marked with a red \*:
-* Name
-* Access URL: This is a link to a file in S3 or a set of files with a common prefix.
-* Description
-* Unique Identifier
-* Licence
+Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the tab "Resources" and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red \* in the EIDF data catalogue:
+* **Name**
+* **Access URL**: This is a link to a file in S3 or a set of files with a common prefix.
+* **Description**
+* **Unique Identifier**
+* **Licence**
 
 A link to a data file in EIDF S3 looks like this:
 ```
