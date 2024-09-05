@@ -165,6 +165,19 @@ Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.a
 * Unique Identifier
 * Licence
 
+A link to a data file in EIDF S3 looks like this:
+```
+https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
+```
+where `eidfXXX-my-dataset` is the dataset bucket name and `mydatafile.csv` is the name of the uploaded file.
+
+You can also link to a set of files with a common prefix:
+```
+https://s3.eidf.ac.uk/eidfXXX-my-dataset?prefix=January2024/
+```
+
+This lists all the file names that start with `January2024/`. This way you can collect files together in "folders" and link to a collection rather than individual files.
+
 ### Preprocessing uploaded data (optional)
 
 If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
