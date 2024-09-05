@@ -1,8 +1,23 @@
 # Data ingest crib sheet
 
-**Version 0.4.7**
+**Version 0.4.8**
 
 This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
+
+## Content
+
+* [Applying for a project](#applying-for-a-project)
+* [Customising your entry in the EIDF Data Catalogue](#customising-your-entry-in-the-eidf-data-catalogue)
+* [Creating a dataset](#creating-a-dataset)
+* [Uploading your data](#uploading-your-data)
+  * [Data upload](#data-upload)
+  * [Metadata format](#metadata-format)
+  * [Preprocessing uploaded data (optional)](#preprocessing-uploaded-data-optional)
+  * [Start ingest](#start-ingest)
+* [Testing your s3 links and downloading](#testing-your-s3-links-and-downloading)
+* [More on using aws](#more-on-using-aws)
+* [Downloading data with curl](#downloading-data-with-curl)
+* [Inspecting data with Python](#inspecting-data-with-python)
 
 ## Applying for a project
 
@@ -197,7 +212,7 @@ curl -X GET "https://s3.eidf.ac.uk/eidf..."
 
 You will need the quotes or may have to explicitly escape certain characters if present, e.g. `?` -> `\?`, etc.
 
-### More on using aws
+## More on using aws
 
 If you want to look at someone else's bucket contents you need to add the `--no-sign-request` otherwise it will not work. For instance, if you want to use the content that Henry Thompson has [published](https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps/resource/7e485f0c-d480-43e9-8cb7-9540a3d3dbc9) in the data catalogue we have the access point:
 
@@ -219,7 +234,7 @@ $aws s3 ls s3://eidf125-cc-main-2019-35-augmented-index/idx/ \
 
 Note that if you do not terminate with the forward slash you will not get the listing of the contents.
 
-### Downloading data, an example using curl
+### Downloading data with curl
 
 As a concrete example if we look at an existing dataset in the EIDF Data Catalogue:
 
@@ -265,7 +280,7 @@ https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index/idx/cdx-00000.gz \
 
 The `-o` will write the output to a named file. You can use the above pattern to download content. In this instance this will be `cdx-00000.gz` and you can then start playing with the data.
 
-### Inspecting data, an example using Python
+## Inspecting data with Python
 
 ```python
 import boto3
