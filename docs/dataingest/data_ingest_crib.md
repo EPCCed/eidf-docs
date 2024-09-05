@@ -124,7 +124,33 @@ If you do:
 $ aws s3 help
 ```
 
+or if you want more information for a particular command you can do:
+
+```bash
+aws s3 ls help
+```
+
 you will get an overview of the commands available.
+
+If you want to look at someone else's bucket contents you need to add the `--no-sign-request` otherwise it will not work. For instance, if you want to use the content that Henry Thompson has [published](https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps/resource/7e485f0c-d480-43e9-8cb7-9540a3d3dbc9) in the data catalogue we have the access point:
+
+* https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx
+
+From this we get the end-point https://s3.eidf.ac.uk and the bucket s3://eidf125-cc-main-2019-35-augmented-index so to list the contents we can do:
+
+```bash
+$ aws s3 ls --recursive s3://eidf125-cc-main-2019-35-augmented-index \
+  --endpoint https://s3.eidf.ac.uk --no-sign-request
+```
+
+or you can add the prefix explicitly:
+
+```bash
+$aws s3 ls s3://eidf125-cc-main-2019-35-augmented-index/idx/ \
+  --endpoint https://s3.eidf.ac.uk --no-sign-request
+```
+
+Note that if you do not terminate with the forward slash you will not get the listing of the contents.
 
 Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
 
