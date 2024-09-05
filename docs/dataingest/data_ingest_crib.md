@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.3**
+**Version 0.4.3*4
 
 This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -117,6 +117,14 @@ $ aws s3 ls --summarize --human-readable --recursive s3://mario-test1/
 Total Objects: 100
    Total Size: 895.8 KiB
 ```
+
+If you do:
+
+```bash
+$ aws s3 help
+```
+
+you will get an overview of the commands available.
 
 Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
 
