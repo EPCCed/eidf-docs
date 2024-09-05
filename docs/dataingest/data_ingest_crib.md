@@ -1,8 +1,8 @@
 # Data ingest crib sheet
 
-**Version 0.4.2**
+**Version 0.4.3**
 
-This document is evolving relatively quickly so keep your eye on the version number to see if it has changed since you last looked at it.
+This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
 ## Applying for a project
 
