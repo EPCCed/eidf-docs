@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.4**
+**Version 0.4.5**
 
 This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -31,7 +31,7 @@ Login using your SAFE credentials - there is a "Log in" on the top, towards the 
 
 **Note**
 
-* **Do NOT use the CKAN interface to create Datasets or resources** (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset/Resource records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface either. Contact us if would like anything removed.
+* **Do NOT use the CKAN interface to create Datasets** (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface either. Contact us if would like anything removed.
 
 There is additional early documentation about the data ingest process at:
 
@@ -57,9 +57,9 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
 
 ![The form to create a dataset](imgs/CreateDataset.png)
 
-Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data bucket in S3.
+Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and the data buckets in S3.
 
-You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 bucket where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
+You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 buckets where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 ## Uploading your data
 
@@ -130,52 +130,14 @@ Alternatively, there are many graphical clients that act as a file browser for S
 
 ### Metadata format
 
-The metadata file, `resources.json`, must be organised as follows:
-* Data file name (any file names are given relative to the files that would be found in the `data` subdirectory, see below for examples)
-  * `name`: resource name in the EIDF data catalogue.
-  * `resource:identifier`: an identifier for the resource.
-  * `resource:description`: a description of the resource.
-  * `resource:format`: format description, for example `json` or `csv`.
-  * `resource:licence`: licence under which the resource is published.
+Metadata for resources in your dataset are added via forms in the EIDF data catalogue.
 
-For example, for the data files:
-
-* `dataset-name/data/file1.csv`
-* `dataset-name/data/dir1/file2.csv`
-
-Content of the metadata file named `dataset-name/resources.json` (above the `data` directory), the path of the files is relative to the `data` directory:
-```json
-{
-  "file1.csv": {
-    "name": "My Name",
-    "resource:identifier": "my-name",
-    "resource:description": "A very important data file",
-    "resource:format": "CSV",
-    "resource:licence": "CC-BY"
-  },
-  "dir1/file2.csv": {
-    "name": "Another File",
-    "resource:identifier": "another-file",
-    "resource:description": "More details about the file",
-    "resource:format": "CSV",
-    "resource:licence": "CC-BY"
-  }
-}
-```
-
-It is also possible to add an entire directory tree as a single metadata resource, for example:
-```json
-{
-  "dir/": {
-    "name": "Many files",
-    "resource:identifier": "many-files",
-    "resource:description": "A collection of data files in one data resource",
-    "resource:format": "CSV",
-    "resource:licence": "CC-BY"
-  }
-}
-```
-This will create one resource in the catalogue with a link to all files in the S3 ARD bucket with the prefix `dir`, you do not have to use the forward slash to indicate a directory.
+Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the tab "Resources" and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries are required and these are marked with a red \*:
+* Name
+* Access URL: This is a link to a file in S3 or a set of files with a common prefix.
+* Description
+* Unique Identifier
+* Licence
 
 ### Preprocessing uploaded data (optional)
 
