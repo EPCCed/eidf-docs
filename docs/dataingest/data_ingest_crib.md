@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.5**
+**Version 0.4.6**
 
 This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
