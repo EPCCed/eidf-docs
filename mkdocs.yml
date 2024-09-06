@@ -104,6 +104,6 @@ nav:
        - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
-
+  - "EIDF Tutorial Videos": tutorial-videos/index.md
 
 dev_addr: localhost:8000
