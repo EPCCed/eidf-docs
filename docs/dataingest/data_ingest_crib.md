@@ -1,11 +1,12 @@
 # Data ingest crib sheet
 
-**Version 0.4.8**
+**Version 0.4.9**
 
 This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
 ## Content
 
+* [Assumptions](#assumptions)
 * [Applying for a project](#applying-for-a-project)
 * [Customising your entry in the EIDF Data Catalogue](#customising-your-entry-in-the-eidf-data-catalogue)
 * [Creating a dataset](#creating-a-dataset)
@@ -18,6 +19,14 @@ This document is evolving fairly quickly so please keep an eye on the version nu
 * [More on using aws](#more-on-using-aws)
 * [Downloading data with curl](#downloading-data-with-curl)
 * [Inspecting data with Python](#inspecting-data-with-python)
+
+## Assumptions
+
+Here are some assumptions - if these do not match your expectations please let us know.
+
+* We assume that the data your are going to publish is going to be able open and freely accessible to all. We may be able to accommodate some constraints but if you want full control you may want to use the   [S3 service](https://epcced.github.io/eidf-docs/services/s3/) although this is not a free service.
+* Do let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know. 
+* If you have any explicit requirements for your data do let us know.
 
 ## Applying for a project
 
