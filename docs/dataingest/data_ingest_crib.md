@@ -1,8 +1,8 @@
 # Data ingest crib sheet
 
-**Version 0.4.9**
+**Version 0.4.10**
 
-This document is evolving fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
+This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
 ## Content
 
@@ -24,13 +24,13 @@ This document is evolving fairly quickly so please keep an eye on the version nu
 
 Here are some assumptions - if these do not match your expectations please let us know.
 
-* We assume that the data your are going to publish is going to be able open and freely accessible to all. We may be able to accommodate some constraints but if you want full control you may want to use the   [S3 service](https://epcced.github.io/eidf-docs/services/s3/) although this is not a free service.
-* Do let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know. 
+* We assume that the data your are going to publish is going to be able open and freely accessible to all. We may be able to accommodate some constraints but if you want full control to access you may want to use the   [S3 service](https://epcced.github.io/eidf-docs/services/s3/), this is not a free service.
+* Do let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know how much you expect your addition rate will be. 
 * If you have any explicit requirements for your data do let us know.
 
 ## Applying for a project
 
-If you do not already have an EPCC SAFE account you will need to create one before proceeding:
+If you do not already have an EPCC SAFE account, you will need to create one before proceeding:
 
 * https://safe.epcc.ed.ac.uk/
 
@@ -38,7 +38,9 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest/publishing you do not need to apply for a new project. Instead put in a query to *eidf@epcc.ed.ac.uk* saying that you would like to publish your data from your existing project and give your project identifier, e.g. eidfNNN. Also, be aware that the data publishing is free subject to your data being under a given threshold - however, associated services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so if you add these a charge will be imposed. If you do not have an existing EIDF project, in the EIDF portal:
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data ingest/publishing you do not need to apply for a new project. Instead, put in a query to [*eidf@epcc.ed.ac.uk*](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN. Be aware that data publishing is free subject to your data volumes being under a given threshold. Also, note that associated EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so if you add any of these a charge will be imposed. 
+
+If you do not have an existing EIDF project, in the EIDF portal:
 
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
@@ -47,11 +49,11 @@ Currently, this process is orientated towards the EIDF compute resources which i
 
 ## Customising your entry in the EIDF Data Catalogue
 
-When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we are mapping an EIDF project to a CKAN organisation).
+When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
 
 * https://catalogue.eidf.ac.uk/
 
-Login using your SAFE credentials - there is a "Log in" on the top, towards the right.
+Login using your SAFE credentials - there is a "Log in" on the top right.
 
 **Note**
 
@@ -78,12 +80,14 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Description**: a description of your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
+  
+  As in the form example below.
 
 ![The form to create a dataset](imgs/CreateDataset.png)
 
-Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and the data buckets in S3.
+Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data buckets in S3.
 
-You should now be able to click on a link to your dataset to see a copy of the information that you provided, when the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 buckets where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
+You should now be able to click on a link to your dataset to see a copy of the information that you provided. When the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 buckets where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
 ## Uploading your data
 
@@ -114,6 +118,18 @@ The `endpoint_url` means that you do not have to explicitly specify the URL ever
 
 ```bash
 $ export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
+```
+
+or if you are using the windows command prompt:
+
+```cmd
+C:\> set AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
+```
+
+or powershell:
+
+```powershell
+PS C:\> $Env:AWS_ENDPOINT_URL="https://s3.eidf.ac.uk"
 ```
 
 You can list the configuration settings - only make sure the `access_key` and the `secret_key`:
