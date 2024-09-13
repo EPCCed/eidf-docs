@@ -12,7 +12,7 @@ This document is changing fairly quickly so please keep an eye on the version nu
 * [Creating a dataset](#creating-a-dataset)
 * [Uploading your data](#uploading-your-data)
   * [Data upload](#data-upload)
-  * [Download URLs of uploaded files](#download-urls-of-uploaded-files)
+  * [Download URLs of files in S3](#download-urls-of-files-in-s3)
   * [Metadata format](#metadata-format)
   * [Preprocessing uploaded data (optional)](#preprocessing-uploaded-data-optional)
 * [Testing your s3 links and downloading](#testing-your-s3-links-and-downloading)
