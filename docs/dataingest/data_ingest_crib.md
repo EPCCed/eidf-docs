@@ -12,9 +12,9 @@ This document is changing fairly quickly so please keep an eye on the version nu
 * [Creating a dataset](#creating-a-dataset)
 * [Uploading your data](#uploading-your-data)
   * [Data upload](#data-upload)
+  * [Download URLs of uploaded files](#download-urls-of-uploaded-files)
   * [Metadata format](#metadata-format)
   * [Preprocessing uploaded data (optional)](#preprocessing-uploaded-data-optional)
-  * [Start ingest](#start-ingest)
 * [Testing your s3 links and downloading](#testing-your-s3-links-and-downloading)
 * [More on using aws](#more-on-using-aws)
 * [Downloading data with curl](#downloading-data-with-curl)
@@ -174,16 +174,9 @@ you will get an overview of the commands available.
 
 Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io).
 
-### Metadata format
+### Download URLs of files in S3
 
-Metadata for resources in your dataset are added via forms in the EIDF data catalogue.
-
-Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the tab "Resources" and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red \* in the EIDF data catalogue:
-* **Name**
-* **Access URL**: This is a link to a file in S3 or a set of files with a common prefix.
-* **Description**
-* **Unique Identifier**
-* **Licence**
+Each file in S3 can be directly accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the format (and the configuration of your browser).
 
 A link to a data file in EIDF S3 looks like this:
 ```
@@ -198,6 +191,17 @@ https://s3.eidf.ac.uk/eidfXXX-my-dataset?prefix=January2024/
 
 This lists all the file names that start with `January2024/`. This way you can collect files together in "folders" and link to a collection rather than individual files.
 
+### Metadata format
+
+Metadata for resources in your dataset are added via forms in the EIDF data catalogue.
+
+Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the tab "Resources" and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red \* in the EIDF data catalogue:
+* **Name**
+* **Access URL**: This is a link to a file in S3 or a set of files with a common prefix, that you uploaded as explained above.
+* **Description**
+* **Unique Identifier**
+* **Licence**
+
 ### Preprocessing uploaded data (optional)
 
 If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
@@ -205,7 +209,7 @@ If your data is not already in an *Analytics Ready Data* (ARD) format, the forma
 * A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the metadata (more information on the requirements below).
 * A description of the process.
 
-### Start ingest
+**Start ingest**
 
 When you the upload is complete and all files are present, open the dataset page in the EIDF Portal and press the `Trigger Ingest` button.
 
