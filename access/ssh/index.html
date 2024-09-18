@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
     
     
       
@@ -795,6 +795,39 @@
       Accessing EIDF via a Terminal
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-with-putty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing with PuTTY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing with PuTTY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-gateway-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the Gateway Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-clientvm-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a client/VM config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2488,6 +2521,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#accessing-with-putty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing with PuTTY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing with PuTTY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-gateway-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the Gateway Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-clientvm-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding a client/VM config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2679,6 +2745,39 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 </li>
 </ol>
 <p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
+<h3 id="accessing-with-putty">Accessing with PuTTY</h3>
+<h4 id="creating-the-gateway-config">Creating the Gateway Config</h4>
+<ol>
+<li>Install PuTTY v0.81 or greater and launch it</li>
+<li>From the default 'Session' menu, input the gateway URL: <code>eidf-gateway.epcc.ed.ac.uk</code></li>
+<li>Set the port to <code>22</code></li>
+<li>Naviagte to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials'</li>
+<li>Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'</li>
+<li>Select the path to your SSH key for your gateway account</li>
+<li>Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'</li>
+<li>Click Save</li>
+</ol>
+<h4 id="adding-a-clientvm-config">Adding a client/VM config</h4>
+<p>Now we can create a config session for a VM which can be connected to through the gateway</p>
+<ol>
+<li>From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'</li>
+<li>Input the hostname/IP of the VM, e.g. 10.24.X.Y.</li>
+<li>Ensure the port is <code>22</code></li>
+<li>From the navigation menu, move to 'Connection' &gt; 'Proxy'</li>
+<li>Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. <em>Note this doesn't exist in older versions of PuTTY</em></li>
+<li>Under 'Proxy Hostname', set the name of the gateway session you created above. In the SOP this was called 'eidf-gateway'</li>
+<li>Set the Port to <code>22</code></li>
+<li>Put your eidf-gateway username into the 'Username' box</li>
+<li>Set 'Do DNS name lookup at proxy end' to 'Yes'</li>
+<li>Navigate to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials' and select 'Browse' next to the 'Private key file for authentication' box</li>
+<li>Select your private key for your VM account (this may be the same as the gateway)</li>
+<li>Navigate to 'Connection' &gt; 'Data'</li>
+<li>Put your VM username into the 'Auto-Login username' box</li>
+<li>Return to the original 'Sesstion' tab</li>
+<li>Put the VM name or a nickname into the 'Saved Settings' name box</li>
+<li>Select 'Save'</li>
+<li>Select 'Open' and you should connect to your VM.</li>
+</ol>
 <h2 id="ssh-aliases">SSH Aliases</h2>
 <p>You can use SSH Aliases to access your VMs with a single command.</p>
 <ol>
@@ -2789,7 +2888,7 @@ The <code>-J</code> flag is use to specify that we will access the second specif
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
