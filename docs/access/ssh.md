@@ -176,9 +176,9 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
 
-## Accessing with PuTTY
+### Accessing with PuTTY
 
-### Creating the Gateway Config
+#### Creating the Gateway Config
 
 1. Install PuTTY v0.81 or greater and launch it
 1. From the default 'Session' menu, input the gateway URL: `eidf-gateway.epcc.ed.ac.uk`
@@ -189,7 +189,7 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 1. Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'
 1. Click Save
 
-### Adding a client/VM config
+#### Adding a client/VM config
 
 Now we can create a config session for a VM which can be connected to through the gateway
 
