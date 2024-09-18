@@ -183,8 +183,8 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 1. Install PuTTY v0.81 or greater and launch it
 1. From the default 'Session' menu, input the gateway URL: `eidf-gateway.epcc.ed.ac.uk`
 1. Set the port to `22`
-1. Change menu to 'Connection' > 'SSH' > 'Auth' > 'Credentials'
-1. Select your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'
+1. Naviagte to 'Connection' > 'SSH' > 'Auth' > 'Credentials'
+1. Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'
 1. Select the path to your SSH key for your gateway account
 1. Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'
 1. Click Save
@@ -194,7 +194,7 @@ You will be prompted for a 'TOTP' code upon successful public key authentication
 Now we can create a config session for a VM which can be connected to through the gateway
 
 1. From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'
-1. Input the hostname/IP of the VM, e.g. 10.24.1.1.
+1. Input the hostname/IP of the VM, e.g. 10.24.X.Y.
 1. Ensure the port is `22`
 1. From the navigation menu, move to 'Connection' > 'Proxy'
 1. Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. *Note this doesn't exist in older versions of PuTTY*
