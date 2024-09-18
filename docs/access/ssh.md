@@ -176,6 +176,41 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
 
+### Accessing with PuTTY
+
+#### Creating the Gateway Config
+
+1. Install PuTTY v0.81 or greater and launch it
+1. From the default 'Session' menu, input the gateway URL: `eidf-gateway.epcc.ed.ac.uk`
+1. Set the port to `22`
+1. Naviagte to 'Connection' > 'SSH' > 'Auth' > 'Credentials'
+1. Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'
+1. Select the path to your SSH key for your gateway account
+1. Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'
+1. Click Save
+
+#### Adding a client/VM config
+
+Now we can create a config session for a VM which can be connected to through the gateway
+
+1. From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'
+1. Input the hostname/IP of the VM, e.g. 10.24.X.Y.
+1. Ensure the port is `22`
+1. From the navigation menu, move to 'Connection' > 'Proxy'
+1. Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. *Note this doesn't exist in older versions of PuTTY*
+1. Under 'Proxy Hostname', set the name of the gateway session you created above. In the SOP this was called 'eidf-gateway'
+1. Set the Port to `22`
+1. Put your eidf-gateway username into the 'Username' box
+1. Set 'Do DNS name lookup at proxy end' to 'Yes'
+1. Navigate to 'Connection' > 'SSH' > 'Auth' > 'Credentials' and select 'Browse' next to the 'Private key file for authentication' box
+1. Select your private key for your VM account (this may be the same as the gateway)
+1. Navigate to 'Connection' > 'Data'
+1. Put your VM username into the 'Auto-Login username' box
+1. Return to the original 'Sesstion' tab
+1. Put the VM name or a nickname into the 'Saved Settings' name box
+1. Select 'Save'
+1. Select 'Open' and you should connect to your VM.
+
 ## SSH Aliases
 
 You can use SSH Aliases to access your VMs with a single command.
