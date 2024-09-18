@@ -209,7 +209,7 @@ Now we can create a config session for a VM which can be connected to through th
 1. Return to the original 'Sesstion' tab
 1. Put the VM name or a nickname into the 'Saved Settings' name box
 1. Select 'Save'
-1. Select 'Open' and you should connect to your VM. 
+1. Select 'Open' and you should connect to your VM.
 
 ## SSH Aliases
 
