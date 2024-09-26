@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.11**
+**Version 0.4.12**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -24,9 +24,9 @@ This document is changing fairly quickly so please keep an eye on the version nu
 
 Here are some assumptions - if these do not match your expectations please let us know.
 
-* We assume that the data your are going to publish is going to be able open and freely accessible to all. We may be able to accommodate some constraints but if you want full control to access you may want to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead, this is not a free service.
+* To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you will have to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead, this is not a free service.
 * Do let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know how much you expect your addition rate will be. 
-* If you have any explicit requirements for your data do let us know.
+* If you have any other explicit requirements for your data do let us know.
 * EIDF guarantees to the best of its ability to continue its services to at least 31-Dec-2032 and aims to continue beyond 2032.
 
 ## Applying for a project
@@ -39,7 +39,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project. Instead, put in a query to [*eidf@epcc.ed.ac.uk*](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN and the volume of data tht you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you want to publish more than this.  
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project. Instead, put in a query to [*eidf@epcc.ed.ac.uk*](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN and the volume of data that you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you want to publish more than this.  
 
 If you do not have an existing EIDF project, in the EIDF portal:
 
@@ -50,13 +50,13 @@ If you do not have an existing EIDF project, in the EIDF portal:
   * A proposed end date (at the moment you will not be able to go beyond 31-Dec-2032)
 
 
-For the EIDF Services you require chose the *ingest data formally into EIDF for long-term hosting* choice. Note that all the other EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so if you add any of these other services a charge will be imposed. 
+For the EIDF Services you require chose the *ingest data formally into EIDF for long-term hosting* choice. Note that all the other EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so, if you add any other services a charge will be imposed. 
 
-Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project is approved or rejected - someone may be in touch to clarify points in your application.
+Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project has been approved or rejected - someone may be in touch to clarify points in your application.
 
 ## Customising your entry in the EIDF Data Catalogue
 
-When/if your project is approved an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
+When/if your project is approved, an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
 
 * https://catalogue.eidf.ac.uk/
 
