@@ -107,8 +107,11 @@ Please contact the helpdesk if sudo permission management is required but is not
 ## First login
 
 A new user account must reset the password before they can log in for the first time.
+To do this:
 
-The user can reset the password in their account details page.
+1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop down.
+1. From the project page, they can select their account from the 'Your Accounts' table
+1. Finally, click the 'Set Password' button from the 'User Account Info' table.
 
 ## Updating an existing machine
 
@@ -132,3 +135,38 @@ even if you didn't select a package when first creating the machine.
 1. Click on 'Software Catalogue'
 1. Select the configuration you wish to install and press 'Submit'
 1. The configuration job runs for a few minutes.
+
+### Patching and updating
+
+It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
+
+#### Ubuntu
+
+To patch and update packages on Ubuntu run the following commands (requires sudo permissions):
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+Your system might require a restart after installing updates.
+
+#### Rocky
+
+To patch and update packages on Rocky run the following command (requires sudo permissions):
+
+```bash
+sudo dnf update
+```
+
+Your system might require a restart after installing updates.
+
+### Reboot
+
+When logged in you can reboot a VM with this command (requires sudo permissions):
+
+```bash
+sudo reboot now
+```
+
+or use the reboot button in the EIDF Portal (requires project manager permissions).
