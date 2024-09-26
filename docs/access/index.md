@@ -28,6 +28,7 @@ Includes access to the following services:
 
 * [Cerebras CS-2](../services/cs2/index.md)
 * [Ultra2](../services/ultra2/index.md)
+* [EIDF Interim and Experimental Systems](../services/experimental/index.md)
 
 To login to most command-line services with `ssh` you should use the username and password
 you obtained from SAFE when you applied for access, along with the SSH Key you
