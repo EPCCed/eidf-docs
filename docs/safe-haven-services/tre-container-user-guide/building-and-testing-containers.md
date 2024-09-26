@@ -2,7 +2,10 @@
 
 ## Choose a container base from DockerHub
 
-Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose. Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach. Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided. Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.
+Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose.
+Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach.
+Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided.
+Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.
 
 Examples of batch job container bases are Python and PyTorch, and other language specific and ML software stacks. Examples of interactive container bases are Rocker, Jupyter Docker Stacks, and NVIDIA RAPIDS extended with additional package sets and code required by your project.
 
