@@ -53,4 +53,4 @@ Full legal code: [Creative Commons 4.0 Legal Code](https://creativecommons.org/l
 
 ## I'm stuck! How do I get help?
 
-Contact the EIDF Service Team via eidf@epcc.ed.ac.uk
+If you are an existing user of EIDF or other EPCC systems then please submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).

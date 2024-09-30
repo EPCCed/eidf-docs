@@ -1,5 +1,6 @@
-# Cerebras CS-2
+# EIDF Cerebras 
 
 ## Getting Access
 
-Access to the Cerebras CS-2 system is currently by arrangement with EPCC. Please email eidf@epcc.ed.ac.uk with a short description of the work you would like to perform.
+Access to the Cerebras system is currently by arrangement with EIDF. Please apply for a project on the [EIDF Portal](https://portal.eidf.ac.uk/).
+

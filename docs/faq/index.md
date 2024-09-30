@@ -4,9 +4,7 @@
 
 ### How do I contact the EIDF Helpdesk?
 
-Submit a query in the [EIDF Portal](https://portal.eidf.ac.uk/) by selecting "Submit a Support Request" in the "Help and Support" menu and filling in [this form](https://portal.eidf.ac.uk/queries/submit).
-
-You can also email us at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
+If you are an existing user of EIDF or other EPCC systems then please submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
 
 ### How do I request more resources for my project? Can I extend my project?
 
