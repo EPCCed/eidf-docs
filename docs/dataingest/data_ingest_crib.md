@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.12**
+**Version 0.4.13**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -39,7 +39,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project. Instead, put in a query to [*eidf@epcc.ed.ac.uk*](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN and the volume of data that you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you want to publish more than this.  
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project. Submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN and the volume of data that you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you want to publish more than this.  
 
 If you do not have an existing EIDF project, in the EIDF portal:
 
