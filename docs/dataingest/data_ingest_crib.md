@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.13**
+**Version 0.4.14**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -87,10 +87,11 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
   * **Description**: a description of your dataset.
   * **Link**: a link describing your group/contact information.
   * **Contact email**: a contact email to answer queries about your data set (this is optional).
+  * **License**: the license under which you will distribute your data.
   
   As in the form example below.
 
-![The form to create a dataset](imgs/CreateDataset.png)
+![](imgs/CreateDataset.png)
 
 Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data buckets in S3.
 
