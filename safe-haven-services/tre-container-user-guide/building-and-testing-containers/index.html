@@ -2132,14 +2132,29 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scan-container-using-trivy-ci" class="md-nav__link">
+    <nav class="md-nav" aria-label="Test the container for TRE use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scanning-the-container-dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scan container using Trivy CI
+      1. Scanning the container Dockerfile
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scanning-the-container-image-using-trivy-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Scanning the container image using Trivy CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2164,6 +2179,27 @@
   
   <span class="md-ellipsis">
     Using Containers in the TRE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Examples
   </span>
   
 
@@ -2308,14 +2344,29 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scan-container-using-trivy-ci" class="md-nav__link">
+    <nav class="md-nav" aria-label="Test the container for TRE use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scanning-the-container-dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
-      Scan container using Trivy CI
+      1. Scanning the container Dockerfile
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scanning-the-container-image-using-trivy-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Scanning the container image using Trivy CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2339,7 +2390,10 @@
 
 <h1 id="building-and-testing-containers">Building and Testing Containers</h1>
 <h2 id="choose-a-container-base-from-dockerhub">Choose a container base from DockerHub</h2>
-<p>Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose. Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach. Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided. Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.</p>
+<p>Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose.
+Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach.
+Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided.
+Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.</p>
 <p>Examples of batch job container bases are Python and PyTorch, and other language specific and ML software stacks. Examples of interactive container bases are Rocker, Jupyter Docker Stacks, and NVIDIA RAPIDS extended with additional package sets and code required by your project.</p>
 <h2 id="add-tre-file-system-directories">Add TRE file system directories</h2>
 <p>Container images built to run in the TRE must implement the following line in the Dockerfile to interface with the project data and the TRE file system:</p>
@@ -2389,12 +2443,23 @@ Hence, containers have access to three directories located on the host system as
 <p>An example of TRE network isolation significance and the considerations arising from this is provided by Hugging Face, where models are cached in the user local <code>~/.cache/huggingface/hub/</code> directory in the container. The environment variable <code>HF_HOME</code> must be set to a directory in a <code>/safe_data</code> project folder and the <code>cache_dir</code> option of the <code>from_pretrained()</code> call used at runtime.</p>
 <p>If a model is downloaded from Hugging Face the advice is to set the environment variable <code>HF_HUB_OFFLINE=1</code> to prevent attempts at contact the Hugging Face Hub. Any connection attempts will take a significant time to elapse and then fail in the TRE setting.</p>
 <p>It is recommended that the checklist for Dockerfile composition is followed: <a href="https://github.com/EPCCed/tre-container-samples/blob/main/docs/container-build-guide.md">Container Build Guide</a></p>
-<p>Information Governance requirements may require a security scan of your container, and <a href="https://trivy.dev/">Trivy</a> is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk. The use of the Trivy misconfiguration tool on Dockerfiles is also recommended. This tool option will highlight many common security issues:</p>
+<p>Information Governance requirements may require a security scan of both:</p>
+<ol>
+<li>
+<p>The Dockerfile used to build the container image</p>
+</li>
+<li>
+<p>The container image itself, once it is built.</p>
+</li>
+</ol>
+<p><a href="https://trivy.dev/">Trivy</a> is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk.</p>
+<h3 id="1-scanning-the-container-dockerfile">1. Scanning the container Dockerfile</h3>
+<p>The use of the Trivy misconfiguration tool on Dockerfiles is also recommended. This tool option will highlight many common security issues in the Dockerfile:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/repo<span class="w"> </span>ghcr.io/aquasecurity/trivy:latest<span class="w"> </span>config<span class="w"> </span><span class="s2">&quot;/repo/Dockerfile&quot;</span>
 </code></pre></div>
 <p>The security posture of containers and the build process may be of interest to IG teams, however, it is not expected that security issues indicated by the tool need to be addressed before the container is run in the TRE unless the IG team issues specific guidance on vulnerability and configuration remediation and mitigation.</p>
-<h2 id="scan-container-using-trivy-ci">Scan container using Trivy CI</h2>
-<p>Trivy can be run manually but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found <a href="https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml">here</a></p>
+<h3 id="2-scanning-the-container-image-using-trivy-ci">2. Scanning the container image using Trivy CI</h3>
+<p>Trivy can be run manually on the built image but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found <a href="https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml">here</a></p>
 <p>The Trivy report can be downloaded as an artifact from the job summary page. Before using a specific container in the TRE it may be necessary to test the security risk and gain IG team approval.</p>
 
 
