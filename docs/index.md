@@ -7,6 +7,7 @@ can find more information on the service and the research it supports on
 the [EIDF website](https://www.ed.ac.uk/edinburgh-international-data-facility/).
 
 If you are an existing user of EIDF or other EPCC systems then please submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
+
 ## What the documentation covers
 
 This documentation gives more in-depth coverage of current EIDF
