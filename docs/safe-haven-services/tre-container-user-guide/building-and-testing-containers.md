@@ -55,11 +55,11 @@ It is recommended that the checklist for Dockerfile composition is followed: [Co
 
 Information Governance requirements may require a security scan of both:
 
-1. The Dockerfile used to build the container image
+ 1. The Dockerfile used to build the container image
 
-1. The container image itself, once it is built.
+ 1. The container image itself, once it is built.
 
-[Trivy](https://trivy.dev/) is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk. 
+[Trivy](https://trivy.dev/) is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk.
 
 ### 1. Scanning the container Dockerfile
 
