@@ -2,9 +2,9 @@
 
 The Edinburgh International Data Facility is located at the Advanced Computing Facility of EPCC, the supercomputing centre based at the University of Edinburgh.
 
-## Email us
+## Send us a query
 
-Email EIDF: eidf@epcc.ed.ac.uk
+If you are an existing user of EIDF or other EPCC systems then please submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
 
 ## Sign up
 
