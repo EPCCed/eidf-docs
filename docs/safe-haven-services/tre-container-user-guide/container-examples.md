@@ -2,7 +2,7 @@
 
 To help with writing your own Dockerfiles to run within a Trusted Research Environment via the Container Execution Service, we have provided a set of example Dockerfiles for commonly used software stacks. These show examples of how to set up containers with non-root user access, as well as other best practices for developing secure containers.
 
-To request access to these container examples please contact Giulia Deiana or Declan Valters via the EIDF helpdesk.
+To request access to these container examples please contact the EIDF helpdesk (eidf@epcc.ed.ac.uk) with the subject line "TRE Container Support".
 
 ## Example Containers
 
@@ -14,7 +14,7 @@ To request access to these container examples please contact Giulia Deiana or De
 | Jupyter Notebook | non-interactive at present |
 | MinIO S3         |  |
 | Nextflow         |  |
-| NVIDIDA-Rapids   |  basic/minimal packages |
+| NVIDIA-Rapids    |  basic/minimal packages |
 | Octave           |  |
 | PostGreSQL       |  |
 | PSPP             |  |
