@@ -1,4 +1,4 @@
-# EIDF Cerebras 
+# EIDF Cerebras
 
 ## Getting Access
 
