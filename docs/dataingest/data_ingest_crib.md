@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.14**
+**Version 0.4.15**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -25,7 +25,7 @@ This document is changing fairly quickly so please keep an eye on the version nu
 Here are some assumptions - if these do not match your expectations please let us know.
 
 * To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you will have to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead, this is not a free service.
-* Do let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know how much you expect your addition rate will be. 
+* Let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know what you expect your addition rate will be. 
 * If you have any other explicit requirements for your data do let us know.
 * EIDF guarantees to the best of its ability to continue its services to at least 31-Dec-2032 and aims to continue beyond 2032.
 
@@ -39,7 +39,7 @@ Once you have a SAFE account, go to the EIDF portal and use your SAFE credential
 
 * https://portal.eidf.ac.uk/
 
-First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project. Submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) stating that you would like to publish data from your existing project and let us know your project identifier, e.g. eidfNNN and the volume of data that you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you want to publish more than this.  
+First, apply for an EIDF project. If you already have an existing EIDF project from which you want to do the data publishing you do not need to apply for a new project instead submit your queries via our [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit). State that you would like to publish data from your existing project and let us know your project identifier is, e.g. eidfNNN, and the volume of data that you want to publish. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you requirements are higher than this, and that the data is being made freely available.  
 
 If you do not have an existing EIDF project, in the EIDF portal:
 
@@ -56,7 +56,7 @@ Be sure to describe the dataset(s) that you wish to ingest. Submit your applicat
 
 ## Customising your entry in the EIDF Data Catalogue
 
-When/if your project is approved, an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
+When/if your project is approved, an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([CKAN user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
 
 * https://catalogue.eidf.ac.uk/
 
@@ -65,12 +65,6 @@ Login using your SAFE credentials - there is a "Log in" on the top right.
 **Note**
 
 * **Do NOT use the CKAN interface to create Datasets** (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface either. Contact us if would like anything removed.
-
-There is additional early documentation about the data ingest process at:
-
-* https://github.com/EPCCed/eidf-docs/tree/data_ingest/docs/dataingest
-
-This will be updated as the process evolves but for now this version is the canonical version so use this version.
 
 ## Creating a dataset
 
