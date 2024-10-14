@@ -6,25 +6,25 @@ Once you have built and tested your container, you are ready to start using it w
 
 Containers can only be used on the TRE desktop hosts using shell commands. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE.
 
-As use of containers in the TRE is a new service, it is at this stage regarded as an activity that requires additional security controls. As result the `ces-pull` command is a privileged one that can only be run using sudo. Researcher accounts must be explicitly enabled for use of the sudo `ces-pull` command through IG approval – sudo access for these accounts will be constrained to only run the `ces-pull` command.
+As use of containers in the TRE is a new service, it is at this stage regarded as an activity that requires additional security controls. Researcher accounts must be explicitly enabled for use of the `ces-pull` command through IG approval.
 
 To pull a private image, you must create an access token to authenticate with GHCR (see [Authenticating to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)). The container is then pulled by the user with the command:
 
 ```bash
-sudo ces-pull <github_user> <github_token> ghcr.io/<namespace>/<container_name>[:<container_tag>]
+ces-pull <github_user> <github_token> ghcr.io/<namespace>/<container_name>[:<container_tag>]
 ```
 
 To pull a public image, which does not require authenticating with username and token, pass two empty strings:
 
 ```bash
-sudo ces-pull "" "" ghcr.io/<namespace>/<container_name>[:<container_tag>]
+ces-pull "" "" ghcr.io/<namespace>/<container_name>[:<container_tag>]
 ```
 
 Once the container image has been pulled into the TRE desktop host, the image can be managed with Podman commands. However, containers must not be run directly using Podman. Instead, commands developed for use within the TRE must be used as will now be described.
 
 ## Running the container in the TRE
 
-Containers may be run in the TRE using one of two commands: use `ces-gpu-run` if a GPU is to be connected to the container, otherwise use the `ces-run` command. The sudo privilege escalation is not required to run containers. The basic command to start a container is one of:
+Containers may be run in the TRE using one of two commands: use `ces-gpu-run` if a GPU is to be connected to the container, otherwise use the `ces-run` command. The basic command to start a container is one of:
 
 ```bash
 ces-run ghcr.io/<namespace>/<container_name>[:<container_tag>]
