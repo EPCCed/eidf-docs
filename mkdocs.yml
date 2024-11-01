@@ -74,6 +74,9 @@ nav:
     - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
+#    - "GitLab":
+#      - "Overview": services/gitlab/index.md
+#      - "Quickstart": services/gitlab/quickstart.md
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md

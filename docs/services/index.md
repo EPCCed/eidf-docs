@@ -14,6 +14,8 @@
 
 [Graphcore Bow Pod64](./graphcore/index.md)
 
+[GitLab Code Storage](./gitlab/index.md)
+
 ## Data Services
 
 [S3](./s3/index.md)
