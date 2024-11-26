@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.15**
+**Version 0.4.16**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -22,12 +22,12 @@ This document is changing fairly quickly so please keep an eye on the version nu
 
 ## Assumptions
 
-Here are some assumptions - if these do not match your expectations please let us know.
+Here are some basic assumptions - if these do not match your expectations then please let us know.
 
-* To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you will have to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead, this is not a free service.
+* To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you will have to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead which is not a free service.
 * Let us know what you expect your final data volume to be. If you are going to be generating data additions then let us know what you expect your addition rate will be. 
 * If you have any other explicit requirements for your data do let us know.
-* EIDF guarantees to the best of its ability to continue its services to at least 31-Dec-2032 and aims to continue beyond 2032.
+* EIDF guarantees to the best of its ability to continue its services to at least 31-Jul-2032 and aims to continue beyond 2032.
 
 ## Applying for a project
 
