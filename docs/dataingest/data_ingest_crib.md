@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.17**
+**Version 0.4.18**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -18,7 +18,6 @@ This document is changing fairly quickly so please keep an eye on the version nu
 * [Testing your s3 links and downloading](#testing-your-s3-links-and-downloading)
 * [More on using aws](#more-on-using-aws)
 * [Downloading data with curl](#downloading-data-with-curl)
-* [Inspecting data with Python](#inspecting-data-with-python)
 
 ## Assumptions
 
@@ -109,6 +108,8 @@ $ aws s3 cp ./jobs s3://mario-test1 --recursive --exclude "*" \
 --include "AI*" --endpoint-url https://s3.eidf.ac.uk
 ```
 
+The `$` indicates the shell prompt.
+
 Will recursively copy files in the `jobs` directory to the `s3://mario-test1` bucket excluding all files other than those that start with AI with the explicit end point.  You may want to create credentials  `~/.aws/credentials`:
 
 ```ini
@@ -171,7 +172,7 @@ $ aws s3 help
 or if you want more information for a particular sub command you can do:
 
 ```bash
-aws s3 ls help
+$ aws s3 ls help
 ```
 
 you will get an overview of the commands available.
@@ -204,9 +205,9 @@ s3://eidf158-walkingtraveltimemaps/
 Then you can use the aws client to download the whole dataset to your current directory:
 
 ```bash
-aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
-          --endpoint-url https://s3.eidf.ac.uk \
-          --no-sign-request
+$ aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
+            --endpoint-url https://s3.eidf.ac.uk \
+            --no-sign-request
 ```
 
 ### Metadata format
@@ -326,30 +327,4 @@ https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index/idx/cdx-00000.gz \
 ```
 
 The `-o` will write the output to a named file. You can use the above pattern to download content. In this instance this will be `cdx-00000.gz` and you can then start playing with the data.
-
-## Inspecting data with Python
-
-```python
-import boto3
-import pandas
-import matplotlib
-
-from botocore import UNSIGNED
-from botocore.config import Config
-from botocore.session import Session
-
-# Get the data
-session = Session()
-config = Config(signature_version=UNSIGNED)
-s3 = boto3.client(service_name='s3',config=config,endpoint_url = 'https://s3.eidf.ac.uk/')
-response = s3.get_object(Bucket="eidf125-cc-main-2019-35-augmented-index", Key="cluster.idx")
-
-# Describe the data
-df = pandas.read_csv(response["Body"], sep='\t', header=None)
-df.describe(include="all")
-print(df[0].head())
-
-# Plot the data
-df[2].hist(bins=100)
-```
 
