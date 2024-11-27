@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.16**
+**Version 0.4.17**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -31,7 +31,7 @@ Here are some basic assumptions - if these do not match your expectations then p
 
 ## Applying for a project
 
-If you do not already have an EPCC SAFE account, you will need to create one before proceeding:
+If you do not already have an EPCC SAFE account, you will need to create an account before proceeding:
 
 * https://safe.epcc.ed.ac.uk/
 
@@ -46,17 +46,17 @@ If you do not have an existing EIDF project, in the EIDF portal:
 * Press on the `Your project applications` link. 
 * Press on the `New Application` link and put in an application for us to host your data. 
   * You will be asked to supply a name for your project.
-  * A start date (when you hope to start publishing your data)
-  * A proposed end date (at the moment you will not be able to go beyond 31-Dec-2032)
+  * A start date (when you hope to start publishing your data).
+  * A proposed end date (at the moment you will not be able to go beyond 31-Dec-2032).
 
 
-For the EIDF Services you require chose the *ingest data formally into EIDF for long-term hosting* choice. Note that all the other EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so, if you add any other services a charge will be imposed. 
+For the EIDF Services you require chose the "*ingest data formally into EIDF for long-term hosting*" choice. Note that all the other EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so, if you add any other EIDF services a charge will be imposed. The data publishing will have a cost if you go over a threshold - we will get in touch if you pass this threshold.
 
 Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project has been approved or rejected - someone may be in touch to clarify points in your application.
 
 ## Customising your entry in the EIDF Data Catalogue
 
-When/if your project is approved, an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([CKAN user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (at the moment we map EIDF projects to CKAN organisations). The EIDF catalogue:
+When/if your project is approved, an organisation will be created on the EIDF data catalogue (an instance of CKAN version 2.10.4 ([CKAN user documentation](https://docs.ckan.org/en/2.10/user-guide.html))). You can customise your organisation information (we map EIDF projects to CKAN organisations). The EIDF catalogue:
 
 * https://catalogue.eidf.ac.uk/
 
@@ -87,7 +87,9 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
 
 ![](imgs/CreateDataset.png)
 
-Once you are happy with the content press on the `Create` button. This will be used to create your Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data buckets in S3.
+Once you are happy with the content press on the `Create` button. This will be used to create an S3 bucket to which you will migrate your data. 
+
+You can create a Dataset within your organisation (we are mapping EIDF projects to CKAN organisations) on the EIDF Data Catalogue and a data buckets in S3.
 
 You should now be able to click on a link to your dataset to see a copy of the information that you provided. When the Dataset was created, a link to the catalogue entry you can go and peruse and a link to the S3 buckets where your data will live. You can supplement your Dataset in the EIDF catalogue with additional metadata through the CKAN interface once you login using your SAFE credentials.
 
@@ -192,6 +194,20 @@ https://s3.eidf.ac.uk/eidfXXX-my-dataset?prefix=January2024/
 ```
 
 This lists all the file names that start with `January2024/`. This way you can collect files together in "folders" and link to a collection rather than individual files.
+
+Or if you wanted to download someone else's S3 bucket, say the s3 bucket:
+
+```text
+s3://eidf158-walkingtraveltimemaps/
+```
+
+Then you can use the aws client to download the whole dataset to your current directory:
+
+```bash
+aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
+          --endpoint-url https://s3.eidf.ac.uk \
+          --no-sign-request
+```
 
 ### Metadata format
 
