@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.19**
+**Version 0.4.20**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -17,7 +17,6 @@ This document is changing fairly quickly so please keep an eye on the version nu
   * [Testing your s3 links and downloading](#testing-your-s3-links-and-downloading)
   * [More on using aws](#more-on-using-aws)
   * [Downloading data with curl](#downloading-data-with-curl)
-  * [Preprocessing uploaded data (optional)](#preprocessing-uploaded-data-optional)
 
 ## Assumptions
 
@@ -63,7 +62,7 @@ Login using your SAFE credentials - there is a "Log in" on the top right.
 
 **Note**
 
-* **Do NOT use the CKAN interface to create Datasets** (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add/remove resources or datasets through the CKAN interface either. Contact us if would like anything removed.
+* **Do NOT use the CKAN interface to create Datasets** (see below) - the data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add datasets through the CKAN interface either. Contact us if would like anything removed.
 
 ## Creating a dataset
 
@@ -94,7 +93,7 @@ You should now be able to click on a link to your dataset to see a copy of the i
 
 ## Uploading your data
 
-Once you have created your S3 bucket contact us and we will provide credentials for uploading your data to the EIDF S3 bucket. You need an AWS client to upload data.
+Once you have created your S3 bucket. We will provide credentials for uploading your data to the EIDF S3 bucket. You need an AWS client to upload data.
 
 ### Data upload
 
@@ -218,7 +217,7 @@ Note that if you want to to view data that are in other people's buckets you nee
 
 ### Metadata format
 
-Metadata for resources in your dataset are added via forms in the EIDF Data Catalogue.
+Metadata for resources in your dataset are added directlly through the EIDF Data Catalogue.
 
 Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the "Resources"  tab and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red \* in the EIDF data catalogue:
 * **Name**: a descriptive name for your dataset.
@@ -314,27 +313,3 @@ https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index/idx/cdx-00000.gz \
 ```
 
 The `-o` will write the output to a named file. You can use the above pattern to download content. In this instance this will be `cdx-00000.gz` and you can then start playing with the data.
-
----
-
-### Preprocessing uploaded data (optional)
-
-If your data is not already in an *Analytics Ready Data* (ARD) format, the format that your end consumers will use then you can provide a link to a published docker image that will map your data to be ARD. If your data is already supplied in an ARD format you can ignore this step. To do this press on the `Configure` button and provide:
-
-* A public  fully qualified link to your pre-processing container image that produces ARD from the raw data. It must be available in a public registry, e.g. Dockerhub `NAMESPACE/IMAGE_NAME:VERSION` or GitHub Container Registry `ghcr.io/NAMESPACE/IMAGE_NAME:VERSION`. Go to the [main documentation](https://github.com/marioa/eidf-docs/blob/data_ingest/docs/dataingest/PreprocessingContainer.md) to have more information on the container expectations. Note that the container also needs to also create the metadata (more information on the requirements below).
-* A description of the process.
-
-**Start ingest**
-
-When you the upload is complete and all files are present, open the dataset page in the EIDF Portal and press the `Trigger Ingest` button.
-
-* We recommend no more than 100 data resources as CKAN does not present a large number of resources very well to consumers. You can publish as many files as you like as long as they are grouped together as only a few resources. For example, publish one data descriptor or index file as a resource, and a group of data files as another resource.
-
-* Check progress in the list of processing runs on the dataset page (reload the page to refresh the list or turn on auto-refresh).
-
-If you feel that the minimal metadata does not suffice for you dataset you can add your own fields. To do so, go to the EIDF data catalogue at:
-
-* https://catalogue.eidf.ac.uk/
-
-Log in with your SAFE credentials, then click on `Datasets` and find your own dataset and click on that. If you click on `Manage` you can edit existing metadata or add to the existing metadata. Similarly, if you have uploaded resources you can click on a resource link and then `Manage` and you will be able to update Metadata. You will not be able to edit the S3 links.
-
