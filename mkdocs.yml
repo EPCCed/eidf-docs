@@ -102,6 +102,7 @@ nav:
        - "Advising IG of Required Software Stack": safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack.md
        - "Building and Testing Containers": safe-haven-services/tre-container-user-guide/building-and-testing-containers.md
        - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
+       - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md

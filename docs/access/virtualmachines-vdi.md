@@ -85,6 +85,6 @@ desktop. An example of using the copy and paste clipboard is shown in the screen
 ### Keyboard Language and Layout Settings
 
 For users who do not have standard `English (UK)` keyboard layouts, key presses can have unexpected translations as they
-are transmitted to your VM. Please contact the EIDF helpdesk at [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) if you
+are transmitted to your VM. Please contact the EIDF helpdesk at [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) if you
 are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
 in the Guacamole VDI connection configuration.

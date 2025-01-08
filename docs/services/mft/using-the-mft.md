@@ -28,7 +28,7 @@ Once a project and user have access to the MFT, they can connect to it using SFT
 
 This can be done by logging into the MFT URL with the user's project account:
 
- ```bash
+```bash
 
     sftp [EIDF username]@eidf-mft.epcc.ed.ac.uk
 

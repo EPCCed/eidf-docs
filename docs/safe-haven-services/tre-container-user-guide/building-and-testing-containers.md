@@ -2,7 +2,10 @@
 
 ## Choose a container base from DockerHub
 
-Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose. Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach. Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided. Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.
+Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose.
+Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach.
+Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided.
+Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.
 
 Examples of batch job container bases are Python and PyTorch, and other language specific and ML software stacks. Examples of interactive container bases are Rocker, Jupyter Docker Stacks, and NVIDIA RAPIDS extended with additional package sets and code required by your project.
 
@@ -50,7 +53,17 @@ If a model is downloaded from Hugging Face the advice is to set the environment 
 
 It is recommended that the checklist for Dockerfile composition is followed: [Container Build Guide](https://github.com/EPCCed/tre-container-samples/blob/main/docs/container-build-guide.md)
 
-Information Governance requirements may require a security scan of your container, and [Trivy](https://trivy.dev/) is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk. The use of the Trivy misconfiguration tool on Dockerfiles is also recommended. This tool option will highlight many common security issues:
+Information Governance requirements may require a security scan of both:
+
+ 1. The Dockerfile used to build the container image
+
+ 1. The container image itself, once it is built.
+
+[Trivy](https://trivy.dev/) is a tool that can help with this task. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk.
+
+### 1. Scanning the container Dockerfile
+
+The use of the Trivy misconfiguration tool on Dockerfiles is also recommended. This tool option will highlight many common security issues in the Dockerfile:
 
 ```bash
 docker run --rm -v $(pwd):/repo ghcr.io/aquasecurity/trivy:latest config "/repo/Dockerfile"
@@ -58,8 +71,8 @@ docker run --rm -v $(pwd):/repo ghcr.io/aquasecurity/trivy:latest config "/repo/
 
 The security posture of containers and the build process may be of interest to IG teams, however, it is not expected that security issues indicated by the tool need to be addressed before the container is run in the TRE unless the IG team issues specific guidance on vulnerability and configuration remediation and mitigation.
 
-## Scan container using Trivy CI
+### 2. Scanning the container image using Trivy CI
 
-Trivy can be run manually but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found [here](https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml)
+Trivy can be run manually on the built image but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found [here](https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml)
 
 The Trivy report can be downloaded as an artifact from the job summary page. Before using a specific container in the TRE it may be necessary to test the security risk and gain IG team approval.

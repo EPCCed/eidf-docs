@@ -2,6 +2,10 @@
 
 The table below represents the broad status of each EIDF service.
 
+<div style="display: flex;">
+<iframe src="https://status.eidf.ac.uk/d-solo/a4819422-0c95-4d9c-a5a4-7f1c2dcfd817/eidf-status-public?orgId=5&panelId=1" width="100%" height="270" frameborder="0"></iframe>
+</div>
+
 | Service | Status |
 |:--------|:------|
 | EIDF Portal  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/portal.json) |
