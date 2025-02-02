@@ -77,7 +77,7 @@ spec:
 1. Delete the lightweight job
 
     ``` bash
-    kubectl -n <project-namespace> delete job lightweight-job-<identifier>
+    kubectl -n <project-namespace> delete job lightweight-job
     ```
 
 ### Example lightweight job specification
