@@ -218,7 +218,7 @@ Note that if you want to to view data that are in other people's buckets you nee
 
 ### Metadata format
 
-Metadata for resources in your dataset are added directlly through the EIDF Data Catalogue.
+Metadata for resources in your dataset are added directly through the EIDF Data Catalogue.
 
 Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk). Open the page of your dataset and click on "Manage" at the top right. Open the "Resources"  tab and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red \* in the EIDF data catalogue:
 * **Name**: a descriptive name for your dataset.
