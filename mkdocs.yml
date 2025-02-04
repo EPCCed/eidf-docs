@@ -82,8 +82,7 @@ nav:
     - "Data Publishing":
        - "Getting started": services/datapublishing/service.md
        - "Your Data Catalogue entry": services/datapublishing/catalogue.md
-       - "Uploading your data": services/datapublishing/uploading.md
-       - "Downloading data": services/datapublishing/downloading.md
+       - "Uploading/Downloading your data": services/datapublishing/uploading.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":
