@@ -82,7 +82,6 @@ nav:
     - "Data Publishing":
        - "Getting started": services/datapublishing/service.md
        - "Your Data Catalogue entry": services/datapublishing/catalogue.md
-       - "Creating your dataset": services/datapublishing/dataset.md
        - "Uploading your data": services/datapublishing/uploading.md
        - "Downloading data": services/datapublishing/downloading.md
     - "Data Catalogue":
