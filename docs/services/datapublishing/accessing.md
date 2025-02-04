@@ -4,7 +4,7 @@
 
 Once you have created your S3 bucket. We will provide you with credentials for uploading your data to the EIDF S3 bucket. You will need an AWS client to upload your data.
 
-### Data upload
+### Data uploading
 
 We provide an S3 account with write permissions to the dataset buckets.
 As a project manager or Principal Investigator (PI), you can view the access credentials for your S3 account on the project details page. You can also grant other members of your project permission to be able to view these access credentials.
@@ -89,9 +89,12 @@ $ aws s3 ls help
 
 Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io) or if you want to view programming language [Ceph S3 API](https://docs.ceph.com/en/latest/radosgw/s3/) interfaces (Ceph is the underlying platform used).
 
+!!! note
+     if it is not going to be immediately obvious to a third party as to how your data may be used then please do provide some documentation showing people how to unpack your data. Not everyone who may want to use your data may be a domain expert in your field.
+
 ### Downloading URLs for files in S3
 
-Each file in S3 can be directly accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the format (and the configuration of your browser).
+Once you have uploaded your data or if you just want to take a copy of someone else's interesting data. Each file in S3 can be directly accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the format (and the configuration of your browser).
 
 So from an S3 link:
 
