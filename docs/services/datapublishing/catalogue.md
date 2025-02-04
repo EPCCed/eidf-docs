@@ -13,6 +13,9 @@ When/if your project is approved and you are close to publishing your data, a CK
 
 ## Creating your dataset(s)
 
+!!! note
+    Is there still a restriction to EdLan and has the testportal content been moved to the portal?
+
 Once your project is approved go to the test portal at this link (only available on the EdLan network):
 
 * [https://projects.eidf.ac.uk/testportal/ingest/](https://projects.eidf.ac.uk/testportal/ingest/)
