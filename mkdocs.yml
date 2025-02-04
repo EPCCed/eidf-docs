@@ -79,6 +79,14 @@ nav:
       - "Overview": services/s3/index.md
       - "Manage": services/s3/manage.md
       - "Tutorial": services/s3/tutorial.md
+    - "Data Publishing":
+       - "Assumptions": services/datapublishing/assumptions.md
+       - "Creating a project": services/datapublishing/project.md
+       - "Customising catalogue entry": services/datapublishing/catalogue.md
+       - "Creating a dataset": services/datapublishing/dataset.md
+       - "Uploading your data": services/datapublishing/uploading.md
+       - "Metadata": services/datapublishing/metadata.md
+       - "Dowmloading data": services/datapublishing/downloading.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":
