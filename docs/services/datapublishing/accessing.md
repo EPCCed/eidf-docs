@@ -94,15 +94,15 @@ Alternatively, there are many graphical clients that act as a file browser for S
 
 ### Downloading URLs for files in S3
 
-Once you have uploaded your data or if you just want to take a copy of someone else's interesting data. Each file in S3 can be directly accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the format (and the configuration of your browser).
+Once you have uploaded your data or if you just want to take a copy of someone else's interesting data you need to know how to download data using S3. Each file in S3 can be accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the data format and the configuration of your browser.
 
-So from an S3 link:
+So from the S3 link:
 
 ```text
 s3://eidfXXX-my-dataset/mydatafile.csv
 ```
 
-You can construct an https link to the data file for the EIDF S3 that would look like:
+You can construct an `https` link to the data file by making the following transformation:
 
 ```
 https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
@@ -114,15 +114,15 @@ You can also link to a set of files that have a common prefix:
 https://s3.eidf.ac.uk/eidfXXX-my-dataset?prefix=January2024/
 ```
 
-This lists all the file names that start with `January2024/`. This way you can collect files together in "folders" and link to a collection rather than individual files.
+This lists all the file names that are in the folder `January2024/`. This way you can collect files together in "folders" and link to a collection rather than individual files.
 
-Or if you wanted to download someone else's S3 bucket, say the s3 bucket:
+If you want to download someone else's S3 bucket, say the s3 bucket:
 
 ```text
 s3://eidf158-walkingtraveltimemaps/
 ```
 
-Then you can use the aws client to download the whole dataset to your current directory:
+Then you can use the `aws` client to download the whole dataset to your current directory:
 
 ```bash
 $ aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
@@ -130,7 +130,7 @@ $ aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
             --no-sign-request
 ```
 
-Note that if you want to to view data that are in other people's buckets you need to add the `--no-sign-request` flag.
+Note that if you want to to view data that are in other people's buckets you need to add the `--no-sign-request` flag otherwise you will not be able to see it.
 
 ### Testing your s3 links and downloading
 
@@ -153,11 +153,11 @@ You will need the quotes or may have to explicitly escape certain characters if 
 
 ### More on using aws
 
-If you want to look at someone else's bucket contents you need to add the `--no-sign-request` otherwise it will not work. For instance, if you want to use the content that Henry Thompson has [published](https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps/resource/7e485f0c-d480-43e9-8cb7-9540a3d3dbc9) in the data catalogue we have the access point:
+If you wanted to use content that Henry Thompson  [published](https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps/resource/7e485f0c-d480-43e9-8cb7-9540a3d3dbc9) in the EIDF Data Catalogue we have the access point:
 
 * https://s3.eidf.ac.uk/eidf125-cc-main-2019-35-augmented-index?prefix=idx
 
-From this we get the end-point https://s3.eidf.ac.uk and the bucket s3://eidf125-cc-main-2019-35-augmented-index so to list the contents we can do:
+From this we get the end-point https://s3.eidf.ac.uk and the bucket `s3://eidf125-cc-main-2019-35-augmented-index` so to list the contents we can do:
 
 ```bash
 $ aws s3 ls --recursive s3://eidf125-cc-main-2019-35-augmented-index \
@@ -167,11 +167,20 @@ $ aws s3 ls --recursive s3://eidf125-cc-main-2019-35-augmented-index \
 or you can add the prefix explicitly:
 
 ```bash
-$aws s3 ls s3://eidf125-cc-main-2019-35-augmented-index/idx/ \
-        --endpoint https://s3.eidf.ac.uk --no-sign-request
+$ aws s3 ls s3://eidf125-cc-main-2019-35-augmented-index/idx/ \
+         --endpoint https://s3.eidf.ac.uk --no-sign-request
 ```
 
-Note that if you do not terminate with the forward slash you will not get the listing of the contents.
+Note that if you do not terminate the s3 link with the forward slash (`/`) you will not get the listing of the contents.
+
+If you wanted to download all the contents of this directory you could do:
+
+```bash
+$ aws s3 cp --recursive s3://eidf125-cc-main-2019-35-augmented-index/idx/ . \
+         --endpoint https://s3.eidf.ac.uk --no-sign-request
+```
+
+Note the `.` means the contents of `s3://eidf125-cc-main-2019-35-augmented-index/idx/` will be downloaded to the current directory.
 
 ### Downloading data with curl
 
