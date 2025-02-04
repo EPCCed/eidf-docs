@@ -80,11 +80,11 @@ nav:
       - "Manage": services/s3/manage.md
       - "Tutorial": services/s3/tutorial.md
     - "Data Publishing":
-       - "Assumptions": services/datapublishing/assumptions.md
-       - "Customising catalogue entry": services/datapublishing/catalogue.md
-       - "Creating a dataset": services/datapublishing/dataset.md
+       - "Getting started": services/datapublishing/service.md
+       - "Customising your data catalogue entry": services/datapublishing/catalogue.md
+       - "Creating your dataset": services/datapublishing/dataset.md
        - "Uploading your data": services/datapublishing/uploading.md
-       - "Dowmloading data": services/datapublishing/downloading.md
+       - "Downloading data": services/datapublishing/downloading.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":

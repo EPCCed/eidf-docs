@@ -6,16 +6,16 @@ The EIDF guarantees to the best of its ability to continue its services until at
 
 Here are some basic assumptions - 
 
-* You already have created a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the [EIDF portal](https://portal.eidf.ac.uk/). Please do this before proceeding.
+* You already have created a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the [EIDF portal](https://portal.eidf.ac.uk/). Otherwise consult this [section](https://docs.eidf.ac.uk/access/project/) of the documentation before proceeding.
 * To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you will have to use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead which is not a free service.
 
-## Apply for a project
+## Applyng for a data project
 
 You will need to apply for an EIDF data project which is slightly different from other EIDF project applications. Be aware that data publishing is free subject to your data volumes being under a given threshold, we will be in touch if you requirements are higher than this, and that the data is being made freely available.  
 
-> [!NOTE]
->
-> It would be good to point out differences for data project applications.
+!!! note
+    
+    It would be good to point out differences for data project applications.
 
 In the EIDF portal:
 
