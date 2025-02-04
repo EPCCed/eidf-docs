@@ -20,7 +20,7 @@ Select the project which you want to use to ingest data. The list of `Ingest Dat
 
   As in the form example below.
 
-![](imgs/CreateDataset.png)
+![Interface to create a dataset](../../images/CreateDataset.png)
 
 Once you are happy with the content press on the `Create` button. This will be used to create an S3 bucket to which you will migrate your data. 
 
