@@ -117,7 +117,7 @@ In boto3 version 1.36, a breaking change was introduced that adopts new default 
 (see [https://github.com/boto/boto3/issues/4392](https://github.com/boto/boto3/issues/4392)). If you see this error
 
 ```text
-An error occurred (XAmzContentSHA256Mismatch) when calling the UploadPart operation
+botocore.exceptions.ClientError: An error occurred (XAmzContentSHA256Mismatch) when calling the PutObject operation: None
 ```
 
 use the following configuration for your client:
