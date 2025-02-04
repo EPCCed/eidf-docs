@@ -15,7 +15,7 @@ Some basic assumptions -
 * To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you should use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead. This is not a free service.
 * The service is free up to a given threshold data volume which is generous. If the data you wish to publish is bigger than this we will get in touch with you when you apply for a data publishing project.
 
-If you find anything that is not clear or even wrong in this documentation please let us know via the EIDF query system.
+If you find anything in this documentation that you think is not clear, missing or even wrong please let us know via the EIDF query system.
 
 ## Applying for a data project
 
