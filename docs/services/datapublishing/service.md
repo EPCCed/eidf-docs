@@ -6,8 +6,7 @@ The EIDF guarantees, to the best of its ability, to continue its services until 
 
 We reserve the right to remove any data at the end of service provision.
 
-!!! note
-    Should we also say something about removing data if it is not legal or inappropriate?
+!!! question "Should we also say something about removing data if it is not legal or inappropriate?"
 
 Some basic assumptions - 
 
