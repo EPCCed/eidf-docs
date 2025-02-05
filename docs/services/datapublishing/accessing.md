@@ -92,7 +92,7 @@ Alternatively, there are many graphical clients that act as a file browser for S
 !!! note
      if it is not going to be immediately obvious to a third party as to how your data may be used then please do provide some documentation showing people how to unpack your data. Not everyone who may want to use your data may be a domain expert in your field.
 
-### Downloading URLs for files in S3
+### Download URLs for S3 files
 
 Once you have uploaded your data or if you just want to take a copy of someone else's interesting data you need to know how to download data using S3. Each file in S3 can be accessed and downloaded via a URL. If you open this URL in a browser it will download the file or display the contents, depending on the data format and the configuration of your browser.
 
@@ -132,7 +132,7 @@ $ aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ . \
 
 Note that if you want to to view data that are in other people's buckets you need to add the `--no-sign-request` flag otherwise you will not be able to see it.
 
-### Testing your s3 links and downloading
+### Using your S3 links
 
 Analytics-ready datasets in EIDF S3 are public and can be viewed in a browser at the links displayed in the catalogue. With an S3 client of your choice you can list and download objects as with any S3 client, and there are no credentials required.
 
@@ -151,7 +151,7 @@ curl -X GET "https://s3.eidf.ac.uk/eidf158-walkingtraveltimemaps"
 
 You will need the quotes or may have to explicitly escape certain characters if present, e.g. `?` -> `\?`, etc.
 
-### More on using aws
+### More on using the AWS client
 
 If you wanted to use content that Henry Thompson  [published](https://catalogue.eidf.ac.uk/dataset/eidf125-common-crawl-url-index-for-august-2019-with-last-modified-timestamps/resource/7e485f0c-d480-43e9-8cb7-9540a3d3dbc9) in the EIDF Data Catalogue we have the access point:
 
