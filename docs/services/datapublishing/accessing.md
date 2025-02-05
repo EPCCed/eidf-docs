@@ -27,7 +27,7 @@ aws_secret_access_key=<secret>
 endpoint_url=https://s3.eidf.ac.uk
 ```
 
-The `endpoint_url` means that you do not have to explicitly specify the URL every time after the `--endpoint-url` flag, you can just miss that ifnormation out. You will also have to provide your access key id (`<key>`) and your access key (`<secret>`) - we will provide you with these.
+The `endpoint_url` means that you do not have to explicitly specify the URL every time after the `--endpoint-url` flag, you can just miss that information out. You will also have to provide your access key id (`<key>`) and your access key (`<secret>`) - we will provide you with these.
 
 You can use an environment variable to specify the AWS end point instead:
 
