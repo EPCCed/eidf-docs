@@ -15,9 +15,8 @@ Please contact your Service Manager if you need further support with the use of 
 | Quarto           | separate containers for R and Jupyter |
 | Rocker           |  interactive |
 
-
 Additional examples can be made available on demand. To do so, please contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) referencing this page, otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) with the subject line "TRE Container Support".
-
+ß
 | Available on demand   |   Comments |
 | ---------------  |   -------- |
 | Freesurfer       |            |
