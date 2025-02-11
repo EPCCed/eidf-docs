@@ -37,7 +37,26 @@ export AWS_ACCESS_KEY_ID=<key>
 export AWS_SECRET_ACCESS_KEY=<secret>
 ```
 
-The parameter `--endpoint-url https://s3.eidf.ac.uk` must always be set when calling a command.
+Either the parameter `--endpoint-url https://s3.eidf.ac.uk` must always be set when calling a command or you can add it to your `.aws` file:
+
+```ini
+[default]
+aws_access_key_id=<key>
+aws_secret_access_key=<secret>
+endpoint_url=https://s3.eidf.ac.uk
+```
+
+Alternatively, you can also use an environment variable:
+
+```bash
+export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
+```
+
+You can check your setup
+
+```bash
+aws configure list
+```
 
 ### Commands
 
@@ -70,6 +89,57 @@ To read from a public bucket without providing credentials, add the option `--no
 ```bash
 aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url https://s3.eidf.ac.uk
 ```
+
+### Examples
+
+You want to upload all the files in a subdirectory to your S3 bucket
+
+```bash
+aws s3 cp ./mydir s3://mybucket --recursive --exclude "*" \
+            --include "*.dat" --endpoint-url https://s3.eidf.ac.uk
+```
+
+Here all `*.dat`  files only in `mydir` will be uploaded to `s3://mybucket`.
+
+You can check your upload using:
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://mybucket/
+```
+
+You can get help on the options for any command using:
+
+```bash
+aws s3 help
+```
+
+or for particular commands
+
+```bash
+aws s3 ls help
+```
+
+To download files you can construct a downloadable https link from an S3 link:
+
+```text
+s3://eidfXXX-my-dataset/mydatafile.csv
+```
+
+by making the following transformation:
+
+```
+https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
+```
+
+Alternatively you can use the aws client to download an entire data set:
+
+```bash
+aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ ./walkingtraveltimemaps \
+            --endpoint-url https://s3.eidf.ac.uk \
+            --no-sign-request
+```
+
+will copy the entire content of the S3 bucket to your `walkingtraveltimemaps` subdirectory. Note that you must use `--no-sign-request` when looking at other people's buckets.
 
 ## Python using `boto3`
 
@@ -121,7 +191,7 @@ bucket.upload_file('./somedata.csv', 'somedata.csv')
 
 ## Access policies
 
-Bucket permissions use IAM policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.
+Bucket permissions use IAM (Identity Access Management) policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.
 For example to grant permissions to put, get, delete and list objects in bucket `eidfXX1:somebucket` to the account `account2` in project `eidfXX2`:
 
 ```json
