@@ -4,9 +4,7 @@
 
 The EIDF guarantees, to the best of its ability, to continue its services until at least the 31-Mar-2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF. 
 
-We reserve the right to remove any data at the end of service provision.
-
-!!! question "Should we also say something about removing data if it is not legal or inappropriate?"
+We reserve the right to remove any data that is not legal or inappropriate as well as any data that remains at the end of service provision.
 
 Some basic assumptions - 
 
@@ -21,7 +19,7 @@ If you find anything in this documentation that you think is not clear, missing 
 To start the process you will need to apply for an EIDF data project which is slightly different from other EIDF project applications.  
 
 !!! note
-    It would be good to point out differences for data project applications. Not sure the current deployed portal has data projects.
+    A data publishing version of the EIDF portal will be deployed in the near future. For now, you will have to use the generic portal.
 
 In the [EIDF portal](https://portal.eidf.ac.uk/):
 

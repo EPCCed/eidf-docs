@@ -2,20 +2,18 @@
 
 ## Customising your entry in the EIDF Data Catalogue
 
-When/if your project is approved and you are close to publishing your data, a CKAN organisation will be created in the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk/) for you. We do not want to automatically create these for you as we do not want a lot of organisations to be present with no published data. You can login to the Data Catalogue using your SAFE credentials - there is a "Log in" on the top centre right. Find your organisation and then you can customise it by clicking on the "Manage" button on the top-right, e.g. you can provide a more friendly name than the EIDF project number, you can provide a description for your organisation, provide a logo or image representing your organisation and associate metadata pairs to aid discovery. Customising your organisation will make it more attractive to those that may want to use your data and will also aid in discovery.
+When/if your project is approved and you are close to publishing your data, a CKAN organisation will be created in the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk/) for you. We do not automatically create these for you as we do not want a lot of organisations to be present with no published data. 
 
-!!! question "is the warning below still valid?"
+You can login to the EIDF Data Catalogue using your SAFE credentials - there is a "Log in" link on the top centre right. Find your organisation and then you can customise it by clicking on the "Manage" button on the top-right, e.g. you can provide a more friendly name than the EIDF project number, you can provide a description for your organisation, provide a logo or image representing your organisation and associate metadata pairs to aid discovery. Customising your organisation will make it more attractive to those that may want to use your data and will also aid in discovery.
 
 !!! warning "**Do NOT use the CKAN interface to create Datasets**"
     The data ingest process creates these for you and associates S3 links with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add datasets through the CKAN interface either. Contact us if would like anything removed.
 
 ## Creating your dataset(s)
 
-!!! question "Is there still a restriction to EdLan and has the test portal content been moved to the portal?"
+Once your project is approved go to your project in the EIDF portal at this link:
 
-Once your project is approved go to the test portal at this link (only available on the EdLan network):
-
-* [https://projects.eidf.ac.uk/testportal/ingest/](https://projects.eidf.ac.uk/testportal/ingest/)
+* [https://projects.eidf.ac.uk/ingest/](https://projects.eidf.ac.uk/ingest/)
 
 Select the project which you want to use to ingest data. The list of `Ingest Datasets` will be empty unless you have already created Datasets.
 
@@ -52,4 +50,7 @@ Make sure you're logged in to the [EIDF Data Catalogue](https://catalogue.eidf.a
 * **Unique Identifier**
 * **Licence**: the licence under which you are releasing your data.
 
-Having created an S3 bucket and provided Metadata for this data set in the EIDF Data Catalogue we consider how you can upload your data to your S3 bucket in the next section.
+Having created an S3 bucket and provided Metadata for this data set in the EIDF Data Catalogue please consult the [S3 tutorial section](../s3/tutorial.md) to get an overview of the commands you will require and some examples.
+
+!!! note
+     If it is not going to be immediately obvious to a third party as to how your data may be used then please do provide a link to some documentation showing people how to unpack/use your data. Not everyone who may want to use your data may be a domain expert in your field.
