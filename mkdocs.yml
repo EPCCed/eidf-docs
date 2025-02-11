@@ -14,7 +14,7 @@ extra_css:
   - stylesheets/access.css
 
 site_name: EIDF User Documentation
-site_url: https://epcced.github.io/eidf-docs/
+site_url: https://docs.eidf.ac.uk/
 repo_url: https://github.com/EPCCed/eidf-docs/
 repo_name: EPCCed/eidf-docs.git
 edit_uri: edit/main/docs/

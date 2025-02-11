@@ -20,6 +20,9 @@ Minor software changes will be made as soon as admin effort can be allocated. Ma
 
 Login to the HPC system is from the project VM using SSH and is not direct from the VDI. The HPC cluster accounts are the same accounts used on the project VMs, with the same username and password. All project data access on the HPC system is private to the project accounts as it is on the VMs, but it is important to understand that the TRE HPC cluster is shared by projects in other TRE Safe Havens.
 
+!!! warning "One-Way SSH Access Only"
+    SSH access to shs-sdf01 is strictly one-way from the project VM to the HPC system. Reverse SSH from the HPC system back to the project VM or any other system is not permitted.
+
 To login to the HPC cluster from the project VMs use `ssh shs-sdf01` from an xterm. If you wish to avoid entry of the account password for every SSH session or remote command execution you can use SSH key authentication by following the [SSH key configuration instructions here](https://hpc-wiki.info/hpc/Ssh_keys). SSH key passphrases are not strictly enforced within the Safe Haven but are strongly encouraged.
 
 ## Running Jobs
