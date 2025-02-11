@@ -1,6 +1,6 @@
 # Data ingest crib sheet
 
-**Version 0.4.21**
+**Version 0.4.22**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
 
@@ -67,9 +67,9 @@ Login using your SAFE credentials - there is a "Log in" on the top right.
 
 ## Creating a dataset
 
-Once your project is approved go to the test portal at this link (only available on the EdLan network):
+Once your project is approved go to the test portal at this link:
 
-* https://projects.eidf.ac.uk/testportal/ingest/
+* https://projects.eidf.ac.uk/ingest/
 
 Select the project which you want to use to ingest data. The list of `Ingest Datasets` will be empty unless you have already created Datasets.
 
