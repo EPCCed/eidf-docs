@@ -2,6 +2,11 @@
 
 Once you have built and tested your container, you are ready to start using it within the TRE.
 
+!!! warning "Do not use container CLIs directly"
+    The CES wrapper scripts **must** be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.
+
+    You **must not** use commands such as `podman run ...` or `docker run ...` directly.
+
 ## Pulling a container into the TRE
 
 Containers can only be used on the TRE desktop hosts using shell commands. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE.
