@@ -14,7 +14,7 @@ All jobs must be run via SLURM to avoid inconveniencing other users of the syste
 
 ### SLURM example
 
-This is based on the sample job from the Cerebras documentation [Cerebras documentation - Execute your job](https://docs.cerebras.net/en/latest/wsc/getting-started/cs-appliance.html#execute-your-job)
+This is based on the sample job from the Cerebras documentation [Cerebras documentation - Execute your job](https://training-docs.cerebras.ai/fundamentals/launch-your-job#execute-your-job).
 
 ```bash
 #!/bin/bash
