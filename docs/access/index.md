@@ -26,7 +26,6 @@ Users with the appropriate permissions can also [use `ssh` to login to Virtual D
 
 Includes access to the following services:
 
-* [Cerebras CS-2](../services/cs2/index.md)
 * [Ultra2](../services/ultra2/index.md)
 * [EIDF Interim and Experimental Systems](../services/experimental/index.md)
 
