@@ -8,8 +8,6 @@
 
 [Notebooks](./jhub/index.md)
 
-[Cerebras CS-2](./cs2/index.md)
-
 [Ultra2](./ultra2/index.md)
 
 [Graphcore Bow Pod64](./graphcore/index.md)
