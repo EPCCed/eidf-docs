@@ -96,19 +96,19 @@ or for particular commands
 aws s3 ls help
 ```
 
-To download files you can construct a downloadable https link from an S3 link:
+For public S3 buckets, such as those provided for the data publishing serive,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:
 
 ```text
 s3://eidfXXX-my-dataset/mydatafile.csv
 ```
 
-by making the following transformation:
+and by making the following transformation:
 
 ```
 https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
 ```
 
-Alternatively you can use the aws client to download an entire data set:
+You can use your browser to download a particular file. Alternatively, you can use the aws client to download an entire data set:
 
 ```bash
 aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ ./walkingtraveltimemaps \
