@@ -96,7 +96,7 @@ or for particular commands
 aws s3 ls help
 ```
 
-For public S3 buckets, such as those provided for the data publishing serive,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:
+For public S3 buckets, such as those provided for the data publishing service,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:
 
 ```text
 s3://eidfXXX-my-dataset/mydatafile.csv
