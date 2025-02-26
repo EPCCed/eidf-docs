@@ -20,7 +20,7 @@ Registration of the user mobile phone number is managed by the Safe Haven IG con
 
 The second step in the access process is for the user to login to the Safe Haven service remote desktop gateway so that a project desktop connection can be chosen. The user is prompted for a Safe Haven service account identity.
 
-   ![VDI-Safe-Haven-Login-Page](/docs/images/access/UoE-Data-Safe-Haven-VDI-Login.png){: class="border-img"}
+   ![VDI-Safe-Haven-Login-Page](../images/access/UoE-Data-Safe-Haven-VDI-Login.png)
    *VDI Safe Haven Service Login Page*
 
 Safe Haven accounts are managed by the Safe Haven IG controller and research project co-ordination teams by submitting and confirming user account changes through the dedicated service help desk via email.
@@ -29,7 +29,7 @@ Safe Haven accounts are managed by the Safe Haven IG controller and research pro
 
 The third stage in the process is to select the virtual connection from those available on the account's home page. An example home page is shown below offering two connection options to the same virtual machine. Remote desktop connections will have an \_rdp suffix and SSH terminal connections have an \_ssh suffix. The most recently used connections are shown as screen thumbnails at the top of the page and all the connections available to the user are shown in a tree list below this.
 
-   ![VDI-Connections-Available-Page](/docs/images/access/vdi-home-screen.png){: class="border-img"}
+   ![VDI-Connections-Available-Page](../images/access/vdi-home-screen.png)
    *VM connections available home page*
 
 The remote desktop gateway software used in the Safe Haven services in the TRE is the Apache Guacamole web application. Users new to this application can [find the user manual here](https://guacamole.apache.org/doc/gug/using-guacamole.html). It is recommended that users read this short guide, but note that the data sharing features such as copy and paste, connection sharing, and file transfers are disabled on all connections in the TRE Safe Havens.
