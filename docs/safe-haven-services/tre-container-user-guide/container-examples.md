@@ -1,7 +1,9 @@
 # Container Examples
 
 To help with writing your own Dockerfiles to run within a Trusted Research Environment via the Container Execution Service, we have provided a set of examples for commonly used software stacks, which can be found in our [TRE Container Samples repository](https://github.com/EPCCed/tre-container-samples/tree/main).
+To help with writing your own Dockerfiles to run within a Trusted Research Environment via the Container Execution Service, we have provided a set of examples for commonly used software stacks, which can be found in our [TRE Container Samples repository](https://github.com/EPCCed/tre-container-samples/tree/main).
 
+Please contact your Service Manager if you need further support with the use of containers available in the [EPCC TRE Container Samples epository](https://github.com/EPCCed/tre-container-samples/tree/main).
 Please contact your Service Manager if you need further support with the use of containers available in the [EPCC TRE Container Samples epository](https://github.com/EPCCed/tre-container-samples/tree/main).
 
 ## Example Containers
@@ -27,4 +29,5 @@ Additional examples can be made available on demand. To do so, please contact th
 | Python           |  |
 | Stata            |  |
 
+Most of these containers are minimum working examples, they are not fully fledged applications or workflow examples, but provide a template for setting up the technical parts of the containerisation process, such as user mapping, and mapping to any required `safe_data` folders or similar. Please refer to the `README` in each example for guidance on how to use the container.
 Most of these containers are minimum working examples, they are not fully fledged applications or workflow examples, but provide a template for setting up the technical parts of the containerisation process, such as user mapping, and mapping to any required `safe_data` folders or similar. Please refer to the `README` in each example for guidance on how to use the container.
