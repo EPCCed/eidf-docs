@@ -2296,6 +2296,11 @@
 
 <h1 id="using-containers-in-the-tre">Using Containers in the TRE</h1>
 <p>Once you have built and tested your container, you are ready to start using it within the TRE.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not use container CLIs directly</p>
+<p>The CES wrapper scripts <strong>must</strong> be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.</p>
+<p>You <strong>must not</strong> use commands such as <code>podman run ...</code> or <code>docker run ...</code> directly.</p>
+</div>
 <h2 id="pulling-a-container-into-the-tre">Pulling a container into the TRE</h2>
 <p>Containers can only be used on the TRE desktop hosts using shell commands. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a <code>ces-pull</code> script. Hence containers must be pushed to GHCR for them to be used in the TRE.</p>
 <p>As use of containers in the TRE is a new service, it is at this stage regarded as an activity that requires additional security controls. Researcher accounts must be explicitly enabled for use of the <code>ces-pull</code> command through IG approval.</p>
