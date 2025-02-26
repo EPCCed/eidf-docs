@@ -2277,44 +2277,20 @@
 
 
 <h1 id="container-examples">Container Examples</h1>
-<p>To help with writing your own Dockerfiles to run within a Trusted Research Environment via the Container Execution Service, we have provided a set of example Dockerfiles for commonly used software stacks. These show examples of how to set up containers with non-root user access, as well as other best practices for developing secure containers.</p>
-<p>To request access to these container examples please contact the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a> referencing this page, otherwise send your query by email to <a href="mailto:eidf@epcc.ed.ac.uk">eidf@epcc.ed.ac.uk</a> with the subject line "TRE Container Support".</p>
+<p>To help with writing your own Dockerfiles to run within a Trusted Research Environment via the Container Execution Service, we have provided a set of examples for commonly used software stacks, which can be found in our <a href="https://github.com/EPCCed/tre-container-samples/tree/main">TRE Container Samples repository</a>.</p>
+<p>Please contact your Service Manager if you need further support with the use of containers available in the <a href="https://github.com/EPCCed/tre-container-samples/tree/main">EPCC TRE Container Samples epository</a>.</p>
 <h2 id="example-containers">Example Containers</h2>
 <table>
 <thead>
 <tr>
-<th>Software Stack</th>
+<th>Public examples</th>
 <th>Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Freesurfer</td>
-<td></td>
-</tr>
-<tr>
-<td>Jamovi</td>
-<td></td>
-</tr>
-<tr>
 <td>Julia</td>
 <td></td>
-</tr>
-<tr>
-<td>Jupyter Notebook</td>
-<td>non-interactive at present</td>
-</tr>
-<tr>
-<td>MinIO S3</td>
-<td></td>
-</tr>
-<tr>
-<td>Nextflow</td>
-<td></td>
-</tr>
-<tr>
-<td>NVIDIA-Rapids</td>
-<td>basic/minimal packages</td>
 </tr>
 <tr>
 <td>Octave</td>
@@ -2325,15 +2301,7 @@
 <td></td>
 </tr>
 <tr>
-<td>PSPP</td>
-<td></td>
-</tr>
-<tr>
 <td>Python</td>
-<td></td>
-</tr>
-<tr>
-<td>Pytorch</td>
 <td></td>
 </tr>
 <tr>
@@ -2341,12 +2309,23 @@
 <td>separate containers for R and Jupyter</td>
 </tr>
 <tr>
-<td>Stata</td>
-<td></td>
+<td>Rocker</td>
+<td>interactive</td>
 </tr>
 </tbody>
 </table>
-<p>Most of these containers are minimum working examples, they are not fully fledged applications or workflow examples, but provided a template for setting up the technical parts of the containerisation process, such as user mapping, and mapping to any required <code>safe_data</code> folders or similar.</p>
+<p>Additional examples can be made available on demand. To do so, please contact the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a> referencing this page, otherwise send your query by email to <a href="mailto:eidf@epcc.ed.ac.uk">eidf@epcc.ed.ac.uk</a> with the subject line "TRE Container Support".
+ß
+| Available on demand   |   Comments |
+| ---------------  |   -------- |
+| Freesurfer       |            |
+| Jamovi           |            |
+| MinIO S3         |  |
+| Nextflow         |  |
+| PSPP             |  |
+| Python           |  |
+| Stata            |</p>
+<p>Most of these containers are minimum working examples, they are not fully fledged applications or workflow examples, but provide a template for setting up the technical parts of the containerisation process, such as user mapping, and mapping to any required <code>safe_data</code> folders or similar. Please refer to the <code>README</code> in each example for guidance on how to use the container.</p>
 
 
 
