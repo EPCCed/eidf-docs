@@ -16,7 +16,7 @@ Please contact your Service Manager if you need further support with the use of 
 | Rocker           |  interactive |
 
 Additional examples can be made available on demand. To do so, please contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) referencing this page, otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) with the subject line "TRE Container Support".
-ß
+
 | Available on demand   |   Comments |
 | ---------------  |   -------- |
 | Freesurfer       |            |
@@ -25,6 +25,6 @@ Additional examples can be made available on demand. To do so, please contact th
 | Nextflow         |  |
 | PSPP             |  |
 | Python           |  |
-| Stata            |
+| Stata            |  |
 
 Most of these containers are minimum working examples, they are not fully fledged applications or workflow examples, but provide a template for setting up the technical parts of the containerisation process, such as user mapping, and mapping to any required `safe_data` folders or similar. Please refer to the `README` in each example for guidance on how to use the container.
