@@ -76,6 +76,9 @@ nav:
       - "Overview": services/s3/index.md
       - "Manage": services/s3/manage.md
       - "Tutorial": services/s3/tutorial.md
+    - "Data Publishing":
+       - "Getting started": services/datapublishing/service.md
+       - "Your Data Catalogue entry": services/datapublishing/catalogue.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":
