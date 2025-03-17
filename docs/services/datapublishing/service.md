@@ -2,24 +2,19 @@
 
 ## Service provision
 
-The EIDF guarantees, to the best of its ability, to continue its services until at least the 31-Mar-2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF. 
+The EIDF guarantees, to the best of its ability, to continue its services until at least the 31 March 2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF.
 
 We reserve the right to remove any data that is not legal or inappropriate as well as any data that remains at the end of service provision.
 
 Some basic assumptions - 
 
-* You already have a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the [EIDF portal](https://portal.eidf.ac.uk/). Otherwise consult the [EIDF portal documentation](https://docs.eidf.ac.uk/access/project/) before proceeding.
+* You already have a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the [EIDF portal](https://portal.eidf.ac.uk/). Otherwise consult the [EIDF portal documentation](../../../access/project/) before proceeding.
 * To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you should use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead. This is not a free service.
-* The service is free up to a given threshold data volume which is generous. If the data you wish to publish is bigger than this we will get in touch with you when you apply for a data publishing project.
-
-If you find anything in this documentation that you think is not clear, missing or even wrong please let us know via the EIDF query system.
+* The service is free within fair usage thresholds. We will get in touch if you pass this threshold.
 
 ## Applying for a data project
 
 To start the process you will need to apply for an EIDF data project which is slightly different from other EIDF project applications.  
-
-!!! note
-    A data publishing version of the EIDF portal will be deployed in the near future. For now, you will have to use the generic portal.
 
 In the [EIDF portal](https://portal.eidf.ac.uk/):
 

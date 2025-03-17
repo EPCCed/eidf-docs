@@ -67,23 +67,6 @@ To read from a public bucket without providing credentials, add the option `--no
 aws s3 ls s3://<bucketname> --no-sign-request
 ```
 
-### Examples
-
-You want to upload all the files in a subdirectory to your S3 bucket
-
-```bash
-aws s3 cp ./mydir s3://mybucket --recursive --exclude "*" \
-            --include "*.dat" 
-```
-
-Here all `*.dat`  files only in `mydir` will be uploaded to `s3://mybucket`.
-
-You can check your upload using:
-
-```bash
-aws s3 ls --summarize --human-readable --recursive s3://mybucket/
-```
-
 You can get help on the options for any command using:
 
 ```bash
@@ -94,6 +77,22 @@ or for particular commands
 
 ```bash
 aws s3 ls help
+```
+
+### Examples
+
+You want to upload all the files in a subdirectory to your S3 bucket
+
+```bash
+aws s3 cp ./mydir s3://mybucket --recursive --exclude "*" --include "*.dat" 
+```
+
+Here all `*.dat`  files only in `mydir` will be uploaded to `s3://mybucket`.
+
+You can check your upload using:
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://mybucket/
 ```
 
 For public S3 buckets, such as those provided for the data publishing service,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:
@@ -108,14 +107,15 @@ and by making the following transformation:
 https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
 ```
 
-You can use your browser to download a particular file. Alternatively, you can use the aws client to download an entire data set:
+Now you can open this link in a browser to download the file.
+
+Alternatively, you can use the aws client to download an entire data set:
 
 ```bash
-aws s3 cp --recursive s3://eidf158-walkingtraveltimemaps/ ./walkingtraveltimemaps \
-            --no-sign-request
+aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./mydataset --no-sign-request
 ```
 
-will copy the entire content of the S3 bucket to your `walkingtraveltimemaps` subdirectory. Note that you must use `--no-sign-request` when looking at other people's buckets.
+will copy the entire content of the S3 bucket to your `mydataset` subdirectory. Note that you must use `--no-sign-request` when accessing public buckets.
 
 ## Python using `boto3`
 
