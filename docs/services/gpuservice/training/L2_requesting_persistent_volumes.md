@@ -48,7 +48,7 @@ spec:
  storageClassName: csi-rbd-sc
 ```
 
-You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl -n <project-namespace> create <PVC specification yaml>`
+You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl -n <project-namespace> create -f <PVC specification yaml>`
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:
 
 - `kubectl -n <project-namespace> delete pvc <PVC name>`
