@@ -14,11 +14,11 @@
         <link rel="prev" href="../manage/">
       
       
-        <link rel="next" href="../../datacatalogue/metadata/">
+        <link rel="next" href="../../datapublishing/service/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1614,6 +1614,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1774,7 +1783,7 @@
             
   
   <span class="md-ellipsis">
-    Data Catalogue
+    Data Publishing
     
   </span>
   
@@ -1784,6 +1793,94 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Publishing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datapublishing/service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datapublishing/catalogue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Your Data Catalogue entry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Catalogue
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             Data Catalogue
           </label>
@@ -2435,6 +2532,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2613,6 +2719,31 @@
 <p>To read from a public bucket without providing credentials, add the option <code>--no-sign-request</code> to the call:</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;<span class="w"> </span>--no-sign-request
 </code></pre></div>
+<p>You can get help on the options for any command using:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+<p>or for particular commands</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+<h3 id="examples">Examples</h3>
+<p>You want to upload all the files in a subdirectory to your S3 bucket</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.dat&quot;</span><span class="w"> </span>
+</code></pre></div>
+<p>Here all <code>*.dat</code>  files only in <code>mydir</code> will be uploaded to <code>s3://mybucket</code>.</p>
+<p>You can check your upload using:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>--summarize<span class="w"> </span>--human-readable<span class="w"> </span>--recursive<span class="w"> </span>s3://mybucket/
+</code></pre></div>
+<p>For public S3 buckets, such as those provided for the data publishing service,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:</p>
+<div class="highlight"><pre><span></span><code>s3://eidfXXX-my-dataset/mydatafile.csv
+</code></pre></div>
+<p>and by making the following transformation:</p>
+<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
+</code></pre></div>
+<p>Now you can open this link in a browser to download the file.</p>
+<p>Alternatively, you can use the aws client to download an entire data set:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>--recursive<span class="w"> </span>s3://eidfXXX-my-dataset/<span class="w"> </span>./mydataset<span class="w"> </span>--no-sign-request
+</code></pre></div>
+<p>will copy the entire content of the S3 bucket to your <code>mydataset</code> subdirectory. Note that you must use <code>--no-sign-request</code> when accessing public buckets.</p>
 <h2 id="python-using-boto3">Python using <code>boto3</code></h2>
 <p>The following examples use the Python library <code>boto3</code>.</p>
 <h3 id="install">Install</h3>
@@ -2668,8 +2799,8 @@ The project code is a prefix on the bucket name, separated by a colon (<code>:</
 <p>Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
 The project code is a prefix on the bucket name, separated by a colon (<code>:</code>), for example <code>eidfXX1:somebucket</code>.
 Note that some S3 client libraries do not accept bucket names in this format.</p>
-<p>Bucket permissions use IAM policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.
-For example to grant permissions to put, get, delete and list objects in bucket <code>eidfXX1:somebucket</code> to the account <code>account2</code> in project <code>eidfXX2</code>:</p>
+<p>Bucket permissions use IAM (Identity Access Management) policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.</p>
+<p>For example to grant permissions to put, get, delete and list objects in bucket <code>eidfXX1:somebucket</code> to the account <code>account2</code> in project <code>eidfXX2</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
