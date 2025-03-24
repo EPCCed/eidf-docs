@@ -1,5 +1,9 @@
 # Data ingest crib sheet
 
+> [!WARNING]
+>
+> This file is now deprecated. You will find documentation about the data ingest process in the main [EIDF documentation](https://docs.eidf.ac.uk/services/datapublishing/service/).
+
 **Version 0.4.22**
 
 This document is changing fairly quickly so please keep an eye on the version number to see if it has changed since you last looked at it.
