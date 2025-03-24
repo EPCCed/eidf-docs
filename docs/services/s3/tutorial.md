@@ -79,6 +79,10 @@ or for particular commands
 aws s3 ls help
 ```
 
+Alternatively, there are many graphical clients that act as a file browser for S3, for example [Cyberduck](https://cyberduck.io) - to use Cyberduck you may need to enable [connections using deprecated path style requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests) otherwise you may have problems listing the contents of a bucket. For more details please consult the [Cyberduck documentation](https://docs.cyberduck.io/cyberduck/).
+
+If you want to use another programming language have a look at the [Ceph S3 API](https://docs.ceph.com/en/latest/radosgw/s3/) interfaces (Ceph is the underlying platform used).
+
 ### Examples
 
 You want to upload all the files in a subdirectory to your S3 bucket
