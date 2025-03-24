@@ -14,7 +14,7 @@ extra_css:
   - stylesheets/access.css
 
 site_name: EIDF User Documentation
-site_url: https://epcced.github.io/eidf-docs/
+site_url: https://docs.eidf.ac.uk/
 repo_url: https://github.com/EPCCed/eidf-docs/
 repo_name: EPCCed/eidf-docs.git
 edit_uri: edit/main/docs/
@@ -46,9 +46,6 @@ nav:
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
-    - "Cerebras CS-2":
-      - "Get Access": services/cs2/access.md
-      - "Running codes": services/cs2/run.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
@@ -79,6 +76,9 @@ nav:
       - "Overview": services/s3/index.md
       - "Manage": services/s3/manage.md
       - "Tutorial": services/s3/tutorial.md
+    - "Data Publishing":
+       - "Getting started": services/datapublishing/service.md
+       - "Your Data Catalogue entry": services/datapublishing/catalogue.md
     - "Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":

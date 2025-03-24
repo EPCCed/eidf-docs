@@ -17,10 +17,10 @@ Remote desktop connections work best by first placing the browser in Full Screen
 
 When a VM RDP connection is selected the browser screen becomes a remote desktop presenting the login screen shown below.
 
-   ![VM-VDI-connection-login](/eidf-docs/images/access/vm-vdi-connection-login.png){: class="border-img"}
+   ![VM-VDI-connection-login](../images/access/vm-vdi-connection-login.png)
    *VM virtual desktop connection user account login screen*
 
 Once the project account credentials have been accepted, a remote dekstop similar to the one shown below is presented. The default VM environment in the TRE is Ubuntu 22.04 with the Xfce desktop.
 
-   ![VM-VDI-connection](/eidf-docs/images/access/vm-vdi-connection.png){: class="border-img"}
+   ![VM-VDI-connection](../images/access/vm-vdi-connection.png)
    *VM virtual desktop*
