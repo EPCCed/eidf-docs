@@ -25,7 +25,12 @@ Credentials file:
 aws_access_key_id=<key>
 aws_secret_access_key=<secret>
 endpoint_url=https://s3.eidf.ac.uk
+
+request_checksum_calculation=when_required
+response_checksum_validation=when_required
 ```
+
+The last two lines are required since boto3 version 1.36 when a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3.
 
 Environment variables:
 
