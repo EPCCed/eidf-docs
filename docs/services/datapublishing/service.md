@@ -2,7 +2,7 @@
 
 ## Service provision
 
-The EIDF guarantees, to the best of its ability, to continue its services until at least the 31 March 2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF.
+The EIDF guarantees, to the best of its ability, to continue its services until at least the 31 July 2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF.
 
 We reserve the right to remove any data that is not legal or inappropriate as well as any data that remains at the end of service provision.
 
