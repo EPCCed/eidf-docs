@@ -16,7 +16,8 @@ mkdocs-material-extensions==1.0.1
 nodeenv==1.6.0
 packaging==21.0
 platformdirs==2.0.2
-pre-commit==2.13.0
+#pre-commit==2.13.0
+pre-commit
 Pygments==2.9.0
 pymdown-extensions==8.2
 pyparsing==2.4.7
