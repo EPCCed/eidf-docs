@@ -2,7 +2,7 @@
 
 ## Service provision
 
-The EIDF guarantees, to the best of its ability, to continue its services until at least the 31 March 2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF.
+The EIDF guarantees, to the best of its ability, to continue its services until at least the 31 July 2032 and aims to continue beyond 2032 subject to funding. However, should we have to terminate the service we will give you at least 3 months notice to retrieve your data. It is thus important to keep your contact details up to date. The publishing service is not an archiving service and we recommend where possible that you have a backup version of your data outside of the EIDF.
 
 We reserve the right to remove any data that is not legal or inappropriate as well as any data that remains at the end of service provision.
 
@@ -23,9 +23,9 @@ In the [EIDF portal](https://portal.eidf.ac.uk/):
 * Press on the `New Application` link and put in an application for us to host your data. 
   * You will be asked to supply a title for your application.
   * A start date (when you hope to start publishing your data).
-  * A proposed end date (at the moment you will not be able to go beyond 31-Dec-2032).
+  * A proposed end date (at the moment you will not be able to go beyond 31-Jul-2032).
 
-For the EIDF Services you require chose the "*ingest data formally into EIDF for long-term hosting*" choice. Note that all the other EIDF services have a [cost](https://edinburgh-international-data-facility.ed.ac.uk/access) so, if you add any other EIDF services a charge will be imposed.
+For the EIDF Services you require chose the "*EIDF Data Publishing*" choice. If you also require *EIDF Compute Services* you will require to put in a separate application.
 
 Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project has been approved or rejected - someone may be in touch to clarify points in your application.
 
