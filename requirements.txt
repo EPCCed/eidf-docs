@@ -5,9 +5,9 @@ distlib==0.3.2
 filelock==3.0.12
 ghp-import==2.0.1
 identify==2.2.11
-importlib-metadata==4.6.1
+importlib-metadata<5
 Jinja2==3.0.1
-Markdown==3.3.4
+MarkDown>=3.3.5
 MarkupSafe==2.0.1
 mergedeep==1.3.4
 mkdocs==1.2.1
@@ -16,7 +16,8 @@ mkdocs-material-extensions==1.0.1
 nodeenv==1.6.0
 packaging==21.0
 platformdirs==2.0.2
-pre-commit==2.13.0
+#pre-commit==2.13.0
+pre-commit
 Pygments==2.9.0
 pymdown-extensions==8.2
 pyparsing==2.4.7

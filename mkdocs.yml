@@ -50,6 +50,10 @@ nav:
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
       - "Running codes": services/ultra2/run.md
+    - "Cerebras":
+      - "Overview": services/cerebras/access.md
+      - "Connect": services/cerebras/connect.md
+      - "Running codes": services/cerebras/run.md
     - "GPU Service":
       - "Overview": services/gpuservice/index.md
       - "Policies": services/gpuservice/policies.md
