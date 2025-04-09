@@ -1,10 +1,10 @@
 # Login
 
-The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion, as for the EIDF VirDS desktop VMs.
+The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion, as for the EIDF VirDS desktop VMs. This requires two credentials, your SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
 
 ## Access credentials
 
-To access the CS3 system, you need to use two credentials: your SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
+To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for `eidf-gateway`.
 
 ### SSH Key
 
