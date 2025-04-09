@@ -95,6 +95,8 @@ metadata:
   kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
  completions: 1
+ backoffLimit: 1
+ ttlSecondsAfterFinished: 1800
  template:
   metadata:
    name: job-test
@@ -279,30 +281,32 @@ The `nodeSelector:` key at the bottom of the pod template states the pod should 
 apiVersion: batch/v1
 kind: Job
 metadata:
-    generateName: jobtest-
-    labels:
-        kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
+  generateName: jobtest-
+  labels:
+    kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
-    completions: 1
-    template:
-        metadata:
-            name: job-test
-        spec:
-            containers:
-            - name: cudasample
-              image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
-              args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
-              resources:
-                    requests:
-                        cpu: 2
-                        memory: '1Gi'
-                    limits:
-                        cpu: 2
-                        memory: '4Gi'
-                        nvidia.com/gpu: 1
-            restartPolicy: Never
-            nodeSelector:
-                nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+  completions: 1
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 1800
+  template:
+    metadata:
+      name: job-test
+    spec:
+      containers:
+      - name: cudasample
+        image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1
+        args: ["-benchmark", "-numbodies=512000", "-fp64", "-fullscreen"]
+        resources:
+          requests:
+            cpu: 2
+            memory: '1Gi'
+          limits:
+            cpu: 2
+            memory: '4Gi'
+            nvidia.com/gpu: 1
+      restartPolicy: Never
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
 ```
 
 ## Running multiple pods with K8s jobs
@@ -323,7 +327,9 @@ metadata:
  labels:
     kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
- completions: 3
+ completions: 1
+ backoffLimit: 1
+ ttlSecondsAfterFinished: 1800
  parallelism: 1
  template:
   metadata:

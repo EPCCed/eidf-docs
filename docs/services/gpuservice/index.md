@@ -87,7 +87,7 @@ A standard project namespace has the following initial quota (subject to ongoing
 
 ## Project Queues
 
-EIDF GPU Service is introducing the Kueue system in February 2024. The use of this is detailed in the [Kueue](kueue.md).
+EIDF GPU Service has been using the Kueue system since February 2024. The use of this is detailed in the [Kueue](kueue.md).
 
 !!! important "Job Queuing"
 

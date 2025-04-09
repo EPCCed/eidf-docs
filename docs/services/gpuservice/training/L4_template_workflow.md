@@ -57,7 +57,9 @@ Therefore, the data download step needs to be completed asynchronously as mainta
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
+     backoffLimit: 1
      parallelism: 1
+     ttlSecondsAfterFinished: 1800
      template:
       metadata:
        name: lightweight-job
@@ -66,7 +68,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
        containers:
        - name: data-loader
          image: alpine/curl:latest
-         command: ['sh', '-c', "cd /mnt/ceph_rbd; curl https://archive.ics.uci.edu/static/public/53/iris.zip -o iris.zip"]
+         command: ['sh', '-c', "cd /mnt/ceph; curl https://archive.ics.uci.edu/static/public/53/iris.zip -o iris.zip"]
          resources:
           requests:
            cpu: 1
@@ -75,7 +77,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
            cpu: 1
            memory: "1Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -130,7 +132,9 @@ Using screen rather than a single download job can be helpful if downloading mul
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
+     backoffLimit: 1
      parallelism: 1
+     ttlSecondsAfterFinished: 1800
      template:
       metadata:
        name: lightweight-pod
@@ -148,7 +152,7 @@ Using screen rather than a single download job can be helpful if downloading mul
            cpu: 1
            memory: "1Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -356,7 +360,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -391,7 +395,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
            name: github-code
@@ -446,7 +450,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            memory: "80Gi"
            nvidia.com/gpu: 1
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
            name: github-code

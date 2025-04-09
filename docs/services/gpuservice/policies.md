@@ -14,12 +14,27 @@ Default Quota:
 
 Each project will be assigned a kubeconfig file for access to the service which will allow operation in the assigned namespace and access to exposed service operators, for example the GPU and CephRBD operators.
 
-## Kubernetes Job Time to Live
+## Kubernetes Job Names
 
-All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished`> automatically. The default TTL for jobs using the service will be 1 week (604800 seconds). A completed job (in success or error state) will be deleted from the service once one week has elapsed after execution has completed. This will reduce excessive object accumulation on the service.
+All Kubernetes Jobs submitted will need to use the `spec.generateName` field instead of the `spec.name` field. This is to ensure jobs can be identified for purporses of billing, maintenance and troubleshooting.
+
+Submitting jobs with `name` only would allow several jobs to have the same name, potentially blocking you from submitting the job until the previous one was deleted. Support would have difficulties troubleshooting as the name remains the same, but execution results can be different each time.
 
 !!! important
     This policy is automated and does not require users to change their job specifications.
+    
+!!! important
+    We recommend setting a lower value, unless you absolutely need the job to remain for debugging. Completed jobs serve no other purpose and can potentially make identifying your workloads more difficult.
+
+## Kubernetes Job Time to Live
+
+All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished` automatically. The default TTL for jobs using the service will be 1 week (604800 seconds). A completed job (in success or error state) will be deleted from the service once one week has elapsed after execution has completed. This will reduce excessive object accumulation on the service.
+
+!!! important
+    This policy is automated and does not require users to change their job specifications.
+    
+!!! important
+    We recommend setting a lower value, unless you absolutely need the job to remain for debugging. Completed jobs serve no other purpose and can potentially make identifying your workloads more difficult.
 
 ## Kubernetes Active Deadline Seconds
 
@@ -27,6 +42,9 @@ All Kubernetes User Pods submitted to the service will have an Active Deadline S
 
 !!! important
     This policy is automated and does not require users to change their job or pod specifications.
+    
+!!! important
+    The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration errors in your code can lead to the container running for the whole duration, but not yielding a result and taking cluster resources away from other users.
 
 ## Kueue
 
