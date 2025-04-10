@@ -2750,7 +2750,7 @@
 <p>A PersistentVolumeClaim (PVC) needs to be submitted to K8s to request the storage resources.</p>
 <p>The storage resources are held on a Ceph server which can accept requests up to 100 TiB. The Ceph FS storage class allows for multiple workloads to mount the volume.</p>
 <p>Example PVCs can be seen on the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Kubernetes</a> documentation page.</p>
-<p>All PVCs on the EIDF GPU Service must use the <code>csi-cephfs-sc</code> storage class.</p>
+<p>All PVCs on the EIDF GPU Service should use the <code>csi-cephfs-sc</code> storage class.</p>
 <h3 id="example-persistentvolumeclaim">Example PersistentVolumeClaim</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>

@@ -2672,23 +2672,25 @@
 <p>The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.</p>
 <p>The service provides access to:</p>
 <ul>
-<li>Nvidia A100 40GB</li>
-<li>Nvidia A100 80GB</li>
-<li>Nvidia MIG A100 1G.5GB</li>
-<li>Nvidia MIG A100 3G.20GB</li>
+<li>Nvidia H200</li>
 <li>Nvidia H100 80GB</li>
+<li>Nvidia A100 80GB</li>
+<li>Nvidia A100 40GB</li>
+<li>Nvidia MIG A100 3G.20GB</li>
+<li>Nvidia MIG A100 1G.5GB</li>
 </ul>
-<p>The current full specification of the EIDF GPU Service as of 14 February 2024:</p>
+<p>The current full specification of the EIDF GPU Service as of April 2025:</p>
 <ul>
-<li>4912 CPU Cores (AMD EPYC and Intel Xeon)</li>
-<li>23 TiB Memory</li>
-<li>Local Disk Space (Node Image Cache and Local Workspace) - 40 TiB</li>
-<li>Ceph Persistent Volumes (Long Term Data) - up to 100TiB</li>
-<li>112 Nvidia A100 40 GB</li>
-<li>39 Nvidia A100 80 GB</li>
-<li>16 Nvidia A100 3G.20GB</li>
-<li>56 Nvidia A100 1G.5GB</li>
-<li>32 Nvidia H100 80 GB</li>
+<li>9254 CPU Cores (AMD EPYC and Intel Xeon)</li>
+<li>59 TiB Memory</li>
+<li>Ceph Persistent Volumes CephFS - up to 100TiB</li>
+<li>Ceph Persistent Volumes RBD - up to 100TiB</li>
+<li>16 Nvidia H200</li>
+<li>136 Nvidia H100 80GB</li>
+<li>80 Nvidia A100 80GB</li>
+<li>56 Nvidia A100 40GB</li>
+<li>16 Nvidia MIG A100 3G.20GB</li>
+<li>56 Nvidia MIG A100 1G.5GB</li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Quotas</p>
