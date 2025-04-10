@@ -2732,6 +2732,12 @@
 <h2 id="requirements">Requirements</h2>
 <p>It is recommended that users complete <a href="../L1_getting_started/#requirements">Getting started with Kubernetes</a> before proceeding with this tutorial.</p>
 <h2 id="overview">Overview</h2>
+<div class="admonition important">
+<p class="admonition-title">Ceph RBD &amp; Ceph FS - ReadWriteMany volume recommendation</p>
+<p>Prior to April 2025, the default storage class in the GPU cluster was Ceph RBD, which was a ReadWriteOnce type volume.</p>
+<p>This meant, that cluster could only mount the volume to a single active workload. Since the service migration, the CephFS storage class is the default, which allows ReadWriteMany and functionally supersedes the Ceph RBD volumes.</p>
+<p>Please consider migrating your data onto CephFS volumes (if you have not already), and change your PVC definitions to use the new storage class afterwards.</p>
+</div>
 <p>Pods in the K8s EIDF GPU Service are intentionally ephemeral.</p>
 <p>They only last as long as required to complete the task that they were created for.</p>
 <p>Keeping pods ephemeral ensures the cluster resources are released for other users to request.</p>
@@ -2742,9 +2748,9 @@
 <h2 id="submitting-a-persistent-volume-claim">Submitting a Persistent Volume Claim</h2>
 <p>Before a persistent volume can be mounted to a pod, the required storage resources need to be requested and reserved to your namespace.</p>
 <p>A PersistentVolumeClaim (PVC) needs to be submitted to K8s to request the storage resources.</p>
-<p>The storage resources are held on a Ceph server which can accept requests up to 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDF GPU Service. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.</p>
+<p>The storage resources are held on a Ceph server which can accept requests up to 100 TiB. The Ceph FS storage class allows for multiple workloads to mount the volume.</p>
 <p>Example PVCs can be seen on the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Kubernetes</a> documentation page.</p>
-<p>All PVCs on the EIDF GPU Service must use the <code>csi-rbd-sc</code> storage class.</p>
+<p>All PVCs on the EIDF GPU Service must use the <code>csi-cephfs-sc</code> storage class.</p>
 <h3 id="example-persistentvolumeclaim">Example PersistentVolumeClaim</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -2752,12 +2758,16 @@
 <span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w"> </span><span class="nt">accessModes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span>
 <span class="w"> </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">   </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
-<span class="w"> </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-rbd-sc</span>
+<span class="w"> </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-cephfs-sc</span>
 </code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">ReadWriteMany volumes</p>
+<p>A RWM volume allows several jobs and pods to use the same disk at the same time. The obvious benefit to this is allowing parallel workloads to work with the same dataset at the same time, or use a single volume for multiple datasets, without the need to manage each individually. The new Ceph FS storage class facilitates this.</p>
+</div>
 <p>You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml <code>kubectl -n &lt;project-namespace&gt; create &lt;PVC specification yaml&gt;</code>
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:</p>
 <ul>
@@ -2771,34 +2781,36 @@ Once you have successfully created a persistent volume you can interact with it 
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-job</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-job-</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-pod</span>
-<span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
-<span class="w">              </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
-<span class="w">              </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">              </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">                    </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">                        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">                        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
-<span class="w">                    </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">                        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">                        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
-<span class="w">              </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph_rbd</span>
-<span class="w">                      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
-<span class="w">            </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
-<span class="w">            </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
-<span class="w">                  </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
-<span class="w">                    </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc</span>
+<span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-pod</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc</span>
 </code></pre></div>
 <h2 id="accessing-the-persistent-volume-outside-a-pod">Accessing the persistent volume outside a pod</h2>
 <p>To move files in/out of the persistent volume from outside a pod you can use the kubectl cp command.</p>

@@ -1110,6 +1110,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubernetes-job-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Job Names
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kubernetes-job-time-to-live" class="md-nav__link">
     <span class="md-ellipsis">
       Kubernetes Job Time to Live
@@ -2603,6 +2612,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubernetes-job-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Job Names
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kubernetes-job-time-to-live" class="md-nav__link">
     <span class="md-ellipsis">
       Kubernetes Job Time to Live
@@ -2659,11 +2677,22 @@
 </ul>
 <h2 id="kubeconfig">Kubeconfig</h2>
 <p>Each project will be assigned a kubeconfig file for access to the service which will allow operation in the assigned namespace and access to exposed service operators, for example the GPU and CephRBD operators.</p>
+<h2 id="kubernetes-job-names">Kubernetes Job Names</h2>
+<p>All Kubernetes Jobs submitted will need to use the <code>metadata.generateName</code> field instead of the <code>metadata.name</code> field. This is to ensure jobs can be identified for purporses of  maintenance and troubleshooting.</p>
+<p>Submitting jobs with <code>name</code> only would allow several jobs to have the same name, potentially blocking you from submitting the job until the previous one was deleted. Support would have difficulties troubleshooting as the name remains the same, but execution results can be different each time.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This policy is automated, but users will need to change their job template to use the new field for the submission to work.</p>
+</div>
 <h2 id="kubernetes-job-time-to-live">Kubernetes Job Time to Live</h2>
-<p>All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) applied via <code>spec.ttlSecondsAfterFinished</code>&gt; automatically. The default TTL for jobs using the service will be 1 week (604800 seconds). A completed job (in success or error state) will be deleted from the service once one week has elapsed after execution has completed. This will reduce excessive object accumulation on the service.</p>
+<p>All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) applied via <code>spec.ttlSecondsAfterFinished</code> automatically. The default TTL for jobs using the service will be 1 week (604800 seconds). A completed job (in success or error state) will be deleted from the service once one week has elapsed after execution has completed. This will reduce excessive object accumulation on the service.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This policy is automated and does not require users to change their job specifications.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We recommend setting a lower value, unless you absolutely need the job to remain for debugging. Completed jobs serve no other purpose and can potentially make identifying your workloads more difficult.</p>
 </div>
 <h2 id="kubernetes-active-deadline-seconds">Kubernetes Active Deadline Seconds</h2>
 <p>All Kubernetes User Pods submitted to the service will have an Active Deadline Seconds (ADS) applied via <code>spec.spec.activeDeadlineSeconds</code> automatically. The default ADS for pods using the service will be 5 days (432000 seconds). A pod will be terminated 5 days after execution has begun. This will reduce the number of unused pods remaining on the service.</p>
@@ -2671,14 +2700,17 @@
 <p class="admonition-title">Important</p>
 <p>This policy is automated and does not require users to change their job or pod specifications.</p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration errors in your code can lead to the container running for the whole duration, but not yielding a result and taking cluster resources away from other users.</p>
+</div>
 <h2 id="kueue">Kueue</h2>
 <p>All jobs will be managed through the Kueue scheduling system. All pods will be required to be owned by a Kubernetes workload.</p>
 <p>Each project will have a local user queue in their namespace. This will provide access to their cluster queue. To enable the use of the queue in your job definitions, the following will need to be added to the job specification file as part of the metadata:</p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
 </code></pre></div>
-<p>Jobs without this queue name tag will be rejected.</p>
-<p>Pods bypassing the queue system will be deleted.</p>
+<p>Workloads without this queue name tag will be rejected.</p>
 
 
 
