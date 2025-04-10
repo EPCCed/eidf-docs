@@ -6,13 +6,13 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 
 ## Overview
 
-!!! important "Ceph RBD Storage Class Deprecation"
+!!! important "Ceph RBD & Ceph FS - ReadWriteMany volume recommendation"
 
     Prior to April 2025, the default storage class in the GPU cluster was Ceph RBD, which was a ReadWriteOnce type volume.
     
-    This meant, that cluster could only mount the volume to a single active workload. Since the service migration, the CephFS storage class is the default, which allows ReadWriteMany and supersedes the Ceph RBD volumes.
+    This meant, that cluster could only mount the volume to a single active workload. Since the service migration, the CephFS storage class is the default, which allows ReadWriteMany and functionally supersedes the Ceph RBD volumes.
     
-    Please take time to migrate your data onto CephFS volumes, if you have not already and change your PVC definitions to use the new storage class.
+    Please consider migrating your data onto CephFS volumes (if you have not already), and change your PVC definitions to use the new storage class afterwards.
 
 Pods in the K8s EIDF GPU Service are intentionally ephemeral.
 
@@ -55,6 +55,10 @@ spec:
    storage: 2Gi
  storageClassName: csi-cephfs-sc
 ```
+
+!!! important "ReadWriteMany volumes"
+
+    A RWM volume allows several jobs and pods to use the same disk at the same time. The obvious benefit to this is allowing parallel workloads to work with the same dataset at the same time, or use a single volume for multiple datasets, without the need to manage each individually. The new Ceph FS storage class facilitates this.
 
 You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl -n <project-namespace> create <PVC specification yaml>`
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:

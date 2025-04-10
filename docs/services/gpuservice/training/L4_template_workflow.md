@@ -52,7 +52,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: lightweight-job
+     generateName: lightweight-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -127,7 +127,7 @@ Using screen rather than a single download job can be helpful if downloading mul
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: lightweight-job
+     generateName: lightweight-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -241,7 +241,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -339,7 +339,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -374,7 +374,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -428,7 +428,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:

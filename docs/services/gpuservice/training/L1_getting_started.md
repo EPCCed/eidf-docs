@@ -265,6 +265,7 @@ The GPU resource requests can be made more specific by adding the type of GPU pr
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB-MIG-3g.20gb'`
 - `nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB-MIG-1g.5gb'`
 - `nvidia.com/gpu.product: 'NVIDIA-H100-80GB-HBM3'`
+- `nvidia.com/gpu.product: 'NVIDIA-H200'`
 
 ### Example yaml file with GPU type specified
 
