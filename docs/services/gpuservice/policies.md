@@ -29,7 +29,7 @@ All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) appl
 
 !!! important
     This policy is automated and does not require users to change their job specifications.
-    
+
 !!! important
     We recommend setting a lower value, unless you absolutely need the job to remain for debugging. Completed jobs serve no other purpose and can potentially make identifying your workloads more difficult.
 
@@ -39,7 +39,7 @@ All Kubernetes User Pods submitted to the service will have an Active Deadline S
 
 !!! important
     This policy is automated and does not require users to change their job or pod specifications.
-    
+
 !!! important
     The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration errors in your code can lead to the container running for the whole duration, but not yielding a result and taking cluster resources away from other users.
 
