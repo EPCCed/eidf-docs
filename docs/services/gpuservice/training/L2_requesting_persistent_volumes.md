@@ -9,9 +9,9 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 !!! important "Ceph RBD & Ceph FS - ReadWriteMany volume recommendation"
 
     Prior to April 2025, the default storage class in the GPU cluster was Ceph RBD, which was a ReadWriteOnce type volume.
-    
+
     This meant, that cluster could only mount the volume to a single active workload. Since the service migration, the CephFS storage class is the default, which allows ReadWriteMany and functionally supersedes the Ceph RBD volumes.
-    
+
     Please consider migrating your data onto CephFS volumes (if you have not already), and change your PVC definitions to use the new storage class afterwards.
 
 Pods in the K8s EIDF GPU Service are intentionally ephemeral.
@@ -38,7 +38,7 @@ The storage resources are held on a Ceph server which can accept requests up to 
 
 Example PVCs can be seen on the [Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) documentation page.
 
-All PVCs on the EIDF GPU Service must use the `csi-cephfs-sc` storage class.
+All PVCs on the EIDF GPU Service should use the `csi-cephfs-sc` storage class.
 
 ### Example PersistentVolumeClaim
 
