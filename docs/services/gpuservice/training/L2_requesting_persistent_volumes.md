@@ -6,6 +6,14 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 
 ## Overview
 
+!!! important "Ceph RBD & Ceph FS - ReadWriteMany volume recommendation"
+
+    Prior to April 2025, the default storage class in the GPU cluster was Ceph RBD, which was a ReadWriteOnce type volume.
+    
+    This meant, that cluster could only mount the volume to a single active workload. Since the service migration, the CephFS storage class is the default, which allows ReadWriteMany and functionally supersedes the Ceph RBD volumes.
+    
+    Please consider migrating your data onto CephFS volumes (if you have not already), and change your PVC definitions to use the new storage class afterwards.
+
 Pods in the K8s EIDF GPU Service are intentionally ephemeral.
 
 They only last as long as required to complete the task that they were created for.
@@ -26,11 +34,11 @@ Before a persistent volume can be mounted to a pod, the required storage resourc
 
 A PersistentVolumeClaim (PVC) needs to be submitted to K8s to request the storage resources.
 
-The storage resources are held on a Ceph server which can accept requests up to 100 TiB. Currently, each PVC can only be accessed by one pod at a time, this limitation is being addressed in further development of the EIDF GPU Service. This means at this stage, pods can mount the same PVC in sequence, but not concurrently.
+The storage resources are held on a Ceph server which can accept requests up to 100 TiB. The Ceph FS storage class allows for multiple workloads to mount the volume.
 
 Example PVCs can be seen on the [Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) documentation page.
 
-All PVCs on the EIDF GPU Service must use the `csi-rbd-sc` storage class.
+All PVCs on the EIDF GPU Service must use the `csi-cephfs-sc` storage class.
 
 ### Example PersistentVolumeClaim
 
@@ -41,12 +49,16 @@ metadata:
  name: test-ceph-pvc
 spec:
  accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
  resources:
   requests:
    storage: 2Gi
- storageClassName: csi-rbd-sc
+ storageClassName: csi-cephfs-sc
 ```
+
+!!! important "ReadWriteMany volumes"
+
+    A RWM volume allows several jobs and pods to use the same disk at the same time. The obvious benefit to this is allowing parallel workloads to work with the same dataset at the same time, or use a single volume for multiple datasets, without the need to manage each individually. The new Ceph FS storage class facilitates this.
 
 You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml `kubectl -n <project-namespace> create <PVC specification yaml>`
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:
@@ -65,34 +77,36 @@ Introducing a persistent volume to a pod requires the addition of a volumeMount 
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: test-ceph-pvc-job
-    labels:
-        kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
+  generateName: test-ceph-pvc-job-
+  labels:
+    kueue.x-k8s.io/queue-name: <project namespace>-user-queue
 spec:
-    completions: 1
-    template:
-        metadata:
-            name: test-ceph-pvc-pod
-        spec:
-            containers:
-            - name: cudasample
-              image: busybox
-              args: ["sleep", "infinity"]
-              resources:
-                    requests:
-                        cpu: 2
-                        memory: '1Gi'
-                    limits:
-                        cpu: 2
-                        memory: '4Gi'
-              volumeMounts:
-                    - mountPath: /mnt/ceph_rbd
-                      name: volume
-            restartPolicy: Never
-            volumes:
-                - name: volume
-                  persistentVolumeClaim:
-                    claimName: test-ceph-pvc
+  completions: 1
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 1800
+  template:
+    metadata:
+      name: test-ceph-pvc-pod
+    spec:
+      containers:
+      - name: cudasample
+        image: busybox
+        args: ["sleep", "infinity"]
+        resources:
+          requests:
+            cpu: 2
+            memory: '1Gi'
+          limits:
+            cpu: 2
+            memory: '4Gi'
+        volumeMounts:
+          - mountPath: /mnt/ceph
+            name: volume
+      restartPolicy: Never
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: test-ceph-pvc
 ```
 
 ## Accessing the persistent volume outside a pod

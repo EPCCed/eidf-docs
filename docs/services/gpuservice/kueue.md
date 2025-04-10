@@ -4,7 +4,7 @@
 
 [Kueue](https://kueue.sigs.k8s.io/docs/overview/) is a native Kubernetes quota and job management system.
 
-This is the job queue system for the EIDF GPU Service, starting with February 2024.
+This is the job queue system for the EIDF GPU Service, starting with April 2025.
 
 All users should submit jobs to their local namespace user queue, this queue will have the name `eidf project namespace`-user-queue.
 
