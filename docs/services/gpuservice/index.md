@@ -2,18 +2,7 @@
 
 The EIDF GPU Service (EIDF GPU Service) provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
 
-MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion.
-
-The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
-
-The service provides access to:
-
-- Nvidia H200
-- Nvidia H100 80GB
-- Nvidia A100 80GB
-- Nvidia A100 40GB
-- Nvidia MIG A100 3G.20GB
-- Nvidia MIG A100 1G.5GB
+MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion. The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
 
 The current full specification of the EIDF GPU Service as of April 2025:
 
