@@ -6,9 +6,22 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation) which should be followed.<br> In this early phase, one small tweak is required:
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation) which should be followed.<br> In this early phase, a few small tweaks are required:
 
 Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py` and comment out lines 986 to 1034 (should start `errors = []` and end with a single `)` on a line.)
+
+The current Cerebras firmware version is 2.4.0. If you have the wrong version installed, an error will be raised on running `cerebras_install_check`: 
+
+```bash
+ERROR:cerebras:Cerebras Component Mismatch Check Installation:
+COMPONENT_NAME_CLUSTER_SERVER has version: 2.4.0 but client has 2.4.3.
+In order to use this cluster, you must install 2.4.0 of the client.
+```
+
+Installation of Cerebras firmware version 2.4.0 into your virtual environment is done using the following command:
+```
+pip install cerebras-sdk==2.4.0
+```
 
 ## Running codes
 
