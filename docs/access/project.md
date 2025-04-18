@@ -18,7 +18,13 @@ navigate to "Projects" and choose "Request access".
 Select the project that you want to join in the "Project" dropdown list -
 you can search for the project name or the project code, e.g. "eidf0123".
 
-Now you have to wait for your PI or project manager to accept your request to register.
+Now you have to wait for your PI or project manager to accept your request to join.
+
+Once your request is accepted, the project manager creates an account for you
+and enables access to the machines that you require in your project.
+You cannot request accounts, this has to be done by your project manager.
+If you cannot see any accounts in the project after joining please get in touch with
+the PI or a project manager and ask them to create one for you.
 
 ## How to apply for a project as a Principal Investigator
 
@@ -31,6 +37,7 @@ Once you have logged in click on "Applications" in the menu and choose "New Appl
 
 1. Fill in the Application Title - this will be the name of the project once it is approved.
 1. Choose a start date and an end date for your project.
+1. Select the services for which you are applying.
 1. Click "Create" to create your project application.
 
 Once the application has been created you see an overview of the form you are
@@ -43,12 +50,17 @@ applications and their status, or follow the link
 
 Fill in each section of the application as required:
 
-* Previous Use of Data Analytics or HPC Resources
-* EIDF Desktop Software Requirements
-* EIDF Data Management Plan
 * Case for Support
+* EIDF Services Required
 
 You can edit and save each section separately and revisit the application at a later time.
+
+#### Editors
+
+You may invite other editors to your application.
+Editors must have a valid SAFE login and they will receive an email with your invitation and a link.
+After accepting, they have write access to all parts of the proposal.
+However, only the owner of the application has permission to submit the application.
 
 #### Datasets
 
@@ -58,7 +70,7 @@ We are required to ensure that projects involving "sensitive" data have the nece
 The answers to these questions will enable us to decide what additional documentation we may need, and whether your project may need to be set up in an independently governed Safe Haven.
 There may be some projects we are simply unable to host for data protection reasons.
 
-#### Resource Requirements
+#### Virtual Desktop Requirements
 
 Add an estimate for each size and type of VM that is required.
 
