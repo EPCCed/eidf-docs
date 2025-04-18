@@ -8,11 +8,13 @@ We reserve the right to remove any data that is not legal or inappropriate as we
 
 Some basic assumptions -
 
-* You already have a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the [EIDF portal](https://portal.eidf.ac.uk/). Otherwise consult the [EIDF portal documentation](../../../access/project/) before proceeding.
-
-* To qualify for the free data publishing service your data must be open and freely available to all. If you want to control access to your data you should use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead. This is not a free service.
-
-* There is no charge for this service if your data can be processed with free tools, distributed and used freely without restriction, and fits within our fair usage policy.
+* You already have a [SAFE](https://safe.epcc.ed.ac.uk/) account and can access the
+  [EIDF portal](https://portal.eidf.ac.uk/).
+  Otherwise consult the [EIDF portal documentation](../../access/project.md) before proceeding.
+* To qualify for the free data publishing service your data must be open and freely available to all.
+  If you want to control access to your data you should use the [S3 service](https://epcced.github.io/eidf-docs/services/s3/) instead. This is not a free service.
+* There is no charge for this service if your data can be processed with free tools, distributed
+  and used freely without restriction, and fits within our fair usage policy.
 
 ## Applying for a data project
 
@@ -26,7 +28,7 @@ In the [EIDF portal](https://portal.eidf.ac.uk/):
     * A start date (when you hope to start publishing your data).
     * A proposed end date (at the moment you will not be able to go beyond 31-Jul-2032).
 
-For the EIDF Services you require chose the "*EIDF Data Publishing*" choice. If you also require *EIDF Compute Services* you will require to put in a separate application.
+For the EIDF Services you require chose the "*EIDF Data Publishing*" choice. If you also require *EIDF Compute Services* you will have to put in a separate application.
 
 Be sure to describe the dataset(s) that you wish to ingest. Submit your application. Your application will be reviewed and you will be notified if your project has been approved or rejected - someone may be in touch to clarify points in your application.
 
