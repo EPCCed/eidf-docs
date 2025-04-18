@@ -4,7 +4,8 @@
 
 When/if your project is approved and you are close to publishing your data, a CKAN organisation will be created in the [EIDF Data Catalogue](https://catalogue.eidf.ac.uk/) for you.
 
-You can login to the EIDF Data Catalogue using your SAFE credentials - there is a "Log in" link on the top right. Find your organisation and then you can customise it by clicking on the "Manage" button on the top-right, e.g. you can provide a more friendly name than the EIDF project number, you can provide a description for your organisation, provide a logo or image representing your organisation and associate metadata pairs to aid discovery. Customising your organisation will make it more attractive to those that may want to use your data and will also aid in discovery.
+You can login to the EIDF Data Catalogue using your SAFE credentials - there is a "Log in" link on the top right. Find your organisation and then you can customise it by clicking on the "Manage" button on the top-right, e.g. you can provide a more friendly name than the EIDF project number, you can provide a description for your organisation, provide a logo or image representing your organisation and associate metadata pairs to aid discovery.
+Customising your organisation will make it more attractive to those that may want to use your data and will also aid in discovery.
 
 ## Creating your dataset(s)
 
@@ -31,7 +32,7 @@ An example of the form is given below.
 
 ![Interface to create a dataset](../../images/CreateDataset.png)
 
-Once you are happy with the content press on the `Create` button. This will be used to create the requested number of S3 buckets to which you will be able copy your data. 
+Once you are happy with the content press on the `Create` button. This will be used to create the requested number of S3 buckets to which you will be able copy your data.
 
 You should now be able to click on a link to your dataset to see a copy of the information that you provided. You can supplement your Dataset entry in the EIDF catalogue with additional metadata once you have logged into the data catalogue using your SAFE credentials.
 
@@ -44,7 +45,6 @@ Versioning preserves existing files that are overwritten or deleted and
 allows to retrieve and restore every version of every file in an S3 bucket.
 
 When you have added your data in S3, you can add the data S3 link to the catalogue dataset as a resource.
-
 
 ## Metadata format
 
