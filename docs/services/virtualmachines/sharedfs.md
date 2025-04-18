@@ -25,16 +25,17 @@ When CephFS is mounted on a VM, it can become the home directory for users loggi
 !!! warning
     Mounting CephFS on a VM where users have superuser (`sudo`) permissions will allow them to see and manipulate files belonging to other users.
 
+!!! note
+    If there is existing data in the VM-local `/home`, it will be moved to `/local-home` before mounting.
+    You will have to manually move this data to the mounted home if you wish it accessible by users without superuser permissions.<BR>
+    If your VM runs Ubuntu and you don't mount at `/home` the target location **MUST** be empty. A non-empty mountpoint will cause the mount to fail.
+
 To mount CephFS on a VM:
 
 1. Click the **Mount** button in the project management page under CephFS (see screenshot above).
 1. Follow the instructions, selecting either to mount as `/home` or specifying an alternative mount location
 1. Select the VMs on which to mount CephFS at the specified location.
 1. Click **Submit**
-
-!!! note
-    If there is existing data in the VM-local `/home`, it will be moved to `/local-home` before mounting.
-    You will have to manually move this data to the mounted home if you wish it accessible by users without superuser permissions.
 
    ![CephFSMountPage](../../images/virtualmachines/CephFSMountPage.png){: class="border-img"}
    *Example mounting page for project eidf124*
