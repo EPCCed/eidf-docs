@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/services/virtualmachines/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/">
       
       
-        <link rel="prev" href="../../access/virtualmachines-vdi/">
+        <link rel="prev" href="../../../access/virtualmachines-vdi/">
       
       
-        <link rel="next" href="quickstart/">
+        <link rel="next" href="../../../access/ssh/">
       
       
-      <link rel="icon" href="../../images/favicon.ico">
+      <link rel="icon" href="../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>Overview - EIDF User Documentation</title>
+        <title>Shared Filesystem - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/eidf.css">
+      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
     
-      <link rel="stylesheet" href="../../stylesheets/access.css">
+      <link rel="stylesheet" href="../../../stylesheets/access.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#shared-filesystem-cephfs" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Shared Filesystem
             
           </span>
         </div>
@@ -201,9 +201,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     EIDF User Documentation
@@ -230,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../status/" class="md-nav__link">
+      <a href="../../../status/" class="md-nav__link">
         
   
   
@@ -252,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -312,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+      <a href="../../../overview/" class="md-nav__link">
         
   
   
@@ -335,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/acknowledgements/" class="md-nav__link">
+      <a href="../../../overview/acknowledgements/" class="md-nav__link">
         
   
   
@@ -358,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/contacts/" class="md-nav__link">
+      <a href="../../../overview/contacts/" class="md-nav__link">
         
   
   
@@ -426,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/" class="md-nav__link">
+      <a href="../../../access/" class="md-nav__link">
         
   
   
@@ -449,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/project/" class="md-nav__link">
+      <a href="../../../access/project/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   
@@ -579,32 +579,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -615,44 +593,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#service-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service Access
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-service-policy-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Service Policy Information
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -665,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart/" class="md-nav__link">
+      <a href="../quickstart/" class="md-nav__link">
         
   
   
@@ -688,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docs/" class="md-nav__link">
+      <a href="../docs/" class="md-nav__link">
         
   
   
@@ -711,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   
@@ -731,10 +671,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="sharedfs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -745,6 +707,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-cephfs-on-a-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting CephFS on a VM
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -757,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../../access/ssh/" class="md-nav__link">
         
   
   
@@ -780,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="flavours/" class="md-nav__link">
+      <a href="../flavours/" class="md-nav__link">
         
   
   
@@ -803,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="policies/" class="md-nav__link">
+      <a href="../policies/" class="md-nav__link">
         
   
   
@@ -872,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/access/" class="md-nav__link">
+      <a href="../../ultra2/access/" class="md-nav__link">
         
   
   
@@ -895,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/connect/" class="md-nav__link">
+      <a href="../../ultra2/connect/" class="md-nav__link">
         
   
   
@@ -918,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ultra2/run/" class="md-nav__link">
+      <a href="../../ultra2/run/" class="md-nav__link">
         
   
   
@@ -987,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cerebras/access/" class="md-nav__link">
+      <a href="../../cerebras/access/" class="md-nav__link">
         
   
   
@@ -1010,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cerebras/connect/" class="md-nav__link">
+      <a href="../../cerebras/connect/" class="md-nav__link">
         
   
   
@@ -1033,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cerebras/run/" class="md-nav__link">
+      <a href="../../cerebras/run/" class="md-nav__link">
         
   
   
@@ -1102,7 +1111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/" class="md-nav__link">
+      <a href="../../gpuservice/" class="md-nav__link">
         
   
   
@@ -1125,7 +1134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/policies/" class="md-nav__link">
+      <a href="../../gpuservice/policies/" class="md-nav__link">
         
   
   
@@ -1148,7 +1157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/kueue/" class="md-nav__link">
+      <a href="../../gpuservice/kueue/" class="md-nav__link">
         
   
   
@@ -1209,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../gpuservice/training/L1_getting_started/" class="md-nav__link">
         
   
   
@@ -1232,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
+      <a href="../../gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
         
   
   
@@ -1255,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
+      <a href="../../gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
         
   
   
@@ -1278,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/training/L4_template_workflow/" class="md-nav__link">
+      <a href="../../gpuservice/training/L4_template_workflow/" class="md-nav__link">
         
   
   
@@ -1309,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpuservice/faq/" class="md-nav__link">
+      <a href="../../gpuservice/faq/" class="md-nav__link">
         
   
   
@@ -1378,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/" class="md-nav__link">
+      <a href="../../graphcore/" class="md-nav__link">
         
   
   
@@ -1439,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../graphcore/training/L1_getting_started/" class="md-nav__link">
         
   
   
@@ -1462,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/training/L2_multiple_IPU/" class="md-nav__link">
+      <a href="../../graphcore/training/L2_multiple_IPU/" class="md-nav__link">
         
   
   
@@ -1485,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/training/L3_profiling/" class="md-nav__link">
+      <a href="../../graphcore/training/L3_profiling/" class="md-nav__link">
         
   
   
@@ -1508,7 +1517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/training/L4_other_frameworks/" class="md-nav__link">
+      <a href="../../graphcore/training/L4_other_frameworks/" class="md-nav__link">
         
   
   
@@ -1539,7 +1548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphcore/faq/" class="md-nav__link">
+      <a href="../../graphcore/faq/" class="md-nav__link">
         
   
   
@@ -1608,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jhub/" class="md-nav__link">
+      <a href="../../jhub/" class="md-nav__link">
         
   
   
@@ -1631,7 +1640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jhub/quickstart/" class="md-nav__link">
+      <a href="../../jhub/quickstart/" class="md-nav__link">
         
   
   
@@ -1745,7 +1754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../s3/" class="md-nav__link">
+      <a href="../../s3/" class="md-nav__link">
         
   
   
@@ -1768,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../s3/manage/" class="md-nav__link">
+      <a href="../../s3/manage/" class="md-nav__link">
         
   
   
@@ -1791,7 +1800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../s3/tutorial/" class="md-nav__link">
+      <a href="../../s3/tutorial/" class="md-nav__link">
         
   
   
@@ -1860,7 +1869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datapublishing/service/" class="md-nav__link">
+      <a href="../../datapublishing/service/" class="md-nav__link">
         
   
   
@@ -1883,7 +1892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datapublishing/catalogue/" class="md-nav__link">
+      <a href="../../datapublishing/catalogue/" class="md-nav__link">
         
   
   
@@ -1952,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datacatalogue/metadata/" class="md-nav__link">
+      <a href="../../datacatalogue/metadata/" class="md-nav__link">
         
   
   
@@ -2028,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/overview/" class="md-nav__link">
+      <a href="../../../safe-haven-services/overview/" class="md-nav__link">
         
   
   
@@ -2051,7 +2060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/network-access-controls/" class="md-nav__link">
+      <a href="../../../safe-haven-services/network-access-controls/" class="md-nav__link">
         
   
   
@@ -2074,7 +2083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/safe-haven-access/" class="md-nav__link">
+      <a href="../../../safe-haven-services/safe-haven-access/" class="md-nav__link">
         
   
   
@@ -2097,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/virtual-desktop-connections/" class="md-nav__link">
+      <a href="../../../safe-haven-services/virtual-desktop-connections/" class="md-nav__link">
         
   
   
@@ -2120,7 +2129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/using-the-hpc-cluster/" class="md-nav__link">
+      <a href="../../../safe-haven-services/using-the-hpc-cluster/" class="md-nav__link">
         
   
   
@@ -2181,7 +2190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
+      <a href="../../../safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
         
   
   
@@ -2204,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+      <a href="../../../safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
         
   
   
@@ -2227,7 +2236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+      <a href="../../../safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
         
   
   
@@ -2250,7 +2259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../../../safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
         
   
   
@@ -2273,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../../../safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
         
   
   
@@ -2342,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/introduction/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/introduction/" class="md-nav__link">
         
   
   
@@ -2365,7 +2374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/development-workflow/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/development-workflow/" class="md-nav__link">
         
   
   
@@ -2388,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack/" class="md-nav__link">
         
   
   
@@ -2411,7 +2420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/building-and-testing-containers/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/building-and-testing-containers/" class="md-nav__link">
         
   
   
@@ -2434,7 +2443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/using-containers-in-the-tre/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/using-containers-in-the-tre/" class="md-nav__link">
         
   
   
@@ -2457,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../safe-haven-services/tre-container-user-guide/container-examples/" class="md-nav__link">
+      <a href="../../../safe-haven-services/tre-container-user-guide/container-examples/" class="md-nav__link">
         
   
   
@@ -2495,7 +2504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../known-issues/" class="md-nav__link">
+      <a href="../../../known-issues/" class="md-nav__link">
         
   
   
@@ -2517,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   
@@ -2539,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial-videos/" class="md-nav__link">
+      <a href="../../../tutorial-videos/" class="md-nav__link">
         
   
   
@@ -2581,18 +2590,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-access" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Service Access
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-service-policy-information" class="md-nav__link">
+  <a href="#pre-requisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Service Policy Information
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-cephfs-on-a-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting CephFS on a VM
     </span>
   </a>
   
@@ -2617,20 +2635,40 @@
   
 
 
-<h1 id="overview">Overview</h1>
-<p>The EIDF Virtual Machine (VM) Service is the underlying infrastructure upon which the EIDF Data Science Cloud (DSC) is built.</p>
-<p>The service currently has a mixture of hardware node types which host VMs of various <a href="flavours/">flavours</a>:</p>
-<ul>
-<li>The mcomp nodes which host general flavour VMs are based upon AMD EPYC 7702 CPUs (128 Cores) with 1TB of DRAM</li>
-<li>The hcomp nodes which host capability flavour VMs are based upon 4x Intel Xeon Platinum 8280L CPUs (224 Threads, 112 cores with HT) with 3TB of DRAM</li>
-<li>The GPU nodes which host GPU flavour VMs are based upon 2x Intel Xeon Platinum 8260 CPUs (96 Cores) with 4x Nvidia Tesla V100S 32GB and 1.5TB of DRAM</li>
-</ul>
-<p>The shapes and sizes of the flavours are based on subdivisions of this hardware, noting that CPUs are 4x oversubscribed for mcomp nodes (general VM flavours).</p>
-<h2 id="service-access">Service Access</h2>
-<p>Users should have an EIDF account - <a href="../../access/project/">EIDF Accounts</a>.</p>
-<p>Project Leads will be able to have access to the DSC added to their project during the project application process or through a request to the EIDF helpdesk.</p>
-<h2 id="additional-service-policy-information">Additional Service Policy Information</h2>
-<p>Additional information on service policies can be found <a href="policies/">here</a>.</p>
+<h1 id="shared-filesystem-cephfs">Shared Filesystem (CephFS)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as EIDF Virtual Machines Service (VMS).</p>
+<p>Mounting is done at a project level, so the whole project CephFS tree is mounted. For users who have used our Cerebras or Cirrus services, the whole of the top-level project directory is mounted, e.g. <code>/home/eidf124</code> on Cirrus is the same as <code>/home/eidf124</code> on the VM, and users can manipulate files in that directory.</p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>To mount CephFS on a VM:</p>
+<ol>
+<li>The project must have space allocated on CephFS.</li>
+<li>A mount key must be created exist. PI's should contact the EIDF helpdesk to have this created.</li>
+</ol>
+<p>If both pre-requisites are met, PIs and PMs will be able to see the <strong>Mount</strong> button under <strong>CephFS Mounts</strong> in the project management page in the EIDF portal.</p>
+<p><img alt="CephFSMountButton" class="border-img" src="../../../images/virtualmachines/CephFSMountButton.png" />
+   <em>Mount button displayed in project management page</em></p>
+<h2 id="mounting-cephfs-on-a-vm">Mounting CephFS on a VM</h2>
+<p>When CephFS is mounted on a VM, it can become the home directory for users logging into that VM. PIs and PMs can enable this mounting for individual VMs via the management page in the Portal.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mounting CephFS on a VM where users have superuser (<code>sudo</code>) permissions will allow them to see and manipulate files belonging to other users.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there is existing data in the VM-local <code>/home</code>, it will be moved to <code>/local-home</code> before mounting.
+You will have to manually move this data to the mounted home if you wish it accessible by users without superuser permissions.<BR>
+If your VM runs Ubuntu and you don't mount at <code>/home</code> the target location <strong>MUST</strong> be empty. A non-empty mountpoint will cause the mount to fail.</p>
+</div>
+<p>To mount CephFS on a VM:</p>
+<ol>
+<li>Click the <strong>Mount</strong> button in the project management page under CephFS (see screenshot above).</li>
+<li>Follow the instructions, selecting either to mount as <code>/home</code> or specifying an alternative mount location</li>
+<li>Select the VMs on which to mount CephFS at the specified location.</li>
+<li>Click <strong>Submit</strong></li>
+</ol>
+<p><img alt="CephFSMountPage" class="border-img" src="../../../images/virtualmachines/CephFSMountPage.png" />
+   <em>Example mounting page for project eidf124</em></p>
 
 
 
@@ -2679,10 +2717,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
