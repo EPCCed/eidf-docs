@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2945,7 +2945,7 @@
 <p>If you want to use another programming language have a look at the <a href="https://docs.ceph.com/en/latest/radosgw/s3/">Ceph S3 API</a> interfaces (Ceph is the underlying platform used).</p>
 <h3 id="examples">Examples</h3>
 <p>You want to upload all the files in a subdirectory to your S3 bucket</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.dat&quot;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.dat&quot;</span>
 </code></pre></div>
 <p>Here all <code>*.dat</code>  files only in <code>mydir</code> will be uploaded to <code>s3://mybucket</code>.</p>
 <p>You can check your upload using:</p>
