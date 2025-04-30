@@ -25,7 +25,20 @@ To pull a public image, which does not require authenticating with username and 
 ces-pull "" "" ghcr.io/<namespace>/<container_name>[:<container_tag>]
 ```
 
-Once the container image has been pulled into the TRE desktop host, the image can be managed with Podman commands. However, containers must not be run directly using Podman. Instead, commands developed for use within the TRE must be used as will now be described.
+Once the container image has been pulled into the TRE desktop host, the image can be managed with Podman commands. However, containers must not be run directly using Podman. Instead, commands developed for use within the TRE must be used as described below.
+
+## Container image management
+
+Container images can be listed:
+```
+$ podman images
+REPOSITORY                                              TAG     IMAGE ID      CREATED     SIZE
+ghcr.io/github_user/container_name                      latest  a9993c28f847  5 days ago  622 MB
+tre-ghcr-proxy.nsh.loc:5005/github_user/container_name  latest  a9993c28f847  5 days ago  622 MB
+```
+Notice that two entries are shown; they are the same image as they have identical `IMAGE ID`.
+Images that are no longer required should be removed with `podman rmi -f IMAGE_ID`
+followed by `podman image prune`.
 
 ## Running the container in the TRE
 
