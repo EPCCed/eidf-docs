@@ -43,6 +43,7 @@ nav:
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Managing VMs": services/virtualmachines/docs.md
       - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+      - "Shared Filesystem": services/virtualmachines/sharedfs.md
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
