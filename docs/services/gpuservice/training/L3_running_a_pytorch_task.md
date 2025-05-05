@@ -35,11 +35,11 @@ metadata:
  name: pytorch-pvc
 spec:
  accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
  resources:
   requests:
    storage: 2Gi
- storageClassName: csi-rbd-sc
+ storageClassName: csi-cephfs-sc
 ```
 
 ### Transfer code/data to persistent volume
@@ -71,7 +71,7 @@ spec:
 1. Check whether the files were transferred successfully
 
     ``` bash
-    kubectl -n <project-namespace> exec lightweight-job-<identifier> -- ls /mnt/ceph_rbd
+    kubectl -n <project-namespace> exec lightweight-job-<identifier> -- ls /mnt/ceph
     ```
 
 1. Delete the lightweight job
@@ -86,34 +86,36 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: lightweight-job
-    labels:
-        kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
+  generateName: lightweight-job-
+  labels:
+    kueue.x-k8s.io/queue-name: <project namespace>-user-queue
 spec:
-    completions: 1
-    template:
-        metadata:
-            name: lightweight-pod
-        spec:
-            containers:
-            - name: data-loader
-              image: busybox
-              args: ["sleep", "infinity"]
-              resources:
-                    requests:
-                        cpu: 1
-                        memory: '1Gi'
-                    limits:
-                        cpu: 1
-                        memory: '1Gi'
-              volumeMounts:
-                    - mountPath: /mnt/ceph_rbd
-                      name: volume
-            restartPolicy: Never
-            volumes:
-                - name: volume
-                  persistentVolumeClaim:
-                    claimName: pytorch-pvc
+  completions: 1
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 1800
+  template:
+    metadata:
+      name: lightweight-pod
+    spec:
+      containers:
+      - name: data-loader
+        image: busybox
+        args: ["sleep", "infinity"]
+        resources:
+          requests:
+            cpu: 1
+            memory: '1Gi'
+          limits:
+            cpu: 1
+            memory: '1Gi'
+        volumeMounts:
+          - mountPath: /mnt/ceph
+            name: volume
+      restartPolicy: Never
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: pytorch-pvc
 ```
 
 ## Creating a Job with a PyTorch container
@@ -134,38 +136,40 @@ kubectl -n <project-namespace> create -f <pytorch-job-yaml>
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: pytorch-job
-    labels:
-        kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
+  generateName: pytorch-job-
+  labels:
+    kueue.x-k8s.io/queue-name: <project namespace>-user-queue
 spec:
-    completions: 1
-    template:
-        metadata:
-            name: pytorch-pod
-        spec:
-            restartPolicy: Never
-            containers:
-            - name: pytorch-con
-              image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
-              command: ["python3"]
-              args: ["/mnt/ceph_rbd/example_pytorch_code.py"]
-              volumeMounts:
-                - mountPath: /mnt/ceph_rbd
-                  name: volume
-              resources:
-                requests:
-                  cpu: 2
-                  memory: "1Gi"
-                limits:
-                  cpu: 4
-                  memory: "4Gi"
-                  nvidia.com/gpu: 1
-            nodeSelector:
-                nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
-            volumes:
-                - name: volume
-                  persistentVolumeClaim:
-                    claimName: pytorch-pvc
+  completions: 1
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 1800
+  template:
+    metadata:
+      name: pytorch-pod
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: pytorch-con
+        image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+        command: ["python3"]
+        args: ["/mnt/ceph/example_pytorch_code.py"]
+        volumeMounts:
+          - mountPath: /mnt/ceph
+            name: volume
+        resources:
+          requests:
+            cpu: 2
+            memory: "1Gi"
+          limits:
+            cpu: 4
+            memory: "4Gi"
+            nvidia.com/gpu: 1
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: pytorch-pvc
 ```
 
 ## Reviewing the results of the PyTorch model
@@ -204,38 +208,40 @@ Below is an example job yaml for running the pytorch model which will continue t
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: pytorch-job
-    labels:
-        kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
+  generateName: pytorch-job-
+  labels:
+    kueue.x-k8s.io/queue-name: <project namespace>-user-queue
 spec:
-    completions: 3
-    template:
-        metadata:
-            name: pytorch-pod
-        spec:
-            restartPolicy: Never
-            containers:
-            - name: pytorch-con
-              image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
-              command: ["python3"]
-              args: ["/mnt/ceph_rbd/example_pytorch_code.py"]
-              volumeMounts:
-                - mountPath: /mnt/ceph_rbd
-                  name: volume
-              resources:
-                requests:
-                  cpu: 2
-                  memory: "1Gi"
-                limits:
-                  cpu: 4
-                  memory: "4Gi"
-                  nvidia.com/gpu: 1
-            nodeSelector:
-                nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
-            volumes:
-                - name: volume
-                  persistentVolumeClaim:
-                    claimName: pytorch-pvc
+  ttlSecondsAfterFinished: 3600
+  completions: 3
+  backoffLimit: 4
+  template:
+    metadata:
+      name: pytorch-pod
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: pytorch-con
+        image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+        command: ["python3"]
+        args: ["/mnt/ceph/example_pytorch_code.py"]
+        volumeMounts:
+          - mountPath: /mnt/ceph
+            name: volume
+        resources:
+          requests:
+            cpu: 2
+            memory: "1Gi"
+          limits:
+            cpu: 4
+            memory: "4Gi"
+            nvidia.com/gpu: 1
+      nodeSelector:
+          nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+      volumes:
+          - name: volume
+            persistentVolumeClaim:
+              claimName: pytorch-pvc
 ```
 
 ## Clean up
