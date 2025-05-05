@@ -2,29 +2,20 @@
 
 The EIDF GPU Service (EIDF GPU Service) provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
 
-MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion.
+MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion. The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
 
-The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
+The current full specification of the EIDF GPU Service as of April 2025:
 
-The service provides access to:
-
-- Nvidia A100 40GB
-- Nvidia A100 80GB
-- Nvidia MIG A100 1G.5GB
-- Nvidia MIG A100 3G.20GB
-- Nvidia H100 80GB
-
-The current full specification of the EIDF GPU Service as of 14 February 2024:
-
-- 4912 CPU Cores (AMD EPYC and Intel Xeon)
-- 23 TiB Memory
-- Local Disk Space (Node Image Cache and Local Workspace) - 40 TiB
-- Ceph Persistent Volumes (Long Term Data) - up to 100TiB
-- 112 Nvidia A100 40 GB
-- 39 Nvidia A100 80 GB
-- 16 Nvidia A100 3G.20GB
-- 56 Nvidia A100 1G.5GB
-- 32 Nvidia H100 80 GB
+- 9254 CPU Cores (AMD EPYC and Intel Xeon)
+- 59 TiB Memory
+- Ceph Persistent Volumes CephFS - up to 100TiB
+- Ceph Persistent Volumes RBD - up to 100TiB
+- 16 Nvidia H200
+- 136 Nvidia H100 80GB
+- 80 Nvidia A100 80GB
+- 56 Nvidia A100 40GB
+- 16 Nvidia MIG A100 3G.20GB
+- 56 Nvidia MIG A100 1G.5GB
 
 !!! important "Quotas"
 
@@ -87,7 +78,7 @@ A standard project namespace has the following initial quota (subject to ongoing
 
 ## Project Queues
 
-EIDF GPU Service is introducing the Kueue system in February 2024. The use of this is detailed in the [Kueue](kueue.md).
+EIDF GPU Service has been using the Kueue system since February 2024. The use of this is detailed in the [Kueue](kueue.md).
 
 !!! important "Job Queuing"
 

@@ -93,7 +93,7 @@ If you want to use another programming language have a look at the [Ceph S3 API]
 You want to upload all the files in a subdirectory to your S3 bucket
 
 ```bash
-aws s3 cp ./mydir s3://mybucket --recursive --exclude "*" --include "*.dat" 
+aws s3 cp ./mydir s3://mybucket --recursive --exclude "*" --include "*.dat"
 ```
 
 Here all `*.dat`  files only in `mydir` will be uploaded to `s3://mybucket`.
@@ -112,7 +112,7 @@ s3://eidfXXX-my-dataset/mydatafile.csv
 
 and by making the following transformation:
 
-```
+```text
 https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
 ```
 

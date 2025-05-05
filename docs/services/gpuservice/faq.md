@@ -20,7 +20,9 @@ Some version of the above error is common when submitting jobs/pods to the GPU c
 
 ### I can't mount my PVC in multiple containers or pods at the same time
 
-The current PVC provisioner is based on Ceph RBD. The block devices provided by Ceph to the Kubernetes PV/PVC providers cannot be mounted in multiple pods at the same time. They can only be accessed by one pod at a time, once a pod has unmounted the PVC and terminated, the PVC can be reused by another pod. The service development team is working on new PVC provider systems to alleviate this limitation.
+If a PVC can only be mounted by one pod at a time, the PVC provisioner used was Ceph RBD. The block devices provided by Ceph to the Kubernetes PV/PVC providers cannot be mounted in multiple pods at the same time. They can only be accessed by one pod at a time, once a pod has unmounted the PVC and terminated, the PVC can be reused by another pod.
+
+The service now provides a CephFS provisioner which allows for ReadWriteMany PVCs. To mount a PVC to multiple pods, please create a PVC using the `csi-cephfs-sc` storage class.
 
 ### How many GPUs can I use in a pod?
 
