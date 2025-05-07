@@ -6,7 +6,17 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation) which should be followed.<br> In this early phase, one small tweak is required:
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation) which should be followed.
+In this early phase, a few small tweaks are required:
+
+Use Cerebras [ModelZoo 2.4.0i](https://github.com/Cerebras/modelzoo/commit/b9cb437070fe057ea52882fb8654e56753a8917c) for compatibility to the Cerebras machine's installed software-sdk version
+For completness both the clone and checkout are included below:
+
+```bash
+git clone https://github.com/Cerebras/modelzoo.git ./modelzoo
+cd modelzoo
+git checkout b9cb437070fe057ea52882fb8654e56753a8917c 
+```
 
 Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py` and comment out lines 986 to 1034 (should start `errors = []` and end with a single `)` on a line.)
 
