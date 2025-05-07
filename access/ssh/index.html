@@ -2930,21 +2930,6 @@
 
 
 <h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines using the EIDF-Gateway Jump Host</h1>
-<style>
-.borderimg1 {
-  border: 5px solid transparent;
-  padding: 5px;
-  /*margin: 15px;*/
-  border-color: rgba(192, 192, 192, 0.1);
-  border-radius: 10px;
-}
-
-.bold {
-  font-weight: bold;
-  color: blue;
-}
-</style>
-
 <p>The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
 You will require three things to use the gateway:</p>
 <ol>
@@ -2986,7 +2971,7 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 <li>Select the relevant project</li>
 <li>Select your username</li>
 <li>Select the plus button under  'Credentials'</li>
-<li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.</li>
+<li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <code>&lt;ssh-key&gt;.pub</code> file you just created and copy its contents into the text box.</li>
 <li>Click 'Upload Credential' - it should look something like this:</li>
 </ol>
 <p><img alt="eidf-portal-ssh" class="border-img" src="../../images/access/eidf-portal-ssh.png" /></p>
@@ -2995,7 +2980,7 @@ If not, you'll need to generate an SSH-Key, to do this:</p>
 If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a>
 However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.</p>
 <h2 id="enabling-mfa-via-the-portal">Enabling MFA via the Portal</h2>
-<p>A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br></p>
+<p>A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway.</p>
 <p>To enable this for your EIDF account:</p>
 <ol>
 <li>Login to the <a href="https://portal.eidf.ac.uk">portal.</a></li>
@@ -3009,13 +2994,14 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.<br>
+<p>TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.
 An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.</p>
 </div>
 <h3 id="using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux">Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux</h3>
 <ol>
 <li>
-<p>From your local terminal, import the SSH Key you generated above: <br><code>ssh-add /path/to/ssh-key</code></p>
+<p>From your local terminal, import the SSH Key you generated above:
+    <code>ssh-add /path/to/ssh-key</code></p>
 </li>
 <li>
 <p>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</p>
@@ -3033,8 +3019,9 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>If the <code>ssh-add</code> command fails saying the SSH Agent is not running, run the below command: <br></p>
-<p><code>eval `ssh-agent`</code></p>
+<p>If the <code>ssh-add</code> command fails saying the SSH Agent is not running, run the below command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="sb">`</span>ssh-agent<span class="sb">`</span>
+</code></pre></div>
 <p>Then re-run the ssh-add command above.</p>
 </div>
 <p>The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
@@ -3057,9 +3044,9 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 <li>
 <p>Import the SSH Key you generated above:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
-
-<span class="k">For</span> <span class="n">Example</span><span class="p">:</span>
-<span class="n">ssh-add</span> <span class="p">.\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
+</code></pre></div>
+<p>For Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">.\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
 </code></pre></div>
 </li>
 <li>
@@ -3071,10 +3058,10 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 </li>
 <li>
 <p>Login by jumping through the gateway.</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
-
-For<span class="w"> </span>Example:
-ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>alice@10.24.1.1
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="no">[EIDF username]</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="no">[EIDF username]</span><span class="p">@</span><span class="no">[vm_ip]</span>
+</code></pre></div>
+<p>For Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="n">alice</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="n">alice</span><span class="nv">@10</span><span class="p">.</span><span class="n">24</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span>
 </code></pre></div>
 </li>
 </ol>
@@ -3142,7 +3129,7 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span><span class="w"> </span>-i<span class="w"> </span>/path/to/ssh/key
 </code></pre></div>
 <p>For Example:</p>
-<div class="highlight"><pre><span></span><code>ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span>alice@10.24.1.1<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519
 </code></pre></div>
 </li>
 <li>
@@ -3160,18 +3147,18 @@ ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.
   IdentityFile ~/.ssh/id_ed25519
   ProxyCommand ssh eidf-gateway -W %h:%p
 </code></pre></div>
+<p>If your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
+<code>HostKeyAlgorithms +ssh-rsa</code></p>
 </li>
 <li>
-<p>Now, by running <code>ssh demo</code> your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
-<br><br>Note for this setup, if your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
-<code>HostKeyAlgorithms +ssh-rsa</code></p>
+<p>Now, by running <code>ssh demo</code> your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.</p>
 </li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
-This method allows for a much less complicated ssh command to reach your VMs. <br>
-You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
+This method allows for a much less complicated ssh command to reach your VMs.
+You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like.
 The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
 </div>
 <h2 id="sudo-password-setting-and-password-resets">sudo, Password Setting and Password Resets</h2>
