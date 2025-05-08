@@ -9,7 +9,7 @@ The view can be altered as follows:
 
 For each job:
 
-* 'Open in File Manager' opens the [File browser](../overview.md#file-browser) pointing at the job context directory on the Open OnDemand host for the job. For example:
+* 'Open in File Manager' opens the [File browser](../user-interface.md#file-browser) pointing at the job context directory on the Open OnDemand host for the job. For example:
 ```
 $HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
 $HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/

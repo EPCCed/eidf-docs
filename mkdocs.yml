@@ -109,8 +109,10 @@ nav:
        - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
      - "TRE Open OnDemand service":
-       - "Overview": safe-haven-services/open-ondemand/overview.md
-       - "Access Open OnDemand": safe-haven-services/open-ondemand/access.md
+       - "About": safe-haven-services/open-ondemand/about.md
+       - "Access": safe-haven-services/open-ondemand/access.md
+       - "User interface": safe-haven-services/open-ondemand/user-interface.md
+       - "Running jobs": safe-haven-services/open-ondemand/jobs.md
        - "Apps":
           - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
           - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
