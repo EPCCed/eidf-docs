@@ -19,7 +19,7 @@ To access Open OnDemand:
 * The Open OnDemand log-in page will appear.
 * Enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
 * Click 'Log in'.
-* Open OnDemand's front page will appear.
+* Open OnDemand's [user interface](./user-interface.md) will open.
 
 **Troubleshooting: Bad Request**
 
