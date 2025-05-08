@@ -73,12 +73,19 @@ The 'data root directory' link on the app's form opens the [File browser](#file-
 
 When an app's job is submitted, a job card is created and shown with information about the app's job.
 
+The job status, shown on the top-right of the job card, can be one of: 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
+
+!!! Note
+
+    The job status does not display whether a job that is 'Completed' did so with success or failure. That can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+
 The session ID link opens the [File browser](#file-browser) pointing at the job context directory on the Open OnDemand host for the job.
 ```
 $HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
 ```
 
 When the job finishes, a 'rerun job (circular arrows icon)' allows you to rerun (resubmit) the job. A new session ID will be created.
+
 
 ---
 
