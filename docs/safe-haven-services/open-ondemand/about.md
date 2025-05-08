@@ -1,4 +1,4 @@
-# Using Open OnDemand
+# About the TRE Open OnDemand service
 
 ---
 
