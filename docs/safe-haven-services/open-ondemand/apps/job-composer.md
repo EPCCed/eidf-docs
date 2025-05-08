@@ -19,7 +19,7 @@ Both 'Edit Files' and 'Open Dir' open the [File browser](../user-interface.md#fi
 
 'Job Options' opens up a form where you can edit the job name, target back-end, Slurm job submission script, account and other options.
 
-'Open Terminal' opens an SSH session into the job context directory for the job on the back-end.
+'Open Terminal' opens a new browser tab with an SSH session into the job context directory for the job on the back-end.
 
 'Open Editor' opens an editor to allow editing of the Slurm job submission script.
 

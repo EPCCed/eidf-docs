@@ -103,7 +103,8 @@ This applies to
 
 Create passphraseless SSH keys for a back-end:
 
-* Select 'Clusters' => 'localhost Shell Access' to log into the Open OnDemand host.
+* Select 'Clusters' => 'localhost Shell Access'.
+* A new browser tab with an SSH session into the Open OnDemand host will appear.
 * Create SSH key. When prompted for a passphrase, press enter.
 ```console
 $ ssh-keygen -t rsa

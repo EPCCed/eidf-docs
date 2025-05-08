@@ -14,5 +14,5 @@ For each job:
 $HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
 $HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
 ```
-* 'Open in File Terminal' opens an SSH session into the job context directory for the job on the back-end.
+* 'Open in File Terminal' opens a new browser tab with an SSH session into the job context directory for the job on the back-end.
 * 'Delete' cancels the selected job if it is running.

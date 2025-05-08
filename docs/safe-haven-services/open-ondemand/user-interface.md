@@ -11,7 +11,7 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 * 'Active Jobs' opens the [Active Jobs](apps/active-jobs.md) app.
 * 'Job Composer' opens the [Job Composer](apps/job-composer.md) app.
 * Links to apps shown on the ['Jobs' panel](#jobs-panel).
-* 'All Apps' opens 'All apps' page which has a list of links to all the above apps above, any other available apps, plus one 'Shell Access' link for each back-end to which you have access (selecting an option optns up an SSH session to the back-end).
+* 'All Apps' opens 'All apps' page which has a list of links to all the above apps above, any other available apps, plus one 'Shell Access' link for each back-end to which you have access (selecting an option opens a new browser tab with an SSH session to the back-end).
 
 'Files' menu:
 
@@ -25,7 +25,7 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 
 'Clusters' menu:
 
-* One option for each back-end to which you have access. Selecting an option optns up an SSH session to the back-end.
+* One option for each back-end to which you have access. Selecting an option open a new browser tab with an SSH session to the back-end.
 
 'My Interactive Sessions (overlaid squares icon)' opens [My Interactive Sessions](#my-interactive-sessions).
 
@@ -53,7 +53,7 @@ The 'Jobs' panel has a selection of pinned apps. All available apps are shown on
 
 A page with a file browser that allows you to explore your home directory on the Open OnDemand host, including the job context directories.
 
-'Open in Terminal' opens up an SSH session to a back-end. The default back-end is the first one in alphabetical order. Click '>' to see one option for each back-end to which you have access.
+'Open in Terminal' opens a new browser tab with an SSH session to a back-end. The default back-end is the first one in alphabetical order. Click '>' to see one option for each back-end to which you have access.
 
 **Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'**
 
