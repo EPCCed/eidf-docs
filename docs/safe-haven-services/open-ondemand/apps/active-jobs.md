@@ -2,6 +2,14 @@
 
 'Active Jobs' is an Open OnDemand app that shows a list of active jobs submitted via Open OnDemand.
 
+The 'Status' in the active job table can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
+
+!!! Note
+
+    The table does not display whether a job that is 'Completed' did so with success or failure. However, the job details does show that information.
+
+To see more details about a job, click the '>' button.
+
 The view can be altered as follows:
 
 * 'All Jobs' toggles between 'All Jobs' and 'Your Jobs'.
