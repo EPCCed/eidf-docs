@@ -6,7 +6,6 @@
 
 This page documents how to use Open OnDemand. It is not intended to be a complete introduction to every Open OnDemand feature, but rather the essentials that will hopefully help you to get started with Open OnDemand.
 
-* [Access Open OnDemand](#access-open-ondemand)
 * [About Open OnDemand and back-ends](#about-open-ondemand-and-back-ends)
     - [Your 'ondemand' directory](#your-ondemand-directory)
     - [Job dump files](#job-dump-files)
@@ -19,43 +18,6 @@ This page documents how to use Open OnDemand. It is not intended to be a complet
     - [Job cards](#job-cards)
 * [My Interactive Sessions](#my-interactive-sessions)
 * [Create passphraseless SSH access to a back-end](#create-passphraseless-ssh-access-to-a-back-end)
-
----
-
-## Access Open OnDemand
-
-Within a browser within a desktop virtual machine within your safe haven, enter the Open OnDemand URL for your safe haven:
-
-* National Safe Haven, https://nsh-ondemand.nsh.loc
-* ODAP, https://odp-ondemand.nsh.loc
-* Smart Data Foundry, https://smartdf-ondemand.nsh.loc
-* DataLoch, https://dap-ondemand.nsh.loc
-
-Note: for development, EPCCers can also use a browser running within the epcc-staff host.
-
-Ignore any warning about certificates.
-
-The Open OnDemand log in page will appear.
-
-Enter your project username and password. These are the same username and password that you would log into a desktop virtual machine within your safe haven.
-
-Click 'Log in'.
-
-Open OnDemand's user interface will appear.
-
-**Troubleshooting: Bad Request**
-
-If you see page, 'Bad Request' 'Your browser sent a request that this server could not understand.', then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous Open OnDemand session.
-
-**Troubleshooting: Cannot access Open OnDemand**
-
-For problems with accessing Open OnDemand, first try the following in a terminal window:
-```console
-$ curl --insecure OPEN-ONDEMAND-URL
-```
-The result should be '302 Found' and a redirect to the URL with a `/pun/sys/dasboard` path. If not, then ask MikeJ initially. We can follow up with Systems Team if necessary.
-
-For any problems logging into Open OnDemand, first double-check your username and password, then ask MikeJ.
 
 ---
 
