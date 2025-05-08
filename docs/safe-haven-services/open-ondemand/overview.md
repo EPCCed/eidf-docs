@@ -14,14 +14,9 @@ This page documents how to use Open OnDemand. It is not intended to be a complet
     - [Menu bar](#menu-bar)
     - ['Jobs' panel](#jobs-panel)
 * [File browser](#file-browser)
-* [Active Jobs](#active-jobs)
-* [Job Composer](#job-composer)
 * [Apps](#apps)
     - [App jobs](#app-jobs)
     - [Job cards](#job-cards)
-    - [Run Container](#run-container)
-    - [Run Jupyter Notebook](#run-jupyter-notebook)
-    - [Run RStudio](#run-rstudio)
 * [My Interactive Sessions](#my-interactive-sessions)
 * [Create passphraseless SSH access to a back-end](#create-passphraseless-ssh-access-to-a-back-end)
 
@@ -70,7 +65,7 @@ Open OnDemand allows you to log in to, submit jobs to and run containers on the 
 
 You will be able to see information about each back-end and to log in, submit jobs to and to request that you run containers on the back-ends.
 
-Users of certain safe havens will also have access to the Superdome Flex HPC cluster, a shared trusted research environment service. If your safe haven provides access to Superdome Flex then you will be able to log into it, and submit jobs to it via the [Job Composer](#job-composer) and [Run Container](#run-container).
+Users of certain safe havens will also have access to the Superdome Flex HPC cluster, a shared trusted research environment service. If your safe haven provides access to Superdome Flex then you will be able to log into it, and submit jobs to it via the [Job Composer](apps/job-composer.md) and [Run Container](apps/container-app.md) apps.
 
 **Note (smartdf-ondemand users):** Though Superdome Flex is visible as a cluster from smartdf-ondemand.nsh.loc, and can be logged into, jobs can only be submitted to it once you have set up passphraseless SSH access from smartdf-ondemand.nsh.loc to Superdome Flex to enable your 'ondemand' directory, which includes any job files, to be transferred via 'rsync' (see next section and [Create passphraseless SSH access to a back-end](#create-passphraseless-ssh-access-to-a-back-end)).
 
@@ -114,8 +109,8 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 
 'Apps' menu:
 
-* 'Active Jobs' opens [Active Jobs](#active-jobs).
-* 'Job Composer' opens [Job Composer](#job-composer).
+* 'Active Jobs' opens the [Active Jobs](apps/active-jobs.md) app.
+* 'Job Composer' opens the [Job Composer](apps/job-composer.md) app.
 * Links to apps shown on the ['Jobs' panel](#jobs-panel).
 * 'All Apps' opens 'All apps' page which has a list of links to all the above apps above, any other available apps, plus one 'Shell Access' link for each back-end to which you have access (selecting an option optns up an SSH session to the back-end).
 
@@ -125,8 +120,8 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 
 'Jobs' menu:
 
-* 'Active Jobs' opens [Active Jobs](#active-jobs).
-* 'Job Composer' opens [Job Composer](#job-composer).
+* 'Active Jobs' opens the [Active Jobs](apps/active-jobs.md) app.
+* 'Job Composer' opens the [Job Composer](apps/job-composer.md) app.
 * Links to apps shown on the ['Jobs' panel](#jobs-panel).
 
 'Clusters' menu:
@@ -145,11 +140,11 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 
 The 'Jobs' panel has a selection of pinned apps. All available apps are shown on the 'All Apps' page (available via 'Apps' => 'All Apps').
 
-* [Active Jobs](#active-jobs)
-* [Job Composer](#job-composer)
-* [Run Container](#run-container)
-* [Run Jupyter Notebook](#run-jupyter-notebook)
-* [Run RStudio](#run-rstudio)
+* [Active Jobs](apps/active-jobs.md)
+* [Job Composer](apps/job-composer.md)
+* [Run Container](apps/container-app.md)
+* [Run Jupyter Notebook](apps/jupyter-app.md)
+* [Run RStudio](apps/rstudio-app.md)
 
 ---
 
@@ -158,64 +153,6 @@ The 'Jobs' panel has a selection of pinned apps. All available apps are shown on
 A page with a file browser that allows you to explore your home directory on the Open OnDemand host, including the job context directories.
 
 'Open in Terminal' opens up an SSH session to a back-end. The default back-end is the first one in alphabetical order. Click '>' to see one option for each back-end to which you have access.
-
-**Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'**
-
-If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the directory you are currently viewing in the File browser is not in your home directory in the back-end. This can happen if your Open OnDemand home directory is not mounted onto the back-end (for example if using Superdome Flex) and your 'ondemand' directory is synchronised with the back-end when a job is submitted.
-
----
-
-## Active Jobs
-
-This page shows a list of active jobs submitted via Open OnDemand.
-
-The view can be altered as follows:
-
-* 'All Jobs' toggles between 'All Jobs' and 'Your Jobs'.
-* 'All Clusters' toggles between 'All Clusters' (back-ends) or a specific back-end to which you have access.
-
-For each job:
-
-* 'Open in File Manager' opens the [File browser](#file-browser) pointing at the job context directory on the Open OnDemand host for the job. For example:
-```
-$HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
-```
-* 'Open in File Terminal' opens an SSH session into the job context directory for the job on the back-end.
-* 'Delete' cancels the selected job if it is running.
-
----
-
-## Job Composer
-
-Job Composer allows you to submit Slurm batch jobs to any back-end to which you have access.
-
-A list of existing jobs, if any, are shown.
-
-To create a new job, select 'New Job':
-
-* 'From Default Template' creates a 'hello world' job.
-* 'From Template' creates a 'hello world' job. As there is only one template, this offers the same option as 'From Default Template'.
-* 'From Specified Path' creates a new job from the contents of an existing directory. This directory should have the job submission script and any other files within it.
-* 'From Selected job' creates a new job from the contents of the job context directory for the currently selected job on the page, if any.
-
-When a job is created, the job files are written to the job context directory, `$HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/`.
-
-Clicking on a job shows details about the job on the same page.
-
-Both 'Edit Files' and 'Open Dir' open the [File browser](#file-browser) pointing at the job context directory on the Open OnDemand host for the currently selected job.
-
-'Job Options' opens up a form where you can edit the job name, target back-end, Slurm job submission script, account and other options.
-
-'Open Terminal' opens an SSH session into the job context directory for the job on the back-end.
-
-'Open Editor' opens an editor to allow editing of the Slurm job submission script.
-
-Clicking on a file name under 'Folder Contents' opens an editor to allow editing of the selected file.
-
-'Templates' opens a page that allows you to browse and copy existing job templates. You can then customise these templates and use these templates when creating jobs in future. Job templates are copied into your 'ondemand' directory, under `$HOME/ondemand/data/sys/myjobs/templates`. A template-specific subdirectory name is derived from the job name in the source template, converted to lower snake_case (e.g., job name '(default) Simple Sequential Slurm Job' gives directory name 'default_simple_sequential_slurm_job').
-
-For back-ends which do not mount your home directory onto both the Open OnDemand host and back-end, any files created on as a result of running a job are **not** synchronised with the Open OnDemand host. If you want to browse any files created when running a job you need to SSH into that back-end (either via Open OnDemand which is supported from a number of places within the user interface or by other means).
 
 **Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'**
 
@@ -247,33 +184,15 @@ $HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_I
 
 When the job finishes, a 'rerun job (circular arrows icon)' allows you to rerun (resubmit) the job. A new session ID will be created.
 
-### Run Container
-
-This app allows you to run a batch job container on a back-end within your safe haven.
-
-For more information, see [OOD container app](https://git.ecdf.ed.ac.uk/tre-container-execution-service/container_app).
-
-### Run Jupyter Notebook
-
-This app allows you to run a Jupyter Notebook container on a back-end within your safe haven.
-
-For more information, see [OOD Jupyter app](https://git.ecdf.ed.ac.uk/tre-container-execution-service/ood_jupyter_app).
-
-### Run RStudio
-
-This app allows you to run an RStudio container on a back-end within your safe haven.
-
-For more information, see [OOD RStudio app](https://git.ecdf.ed.ac.uk/tre-container-execution-service/ood-rstudio-app).
-
 ---
 
 ## My Interactive Sessions
 
 This page lists [job cards](#job-cards) for jobs created by the following apps:
 
-* [Run Container](#run-container)
-* [Run Jupyter Notebook](#run-jupyter-notebook)
-* [Run RStudio](#run-rstudio)
+* [Run Container](apps/container-app.md)
+* [Run Jupyter Notebook](apps/jupyter-app.md)
+* [Run RStudio](apps/rstudio-app.md)
 
 ---
 
