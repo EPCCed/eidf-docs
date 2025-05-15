@@ -29,8 +29,9 @@ Run as per the normal Cerebras documentation. It is advisable to run codes insid
 With a suitably configured venv as above, and the modelzoo checked out:
 
 - Copy `/home/y26/shared/params_tr.yaml` to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/configs/`
+- Adjust the copied `params_tr.yaml` config to reduce the `max_steps` field to `50`
 - Navigate to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/`
-- Run using `python run.py CSX --num_csx=1 --mode train --params configs/params_tr.yaml --mount_dirs /home/<your_project>/<your_project>/<your username> /home/y26/shared/ --python_paths <path to your modelzoo checkout>/src/ --max_steps 50 --model_dir llama4b_u3`
+- Run using `cszoo fit --num_csx=1 configs/params_tr.yaml --mount_dirs /home/eidf114/eidf114/bc-eidfstaff/  /home/y26/shared/ --python_paths ~/modelzoo/src/ --model_dir llama4b_u3`
 
 ### Example: Training Vision Transformer on ImageNet Mini
 
