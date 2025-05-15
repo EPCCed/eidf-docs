@@ -1,6 +1,6 @@
 # Job Composer
 
-Job Composer is an Open OnDemand app that allows you to submit Slurm batch jobs to any back-end to which you have access.
+Job Composer is an Open OnDemand app that allows you to submit a Slurm batch job to a back-end.
 
 A list of existing jobs, if any, are shown.
 
