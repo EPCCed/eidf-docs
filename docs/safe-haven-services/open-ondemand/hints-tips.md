@@ -11,4 +11,4 @@ rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Devic
 
 This can be due to a lingering Open OnDemand process from your session.
 
-Within Open OnDemand, select '?' menu => 'Restart Web Server' to restart your personal session with Open OnDemand and end the lingering process.
+Within Open OnDemand, select '?' menu => 'Restart Web Server' to restart your session with Open OnDemand and end the lingering process.
