@@ -6,7 +6,7 @@ Here, we describe the key parts of the Open OnDemand's portal.
 
 ## 'Jobs' panel
 
-The 'Jobs' panel has buttons for a subset of the apps available to you to run jobs on back-ends. The pinned apps include:
+The 'Jobs' panel has buttons for a subset of the apps available, many of which allow you to run jobs on back-ends. The pinned apps include:
 
 | App | Description |
 | --- | ----------- |
@@ -133,7 +133,7 @@ Click a back-end-specific 'Shell Access' link to open a new browser tab with an 
 
 ## 'My Interactive Sessions' page
 
-The 'My Interactive Sessions' page has information, 'job cards', for each app-specific job run. For more information, see [job cards](jobs.md#job-cards).
+The 'My Interactive Sessions' page has information, 'job cards', for app-specific jobs run. For more information, see [job cards](jobs.md#job-cards).
 
 !!! Note
 
