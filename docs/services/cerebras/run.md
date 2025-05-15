@@ -34,18 +34,25 @@ With a suitably configured venv as above, and the modelzoo checked out:
 
 ### Example: Training Vision Transformer on ImageNet Mini
 
-This tutorial will train a toy Visual transformer on a collection of captioned data, the produced model being able to input and image and output a caption
+This tutorial will train a toy Visual transformer on a collection of captioned data, the produced model being able to input and image and output a caption.
 
-We make use of the [imagenet-mini](https://www.kaggle.com/datasets/ifigotin/imagenetmini-1000/) dataset,  a subset of 1000 samples from the [ImageNet](https://www.image-net.org/) dataset
+We make use of the [imagenet-mini](https://www.kaggle.com/datasets/ifigotin/imagenetmini-1000/) dataset,  a subset of 1000 samples from the [ImageNet](https://www.image-net.org/) dataset.
 
 1. Set up your virtual environment as described above
-2. Copy the training configuration:
+2. Create a space in which the model will be stored
 
     ```bash
-    cp /home/y26/shared/params_vit_imagenet.yaml ~/
+    mkdir -p ~/imagenet_tutorial
+    cd ~/imagenet_tutorial
     ```
 
-3. Run the training job:
+3. Copy the training configuration:
+
+    ```bash
+    cp /home/y26/shared/params_vit_imagenet.yaml ~/imagenet_tutorial
+    ```
+
+4. Run the training job:
 
     ```bash
 
