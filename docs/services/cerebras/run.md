@@ -36,7 +36,7 @@ With a suitably configured venv as above, and the modelzoo checked out:
 
 This tutorial will train a toy Visual transformer on a collection of captioned data, the produced model being able to input and image and output a caption
 
-We make use of the [imagenet-mini](https://www.kaggle.com/datasets/ifigotin/imagenetmini-1000/) dataset,  a subset of 1000 samples from the [ImageNet](https://www.image-net.org/) dataset 
+We make use of the [imagenet-mini](https://www.kaggle.com/datasets/ifigotin/imagenetmini-1000/) dataset,  a subset of 1000 samples from the [ImageNet](https://www.image-net.org/) dataset
 
 1. Set up your virtual environment as described above
 2. Copy the training configuration:
