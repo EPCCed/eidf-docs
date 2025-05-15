@@ -1,6 +1,6 @@
 # Active Jobs
 
-'Active Jobs' is an Open OnDemand app that shows a list of active jobs submitted via Open OnDemand.
+'Active Jobs' is an Open OnDemand app that shows a list of active jobs submitted via Open OnDemand to back-ends.
 
 The 'Status' in the active job table can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
 
