@@ -31,7 +31,7 @@ The Open OnDemand user interface consists of a menu bar and an apps panel ('Jobs
 
 '?' menu:
 
-* 'Restart Web Server' does not restart the whole Open OnDemand web server! Rather it restarts your personal session with Open OnDemand. You won't need to log in again.
+* 'Restart Web Server'. Despite its name, this option does not restart the whole Open OnDemand web server! Rather it restarts your personal session with Open OnDemand. If the Open OnDemand service or apps have been updated during your session, then this option allows you to access the changes. You won't need to log in again.
 
 'Log Out' logs you out of Open OnDemand.
 
