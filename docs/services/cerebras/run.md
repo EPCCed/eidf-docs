@@ -24,10 +24,32 @@ Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/applian
 
 Run as per the normal Cerebras documentation. It is advisable to run codes inside a `tmux` session so you can return to them without having to leave SSH sessions active whilst jobs run.
 
-## Example training Llama4b on a single CS3
+### Example training Llama4b on a single CS3
 
 With a suitably configured venv as above, and the modelzoo checked out:
 
 - Copy `/home/y26/shared/params_tr.yaml` to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/configs/`
 - Navigate to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/`
 - Run using `python run.py CSX --num_csx=1 --mode train --params configs/params_tr.yaml --mount_dirs /home/<your_project>/<your_project>/<your username> /home/y26/shared/ --python_paths <path to your modelzoo checkout>/src/ --max_steps 50 --model_dir llama4b_u3`
+
+### Example: Training Vision Transformer on ImageNet Mini
+
+This tutorial will train a toy Visual transformer on a collection of captioned data, the produced model being able to input and image and output a caption
+
+We make use of the [imagenet-mini](https://www.kaggle.com/datasets/ifigotin/imagenetmini-1000/) dataset,  a subset of 1000 samples from the [ImageNet](https://www.image-net.org/) dataset 
+
+1. Set up your virtual environment as described above
+2. Copy the training configuration:
+
+    ```bash
+    cp /home/y26/shared/params_vit_imagenet.yaml ~/
+    ```
+
+3. Run the training job:
+
+    ```bash
+
+    cszoo fit params_vit_imagenet.yaml --num_csx=1 \
+      --mount_dirs /home/y26/shared/ /home/<your_project>/<your_project>/<your_username>/ \
+      --python_paths /home/<your_project>/<your_project>/<your_username>/modelzoo/src
+    ```
