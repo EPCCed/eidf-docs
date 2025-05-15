@@ -1,5 +1,6 @@
 theme:
   name: material
+  custom_dir: overrides
   favicon: images/favicon.ico
   logo: images/EIDF_rgb.png
   palette:
