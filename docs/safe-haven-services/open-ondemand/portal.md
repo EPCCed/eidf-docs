@@ -112,9 +112,7 @@ bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
 then this means that the directory you are currently viewing in the File Browser on the Open OnDemand host is not available on the back-end.
 
-This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end.
-
-At present, this can arise for the back-ends:
+This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. At present, this can arise for the back-ends:
 
 * Superdome Flex.
 * DataLoch back-ends.
