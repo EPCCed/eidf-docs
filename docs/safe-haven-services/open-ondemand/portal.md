@@ -14,7 +14,7 @@ The 'Jobs' panel has buttons for a subset of the apps available to you to run sp
 | [Job Composer](apps/job-composer.md) | Open OnDemand app that allows you to submit Slurm batch jobs to any back-end to which you have access |
 | [Run Jupyter Notebook](apps/jupyter-app.md) | Container execution service app that allows you to run a Jupyter Notebook container on a back-end |
 | [Run RStudio](apps/rstudio-app.md) | Container execution service app that allows you to run an RStudio container on a back-end |
-| [Run Container](apps/container-app.md) | Container execution service app that allows you to run an RStudio container on a back-end |
+| [Run Container](apps/container-app.md) | Container execution service app that allows you to run a container on a back-end |
 
 Click on a app button to be taken to a page allowing you run that app's job.
 
@@ -38,7 +38,7 @@ To see all apps available to you, select the 'All Apps' menu item to take you to
 
 The 'Files' menu provides access to your files that are on the Open OnDemand host.
 
-Select 'Home Directory' to open the [File browser](#file-browser-page) to access your home directory on the Open OnDemand host.
+Select 'Home Directory' to open the [File Browser](#file-browser-page) to access your home directory on the Open OnDemand host.
 
 ### 'Jobs' menu
 
@@ -52,9 +52,13 @@ Select an app-specific menu items to access that app.
 
 ### 'Clusters' menu
 
-The 'Clusters' menu allows you to start an SSH session with a back-end (or cluster) to which you have access.
+The 'Clusters' menu allows you to start an SSH session with a back-end (cluster) to which you have access.
 
-Select a back-end-specific menu item to open a new browser tab with an SSH session for that back-end.
+!!! Note
+
+    If you see and 'Open OnDemand host Shell Access' menu item, then you can log into the Open OnDemand host. This is supported for users who have access to back-ends where user home directories are not mounted across both the Open OnDemand host and those back-ends.
+
+Select a back-end-specific menu item to open a new browser tab with an SSH session for a specific back-end, or the Open OnDemand host (if applicable).
 
 When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
 
@@ -72,7 +76,7 @@ Click 'Restart Web Server' to restart your Open OnDemand session.
 
 !!! Tip
 
-    If the Open OnDemand service or apps have been updated during your session then then 'Restart Web Server' allows you to pick up such changes without having to log out and log back into Open OnDemand,
+    If the Open OnDemand service or apps have been updated during your session, then 'Restart Web Server' allows you to pick up such changes without having to log out and log back into Open OnDemand,
 
 ### 'Avatar' button
 
@@ -84,9 +88,9 @@ Click the 'Log Out' button (right arrow icon) to log out of Open OnDemand.
 
 ---
 
-## 'File browser' page
+## 'File Browser' page
 
-The 'File browser' page provides access to your home directory on the Open OnDemand host.
+The 'File Browser' page provides access to your home directory on the Open OnDemand host.
 
 You can browse your home directory and there are buttons to create new files and directories, upload or download files, copy or move files or directories and delete files or directories and to change directory.
 
@@ -98,15 +102,15 @@ To select a specific back-end, click the 'Open in Terminal' button's '>' side-bu
 
 When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
 
-Your SSH session will open in the currently selected directory in the 'File browser'.
+Your SSH session will open and change your current directory to match that you selected in the 'File Browser'.
 
 **Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'**
 
-TODO
-TODO double check on 031
-TODO
-
-If, when your SSH session begins, you see the error `cd ... No such file or directory`, then this means that the directory you are currently viewing in the File browser on the Open OnDemand host is not available on the back-end.
+If, when your SSH session begins, you see an error like:
+```
+bash: line 1: cd: /home/user/ondemand: No such file or directory
+```
+then this means that the directory you are currently viewing in the File Browser on the Open OnDemand host is not available on the back-end.
 
 This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run an app on that back-end.
 
@@ -119,24 +123,18 @@ At present, this can arise for the back-ends:
 
 ## 'All Apps' page
 
-TODO
+The 'All apps' page lists every app to which you have access plus every back-end (cluster) to which you have access, and the Open OnDemand host (if applicable).
 
-The 'All apps' page which has a list of links to all the above apps above, any other available apps, plus one 'Shell Access' link for each back-end to which you have access (selecting an option opens a new browser tab with an SSH session to the back-end).
+Click an app-specific link to access that app.
 
-Select an app-specific menu items to access that app. The app-specific menu items correspond to the apps available via buttons on the front page.
+Click a back-end-specific 'Shell Access' link to open a new browser tab with an SSH session for a specific back-end, or the Open OnDemand host (if applicable).
 
 ----
 
 ## 'My Interactive Sessions' page
 
-TODO
+The 'My Interactive Sessions' page has information, 'job cards', for each run of an app. For more information on what 'job cards' show, see [job cards](jobs.md#job-cards).
 
-The 'My Interactive Sessions' menu (overlaid squares icon) opens the [My Interactive Sessions](#my-interactive-sessions-page) page with information each app run.
+!!! Note
 
-Select an app-specific menu items to access that app. The app-specific menu items correspond to the apps available via buttons on the front page.
-
-This page lists [job cards](jobs.md#job-cards) for jobs created by the following apps:
-
-TODO
-
-All but Active Jobs and Job Composter
+    Only information for what Open OnDemand terms 'interactive apps' is shown. All container execution service apps are classed as 'interactive apps'. Information on runs of Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
