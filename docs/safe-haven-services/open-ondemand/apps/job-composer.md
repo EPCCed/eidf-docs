@@ -32,3 +32,47 @@ For back-ends which do not mount your home directory onto both the Open OnDemand
 **Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'**
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the directory you are currently viewing in the File browser is not in your home directory in the back-end. This can happen if your Open OnDemand home directory is not mounted onto the back-end (for example if using Superdome Flex) and your 'ondemand' directory is synchronised with the back-end when a job is submitted.
+
+### Example
+
+* Click Job Composer app.
+* Select 'New Job' => 'From Template'.
+* Select template '(default) Simple Sequential Slurm Job'.
+* Click 'Create New Job'.
+* Default settings:
+  - Job name: (default) Simple Sequential Job
+  - Job Name: eidf031-target2 Slurm cluster (localhost)
+  - Script location: `/home/USER/ondemand/data/sys/myjobs/projects/default/JOB-N
+UMBER`
+* Under 'main_job.sh', click 'Open Editor'.
+* A new browser tab appears.
+* Click 'Submit Job' (play button icon).
+* Job status goes to Queued to Completed.
+* When job completes, click 'Open Dir' (bottom right of page) to open `/home/USE
+R/ondemand/data/sys/myjobs/projects/default/JOB-NUMBER`:
+* Click 'main_job.sh' to see job script.
+```bash
+#!/bin/bash
+#
+#SBATCH --job-name=test
+#SBATCH --output=res.txt
+#
+#SBATCH --ntasks=1
+#SBATCH --time=10:00
+
+cd $SLURM_SUBMIT_DIR
+echo "Hello World" > output_file
+
+echo "Created output file with 'Hello World'"
+```
+* Click browser back button.
+* Click 'res.txt', to see output from job script.
+```
+Created output file with 'Hello World'
+```
+* Click browser back button.
+* Click 'output_file', to see output file.
+```
+Hello World
+```
+* Click browser back button.
