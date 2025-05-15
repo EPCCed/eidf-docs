@@ -6,17 +6,17 @@ Here, we describe the key parts of the Open OnDemand's portal.
 
 ## 'Jobs' panel
 
-The 'Jobs' panel has buttons for a subset of the apps available to you to run specific jobs on back-ends. The pinned apps include:
+The 'Jobs' panel has buttons for a subset of the apps available to you to run jobs on back-ends. The pinned apps include:
 
 | App | Description |
 | --- | ----------- |
-| [Active Jobs](apps/active-jobs.md) | Open OnDemand app that shows a list of active jobs submitted via Open OnDemand |
-| [Job Composer](apps/job-composer.md) | Open OnDemand app that allows you to submit Slurm batch jobs to any back-end to which you have access |
+| [Active Jobs](apps/active-jobs.md) | Open OnDemand app that shows a list of jobs submitted via Open OnDemand to back-ends |
+| [Job Composer](apps/job-composer.md) | Open OnDemand app that allows you to submit a Slurm batch job to a back-end |
 | [Run Jupyter Notebook](apps/jupyter-app.md) | Container execution service app that allows you to run a Jupyter Notebook container on a back-end |
 | [Run RStudio](apps/rstudio-app.md) | Container execution service app that allows you to run an RStudio container on a back-end |
 | [Run Container](apps/container-app.md) | Container execution service app that allows you to run a container on a back-end |
 
-Click on a app button to be taken to a page allowing you run that app's job.
+Click on a app button to access that app.
 
 !!! Tip
 
@@ -48,7 +48,7 @@ Select an app-specific menu items to access that app.
 
 !!! Note
 
-    If you are wondering why the 'Apps' menu and 'Jobs' menu overlap, this is because each app has a 'category' label. This is used by Open OnDemand both to group app buttons on the front page and to create menus with apps belonging to a specific category. All our Open OnDemand apps are within a 'Jobs' category, hence the overlap.
+    If you are wondering why the 'Apps' menu and 'Jobs' menu overlap, this is because each app has a 'category' label. This is used by Open OnDemand both to group app buttons on the front page and to create menus with apps belonging to a specific category. All our apps are within a 'Jobs' category, hence the overlap.
 
 ### 'Clusters' menu
 
@@ -64,7 +64,7 @@ When prompted, enter your project username and password. These are the same user
 
 ### 'My Interactive Sessions' menu
 
-The 'My Interactive Sessions' menu (overlaid squares icon) opens the [My Interactive Sessions](#my-interactive-sessions-page) page with information on each app run.
+The 'My Interactive Sessions' menu (overlaid squares icon) opens the [My Interactive Sessions](#my-interactive-sessions-page) page with information on app-specific jobs that have been submitted, are running, or have completed.
 
 ### 'Help (?)' menu
 
@@ -112,7 +112,7 @@ bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
 then this means that the directory you are currently viewing in the File Browser on the Open OnDemand host is not available on the back-end.
 
-This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run an app on that back-end.
+This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end.
 
 At present, this can arise for the back-ends:
 
@@ -133,8 +133,8 @@ Click a back-end-specific 'Shell Access' link to open a new browser tab with an 
 
 ## 'My Interactive Sessions' page
 
-The 'My Interactive Sessions' page has information, 'job cards', for each run of an app. For more information on what 'job cards' show, see [job cards](jobs.md#job-cards).
+The 'My Interactive Sessions' page has information, 'job cards', for each app-specific job run. For more information, see [job cards](jobs.md#job-cards).
 
 !!! Note
 
-    Only information for what Open OnDemand terms 'interactive apps' is shown. All container execution service apps are classed as 'interactive apps'. Information on runs of Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
+    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All container execution service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
