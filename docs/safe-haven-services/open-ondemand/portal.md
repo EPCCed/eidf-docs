@@ -1,6 +1,6 @@
-# Open OnDemand user interface
+# Open OnDemand portal
 
-Here, we describe the key parts of the Open OnDemand user interface.
+Here, we describe the key parts of the Open OnDemand's portal.
 
 ---
 
