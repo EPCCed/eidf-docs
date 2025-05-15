@@ -2,13 +2,13 @@
 
 ## Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'
 
-If you delete your `ondemand` directory on the Open OnDemand host, you may see a filure to delete a system file:
+If you delete your `ondemand` directory on the Open OnDemand host, you may see an error like the following:
 
 ```console
 $ rm -rf ondemand/
 rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Device or resource busy
 ```
 
-This can be due to a lingering Open OnDemand process from your session.
+The file is a system file held by a lingering process created by Open OnDemand as part of your session.
 
-Within Open OnDemand, select '?' menu => 'Restart Web Server' to restart your Open OnDemand session, ending the lingering process.
+Within Open OnDemand, select '?' menu => 'Restart Web Server' to restart your Open OnDemand session, which ends the process and allows you to remove the file, and directory.
