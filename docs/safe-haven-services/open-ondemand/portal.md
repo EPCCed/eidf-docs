@@ -60,7 +60,7 @@ The 'Clusters' menu allows you to start an SSH session with a back-end (cluster)
 
 Select a back-end-specific menu item to open a new browser tab with an SSH session for a specific back-end, or the Open OnDemand host (if applicable).
 
-When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
+When prompted, enter your project username and password.
 
 ### 'My Interactive Sessions' menu
 
@@ -100,7 +100,7 @@ Click the 'Open in Terminal' button to open a new browser tab with an SSH sessio
 
 To select a specific back-end, click the 'Open in Terminal' button's '>' side-button to open a drop down-menu to allow you to choose a back-end.
 
-When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
+When prompted, enter your project username and password.
 
 Your SSH session will open and change your current directory to match that you selected in the 'File Browser'.
 
@@ -112,10 +112,7 @@ bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
 then this means that the directory you are currently viewing in the File Browser on the Open OnDemand host is not available on the back-end.
 
-This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. At present, this can arise for the back-ends:
-
-* Superdome Flex.
-* DataLoch back-ends.
+This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. See [Distinct home directories](jobs.md#distinct-home-directories) for back-ends this relates to.
 
 ---
 

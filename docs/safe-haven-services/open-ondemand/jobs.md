@@ -1,120 +1,84 @@
 # Running jobs via Open OnDemand
 
-Open OnDemand allows you to log in to, submit jobs, to and run containers on the back-ends (or clusters) available within your safe haven.
+## Introduction
 
-You are able to see information about each back-end and to log in, submit jobs to and to request that you run containers on the back-ends.
+Open OnDemand allows you to run tasks on compute resources available within your safe haven.
 
-Users of certain safe havens will also have access to the Superdome Flex HPC cluster, a shared trusted research environment service. If your safe haven provides access to Superdome Flex then you will be able to log into it, and submit jobs to it via the [Job Composer](apps/job-composer.md) and [Run Container](apps/container-app.md) apps.
+Certain users of certain safe havens may also have acess to TRE-level compute resources, notably the Superdome Flex high-performance computing cluster.
 
-**Note (smartdf-ondemand users):** Though Superdome Flex is visible as a cluster from smartdf-ondemand.nsh.loc, and can be logged into, jobs can only be submitted to it once you have set up passphraseless SSH access from smartdf-ondemand.nsh.loc to Superdome Flex to enable your 'ondemand' directory, which includes any job files, to be transferred via 'rsync' (see next section and [Create passphraseless SSH access to a back-end](#create-passphraseless-ssh-access-to-a-back-end)).
-
-**Note (dap-ondemand users):** Though DataLoch backends are visible as clusters from dap-ondemand.nsh.loc and can be logged into, jobs can only be submitted to it once you have set up passphraseless SSH access from dap-ondemand.nsh.loc to a back-end to enable your 'ondemand' directory, which includes any job files, to be transferred via 'rsync' (see next section and [Create passphraseless SSH access to a back-end](#create-passphraseless-ssh-access-to-a-back-end)).
+This page introduces how Open OnDemand runs tasks and information you need to know when running tasks.
 
 ---
 
-## Your 'ondemand' directory
+## Back-ends, clusters, jobs and apps
 
-Within your home directory on the Open OnDemand host, you will have an `ondemand` directory. This is where Open OnDemand puts information about your session and, in app-specific subdirectories, the files it needs to run a specific job on a back-end. 
+A compute resource upon which tasks are run is called a **back-end** or **cluster**
 
-Each app-specific directory subdirectories holds one subdirectory per job. These are called job context directories. Where they are located is app-dependant. For example:
+Each run of a task on a back-end is called a **job**.
 
-```
-$HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
-```
+An **app** is an Open OnDemand component that performs a specific function. May apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed
 
-Your home directory on the Open OnDemand host is synchronised with your home directory on the back-ends, and vice-versa, so Open OnDemand job files are available when jobs are run on the back-end. This is either done via mounting your home directory on both the Open OnDemand host and the back-end or synchronising your 'ondemand' directory with the back-end, via 'rsync', when a job is run (which is used depends on the back-end you are using).
+A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our container execution service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
 ---
 
-## Job dump files
+## Your `ondemand` directory
 
-When you submit a job to a back-end, a dump file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
+Within your home directory on the Open OnDemand host, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
 
-Dump files have name `sbatch-<YYYYMMDD-HHMMSS>-<OPEN_ONDEMAND_CLUSTER_NAME>`. For example, `$HOME/ondemand-slurm-logs/sbatch-20240807-082901-nsh_tenant_gpu_desktop01`. Dump files are populated as follows:
+Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
+
+The [Job Composer](apps/job-composer.md) app's job files are created in a directory:
 ```
-# Open OnDemand back-end: <OPEN_ONDEMAND_CLUSTER_NAME>`
-# Time: <YYYY-MM-DD HH:MM:SS>
-# Process: <PROCESS-ID>
-# Open OnDemand server environment
-...dump of environment variables in current Open OnDemand environment...
-# sbatch arguments from Open OnDemand
-...arguments passed from Open OnDemand to 'sbatch'...
+ondemand/data/sys/myjobs/projects/default/<job_id>/
+```
+where `<job_id>` is a numerical identifier. For example,
+```
+ondemand/data/sys/myjobs/projects/default/1/
+```
+
+Interactive app job files are created in a directory:
+```
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<session_id>/
+```
+where `<app_name>` is the app name and `<session_id>` a unique session identifer. For example,
+```
+ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
 ---
 
-## 'Jobs' panel
+## Distinct home directories
 
-The 'Jobs' panel has a selection of pinned apps. All available apps are shown on the 'All Apps' page (available via 'Apps' => 'All Apps').
+For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so any job files are immediately available on the back-end, and any files created on the back-end available on the Open OnDemand host and viewable via the [File Browser](portal.md#file-browser-page).
 
-* [Active Jobs](apps/active-jobs.md)
-* [Job Composer](apps/job-composer.md)
-* [Run Container](apps/container-app.md)
-* [Run Jupyter Notebook](apps/jupyter-app.md)
-* [Run RStudio](apps/rstudio-app.md)
+However, you may have access to back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end i.e., you have distinct, separate, home directories on each host.
 
----
+Currently, the back-ends where home directories are not mounted across both Open OnDemand hosts and the back-ends are as follows:
 
-## Apps
+* Superdome Flex, shs-sdf01.nsh.loc.
+* DataLoch hosts, dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
 
-Open OnDemand offers a number of apps which submit jobs to carry out various tasks.
+When using such back-ends, your `ondemand` directory, and so your job files, are automatically copied, to the back-end. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-copy-of-ondemand-directory-to-a-back-end).
 
-### App jobs
+If your job creates files on the back-end, you will have to log into the back-end to view your files.
 
-When a job for an app is created, its job files to run the app are written to the job context directory
-```
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
-```
+### Enable copy of `ondemand` directory to a back-end
 
-The 'data root directory' link on the app's form opens the [File browser](#file-browser) pointing at the app directory within which the job context directory will be written.
-
-### Job cards
-
-When an app's job is submitted, a job card is created and shown with information about the app's job.
-
-The job status, shown on the top-right of the job card, can be one of: 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
+To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand host and the back-end.
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. That can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+    Setting up SSH keys does **not** need to be done for back-ends where your home directory is mounted both on the Open OnDemand host and the back-ends.
 
-The session ID link opens the [File browser](#file-browser) pointing at the job context directory on the Open OnDemand host for the job.
-```
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
-```
+Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
 
-When the job finishes, a 'rerun job (circular arrows icon)' allows you to rerun (resubmit) the job. A new session ID will be created.
-
-
----
-
-## My Interactive Sessions
-
-This page lists [job cards](#job-cards) for jobs created by the following apps:
-
-* [Run Container](apps/container-app.md)
-* [Run Jupyter Notebook](apps/jupyter-app.md)
-* [Run RStudio](apps/rstudio-app.md)
-
----
-
-## Create passphraseless SSH access to a back-end
-
-For certain Open OnDemand features, you need to set up passphraseless SSH access to back-ends to enable your 'ondemand' directory, which includes any job files, to be transferred via 'rsync'.
-
-This applies to
-
-* smartdf-ondemand and Superdome Flex back-end shs-sdf01.nsh.loc.
-* dap-ondemand and DataLoch back-ends dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
-
-Create passphraseless SSH keys for a back-end:
-
-* Select 'Clusters' => 'localhost Shell Access'.
-* A new browser tab with an SSH session into the Open OnDemand host will appear.
-* Create SSH key. When prompted for a passphrase, press enter.
+* Select 'Clusters' => 'Open OnDemand host Shell Access'.
+* A new browser tab with an SSH session to the back-end on which the job is running will appear.
+* When prompted, enter your project username and password.
+* Create a passphrase-less SSH key:
 ```console
-$ ssh-keygen -t rsa
+$ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
 ```
 * Copy public key to back-end:
 ```console
@@ -122,19 +86,89 @@ $ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-(user@BACK-END-HOSTNAME.nsh.loc) Password: ...enter your tenant username and password...
-
+(user@BACK-END-HOSTNAME.nsh.loc) Password: 
+```
+* When prompted, enter your project username and password. The key will then be added to the back-end:
+```
 Number of key(s) added: 1
 
 Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
 
 and check to make sure that only the key(s) you wanted were added.
 ```
-* Check passphraseless access to back-end. You should not be prompted for a passphrase.
+* Check passphrase-less access to back-end:
 ```console
-$ ssh BACK-END-HOSTNAME.nsh.loc
-$ ls -l .ssh
-total 1
--rw-------. 1 user user 594 Nov 12 09:06 authorized_keys
-$ logout
+$ ssh BACK-END-HOSTNAME.nsh.loc hostname
+BACK-END-HOSTNAME.nsh.loc hostname
 ```
+* You should not be prompted for a passphrase or password.
+
+---
+
+## Job log files
+
+When a job is submitted to a back-end, a log is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
+
+Log files have name `sbatch-<YYYYMMDD-HHMMSS>-<OPEN_ONDEMAND_CLUSTER_NAME>`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
+
+An example of the contents of a log file is as follows:
+```
+# Open OnDemand back-end: <OPEN_ONDEMAND_CLUSTER_NAME>`
+# Time: <YYYY-MM-DD HH:MM:SS>
+# Process: <PROCESS-ID>
+# Open OnDemand server environment
+...values environment variables in current Open OnDemand environment...
+# sbatch arguments from Open OnDemand
+...arguments passed from Open OnDemand to 'sbatch' command which runs job...
+```
+
+---
+
+## What happens when a job is submitted
+
+TODO
+
+Expand/rewrite
+
+* Creates 'ondemand' subdirectory as above.
+* Creates log file as above.
+* 'Pushes' job files, for back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end.
+* Job is 'Queued' pending resources.
+* Job is' Starting'
+* Job is 'Running'
+* Job is 'Completed'
+
+---
+
+## Interactive app job cards
+
+When an interactive app's job is submitted, a job card is created and shown with information about the app's job.
+
+!!! Note
+
+    Job cards are not created for jobs submitted via the [Job Composer](apps/job-composer.md) app. See that app's page for how apps are submitted and managed.
+
+The job status, shown on the top-right of the job card, can be one of: 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
+
+!!! Note
+
+    The job status does not display whether a job that is 'Completed' did so with success or failure. That can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+
+Click the 'Session ID' link to open the [File Browser](portal.md#file-browser-page) pointing at the job context directory for the job on the Open OnDemand host.
+
+!!! Note
+
+    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
+
+Click the 'Host' link to open a new browser tab with an SSH session to the back-end on which the job is running.
+
+When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
+
+When the job finishes, click the 'Rerun job (circular arrows icon)' to rerun (resubmit) the job. A new session ID will be created.
+
+Click 'Cancel' to cancel a running job.
+
+Click 'Relaunch job' (circling arrows icon) to relaunches the job, a new session ID will be created.
+
+Click 'Delete' to delete the job card.
+
