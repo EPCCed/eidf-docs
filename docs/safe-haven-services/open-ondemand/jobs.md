@@ -23,7 +23,7 @@ $HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
 $HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
 ```
 
-Your home directory on the Open OnDemand host is synchronised with your home directory on the back-ends, and vice-versa, so Open OnDemand job files are available when jobs are run on the back-end. This is either done via mounting your home directory on both the Open OnDemand host and the back-end or synchronising your 'ondemand' folder with the back-end, via 'rsync', when a job is run (which is used depends on the back-end you are using).
+Your home directory on the Open OnDemand host is synchronised with your home directory on the back-ends, and vice-versa, so Open OnDemand job files are available when jobs are run on the back-end. This is either done via mounting your home directory on both the Open OnDemand host and the back-end or synchronising your 'ondemand' directory with the back-end, via 'rsync', when a job is run (which is used depends on the back-end you are using).
 
 ---
 
