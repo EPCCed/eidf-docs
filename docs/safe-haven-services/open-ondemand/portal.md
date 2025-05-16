@@ -10,7 +10,7 @@ The following apps are available on OpenOnDemand.
 
 | App | Type | Description |
 | --- | ---- | ----------- |
-| [Active Jobs](apps/active-jobs.md) | System Installed App | Open OnDemand app that shows a list of jobs submitted via Open OnDemand to back-ends |
+| [Active Jobs](apps/active-jobs.md) | System Installed App | Open OnDemand app that allows you to browse and manage jobs created via both apps and the 'Job Composer' app |
 | [Job Composer](apps/job-composer.md) | System Installed App | Open OnDemand app that allows you to submit a Slurm batch job to a back-end |
 | [Run Jupyter Notebook](apps/jupyter-app.md) | Tenant Service | Container Execution Service app that allows you to run a Jupyter Notebook container on a back-end |
 | [Run RStudio](apps/rstudio-app.md) | Tenant Service | Container Execution Service app that allows you to run an RStudio container on a back-end |
