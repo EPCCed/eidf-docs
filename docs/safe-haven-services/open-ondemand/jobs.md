@@ -20,6 +20,34 @@ An **app** is an Open OnDemand component that performs a specific function. May 
 
 A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our Container Execution Service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
+### Back-end (cluster) names
+
+Within the Open OnDemand portal, back-ends are typically referred to via human-readable names, for example:
+
+* DataLoch 2021 009 GPU server
+* eDRIS National Safe Haven GPU desktop 01
+* ODAP GPU desktop 01
+* Smart Data Foundry GPU desktop 01
+* Superdome Flex
+
+A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.
+
+On job cards on the 'My Interactive Sessions' you will see the host IP addresses upon which the jobs are running.
+
+In some interactive apps, however, you will see back-ends referred to via short-names. Typically, these short-names are derived from the back-ends' host names. However, a convention is adopted whereby short-names for safe haven-specific back-ends include the text 'tenant'. So, for example, the short-names corresponding to the above back-ends are:
+
+* dap_tenant_2021_009
+* nsh_tenant_gpu_desktop01
+* odp_tenant_gpu_desktop01
+* smartdf_tenant_gpu_desktop01
+* shs_sdf01
+
+As the SuperdomeFlex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
+
+!!! Note
+
+    The use of 'tenant' in short-names is adopted as a means to exploit Open OnDemand's use of filters to constrain certain apps to only be applicable to certain back-ends.
+
 ---
 
 ## Your `ondemand` directory
