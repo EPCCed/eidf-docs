@@ -50,7 +50,7 @@ ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c
 
 ## Distinct home directories
 
-For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so any job files are immediately available on the back-end, and any files created on the back-end available on the Open OnDemand host and viewable via the [File Browser](portal.md#file-browser-page).
+For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa.
 
 However, you may have access to back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end i.e., you have distinct, separate, home directories on each host.
 
