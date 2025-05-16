@@ -90,19 +90,29 @@ The job status, shown on the top-right of the job card, can be one of: 'Queued',
 
     The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
+#### Open File Manager to job context directory
+
 Click the 'Session ID' link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand host.
 
 !!! Note
 
     When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
+#### Open SSH session to host on which job is running
+
 For 'Running' jobs, click the 'Host' link to open an SSH session with the host on which the job is running.
 
-Click 'Cancel' to cancel a running job.
+#### Cancel a job
 
-Click 'Relaunch job' (circling arrows icon) to relaunches the job, a new session ID will be created.
+Click 'Cancel' on a job card to cancel a running job.
 
-Click 'Delete' to delete the job card.
+#### Relaunch a job
+
+Click 'Relaunch job' (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, will be created.
+
+#### Delete a job card
+
+Click 'Delete' on a job card to delete the job card.
 
 ### Active Jobs app
 
@@ -145,9 +155,17 @@ This can arise if you select a back-end where your home directory is not mounted
 
 ### My Interactive Sessions page job cards and job context directory
 
-Click'My Interactive Sessions' (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
+Click 'My Interactive Sessions' (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
 
 On a job's job card, click the 'Session ID' link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand host.
+
+### 'Active Jobs' app and job context directory
+
+Open the [Active Jobs](apps/active-jobs.md) app.
+
+Click the '>' button, by the job of interest, to open the job details.
+
+Click 'Open in File Manager' to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
 
 ---
 
@@ -188,6 +206,14 @@ Select the 'Files' menu, 'Home Directory' option to open the File Manager, then 
 Click 'My Interactive Sessions' (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
 
 On a 'Running' job's job card, click the 'Host' link to open an SSH session with the host on which the job is running.
+
+### 'Active Jobs' app and hosts on which jobs are running or ran
+
+Open the [Active Jobs](apps/active-jobs.md) app.
+
+Click the '>' button, by the job of interest, to open the job details.
+
+Click 'Open in Terminal', to open an SSH session with the host on which the job is running. Your SSH session change your current directory to match the job context directory.
 
 ---
 
