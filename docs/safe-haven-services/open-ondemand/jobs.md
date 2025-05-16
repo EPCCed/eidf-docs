@@ -164,8 +164,6 @@ Click the 'Host' link to open a new browser tab with an SSH session to the back-
 
 When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
 
-When the job finishes, click the 'Rerun job (circular arrows icon)' to rerun (resubmit) the job. A new session ID will be created.
-
 Click 'Cancel' to cancel a running job.
 
 Click 'Relaunch job' (circling arrows icon) to relaunches the job, a new session ID will be created.
