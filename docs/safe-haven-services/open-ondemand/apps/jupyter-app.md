@@ -1,6 +1,6 @@
 # Run Jupyter Notebook
 
-'Run Jupyter Notebook' is a container execution service app that allows you to run a Jupyter Notebook container on a back-end.
+'Run Jupyter Notebook' is a Container Execution Service app that allows you to run a Jupyter Notebook container on a back-end.
 
 TODO
 

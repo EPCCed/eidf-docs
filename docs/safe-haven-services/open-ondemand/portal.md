@@ -12,9 +12,9 @@ The following apps are available on OpenOnDemand.
 | --- | ----------- |
 | [Active Jobs](apps/active-jobs.md) | Open OnDemand app that shows a list of jobs submitted via Open OnDemand to back-ends |
 | [Job Composer](apps/job-composer.md) | Open OnDemand app that allows you to submit a Slurm batch job to a back-end |
-| [Run Jupyter Notebook](apps/jupyter-app.md) | Container execution service app that allows you to run a Jupyter Notebook container on a back-end |
-| [Run RStudio](apps/rstudio-app.md) | Container execution service app that allows you to run an RStudio container on a back-end |
-| [Run Container](apps/container-app.md) | Container execution service app that allows you to run a container on a back-end |
+| [Run Jupyter Notebook](apps/jupyter-app.md) | Container Execution Service app that allows you to run a Jupyter Notebook container on a back-end |
+| [Run RStudio](apps/rstudio-app.md) | Container Execution Service app that allows you to run an RStudio container on a back-end |
+| [Run Container](apps/container-app.md) | Container Execution Service app that allows you to run a container on a back-end |
 
 Open OnDemand supports a number of ways by which you can see the apps available to you and select an app to run.
 
@@ -72,7 +72,7 @@ This page shows app-specific jobs that have been submitted, are running, or have
 
 !!! Note
 
-    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All container execution service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
+    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
 
 #### Job card
 

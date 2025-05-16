@@ -18,7 +18,7 @@ Each run of a task on a back-end is called a **job**.
 
 An **app** is an Open OnDemand component that performs a specific function. May apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our container execution service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
+A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our Container Execution Service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
 ---
 

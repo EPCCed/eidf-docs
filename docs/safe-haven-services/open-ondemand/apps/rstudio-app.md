@@ -1,6 +1,6 @@
 # Run RStudio
 
-'Run RStudio' is a container execution service app that allows you to run an RStudio container on a back-end.
+'Run RStudio' is a Container Execution Service app that allows you to run an RStudio container on a back-end.
 
 TODO
 
