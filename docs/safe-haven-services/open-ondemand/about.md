@@ -1,11 +1,5 @@
 # About the TRE Open OnDemand service
 
-TODO
+Open OnDemand is a web portal that runs within a safe haven. Open OnDemand allows users to log into compute resources available within a safe haven, and to submit tasks to these compute resources.
 
-Add blurb about that Open OnDemand service and what it does.
-Relate to container execution service.
-Add links to all sub-pages.
-
-Open OnDemand allows you to log in to, submit jobs, to and run containers on the back-ends (or clusters) available within your safe haven.
-
-You are able to see information about each back-end and to log in, submit jobs to and to request that you run containers on the back-ends.
+Open OnDemand provides a number of apps that allow for user containers to be executed via the TRE Container Execution Service as well as providing apps supporting the execution of standard containers with useful services such as Jupyter Notebook and RStudio.
