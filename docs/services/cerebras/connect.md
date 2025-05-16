@@ -6,13 +6,7 @@ The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion
 
 To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for `eidf-gateway`.
 
-### SSH Key
-
-You must upload the public part of your SSH key pair to the SAFE by following the [instructions from the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
-
-### Time-based one-time password (TOTP)
-
-You must set up your TOTP token by following the [instructions from the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account)
+To configure your SSH keys and MFA (TOTP) token, see [our general SSH documentation.](https://docs.eidf.ac.uk/access/ssh/)
 
 ### SSH Login example
 
