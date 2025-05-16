@@ -6,19 +6,19 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation) which should be followed.
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.5.0/getting-started/setup-and-installation) which should be followed.
 In this early phase, a few small tweaks are required:
 
-Use Cerebras [ModelZoo 2.4.0i](https://github.com/Cerebras/modelzoo/commit/b9cb437070fe057ea52882fb8654e56753a8917c) for compatibility to the Cerebras machine's installed software-sdk version
+Use Cerebras [ModelZoo 2.5.0](https://github.com/Cerebras/modelzoo/) for compatibility to the Cerebras machine's installed software-sdk version
 For completness both the clone and checkout are included below:
 
 ```bash
 git clone https://github.com/Cerebras/modelzoo.git ./modelzoo
 cd modelzoo
-git checkout b9cb437070fe057ea52882fb8654e56753a8917c 
+git checkout Release_2.5.0
 ```
 
-Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py` and comment out lines 986 to 1034 (should start `errors = []` and end with a single `)` on a line.)
+Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py` and comment out lines 996 to 1069 (should start `mount_errors = []` and end with `mount_dirs.update`.)
 
 ## Running codes
 
@@ -28,10 +28,11 @@ Run as per the normal Cerebras documentation. It is advisable to run codes insid
 
 With a suitably configured venv as above, and the modelzoo checked out:
 
-- Copy `/home/y26/shared/params_tr.yaml` to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/configs/`
-- Adjust the copied `params_tr.yaml` config to reduce the `max_steps` field to `50`
+- Navigate to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/configs/` and copy the file `params_llama3p1_8b_msl_128k.yaml` to `params_example.yaml`
+- Adjust the copied `params_example.yaml` config to reduce the `max_steps` field to `50`
+- Adjust the copied `params_example.yaml` config to change the `data_dir` field to `/home/y26/shared/rpj_1t_100k_llama3p1_msl8k_train`
 - Navigate to `<your modelzoo checkout>/src/cerebras/modelzoo/models/nlp/llama/`
-- Run using `cszoo fit --num_csx=1 configs/params_tr.yaml --mount_dirs /home/eidf114/eidf114/bc-eidfstaff/  /home/y26/shared/ --python_paths ~/modelzoo/src/ --model_dir llama4b_u3`
+- Run using `cszoo fit --num_csx=1 configs/params_example.yaml --mount_dirs /home/<your_project>/<your_project>/<your_username>/  /home/y26/shared/ --python_paths ~/modelzoo/src/ --model_dir llama4b_u3`
 
 ### Example: Training Vision Transformer on ImageNet Mini
 
