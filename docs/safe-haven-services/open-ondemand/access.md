@@ -2,6 +2,8 @@
 
 Open OnDemand is accessed by running a browser on a host within your safe haven.
 
+## Access Open OnDemand
+
 To access Open OnDemand:
 
 * Start a remote desktop (RDP) session with a host within your safe haven, as described in [Safe Haven Service Access](../../safe-haven-access/).
@@ -21,10 +23,10 @@ To access Open OnDemand:
 * Click 'Log in'.
 * [Open OnDemand](./portal.md) will open.
 
-**Troubleshooting: Bad Request**
+### Troubleshooting: Bad Request
 
 If you see page, 'Bad Request' 'Your browser sent a request that this server could not understand.', then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous Open OnDemand session.
 
-**Troubleshooting: Cannot access Open OnDemand**
+### Troubleshooting: Cannot access Open OnDemand
 
 For any other problems logging into Open OnDemand, first double-check your username and password. If you still have no success, then please contact the [Helpdesk](TODO).
