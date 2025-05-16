@@ -6,7 +6,7 @@ Open OnDemand allows you to run tasks on compute resources available within your
 
 Certain users of certain safe havens may also have acess to TRE-level compute resources, notably the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks and information you need to know when running tasks.
+This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks.
 
 ---
 
@@ -139,34 +139,4 @@ Expand/rewrite
 * Job is 'Completed'
 
 ---
-
-## Interactive app job cards
-
-When an interactive app's job is submitted, a job card is created and shown with information about the app's job.
-
-!!! Note
-
-    Job cards are not created for jobs submitted via the [Job Composer](apps/job-composer.md) app. See that app's page for how apps are submitted and managed.
-
-The job status, shown on the top-right of the job card, can be one of: 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
-
-!!! Note
-
-    The job status does not display whether a job that is 'Completed' did so with success or failure. That can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
-
-Click the 'Session ID' link to open the [File Browser](portal.md#file-browser-page) pointing at the job context directory for the job on the Open OnDemand host.
-
-!!! Note
-
-    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
-
-Click the 'Host' link to open a new browser tab with an SSH session to the back-end on which the job is running.
-
-When prompted, enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
-
-Click 'Cancel' to cancel a running job.
-
-Click 'Relaunch job' (circling arrows icon) to relaunches the job, a new session ID will be created.
-
-Click 'Delete' to delete the job card.
 
