@@ -73,7 +73,7 @@ To enable Open OnDemand to automatically copy your `ondemand` directory to a bac
 
 Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
 
-* Select 'Clusters' => 'Open OnDemand host Shell Access'.
+* Select 'Clusters' menu, 'Open OnDemand host Shell Access' option.
 * A new browser tab with an SSH session to the back-end on which the job is running will appear.
 * When prompted, enter your project username and password.
 * Create a passphrase-less SSH key:
