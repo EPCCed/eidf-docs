@@ -18,11 +18,11 @@ cd modelzoo
 git checkout Release_2.5.0
 ```
 
-Edit the file `/<path_to_your_venv>/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py` and comment out lines 996 to 1069 (should start `mount_errors = []` and end with `mount_dirs.update`.)
-
 ## Running codes
 
 Run as per the normal Cerebras documentation. It is advisable to run codes inside a `tmux` session so you can return to them without having to leave SSH sessions active whilst jobs run.
+
+You may see some warnings about mount paths, e.g. `The following editable packages are not in a volume accessible to the cluster`, however these can be safely ignored.
 
 ### Example training Llama4b on a single CS3
 
