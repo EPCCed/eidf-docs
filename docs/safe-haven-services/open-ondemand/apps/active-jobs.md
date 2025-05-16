@@ -1,26 +1,43 @@
 # Active Jobs
 
-'Active Jobs' is an Open OnDemand app that shows a list of active jobs submitted via Open OnDemand to back-ends.
+'Active Jobs' is an Open OnDemand app that allows you to browse and manage jobs created via both apps and the [Job Composer](job-composer.md) app.
 
-The 'Status' in the active job table can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
+---
+
+## Jobs table
+
+The 'Active Jobs' app shows table of running and recently completed jobs.
+
+The job ID is a unique job ID created by the Slurm job submission service, when you submitted the job.
 
 !!! Note
 
-    The table does not display whether a job that is 'Completed' did so with success or failure. However, the job details does show that information.
+    The job ID is not the same as the session ID for an app. The latter is an identifier created by Open OnDemand itself. Each job created by an app will have both an Open OnDemand session ID and a Slurm job ID.
 
-To see more details about a job, click the '>' button.
+The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
 
-The view can be altered as follows:
+!!! Note
 
-* 'All Jobs' toggles between 'All Jobs' and 'Your Jobs'.
-* 'All Clusters' toggles between 'All Clusters' (back-ends) or a specific back-end to which you have access.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job.
 
-For each job:
+---
 
-* 'Open in File Manager' opens the [File browser](../portal.md#file-browser) pointing at the job context directory on the Open OnDemand host for the job. For example:
-```
-$HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<SESSION_ID>/
-```
-* 'Open in File Terminal' opens a new browser tab with an SSH session into the job context directory for the job on the back-end.
-* 'Delete' cancels the selected job if it is running.
+## Job details
+
+To see details about a job, click the '>' button, by the job of interest.
+
+The 'Output Location' is the location of the job context directory for the job on the Open OnDemand host.
+
+### Open File Manager to job context directory
+
+Click 'Open in File Manager' to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
+
+### Open SSH session to host on which job is running
+
+Click 'Open in Terminal', to open an SSH session with the host on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
+
+---
+
+## Cancel a job
+
+Click the 'Delete job' (bin icon) by the job in the job table or click 'Delete' in the job details to cancel (delete) a running job.
