@@ -1032,24 +1032,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#time-based-one-time-password-totp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Time-based one-time password (TOTP)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ssh-login-example" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Login example
@@ -2637,24 +2619,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#time-based-one-time-password-totp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Time-based one-time password (TOTP)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ssh-login-example" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Login example
@@ -2691,10 +2655,7 @@
 <p>The route for SSH access to the CS3 user-nodes is via the <code>eidf-gateway</code> bastion, as for the EIDF VirDS desktop VMs. This requires two credentials, your SSH key pair protected by a passphrase <strong>and</strong> a Time-based one-time password (TOTP).</p>
 <h2 id="access-credentials">Access credentials</h2>
 <p>To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for <code>eidf-gateway</code>.</p>
-<h3 id="ssh-key">SSH Key</h3>
-<p>You must upload the public part of your SSH key pair to the SAFE by following the <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">instructions from the SAFE documentation</a></p>
-<h3 id="time-based-one-time-password-totp">Time-based one-time password (TOTP)</h3>
-<p>You must set up your TOTP token by following the <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account">instructions from the SAFE documentation</a></p>
+<p>To configure your SSH keys and MFA (TOTP) token, see <a href="https://docs.eidf.ac.uk/access/ssh/">our general SSH documentation.</a></p>
 <h3 id="ssh-login-example">SSH Login example</h3>
 <p>To login to the CS3 user-nodes, you will need to use the SSH Key and TOTP token as noted above.
 With the appropriate key loaded<br><code>ssh -J &lt;username&gt;@eidf-gateway.epcc.ed.ac.uk cerebras</code> will then prompt you, roughly once per day, for your TOTP code.</p>

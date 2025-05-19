@@ -2709,24 +2709,25 @@
 <h2 id="software">Software</h2>
 <p>The user-nodes are equipped with a normal developer packages. If you feel that something is missing, please submit a ticket via the <a href="https://portal.eidf.ac.uk/queries/submit">Portal</a></p>
 <h2 id="virtual-environment-setup">Virtual Environment Setup</h2>
-<p>In general, our system is compatible with the documentation from <a href="https://training-docs.cerebras.ai/rel-2.4.0/getting-started/setup-and-installation">Cerebras</a> which should be followed.
+<p>In general, our system is compatible with the documentation from <a href="https://training-docs.cerebras.ai/rel-2.5.0/getting-started/setup-and-installation">Cerebras</a> which should be followed.
 In this early phase, a few small tweaks are required:</p>
-<p>Use Cerebras <a href="https://github.com/Cerebras/modelzoo/commit/b9cb437070fe057ea52882fb8654e56753a8917c">ModelZoo 2.4.0i</a> for compatibility to the Cerebras machine's installed software-sdk version
+<p>Use Cerebras <a href="https://github.com/Cerebras/modelzoo/">ModelZoo 2.5.0</a> for compatibility to the Cerebras machine's installed software-sdk version
 For completness both the clone and checkout are included below:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Cerebras/modelzoo.git<span class="w"> </span>./modelzoo
 <span class="nb">cd</span><span class="w"> </span>modelzoo
-git<span class="w"> </span>checkout<span class="w"> </span>b9cb437070fe057ea52882fb8654e56753a8917c<span class="w"> </span>
+git<span class="w"> </span>checkout<span class="w"> </span>Release_2.5.0
 </code></pre></div>
-<p>Edit the file <code>/&lt;path_to_your_venv&gt;/lib/python3.8/site-packages/cerebras/appliance/appliance_manager.py</code> and comment out lines 986 to 1034 (should start <code>errors = []</code> and end with a single <code>)</code> on a line.)</p>
 <h2 id="running-codes">Running codes</h2>
 <p>Run as per the normal Cerebras documentation. It is advisable to run codes inside a <code>tmux</code> session so you can return to them without having to leave SSH sessions active whilst jobs run.</p>
+<p>You may see some warnings about mount paths, e.g. <code>The following editable packages are not in a volume accessible to the cluster</code>, however these can be safely ignored.</p>
 <h3 id="example-training-llama4b-on-a-single-cs3">Example training Llama4b on a single CS3</h3>
 <p>With a suitably configured venv as above, and the modelzoo checked out:</p>
 <ul>
-<li>Copy <code>/home/y26/shared/params_tr.yaml</code> to <code>&lt;your modelzoo checkout&gt;/src/cerebras/modelzoo/models/nlp/llama/configs/</code></li>
-<li>Adjust the copied <code>params_tr.yaml</code> config to reduce the <code>max_steps</code> field to <code>50</code></li>
+<li>Navigate to <code>&lt;your modelzoo checkout&gt;/src/cerebras/modelzoo/models/nlp/llama/configs/</code> and copy the file <code>params_llama3p1_8b_msl_128k.yaml</code> to <code>params_example.yaml</code></li>
+<li>Adjust the copied <code>params_example.yaml</code> config to reduce the <code>max_steps</code> field to <code>50</code></li>
+<li>Adjust the copied <code>params_example.yaml</code> config to change the <code>data_dir</code> field to <code>/home/y26/shared/rpj_1t_100k_llama3p1_msl8k_train</code></li>
 <li>Navigate to <code>&lt;your modelzoo checkout&gt;/src/cerebras/modelzoo/models/nlp/llama/</code></li>
-<li>Run using <code>cszoo fit --num_csx=1 configs/params_tr.yaml --mount_dirs /home/eidf114/eidf114/bc-eidfstaff/  /home/y26/shared/ --python_paths ~/modelzoo/src/ --model_dir llama4b_u3</code></li>
+<li>Run using <code>cszoo fit --num_csx=1 configs/params_example.yaml --mount_dirs /home/&lt;your_project&gt;/&lt;your_project&gt;/&lt;your_username&gt;/  /home/y26/shared/ --python_paths ~/modelzoo/src/ --model_dir llama4b_u3</code></li>
 </ul>
 <h3 id="example-training-vision-transformer-on-imagenet-mini">Example: Training Vision Transformer on ImageNet Mini</h3>
 <p>This tutorial will train a toy Visual transformer on a collection of captioned data, the produced model being able to input and image and output a caption.</p>
