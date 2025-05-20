@@ -1,5 +1,7 @@
 # Open OnDemand hints and tips
 
+---
+
 ## Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'
 
 If you delete your `ondemand` directory on the Open OnDemand host, you may see an error like the following:
