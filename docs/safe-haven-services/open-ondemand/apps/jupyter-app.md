@@ -1,12 +1,38 @@
-# Run Jupyter Notebook
+# Run JupyterLab
 
-'Run Jupyter Notebook' is a Container Execution Service app that allows you to run a Jupyter Notebook container on a back-end.
+'Run JupyterLab' is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
 
-TODO
+The container is run using Podman.
 
-Add content inc. from https://git.ecdf.ed.ac.uk/tre-container-execution-service/ood_jupyter_app, esp. README.md and 'form.yml.erb'.
+---
 
-**Troubleshooting: Proxy Error**
+## Run app
+
+Complete the following information the app form:
+
+* Cluster: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+* Container name: Name to be given to the container when it is run.
+    - Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-jupyter`.
+    - If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-jupyter`.
+* Connection timeout: Time to wait for connection to container (seconds). When the job runs, Open OnDemand will wait for this duration to connect to the container. If the wait times out, then the job will be cancelled.
+* Cores (max 28): Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
+* Memory in GiB (max 58 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
+
+Click 'Launch'.
+
+Open OnDemand will submit a job to your chosen back-end to create and run the container.
+
+When the container has started a 'Connect to JupyterLab' button will appear.
+
+Click 'Connect to JupyterLab'.
+
+!!! Note
+
+    Your JupyterLab container will be password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
+
+---
+
+## Troubleshooting: Proxy Error
 
 If you click 'Connect to Jupyter' and get:
 
