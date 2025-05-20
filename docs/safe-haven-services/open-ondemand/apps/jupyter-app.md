@@ -56,7 +56,7 @@ Within JupyterLab, you are the `root` user.
 
 !!! Note
 
-    You are only the `root` user within the context of the container, not on the back-end itself! Any files you create in the mounted directories above will be owned by your own user on the back-end.
+    You are only the `root` user within the context of the container, not on the back-end itself! Any files you create in the mounted directories described below will be owned by your own user on the back-end.
 
 ### Access directories on back-end
 
