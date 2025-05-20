@@ -112,10 +112,10 @@ nav:
        - "About Open OnDemand": safe-haven-services/open-ondemand/about.md
        - "Access Open OnDemand": safe-haven-services/open-ondemand/access.md
        - "Open OnDemand portal": safe-haven-services/open-ondemand/portal.md
-       - "Browse and manage files": safe-haven-services/open-ondemand/files.md
-       - "Open an SSH session": safe-haven-services/open-ondemand/ssh.md
        - "Run jobs": safe-haven-services/open-ondemand/jobs.md
        - "View and run apps": safe-haven-services/open-ondemand/apps.md
+       - "Browse and manage files": safe-haven-services/open-ondemand/files.md
+       - "Open SSH sessions": safe-haven-services/open-ondemand/ssh.md
        - "Apps":
           - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
           - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
