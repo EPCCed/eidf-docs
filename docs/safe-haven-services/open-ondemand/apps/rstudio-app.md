@@ -43,7 +43,7 @@ If you click 'Connect to RStudio Server' and get:
 >
 > Apache/2.4.52 (Ubuntu) Server at eidf147-runner-vm Port 443
 
-Then, refresh the web page, or click the 'Connect to RStudio Server' button again.
+then, refresh the web page, or click the 'Connect to RStudio Server' button again.
 
 ---
 
@@ -86,4 +86,4 @@ You can re-access your running container via 'My Interactive Sessions' (overlaid
 
 You can end your job as follows:
 
-* Cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../portal.md#browse-and-manage-jobs).
+* Cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../jobs.md#browse-and-manage-jobs).
