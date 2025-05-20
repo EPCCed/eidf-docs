@@ -28,7 +28,7 @@ Click 'Connect to JupyterLab'.
 
 !!! Note
 
-    Your JupyterLab container will be password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
+    Your JupyterLab container is password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
 
 !!! Note
 
@@ -36,9 +36,25 @@ Click 'Connect to JupyterLab'.
 
 ---
 
+## Using JupyterLab
+
+Within JupyterLab, you will have the following directories available, mounted into the container from the back-end:
+
+* `/safe_data/`: A mount that corresponds to your project's `/safe_data/` subdirectory on the back-end. The subdirectory to mount is inferred from your user group.
+* `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
+* `/scratch/`: A mount that corresponds to a 'scratch-NUMBER' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
+
+Within JupyterLab, you are the `root` user.
+
+!!! Note
+
+    You are only the `root` user within the context of the container, not on the back-end itself! Any files you create in the mounted directories above will be owned by your own user on the back-end.
+
+---
+
 ## Troubleshooting: Proxy Error
 
-If you click 'Connect to Jupyter' and get:
+If you click 'Connect to JupyterLab' and get:
 
 > Proxy Error
 >
@@ -49,4 +65,4 @@ If you click 'Connect to Jupyter' and get:
 >
 > Apache/2.4.52 (Ubuntu) Server at eidf147-runner-vm Port 443
 
-Then, refresh the web page.
+Then, refresh the web page, or click the 'Connect to JupyterLab' button again.
