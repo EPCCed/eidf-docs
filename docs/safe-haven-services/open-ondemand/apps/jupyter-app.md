@@ -50,7 +50,7 @@ Then, refresh the web page, or click the 'Connect to JupyterLab' button again.
 
 ### Log in
 
-Your JupyterLab container is password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
+JupyterLab running in the container is password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
 
 Within JupyterLab, you are the `root` user.
 
