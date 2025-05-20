@@ -56,4 +56,4 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the '>' button, by the job of interest, to open the job details.
 
-Click 'Open in Terminal' to open an SSH session with the host on which the job is running. Your SSH session change your current directory to match the job context directory.
+Click 'Open in Terminal' to open an SSH session with the host on which the job is running. Your SSH session will change your current directory to match the job context directory.
