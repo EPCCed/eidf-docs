@@ -57,3 +57,13 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 Click the '>' button, by the job of interest, to open the job details.
 
 Click 'Open in Terminal' to open an SSH session with the host on which the job is running. Your SSH session will change your current directory to match the job context directory.
+
+---
+
+## 'Job Composer' app and hosts on which jobs will be run, are running, or ran
+
+Open the [Job Composer](apps/job-composer.md) app.
+
+Select a job.
+
+Click 'Open Terminal' (either button) to open an SSH session with the host on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
