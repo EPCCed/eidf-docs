@@ -22,7 +22,7 @@ The app types are:
 
 Open OnDemand supports a number of ways by which you can see the apps available to you and select an app to run.
 
-In each case, selecting an app will open an app-specific page, from which you can run the app.
+In each case, selecting an app will open an app-specific page, from which you can run the app, for which Open OnDemand will create and run a job.
 
 ---
 
