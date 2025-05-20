@@ -167,6 +167,24 @@ Click the '>' button, by the job of interest, to open the job details.
 
 Click 'Open in File Manager' to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
 
+### App 'data root directory'
+
+Within an app's form, click the 'data root directory' link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/`, under which the job's files will be created.
+
+#### Troubleshooting: 'Error occurred when attempting to access `ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`
+
+If a dialog pops up with error:
+
+'Error occurred when attempting to access `/pun/sys/dashboard/files/fs/.../ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`'
+
+and
+
+'Cannot read file `/.../ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`'
+
+then, click 'OK'.
+
+This error can arise if you have not used the app before and, so, it's `<app_name>` subdirectory will not exist under your `ondemand` folder.
+
 ---
 
 ## Open an SSH session to a back-end or the Open OnDemand host
