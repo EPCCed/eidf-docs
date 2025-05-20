@@ -2,11 +2,11 @@
 
 'Active Jobs' is an Open OnDemand app that allows you to browse and manage jobs created via both apps and the [Job Composer](job-composer.md) app.
 
+The 'Active Jobs' app shows a table of running and recently completed jobs.
+
 ---
 
 ## Jobs table
-
-The 'Active Jobs' app shows table of running and recently completed jobs.
 
 The job ID is a unique job ID created by the Slurm job submission service, when you submitted the job.
 
@@ -28,11 +28,15 @@ To see details about a job, click the '>' button, by the job of interest.
 
 The 'Output Location' is the location of the job context directory for the job on the Open OnDemand host.
 
-### Open File Manager to job context directory
+---
 
-Click 'Open in File Manager' to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
+## Open File Manager to job context directory
 
-### Open SSH session to host on which job is running
+Click 'Open in File Manager' to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand host.
+
+---
+
+## Open SSH session to host on which job is running
 
 Click 'Open in Terminal', to open an SSH session with the host on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
 
