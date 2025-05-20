@@ -1,5 +1,9 @@
 # View and run apps
 
+---
+
+## Introduction
+
 The following apps are available on Open OnDemand.
 
 | App | Type | Description |
@@ -24,7 +28,7 @@ In each case, selecting an app will open an app-specific page, from which you ca
 
 ## 'Jobs' panel
 
-The 'Jobs' panel on the Open OnDemand front page has a selection of the apps available to you.
+The 'Jobs' panel on the Open OnDemand front page has a **selection** of the apps available to you.
 
 Click on a app button to access that app.
 
@@ -32,17 +36,17 @@ Click on a app button to access that app.
 
 ## 'Apps' menu
 
-The 'Apps' menu provides access to all the apps available to you.
+The 'Apps' menu provides access to **all** of the apps available to you.
 
 Select an app-specific menu option to access that app. The app-specific menu options correspond to the apps available via the 'Jobs' panel.
 
-To see all apps available to you, select the 'All Apps' option to go to the All Apps page.
+To see all of the apps available to you, select the 'All Apps' option to go to the All Apps page.
 
 ---
 
 ## 'Jobs' menu
 
-The 'Jobs' menu shows all apps available to you.
+The 'Jobs' menu shows **all** of the apps available to you.
 
 Select an app-specific menu option to access that app.
 
@@ -54,7 +58,7 @@ Select an app-specific menu option to access that app.
 
 ## All Apps page
 
-The All Apps page shows all the apps available to you.
+The All Apps page shows **all** of the apps available to you.
 
 Select the 'Apps' menu, 'All Apps' option to go to the All Apps page.
 
@@ -66,6 +70,6 @@ Click an app-specific link to access that app.
 
 Click 'My Interactive Sessions' (overlaid squares icon) on the menu bar to opens the My Interactive Sessions page.
 
-The My Interactive Sessions page has a selection of the apps available to you on the left-hand-side.
+The My Interactive Sessions page has a **selection** of the apps available to you on the left-hand-side.
 
 Click an app-specific button to access that app.
