@@ -30,7 +30,7 @@ In each case, selecting an app will open an app-specific page, from which you ca
 
 The 'Jobs' panel on the Open OnDemand front page has a **selection** of the apps available to you.
 
-Click on a app button to access that app.
+Click on an app button to access that app.
 
 ---
 
