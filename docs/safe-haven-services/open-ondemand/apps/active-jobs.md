@@ -44,4 +44,4 @@ Click 'Open in Terminal', to open an SSH session with the host on which the job 
 
 ## Cancel a job
 
-Click the 'Delete job' (bin icon) by the job in the job table or click 'Delete' in the job details to cancel (delete) a running job.
+Click the 'Delete job' (red trash icon) by the job in the job table or click 'Delete' in the job details to cancel (delete) a running job.
