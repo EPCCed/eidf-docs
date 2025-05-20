@@ -75,7 +75,7 @@ Your container job will continue to run even if you do the following:
 * Log out of Open OnDemand.
 * Log out of the host from which you accessed Open OnDemand.
 
-You can re-access your running container via 'My Interactive Sessions' (overlaid squares icon) on the menu bar, then 'Connect to JupyterLab' on your session's job card.
+You can re-access your running container via the 'Connect to JupyterLab' on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions) page accessed via 'My Interactive Sessions' (overlaid squares icon) on the menu bar.
 
 ### End your job
 
