@@ -1,4 +1,4 @@
-# Running jobs via Open OnDemand
+# Run jobs via Open OnDemand
 
 ## Introduction
 
