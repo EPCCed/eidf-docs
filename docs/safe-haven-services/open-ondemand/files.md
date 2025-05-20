@@ -1,5 +1,9 @@
 # Browse and manage files
 
+---
+
+## Introduction
+
 Open OnDemand allows you to browse and manage files via the File Manager.
 
 ---
