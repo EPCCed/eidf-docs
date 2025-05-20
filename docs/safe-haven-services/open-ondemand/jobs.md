@@ -204,7 +204,7 @@ ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 
 ## Browse and manage jobs
 
-You can browse and manage jobs via the [Active Jobs](./apps/active-jobs.md).
+You can browse and manage jobs via the [Active Jobs](./apps/active-jobs.md) app.
 
 For interactive app jobs (not those created by the [Job Composer](apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions) page, which provides more app-specific information.
 
