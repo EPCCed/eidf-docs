@@ -31,7 +31,7 @@ Click on a file name under 'Folder contents' to open an editor to edit that file
 
 Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory.
 
-Click 'Open Terminal' (either button) to open an SSH session with the host on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
+Click 'Open Terminal' (either button) to open an SSH session with the back-end on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
 
 ### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
 
@@ -66,9 +66,9 @@ Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) p
 
     When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
-### Open SSH session to back-end host
+### Open SSH session to back-end
 
-Click 'Open Terminal' (either button) to open an SSH session with the host on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click 'Open Terminal' (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
 
 #### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
 
@@ -128,7 +128,7 @@ Hello World to someuser from some-host.nsh.loc
 
 If you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then:
 
-* Click 'Open Terminal' to open an SSH session with the host on which the job was run. Your SSH session change your current directory to match the job context directory.
+* Click 'Open Terminal' to open an SSH session with the back-end on which the job was run. Your SSH session change your current directory to match the job context directory.
 * View the job context directory:
 ```console
 $ pwd

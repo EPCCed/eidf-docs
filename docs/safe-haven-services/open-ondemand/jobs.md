@@ -238,9 +238,9 @@ Click the 'Session ID' link to open the [File Manager](./files.md), pointing at 
 
     When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
-### Open SSH session to host on which job is running
+### Open SSH session to back-end on which job is running
 
-For 'Running' jobs, click the 'Host' link to open an SSH session with the host on which the job is running.
+For 'Running' jobs, click the 'Host' link to open an SSH session with the back-end on which the job is running.
 
 ### Cancel a job
 

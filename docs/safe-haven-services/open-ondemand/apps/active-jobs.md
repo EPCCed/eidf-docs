@@ -36,9 +36,9 @@ Click 'Open in File Manager' to open the [File Manager](../files.md) pointing at
 
 ---
 
-## Open SSH session to host on which job is running
+## Open SSH session to back-end on which job is running
 
-Click 'Open in Terminal', to open an SSH session with the host on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
+Click 'Open in Terminal', to open an SSH session with the back-end on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
 
 ---
 
