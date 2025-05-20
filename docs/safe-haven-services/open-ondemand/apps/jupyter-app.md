@@ -14,7 +14,6 @@ Complete the following information the app form:
 * Container name: Name to be given to the container when it is run.
     - Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-jupyter`.
     - If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-jupyter`.
-* Connection timeout: Time to wait for connection to container (seconds). When the job runs, Open OnDemand will wait for this duration to connect to the container. If the wait times out, then the job will be cancelled.
 * Cores (max 28): Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
 * Memory in GiB (max 58 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
 
