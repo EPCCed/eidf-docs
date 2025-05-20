@@ -112,6 +112,7 @@ nav:
        - "About Open OnDemand": safe-haven-services/open-ondemand/about.md
        - "Access Open OnDemand": safe-haven-services/open-ondemand/access.md
        - "Open OnDemand portal": safe-haven-services/open-ondemand/portal.md
+       - "Browse and manage files": safe-haven-services/open-ondemand/files.md
        - "Running jobs": safe-haven-services/open-ondemand/jobs.md
        - "Apps":
           - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md

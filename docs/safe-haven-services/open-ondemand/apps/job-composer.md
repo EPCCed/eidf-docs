@@ -15,7 +15,7 @@ When a job is created, the job files are written to the job context directory, `
 
 Clicking on a job shows details about the job on the same page.
 
-Both 'Edit Files' and 'Open Dir' open the [File browser](../portal.md#file-browser) pointing at the job context directory on the Open OnDemand host for the currently selected job.
+Both 'Edit Files' and 'Open Dir' open the [File manager](../files.md#file-manager) pointing at the job context directory on the Open OnDemand host for the currently selected job.
 
 'Job Options' opens up a form where you can edit the job name, target back-end, Slurm job submission script, account and other options.
 
