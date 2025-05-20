@@ -29,7 +29,7 @@ Click 'Open Editor' to open an editor to edit the Slurm job submission script (d
 
 Click on a file name under 'Folder contents' to open an editor to edit that file in the job context directory.
 
-Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md), pointing at the job context directory.
+Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory.
 
 Click 'Open Terminal' to open an SSH session with the host on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
 
@@ -60,7 +60,7 @@ succeeded or failed can be seen in the job details for the job which can be seen
 
 ### Open File Manager to job context directory
 
-Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md), pointing at the job context directory for the currently selected job.
+Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory for the currently selected job.
 
 !!! Note
 

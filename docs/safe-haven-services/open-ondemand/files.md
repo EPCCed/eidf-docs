@@ -55,6 +55,16 @@ Click the '>' button, by the job of interest, to open the job details.
 
 Click 'Open in File Manager' to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
 
+----
+
+## 'Job Composer' app and job context directory
+
+Open the [Job Composer](apps/job-composer.md) app.
+
+Select a job.
+
+Click 'Open Dir' or click 'Edit Files' to open the 'File Manager' pointing at the job context directory for the currently selected job.
+
 ---
 
 ## App 'data root directory'
