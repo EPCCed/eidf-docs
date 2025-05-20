@@ -135,7 +135,7 @@ BACK-END-HOSTNAME.nsh.loc hostname
 
 ## Job log files
 
-When a job is submitted to a back-end, a log is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
+When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
 
 Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
@@ -154,17 +154,18 @@ An example of the contents of a log file is as follows:
 
 ## What happens when a job is submitted
 
-TODO
+Briefly, when a job is submitted, the following occurs:
 
-Expand/rewrite
+* Open OnDemand creates a job context directory under your `ondemand` directory.
+* Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
+    - A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
+    - For back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
+* Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
+* When resources become available on the back-end, your job runs:
+    - For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
+    - For jobs created via apps, the job status will be 'Starting' and then 'Running'.
+* Your job will complete. The job status will be 'Completed'.
 
-* Creates 'ondemand' subdirectory as above.
-* Creates log file as above.
-* 'Pushes' job files, for back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end.
-* Job is 'Queued' pending resources.
-* Job is' Starting'
-* Job is 'Running'
-* Job is 'Completed'
+!!! Note
 
----
-
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
