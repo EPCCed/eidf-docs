@@ -8,7 +8,7 @@ The 'Active Jobs' app shows a table of running and recently completed jobs.
 
 ## Jobs table
 
-The job ID is a unique job ID created by the Slurm job submission service, when you submitted the job.
+The job ID is a unique job ID created by the Slurm job scheduler, when you submitted the job.
 
 !!! Note
 
