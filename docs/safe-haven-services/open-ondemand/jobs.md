@@ -201,7 +201,7 @@ The job status, shown on the top-right of the job card, can be one of: 'Queued',
 
 #### Open File Manager to job context directory
 
-Click the 'Session ID' link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand host.
+Click the 'Session ID' link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand host.
 
 !!! Note
 
