@@ -181,7 +181,7 @@ and
 
 'Cannot read file `/.../ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`'
 
-then, click 'OK'.
+then click 'OK'.
 
 This error can arise if you have not used the app before and, so, it's `<app_name>` subdirectory will not exist under your `ondemand` folder.
 
