@@ -31,7 +31,7 @@ Click on a file name under 'Folder contents' to open an editor to edit that file
 
 Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory.
 
-Click 'Open Terminal' to open an SSH session with the host on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
+Click 'Open Terminal' (either button) to open an SSH session with the host on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
 
 ### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
 
@@ -68,7 +68,7 @@ Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) p
 
 ### Open SSH session to back-end host
 
-Click 'Open Terminal' to open an SSH session with the host on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click 'Open Terminal' (either button) to open an SSH session with the host on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
 
 #### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
 
