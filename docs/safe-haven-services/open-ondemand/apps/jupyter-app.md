@@ -79,7 +79,7 @@ You can re-access your running container via 'My Interactive Sessions' (overlaid
 
 ### End your job
 
-You can end your job by doing any of the following:
+You can end your job by doing either of:
 
 * Log out of JupyterLab via 'File', 'Log Out'.
 * Cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../portal.md#browse-and-manage-jobs).
