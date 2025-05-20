@@ -20,6 +20,8 @@ These storage options are backed by the hardware described on this [page](https:
 
 Local storage directly attached to VMs is only accessible by the VM it is attached to. It is provisioned over CephRBD.
 
+VMs come with a default disk size of up to 50GB, but you can request more. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges, but allocations up to several hundred TB fall within the standard service access model. (sourced from EIDF sharepoint Catalogue 'Virtual Desktop.docx')
+
 ### GPU-local
 
 The GPU Service Persistent Volumes, provisioned over CephFS, are only accessible from the GPU Service.
