@@ -38,7 +38,7 @@ Click a host-specific 'Shell Access' link to open an SSH session with the select
 
 ## File Manager 'Open in Terminal' button
 
-Select the 'Files' menu, 'Home Directory' option to open the [File Manager](./files.md#file-manager), then click ['Open in Terminal'](./files.md#open-in-terminal).
+Select the 'Files' menu, 'Home Directory' option to open the [File Manager](./files.md), then click ['Open in Terminal'](./files.md#open-in-terminal).
 
 ---
 
