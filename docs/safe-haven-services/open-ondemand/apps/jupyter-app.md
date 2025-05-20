@@ -30,6 +30,10 @@ Click 'Connect to JupyterLab'.
 
     Your JupyterLab container will be password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
 
+!!! Note
+
+   Your job will run for a maximum of 6 hours.
+
 ---
 
 ## Troubleshooting: Proxy Error
