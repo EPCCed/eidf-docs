@@ -58,18 +58,18 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 
 The [Job Composer](apps/job-composer.md) app's job files are created in a directory:
 ```
-ondemand/data/sys/myjobs/projects/default/<job_id>/
+ondemand/data/sys/myjobs/projects/default/JOB_ID/
 ```
-where `<job_id>` is a numerical identifier. For example,
+where `JOB_ID` is a numerical identifier. For example,
 ```
 ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 Interactive app job files are created in a directory:
 ```
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/output/<session_id>/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
-where `<app_name>` is the app name and `<session_id>` a unique session identifer. For example,
+where `APP_NAME` is the app name and `SESSION_ID` a unique session identifer. For example,
 ```
 ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
@@ -137,13 +137,13 @@ BACK-END-HOSTNAME.nsh.loc hostname
 
 When a job is submitted to a back-end, a log is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
 
-Log files have name `sbatch-<YYYYMMDD-HHMMSS>-<OPEN_ONDEMAND_CLUSTER_NAME>`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
+Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
 An example of the contents of a log file is as follows:
 ```
-# Open OnDemand back-end: <OPEN_ONDEMAND_CLUSTER_NAME>`
-# Time: <YYYY-MM-DD HH:MM:SS>
-# Process: <PROCESS-ID>
+# Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME`
+# Time: YYYY-MM-DD HH:MM:SS
+# Process: PROCESS-ID
 # Open OnDemand server environment
 ...values environment variables in current Open OnDemand environment...
 # sbatch arguments from Open OnDemand

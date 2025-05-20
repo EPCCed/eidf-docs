@@ -11,7 +11,7 @@ To create a new job, select 'New Job':
 * 'From Specified Path' creates a new job from the contents of an existing directory. This directory should have the job submission script and any other files within it.
 * 'From Selected job' creates a new job from the contents of the job context directory for the currently selected job on the page, if any.
 
-When a job is created, the job files are written to the job context directory, `$HOME/ondemand/data/sys/myjobs/projects/default/<JOB_ID>/`.
+When a job is created, the job files are written to the job context directory, `$HOME/ondemand/data/sys/myjobs/projects/default/JOB_ID/`.
 
 Clicking on a job shows details about the job on the same page.
 

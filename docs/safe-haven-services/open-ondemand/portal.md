@@ -169,21 +169,21 @@ Click 'Open in File Manager' to open the File Manager pointing at the job contex
 
 ### App 'data root directory'
 
-Within an app's form, click the 'data root directory' link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/<app_name>/`, under which the job's files will be created.
+Within an app's form, click the 'data root directory' link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/`, under which the job's files will be created.
 
-#### Troubleshooting: 'Error occurred when attempting to access `ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`
+#### Troubleshooting: 'Error occurred when attempting to access ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
 
 If a dialog pops up with error:
 
-'Error occurred when attempting to access `/pun/sys/dashboard/files/fs/.../ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`'
+'Error occurred when attempting to access /pun/sys/dashboard/files/fs/.../ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
 
 and
 
-'Cannot read file `/.../ondemand/data/sys/dashboard/batch_connect/sys/<app_name>`'
+'Cannot read file /.../ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
 
 then click 'OK'.
 
-This error can arise if you have not used the app before and, so, it's `<app_name>` subdirectory will not exist under your `ondemand` folder.
+This error can arise if you have not used the app before and, so, it's `APP_NAME` subdirectory will not exist under your `ondemand` folder.
 
 ---
 
