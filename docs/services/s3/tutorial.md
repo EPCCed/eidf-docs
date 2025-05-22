@@ -48,7 +48,7 @@ List the buckets in your account:
 aws s3 ls
 ```
 
-Create a bucket:
+Create a bucket (note: the name must be between 3-63 characters, and must contain only lower case letters, numbers, hyphens '-', or full stops '.':
 
 ```bash
 aws s3api create-bucket --bucket <bucketname>
@@ -213,6 +213,16 @@ s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_buck
 
 ## Access policies
 
+### Set policy using AWS CLI
+
+Grant permissions stored in an IAM policy file:
+
+```bash
+aws s3api put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
+```
+
+### Example bucket permission policies
+
 Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
 The project code is a prefix on the bucket name, separated by a colon (`:`), for example `eidfXX1:somebucket`.
 Note that some S3 client libraries do not accept bucket names in this format.
@@ -274,34 +284,26 @@ Give public read access to a bucket (listing and downloading files):
 
 ```json
 {
- "Version": "2012-10-17",
- "Statement": [
-  {
-    "Effect": "Allow",
-    "Principal": "*",
-    "Action": ["s3:ListBucket"],
-    "Resource": [
-      f"arn:aws:s3::eidfXX1:somebucket"
-    ]
-  },
-  {
-    "Effect": "Allow",
-    "Principal": "*",
-    "Action": ["s3:GetObject"],
-    "Resource": [
-      f"arn:aws:s3::eidfXX1:somebucket/*"
-    ]
-   }
- ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:ListBucket"],
+      "Resource": [
+        "arn:aws:s3::eidfXX1:somebucket"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:GetObject"],
+      "Resource": [
+        "arn:aws:s3::eidfXX1:somebucket/*"
+      ]
+    }
+  ]
 }
-```
-
-### Set policy using AWS CLI
-
-Grant permissions stored in an IAM policy file:
-
-```bash
-aws put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
 ```
 
 ### Set policy using Python `boto3`
