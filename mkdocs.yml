@@ -39,7 +39,7 @@ nav:
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
   - "Storage in the EIDF":
-    - "Overview": storage/storage.md
+    - "Overview": storage/overview.md
     - "FAQs": storage/faq.md
   - "Computing Services":
     - "Virtual Desktops":

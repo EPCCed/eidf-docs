@@ -8,7 +8,7 @@ Whilst EIDF Ultra2 storage is backed up to tape for the scenario of systems fail
 
 Presently, no single storage solution is directly accessible from all EIDF services. We are actively working to improve cross-service accessibility.
 
-We are working to make shared storage (CephFS) accessible from the EIDF GPU Service; this will make it accessible across our computing infrastructure. 
+We are working to make shared storage (CephFS) accessible from the EIDF GPU Service; this will make it accessible across our computing infrastructure.
 
 Shared Storage (CephFS) or S3 are sharable across EIDF. S3 is additionally sharable across the world.
 
@@ -27,4 +27,3 @@ You should use the Shared Storage of CephFS as it is sharable. We do not recomme
 Cerebras only uses CephFS shared storage. PIs can make it available on their VMs
 <!-- Replicated from overview/storage page -->
 ### I want to use Notebooks and a VM
-
