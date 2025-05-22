@@ -13,33 +13,29 @@ These storage options are backed by the hardware described on this [page](https:
 
 ## Storage Access
 
-<!-- !!! Note
-    Presently, no single storage solution is directly accessible from all EIDF services. We are actively working to improve cross-service accessibility. -->
-
 ### VM local
 
-Local storage directly attached to VMs is only accessible by the VM it is attached to. It is provisioned over CephRBD.
+VMs have a limit of 32GB on the size of their boot disk. You can request more disks to be attached. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.
 
-VMs come with a default disk size of up to 50GB, but you can request more. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges, but allocations up to several hundred TB fall within the standard service access model.
-<!--  (sourced from EIDF sharepoint Catalogue 'Virtual Desktop.docx') -->
+Any storage local to the VM storage is only accessible on the VM. it is provisioned over [CephRBD](https://docs.ceph.com/en/reef/rbd/)
 
-There is a technical limit on VMs of up 32GB for boot disks, after this other disks will need to be used
-
-See more details about the VM service [here](../services/virtualmachines/index.md).
+See more general details about the VM service [here](../services/virtualmachines/index.md).
 
 ### GPU local
 
-The GPU Service Persistent Volumes, are only accessible from the GPU Service.
+The GPU Service persistent volumes are only accessible from the GPU Service.
 
-Work is in progress for these to be provisioned by CephFS
+Work is in progress for these to be provisioned by the Shared Storage (CephFS).
 
-See more details about the GPU service [here](../services/gpuservice/index.md).
+See more general details about the GPU service [here](../services/gpuservice/index.md).
+
+### Notebook service
 
 ### Ultra2 local
 
 Ultra2 uses our e1000 Lustre parallel filesystem; this storage is not accessible from anywhere else on the EIDF.
 
-See more about Ultra2 [here](../services/ultra2/access.md).
+See more general details about Ultra2 [here](../services/ultra2/access.md).
 
 ### S3
 
@@ -49,11 +45,13 @@ We are working to make S3 accessible from the Cerebras processing unit. S3 **may
 
 S3 is *not* a posix file system but visible from anywhere in the world.
 
-See more about S3 [here](../services/s3/index.md).
+See more about S3 at EIDF [here](../services/s3/index.md).
 
-### Shared storage (CephFS)
+For general purpose S3 documentation see [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
-The EIDF shared storage, provisioned through CephFS, is directly accessible from the VMs, Ultra2 and the Cerebras (but not yet from the GPUs).
+### Shared Storage (CephFS)
+
+The EIDF Shared Storage, provisioned through CephFS, is directly accessible from the VMs, Ultra2 and the Cerebras. It is not yet usable from the GPUs.
 
 CephFS is a posix, parallel file system that is only accessible from within EIDF and EPCC.
 
@@ -62,7 +60,7 @@ CephFS is a posix, parallel file system that is only accessible from within EIDF
 
 Cerebras only uses CephFS shared storage, and PIs can make it available on their VMs (and with the above development, it will also be available from the GPU Service).
 
-See more about the EIDF shared storage [here](../services/virtualmachines/sharedfs.md).
+See more general information about the EIDF shared storage [here](../services/virtualmachines/sharedfs.md).
 
 ### ⁠Data Publishing Service
 
@@ -70,12 +68,12 @@ This is openly accessible from all of the EIDF and any other service in the worl
 
 The Data Publishing Service is visible from all systems with external network access except the EIDF Cerebras processing-nodes.
 
-See more about the data publishing service [here](../services/datapublishing/service.md).
+See more general information about the data publishing service [here](../services/datapublishing/service.md).
 
-## Disaster recovery and Back-up
+## Disaster Recovery and User Back-up
 
-The Ultra2-local storage is replicated onto tape for recovery from disaster. Disaster recovery is triggered by disk hardware failure, not end-user error. Restoring of data in the case of a user accidentally deleting a file is **not** possible.
+The Ultra2-local storage is replicated onto tape for recovery from disaster. Disaster recovery is triggered by disk hardware failure, not user error.
+
+Restoring of data in the case of a user, for example accidentally deleting a file, is **not** possible or a planned service.
 
 Presently there is no other disaster recovery on the EIDF.
-
-There is no plan for a EIDF back-up
