@@ -6,7 +6,7 @@ The EIDF offers the following storage options:
 - [GPU local storage](#gpu-local)
 - [Ultra2 local storage](#ultra2-local)
 - [S3](#s3)
-- [Shared storage (CephFS)](#shared-storage-cephfs)
+- [CephFS Shared Storage](#cephfs-shared-storage)
 - [Data Publishing Service](#data-publishing-service)
 
 These storage options are backed by the hardware described on this [page](https://edinburgh-international-data-facility.ed.ac.uk/about/hardware)
@@ -31,6 +31,10 @@ See more general details about the GPU service [here](../services/gpuservice/ind
 
 ### Notebook service
 
+S3 and CephFS Shared Storage can be used within the Notebook service
+
+See more general details about the Notebook service [here](../services/jhub/index.md).
+
 ### Ultra2 local
 
 Ultra2 uses our e1000 Lustre parallel filesystem; this storage is not accessible from anywhere else on the EIDF.
@@ -49,7 +53,7 @@ See more about S3 at EIDF [here](../services/s3/index.md).
 
 For general purpose S3 documentation see [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
-### Shared Storage (CephFS)
+### CephFS Shared Storage
 
 The EIDF Shared Storage, provisioned through CephFS, is directly accessible from the VMs, Ultra2 and the Cerebras. It is not yet usable from the GPUs.
 
@@ -58,9 +62,9 @@ CephFS is a posix, parallel file system that is only accessible from within EIDF
 !!! Note
     We are working to make shared storage accessible from the EIDF GPU Service; this will make it accessible across our computing infrastructure.
 
-Cerebras only uses CephFS shared storage, and PIs can make it available on their VMs (and with the above development, it will also be available from the GPU Service).
+Cerebras only uses CephFS Shared Storage, and PIs can make it available on their VMs (and with the above development, it will also be available from the GPU Service).
 
-See more general information about the EIDF shared storage [here](../services/virtualmachines/sharedfs.md).
+See more general information about the EIDF Shared Storage [here](../services/virtualmachines/sharedfs.md).
 
 ### ⁠Data Publishing Service
 
