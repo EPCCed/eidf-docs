@@ -2,7 +2,7 @@
 
 The EIDF offers the following storage options:
 
-- [VM local storage](#vm-local)
+- [Virtual Machine (VM) local storage](#virtual-machine-vm-local)
 - [GPU local storage](#gpu-local)
 - [Ultra2 local storage](#ultra2-local)
 - [S3](#s3)
@@ -13,19 +13,17 @@ These storage options are backed by the hardware described on this [page](https:
 
 ## Persistent Volumes attached to specific services
 
-### VM local
+### Virtual Machine (VM) local
 
-VMs have a limit of 32GB on the size of their boot disk. You can request more disks to be attached. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.
+VMs have a limit of 32GB on the size of a VM's boot disk. Whilst you can request more disks to be attached we recommend use of CephFS or S3. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.
 
-Any storage local to the VM storage is only accessible on the VM. It is provisioned over [CephRBD](https://docs.ceph.com/en/reef/rbd/)
+Storage local to the VM is provisioned over [CephRBD](https://docs.ceph.com/en/reef/rbd/). It is only accessible on the VM.
 
 See more general details about the VM service [here](../services/virtualmachines/index.md).
 
 ### GPU local
 
-The GPU Service persistent volumes are only accessible from the GPU Service.
-
-Work is in progress for these to be provisioned by the Shared Storage (CephFS).
+The GPU Service persistent volumes are only accessible from the GPU Service. Work is in progress for these to be provisioned by the Shared Storage (CephFS).
 
 See more general details about the GPU service [here](../services/gpuservice/index.md).
 
@@ -39,11 +37,11 @@ See more general details about Ultra2 [here](../services/ultra2/access.md).
 
 ### S3
 
-The EIDF S3, provisioned over CephFS, is directly accessible from the VMs, the GPU Service and Ultra2. It is not yet accessible from the Cerebras processing units.
+The EIDF S3, provisioned over CephFS, is directly accessible from the VM, GPU and Ultra2 services.
 
 We are working to make S3 accessible from the Cerebras processing unit. S3 **may** be the first EIDF writeable storage service to be accessible across our computing infrastructure.
 
-S3 is accessible from anywhere in the world via S3-compatible workflows.General purpose usage outside of EIDF is documented on [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
+S3 is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
 See more about S3 at EIDF [here](../services/s3/index.md).
 
@@ -52,9 +50,11 @@ See more about S3 at EIDF [here](../services/s3/index.md).
 CephFS provides storage accessible across EIDF services. It is directly accessible from the VMs, Ultra2 and the Cerebras.
 
 !!! Note
-CephFS is not yet usable from the GPUs. We are working to make shared storage accessible from the EIDF GPU Service; this will make it accessible across our computing infrastructure.
+    **CephFS is not yet usable from the GPU service.**
 
-Cerebras only uses CephFS Shared Storage, and PIs can make it available on their VMs (and with the above development, it will also be available from the GPU Service).
+    We are working to make shared storage accessible from the EIDF GPU Service; this will make it accessible across our entire computing infrastructure.
+
+Cerebras only uses CephFS Shared Storage. PIs can make it available on their VMs; see how on the documentation [mounting CephFS on VMs](../services/virtualmachines/sharedfs.md).
 
 See more general information about the EIDF Shared Storage [here](../services/virtualmachines/sharedfs.md).
 
@@ -83,4 +83,4 @@ Presently there is no other disaster recovery on the EIDF.
 |         Ultra2          |    No    |    No     |     Yes      | Yes |          Yes          |           Yes           |
 |        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
 |        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           No            |
-| Data Publishing Service |    No    |    No     |      No      | Yes |          No           |           Yes           |
+| Data Publishing Service |    Yes   |    Yes    |      Yes     | Yes |          Yes          |           Yes           |
