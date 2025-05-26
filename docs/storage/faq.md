@@ -2,29 +2,28 @@
 
 ## I have deleted my important file, what can I do?
 
-Whilst EIDF Ultra2 storage is backed up to tape for the scenario of systems failure or data loss related to the running of the service, we do not offer or plan to offer the ability to restore files from this medium in the case of user error. Users are responsible for backing up their data; otherwise, it will be permanently lost.
+Whilst EIDF Ultra2 storage is backed up to tape for the scenario of systems failure or data loss related to the running of the service, we do **not** offer or plan to offer the ability to restore files from this medium in the case of user error.
+
+Users are responsible for backing up their data against user error.
 
 ## I want to access storage from across all EIDF services?
 
-Presently, no single storage solution is directly accessible from all EIDF services. We are actively working to improve cross-service accessibility.
+Presently, no single storage solution is directly accessible from all EIDF services. We are actively working to improve cross-service accessibility. Currently the following issues remain and progress is being made to resolve them:
 
-We are working to make CephFS Shared Storage accessible from the EIDF GPU Service; this will make it accessible across our computing infrastructure.
-
-We are working to make S3 accessible from the Cerebras processing unit. S3 **may** be the first EIDF writeable storage service to be accessible across our computing infrastructure.
+- CephFS Shared Storage is not accessible from the EIDF GPU Service
+- S3 is not accessible from the Cerebras processing unit.
 
 In general CephFS Shared Storage or S3 are, except for the above, sharable across EIDF. S3 is additionally sharable outside EIDF infrastructure.
 
-## I want to use the X service, which needs lots (TBs) of data
+## I want to use the VM service and possibly others, for a lots of data (TBs) task
 
 You should use the CephFS Shared Storage. We do not recommend using large, specific attached storage for VMs. This type of storage is not sharable between machines in the EIDF and relies on the same underlying system.
 
 ## I want to use the GPU service, what storage do I need?
 
-The GPU service has its own persistent storage that should be requested via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit)
+The GPU service has its own persistent storage that is requested via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit). Instructions on the format of this request can be found in the [GPU service Tutorials page](https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/#:~:text=Please%20consider%20migrating%20your%20data%20onto%20CephFS,to%20use%20the%20new%20storage%20class%20afterwards.)
 
 The GPU service is being upgraded to use CephFS Shared Storage, when this is available it should be used as it can be shared across EIDF.
-
-Instructions on requesting a persistent volume can be found in the [GPU service Tutorials page](https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/#:~:text=Please%20consider%20migrating%20your%20data%20onto%20CephFS,to%20use%20the%20new%20storage%20class%20afterwards.)
 
 ## I want to use Cerebras
 
