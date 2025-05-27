@@ -23,9 +23,9 @@ See more general details about the VM service [here](../services/virtualmachines
 
 ### GPU local
 
-The GPU Service persistent volumes are only accessible from the GPU Service. Work is in progress for these to be provisioned by the Shared Storage (CephFS).
+The GPU Service persistent volumes are only accessible from the GPU Service. We are working on provisioning these with the CephFS Shared Storage instead.
 
-See more general details about the GPU service [here](../services/gpuservice/index.md).
+See more details about the GPU service [here](../services/gpuservice/index.md).
 
 ### Ultra2 local
 
@@ -39,7 +39,7 @@ See more general details about Ultra2 [here](../services/ultra2/access.md).
 
 The EIDF S3, provisioned over CephFS, is directly accessible from the VM, GPU and Ultra2 services.
 
-We are working to make S3 accessible from the Cerebras processing unit. S3 **may** be the first EIDF writeable storage service to be accessible across our computing infrastructure.
+We are working to make S3 accessible from the Cerebras processing unit. S3 **may** be the first EIDF writeable storage service accessible across our computing infrastructure.
 
 S3 is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
@@ -47,24 +47,24 @@ See more about S3 at EIDF [here](../services/s3/index.md).
 
 ### CephFS Shared Storage
 
-CephFS provides storage accessible across EIDF services. It is directly accessible from the VMs, Ultra2 and the Cerebras.
+CephFS provides storage acessible across EIDF services. It is directly accessible from the VMs, Ultra2 and the Cerebras.
 
 !!! Note
     **CephFS is not yet usable from the GPU service.**
 
-    We are working to make shared storage accessible from the EIDF GPU Service; this will make it accessible across our entire computing infrastructure.
+We are working to make shared storage accessible from the EIDF GPU Service; Once available this will make it accessible across our entire computing infrastructure.
 
 Cerebras only uses CephFS Shared Storage. PIs can make it available on their VMs; see how on the documentation [mounting CephFS on VMs](../services/virtualmachines/sharedfs.md).
 
-See more general information about the EIDF Shared Storage [here](../services/virtualmachines/sharedfs.md).
+See more information about the EIDF Shared Storage [here](../services/virtualmachines/sharedfs.md).
 
 ## ⁠Data Publishing Service
 
-This is accessible from all of the EIDF and other services worldwide with required credentials. It is read-only, implemented through Ceph-based S3.
+This is accessible from all EIDF and other services worldwide with required credentials. It is read-only, implemented through Ceph-based S3.
 
 The Data Publishing Service is visible from all systems with external network access except the EIDF Cerebras processing-nodes.
 
-See more general information about the data publishing service [here](../services/datapublishing/service.md).
+See more information about the data publishing service [here](../services/datapublishing/service.md).
 
 ## Disaster Recovery and User Back-up
 
