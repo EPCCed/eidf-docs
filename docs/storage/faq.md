@@ -35,7 +35,7 @@ S3 and CephFS Shared Storage can be used within the Notebook service. Notebooks 
 If you want to use both, use the CephFS Shared Storage or S3.
 These are the only storage that can be shared between the two services.
 
-See more details about the Notebook service [here](../services/jhub/index.md).
+See more details about the [Notebook service](../services/jhub/index.md).
 
 ## I have an additional question not covered, what do I do?
 
