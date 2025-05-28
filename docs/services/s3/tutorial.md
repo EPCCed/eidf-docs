@@ -48,7 +48,7 @@ List the buckets in your account:
 aws s3 ls
 ```
 
-Create a bucket (note: the name must be between 3-63 characters, and must contain only lower case letters, numbers, hyphens '-', or full stops '.':
+Create a bucket (note: the name must be between 3-63 characters, and must contain only lower case letters, numbers, hyphens '-', or full stops '.'):
 
 ```bash
 aws s3api create-bucket --bucket <bucketname>
