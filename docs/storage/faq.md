@@ -13,9 +13,13 @@ Presently, no single storage solution is directly accessible from all EIDF servi
 - CephFS Shared Storage is not accessible from the EIDF GPU Service
 - S3 is not accessible from the Cerebras processing unit.
 
-In general CephFS Shared Storage or S3, except for the above, are sharable across EIDF. S3 is additionally sharable outside EIDF infrastructure.
+## I want to share make my data available to outside EIDF, what storage should I use?
 
-## I want to use the VM service and possibly others, for lots of data (TBs) task
+The Data Publishing Service provides public read access for data to be shared outside of the EIDF infrastructure.
+
+S3 storage is sharable outside EIDF infrastructure. The EIDF S3 service is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html).
+
+## What storage should I use if I want to use the VM service and possibly others, for lots of data (TBs) task?
 
 You should use the CephFS Shared Storage. We do not recommend using large, specific attached storage for VMs. This type of storage is not sharable between machines in the EIDF and relies on the same underlying system.
 
@@ -25,11 +29,11 @@ The GPU service has persistent storage attached, requested via the [EIDF Helpdes
 
 The GPU service is being upgraded to use CephFS Shared Storage. Once available CephFS Shared Storage should be used as it can be shared across EIDF services.
 
-## I want to use Cerebras
+## I want to use Cerebras, what storage do I need?
 
 Cerebras only uses CephFS Shared Storage. PIs can request access to CephFS Shared Storage and configure it to be available on their VMs by contacting the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) for guidance.
 
-## I want to use Notebooks and a VM
+## I want to use Notebooks and a VM, what storage do I need?
 
 S3 and CephFS Shared Storage can be used within the Notebook service. Notebooks and VMs are not directly shareable.
 If you want to use both, use the CephFS Shared Storage or S3.

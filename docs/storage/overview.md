@@ -11,19 +11,31 @@ The EIDF offers the following storage options:
 
 These storage options are backed by the hardware described on this [page](https://edinburgh-international-data-facility.ed.ac.uk/about/hardware)
 
+## Summary of Storage Options and Access
+
+|         Service         | VM Local | GPU Local | Ultra2 Local | S3  | CephFS Shared Storage | Data Publishing Service |
+| :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
+|           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
+|       GPU Service       |    No    |    Yes    |      No      | Yes |          No           |           Yes           |
+|         Ultra2          |    No    |    No     |     Yes      | Yes |          Yes          |           Yes           |
+|        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
+|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes            |
+
+
 ## Persistent Volumes attached to specific services
 
 ### Virtual Machine (VM) local
 
-VMs have a limit of 32TB on the size of a VM's boot disk. We recommend using a 50GB default size of boot disk for software installations. Whilst you can request more disks to be attached we recommend user data use CephFS or S3. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.
+Local storage on VMs is provisioned over [CephRBD](https://docs.ceph.com/en/reef/rbd/). This type of storage is only accessible from the VMs.
 
-Storage local to the VM is provisioned over [CephRBD](https://docs.ceph.com/en/reef/rbd/). It is only accessible on the VM.
+We recommend using 50 GB of local storage on VMs to ensure sufficient space for the boot partition and software installations. You can request more local storage, but we recommend using either CephFS or S3 for storing user data. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.
+
 
 See more general details about the [VM service](../services/virtualmachines/index.md).
 
 ### GPU local
 
-The GPU Service persistent volumes are only accessible from the GPU Service. We are working on provisioning these with the CephFS Shared Storage.
+The GPU service uses persistent volumes. These are only accessible from the GPU service. We are working on provisioning these with the CephFS Shared Storage.
 
 CephFS Shared Storage will be available as a shared file storage per project. CephFS will count towards the persistent storage costs whereas the GPU Service persistent volumes are included in the GPU Service costs.
 
@@ -41,7 +53,7 @@ See more general details about [Ultra2](../services/ultra2/access.md).
 
 The EIDF S3, provisioned over CephFS, is directly accessible from the VM, GPU and Ultra2 services.
 
-We are working to make S3 accessible from the Cerebras processing unit. S3 **may** be the first EIDF writeable storage service accessible across our computing infrastructure.
+We are working to make S3 accessible from the Cerebras processing unit.
 
 S3 is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on [Amazon's S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 
@@ -76,12 +88,3 @@ Restoring data due to user actions, such as accidental file deletion, is **not**
 
 Presently there is no other disaster recovery on the EIDF.
 
-## Summary of Storage Options and Access
-
-|         Service         | VM Local | GPU Local | Ultra2 Local | S3  | CephFS Shared Storage | Data Publishing Service |
-| :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
-|           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
-|       GPU Service       |    No    |    Yes    |      No      | Yes |          No           |           Yes           |
-|         Ultra2          |    No    |    No     |     Yes      | Yes |          Yes          |           Yes           |
-|        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
-|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes            |
