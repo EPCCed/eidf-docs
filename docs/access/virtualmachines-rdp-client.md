@@ -91,7 +91,7 @@ Friendly Name: <ProjectID> Remote Connection via local port
 [Remote Desktop Connection](https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) (link from step 2) (preinstalled)
 
 1. Open the Remote Desktop Connection tool (`mstsc` in Run)
-2. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name ![Windows Remote Desktop](../images/access/rdp-client-connect/Windows Remote Desktop.png
+2. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name ![Windows Remote Desktop](../images/access/rdp-client-connect/Windows Remote Desktop.png)
 3. Input VDI login at the Login screen
 
 ### MacOS
@@ -107,10 +107,9 @@ Friendly Name: <ProjectID> Remote Connection via local port
 
 ### Linux
 
-[Remmina](https://remmina.org/)  (package manager)
+[Remmina](https://remmina.org/) installed via package manager of many distributions.
 
 1. Install and open Remmina
 2. Select add new connection profile in the top right for the connection profile dialog to appear ![linux add new connection](../images/access/rdp-client-connect/Add New Connection Remmina.png)
 3. Enter information about the forwarded port in remote viewer on client machine, ensuring that Protocol is set as RDP ![Linux configuration via Remmina](../images/access/rdp-client-connect/Connection Config Remmina.png)
-
 4. Click Save and Connect - You will be able to simply click on the friendly name next time you want to connect to the machine
