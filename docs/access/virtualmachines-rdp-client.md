@@ -1,17 +1,27 @@
 # Accessing Virtual Machines via an RDP Client
 
-## Ensure RDP is running on host machine
+Easy connection to a remote desktop is possible via the [Guacamole](https://guacamole.eidf.ac.uk/) web interface. A remote desktop client application can be useful for longer work. Dedicated remote desktop viewer programs allow better support of copy and paste, file sharing and other features that may not be available in the web interface.
+
+We refer to a Host machine as the machine with a RDP server running on it, within EIDF infrastructure this is the Virtual Desktop.
+
+The Client machine is any machine that you are using to connect to the host machine via the RDP protocol and remote desktop viewing software.
+
+It would be recommended to have accessed the host machine via Guacamole first as this process is simpler see instructions in [Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)](virualmachines-vdi.md)
+
+## Ensure RDP is running on the host machine
+
+You can check if the xrdp service is running on the host machine by running the following command in a terminal:
 
 ```bash
-systemctl status xrdp
+host-machine$ systemctl status xrdp
 ```
 
-Expecting that the status to contain Active: active (running). Example output:
+Expecting the status to contain `Active: active (running)` e.g.
 
 ```bash
-~$ systemctl status xrdp 
+host-machine$ systemctl status xrdp 
 ● xrdp.service - xrdp daemon
-     Loaded: loaded (/lib/systemd/system/xrdp.service; enabled; vendor preset: >
+     Loaded: loaded (/lib/systemd/system/xrdp.service; enabled; vendor preset: )
      Active: active (running) since ...
        Docs: man:xrdp(8)
              man:xrdp.ini(5)
@@ -19,27 +29,27 @@ Expecting that the status to contain Active: active (running). Example output:
    [...]
 ```
 
-## Setup Port Forwarding on the Client machine
+## Setup Port Forwarding from the host machine to the client machine
 
 !!! note
-    We need to setup port forwarding to get through the EIDF gateway. Whilst some remote desktop viewers support gateways they do not always work (e.g. windows app for macOS does not support ssh keys)
+     Port forwarding is needed to get through the EIDF gateway. Whilst some remote desktop viewers support gateways they do not always work (e.g. the Windows app for macOS does not support SSH keys)
 
-Setup a Port forwarding such that the RDP port on the remote desktop (3389) is forwarded to localhost (in this example we use 23001).
+Set up a port forwarding such that the RDP port on the remote desktop (`3389`) is forwarded to the `localhost` of the client machine you are running the remote desktop viewer on, in this example we use `23001`.
 
-!!! warning "Port on local machine must be unused"
-    Ports are usable by one process only as such must check that the port is not in use before doing above, **typically** port 23001 is unused. Checking if a port is in use is client device OS specific
+!!! warning "Port on the client machine must be unused"
+    Ports are usable by one process only as such must use one that is not in use. **Typically** port `23001` is unused. Checking if a port is in use is client device OS-specific
 
-In a terminal or cmd prompt on the client machine run the following command
+In a terminal or cmd prompt on the client machine run the following command:
 
 ```shell
-ssh -N -J <gateway username>@eidf-gateway.epcc.ed.ac.uk -L 23001:<VDI machine IP>:3389 <VDI username>@<VDI machine IP>
+client-machine$ ssh -N -J <gateway username>@eidf-gateway.epcc.ed.ac.uk -L 23001:<VDI machine IP>:3389 <VDI username>@<VDI machine IP>
 ```
 
-You should see the remote desktop gateway message and the terminal will then be attached to the ssh process without allowing input
+You should see the remote desktop gateway message and the terminal will then be attached to the SSH process without allowing input
 e.g.
 
-```shell
-➜  ~ ssh -N -J bc-eidfstaff@eidf-gateway.epcc.ed.ac.uk -L 23001:10.24.5.5:3389 bc-eidf124@10.24.5.5
+```text
+client-machine$ ssh -N -J bc-eidfstaff@eidf-gateway.epcc.ed.ac.uk -L 23001:10.24.5.5:3389 bc-eidf124@10.24.5.5
 ==================================================================================
  ______ _____ _____  ______    _____       _______ ________          __ __     __
 |  ____|_   _|  __ \|  ____|  / ____|   /\|__   __|  ____\ \        / /\\ \   / /
@@ -70,46 +80,53 @@ Computer Misuse Act, 1990 under which unauthorised use is a criminal offence.
 ----------------------------------------------------------------------------------
 ==================================================================================
 
-
 ```
 
-## Install and configure remote desktop viewer
+## Install and configure a remote desktop viewer
 
 Different distributions have different software solutions for remote desktop connections.
 
-Specific Linux, Mac and Windows based instructions are given in the sections below. If you have your own preferred remote desktop viewing software or cannot use the below instructions for whatever reason then the key details to be configured are:
+Instructions specific to the operating system in use are given in the below sections. If you have your own preferred remote desktop viewing software or cannot use the below instructions for whatever reason then the key details to be configured are:
 
 ```text
-PC or server name and port (server:port) : localhost:23001
-Credentials: We recommend leaving this blank or as 'Ask when required' until you have successfully connected to the machine. If prompted for credentials you will need those which you have for VDI connections, the same as in Guacamole
+PC or server name and port: localhost:23001
+VDI account credentials: We recommend leaving this blank or as 'Ask when 
+required' until you have successfully connected to the machine. If prompted for 
+credentials you will need those which you have for VDI connections, the same as 
+in Guacamole 
 Protocol: RDP
 Friendly Name: <ProjectID> Remote Connection via local port
 ```
 
 ### Windows
 
-[Remote Desktop Connection](https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) (link from step 2) (preinstalled)
+[Remote Desktop Connection](https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) relevant from step 2 "_Use Remote Desktop to connect to the PC you set up_" onwards. The Remote Desktop Connection program is preinstalled on Windows machines.
 
-1. Open the Remote Desktop Connection tool (`mstsc` in Run)
-2. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name ![Windows Remote Desktop](../images/access/rdp-client-connect/Windows Remote Desktop.png)
-3. Input VDI login at the Login screen
+1. Open the 'Remote Desktop Connection' program (`mstsc` in Run)
+2. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name![Windows Remote Desktop](../images/access/rdp_client_connect/Windows_Remote_Desktop.png)
+3. Click 'Connect'
+4. Input VDI login credentials once prompted at the login screen
 
-### MacOS
+### macOS
 
-1. Use [Microsoft Windows App](https://learn.microsoft.com/en-us/windows-app/) (app store)
+These instructions use the [Microsoft Windows App](https://learn.microsoft.com/en-us/windows-app/). This is a free program available from the [Apple App Store](https://apps.apple.com/us/app/windows-app/id1295203466?mt=12).
+
 1. Open the Windows App -> Click '+' -> Add PC
-1. Input into 'PC Name' the forwarded port on the local machine `localhost:23001` ![macos server input](../images/access/rdp-client-connect/macos ip input.png)
-1. Also add a 'friendly name' to describe the device being connected to
-1. Leave all other options as defaults at this stage
-1. Click Add
-1. Double click on the newly created PC to connect
-1. You will be prompted for the VDI username and password
+2. Input into 'PC Name' the forwarded port on the local machine `localhost:<port forwarded to>` e.g. `localhost:23001`![macOS server input](../images/access/rdp_client_connect/macos_ip_input.png)
+3. Also add a 'friendly name' to describe the device being connected to
+4. Leave all other options as defaults at this stage
+5. Click Add
+6. Double-click on the newly created PC to connect
+7. You will be prompted for the VDI username and password
 
 ### Linux
 
-[Remmina](https://remmina.org/) installed via package manager of many distributions.
+The following uses [Remmina](https://remmina.org), a stable Linux RDP client available via most package managers.
 
 1. Install and open Remmina
-2. Select add new connection profile in the top right for the connection profile dialog to appear ![linux add new connection](../images/access/rdp-client-connect/Add New Connection Remmina.png)
-3. Enter information about the forwarded port in remote viewer on client machine, ensuring that Protocol is set as RDP ![Linux configuration via Remmina](../images/access/rdp-client-connect/Connection Config Remmina.png)
-4. Click Save and Connect - You will be able to simply click on the friendly name next time you want to connect to the machine
+2. Select "Add a new connection profile" in the top right for the connection profile window to appear![linux add new connection](../images/access/rdp_client_connect/Add_New_Connection_Remmina.png)
+3. Ensure that 'Protocol' is set to RDP
+4. In the 'Server' field input the localhost and forwarded port `localhost:<port forwarded to>` e.g. `localhost:23001`![Linux configuration via Remmina](../images/access/rdp_client_connect/Connection_Config_Remmina.png)
+5. Enter a 'Friendly Name' to describe the device being connected to
+6. Leave the 'Username' and 'Password' fields blank at this stage (recommended). After your first successful connection, save your VDI credentials here for easier connection in the future
+7. Click Save and Connect: you will be able to simply click on the friendly name next time you want to connect to the machine
