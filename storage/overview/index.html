@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/access/ssh/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/storage/overview/">
       
       
-        <link rel="prev" href="../../services/virtualmachines/sharedfs/">
+        <link rel="prev" href="../../access/virtualmachines-vdi/">
       
       
-        <link rel="next" href="../../services/virtualmachines/flavours/">
+        <link rel="next" href="../faq/">
       
       
       <link rel="icon" href="../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>SSH Access to VMs - EIDF User Documentation</title>
+        <title>Overview - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host" class="md-skip">
+        <a href="#eidf-storage-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SSH Access to VMs
+              Overview
             
           </span>
         </div>
@@ -448,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../access/" class="md-nav__link">
         
   
   
@@ -471,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../project/" class="md-nav__link">
+      <a href="../../access/project/" class="md-nav__link">
         
   
   
@@ -494,12 +494,249 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Virtual Desktop Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Storage in the EIDF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Storage in the EIDF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-storage-options-and-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Storage Options and Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistent-volumes-attached-to-specific-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent Volumes attached to specific services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistent Volumes attached to specific services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine-vm-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Machine (VM) local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-service-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU service local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultra2-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultra2 local
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-available-for-use-on-multiple-eidf-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage available for use on multiple EIDF Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage available for use on multiple EIDF Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-filesystem-cephfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Filesystem (CephFS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-publishing-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⁠Data Publishing Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disaster Recovery
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQs
     
   </span>
   
@@ -532,100 +769,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Storage in the EIDF
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Storage in the EIDF
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../storage/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../storage/faq/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    FAQs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -641,7 +785,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -652,20 +796,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -681,7 +823,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             Virtual Desktops
@@ -764,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines-vdi/" class="md-nav__link">
+      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
         
   
   
@@ -807,32 +949,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../access/ssh/" class="md-nav__link">
         
   
   
@@ -843,200 +963,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#generating-and-adding-an-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating and Adding an SSH Key
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Generating and Adding an SSH Key">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-for-an-existing-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check for an existing SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generate-a-new-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate a new SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-the-new-ssh-key-to-your-account-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding the new SSH Key to your account via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding the new SSH Key to your account via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-new-ssh-key-via-safe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a new SSH Key via SAFE
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enabling-mfa-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enabling MFA via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling MFA via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing From MacOS/Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing from Windows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing from Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-and-using-openssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing and using OpenSSH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing EIDF via a Terminal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-with-putty" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing with PuTTY
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing with PuTTY">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-gateway-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Gateway Config
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-clientvm-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a client/VM config
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-aliases" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Aliases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
-    <span class="md-ellipsis">
-      sudo, Password Setting and Password Resets
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2850,76 +2776,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#generating-and-adding-an-ssh-key" class="md-nav__link">
+  <a href="#summary-of-storage-options-and-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Generating and Adding an SSH Key
+      Summary of Storage Options and Access
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Generating and Adding an SSH Key">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-for-an-existing-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check for an existing SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generate-a-new-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate a new SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-the-new-ssh-key-to-your-account-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding the new SSH Key to your account via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding the new SSH Key to your account via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-new-ssh-key-via-safe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a new SSH Key via SAFE
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-mfa-via-the-portal" class="md-nav__link">
+  <a href="#persistent-volumes-attached-to-specific-services" class="md-nav__link">
     <span class="md-ellipsis">
-      Enabling MFA via the Portal
+      Persistent Volumes attached to specific services
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Enabling MFA via the Portal">
+    <nav class="md-nav" aria-label="Persistent Volumes attached to specific services">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux" class="md-nav__link">
+  <a href="#virtual-machine-vm-local" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
+      Virtual Machine (VM) local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-service-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU service local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultra2-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultra2 local
     </span>
   </a>
   
@@ -2931,65 +2827,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
+  <a href="#storage-available-for-use-on-multiple-eidf-services" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing From MacOS/Linux
+      Storage available for use on multiple EIDF Services
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing from Windows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing from Windows">
+    <nav class="md-nav" aria-label="Storage available for use on multiple EIDF Services">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-and-using-openssh" class="md-nav__link">
+  <a href="#s3" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing and using OpenSSH
+      S3
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
+  <a href="#shared-filesystem-cephfs" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing EIDF via a Terminal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-with-putty" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing with PuTTY
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing with PuTTY">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-gateway-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Gateway Config
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-clientvm-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a client/VM config
+      Shared Filesystem (CephFS)
     </span>
   </a>
   
@@ -2999,25 +2858,20 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#ssh-aliases" class="md-nav__link">
+  <a href="#data-publishing-service" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Aliases
+      ⁠Data Publishing Service
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
+  <a href="#disaster-recovery" class="md-nav__link">
     <span class="md-ellipsis">
-      sudo, Password Setting and Password Resets
+      Disaster Recovery
     </span>
   </a>
   
@@ -3042,240 +2896,110 @@
   
 
 
-<h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines using the EIDF-Gateway Jump Host</h1>
-<p>The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
-You will require three things to use the gateway:</p>
-<ol>
-<li>A user within a project allowed to access the gateway and a password set.</li>
-<li>An SSH-key linked to this account, used to authenticate against the gateway.</li>
-<li>Have MFA setup with your project account via SAFE.</li>
-</ol>
-<p>Steps to meet all of these requirements are explained below.</p>
-<h2 id="generating-and-adding-an-ssh-key">Generating and Adding an SSH Key</h2>
-<p>In order to make use of the EIDF-Gateway, your EIDF account needs an SSH-Key associated with it.
-If you added one while creating your EIDF account, you can skip this step.</p>
-<h3 id="check-for-an-existing-ssh-key">Check for an existing SSH Key</h3>
-<p>To check if you have an SSH Key associated with your account:</p>
-<ol>
-<li>Login to the <a href="https://portal.eidf.ac.uk">Portal</a></li>
-<li>Select 'Your Projects'</li>
-<li>Select your project name</li>
-<li>Select your username</li>
-</ol>
-<p>If there is an entry under 'Credentials', then you're all setup.
-If not, you'll need to generate an SSH-Key, to do this:</p>
-<h3 id="generate-a-new-ssh-key">Generate a new SSH Key</h3>
-<ol>
-<li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
-<li>
-<p>Generate a new SSH Key:</p>
-<div class="highlight"><pre><span></span><code>ssh-keygen
-</code></pre></div>
-</li>
-<li>
-<p>It is fine to accept the default name and path for the key unless you manage a number of keys.</p>
-</li>
-<li>Press enter to finish generating the key</li>
-</ol>
-<h3 id="adding-the-new-ssh-key-to-your-account-via-the-portal">Adding the new SSH Key to your account via the Portal</h3>
-<ol>
-<li>Login into the <a href="https://portal.eidf.ac.uk">Portal</a></li>
-<li>Select 'Your Projects'</li>
-<li>Select the relevant project</li>
-<li>Select your username</li>
-<li>Select the plus button under  'Credentials'</li>
-<li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <code>&lt;ssh-key&gt;.pub</code> file you just created and copy its contents into the text box.</li>
-<li>Click 'Upload Credential' - it should look something like this:</li>
-</ol>
-<p><img alt="eidf-portal-ssh" class="border-img" src="../../images/access/eidf-portal-ssh.png" /></p>
-<h4 id="adding-a-new-ssh-key-via-safe">Adding a new SSH Key via SAFE</h4>
-<p>This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
-If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a>
-However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.</p>
-<h2 id="enabling-mfa-via-the-portal">Enabling MFA via the Portal</h2>
-<p>A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway.</p>
-<p>To enable this for your EIDF account:</p>
-<ol>
-<li>Login to the <a href="https://portal.eidf.ac.uk">portal.</a></li>
-<li>Select 'Projects' then 'Your Projects'</li>
-<li>Select the project containing the account you'd like to add MFA to.</li>
-<li>Under 'Your Accounts', select the account you would like to add MFA to.</li>
-<li>Select 'Set MFA Token'</li>
-<li>Within your chosen MFA application, scan the QR Code or enter the key and add the token.</li>
-<li>Enter the code displayed in the app into the 'Verification Code' box and select 'Set Token'</li>
-<li>You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.
-An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.</p>
-</div>
-<h3 id="using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux">Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux</h3>
-<ol>
-<li>
-<p>From your local terminal, import the SSH Key you generated above:
-    <code>ssh-add /path/to/ssh-key</code></p>
-</li>
-<li>
-<p>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</p>
-</li>
-</ol>
-<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.</p>
-<p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:</p>
-<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>/path/to/ssh-key
-ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
-</code></pre></div>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>~/.ssh/keys/id_ed25519
-ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>alice@10.24.1.1
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If the <code>ssh-add</code> command fails saying the SSH Agent is not running, run the below command:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="sb">`</span>ssh-agent<span class="sb">`</span>
-</code></pre></div>
-<p>Then re-run the ssh-add command above.</p>
-</div>
-<p>The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
-<p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
-<h2 id="accessing-from-windows">Accessing from Windows</h2>
-<p>Windows will require the installation of OpenSSH-Server to use SSH. Putty or MobaXTerm can also be used but won’t be covered in this tutorial.</p>
-<h3 id="installing-and-using-openssh">Installing and using OpenSSH</h3>
-<ol>
-<li>Click the ‘Start’ button at the bottom of the screen</li>
-<li>Click the ‘Settings’ cog icon</li>
-<li>Select 'System'</li>
-<li>Select the ‘Optional Features’ option at the bottom of the list</li>
-<li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button</li>
-<li>Search ‘OpenSSH Client’</li>
-<li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
-</ol>
-<h3 id="accessing-eidf-via-a-terminal">Accessing EIDF via a Terminal</h3>
-<ol>
-<li>Open either Powershell or the Windows Terminal</li>
-<li>
-<p>Import the SSH Key you generated above:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">.\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
-</code></pre></div>
-</li>
-<li>
-<p>This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="p">|</span> <span class="nb">Set-Service</span> <span class="n">-StartupType</span> <span class="n">Manual</span>
-<span class="nb">Start-Service</span> <span class="n">ssh-agent</span>
-<span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
-</code></pre></div>
-</li>
-<li>
-<p>Login by jumping through the gateway.</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="no">[EIDF username]</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="no">[EIDF username]</span><span class="p">@</span><span class="no">[vm_ip]</span>
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="n">alice</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="n">alice</span><span class="nv">@10</span><span class="p">.</span><span class="n">24</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span>
-</code></pre></div>
-</li>
-</ol>
-<p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
-<h3 id="accessing-with-putty">Accessing with PuTTY</h3>
-<h4 id="creating-the-gateway-config">Creating the Gateway Config</h4>
-<ol>
-<li>Install PuTTY v0.81 or greater and launch it</li>
-<li>From the default 'Session' menu, input the gateway URL: <code>eidf-gateway.epcc.ed.ac.uk</code></li>
-<li>Set the port to <code>22</code></li>
-<li>Naviagte to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials'</li>
-<li>Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'</li>
-<li>Select the path to your SSH key for your gateway account</li>
-<li>Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'</li>
-<li>Click Save</li>
-</ol>
-<h4 id="adding-a-clientvm-config">Adding a client/VM config</h4>
-<p>Now we can create a config session for a VM which can be connected to through the gateway</p>
-<ol>
-<li>From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'</li>
-<li>Input the hostname/IP of the VM, e.g. 10.24.X.Y.</li>
-<li>Ensure the port is <code>22</code></li>
-<li>From the navigation menu, move to 'Connection' &gt; 'Proxy'</li>
-<li>Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. <em>Note this doesn't exist in older versions of PuTTY</em></li>
-<li>Under 'Proxy Hostname', set the name of the gateway session you created above. In the SOP this was called 'eidf-gateway'</li>
-<li>Set the Port to <code>22</code></li>
-<li>Put your eidf-gateway username into the 'Username' box</li>
-<li>Set 'Do DNS name lookup at proxy end' to 'Yes'</li>
-<li>Navigate to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials' and select 'Browse' next to the 'Private key file for authentication' box</li>
-<li>Select your private key for your VM account (this may be the same as the gateway)</li>
-<li>Navigate to 'Connection' &gt; 'Data'</li>
-<li>Put your VM username into the 'Auto-Login username' box</li>
-<li>Return to the original 'Sesstion' tab</li>
-<li>Put the VM name or a nickname into the 'Saved Settings' name box</li>
-<li>Select 'Save'</li>
-<li>Select 'Open' and you should connect to your VM.</li>
-</ol>
-<h2 id="ssh-aliases">SSH Aliases</h2>
-<p>You can use SSH Aliases to access your VMs with a single command.</p>
-<ol>
-<li>
-<p>Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:</p>
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>~/.ssh/config
-</code></pre></div>
-</li>
-<li>
-<p>Insert the following lines:</p>
-<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
-<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
-<span class="w">  </span>User<span class="w"> </span>&lt;eidf<span class="w"> </span>project<span class="w"> </span>username&gt;
-<span class="w">  </span>IdentityFile<span class="w"> </span>/path/to/ssh/key
-</code></pre></div>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
-<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
-<span class="w">  </span>User<span class="w"> </span>alice
-<span class="w">  </span>IdentityFile<span class="w"> </span>~/.ssh/id_ed25519
-</code></pre></div>
-</li>
-<li>
-<p>Save and quit the file.</p>
-</li>
-<li>
-<p>Now you can ssh to your VM using the below command:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span><span class="w"> </span>-i<span class="w"> </span>/path/to/ssh/key
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span>alice@10.24.1.1<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519
-</code></pre></div>
-</li>
-<li>
-<p>You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:</p>
-<div class="highlight"><pre><span></span><code>Host &lt;vm name/alias&gt;
-  HostName 10.24.VM.IP
-  User &lt;vm username&gt;
-  IdentityFile /path/to/ssh/key
-  ProxyCommand ssh eidf-gateway -W %h:%p
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code>Host demo
-  HostName 10.24.1.1
-  User alice
-  IdentityFile ~/.ssh/id_ed25519
-  ProxyCommand ssh eidf-gateway -W %h:%p
-</code></pre></div>
-<p>If your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
-<code>HostKeyAlgorithms +ssh-rsa</code></p>
-</li>
-<li>
-<p>Now, by running <code>ssh demo</code> your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.</p>
-</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
-This method allows for a much less complicated ssh command to reach your VMs.
-You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like.
-The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
-</div>
-<h2 id="sudo-password-setting-and-password-resets">sudo, Password Setting and Password Resets</h2>
-<p>You do not have to set a password to log into virtual machines. However, if you have been given sudo permission, you will need to set a password to be able to make use of sudo. You can set (or reset) a password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+<h1 id="eidf-storage-overview">EIDF Storage Overview</h1>
+<p>The EIDF offers the following storage options:</p>
+<ul>
+<li><a href="#virtual-machine-vm-local">Virtual Machine (VM) local storage</a></li>
+<li><a href="#gpu-service-local">GPU local storage</a></li>
+<li><a href="#ultra2-local">Ultra2 local storage</a></li>
+<li><a href="#s3">S3</a></li>
+<li><a href="#shared-filesystem-cephfs">Shared Filesystem (CephFS)</a></li>
+<li><a href="#data-publishing-service">Data Publishing Service</a></li>
+</ul>
+<p>These storage options are backed by the hardware described on this <a href="https://edinburgh-international-data-facility.ed.ac.uk/about/hardware">page</a></p>
+<h2 id="summary-of-storage-options-and-access">Summary of Storage Options and Access</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Service</th>
+<th style="text-align: center;">VM Local</th>
+<th style="text-align: center;">GPU Local</th>
+<th style="text-align: center;">Ultra2 Local</th>
+<th style="text-align: center;">S3</th>
+<th style="text-align: center;">Shared Filesystem (CephFS)</th>
+<th style="text-align: center;">Data Publishing Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">VMs</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">GPU Service</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">Ultra2</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">Cerebras</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;">Notebooks</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="persistent-volumes-attached-to-specific-services">Persistent Volumes attached to specific services</h2>
+<h3 id="virtual-machine-vm-local">Virtual Machine (VM) local</h3>
+<p>Local storage on VMs is provisioned over <a href="https://docs.ceph.com/en/reef/rbd/">CephRBD</a>.
+ This type of storage is only accessible from the VMs.</p>
+<p>We recommend using 50 GB of local storage on VMs to ensure sufficient space for the boot partition and software installations. You can request more local storage, but we recommend using either the Shared Filesystem (CephFS) or S3 for storing user data. We will ask you to justify your resource requests for disk space in the multi-terabyte ranges.</p>
+<p>See more general details about the <a href="../../services/virtualmachines/">EIDF Virtual Desktop service</a>.</p>
+<h3 id="gpu-service-local">GPU service local</h3>
+<p>The EIDF GPU service uses persistent volumes provisioned with <a href="https://docs.ceph.com/en/reef/cephfs/">CephFS</a>. This is not the same storage as the Shared Filesystem (CephFS) and hence the GPU service persistent volumes are only accessible from the GPU service. Data stored in these volumes outlive the execution of jobs.</p>
+<p>Currently GPU Service persistent volumes are included in the GPU Service costs.</p>
+<p>See more details about the <a href="../../services/gpuservice/">GPU service</a>.</p>
+<h3 id="ultra2-local">Ultra2 local</h3>
+<p>Ultra2 uses our e1000 Lustre parallel filesystem; this storage is not accessible from anywhere else on the EIDF.</p>
+<p>See more general details about <a href="../../services/ultra2/access/">Ultra2</a>.</p>
+<h2 id="storage-available-for-use-on-multiple-eidf-services">Storage available for use on multiple EIDF Services</h2>
+<h3 id="s3">S3</h3>
+<p>The EIDF S3 is directly accessible from the VM, GPU and Ultra2 services.</p>
+<p>We are working to make S3 accessible from the Cerebras processing unit.</p>
+<p>S3 is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Amazon's S3 documentation</a></p>
+<p>See more details about <a href="../../services/s3/">S3 at EIDF</a>.</p>
+<h3 id="shared-filesystem-cephfs">Shared Filesystem (CephFS)</h3>
+<p>Our Shared Filesystem (CephFS) provides a parallel file system accessible across EIDF services. It is directly accessible from the VM service, GPU service, Ultra2 and Cerebras.</p>
+<p>Cerebras only uses Shared Filesystem (CephFS). PIs can make it available on their VMs; see how on the documentation <a href="../../services/virtualmachines/sharedfs/">mounting CephFS on VMs</a>.</p>
+<p>The Shared Filesystem (CephFS) is provisioned through <a href="https://docs.ceph.com/en/reef/cephfs/">CephFS</a>.</p>
+<p>See more information about the <a href="../../services/virtualmachines/sharedfs/">EIDF Shared Filesystem (CephFS)</a>.</p>
+<h2 id="data-publishing-service">⁠Data Publishing Service</h2>
+<p>This is accessible from all EIDF services and has public read-only access, implemented through Ceph-based S3.</p>
+<p>The Data Publishing Service is visible from all systems with external network access except the EIDF Cerebras processing-nodes.</p>
+<p>See more information about the <a href="../../services/datapublishing/service/">Data Publishing service</a>.</p>
+<h2 id="disaster-recovery">Disaster Recovery</h2>
+<p>The Ultra2-local storage is replicated onto tape for recovery from disaster. Disaster recovery is triggered by disk hardware failure, not user error. Restoring data due to user actions, such as accidental file deletion, is <strong>not</strong> supported or planned as a service.</p>
+<p>There is no user interface for the Disaster Recovery and any action will be taken by the EIDF team in response to issues. If you suspect disk failures on Ultra2, please raise a ticket through the EIDF Portal facility.
+The EIDF Disaster Recovery is implemented through the <a href="https://www.hpe.com/us/en/collaterals/collateral.a00022795enw.html">HPE Data Management Framework</a>.</p>
 
 
 
