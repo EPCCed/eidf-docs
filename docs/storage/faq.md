@@ -14,7 +14,7 @@ The Shared Filesystem (CephFS) is available throughout EIDF services.
 
 We are actively working to improve cross-service accessibility of S3. Currently the only remaining issue is that S3 is not accessible from the Cerebras processing unit.
 
-## I want to share make my data available to outside EIDF, what storage should I use?
+## I want to make my data available outside EIDF, what storage should I use?
 
 The Data Publishing Service provides public read access for data to be shared outside of the EIDF infrastructure.
 
