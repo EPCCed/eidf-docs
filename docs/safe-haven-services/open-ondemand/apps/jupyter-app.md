@@ -46,9 +46,7 @@ then, refresh the web page, or click the 'Connect to JupyterLab' button again.
 
 ---
 
-## Using JupyterLab
-
-### Log in
+## Log in
 
 JupyterLab running in the container is password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
 
@@ -58,7 +56,9 @@ Within JupyterLab, you are the `root` user.
 
     You are only the `root` user within the context of the container, not on the back-end itself! Any files you create in the mounted directories described below will be owned by your own user on the back-end.
 
-### Access directories on back-end
+---
+
+## Access directories on back-end
 
 Within JupyterLab, you will have the following directories available, mounted into the container from the back-end:
 
@@ -66,7 +66,11 @@ Within JupyterLab, you will have the following directories available, mounted in
 * `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
 * `/scratch/`: A mount that corresponds to a 'scratch-NUMBER' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
 
-### Take a break
+You can read/write files to/from any of these directories.
+
+---
+
+## Take a break
 
 Your container job will continue to run even if you do the following:
 
@@ -77,7 +81,9 @@ Your container job will continue to run even if you do the following:
 
 You can re-access your running container via the 'Connect to JupyterLab' on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions) page accessed via 'My Interactive Sessions' (overlaid squares icon) on the menu bar.
 
-### End your job
+---
+
+## End your job
 
 You can end your job by as follows:
 
