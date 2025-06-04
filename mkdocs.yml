@@ -1,5 +1,6 @@
 theme:
   name: material
+  custom_dir: overrides
   favicon: images/favicon.ico
   logo: images/EIDF_rgb.png
   palette:
@@ -37,6 +38,9 @@ nav:
     - "Web and SSH": access/index.md
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+  - "Storage in the EIDF":
+    - "Overview": storage/overview.md
+    - "FAQs": storage/faq.md
   - "Computing Services":
     - "Virtual Desktops":
       - "Overview": services/virtualmachines/index.md

@@ -34,7 +34,7 @@ The current full specification of the EIDF GPU Service as of April 2025:
 
 Users should have an [EIDF Account](../../access/project.md) as the EIDF GPU Service is only accessible through EIDF Virtual Machines.
 
-Existing projects can request access to the EIDF GPU Service through a service request to the [EIDF helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing eidf@epcc.ed.ac.uk .
+Existing projects can request access to the EIDF GPU Service through a service request to the [EIDF helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) .
 
 New projects wanting to using the GPU Service should include this in their EIDF Project Application.
 
