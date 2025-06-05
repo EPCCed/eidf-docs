@@ -10,30 +10,30 @@ Job Composer is an Open OnDemand app that allows you to submit a Slurm batch job
 
 ## Create Slurm job
 
-To create a Slurm job, select the 'New Job' menu, then select:
+To create a Slurm job, select the **New Job** menu, then select:
 
-* 'From Default Template' option to create a 'hello world' job from a template, with a default job name to be submitted to the default back-end, which is the first back-end you have access to in alphabetical order. If you select this option, the job files are created.
-* 'From Template' option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:
+* **From Default Template** option to create a 'hello world' job from a template, with a default job name to be submitted to the default back-end, which is the first back-end you have access to in alphabetical order. If you select this option, the job files are created.
+* **From Template** option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:
     - Enter a 'Job Name'.
     - Select a back-end, 'Cluster'.
-    - Click 'Open Dir' to view the template job files.
-    - Click 'Create New Job' to create the job files.
-* 'From Specified Path' option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.
-* 'From Selected job' option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.
+    - Click **Open Dir** to view the template job files.
+    - Click **Create New Job** to create the job files.
+* **From Specified Path** option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.
+* **From Selected job** option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.
 
 ---
 
 ## Edit job files
 
-Click 'Open Editor' to open an editor to edit the Slurm job submission script (default name `main_job.sh`).
+Click **Open Editor** to open an editor to edit the Slurm job submission script (default name `main_job.sh`).
 
 Click on a file name under 'Folder contents' to open an editor to edit that file in the job context directory.
 
-Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory.
+Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.md) pointing at the job context directory.
 
-Click 'Open Terminal' (either button) to open an SSH session with the back-end on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
 
-### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
+### Troubleshooting: 'cd ... No such file or directory'
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
@@ -41,7 +41,7 @@ If you see 'cd ... No such file or directory' error after you have logged into t
 
 ## Submit Slurm job
 
-Click 'Submit job' (green play icon) to submit your job.
+Click **Submit job** (green play icon) to submit your job.
 
 ---
 
@@ -60,7 +60,7 @@ succeeded or failed can be seen in the job details for the job which can be seen
 
 ### Open File Manager to job context directory
 
-Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) pointing at the job context directory for the currently selected job.
+Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.md) pointing at the job context directory for the currently selected job.
 
 !!! Note
 
@@ -68,19 +68,19 @@ Click 'Open Dir' or click 'Edit Files' to open the [File Manager](../files.md) p
 
 ### Open SSH session to back-end
 
-Click 'Open Terminal' (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
 
-#### Troubleshooting: 'Open in Terminal' 'cd ... No such file or directory'
+#### Troubleshooting: 'cd ... No such file or directory'
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
 ### Stop a job
 
-Click 'Stop job' (amber stop icon) to stop the currently selected job.
+Click **Stop job** (amber stop icon) to stop the currently selected job.
 
 ### Delete a job
 
-Click 'Delete job' (red trash icon) to stop and delete the currently selected job.
+Click **Delete job** (red trash icon) to stop and delete the currently selected job.
 
 The job context directory for the job will also be deleted.
 
@@ -90,12 +90,12 @@ The job context directory for the job will also be deleted.
 
 Create and submit job:
 
-* Select 'New Job' menu, 'From Template' option.
+* Select **New Job** menu, **From Template** option.
 * Enter Job Name: Hello World
 * Select a Cluster, back-end.
-* Click 'Create New Job'.
+* Click **Create New Job**.
 * View the `main_job.sh` script contents.
-* Under 'main_job.sh', click 'Open Editor'.
+* Under 'main_job.sh', click **Open Editor**.
 * A new browser tab will appear with an editor.
 * Change the line:
 ```
@@ -105,9 +105,9 @@ echo "Hello World" > output_file
 ```
 echo "Hello World to $USER from $(hostname)" > output_file
 ```
-* Click 'Save'.
-* Switch to the 'Job Composer' browser tab.
-* Click 'Submit job' (green play icon).
+* Click **Save**.
+* Switch to the Job Composer browser tab.
+* Click **Submit job** (green play icon).
 * The job 'Status' should go from 'Queued' to 'Completed'.
 
 If you selected a back-end where your home directory is mounted across both the Open OnDemand host and the back-end, then:
@@ -118,7 +118,7 @@ If you selected a back-end where your home directory is mounted across both the 
 Created output file with 'Hello World'
 ```
 * Close the tab.
-* Switch to the 'Job Composer' browser tab.
+* Switch to the Job Composer browser tab.
 * Click `output_file` under 'Folder Contents:`
 * A new browser tab will appear with the contents of the file. For example:
 ```
@@ -128,7 +128,7 @@ Hello World to someuser from some-host.nsh.loc
 
 If you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then:
 
-* Click 'Open Terminal' to open an SSH session with the back-end on which the job was run. Your SSH session change your current directory to match the job context directory.
+* Click **Open Terminal** to open an SSH session with the back-end on which the job was run. Your SSH session change your current directory to match the job context directory.
 * View the job context directory:
 ```console
 $ pwd

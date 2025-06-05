@@ -1,6 +1,6 @@
 # Run JupyterLab
 
-'Run JupyterLab' is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
+Run JupyterLab is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
 
 The container is run using Podman.
 
@@ -17,13 +17,13 @@ Complete the following information the app form:
 * Cores (max 28): Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
 * Memory in GiB (max 58 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
 
-Click 'Launch'.
+Click **Launch**.
 
 Open OnDemand will submit a job to your chosen back-end to create and run the container.
 
-When the container has started a 'Connect to JupyterLab' button will appear.
+When the container has started a **Connect to JupyterLab** button will appear.
 
-Click 'Connect to JupyterLab'.
+Click **Connect to JupyterLab**.
 
 !!! Note
 
@@ -31,7 +31,7 @@ Click 'Connect to JupyterLab'.
 
 ### Troubleshooting: Proxy Error
 
-If you click 'Connect to JupyterLab' and get:
+If you click **Connect to JupyterLab** and get:
 
 > Proxy Error
 >
@@ -42,13 +42,13 @@ If you click 'Connect to JupyterLab' and get:
 >
 > Apache/2.4.52 (Ubuntu) Server at eidf147-runner-vm Port 443
 
-then, refresh the web page, or click the 'Connect to JupyterLab' button again.
+then, refresh the web page, or click the **Connect to JupyterLab** button again.
 
 ---
 
 ## Log in
 
-JupyterLab running in the container is password-protected. The password is auto-generated. The 'Connect to JupyterLab' button is configured to log you into the container using this password automatically.
+JupyterLab running in the container is password-protected. The password is auto-generated. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
 Within JupyterLab, you are the `root` user.
 
@@ -64,7 +64,7 @@ Within JupyterLab, you will have the following directories available, mounted in
 
 * `/safe_data/`: A mount that corresponds to your project's `/safe_data/` subdirectory on the back-end. The subdirectory to mount is inferred from your user group.
 * `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
-* `/scratch/`: A mount that corresponds to a 'scratch-NUMBER' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
+* `/scratch/`: A mount that corresponds to a 'scratch' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
 
 You can read/write files to/from any of these directories.
 
@@ -74,12 +74,12 @@ You can read/write files to/from any of these directories.
 
 Your container job will continue to run even if you do the following:
 
-* Log out of JupyterLab via 'File', 'Log Out'.
+* Log out of JupyterLab via **File**, **Log Out**.
 * Close the browser tab.
 * Log out of Open OnDemand.
 * Log out of the host from which you accessed Open OnDemand.
 
-You can re-access your running container via the 'Connect to JupyterLab' on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions) page accessed via 'My Interactive Sessions' (overlaid squares icon) on the menu bar.
+You can re-access your running container via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
 
 ---
 
@@ -87,5 +87,5 @@ You can re-access your running container via the 'Connect to JupyterLab' on your
 
 You can end your job by as follows:
 
-* Either, log out of JupyterLab via 'File', 'Log Out'.
+* Either, log out of JupyterLab via **File**, **Log Out**.
 * Or, cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../jobs.md#browse-and-manage-jobs).

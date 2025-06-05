@@ -1,6 +1,6 @@
 # Run Container
 
-'Run Container' is a Container Execution Service app that allows you to run a container on a back-end.
+Run Container is a Container Execution Service app that allows you to run a container on a back-end.
 
 The app is designed to run batch containers, those that perform some computational or data-related task. The app is not designed for containers that spawn interactive services (for example, JupyterLab).
 
@@ -8,7 +8,7 @@ The containers **must** conform to the requirements of the Container Execution S
 
 * `/safe_data/`: A mount that corresponds to your project's `/safe_data/` subdirectory on the back-end. The subdirectory to mount is inferred from your user group.
 * `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
-* `/scratch/`: A mount that corresponds to a 'scratch-NUMBER' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
+* `/scratch/`: A mount that corresponds to a 'scratch' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
 
 Batch containers can read/write files to/from any of these directories.
 
@@ -45,7 +45,7 @@ HELLO_TRE=Greetings
 -n container-app-user
 ````
 
-Click 'Launch'.
+Click **Launch**.
 
 Open OnDemand will submit a job to your chosen back-end to create and run the container.
 

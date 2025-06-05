@@ -1,8 +1,8 @@
 # Active Jobs
 
-'Active Jobs' is an Open OnDemand app that allows you to browse and manage jobs created via both apps and the [Job Composer](job-composer.md) app.
+Active Jobs is an Open OnDemand app that allows you to browse and manage jobs created via both apps and the [Job Composer](job-composer.md) app.
 
-The 'Active Jobs' app shows a table of running and recently completed jobs.
+The Active Jobs app shows a table of running and recently completed jobs.
 
 ---
 
@@ -24,7 +24,7 @@ The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed
 
 ## Job details
 
-To see details about a job, click the '>' button, by the job of interest.
+To see details about a job, click the **>** button, by the job of interest.
 
 The 'Output Location' is the location of the job context directory for the job on the Open OnDemand host.
 
@@ -32,16 +32,16 @@ The 'Output Location' is the location of the job context directory for the job o
 
 ## Open File Manager to job context directory
 
-Click 'Open in File Manager' to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand host.
+Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand host.
 
 ---
 
 ## Open SSH session to back-end on which job is running
 
-Click 'Open in Terminal', to open an SSH session with the back-end on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
+Click **Open in Terminal**, to open an SSH session with the back-end on which the job is running. Your SSH session will open and change your current directory to match the job context directory.
 
 ---
 
 ## Cancel a job
 
-Click the 'Delete job' (red trash icon) by the job in the job table or click 'Delete' in the job details to cancel (delete) a running job.
+Click the **Delete job** (red trash icon) by the job in the job table or click **Delete** in the job details to cancel (delete) a running job.

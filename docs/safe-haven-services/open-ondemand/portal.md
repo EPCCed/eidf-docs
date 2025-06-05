@@ -17,7 +17,7 @@ General purpose features are described below.
 
 ## Restart your Open OnDemand session
 
-Select the 'Help (?)' menu, 'Restart Web Server' option to restart your Open OnDemand session.
+Select the **Help (?)** menu, **Restart Web Server** option to restart your Open OnDemand session.
 
 !!! Note
 
@@ -25,16 +25,16 @@ Select the 'Help (?)' menu, 'Restart Web Server' option to restart your Open OnD
 
 !!! Tip
 
-    If the Open OnDemand service or apps have been updated during your session, then 'Restart Web Server' allows you to pick up such changes without having to log out and log back into Open OnDemand,
+    If the Open OnDemand service or apps have been updated during your session, then **Restart Web Server** allows you to pick up such changes without having to log out and log back into Open OnDemand,
 
 ---
 
 ## Display your log in name
 
-Click 'Avatar' (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as some-user'.
+Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as some-user'.
 
 ---
 
 ## Log out
 
-Click 'Log Out' button (right arrow icon) on the menu bar to log out of Open OnDemand.
+Click **Log Out** (right arrow icon) on the menu bar to log out of Open OnDemand.

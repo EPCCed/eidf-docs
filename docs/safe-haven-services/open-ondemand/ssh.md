@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Open OnDemand supports a number of ways by which you can open an SSH session to a back-end or the Open OnDemand host (if applicable).
+Open OnDemand allows you to open an SSH session to a back-end or the Open OnDemand host (if applicable) in a number of ways.
 
 In each case, a new browser tab will open with an SSH session for the selected host.
 
@@ -16,9 +16,9 @@ When prompted, enter your project username and password.
 
 ---
 
-## 'Clusters' menu
+## **Clusters** menu
 
-The 'Clusters' menu lists every back-end to which you have access, and the Open OnDemand host (if applicable).
+The **Clusters** menu lists every back-end to which you have access, and the Open OnDemand host (if applicable).
 
 Select a host-specific menu option to open an SSH session with the selected host.
 
@@ -28,42 +28,42 @@ When prompted, enter your project username and password.
 
 ## All Apps page cluster apps
 
-Select the 'Apps' menu, 'All Apps' option to go to the All Apps page.
+Select the **Apps** menu, **All Apps** option to go to the All Apps page.
 
-The 'All apps' page lists every back-end to which you have access, and the Open OnDemand host (if applicable).
+The All Apps page lists every back-end to which you have access, and the Open OnDemand host (if applicable).
 
-Click a host-specific 'Shell Access' link to open an SSH session with the selected host.
+Click a host-specific **Shell Access** link to open an SSH session with the selected host.
 
 ---
 
-## File Manager 'Open in Terminal' button
+## File Manager **Open in Terminal** button
 
-Select the 'Files' menu, 'Home Directory' option to open the [File Manager](./files.md), then click ['Open in Terminal'](./files.md#open-in-terminal).
+Select the **Files** menu, **Home Directory** option to open the [File Manager](./files.md), then click **[Open in Terminal](./files.md#open-in-terminal)**.
 
 ---
 
 ## My Interactive Sessions page job cards and back-ends on which jobs are running
 
-Click 'My Interactive Sessions' (overlaid squares icon) on the menu bar to open the My Interactive Sessions page which shows running apps and their job cards.
+Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page which shows running apps and their job cards.
 
-On a 'Running' job's job card, click the 'Host' link to open an SSH session with the back-end on which the job is running.
+On a 'Running' job's job card, click the **Host** link to open an SSH session with the back-end on which the job is running.
 
 ---
 
-## 'Active Jobs' app and back-ends on which jobs are running or ran
+## Active Jobs app and back-ends on which jobs are running or ran
 
 Open the [Active Jobs](apps/active-jobs.md) app.
 
-Click the '>' button, by the job of interest, to open the job details.
+Click the **>** button, by the job of interest, to open the job details.
 
-Click 'Open in Terminal' to open an SSH session with the back-end on which the job is running. Your SSH session will change your current directory to match the job context directory.
+Click **Open in Terminal** to open an SSH session with the back-end on which the job is running. Your SSH session will change your current directory to match the job context directory.
 
 ---
 
-## 'Job Composer' app and back-ends on which jobs will be run, are running, or ran
+## Job Composer app and back-ends on which jobs will be run, are running, or ran
 
 Open the [Job Composer](apps/job-composer.md) app.
 
 Select a job.
 
-Click 'Open Terminal' (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.

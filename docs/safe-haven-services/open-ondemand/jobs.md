@@ -42,7 +42,7 @@ Within some interactive apps, you will see back-ends referred to via 'short-name
 * smartdf_tenant_gpu_desktop01
 * shs_sdf01 - as the SuperdomeFlex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
 
-On [job cards](#job-cards) on the [My Interactive Sessions page](#my-interactive-sessions-page), described below, you will see the host IP addresses upon which the jobs are running.
+On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the host IP addresses upon which the jobs are running.
 
 !!! Note
 
@@ -115,7 +115,7 @@ To enable Open OnDemand to automatically copy your `ondemand` directory to a bac
 
 Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
 
-* Select 'Clusters' menu, 'Open OnDemand host Shell Access' option.
+* Select **Clusters** menu, **Open OnDemand host Shell Access** option.
 * A new browser tab with an SSH session to the back-end on which the job is running will appear.
 * When prompted, enter your project username and password.
 * Create a passphrase-less SSH key:
@@ -206,13 +206,13 @@ ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 
 You can browse and manage jobs via the [Active Jobs](./apps/active-jobs.md) app.
 
-For interactive app jobs (not those created by the [Job Composer](apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions) page, which provides more app-specific information.
+For interactive app jobs (not those created by the [Job Composer](apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
 
 ---
 
 ## My Interactive Sessions page
 
-Click 'My Interactive Sessions' (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
+Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
 
 This page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a [job card](#job-cards).
 
@@ -232,7 +232,7 @@ The job status, shown on the top-right of the job card, can be one of: 'Queued',
 
 ### Open File Manager to job context directory
 
-Click the 'Session ID' link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand host.
+Click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand host.
 
 !!! Note
 
@@ -240,19 +240,19 @@ Click the 'Session ID' link to open the [File Manager](./files.md), pointing at 
 
 ### Open SSH session to back-end on which job is running
 
-For 'Running' jobs, click the 'Host' link to open an SSH session with the back-end on which the job is running.
+For 'Running' jobs, click the **Host** link to open an SSH session with the back-end on which the job is running.
 
 ### Cancel a job
 
-Click 'Cancel' on a job card to cancel a running job.
+Click **Cancel** on a job card to cancel a running job.
 
 ### Relaunch a job
 
-Click 'Relaunch job' (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
+Click **Relaunch job** (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
 
 ### Delete a job card
 
-Click 'Delete' on a job card to delete the job card.
+Click **Delete** on a job card to delete the job card.
 
 !!! Note
 
