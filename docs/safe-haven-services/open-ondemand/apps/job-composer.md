@@ -16,6 +16,7 @@ To create a Slurm job, select the **New Job** menu, then select:
 * **From Template** option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:
     * Enter a 'Job Name'.
     * Select a back-end, 'Cluster'.
+        * **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
     * Click **Open Dir** to view the template job files.
     * Click **Create New Job** to create the job files.
 * **From Specified Path** option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.

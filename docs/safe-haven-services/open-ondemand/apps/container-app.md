@@ -21,6 +21,7 @@ The container can run using Podman or Apptainer, depending on which of these is 
 Complete the following information the app form:
 
 * Cluster: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+    * **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 * Container/image URL in container registry. For example, ghcr.io/mikej888/hello-tre:1.0.
 * Container registry username.
 * Container registry password/access token. An access token with read-only access to the container registry is strongly recommended but a token with read-write access or a password can also be used.
