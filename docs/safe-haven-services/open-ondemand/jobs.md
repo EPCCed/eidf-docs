@@ -18,7 +18,7 @@ A compute resource upon which tasks are run is called a **back-end** or **cluste
 
 Each run of a task on a back-end is called a **job**.
 
-An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
+An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](./apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
 A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our Container Execution Service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
@@ -56,7 +56,7 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 !!! Note
 
-    Unless using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
 ---
 
@@ -66,7 +66,7 @@ Within your home directory on the Open OnDemand host, Open OnDemand creates an `
 
 Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
 
-[Job Composer](apps/job-composer.md) app job files are created in a directory:
+[Job Composer](./apps/job-composer.md) app job files are created in a directory:
 
 ```console
 ondemand/data/sys/myjobs/projects/default/JOB_ID/
@@ -195,7 +195,7 @@ An example of the contents of a log file is as follows:
 Briefly, when a job is submitted, the following occurs:
 
 * Open OnDemand creates a job context directory under your `ondemand` directory.
-    * For [Job Composer](apps/job-composer.md) app:
+    * For [Job Composer](./apps/job-composer.md) app:
 
     ```console
     ondemand/data/sys/myjobs/projects/default/JOB_ID/
@@ -212,13 +212,13 @@ Briefly, when a job is submitted, the following occurs:
     * For back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 * Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 * When resources become available on the back-end, your job runs:
-    * For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
+    * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
     * For jobs created via apps, the job status will be 'Starting' and then 'Running'.
 * Your job will complete. The job status will be 'Completed'.
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
 
 ---
 
@@ -226,7 +226,7 @@ Briefly, when a job is submitted, the following occurs:
 
 You can browse and manage jobs via the [Active Jobs](./apps/active-jobs.md) app.
 
-For interactive app jobs (not those created by the [Job Composer](apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
+For interactive app jobs (not those created by the [Job Composer](./apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
 
 ---
 
@@ -238,7 +238,7 @@ This page shows app-specific jobs that have been submitted, are running, or have
 
 !!! Note
 
-    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
+    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](./apps/job-composer.md) are shown on that app's own page.
 
 ### Job cards
 
@@ -248,7 +248,7 @@ The job status, shown on the top-right of the job card, can be one of: 'Queued',
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
 
 ### Open File Manager to job context directory
 

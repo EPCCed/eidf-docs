@@ -51,7 +51,7 @@ On a job's job card, click the **Session ID** link to open the File Manager, poi
 
 ## Active Jobs app and job context directory
 
-Open the [Active Jobs](apps/active-jobs.md) app.
+Open the [Active Jobs](./apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
@@ -61,7 +61,7 @@ Click **Open in File Manager** to open the File Manager pointing at the job cont
 
 ## Job Composer app and job context directory
 
-Open the [Job Composer](apps/job-composer.md) app.
+Open the [Job Composer](./apps/job-composer.md) app.
 
 Select a job.
 
