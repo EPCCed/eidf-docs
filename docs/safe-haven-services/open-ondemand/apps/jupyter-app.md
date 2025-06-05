@@ -59,7 +59,7 @@ Within JupyterLab, you are the `root` user.
 
 ---
 
-## Access directories on back-end
+## Directories mounted into the container
 
 Within JupyterLab, you will have the following directories available, mounted into the container from the back-end:
 
@@ -81,6 +81,24 @@ Your container job will continue to run even if you do the following:
 * Log out of the host from which you accessed Open OnDemand.
 
 You can re-access your running container via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
+
+---
+
+## View files
+
+On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+
+!!! Note
+
+    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
+
+---
+
+## Log into back-end
+
+While the job is running, click the **Host** link to log into to back-end on which the job is running.
+
+If the job has completed, see [Log into back-ends](../ssh.md) for ways to log into the back-end.
 
 ---
 

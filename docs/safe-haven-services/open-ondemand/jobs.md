@@ -109,7 +109,7 @@ Currently, the back-ends where home directories are not mounted across both Open
 
 When using such back-ends, your `ondemand` directory, and so your job files, are automatically copied, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
 
-If your job creates files on the back-end, you will have to log into these back-end to view your files. There is no automatic copy of files from these back-ends back to the Open OnDemand host.
+If your job creates files on the back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand host. You will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
 
 ### Enable automated copy of `ondemand` directory to a back-end
 
@@ -260,7 +260,7 @@ Click the **Session ID** link to open the [File Manager](./files.md), pointing a
 
 ### Open SSH session to back-end on which job is running
 
-For 'Running' jobs, click the **Host** link to open an SSH session with the back-end on which the job is running.
+For 'Running' jobs, click the **Host** link to log into the back-end on which the job is running.
 
 ### Cancel a job
 

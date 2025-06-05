@@ -32,7 +32,7 @@ Click on a file name under 'Folder contents' to open an editor to edit that file
 
 Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.md) pointing at the job context directory.
 
-Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.
 
 ### Troubleshooting: Edit job files 'cd ... No such file or directory'
 
@@ -65,13 +65,13 @@ Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.m
 
 !!! Note
 
-    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
+    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
 
-### Open SSH session to back-end
+### Log into to back-end
 
-Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to log into the back-end on which the currently selected job will be run, is running or was run. Once logged in, your current directory will be changed to match the job context directory.
 
-#### Troubleshooting: Open SSH session to back-end 'cd ... No such file or directory'
+#### Troubleshooting: Log into back-end 'cd ... No such file or directory'
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
@@ -137,7 +137,7 @@ If you selected a back-end where your home directory is mounted across both the 
 
 If you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then:
 
-* Click **Open Terminal** to open an SSH session with the back-end on which the job was run. Your SSH session change your current directory to match the job context directory.
+* Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
 * View the job context directory:
 
     ```console

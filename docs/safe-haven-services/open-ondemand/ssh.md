@@ -1,12 +1,12 @@
-# Open SSH sessions
+# Log into back-ends
 
 ---
 
 ## Introduction
 
-Open OnDemand allows you to open an SSH session to a back-end or the Open OnDemand host (if applicable) in a number of ways.
+Open OnDemand allows you to log into a back-end or the Open OnDemand host (if applicable) in a number of ways.
 
-In each case, a new browser tab will open with an SSH session for the selected host.
+In each case, a new browser tab will open for the selected host.
 
 When prompted, enter your project username and password.
 
@@ -20,7 +20,7 @@ When prompted, enter your project username and password.
 
 The **Clusters** menu lists every back-end to which you have access, and the Open OnDemand host (if applicable).
 
-Select a host-specific menu option to open an SSH session with the selected host.
+Select a host-specific menu option to log into the selected host.
 
 When prompted, enter your project username and password.
 
@@ -32,7 +32,7 @@ Select the **Apps** menu, **All Apps** option to go to the All Apps page.
 
 The All Apps page lists every back-end to which you have access, and the Open OnDemand host (if applicable).
 
-Click a host-specific **Shell Access** link to open an SSH session with the selected host.
+Click a host-specific **Shell Access** link to log into the selected host.
 
 ---
 
@@ -46,7 +46,7 @@ Select the **Files** menu, **Home Directory** option to open the [File Manager](
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page which shows running apps and their job cards.
 
-On a 'Running' job's job card, click the **Host** link to open an SSH session with the back-end on which the job is running.
+On a 'Running' job's job card, click the **Host** link to log into the back-end on which the job is running.
 
 ---
 
@@ -56,7 +56,7 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in Terminal** to open an SSH session with the back-end on which the job is running. Your SSH session will change your current directory to match the job context directory.
+Click **Open in Terminal** to log into the back-end on which the job is running. Once logged in, your current directory will be changed to match the job context directory.
 
 ---
 
@@ -66,4 +66,4 @@ Open the [Job Composer](apps/job-composer.md) app.
 
 Select a job.
 
-Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
+Click **Open Terminal** (either button) to log into the back-end on which the currently selected job will be run, is running or was run. Once logged in, your current directory will be changed to match the job context directory.

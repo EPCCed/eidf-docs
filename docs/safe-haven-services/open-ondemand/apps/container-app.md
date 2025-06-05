@@ -58,6 +58,24 @@ When the container has started a 'Please wait until your job has completed' mess
 
 ---
 
+## View files
+
+On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+
+!!! Note
+
+    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
+
+---
+
+## Log into back-end
+
+While the job is running, click the **Host** link to log into to back-end on which the job is running.
+
+If the job has completed, see [Log into back-ends](../ssh.md) for ways to log into the back-end.
+
+---
+
 ## Take a break
 
 Your container job will continue to run even if you do the following:

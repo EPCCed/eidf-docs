@@ -63,7 +63,7 @@ Click **Sign in**.
 
 ---
 
-## Access directories on back-end
+## Directories mounted into the container
 
 Within RStudio Server, you will have the following directories available, mounted into the container from the back-end:
 
@@ -72,6 +72,24 @@ Within RStudio Server, you will have the following directories available, mounte
 * `/scratch/`: A mount that corresponds to a 'scratch' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
 
 You can read/write files to/from any of these directories.
+
+---
+
+## View files
+
+On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+
+!!! Note
+
+    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
+
+---
+
+## Log into back-end
+
+While the job is running, click the **Host** link to log into to back-end on which the job is running.
+
+If the job has completed, see [Log into back-ends](../ssh.md) for ways to log into the back-end.
 
 ---
 

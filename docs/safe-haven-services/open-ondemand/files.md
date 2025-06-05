@@ -16,20 +16,20 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    The File Manager only allows you to manipulate files on the Open OnDemand host. For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Distinct home directories](jobs.md#distinct-home-directories).
+    The File Manager allows you to **only** manipulate files on the Open OnDemand host. For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Distinct home directories](jobs.md#distinct-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
 
 ### **Open in Terminal**
 
-Click **Open in Terminal** to open an SSH session with a specific host:
+Click **Open in Terminal** to log into a specific host:
 
 * The default is the first back-end you have access to in alphabetical order.
 * To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific host.
 
-Your SSH session will open and change your current directory to match that you selected in the File Manager.
+Once logged in, your current directory will be changed to match the job context directory.
 
 #### Troubleshooting: 'cd ... No such file or directory'
 
-If, when your SSH session begins, you see an error like:
+If, after you have logged into the back-end, you see an error like:
 
 ```console
 bash: line 1: cd: /home/user/ondemand: No such file or directory
