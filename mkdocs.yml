@@ -119,7 +119,7 @@ nav:
        - "Run jobs": safe-haven-services/open-ondemand/jobs.md
        - "View and run apps": safe-haven-services/open-ondemand/apps.md
        - "Browse and manage files": safe-haven-services/open-ondemand/files.md
-       - "Open SSH sessions": safe-haven-services/open-ondemand/ssh.md
+       - "Log into back-ends": safe-haven-services/open-ondemand/ssh.md
        - "Apps":
           - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
           - "Run Container": safe-haven-services/open-ondemand/apps/container-app.md
