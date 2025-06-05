@@ -14,10 +14,10 @@ To create a Slurm job, select the **New Job** menu, then select:
 
 * **From Default Template** option to create a 'hello world' job from a template, with a default job name to be submitted to the default back-end, which is the first back-end you have access to in alphabetical order. If you select this option, the job files are created.
 * **From Template** option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:
-    - Enter a 'Job Name'.
-    - Select a back-end, 'Cluster'.
-    - Click **Open Dir** to view the template job files.
-    - Click **Create New Job** to create the job files.
+    * Enter a 'Job Name'.
+    * Select a back-end, 'Cluster'.
+    * Click **Open Dir** to view the template job files.
+    * Click **Create New Job** to create the job files.
 * **From Specified Path** option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.
 * **From Selected job** option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.
 
@@ -33,7 +33,7 @@ Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.m
 
 Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run. Your SSH session change your current directory to match the job context directory.
 
-### Troubleshooting: 'cd ... No such file or directory'
+### Troubleshooting: Edit job files 'cd ... No such file or directory'
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
@@ -70,7 +70,7 @@ Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.m
 
 Click **Open Terminal** (either button) to open an SSH session with the back-end on which the currently selected job will be run, is running or was run. Your SSH session change your current directory to match the job context directory.
 
-#### Troubleshooting: 'cd ... No such file or directory'
+#### Troubleshooting: Open SSH session to back-end 'cd ... No such file or directory'
 
 If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
@@ -98,13 +98,17 @@ Create and submit job:
 * Under 'main_job.sh', click **Open Editor**.
 * A new browser tab will appear with an editor.
 * Change the line:
-```
-echo "Hello World" > output_file
-```
+
+    ```bash
+    echo "Hello World" > output_file
+    ```
+
 * to:
-```
-echo "Hello World to $USER from $(hostname)" > output_file
-```
+
+    ```bash
+    echo "Hello World to $USER from $(hostname)" > output_file
+    ```
+
 * Click **Save**.
 * Switch to the Job Composer browser tab.
 * Click **Submit job** (green play icon).
@@ -114,37 +118,46 @@ If you selected a back-end where your home directory is mounted across both the 
 
 * Click `res.txt` under 'Folder Contents:`
 * A new browser tab will appear with the contents of the file:
-```
-Created output file with 'Hello World'
-```
+
+    ```text
+    Created output file with 'Hello World'
+    ```
+
 * Close the tab.
 * Switch to the Job Composer browser tab.
 * Click `output_file` under 'Folder Contents:`
 * A new browser tab will appear with the contents of the file. For example:
-```
-Hello World to someuser from some-host.nsh.loc
-```
+
+    ```text
+    Hello World to someuser from some-host.nsh.loc
+    ```
+
 * Close the tab.
 
 If you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then:
 
 * Click **Open Terminal** to open an SSH session with the back-end on which the job was run. Your SSH session change your current directory to match the job context directory.
 * View the job context directory:
-```console
-$ pwd
-/home/someuser/ondemand/data/sys/myjobs/projects/default/1
-$ ls -1
-main_job.sh
-output_file
-res.txt
-```
+
+    ```console
+    $ pwd
+    /home/someuser/ondemand/data/sys/myjobs/projects/default/1
+    $ ls -1
+    main_job.sh
+    output_file
+    res.txt
+    ```
+
 * View `res.txt`:
-```
-$ cat res.txt 
-Created output file with 'Hello World'
-```
+
+    ```console
+    $ cat res.txt
+    Created output file with 'Hello World'
+    ```
+
 * View `output_file`:
-```
-$ cat output_file 
-Hello World to someuser from some-host.nsh.loc
-```
+
+    ```console
+    $ cat output_file
+    Hello World to someuser from some-host.nsh.loc
+    ```

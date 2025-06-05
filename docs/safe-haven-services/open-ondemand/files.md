@@ -30,9 +30,11 @@ Your SSH session will open and change your current directory to match that you s
 #### Troubleshooting: 'cd ... No such file or directory'
 
 If, when your SSH session begins, you see an error like:
-```
+
+```console
 bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
+
 then this means that the directory you are currently viewing in the File Manager on the Open OnDemand host is not available on the back-end.
 
 This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. See [Distinct home directories](jobs.md#distinct-home-directories) for back-ends this relates to.
@@ -55,7 +57,7 @@ Click the **>** button, by the job of interest, to open the job details.
 
 Click **Open in File Manager** to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
 
-----
+---
 
 ## Job Composer app and job context directory
 

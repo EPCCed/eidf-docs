@@ -12,8 +12,8 @@ Complete the following information the app form:
 
 * Cluster: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
 * Container name: Name to be given to the container when it is run.
-    - Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-rstudio`.
-    - If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-rstudio`.
+    * Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-rstudio`.
+    * If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-rstudio`.
 * RStudio Server password: RStudio Server running in the container needs to be password-protected. Specify the password to use.
 * Cores (max 28): Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
 * Memory in GiB (max 58 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
@@ -28,7 +28,7 @@ Click **Connect to RStudio Server**.
 
 !!! Note
 
-   Your job, and so your container. will run for a maximum of 6 hours.
+    Your job, and so your container. will run for a maximum of 6 hours.
 
 ### Troubleshooting: Proxy Error
 

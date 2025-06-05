@@ -30,20 +30,20 @@ Complete the following information the app form:
 * Memory in GiB (max 17830 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
 * Use GPU?: Request that the container use a GPU. If selected, then the selected back-end must have GPUs available.
 * Command-line options to pass to container runner. These are Podman- or Apptainer-specific options to control the container runner's behaviour.
-* Environment variables to pass to container. These will be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form:
-```
-ENVIRONMENT_VARIABLE=value
-```
-    - For example:
-```
-HELLO_TRE=Greetings
-```
-    - If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
+* Environment variables to pass to container. These will be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
+
+    ```text
+    HELLO_TRE=Greetings
+    ```
+
+    * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
+
 * Arguments to pass to container. Container-specific arguments to be passed directly to the container when it is run. For example:
-````
--d 5
--n container-app-user
-````
+
+    ````text
+    -d 5
+    -n container-app-user
+    ````
 
 Click **Launch**.
 
@@ -53,7 +53,7 @@ When the container has started a 'Please wait until your job has completed' mess
 
 !!! Note
 
-   Your job, and so your container. will run for a maximum of 6 hours.
+    Your job, and so your container. will run for a maximum of 6 hours.
 
 ---
 

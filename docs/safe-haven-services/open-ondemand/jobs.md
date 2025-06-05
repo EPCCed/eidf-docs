@@ -67,20 +67,26 @@ Within your home directory on the Open OnDemand host, Open OnDemand creates an `
 Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
 
 [Job Composer](apps/job-composer.md) app job files are created in a directory:
-```
+
+```console
 ondemand/data/sys/myjobs/projects/default/JOB_ID/
 ```
+
 where `JOB_ID` is a numerical identifier. For example,
-```
+
+```console
 ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 Interactive app job files are created in a directory:
-```
+
+```console
 ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
+
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifer. For example,
-```
+
+```console
 ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
@@ -119,30 +125,39 @@ Set up a passphrase-less SSH key between the Open OnDemand host and the back-end
 * A new browser tab with an SSH session to the back-end on which the job is running will appear.
 * When prompted, enter your project username and password.
 * Create a passphrase-less SSH key:
+
 ```console
 $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
+...
 ```
+
 * Copy public key to back-end:
-```console
-$ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-(user@BACK-END-HOSTNAME.nsh.loc) Password: 
-```
+
+    ```console
+    $ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    (user@BACK-END-HOSTNAME.nsh.loc) Password:
+    ```
+
 * When prompted, enter your project username and password. The key will then be added to the back-end:
-```
-Number of key(s) added: 1
 
-Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
+    ```console
+    Number of key(s) added: 1
 
-and check to make sure that only the key(s) you wanted were added.
-```
+    Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
+
+    and check to make sure that only the key(s) you wanted were added.
+    ```
+
 * Check passphrase-less access to back-end:
-```console
-$ ssh BACK-END-HOSTNAME.nsh.loc hostname
-BACK-END-HOSTNAME.nsh.loc hostname
-```
+
+    ```console
+    $ ssh BACK-END-HOSTNAME.nsh.loc hostname
+    BACK-END-HOSTNAME.nsh.loc hostname
+    ```
+
 * You should not be prompted for a passphrase or password.
 
 ---
@@ -154,7 +169,8 @@ When a job is submitted to a back-end, a log file is created within an `ondemand
 Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
 An example of the contents of a log file is as follows:
-```
+
+```text
 # Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME`
 # Time: YYYY-MM-DD HH:MM:SS
 # Process: PROCESS-ID
@@ -179,21 +195,25 @@ An example of the contents of a log file is as follows:
 Briefly, when a job is submitted, the following occurs:
 
 * Open OnDemand creates a job context directory under your `ondemand` directory.
-    - For [Job Composer](apps/job-composer.md) app:
-```
-ondemand/data/sys/myjobs/projects/default/JOB_ID/
-```
-    - For interactive apps:
-```
-ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
-```
+    * For [Job Composer](apps/job-composer.md) app:
+
+    ```console
+    ondemand/data/sys/myjobs/projects/default/JOB_ID/
+    ```
+
+    * For interactive apps:
+
+    ```console
+    ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
+    ```
+
 * Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
-    - A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
-    - For back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
+    * A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
+    * For back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 * Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 * When resources become available on the back-end, your job runs:
-    - For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
-    - For jobs created via apps, the job status will be 'Starting' and then 'Running'.
+    * For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
+    * For jobs created via apps, the job status will be 'Starting' and then 'Running'.
 * Your job will complete. The job status will be 'Completed'.
 
 !!! Note
