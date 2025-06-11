@@ -63,19 +63,13 @@ Click **Sign in**.
 
 ---
 
-## Directories mounted into the container
+## Sharing files between a back-end and the container
 
-Within RStudio Server, you will have the following directories available, mounted into the container from the back-end:
-
-* `/safe_data/`: A mount that corresponds to your project's `/safe_data/` subdirectory on the back-end. The subdirectory to mount is inferred from your user group.
-* `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
-* `/scratch/`: A mount that corresponds to a 'scratch' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
-
-You can read/write files to/from any of these directories.
+See [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container)
 
 ---
 
-## View files
+## View job files
 
 On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
 

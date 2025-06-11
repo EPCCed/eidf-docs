@@ -2,17 +2,9 @@
 
 Run Container is a Container Execution Service app that allows you to run a container on a back-end.
 
-The app is designed to run batch containers, those that perform some computational or data-related task. The app is not designed for containers that spawn interactive services (for example, JupyterLab).
+The app is designed to run batch containers, those that perform some computational or data-related task. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
-The containers **must** conform to the requirements of the Container Execution Service (TODO link). When the container is run (via the Container Execution Service tools (TODO link)), three directories will be mounted into the container:
-
-* `/safe_data/`: A mount that corresponds to your project's `/safe_data/` subdirectory on the back-end. The subdirectory to mount is inferred from your user group.
-* `/safe_outputs/`: A mount that corresponds to an 'outputs' directory created in your home directory on the back-end. The directory name is `outputs-NUMBER`, where `NUMBER` is a randomly-generated number, for example `outputs-3320888`. The directory exists after the job ends.
-* `/scratch/`: A mount that corresponds to a 'scratch' directory created in your home directory on the back-end. The directory name is `scratch-NUMBER`, where `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory exists for the duration of the job and is then deleted.
-
-Batch containers can read/write files to/from any of these directories.
-
-The container can run using Podman or Apptainer, depending on which of these is available on a back-end.
+Containers run **must** conform to the requirements of the Container Execution Service (TODO link).
 
 ---
 
@@ -22,8 +14,7 @@ Complete the following information the app form:
 
 * Cluster: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
     * **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
-* Container/image URL in container registry. For example, `ghcr.io/mikej888/hello-tre:1.0`.
-    * The following container URL prefixes are supported: `ghcr.io/`
+* Container/image URL in container registry. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * Container registry username.
 * Container registry password/access token. An access token with read-only access to the container registry is strongly recommended but a token with read-write access or a password can also be used.
 * Container runner: Container execution tool with which to run container. The selected tool must be available on the selected back-end. Options are 'podman' or 'apptainer'.
@@ -59,7 +50,13 @@ When the container has started a 'Please wait until your job has completed' mess
 
 ---
 
-## View files
+## Sharing files between the back-end and the container
+
+See [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container)
+
+---
+
+## View job files
 
 On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
 
