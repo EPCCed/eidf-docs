@@ -23,7 +23,7 @@ If both pre-requisites are met, PIs and PMs will be able to see the **Mount** bu
 When CephFS is mounted on a VM, it can become the home directory for users logging into that VM. PIs and PMs can enable this mounting for individual VMs via the management page in the Portal.
 
 !!! warning
-    Mounting CephFS on a VM where users have superuser (`sudo`) permissions will allow them to see and manipulate files belonging to other users.
+    Mounting CephFS on a VM of a project where project users have superuser (`sudo`) permissions will allow these project users to see and manipulate files on the CephFS belonging to all other project users.
 
 !!! note
     If there is existing data in the VM-local `/home`, it will be moved to `/local-home` before mounting.
