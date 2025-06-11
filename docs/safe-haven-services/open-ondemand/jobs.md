@@ -98,11 +98,11 @@ ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c
 
 ## Distinct home directories
 
-For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa.
+For most back-ends, your home directory is common to both the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa.
 
-However, you may have access to back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end i.e., you have distinct, separate, home directories on each host.
+However, you may have access to back-ends where your home directory is not common to both the Open OnDemand host and the back-end i.e., you have distinct, separate, home directories on each host.
 
-Currently, the back-ends where home directories are not mounted across both Open OnDemand hosts and the back-ends are as follows:
+Currently, the back-ends where home directories are not common to both the Open OnDemand host and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
 * DataLoch hosts, dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
@@ -113,11 +113,11 @@ If your job creates files on the back-end, then there is no automatic copy of fi
 
 ### Enable automated copy of `ondemand` directory to a back-end
 
-To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand host and the back-end.
+To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand host and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand host and the back-end.
 
 !!! Note
 
-    Setting up SSH keys does **not** need to be done for back-ends where your home directory is mounted both on the Open OnDemand host and the back-ends.
+    Setting up SSH keys does **not** need to be done for back-ends where your home directory is common to both on the Open OnDemand host and the back-ends.
 
 Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
 
@@ -209,7 +209,7 @@ Briefly, when a job is submitted, the following occurs:
 
 * Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
     * A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
-    * For back-ends where your home directory is not mounted across both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
+    * For back-ends where your home directory is not common to both both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 * Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 * When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
@@ -256,7 +256,7 @@ Click the **Session ID** link to open the [File Manager](./files.md), pointing a
 
 !!! Note
 
-    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
+    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
 ### Open SSH session to back-end on which job is running
 

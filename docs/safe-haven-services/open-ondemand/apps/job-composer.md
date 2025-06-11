@@ -36,7 +36,7 @@ Click **Open Terminal** (either button) to log into the back-end on which the cu
 
 ### Troubleshooting: Edit job files 'cd ... No such file or directory'
 
-If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
+If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
 ---
 
@@ -65,7 +65,7 @@ Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.m
 
 !!! Note
 
-    When using a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
+    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
 
 ### Log into to back-end
 
@@ -73,7 +73,7 @@ Click **Open Terminal** (either button) to log into the back-end on which the cu
 
 #### Troubleshooting: Log into back-end 'cd ... No such file or directory'
 
-If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, and you have not yet submitted your job.
+If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, and you have not yet submitted your job.
 
 ### Stop a job
 
@@ -115,7 +115,7 @@ Create and submit job:
 * Click **Submit job** (green play icon).
 * The job 'Status' should go from 'Queued' to 'Completed'.
 
-If you selected a back-end where your home directory is mounted across both the Open OnDemand host and the back-end, then:
+If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:
 
 * Click `res.txt` under 'Folder Contents:`
 * A new browser tab will appear with the contents of the file:
@@ -135,7 +135,7 @@ If you selected a back-end where your home directory is mounted across both the 
 
 * Close the tab.
 
-If you selected a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end, then:
+If you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then:
 
 * Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
 * View the job context directory:

@@ -12,7 +12,7 @@ When prompted, enter your project username and password.
 
 !!! Note
 
-    If you see 'Open OnDemand host Shell Access' listed as an option anywhere, then you can log into the Open OnDemand host. This is supported for users who have access to back-ends where user home directories are not mounted across both the Open OnDemand host and those back-ends.
+    If you see 'Open OnDemand host Shell Access' listed as an option anywhere, then you can log into the Open OnDemand host. This is supported for users who have access to back-ends where user home directories are not common to both the Open OnDemand host and those back-ends.
 
 ---
 

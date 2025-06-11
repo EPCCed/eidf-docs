@@ -16,7 +16,11 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    The File Manager allows you to **only** manipulate files on the Open OnDemand host. For most back-ends, your home directory is mounted both on the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Distinct home directories](jobs.md#distinct-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
+    The File Manager allows you to **only** manipulate files on the Open OnDemand host. For most back-ends, your home directory is common to both the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Distinct home directories](jobs.md#distinct-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
+
+!!! Note
+
+    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand host.
 
 ### **Open in Terminal**
 
@@ -37,7 +41,7 @@ bash: line 1: cd: /home/user/ondemand: No such file or directory
 
 then this means that the directory you are currently viewing in the File Manager on the Open OnDemand host is not available on the back-end.
 
-This can arise if you select a back-end where your home directory is not mounted across both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. See [Distinct home directories](jobs.md#distinct-home-directories) for back-ends this relates to.
+This can arise if you select a back-end where your home directory is not common to both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. See [Distinct home directories](jobs.md#distinct-home-directories) for back-ends this relates to.
 
 ---
 
