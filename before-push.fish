@@ -8,7 +8,5 @@ mkdocs build
 
 mkdocs serve
 
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
 pre-commit run --all-files
 
