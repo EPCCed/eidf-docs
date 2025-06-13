@@ -46,7 +46,7 @@ When using a back-end where your home directory is **not** common to both the Op
 
     `/safe_data/PROJECT_SUBDIRECTORY` is **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
-### Troubleshooting: `/safe_data/PROJECT_SUBDIRECTORY` cannot be determined
+### Troubleshooting: 'Cannot open project data: /safe_data/cannot_determine_project_from_groups'
 
 If your project cannot be inferred from your user group or there is no subdirectory of `/safe_data/` for your project group, and you are not using a `$HOME/safe_data/` directory, then the job running the container will fail.
 
