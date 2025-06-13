@@ -41,3 +41,13 @@ You can interact with your project's `/safe_data/` subdirectory on the back-end,
 When using a back-end where your home directory is common to both the Open OnDemand host and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` via the [File Manager](./files.md) and/or by logging into the back-end, see [Log into back-ends](./ssh.md).
 
 When using a back-end where your home directory is **not** common to both the Open OnDemand host and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](./ssh.md).
+
+---
+
+## Containers and 'root' users
+
+You may find that for some containers, you are the 'root' user within the container.
+
+For these containers, you are the 'root' user **only** within the context of the container. You will not have 'root' access to the back-end on which the container is running!
+
+Any files you create in the directories mounted into the container will be owned by your own user on the back-end.
