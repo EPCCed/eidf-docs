@@ -8,4 +8,5 @@ To quickly get started with Open OnDemand:
 
 * [Access Open OnDemand](./access.md).
 * Read about how to Open OnDemand runs tasks, which it terms 'jobs', on compute resources available within your safe haven in [Run jobs](./jobs.md).
-* Run the '[Run Container](./apps/container-app.md)' app to run an example 'hello-tre' container.
+* Then, read about how to Open OnDemand runs containers via jobs in [Run containers](./containers.md).
+* [Run a 'hello-tre' example] using the '[Run Container](./apps/container-app.md)' app.
