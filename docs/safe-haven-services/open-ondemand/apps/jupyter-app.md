@@ -28,6 +28,10 @@ Click **Connect to JupyterLab**.
 
 !!! Note
 
+    Open OnDemand will wait 1200 seconds (20 minutes) for your container to start. If it does not start within this time the job will be cancelled.
+
+!!! Note
+
     Your job, and so your container. will run for a maximum of 6 hours.
 
 ### Troubleshooting: Proxy Error
