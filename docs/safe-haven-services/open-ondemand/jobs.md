@@ -171,7 +171,7 @@ Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For exa
 An example of the contents of a log file is as follows:
 
 ```text
-# Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME`
+# Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME
 # Time: YYYY-MM-DD HH:MM:SS
 # Process: PROCESS-ID
 # Open OnDemand server environment
