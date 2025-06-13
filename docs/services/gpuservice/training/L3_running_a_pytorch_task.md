@@ -2,7 +2,7 @@
 
 ## Requirements
 
-It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L2_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
+It is recommended that users complete [Getting started with Kubernetes](./L1_getting_started.md#requirements) and [Requesting persistent volumes With Kubernetes](./L2_requesting_persistent_volumes.md#requirements) before proceeding with this tutorial.
 
 ## Overview
 
