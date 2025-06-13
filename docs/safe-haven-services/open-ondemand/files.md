@@ -35,7 +35,7 @@ Once logged in, your current directory will be changed to match the job context 
 
 If, after you have logged into the back-end, you see an error like:
 
-```console
+```bash
 bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
 

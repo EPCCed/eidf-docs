@@ -68,25 +68,25 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 
 [Job Composer](./apps/job-composer.md) app job files are created in a directory:
 
-```console
+```bash
 ondemand/data/sys/myjobs/projects/default/JOB_ID/
 ```
 
 where `JOB_ID` is a numerical identifier. For example,
 
-```console
+```bash
 ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 Interactive app job files are created in a directory:
 
-```console
+```bash
 ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
 
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifer. For example,
 
-```console
+```bash
 ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
@@ -126,14 +126,14 @@ Set up a passphrase-less SSH key between the Open OnDemand host and the back-end
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
-    ```console
+    ```bash
     $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
     ...
     ```
 
 1. Copy public key to back-end:
 
-    ```console
+    ```bash
     $ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
     /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
     /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
@@ -143,7 +143,7 @@ Set up a passphrase-less SSH key between the Open OnDemand host and the back-end
 
 1. When prompted, enter your project username and password. The key will then be added to the back-end:
 
-    ```console
+    ```bash
     Number of key(s) added: 1
 
     Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
@@ -153,7 +153,7 @@ Set up a passphrase-less SSH key between the Open OnDemand host and the back-end
 
 1. Check passphrase-less access to back-end:
 
-    ```console
+    ```bash
     $ ssh BACK-END-HOSTNAME.nsh.loc hostname
     BACK-END-HOSTNAME.nsh.loc hostname
     ```
@@ -197,13 +197,13 @@ Briefly, when a job is submitted, the following occurs:
 1. Open OnDemand creates a job context directory under your `ondemand` directory.
     * For [Job Composer](./apps/job-composer.md) app:
 
-    ```console
+    ```bash
     ondemand/data/sys/myjobs/projects/default/JOB_ID/
     ```
 
     * For interactive apps:
 
-    ```console
+    ```bash
     ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
     ```
 

@@ -140,7 +140,7 @@ If you selected a back-end where your home directory is not common to both the O
 1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
 1. View the job context directory:
 
-    ```console
+    ```bash
     $ pwd
     /home/someuser/ondemand/data/sys/myjobs/projects/default/1
     $ ls -1
@@ -151,14 +151,14 @@ If you selected a back-end where your home directory is not common to both the O
 
 1. View `res.txt`:
 
-    ```console
+    ```bash
     $ cat res.txt
     Created output file with 'Hello World'
     ```
 
 1. View `output_file`:
 
-    ```console
+    ```bash
     $ cat output_file
     Hello World to someuser from some-host.nsh.loc
     ```

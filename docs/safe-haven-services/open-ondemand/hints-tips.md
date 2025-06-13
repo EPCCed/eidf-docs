@@ -6,7 +6,7 @@
 
 You can find the number of processors available on a back-end by logging into the back-end and running one of the following commands which count the number of occurrences of the terms in the `/proc/cpuinfo` file which gives the number of processors and cores available.
 
-```console
+```bash
 $ cat /proc/cpuinfo | grep processor | wc -l
 8
 $ cat /proc/cpuinfo | grep 'core id' | wc -l
@@ -21,7 +21,7 @@ This back-end has 8 processors and 8 cores.
 
 You can find the total memory available on a back end by logging into the back-end and running the following command:
 
-```console
+```bash
 $ free -h
                total        used        free      shared  buff/cache   available
 Mem:           125Gi       5.2Gi       6.0Gi       140Mi       114Gi       119Gi
@@ -62,7 +62,7 @@ A job may stay in a 'Queued' state for the following reasons:
 
 If you delete your `ondemand` directory on the Open OnDemand host, you may see an error like the following:
 
-```console
+```bash
 $ rm -rf ondemand/
 rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Device or resource busy
 ```
