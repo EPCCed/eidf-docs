@@ -46,6 +46,18 @@ When using a back-end where your home directory is **not** common to both the Op
 
     `/safe_data/PROJECT_SUBDIRECTORY` is **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
+### Troubleshooting: `/safe_data/PROJECT_SUBDIRECTORY` cannot be determined
+
+If your project cannot be inferred from your user group or there is no subdirectory of `/safe_data/` for your project group, and you are not using a `$HOME/safe_data/` directory, then the job running the container will fail.
+
+As described in [Job cards](./jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+
+In such cases, the log file for the job, in a `.log` file in the job's `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/` folder will include a message:
+
+```text
+Cannot open project data: /safe_data/cannot_determine_project_from_groups
+```
+
 ---
 
 ## Containers and 'root' users
