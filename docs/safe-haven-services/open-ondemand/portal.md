@@ -7,6 +7,7 @@
 Open OnDemand's features are described on the following pages:
 
 * [Run jobs](./jobs.md)
+* [Run containers](./containers.md)
 * [View and access apps](./apps.md)
 * [Browse and manage files](./files.md)
 * [Log into back-ends](./ssh.md)

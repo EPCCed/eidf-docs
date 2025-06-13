@@ -8,7 +8,7 @@ Open OnDemand allows you to run tasks on compute resources available within your
 
 Certain users of certain safe havens may also have acess to TRE-level compute resources, notably the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks.
+This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks. The page, [Run containers](./containers.md), focuses on how containers are run via such tasks.
 
 ---
 

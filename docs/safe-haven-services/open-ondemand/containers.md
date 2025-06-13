@@ -1,8 +1,8 @@
-# Open OnDemand and containers
+# Run containers
 
 ## Introduction
 
-The TRE Open OnDemand service is intended to all you to run containers. This includes both your own project-specific containers that you have been authorised to run within your safe haven as well as standard containers with useful services such as JupyterLab and RStudio Server.
+The TRE Open OnDemand service is intended to allow you to run jobs that run containers. This includes both your own project-specific containers that you have been authorised to run within your safe haven as well as standard containers with useful services such as JupyterLab and RStudio Server.
 
 Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
 
