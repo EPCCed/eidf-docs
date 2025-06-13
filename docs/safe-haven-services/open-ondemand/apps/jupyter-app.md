@@ -41,9 +41,11 @@ If you click **Connect to JupyterLab** and get:
 >
 > Reason: Error reading from remote server
 >
-> Apache/2.4.52 (Ubuntu) Server at eidf147-runner-vm Port 443
+> Apache/2.4.52 (Ubuntu) Server at host Port 443
 
-then, refresh the web page, or click the **Connect to JupyterLab** button again.
+then, this can arise as sometimes there is a lag between the container having started and JupyterLab within the container being ready for connections.
+
+Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab** button again.
 
 ---
 
