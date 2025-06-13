@@ -87,7 +87,7 @@ The job context directory for the job will also be deleted.
 
 ---
 
-## A 'hello world' example
+## Run a 'hello world' example
 
 Create and submit job:
 
