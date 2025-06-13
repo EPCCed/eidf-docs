@@ -91,43 +91,43 @@ The job context directory for the job will also be deleted.
 
 Create and submit job:
 
-* Select **New Job** menu, **From Template** option.
-* Enter Job Name: Hello World
-* Select a Cluster, back-end.
-* Click **Create New Job**.
-* View the `main_job.sh` script contents.
-* Under 'main_job.sh', click **Open Editor**.
-* A new browser tab will appear with an editor.
-* Change the line:
+1. Select **New Job** menu, **From Template** option.
+1. Enter Job Name: Hello World
+1. Select a Cluster, back-end.
+1. Click **Create New Job**.
+1. View the `main_job.sh` script contents.
+1. Under 'main_job.sh', click **Open Editor**.
+1. A new browser tab will appear with an editor.
+1. Change the line:
 
     ```bash
     echo "Hello World" > output_file
     ```
 
-* to:
+    to:
 
     ```bash
     echo "Hello World to $USER from $(hostname)" > output_file
     ```
 
-* Click **Save**.
-* Switch to the Job Composer browser tab.
-* Click **Submit job** (green play icon).
-* The job 'Status' should go from 'Queued' to 'Completed'.
+1. Click **Save**.
+1. Switch to the Job Composer browser tab.
+1. Click **Submit job** (green play icon).
+1. The job 'Status' should go from 'Queued' to 'Completed'.
 
 If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:
 
-* Click `res.txt` under 'Folder Contents:`
-* A new browser tab will appear with the contents of the file:
+1. Click `res.txt` under 'Folder Contents:`
+1. A new browser tab will appear with the contents of the file:
 
     ```text
     Created output file with 'Hello World'
     ```
 
-* Close the tab.
-* Switch to the Job Composer browser tab.
-* Click `output_file` under 'Folder Contents:`
-* A new browser tab will appear with the contents of the file. For example:
+1. Close the tab.
+1. Switch to the Job Composer browser tab.
+1. Click `output_file` under 'Folder Contents:`
+1. A new browser tab will appear with the contents of the file. For example:
 
     ```text
     Hello World to someuser from some-host.nsh.loc
@@ -137,8 +137,8 @@ If you selected a back-end where your home directory is common to both the Open 
 
 If you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then:
 
-* Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-* View the job context directory:
+1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
+1. View the job context directory:
 
     ```console
     $ pwd
@@ -149,14 +149,14 @@ If you selected a back-end where your home directory is not common to both the O
     res.txt
     ```
 
-* View `res.txt`:
+1. View `res.txt`:
 
     ```console
     $ cat res.txt
     Created output file with 'Hello World'
     ```
 
-* View `output_file`:
+1. View `output_file`:
 
     ```console
     $ cat output_file

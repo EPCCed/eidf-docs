@@ -6,22 +6,22 @@ Open OnDemand is accessed by running a browser on a host within your safe haven.
 
 To access Open OnDemand:
 
-* Start a remote desktop (RDP) session with a host within your safe haven, as described in [Safe Haven Service Access](../../safe-haven-access/).
-* Start a web browser within your safe haven host.
-* Enter the Open OnDemand URL for your safe haven:
+1. Start a remote desktop (RDP) session with a host within your safe haven, as described in [Safe Haven Service Access](../../safe-haven-access/).
+1. Start a web browser within your safe haven host.
+1. Enter the Open OnDemand URL for your safe haven:
     * National Safe Haven, `https://nsh-ondemand.nsh.loc`
     * ODAP, `https://odp-ondemand.nsh.loc`
     * Smart Data Foundry, `https://smartdf-ondemand.nsh.loc`
     * DataLoch, `https://dap-ondemand.nsh.loc`
-* If using Falkon and an SSL Certificate Error! dialog appears with text 'Would you like to make an exception for this certificate?', then:
+1. If using Falkon and an SSL Certificate Error! dialog appears with text 'Would you like to make an exception for this certificate?', then:
     * Click **Yes**
-* If using Firefox and a Warning: Potential Security Risk Ahead page appears with text 'Error code: SEC_ERROR_UNKNOWN_ISSUER', then
-    * Click **Advanced...**
-    * Click **Accept the Risk and Continue**
-* The Open OnDemand log-in page will appear.
-* Enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
-* Click **Log in**
-* [Open OnDemand](./portal.md) will open.
+1. If using Firefox and a Warning: Potential Security Risk Ahead page appears with text 'Error code: SEC_ERROR_UNKNOWN_ISSUER', then
+    1. Click **Advanced...**
+    1. Click **Accept the Risk and Continue**
+1. The Open OnDemand log-in page will appear.
+1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
+1. Click **Log in**
+1. [Open OnDemand](./portal.md) will open.
 
 ### Troubleshooting: Bad Request
 

@@ -121,17 +121,17 @@ To enable Open OnDemand to automatically copy your `ondemand` directory to a bac
 
 Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
 
-* Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-* A new browser tab with an SSH session to the back-end on which the job is running will appear.
-* When prompted, enter your project username and password.
-* Create a passphrase-less SSH key:
+1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
+1. A new browser tab with an SSH session to the back-end on which the job is running will appear.
+1. When prompted, enter your project username and password.
+1. Create a passphrase-less SSH key:
 
-```console
-$ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
-...
-```
+    ```console
+    $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
+    ...
+    ```
 
-* Copy public key to back-end:
+1. Copy public key to back-end:
 
     ```console
     $ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
@@ -141,7 +141,7 @@ $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
     (user@BACK-END-HOSTNAME.nsh.loc) Password:
     ```
 
-* When prompted, enter your project username and password. The key will then be added to the back-end:
+1. When prompted, enter your project username and password. The key will then be added to the back-end:
 
     ```console
     Number of key(s) added: 1
@@ -151,14 +151,14 @@ $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
     and check to make sure that only the key(s) you wanted were added.
     ```
 
-* Check passphrase-less access to back-end:
+1. Check passphrase-less access to back-end:
 
     ```console
     $ ssh BACK-END-HOSTNAME.nsh.loc hostname
     BACK-END-HOSTNAME.nsh.loc hostname
     ```
 
-* You should not be prompted for a passphrase or password.
+1. You should not be prompted for a passphrase or password.
 
 ---
 
@@ -194,7 +194,7 @@ An example of the contents of a log file is as follows:
 
 Briefly, when a job is submitted, the following occurs:
 
-* Open OnDemand creates a job context directory under your `ondemand` directory.
+1. Open OnDemand creates a job context directory under your `ondemand` directory.
     * For [Job Composer](./apps/job-composer.md) app:
 
     ```console
@@ -207,14 +207,14 @@ Briefly, when a job is submitted, the following occurs:
     ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
     ```
 
-* Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
+1. Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
     * A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
     * For back-ends where your home directory is not common to both both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
-* Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
-* When resources become available on the back-end, your job runs:
+1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
+1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
     * For jobs created via apps, the job status will be 'Starting' and then 'Running'.
-* Your job will complete. The job status will be 'Completed'.
+1. Your job will complete. The job status will be 'Completed'.
 
 !!! Note
 

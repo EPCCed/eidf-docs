@@ -65,7 +65,6 @@ Within JupyterLab, you are the 'root' user.
 
 ---
 
-
 ## Sharing files between the back-end and the container
 
 See [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container)
