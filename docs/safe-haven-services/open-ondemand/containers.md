@@ -62,8 +62,48 @@ Cannot open project data: /safe_data/cannot_determine_project_from_groups
 
 ## Containers and 'root' users
 
-You may find that for some containers, run using Podman, you are the 'root' user within the container.
+For some containers run using Podman that you will find that you the 'root' user within the container.
 
 For these containers, you are the 'root' user **only** within the context of the container. You will not have 'root' access to the back-end on which the container is running!
 
-Any files you create in the directories mounted into the container will be owned by your own user on the back-end.
+Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
+
+For containers run using Apptainer, you will be your own user.
+
+As a concrete example, consider the `hello-tre` example container (described in [Run a 'hello-tre' example container](./apps/container-app.md#run-a-hello-tre-example-container)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+
+If `hello-tre` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
+
+```text
+/safe_data: nobody (65534) root(0) drwxrwx--- nfs
+/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
+/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
+```
+
+`/safe_data/` has user `nobody` as typically the user that owns `/safe_data/` on the back-end won't be known within the container. If using `$HOME/safe_data/` then the permissions logged would be:
+
+```text
+/safe_data: root (0) root(0) drwxr-xr-x ext2/ext3
+```
+
+as this is in your home directory, and, again, you are `root` **in the container**.
+
+The other directories, mounted from directories in your home directory, likewise have user, and group, `root`.
+
+In contrast, if `hello-tre` is run via Apptainer, then the directory permissions logged are:
+
+```text
+/safe_data: nobody (65534) your_project_group(4797) drwxrwx--- nfs
+/scratch: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
+/safe_outputs: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
+```
+
+Again `/safe_data/` has user `nobody` as typically the user that owns `/safe_data/` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data/` then the permissions logged would be:
+
+```text
+/safe_data: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
+```
+
+as this is in your home directory.
+
+Similarly, the other directories, mounted from directories in your home directory likewise have your user, and user group.
