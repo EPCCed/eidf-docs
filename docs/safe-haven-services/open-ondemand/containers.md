@@ -62,7 +62,7 @@ Cannot open project data: /safe_data/cannot_determine_project_from_groups
 
 ## Containers and 'root' users
 
-You may find that for some containers, you are the 'root' user within the container.
+You may find that for some containers, run using Podman, you are the 'root' user within the container.
 
 For these containers, you are the 'root' user **only** within the context of the container. You will not have 'root' access to the back-end on which the container is running!
 
