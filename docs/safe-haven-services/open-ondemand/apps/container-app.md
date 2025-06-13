@@ -231,7 +231,7 @@ ls -1 $HOME/safe_data
 
 `outputs-NUMBER/safe_data.txt` would have the contents:
 
-```bash
+```text
 /safe_data: root (0) root(0) drwxr-xr-x
 /safe_data/a.txt: root (0) root(0) -rw-r--r--
 /safe_data/c.txt: root (0) root(0) -rw-r--r--
