@@ -51,11 +51,11 @@ then, refresh the web page, or click the **Connect to JupyterLab** button again.
 
 JupyterLab running in the container is password-protected. The password is auto-generated. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
-Within JupyterLab, you are the `root` user.
+Within JupyterLab, you are the 'root' user.
 
 !!! Note
 
-    You are only the `root` user within the context of the container, not on the back-end itself! Any files you create in the mounted directories described below will be owned by your own user on the back-end.
+    You are the 'root' user **only** within the context of the container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user on the back-end.
 
 ---
 
