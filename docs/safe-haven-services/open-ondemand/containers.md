@@ -38,9 +38,13 @@ Together, these mounts provides a means for data, configuration files and protoy
 
 You can interact with your project's `/safe_data/` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](./ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand host and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` via the [File Manager](./files.md) and/or by logging into the back-end, see [Log into back-ends](./ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand host and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data/`, if applicable) via the [File Manager](./files.md) and/or by logging into the back-end, see [Log into back-ends](./ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand host and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](./ssh.md).
+When using a back-end where your home directory is **not** common to both the Open OnDemand host and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data/`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](./ssh.md).
+
+!!! Note
+
+    `/safe_data/PROJECT_SUBDIRECTORY` is **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
 ---
 
