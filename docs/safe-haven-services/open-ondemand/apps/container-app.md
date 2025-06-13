@@ -92,7 +92,7 @@ You can end your job by as follows:
 
 ---
 
-## Run a 'hello-tre' example
+## Run a 'hello-tre' example container
 
 The app form is prepopulated with a 'hello TRE' image, `ghcr.io/mikej888/hello-tre:1.0`, and its complementary read-only credentials. When run, the image's container logs a greeting and information about folders mounted into the container. The container's behaviour can be configured as follows:
 
