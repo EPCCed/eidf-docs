@@ -2,9 +2,9 @@
 
 ---
 
-## Find number of processors and cores available on a back-end
+## Find number of CPUs and cores available on a back-end
 
-You can find the number of processors available on a back-end by logging into the back-end and running one of the following commands which count the number of occurrences of the terms in the `/proc/cpuinfo` file which gives the number of processors and cores available.
+You can find the number of CPUs available on a back-end by logging into the back-end and running one of the following commands which count the number of occurrences of the terms in the `/proc/cpuinfo` file which gives the number of CPUs and cores available.
 
 ```bash
 $ cat /proc/cpuinfo | grep processor | wc -l
@@ -13,7 +13,7 @@ $ cat /proc/cpuinfo | grep 'core id' | wc -l
 8
 ```
 
-This back-end has 8 processors and 8 cores.
+This back-end has 8 CPUs and 8 cores.
 
 ---
 
