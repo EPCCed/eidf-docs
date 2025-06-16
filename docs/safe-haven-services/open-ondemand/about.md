@@ -4,6 +4,8 @@ Open OnDemand is a web portal that runs within a safe haven. Open OnDemand allow
 
 Open OnDemand provides a number of apps that allow for researchers' containers to be executed via the TRE Container Execution Service as well as providing apps supporting the execution of standard containers with useful services such as JupyterLab and RStudio Server.
 
+![Open OnDemand portal front page](../../images/open-ondemand/portal.png){: class="border-img center"} *Open OnDemand portal front page*
+
 To quickly get started with Open OnDemand:
 
 * [Access Open OnDemand](./access.md).

@@ -44,4 +44,6 @@ Click **Open Terminal** to log into the back-end on which the currently selected
 
 ## Cancel a job
 
-Click the **Delete job** (red trash icon) by the job in the job table or click **Delete** in the job details to cancel (delete) a running job.
+Click the **Delete Job** (red trashcan icon) by the job in the job table or click **Delete** in the job details to cancel (delete) a running job.
+
+![Delete Job button, a red trashcan icon](../../../images/open-ondemand/delete-job-button.png){: class="border-img center"} ***Delete Job** button*

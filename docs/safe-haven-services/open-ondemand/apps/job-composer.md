@@ -44,6 +44,8 @@ If you see 'cd ... No such file or directory' error after you have logged into t
 
 Click **Submit job** (green play icon) to submit your job.
 
+![Submit Job button, a green play icon](../../../images/open-ondemand/job-composer-play-button.png){: class="border-img center"} ***Submit Job** button*
+
 ---
 
 ## Browse and manage jobs
@@ -77,11 +79,15 @@ If you see 'cd ... No such file or directory' error after you have logged into t
 
 ### Stop a job
 
-Click **Stop job** (amber stop icon) to stop the currently selected job.
+Click **Stop Job** (amber stop icon) to stop the currently selected job.
+
+![Stop Job button, an amber stop icon](../../../images/open-ondemand/job-composer-stop-button.png){: class="border-img center"} ***Stop Job** button*
 
 ### Delete a job
 
-Click **Delete job** (red trash icon) to stop and delete the currently selected job.
+Click **Delete Job** (red trashcan icon) to stop and delete the currently selected job.
+
+![Delete Job button, a red trashcan icon](../../../images/open-ondemand/job-composer-delete-button.png){: class="border-img center"} ***Delete Job** button*
 
 The job context directory for the job will also be deleted.
 
@@ -113,6 +119,9 @@ Create and submit job:
 1. Click **Save**.
 1. Switch to the Job Composer browser tab.
 1. Click **Submit job** (green play icon).
+
+    ![Submit Job button, a green play icon](../../../images/open-ondemand/job-composer-play-button.png){: class="border-img center"} ***Submit Job** button*
+
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
 If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:

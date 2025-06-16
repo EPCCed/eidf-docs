@@ -4,6 +4,10 @@
 
 ## Introduction
 
+The Open OnDemand portal's front page provides menus and icons to allow you to access Open OnDemand's features.
+
+![Open OnDemand portal front page](../../images/open-ondemand/portal.png){: class="border-img center"} *Open OnDemand portal front page*
+
 Open OnDemand's features are described on the following pages:
 
 * [Run jobs](./jobs.md)
@@ -20,6 +24,8 @@ General purpose features are described below.
 
 Select the **Help (?)** menu, **Restart Web Server** option to restart your Open OnDemand session.
 
+![Help menu button](../../images/open-ondemand/help-menu.png){: class="border-img center"} ***Help (?)** menu button*
+
 !!! Note
 
     Despite its name, this option does not restart the Open OnDemand web server! It restarts your session only. It does not affect other users!
@@ -34,8 +40,12 @@ Select the **Help (?)** menu, **Restart Web Server** option to restart your Open
 
 Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as some-user'.
 
+![Avatar menu button, a head and shoulders icon](../../images/open-ondemand/avatar-button.png){: class="border-img center"} ***Avatar** menu button*
+
 ---
 
 ## Log out
 
 Click **Log Out** (right arrow icon) on the menu bar to log out of Open OnDemand.
+
+![Log Out menu button, a right arrow icon](../../images/open-ondemand/logout-button.png){: class="border-img center"} ***Log Out** menu button*

@@ -257,7 +257,9 @@ For interactive app jobs (not those created by the [Job Composer](./apps/job-com
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
 
-This page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a [job card](#job-cards).
+![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
+The My Interactive Sessions page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a [job card](#job-cards).
 
 !!! Note
 
@@ -291,7 +293,9 @@ Click **Cancel** on a job card to cancel a running job.
 
 ### Relaunch a job
 
-Click **Relaunch job** (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
+Click **Relaunch Job** (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
+
+![Relaunch Job button, a circling arrows icon](../../images/open-ondemand/relaunch-job-button.png){: class="border-img center"} ***Relaunch Job** button*
 
 ### Delete a job card
 

@@ -18,14 +18,21 @@ To access Open OnDemand:
 1. If using Firefox and a Warning: Potential Security Risk Ahead page appears with text 'Error code: SEC_ERROR_UNKNOWN_ISSUER', then
     1. Click **Advanced...**
     1. Click **Accept the Risk and Continue**
-1. The Open OnDemand log-in page will appear.
+1. The Open OnDemand log in page will appear.
+
+    ![Open OnDemand log in page](../../images/open-ondemand/login-page.png){: class="border-img center"} *Open OnDemand log in page*
+
 1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
 1. Click **Log in**
 1. [Open OnDemand](./portal.md) will open.
 
 ### Troubleshooting: Bad Request
 
-If you see a Bad Request page with text 'Your browser sent a request that this server could not understand.', then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous Open OnDemand session.
+If you see a page with text:
+
+> Your browser sent a request that this server could not understand.
+
+then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous Open OnDemand session.
 
 ### Troubleshooting: Cannot access Open OnDemand
 

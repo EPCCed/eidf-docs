@@ -70,6 +70,8 @@ Click an app-specific link to access that app.
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to opens the My Interactive Sessions page.
 
+![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
 The My Interactive Sessions page has a **selection** of the apps available to you on the left-hand-side.
 
 Click an app-specific button to access that app.

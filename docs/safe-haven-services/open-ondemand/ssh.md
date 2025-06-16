@@ -46,6 +46,8 @@ Select the **Files** menu, **Home Directory** option to open the [File Manager](
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page which shows running apps and their job cards.
 
+![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
 On a 'Running' job's job card, click the **Host** link to log into the back-end on which the job is running.
 
 ---

@@ -29,6 +29,8 @@ Click **Open in Terminal** to log into a specific host:
 * The default is the first back-end you have access to in alphabetical order.
 * To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific host.
 
+![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal.png){: class="border-img center"} ***Open in Terminal** button and menu*
+
 Once logged in, your current directory will be changed to match the job context directory.
 
 #### Troubleshooting: 'cd ... No such file or directory'
@@ -48,6 +50,8 @@ This can arise if you select a back-end where your home directory is not common 
 ## My Interactive Sessions page job cards and job context directory
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
+
+![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
 
 On a job's job card, click the **Session ID** link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand host.
 
