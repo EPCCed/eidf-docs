@@ -14,11 +14,17 @@ To create a Slurm job, select the **New Job** menu, then select:
 
 * **From Default Template** option to create a 'hello world' job from a template, with a default job name to be submitted to the default back-end, which is the first back-end you have access to in alphabetical order. If you select this option, the job files are created.
 * **From Template** option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:
-    * Enter a 'Job Name'.
-    * Select a back-end, 'Cluster'.
-        * **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
-    * Click **Open Dir** to view the template job files.
-    * Click **Create New Job** to create the job files.
+
+    1. Enter a **Job Name**.
+    1. Select a back-end, **Cluster**.
+
+        !!! Note
+
+            **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+
+    1. Click **Open Dir** to view the template job files.
+    1. Click **Create New Job** to create the job files.
+
 * **From Specified Path** option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.
 * **From Selected job** option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.
 
@@ -28,7 +34,7 @@ To create a Slurm job, select the **New Job** menu, then select:
 
 Click **Open Editor** to open an editor to edit the Slurm job submission script (default name `main_job.sh`).
 
-Click on a file name under 'Folder contents' to open an editor to edit that file in the job context directory.
+Click on a file name under **Folder contents** to open an editor to edit that file in the job context directory.
 
 Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.md) pointing at the job context directory.
 
@@ -58,8 +64,7 @@ The job status can be one of: 'Not Submitted', 'Queued', 'Running', 'Hold', 'Sus
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job
-succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
 
 ### Open File Manager to job context directory
 
@@ -126,7 +131,7 @@ Create and submit job:
 
 If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:
 
-1. Click `res.txt` under 'Folder Contents:`
+1. Click `res.txt` under **Folder Contents**.
 1. A new browser tab will appear with the contents of the file:
 
     ```text
@@ -135,7 +140,7 @@ If you selected a back-end where your home directory is common to both the Open 
 
 1. Close the tab.
 1. Switch to the Job Composer browser tab.
-1. Click `output_file` under 'Folder Contents:`
+1. Click `output_file` under **Folder Contents**.
 1. A new browser tab will appear with the contents of the file. For example:
 
     ```text

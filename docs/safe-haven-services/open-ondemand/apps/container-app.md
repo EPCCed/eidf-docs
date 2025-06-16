@@ -12,18 +12,22 @@ Containers run **must** conform to the requirements of the Container Execution S
 
 Complete the following information the app form:
 
-* Cluster: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
-    * **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
-* Container/image URL in container registry. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
-* Container registry username.
-* Container registry password/access token. An access token with read-only access to the container registry is strongly recommended but a token with read-write access or a password can also be used.
-* Container runner: Container execution tool with which to run container. The selected tool must be available on the selected back-end. Options are 'podman' or 'apptainer'.
-* Container name (Podman only). Name to be given to the container when it is run. If omitted, then the container image name is used. For example, if the container image name is `my-container:1.0` then the container name is `my-container`. Your user name and a timestamp will be added as a suffix to the name to prevent name clashes if running multiple containers from the same image. So, the container name will be `yourusername-timestamp-containername` e.g. `mel-060416105069-hello-tre`.
-* Cores (max 1152): Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
-* Memory in GiB (max 17830 GiB): Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
-* Use GPU?: Request that the container use a GPU. If selected, then the selected back-end must have GPUs available.
-* Command-line options to pass to container runner. These are Podman- or Apptainer-specific options to control the container runner's behaviour.
-* Environment variables to pass to container. These will be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
+* **Cluster**: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+
+    !!! Note
+    
+        **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+
+* **Container/image URL in container registry**: For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
+* **Container registry username**.
+* **Container registry password/access token**: An access token with read-only access to the container registry is strongly recommended but a token with read-write access or a password can also be used.
+* **Container runner**: Container execution tool with which to run container. The selected tool must be available on the selected back-end. Options are 'podman' or 'apptainer'.
+* **Container name:** (Podman only) Name to be given to the container when it is run. If omitted, then the container image name is used. For example, if the container image name is `my-container:1.0` then the container name is `my-container`. Your user name and a timestamp will be added as a suffix to the name to prevent name clashes if running multiple containers from the same image. So, the container name will be `yourusername-timestamp-containername` e.g. `mel-060416105069-hello-tre`.
+* **Cores (max 1152)**: Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
+* **Memory in GiB (max 17830 GiB)**: Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
+* **Use GPU?**: Request that the container use a GPU. If selected, then the selected back-end must have GPUs available.
+* **Command-line options to pass to container runner**: Podman- or Apptainer-specific options to control the container runner's behaviour.
+* **Environment variables to pass to container**: Environment variable passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
     ```text
     HELLO_TRE=Greetings
@@ -31,7 +35,7 @@ Complete the following information the app form:
 
     * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
 
-* Arguments to pass to container. Container-specific arguments to be passed directly to the container when it is run. For example:
+* **Arguments to pass to container**: Container-specific arguments to be passed directly to the container when it is run. For example:
 
     ````text
     -d 5
@@ -102,14 +106,14 @@ The app form is prepopulated with a 'hello TRE' image, `ghcr.io/mikej888/hello-t
 
 Run the 'hello-tre' example:
 
-1. Select a Cluster, back-end.
-1. For 'Environment variables to pass to container', enter:
+1. Select a **Cluster**, back-end.
+1. For **Environment variables to pass to container**, enter:
 
     ```text
     HELLO_TRE=Hello there
     ```
 
-1. For 'Arguments to pass to container', enter:
+1. For **Arguments to pass to container**, enter:
 
     ```text
     -d 10
