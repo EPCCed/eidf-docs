@@ -24,17 +24,19 @@ S3 storage is sharable outside EIDF infrastructure. The EIDF S3 service is acces
 
 You should use the Shared Filesystem (CephFS) or S3. We do not recommend using large, specific attached storage for VMs. This type of storage is not sharable between machines in the EIDF and relies on the same underlying system.
 
-PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the [Virtual Machines section](https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/).
+PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the [Virtual Machines section](../services/virtualmachines/sharedfs.md).
 
 ## I want to use the GPU Service, what storage do I need?
 
-The GPU Service has persistent storage attached, requested computationally by the user. Instructions on the format of this request can be found on the [GPU Service Tutorials page](https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/#:~:text=Please%20consider%20migrating%20your%20data%20onto%20CephFS,to%20use%20the%20new%20storage%20class%20afterwards.)
+The GPU Service has persistent storage attached, requested computationally by the user. Instructions on the format of this request can be found on the [GPU Service Tutorials page](../services/gpuservice/training/L2_requesting_persistent_volumes.md#overview)
 
-S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond. The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond.
+S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond.
+
+The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond. For more information on this please refer to [Shared Filesystem (CephFS) PVCs](../services/gpuservice/shared-cephfs.md)
 
 ## I want to use Cerebras, what storage do I need?
 
-Cerebras only uses Shared Filesystem (CephFS). PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the [Virtual Machines section](https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/).
+Cerebras only uses Shared Filesystem (CephFS). PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the [Virtual Machines section](../services/virtualmachines/sharedfs.md).
 
 ## I want to use more storage?
 
