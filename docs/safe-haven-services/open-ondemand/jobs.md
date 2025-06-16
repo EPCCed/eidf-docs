@@ -20,7 +20,11 @@ Each run of a task on a back-end is called a **job**.
 
 An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](./apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. Within our Open OnDemand service, this relates to how apps are implemented, rather than used. All our Container Execution Service apps are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
+A subset of apps that run jobs on back-ends are called **interactive apps**. All Container Execution Service apps that run containers are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
+
+!!! Note
+
+    In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps.
 
 ### Back-end (cluster) names
 
@@ -50,9 +54,17 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 ---
 
-## Job scheduling
+## Job scheduling and execution
 
-Open OnDemand schedules jobs onto a selected back-end based upon the number of CPUs/cores and amount of memory they need. When running apps, you will need to select the number of CPUs/cores and memory you would like for your job.
+With the help of a job scheduler, Open OnDemand schedules jobs onto a selected back-end based upon the number of CPUs/cores and amount of memory they need.
+
+!!! Note
+
+    Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
+
+    Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+
+When running apps, you will need to select the number of CPUs/cores and memory you would like for your job.
 
 !!! Info
 
@@ -69,11 +81,17 @@ Your job will be queued until resources are available on the selected back-end t
 
     See [Open OnDemand tips](./tips.md) for tips and troubleshooting relating to relating to requesting resources and job queues.
 
+When a job is submitted, a runtime is also requested, in addition to resources. If a job takes longer than this runtime, then it is cancelled.
+
+!!! Warning
+
+    Container Execution Service apps will run for a maximum of 6 hours.
+
+For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. It then waits for an app-specific time for the running app to send a notification to Open OnDemand that it is running. This is termed the **connection timeout**. If the app does not notify Open OnDemand within this time, then the job is cancelled.
+
 !!! Note
 
-    Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
-
-    Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    The timeout is termed a 'connection timeout' as, in standard deployments of Open OnDemand, the notification sent by the app includes the information required by Open OnDemand to display information required to connect to web- or GUI-based services started by the app. This also applies to Container Execution Service apps that run containers that run such services. However, as mentioned above, all our apps that run containers use Open OnDemand's application programming interface for interactive apps, so you will see the connection timeout for these apps too.
 
 ---
 
@@ -236,7 +254,7 @@ Briefly, when a job is submitted, the following occurs:
 1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
-    * For jobs created via apps, the job status will be 'Starting' and then 'Running'.
+    * For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
 !!! Note
@@ -267,13 +285,28 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 ### Job cards
 
-When an interactive app's job is submitted, a job card is created and shown with information about the app's job.
+When an interactive app's job is submitted, a job card is created and shown with information about the app's job including:
 
-The job status, shown on the top-right of the job card, can be one of: 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
+* Job status (on the top right of the job card): One of 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
+* 'Host': For 'Running' jobs, the back-end on which the job is running.
+* 'Created at': For 'Queued' jobs, the time the job was submitted.
+* 'Time Requested': For 'Queued' jobs, the runtime requested for the job.
+* 'Time Remaining': For 'Starting' and 'Running' jobs, the runtime remaining.
+* 'Connection timeout': For 'Starting' jobs, the time Open OnDemand will wait after the job has started running, determined from the job scheduler, for the app to send a notification to Open OnDemand.
+* App-specific configuration parameters.
+* App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.
+
+![Example job card for Run Container app](../../images/open-ondemand/job-card-container-app.png){: class="border-img center"} *Example job card for the Run Container app*
+
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
 
 !!! Note
 
     The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+
+### Log in to back-end on which job is running
+
+For 'Running' jobs, click the **Host** link to log into the back-end on which the job is running.
 
 ### Open File Manager to job context directory
 
@@ -281,11 +314,7 @@ Click the **Session ID** link to open the [File Manager](./files.md), pointing a
 
 !!! Info
 
-    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
-
-### Open SSH session to back-end on which job is running
-
-For 'Running' jobs, click the **Host** link to log into the back-end on which the job is running.
+    When using a back-end where your home directory is not common to botSSHh the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
 ### Cancel a job
 
@@ -293,7 +322,7 @@ Click **Cancel** on a job card to cancel a running job.
 
 ### Relaunch a job
 
-Click **Relaunch Job** (circling arrows icon) on a job card to relaunch the job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
+Click **Relaunch Job** (circling arrows icon) on a job card to relaunch a previously cancelled or completed job. A new session ID, and new set of job files, using the same configuration as for the previous run of the app, will be created.
 
 ![Relaunch Job button, a circling arrows icon](../../images/open-ondemand/relaunch-job-button.png){: class="border-img center"} ***Relaunch Job** button*
 
