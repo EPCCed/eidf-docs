@@ -127,7 +127,7 @@ nav:
           - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-app.md
           - "Run RStudio Server": safe-haven-services/open-ondemand/apps/rstudio-app.md
           - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
-       - "Hints and tips": safe-haven-services/open-ondemand/hints-tips.md
+       - "Tips": safe-haven-services/open-ondemand/tips.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md

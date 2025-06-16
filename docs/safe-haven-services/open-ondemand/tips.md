@@ -1,4 +1,4 @@
-# Open OnDemand hints and tips
+# Open OnDemand tips
 
 ---
 
