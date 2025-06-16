@@ -4,7 +4,7 @@ Run Container is a Container Execution Service app that allows you to run a cont
 
 The app is designed to run batch containers, those that perform some computational or data-related task. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
-Containers run **must** conform to the requirements of the Container Execution Service (TODO link).
+Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the Container Execution Service.
 
 ---
 
