@@ -44,7 +44,7 @@ Within some interactive apps, you will see back-ends referred to via 'short-name
 * nsh_tenant_gpu_desktop01
 * odp_tenant_gpu_desktop01
 * smartdf_tenant_gpu_desktop01
-* shs_sdf01 - as the SuperdomeFlex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
+* shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
 
 On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the host IP addresses upon which the jobs are running.
 
@@ -119,7 +119,7 @@ Interactive app job files are created in a directory:
 ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
 
-where `APP_NAME` is the app name and `SESSION_ID` a unique session identifer. For example,
+where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
 ```bash
 ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
@@ -314,7 +314,7 @@ Click the **Session ID** link to open the [File Manager](./files.md), pointing a
 
 !!! Info
 
-    When using a back-end where your home directory is not common to botSSHh the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
+    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
 ### Cancel a job
 
