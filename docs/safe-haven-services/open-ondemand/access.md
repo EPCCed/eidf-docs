@@ -36,4 +36,4 @@ then revisit the URL and try to log in again. This can arise if there is informa
 
 ### Troubleshooting: Cannot access Open OnDemand
 
-For any other problems logging into Open OnDemand, first double-check your username and password. If you still have no success, then please contact the [Helpdesk](TODO link).
+For any other problems logging into Open OnDemand, first double-check your username and password. If you still have no success, then please submit a support request using the standard support request procedure for your safe haven.
