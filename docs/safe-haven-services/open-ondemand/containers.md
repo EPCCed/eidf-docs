@@ -16,7 +16,7 @@ Open OnDemand uses the Container Execution Service tools to run containers. Cons
 
 ## Container registries
 
-As the TRE Open OnDemand service uses the Container Execution Service tools (TODO link), the registries supported by those tools are those supported by the Container Execution Service tools:
+The registries supported by the Container Execution Service, and so accessible from within Open OnDemand are as follows:
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
