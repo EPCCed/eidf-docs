@@ -91,7 +91,7 @@ For interactive apps, Open OnDemand uses the job scheduler to determine when the
 
 !!! Note
 
-    The timeout is termed a 'connection timeout' as, in standard deployments of Open OnDemand, the notification sent by the app includes the information required by Open OnDemand to display information required to connect to web- or GUI-based services started by the app. This also applies to Container Execution Service apps that run containers that run such services. However, as mentioned above, all our apps that run containers use Open OnDemand's application programming interface for interactive apps, so you will see the connection timeout for these apps too.
+    In standard deployments of Open OnDemand, the notification sent by the app includes information required by Open OnDemand to display how to connect to web- or GUI-based services started by the app. However, as mentioned above, all Container Execution Service apps that run containers use Open OnDemand's application programming interface for interactive apps, so you will see the connection timeout for the apps that run non-interactive containers too.
 
 ---
 
