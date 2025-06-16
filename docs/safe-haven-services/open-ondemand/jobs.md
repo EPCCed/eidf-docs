@@ -50,11 +50,28 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 ---
 
-## Slurm job scheduler
+## Job scheduling
 
-[Slurm](https://slurm.schedmd.com) is an open source job scheduler and workload manager which is used by Open OnDemand to schedule and run jobs on back-ends.
+Open OnDemand schedules jobs onto a selected back-end based upon the number of CPUs/cores and amount of memory they need. When running apps, you will need to select the number of CPUs/cores and memory you would like for your job.
+
+!!! Info
+
+    As back-ends are used by multiple users, be considerate to other users, and take care to request only the resources you think your job will need. This helps to ensure fair use for everyone.
+
+Your job will be queued until resources are available on the selected back-end to run your job. This will depend upon:
+
+* Resources available on your selected back-end.
+* Extent to which jobs currently running on the back-end are using the back-end's resources.
+* Resources requested by your job.
+* Jobs from yourself and others already in the queue.
+
+!!! Tip
+
+    See [Open OnDemand tips](./tips.md) for tips and troubleshooting relating to relating to requesting resources and job queues.
 
 !!! Note
+
+    Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
     Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
@@ -90,9 +107,15 @@ where `APP_NAME` is the app name and `SESSION_ID` a unique session identifer. Fo
 ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
+Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.
+
 !!! Warning
 
-    Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms. You can delete its contents - Open OnDemand will recreate it the next time you log in - but your history of previous jobs will be lost. However, you may find it useful to delete it occasionally if it grows too large.
+    You can delete the `ondemand` directory - Open OnDemand will recreate it the next time you log in - but your history of previous jobs, and any cached values, will be lost.
+
+!!! Tip
+
+    You may find it useful to delete specific job context subdirectories from the `ondemand` directory if the `ondemand` directory grows to large.
 
 ---
 
@@ -254,7 +277,7 @@ The job status, shown on the top-right of the job card, can be one of: 'Queued',
 
 Click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand host.
 
-!!! Note
+!!! Info
 
     When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
