@@ -10,6 +10,8 @@ The Active Jobs app shows a table of running and recently completed jobs.
 
 The job ID is a unique job ID created by the Slurm job scheduler, when you submitted the job.
 
+![Active Jobs app jobs table](../../../images/open-ondemand/active-jobs.png){: class="border-img center"} *The Active Jobs app job table*
+
 !!! Note
 
     The job ID is not the same as the session ID for an app. The latter is an identifier created by Open OnDemand itself. Each job created by an app will have both an Open OnDemand session ID and a Slurm job ID.
@@ -28,6 +30,8 @@ To see details about a job, click the **>** button, by the job of interest.
 
 The 'Output Location' is the location of the job context directory for the job on the Open OnDemand host.
 
+![Active Jobs app job details](../../../images/open-ondemand/active-jobs-job-details.png){: class="border-img center"} *Job details within the Active Jobs app*
+
 ---
 
 ## Open File Manager to job context directory
@@ -38,7 +42,7 @@ Click **Open in File Manager** to open the [File Manager](../files.md) pointing 
 
 ## Log into to back-end on which job is running
 
-Click **Open Terminal** to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.
+Click **Open in Terminal** to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.
 
 ---
 
