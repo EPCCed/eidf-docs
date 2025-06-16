@@ -30,7 +30,9 @@ PIs can request access to Shared Filesystem (CephFS) and can configure it to be 
 
 The GPU Service has persistent storage attached, requested computationally by the user. Instructions on the format of this request can be found on the [GPU Service Tutorials page](https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/#:~:text=Please%20consider%20migrating%20your%20data%20onto%20CephFS,to%20use%20the%20new%20storage%20class%20afterwards.)
 
-S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond. The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond.
+S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond.
+
+The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond. For more information on this please refer to [Shared Filesystem (CephFS) PVCs](../services/gpuservice/shared-cephfs.md)
 
 ## I want to use Cerebras, what storage do I need?
 

@@ -1,4 +1,4 @@
-# Shared Filesystem (CephFS) PVCs
+# Shared Filesystem (CephFS) Persistent Volume Claims (PVCs)
 
 The Shared Filesystem (CephFS) allows multiple EIDF services to access the same file system for easier sharing of data and code.
 
@@ -8,7 +8,7 @@ For how to use the Shared Filesystem on Virtual Machines - please refer to [EIDF
 
 ## Accessing the Shared Filesystem (CephFS) on the GPU Service
 
-To access directories in the shared filesystem, a project will need to create static persistent volumes which point to the Shared Filesystem. Creation of these static persistent volumes is done using the EIDF Portal.
+To access directories in the shared filesystem, a project will need to create static persistent volumes which point to the Shared Filesystem (CephFS). Creation of these static persistent volumes is done using the EIDF Portal.
 
 !!! important "Portal Creation Operation Only"
 
@@ -19,10 +19,10 @@ To access directories in the shared filesystem, a project will need to create st
 To mount CephFS in your project namespace:
 
 1. The project must have space allocated on CephFS.
-1. A mount key must be created exist. PI's should contact the EIDF helpdesk to have this created.
+1. A mount key must exist. PI's should contact the EIDF helpdesk to have this created.
 
 !!! note
-    It is useful to have the shared CephFS space mounted to at least one VM, for managing what directories are created and will be shared as static persistent volumes.
+    It is useful to have the Shared Filesystem (CephFS) space mounted to at least one VM, for managing what directories are created and could be shared as static persistent volumes.
 
 If the pre-requisites are met, PIs and PMs will be able to see the **GPU Service PVC** button under **CephFS Mounts** in the project management page in the EIDF portal.
 
@@ -38,7 +38,7 @@ To create a static persistent volume, click the **GPU Service PVC** button, the 
 
 The two parts that the PI or PM will need to complete are:
 
-* Volume Root - this is how much of the shared directory is to be made visible to the GPU Service. If it is left blank, everything in the shared folder for the project will be visible. If there is a specific directory to be made visible, enter the path after shared.
+* Volume Root - this is how much of the shared directory is to be made visible to the GPU Service. If it is left blank, everything in the shared folder for the project will be visible. If there is a specific directory to be made visible, enter the path after shared/.
 * PVC Name - this is mandatory - this is how project users will be able to use the static persistent volume in their workloads.
 
 !!! important "ReadWriteMany"
@@ -95,4 +95,4 @@ spec:
             claimName: example-pvc
 ```
 
-Users can work with the contents of the CephFS volume using a VM with the project CephFS filesystem mounted to it. More information on this is available at [EIDF Shared Filesystem (CephFS)](../virtualmachines/sharedfs.md).
+Users can work with the contents of the Shared Filesystem (CephFS) volume using a VM with the project Shared Filesystem (CephFS) mounted to it. More information on this is available at [EIDF Shared Filesystem (CephFS)](../virtualmachines/sharedfs.md).
