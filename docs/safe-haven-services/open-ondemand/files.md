@@ -14,6 +14,8 @@ Select the **Files** menu, **Home Directory** option to open the File Manager.
 
 You can browse your home directory and there are buttons to create new files and directories, upload or download files, copy or move files or directories and delete files or directories and to change directory.
 
+![File Manager](../../images/open-ondemand/file-manager.png){: class="border-img center"} *The File Manager*
+
 !!! Info
 
     The File Manager allows you to **only** manipulate files on the Open OnDemand host. For most back-ends, your home directory is common to both the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Unsynched home directories](jobs.md#unsynched-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
