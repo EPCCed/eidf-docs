@@ -16,10 +16,10 @@ These storage options are backed by the hardware described on this [page](https:
 |         Service         | VM Local | GPU Local | Ultra2 Local | S3  | Shared Filesystem (CephFS) | Data Publishing Service |
 | :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
 |           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
-|       GPU Service       |    No    |    Yes    |      No      | Yes |          Yes           |           Yes           |
-|         Ultra2          |    No    |    No     |     Yes      | Yes |          Yes          |           Yes           |
+|       GPU Service       |    No    |    Yes    |      No      | Yes |          Yes          |           Yes           |
+|         Ultra2          |    No    |    No     |     Yes      | Yes |          No           |           Yes           |
 |        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
-|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes            |
+|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes           |
 
 ## Persistent Volumes attached to specific services
 
