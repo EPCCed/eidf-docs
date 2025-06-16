@@ -26,11 +26,11 @@ When the container has started a **Connect to JupyterLab** button will appear.
 
 Click **Connect to JupyterLab**.
 
-!!! Note
+!!! Warning
 
     Open OnDemand will wait 1200 seconds (20 minutes) for your container to start. If it does not start within this time the job will be cancelled.
 
-!!! Note
+!!! Warning
 
     Your job, and so your container. will run for a maximum of 6 hours.
 
@@ -88,7 +88,7 @@ You can re-access your running container via the **Connect to JupyterLab** on yo
 
 On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
 
-!!! Note
+!!! Info
 
     When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 
