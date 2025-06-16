@@ -1221,6 +1221,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../shared-cephfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem (CephFS) PVCs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1234,10 +1257,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
             
   
   
@@ -1250,8 +1273,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
           </label>
@@ -2904,7 +2927,7 @@
 <p class="admonition-title">ReadWriteMany volumes</p>
 <p>A RWM volume allows several jobs and pods to use the same disk at the same time. The obvious benefit to this is allowing parallel workloads to work with the same dataset at the same time, or use a single volume for multiple datasets, without the need to manage each individually. The new Ceph FS storage class facilitates this.</p>
 </div>
-<p>You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml <code>kubectl -n &lt;project-namespace&gt; create &lt;PVC specification yaml&gt;</code>
+<p>You create a persistent volume by passing the yaml file to kubectl like a pod specification yaml <code>kubectl -n &lt;project-namespace&gt; create -f &lt;PVC specification yaml&gt;</code>
 Once you have successfully created a persistent volume you can interact with it using the standard kubectl commands:</p>
 <ul>
 <li><code>kubectl -n &lt;project-namespace&gt; delete pvc &lt;PVC name&gt;</code></li>

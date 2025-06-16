@@ -1344,6 +1344,29 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../services/gpuservice/shared-cephfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem (CephFS) PVCs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1353,10 +1376,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
             
   
   
@@ -1369,8 +1392,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_5">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
           </label>
@@ -2867,12 +2890,13 @@
 <p>S3 storage is sharable outside EIDF infrastructure. The EIDF S3 service is accessible from anywhere in the world via S3-compatible workflows. General purpose usage outside of EIDF is documented on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Amazon's S3 documentation</a>.</p>
 <h2 id="i-want-to-process-multi-terabyte-data-on-multiple-vms-and-potentially-other-eidf-services-what-storage-should-i-use">I want to process multi-terabyte data on multiple VMs and potentially other EIDF services, what storage should I use?</h2>
 <p>You should use the Shared Filesystem (CephFS) or S3. We do not recommend using large, specific attached storage for VMs. This type of storage is not sharable between machines in the EIDF and relies on the same underlying system.</p>
-<p>PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the <a href="https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/">Virtual Machines section</a>.</p>
+<p>PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the <a href="../../services/virtualmachines/sharedfs/">Virtual Machines section</a>.</p>
 <h2 id="i-want-to-use-the-gpu-service-what-storage-do-i-need">I want to use the GPU Service, what storage do I need?</h2>
-<p>The GPU Service has persistent storage attached, requested computationally by the user. Instructions on the format of this request can be found on the <a href="https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/#:~:text=Please%20consider%20migrating%20your%20data%20onto%20CephFS,to%20use%20the%20new%20storage%20class%20afterwards.">GPU Service Tutorials page</a></p>
-<p>S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond. The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond.</p>
+<p>The GPU Service has persistent storage attached, requested computationally by the user. Instructions on the format of this request can be found on the <a href="../../services/gpuservice/training/L2_requesting_persistent_volumes/#overview">GPU Service Tutorials page</a></p>
+<p>S3 storage can be used from the GPU Service. This is useful when data is to be shared across EIDF Services and beyond.</p>
+<p>The GPU Service is also able to use the EIDF Shared Filesystem (CephFS), which can share data across EIDF services, but not beyond. For more information on this please refer to <a href="../../services/gpuservice/shared-cephfs/">Shared Filesystem (CephFS) PVCs</a></p>
 <h2 id="i-want-to-use-cerebras-what-storage-do-i-need">I want to use Cerebras, what storage do I need?</h2>
-<p>Cerebras only uses Shared Filesystem (CephFS). PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the <a href="https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/">Virtual Machines section</a>.</p>
+<p>Cerebras only uses Shared Filesystem (CephFS). PIs can request access to Shared Filesystem (CephFS) and can configure it to be available on their VMs by following the documentation in the <a href="../../services/virtualmachines/sharedfs/">Virtual Machines section</a>.</p>
 <h2 id="i-want-to-use-more-storage">I want to use more storage?</h2>
 <p>If you need more storage than what is available by default, you can request additional storage through the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a>. Please provide details about your requirements and the intended use of the storage. Within the form above please select the category 'EIDF Project extension: duration and quota'.</p>
 <h2 id="i-want-to-use-notebooks-and-a-vm-what-storage-do-i-need">I want to use Notebooks and a VM, what storage do I need?</h2>

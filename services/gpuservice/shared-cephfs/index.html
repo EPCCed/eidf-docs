@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/services/datapublishing/catalogue/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/services/gpuservice/shared-cephfs/">
       
       
-        <link rel="prev" href="../service/">
+        <link rel="prev" href="../kueue/">
       
       
-        <link rel="next" href="../../datacatalogue/metadata/">
+        <link rel="next" href="../training/L1_getting_started/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Your Data Catalogue entry - EIDF User Documentation</title>
+        <title>Shared Filesystem (CephFS) PVCs - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-publishing" class="md-skip">
+        <a href="#shared-filesystem-cephfs-persistent-volume-claims-pvcs" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Your Data Catalogue entry
+              Shared Filesystem (CephFS) PVCs
             
           </span>
         </div>
@@ -612,18 +612,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -639,7 +641,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -1110,18 +1112,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
         
           
           <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
@@ -1137,7 +1141,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
             GPU Service
@@ -1151,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1174,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/policies/" class="md-nav__link">
+      <a href="../policies/" class="md-nav__link">
         
   
   
@@ -1197,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/kueue/" class="md-nav__link">
+      <a href="../kueue/" class="md-nav__link">
         
   
   
@@ -1217,10 +1221,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../gpuservice/shared-cephfs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem (CephFS) PVCs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1231,6 +1257,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-shared-filesystem-cephfs-on-the-gpu-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the Shared Filesystem (CephFS) on the GPU Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-static-persistent-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Static Persistent Volume
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-static-persistent-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Static Persistent Volume
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1281,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L1_getting_started/" class="md-nav__link">
+      <a href="../training/L1_getting_started/" class="md-nav__link">
         
   
   
@@ -1304,7 +1386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
+      <a href="../training/L2_requesting_persistent_volumes/" class="md-nav__link">
         
   
   
@@ -1327,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
+      <a href="../training/L3_running_a_pytorch_task/" class="md-nav__link">
         
   
   
@@ -1350,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L4_template_workflow/" class="md-nav__link">
+      <a href="../training/L4_template_workflow/" class="md-nav__link">
         
   
   
@@ -1381,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/faq/" class="md-nav__link">
+      <a href="../faq/" class="md-nav__link">
         
   
   
@@ -1738,20 +1820,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1767,7 +1847,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Data Services
@@ -1893,20 +1973,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
         
           
           <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
@@ -1922,7 +2000,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             Data Publishing
@@ -1936,7 +2014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../service/" class="md-nav__link">
+      <a href="../../datapublishing/service/" class="md-nav__link">
         
   
   
@@ -1956,32 +2034,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Your Data Catalogue entry
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../datapublishing/catalogue/" class="md-nav__link">
         
   
   
@@ -1992,62 +2048,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#customising-your-entry-in-the-eidf-data-catalogue" class="md-nav__link">
-    <span class="md-ellipsis">
-      Customising your entry in the EIDF Data Catalogue
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-your-datasets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating your dataset(s)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-upload" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data upload
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metadata-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metadata format
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2735,36 +2735,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#customising-your-entry-in-the-eidf-data-catalogue" class="md-nav__link">
+  <a href="#accessing-the-shared-filesystem-cephfs-on-the-gpu-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Customising your entry in the EIDF Data Catalogue
+      Accessing the Shared Filesystem (CephFS) on the GPU Service
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-your-datasets" class="md-nav__link">
+  <a href="#pre-requisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating your dataset(s)
+      Pre-requisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-upload" class="md-nav__link">
+  <a href="#creating-a-static-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      Data upload
+      Creating a Static Persistent Volume
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#metadata-format" class="md-nav__link">
+  <a href="#using-a-static-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      Metadata format
+      Using a Static Persistent Volume
     </span>
   </a>
   
@@ -2789,57 +2789,87 @@
   
 
 
-<h1 id="data-publishing">Data Publishing</h1>
-<h2 id="customising-your-entry-in-the-eidf-data-catalogue">Customising your entry in the EIDF Data Catalogue</h2>
-<p>When/if your project is approved and you are close to publishing your data, a CKAN organisation will be created in the <a href="https://catalogue.eidf.ac.uk/">EIDF Data Catalogue</a> for you.</p>
-<p>You can login to the EIDF Data Catalogue using your SAFE credentials - there is a "Log in" link on the top right.
-Find your organisation and then you can customise it by clicking on the "Manage" button on the top-right, e.g. you can provide a more friendly name than the EIDF project number, you can provide a description for your organisation, provide a logo or image representing your organisation and associate metadata pairs to aid discovery.
-Customising your organisation will make it more attractive to those that may want to use your data and will also aid in discovery.</p>
-<h2 id="creating-your-datasets">Creating your dataset(s)</h2>
-<div class="admonition warning">
-<p class="admonition-title"><strong>Do NOT use the CKAN interface to create Datasets</strong></p>
-<p>The EIDF Portal creates these for you and associates S3 buckets with your data. You can provide additional metadata once the Dataset records are in CKAN. Please do not add datasets through the CKAN interface either. Contact us if would like anything removed.</p>
+<h1 id="shared-filesystem-cephfs-persistent-volume-claims-pvcs">Shared Filesystem (CephFS) Persistent Volume Claims (PVCs)</h1>
+<p>The Shared Filesystem (CephFS) allows multiple EIDF services to access the same file system for easier sharing of data and code.</p>
+<p>For more information on the Shared Filesystem - please refer to <a href="../../../storage/overview/#shared-filesystem-cephfs">EIDF Storage Overview - Shared Filesystem (CephFS)</a>.</p>
+<p>For how to use the Shared Filesystem on Virtual Machines - please refer to <a href="../../virtualmachines/sharedfs/">EIDF Shared Filesystem (CephFS)</a>.</p>
+<h2 id="accessing-the-shared-filesystem-cephfs-on-the-gpu-service">Accessing the Shared Filesystem (CephFS) on the GPU Service</h2>
+<p>To access directories in the shared filesystem, a project will need to create static persistent volumes which point to the Shared Filesystem (CephFS). Creation of these static persistent volumes is done using the EIDF Portal.</p>
+<div class="admonition important">
+<p class="admonition-title">Portal Creation Operation Only</p>
+<p>Users cannot create static volumes directly on the service - all static volumes must be created via the EIDF Portal</p>
 </div>
-<p>Once your project is approved go to your project in the EIDF portal at this link:</p>
-<ul>
-<li><a href="https://projects.eidf.ac.uk/ingest/">https://projects.eidf.ac.uk/ingest/</a></li>
-</ul>
-<p>Select the project which you want to use to ingest data. The list of <code>Ingest Datasets</code> will be empty unless you have already created Datasets.</p>
-<p>Create a Dataset by pressing on the <code>New</code> button. You will need to provide the following minimal bits of information:</p>
-<ul>
-<li><strong>Name</strong>: The name for your dataset.</li>
-<li><strong>S3 Bucket name</strong>: this entry will automatically be populated from your dataset name to create your S3 bucket name. You can customise the name for yourself subject to the constraints specified below the text box by editing the link directly. Note though if you change the dataset name you will overwrite the S3 bucket name link if you have customised it. Your project id at the start you will not be able to change.</li>
-<li><strong>Number of buckets</strong>: you may want to distribute your data over a number of S3 buckets if your dataset is big or structured into subsets.</li>
-<li><strong>Description</strong>: a description of your dataset.</li>
-<li><strong>Link</strong>: a link describing your group/contact information.</li>
-<li><strong>Contact email</strong>: a contact email to answer queries about your data set (this is optional).</li>
-<li><strong>License</strong>: the license under which you will distribute your data.</li>
-</ul>
-<p>An example of the form is given below.</p>
-<p><img alt="Interface to create a dataset" src="../../../images/CreateDataset.png" /></p>
-<p>Once you are happy with the content press on the <code>Create</code> button. This will be used to create the requested number of S3 buckets to which you will be able copy your data.</p>
-<p>You should now be able to click on a link to your dataset to see a copy of the information that you provided. You can supplement your Dataset entry in the EIDF catalogue with additional metadata once you have logged into the data catalogue using your SAFE credentials.</p>
-<h2 id="data-upload">Data upload</h2>
-<p>Having created an S3 bucket please consult the <a href="../../s3/tutorial/">S3 tutorial section</a> to get an overview of the commands you will require to upload your data to S3.</p>
-<p>Note that versioning is enabled for data publishing S3 buckets.
-Versioning preserves existing files that are overwritten or deleted and
-allows to retrieve and restore every version of every file in an S3 bucket.</p>
-<p>When you have added your data in S3, you can add the data S3 link to the catalogue dataset as a resource.</p>
-<h2 id="metadata-format">Metadata format</h2>
-<p>Metadata for resources in your dataset are added directly through the EIDF Data Catalogue.</p>
-<p>Make sure you're logged in to the <a href="https://catalogue.eidf.ac.uk">EIDF Data Catalogue</a>. Open the page of your dataset and click on "Manage" at the top right. Open the "Resources"  tab and press the button "+ Add new resource". Now you can fill in the form and describe your data as you wish. Some entries that are required and these are marked with a red "*" in the EIDF Data Catalogue:</p>
-<ul>
-<li><strong>Name</strong>: a descriptive name for your dataset.</li>
-<li><strong>Access URL</strong>: this is a link to a file in S3 or a set of files with a common prefix, that you uploaded as explained above.</li>
-<li><strong>Description</strong>: a human readable description of your data set.</li>
-<li><strong>Resource format</strong>: the type of data included in your resource.</li>
-<li><strong>Unique Identifier</strong></li>
-<li><strong>Licence</strong>: the licence under which you are releasing your data.</li>
-</ul>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>To mount CephFS in your project namespace:</p>
+<ol>
+<li>The project must have space allocated on CephFS.</li>
+<li>A mount key must exist. PI's should contact the EIDF helpdesk to have this created.</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If it is not going to be immediately obvious to a third party as to how your data may be used then please do provide a link to some documentation showing people how to unpack/use your data. Not everyone who may want to use your data may be a domain expert in your field.</p>
+<p>It is useful to have the Shared Filesystem (CephFS) space mounted to at least one VM, for managing what directories are created and could be shared as static persistent volumes.</p>
 </div>
+<p>If the pre-requisites are met, PIs and PMs will be able to see the <strong>GPU Service PVC</strong> button under <strong>CephFS Mounts</strong> in the project management page in the EIDF portal.</p>
+<p><img alt="CephFSGPUServicePVCButton" class="border-img" src="../../../images/gpuservice/cephfs-mounted.png" />
+   <em>GPU Service PVC button displayed in project management page</em></p>
+<h2 id="creating-a-static-persistent-volume">Creating a Static Persistent Volume</h2>
+<p>To create a static persistent volume, click the <strong>GPU Service PVC</strong> button, the following form will appear:</p>
+<p><img alt="CephFSGPUServicePVCFormBlank" class="border-img" src="../../../images/gpuservice/pvc-blank-form.png" />
+   <em>GPU Service PVC blank form displayed in portal</em></p>
+<p>The two parts that the PI or PM will need to complete are:</p>
+<ul>
+<li>Volume Root - this is how much of the shared directory is to be made visible to the GPU Service. If it is left blank, everything in the shared folder for the project will be visible. If there is a specific directory to be made visible, enter the path after shared/.</li>
+<li>PVC Name - this is mandatory - this is how project users will be able to use the static persistent volume in their workloads.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">ReadWriteMany</p>
+<p>These CephFS static persistent volumes are ReadWriteMany - this means that only one PVC is needed per volume root exposed in a project.</p>
+</div>
+<p>The following image shows an example of a completed static persistent volume form:</p>
+<p><img alt="CephFSGPUServicePVCFormExample" class="border-img" src="../../../images/gpuservice/pvc-example-form.png" />
+   <em>GPU Service PVC Example form displayed in portal</em></p>
+<p>The filled in fields are as follows:</p>
+<ul>
+<li>Volume Root - a directory called gpu-service in the shared space will be the exposed path in the volume. This means the volume will only show the contents of that directory.</li>
+<li>PVC Name - a PVC called example-pvc will now be available for the project to use in its workloads.</li>
+</ul>
+<h2 id="using-a-static-persistent-volume">Using a Static Persistent Volume</h2>
+<p>Using a static PVC is the same as using a PVC created using <code>kubectl</code> with the standard storage class. Below is an example job to mount the PVC created in the last section. To adapt this to your project, update the user queue name and use your PVC name.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-job-</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eidf018ns-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-ceph-pvc-pod</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvcreader</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/static</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-pvc</span>
+</code></pre></div>
+<p>Users can work with the contents of the Shared Filesystem (CephFS) volume using a VM with the project Shared Filesystem (CephFS) mounted to it. More information on this is available at <a href="../../virtualmachines/sharedfs/">EIDF Shared Filesystem (CephFS)</a>.</p>
 
 
 
