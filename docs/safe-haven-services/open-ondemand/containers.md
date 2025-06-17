@@ -10,7 +10,7 @@ Container are typically run using Podman or Apptainer, depending on which of the
 
 ## Container requirements
 
-Open OnDemand uses the Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service (TODO link).
+Open OnDemand uses the Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service. See the [TRE Container User Guide](../tre-container-user-guide/introduction.md).
 
 ---
 
