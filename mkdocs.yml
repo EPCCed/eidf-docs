@@ -39,6 +39,9 @@ nav:
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
     - "Connecting to a Virtual Machine with a Remote Desktop Client ": access/virtualmachines-rdp-client.md
+  - "Storage in the EIDF":
+    - "Overview": storage/overview.md
+    - "FAQs": storage/faq.md
   - "Computing Services":
     - "Virtual Desktops":
       - "Overview": services/virtualmachines/index.md
@@ -61,6 +64,7 @@ nav:
       - "Overview": services/gpuservice/index.md
       - "Policies": services/gpuservice/policies.md
       - "Kueue": services/gpuservice/kueue.md
+      - "Shared Filesystem (CephFS) PVCs": services/gpuservice/shared-cephfs.md
       - "Tutorials":
          - "Getting Started": services/gpuservice/training/L1_getting_started.md
          - "Persistent Volumes": services/gpuservice/training/L2_requesting_persistent_volumes.md
