@@ -801,15 +801,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#required-member-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required Member Permissions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#create-a-vm" class="md-nav__link">
     <span class="md-ellipsis">
       Create a VM
@@ -903,6 +894,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resize-a-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize a machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize-the-boot-volume-of-a-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize the boot volume of a machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#patching-and-updating" class="md-nav__link">
     <span class="md-ellipsis">
       Patching and updating
@@ -939,6 +948,15 @@
   <a href="#reboot" class="md-nav__link">
     <span class="md-ellipsis">
       Reboot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-member-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Member Permissions
     </span>
   </a>
   
@@ -2868,15 +2886,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#required-member-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required Member Permissions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#create-a-vm" class="md-nav__link">
     <span class="md-ellipsis">
       Create a VM
@@ -2970,6 +2979,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resize-a-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize a machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize-the-boot-volume-of-a-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resize the boot volume of a machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#patching-and-updating" class="md-nav__link">
     <span class="md-ellipsis">
       Patching and updating
@@ -3011,6 +3038,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#required-member-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Member Permissions
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3037,17 +3073,11 @@
 
 <h1 id="service-documentation">Service Documentation</h1>
 <h2 id="project-management-guide">Project Management Guide</h2>
-<h3 id="required-member-permissions">Required Member Permissions</h3>
-<p>VMs and user accounts can only be managed by project members with <strong>Cloud Admin</strong> permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the <strong>Cloud Admin</strong> role:</p>
-<ol>
-<li>Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)</li>
-<li>On the project management page in SAFE, scroll down to "Manage Members"</li>
-<li>Click <em>Add project manager</em> or <em>Set member permissions</em></li>
-</ol>
-<p>For details please refer to the SAFE documentation: <a href="https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager">How can I designate a user as a project manager?</a></p>
 <h3 id="create-a-vm">Create a VM</h3>
 <p>To create a new VM:</p>
 <ol>
+<li>Open the projects page in the portal at <a href="https://portal.eidf.ac.uk/project/">https://portal.eidf.ac.uk/project/</a>
+   or select 'Your Projects' from the Projects menu.</li>
 <li>Select the project from the list of your projects, e.g. <code>eidfxxx</code></li>
 <li>Click on the 'New Machine' button</li>
 <li>
@@ -3091,6 +3121,7 @@ The Project PI and project managers manage user accounts for each member of the 
 Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
 however a user may have multiple accounts in a project, for example for different roles.</p>
 <ol>
+<li>Select your project at <a href="https://portal.eidf.ac.uk/project/">https://portal.eidf.ac.uk/project/</a>.</li>
 <li>From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom</li>
 <li>
 <p>Complete the 'Create User Account' form as follows:</p>
@@ -3156,6 +3187,40 @@ even if you didn't select a package when first creating the machine.</p>
 <li>Select the configuration you wish to install and press 'Submit'</li>
 <li>The configuration job runs for a few minutes.</li>
 </ol>
+<h3 id="resize-a-machine">Resize a machine</h3>
+<p>An existing machine can be resized within the allowance of the project.
+This requires a reboot of your machine.</p>
+<ol>
+<li>Open the VM details page</li>
+<li>Click on 'Resize'</li>
+<li>In the form (as shown below), select a suitable machine specification.
+   The form will indicate the maximum number of cores and memory size that is available within your quota.
+    <img alt="ResizeMachine" class="border-img" src="../../../images/virtualmachines/ResizeMachine.png" />
+    <em>Example page to resize a machine from 2 cores and 4 GB RAM to 8 cores and 16GB RAM</em></li>
+<li>Click 'Submit'</li>
+</ol>
+<p>Please wait for the job to complete: Resizing takes a few minutes.
+After the automated reboot the machine will be available with the new specifications.</p>
+<p>If your quota does not allow resizing the machine to the desired number of cores or memory
+you can request additional resources through the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a>.
+Within the form above please select the category 'EIDF Project extension: duration and quota'.</p>
+<h3 id="resize-the-boot-volume-of-a-machine">Resize the boot volume of a machine</h3>
+<p>The disk of an existing machine can be resized within the allowance of the project.
+This requires a reboot of your machine.</p>
+<ol>
+<li>Open the VM details page</li>
+<li>Click on 'Expand Disk'</li>
+<li>In the form, enter the new disk size for your machine.
+   The form will indicate the maximum size that is available within your quota.</li>
+<li>Click 'Submit'</li>
+</ol>
+<p>Please wait for the job to complete: Expanding the disk takes a few minutes.
+After the job completes, the machine needs to be rebooted to expand the file system.
+You can do this by executing <code>sudo reboot now</code> from a terminal on the VM,
+or click 'Reboot' on the machine details page in the Portal.</p>
+<p>Please note that you cannot decrease the disk size.</p>
+<p>You can request additional storage through the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a>.
+Within the form above please select the category 'EIDF Project extension: duration and quota'.</p>
 <h3 id="patching-and-updating">Patching and updating</h3>
 <p>It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the <a href="../policies/#patching-of-user-vms">policy</a>.</p>
 <h4 id="ubuntu">Ubuntu</h4>
@@ -3174,6 +3239,14 @@ sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>reboot<span class="w"> </span>now
 </code></pre></div>
 <p>or use the reboot button in the EIDF Portal (requires project manager permissions).</p>
+<h3 id="required-member-permissions">Required Member Permissions</h3>
+<p>VMs and user accounts can only be managed by project members with <strong>Cloud Admin</strong> permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the <strong>Cloud Admin</strong> role:</p>
+<ol>
+<li>Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)</li>
+<li>On the project management page in SAFE, scroll down to "Manage Members"</li>
+<li>Click <em>Add project manager</em> or <em>Set member permissions</em></li>
+</ol>
+<p>For details please refer to the SAFE documentation: <a href="https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager">How can I designate a user as a project manager?</a></p>
 
 
 
