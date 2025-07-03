@@ -20,4 +20,3 @@ We run a current version of the Gitlab software so refer users to the Gitlab pro
 Users may make use of gitlab runners, CI/CD pipelines and other enabled features. Access via SSH (i.e. git over ssh) is enabled for this instance.
 
 If you wish an extra feature to be enabled, plus request this [via a support request](https://portal.eidf.ac.uk/queries/submit).
-
