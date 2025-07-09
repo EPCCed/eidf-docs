@@ -8,6 +8,9 @@ Mounting is done at a project level, so the whole project CephFS tree is mounted
 
 ## Pre-requisites
 
+!!! warning
+    It is not possible to mount CephFS on VMs running Ubuntu 20.04 LTS due to incompatible driver packages. We recommend upgrading to Ubuntu 22.04 LTS, or later, before trying to mount CephFS.
+
 To mount CephFS on a VM:
 
 1. The project must have space allocated on CephFS.
