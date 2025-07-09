@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2776,6 +2776,10 @@
 <p>EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as EIDF Virtual Machines Service (VMS).</p>
 <p>Mounting is done at a project level, so the whole project CephFS tree is mounted. For users who have used our Cerebras or Cirrus services, the whole of the top-level project directory is mounted, e.g. <code>/home/eidf124</code> on Cirrus is the same as <code>/home/eidf124</code> on the VM, and users can manipulate files in that directory.</p>
 <h2 id="pre-requisites">Pre-requisites</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not possible to mount CephFS on VMs running Ubuntu 20.04 LTS due to incompatible driver packages. We recommend upgrading to Ubuntu 22.04 LTS, or later, before trying to mount CephFS.</p>
+</div>
 <p>To mount CephFS on a VM:</p>
 <ol>
 <li>The project must have space allocated on CephFS.</li>
@@ -2856,7 +2860,7 @@ If your VM runs Ubuntu and you don't mount at <code>/home</code> the target loca
       <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
