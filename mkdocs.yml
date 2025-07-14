@@ -94,6 +94,8 @@ nav:
     #- "Managed File Transfer":
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
+    - "Code Collaboration":
+      - "Gitlab service": services/gitlab/index.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Network Access Controls": safe-haven-services/network-access-controls.md
