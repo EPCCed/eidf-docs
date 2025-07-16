@@ -314,13 +314,10 @@ The test environment is located in the eidf147 project. Please ask your research
 
 ### 3.2 Pull and run
 
----------
 !!! warning "Do not use container CLIs directly"
     The CES wrapper scripts **must** be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.
 
     You **must not** use commands such as `podman run ...` or `docker run ...` directly.
-
----------
 
 Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
 
