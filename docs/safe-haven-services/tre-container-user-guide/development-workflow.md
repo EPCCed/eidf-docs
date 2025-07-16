@@ -23,7 +23,9 @@ This document describes in detail the [four steps](./introduction.md#overview) r
 
 - Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the TRE VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
-- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible. Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.
+- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible. 
+
+<!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
 
 ### 1.2 General recommendations
 
@@ -131,7 +133,7 @@ See the following resources for additional recommendations:
 
 ### 2.1 Build and test the container locally
 
-Docker, Podman, Kubernetes, and Apptainer container images can be created from a single Dockerfile, because all of them support the OCI container image format either natively or indirectly.
+Docker, Podman, Kubernetes, and Apptainer container images can be created from a single Dockerfile, as all of them support the OCI container image format either natively or indirectly.
 
 Containers can be built using the following command:
 
@@ -189,7 +191,7 @@ The container can then be tested with:
 docker run --rm myapp:v1.1
 ```
 
-Podman can be used equivalently as Docker in the commands above.
+Podman can be used equivalently to Docker in the commands above.
 
 ### 2.2 Automating Dockerfile validation
 
@@ -208,6 +210,7 @@ repos:
 ### 2.3 Push to GHCR
 
 To prepare the image before pushing to GHCR, we recommend to save the image with a unique, descriptive tag. While it is useful to define a `latest` tag, each production image should also be tagged with a label such as the version or build date. For non-local images, the registry and repository should also be included. Images can also be tagged multiple times.
+
    **Example**:
 
    ```console
@@ -307,27 +310,28 @@ EPCC provides a test environment that allows users to test their containers in a
 
 ### 3.1 Accessing test environment
 
-The test environment is located in the EIDF147 project. Please ask your research coordinator to contact EPCC and request for you to be added to the test environment.
+The test environment is located in the eidf147 project. Please ask your research coordinator to contact EPCC and request for you to be added to the test environment.
 
 ### 3.2 Pull and run
 
 ---------
-!!! Warning: do not use container CLIs directly.
+!!! warning "Do not use container CLIs directly"
+    The CES wrapper scripts **must** be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.
 
-You **must not** use commands such as `podman run ...` or `docker run ...` directly. The CES wrapper scripts **must** be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.
+    You **must not** use commands such as `podman run ...` or `docker run ...` directly.
 
 ---------
 
 Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
 
-Once access has been granted to the `eidf147-ces-dev02` VM, the user can pull a container from their private GHCR repository using the command:
+Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the command:
 
 ```sh
 ces-pull <container-engine> <github_user> <github_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
 > [!NOTE]
-> The three container engines available are Podman, Kubernetes and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
+> The three container engines available are Podman and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
 
 To run the container, use:
 
@@ -335,7 +339,7 @@ To run the container, use:
 ces-run <container-engine> ghcr.io/<namespace>/<container_name>[:<container_tag>]
 ```
 
-When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Kubernetes supports `env-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
+When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
 
 ```console
 $ ces-run --help

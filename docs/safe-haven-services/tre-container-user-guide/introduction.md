@@ -32,7 +32,7 @@ The second one is a unique container job output directory mapped to the `/safe_o
 | Directory on host system | Directory in container | Intended use
 | -------- | ------- | ------- |
 | `/safe_data/<your_project_name>/`|/`safe_data`|Read-only access if required by IG, or read-write access, to data and other project files.|
-|`~/outputs_<unique_id>`  |`/safe_outputs`  |Will be created at container startup as an empty directory. Intended for any outputs: logs, data, models.|
+|`~/outputs_<unique_id>`  |`/safe_outputs`  |Will be created at container startup as an empty directory. Intended for any outputs: logs, data, models. Content saved in this directory will be retained after the container exits.|
 |`~/scratch_<unique_id>`|`/scratch`|Temporary directory that is removed after container termination on the host system. Any temporary files should be placed here.|
 
 Temporary files can also be written into any directory in the container’s internal file system. However, the use of `/scratch` can be more efficient if the service is able to mount it on high-performing storage devices.
