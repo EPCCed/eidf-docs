@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/tre-container-user-guide/workflow-examples/">
       
       
+        <link rel="prev" href="../development-workflow/">
+      
+      
+        <link rel="next" href="../container-examples/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -2124,18 +2128,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -2151,7 +2157,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Safe Haven Services
@@ -2438,18 +2444,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" checked>
         
           
           <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
@@ -2465,7 +2473,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_7">
             <span class="md-nav__icon md-icon"></span>
             TRE Container User Guide
@@ -2522,66 +2530,215 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../advise-ig-required-software-stack.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Workflow Examples
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Advising IG of Required Software Stack
+    Workflow Examples
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../building-and-testing-containers.md" class="md-nav__link">
+      
         
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  <span class="md-ellipsis">
-    Building and Testing Containers
+  
     
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 - PyTorch
+    </span>
+  </a>
   
-  
-    <li class="md-nav__item">
-      <a href="../using-containers-in-the-tre.md" class="md-nav__link">
+    <nav class="md-nav" aria-label="Example 1 - PyTorch">
+      <ul class="md-nav__list">
         
+          <li class="md-nav__item">
+  <a href="#e1-step-1-writing-the-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      E1 - Step 1. Writing the Dockerfile
+    </span>
+  </a>
   
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e1-step-2-build-and-push-to-ghcr" class="md-nav__link">
+    <span class="md-ellipsis">
+      E1 - Step 2. Build and push to GHCR
+    </span>
+  </a>
   
-  <span class="md-ellipsis">
-    Using Containers in the TRE
-    
-  </span>
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e1-step-3-test-in-ces-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      E1 - Step 3. Test in CES test environment
+    </span>
+  </a>
   
-
-      </a>
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e1-step-4-pull-and-run-in-the-tre" class="md-nav__link">
+    <span class="md-ellipsis">
+      E1 - Step 4. Pull and run in the TRE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-python-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 - Python ML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 2 - Python ML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e2-step-1-writing-the-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2 - Step 1. Writing the Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e2-step-2-build-and-push-to-ghcr" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2 - Step 2. Build and push to GHCR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e2-step-3-test-in-ces-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2 - Step 3. Test in CES test environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e2-step-4-pull-and-run-in-the-tre" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2 - Step 4. Pull and run in the TRE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-interactive-rstudio-rocker-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3 - Interactive RStudio Rocker container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 3 - Interactive RStudio Rocker container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e3-step-1-writing-the-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      E3 - Step 1. Writing the Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e3-step-2-build-and-push-to-ghcr" class="md-nav__link">
+    <span class="md-ellipsis">
+      E3 - Step 2. Build and push to GHCR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e3-step-3-test-in-ces-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      E3 - Step 3. Test in CES test environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e3-step-4-pull-and-run-in-the-tre" class="md-nav__link">
+    <span class="md-ellipsis">
+      E3 - Step 4. Pull and run in the TRE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
