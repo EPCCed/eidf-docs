@@ -2496,6 +2496,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2507,6 +2520,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tre-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRE directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advising-information-governance-of-required-software-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advising Information Governance of required software stack
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2543,7 +2602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advise-ig-required-software-stack/" class="md-nav__link">
+      <a href="../advise-ig-required-software-stack.md" class="md-nav__link">
         
   
   
@@ -2566,7 +2625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-and-testing-containers/" class="md-nav__link">
+      <a href="../building-and-testing-containers.md" class="md-nav__link">
         
   
   
@@ -2589,7 +2648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../using-containers-in-the-tre/" class="md-nav__link">
+      <a href="../using-containers-in-the-tre.md" class="md-nav__link">
         
   
   
@@ -2729,6 +2788,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tre-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRE directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advising-information-governance-of-required-software-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advising Information Governance of required software stack
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2747,9 +2841,58 @@
 
 
 <h1 id="introduction">Introduction</h1>
-<p>This guide sets out the required activities for researchers using containers in the EPCC TRE (Safe Haven). The intended audience are software developers with experience of containers and Docker and Podman in particular. Online courses such as <a href="https://github.com/ImperialCollegeLondon/RCDS-intro-to-containers">Intro to Containers</a> demonstrate the base skills needed if there is any doubt.</p>
-<p>The Container Execution Service (CES) has been introduced to allow project code developed and tested by researchers outside the TRE in personal development environments to be imported and run on the project data inside the TRE using a well-documented, transparent, secure workflow. The primary role of the TRE is to store and share data securely; it is not intended to be a software development and testing environment. The CES removes the need for software development in the TRE.</p>
-<p>The use of containers and software configuration management processes is also strongly advocated by the research software engineering community for experiment management and reproducibility. It is recommended that TRE container builders take a disciplined approach to code management and use git to create container build audit trails to satisfy any IG (Information Governance) concerns about the provenance of the project code.</p>
+<h2 id="overview">Overview</h2>
+<p>The Container Execution Service (CES) has been introduced to allow project code developed and tested by researchers outside the Trusted Research Environment (TRE) in personal development environments to be imported and run on the project data inside the TRE using a well-documented, transparent, secure workflow.
+The primary role of the TRE is to store and share data securely; it is not intended to be a software development and testing environment. The CES helps researchers perform software development tasks in their chosen environment, rather than the restricted one offered in the TRE.
+This guide describes the process of building and testing TRE-ready containers outside the TRE, specifically within a test enviroment created in the EIDF, so that they are ready to be pulled and used inside the TRE.</p>
+<p>We assume that users are already familiar with container concepts and have some experience in building their own images. If a user is new to container tools, the following resources would be a good starting point:</p>
+<ul>
+<li><a href="https://carpentries-incubator.github.io/docker-introduction/">https://carpentries-incubator.github.io/docker-introduction/</a></li>
+<li><a href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a></li>
+<li><a href="https://docker-curriculum.com/">https://docker-curriculum.com/</a></li>
+</ul>
+<p>It is also assumed that software development best practices are followed, such as version control using Git(Hub) and Continuous Integration (CI). This can help create container build audit trails to satisfy any IG (Information Governance) concerns about the provenance of the project code.</p>
+<p>The development process includes the following steps:</p>
+<ol>
+<li>Create a Dockerfile following <a href="../development-workflow/#12-general-recommendations">general recommendations</a> and <a href="../development-workflow/#11-tre-specific-advice">TRE-specific advice</a>.</li>
+<li>Build the image and upload to the GitHub Container Registry (GHCR), either locally or using a CI/CD pipeline.</li>
+<li>Test the container in the <a href="../development-workflow/#31-accessing-test-environment">CES test environment</a> to ensure it functions correctly and has no external runtime dependencies.</li>
+<li>Login to a TRE desktop enabled for container execution to pull and run the container.</li>
+</ol>
+<p>This guide contains a number of <a href="../workflow-examples/">workflow examples</a> designed to assist users in building TRE-ready containers. Other <a href="../container-examples/">container examples</a> are also available in our <a href="https://github.com/EPCCed/tre-container-samples/">TRE Container Samples</a> repository.</p>
+<h2 id="tre-directories">TRE directories</h2>
+<p>Before continuing with this guide, it is important that the users are aware of the TRE file system directories so that they can be used correctly within their containers. Project data inside the TRE can be found in the <code>/safe_data/&lt;project-id&gt;</code> directory.
+The CES tools automatically map this to a directory called <code>/safe_data</code> inside the container. Additionally, two directories are created and mapped to the user's home directory. The first one is <code>/scratch</code>, a temporary directory that is removed after container termination on the host system.
+The second one is a unique container job output directory mapped to the <code>/safe_outputs</code> directory in the container, where output files that the users wishes to preserve should be placed. Note that containers that have been pulled into the TRE are destroyed after they have been run. Only the files written to the container outputs directory are guaranteed to be retained.</p>
+<table>
+<thead>
+<tr>
+<th>Directory on host system</th>
+<th>Directory in container</th>
+<th>Intended use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/safe_data/&lt;your_project_name&gt;/</code></td>
+<td>/<code>safe_data</code></td>
+<td>Read-only access if required by IG, or read-write access, to data and other project files.</td>
+</tr>
+<tr>
+<td><code>~/outputs_&lt;unique_id&gt;</code></td>
+<td><code>/safe_outputs</code></td>
+<td>Will be created at container startup as an empty directory. Intended for any outputs: logs, data, models. Content saved in this directory will be retained after the container exits.</td>
+</tr>
+<tr>
+<td><code>~/scratch_&lt;unique_id&gt;</code></td>
+<td><code>/scratch</code></td>
+<td>Temporary directory that is removed after container termination on the host system. Any temporary files should be placed here.</td>
+</tr>
+</tbody>
+</table>
+<p>Temporary files can also be written into any directory in the container’s internal file system. However, the use of <code>/scratch</code> can be more efficient if the service is able to mount it on high-performing storage devices.</p>
+<h2 id="advising-information-governance-of-required-software-stack">Advising Information Governance of required software stack</h2>
+<p>Projects must establish that the software stack they intend to import in the container is acceptable for the project’s IG approvals. Projects should only seek to use container-based software if the standard TRE desktop environment is not sufficient for the research scope. However, it is broadly understood that the standard desktop software, whilst useful in most cases, is inadequate for many purposes and specifically ML, and software import using containers is intended to address this.</p>
 
 
 

@@ -14,7 +14,7 @@
         <link rel="prev" href="../introduction/">
       
       
-        <link rel="next" href="../advise-ig-required-software-stack/">
+        <link rel="next" href="../container-examples/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -2519,6 +2519,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2530,6 +2543,184 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-writing-a-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Writing a Dockerfile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1. Writing a Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-tre-specific-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 TRE-specific advice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-general-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 General recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-build-test-locally-and-push-to-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Build, test locally and push to registry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2. Build, test locally and push to registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-build-and-test-the-container-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Build and test the container locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-automating-dockerfile-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Automating Dockerfile validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-push-to-ghcr" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Push to GHCR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-optional-build-and-upload-automation-using-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Optional - Build and upload automation using GitHub Actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Optional - Build and upload automation using GitHub Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building in CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing in CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-test-in-ces-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Test in CES test environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3. Test in CES test environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-accessing-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Accessing test environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-pull-and-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Pull and run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-pull-and-run-container-inside-the-tre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Pull and run container inside the TRE
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2543,7 +2734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advise-ig-required-software-stack/" class="md-nav__link">
+      <a href="../advise-ig-required-software-stack.md" class="md-nav__link">
         
   
   
@@ -2566,7 +2757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-and-testing-containers/" class="md-nav__link">
+      <a href="../building-and-testing-containers.md" class="md-nav__link">
         
   
   
@@ -2589,7 +2780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../using-containers-in-the-tre/" class="md-nav__link">
+      <a href="../using-containers-in-the-tre.md" class="md-nav__link">
         
   
   
@@ -2729,6 +2920,173 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-writing-a-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Writing a Dockerfile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1. Writing a Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-tre-specific-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 TRE-specific advice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-general-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 General recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-build-test-locally-and-push-to-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Build, test locally and push to registry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2. Build, test locally and push to registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-build-and-test-the-container-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Build and test the container locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-automating-dockerfile-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Automating Dockerfile validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-push-to-ghcr" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Push to GHCR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-optional-build-and-upload-automation-using-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Optional - Build and upload automation using GitHub Actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Optional - Build and upload automation using GitHub Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building in CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing in CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-test-in-ces-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Test in CES test environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3. Test in CES test environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-accessing-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Accessing test environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-pull-and-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Pull and run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-pull-and-run-container-inside-the-tre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Pull and run container inside the TRE
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2746,35 +3104,301 @@
   
 
 
-<h1 id="development-workflow">Development workflow</h1>
-<p>The general guidance for TRE container development is:</p>
+<h1 id="development-workflow">Development Workflow</h1>
+<p>This document describes in detail the <a href="../introduction/#overview">four steps</a> recommended for the development of containers for TRE use.</p>
+<h2 id="step-1-writing-a-dockerfile">Step 1. Writing a <code>Dockerfile</code></h2>
+<h3 id="11-tre-specific-advice">1.1 TRE-specific advice</h3>
 <ul>
 <li>
-<p>Develop all code on a git platform, typically GitHub or a university managed GitLab service</p>
+<p>Declare TRE specific directories using the line <code>RUN mkdir /safe_data /safe_outputs /scratch</code> in your Dockerfile. While the CES tools automatically generate these directories within the container, explicitly creating them
+   enhances transparency and helps others more easily understand the container’s structure and operation.
+   Note that files should not be added to these directories through the Dockerfile prior to mounting, as they would be overwritten during the mounting process. The directories will be fully accessible within the container during run time.</p>
 </li>
 <li>
-<p>Start Dockerfiles from a well-known base image. This is especially important if using a GPU as your container will need to have a compatible version of CUDA (currently 11.1 or later)</p>
+<p>Start with a well-known application base container on a public registry.
+   Projects should add a minimum of additional project software and packages
+   so that the container is clearly built for a specific purpose. Avoid
+   patching and preserve the original container setup wherever possible.
+   Complex containers, particularly interactive ones, have been carefully
+   designed by competent developers to meet high security and usability
+   standards. Modifying these without the required knowledge might introduce
+   unwanted risks and side effects.</p>
 </li>
 <li>
-<p>Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile</p>
+<p>Do not copy data files into the image. As a general rule, images should only contain software and configuration files. Any data files required will be presented to the container at runtime (e.g. via the <code>/safe_data</code> mount) and should not be copied into the container during the build.</p>
 </li>
 <li>
-<p>Build and test the container to ensure that it has no external runtime dependencies</p>
+<p>Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the TRE VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.</p>
 </li>
 <li>
-<p>Push the Dockerfile to the project git repository so the container image build is recorded</p>
-</li>
-<li>
-<p>Push the container image to the GitHub container registry ghcr.io (GHCR)</p>
-</li>
-<li>
-<p>Login to a TRE desktop enabled for container execution to pull and run the container</p>
+<p>Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible. </p>
 </li>
 </ul>
-<p>Containers are connected to three external directories when run inside the TRE: one for access to the project data files (which may be read-only in some cases); one for temporary work files that are all deleted when the container exits; and one for the job output files (which may be set as read-only in some cases when the container exits). All container outputs remain inside the TRE project file space and there is no automatic export when the container finishes.</p>
-<p>Container images that have been pulled into the TRE are destroyed after they have been run. Only the files written to the container outputs directory are guaranteed to be retained.</p>
-<p>You must ensure that, apart from the input data, your container has everything that it needs to run, including all code and dependencies, and any ancillary files such as machine learning models. It is likely that your development environment, which is always outside the TRE, does not normally have these three directories, but you need to build a container that uses them (see below for path names) because there is no ability inside the TRE to change which directories are available.</p>
-<p>The input data file names may change so you may not want to hard-code them into your container. For example, instead of your code using <code>open("/safe_data/my_patients.csv")</code> you should consider putting a list of input file names into a config file and reading that config file in your container start up to determine which input data files to use. This will allow you to re-run your container on different data sets much faster than building a new container each time.</p>
+<!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
+
+<h3 id="12-general-recommendations">1.2 General recommendations</h3>
+<p>It is highly recommended that users follow these Dockerfile best practice guidelines:</p>
+<ul>
+<li>Use fully-qualified and pinned images in all <code>FROM</code> statements. Images can be hosted on multiple repositories, and image tags are mutable. The only way to ensure reproducible builds is by pinning images by their full signature. The signature of an image can be viewed with <code>docker inspect --format='{{index .RepoDigests 0}}' &lt;image&gt;</code>. The image repository is usually <code>docker.io</code> or <code>ghcr.io</code>.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Incorrect</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:latest</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/nvidia/cuda:latest</span>
+
+<span class="c"># Correct</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04@sha256:622e78a1d02c0f90ed900e3985d6c975d8e2dc9ee5e61643aed587dcf9129f42</span>
+</code></pre></div>
+<ul>
+<li>Group consecutive and related commands into a single <code>RUN</code> statement. Each <code>RUN</code> statement causes a new layer to be created in the image. By grouping <code>RUN</code> statements together, and deleting temporary files, the final image image size can be greatly reduced.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Incorrect</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>curl
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>git
+
+<span class="c"># Correct</span>
+<span class="c"># - Single RUN statement with commands broken over multiple lines</span>
+<span class="c"># - Temporary apt files are deleted and not stored in the final image</span>
+<span class="k">RUN</span><span class="w"> </span>:<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-qq<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>-qq<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="o">&amp;&amp;</span><span class="w"> </span>:
+</code></pre></div>
+<ul>
+<li>Use <code>COPY</code> instead of <code>ADD</code>. Compared to the <code>COPY</code> command, <code>ADD</code> supports much more functionality such as unpacking archives and downloading from URLs. While this may seem convenient, using <code>ADD</code> may result in much larger images with layers which are unnecessary. In the following example, using COPY after unpacking locally makes the image more efficient:</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Incorrect</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
+<span class="c"># Unpack a tar archive</span>
+<span class="k">ADD</span><span class="w"> </span>my_project.tar.gz<span class="w"> </span>/target-dir/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/target-dir/main.py&quot;</span><span class="p">]</span>
+
+<span class="c"># Correct</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
+<span class="c"># Unpack my_project.tar.gz locally first, then copy</span>
+<span class="k">COPY</span><span class="w"> </span>my_project/<span class="w"> </span>/target-dir/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/target-dir/main.py&quot;</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Use multi-stage builds where appropriate. Separating build/compilation steps into a separate stage helps to minimise the content of the final image and reduce the overall size.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">some-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>build-dependencies
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>./configure<span class="w"> </span>--prefix<span class="o">=</span>/opt/app<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">some-minimal-image</span>
+<span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>runtime-dependencies
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/opt/app<span class="w"> </span>/opt/app
+</code></pre></div>
+<ul>
+<li>Use a minimal image in the last stage to reduce the final image size. When using multi-stage builds, the final <code>FROM</code> image should use a minimal image such as from <a href="https://github.com/GoogleContainerTools/distroless/">Distroless</a> or <a href="https://images.chainguard.dev/">Chainguard</a> to minimise image content and size.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">some-image</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="c"># ...</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">gcr.io/distroless/base-debian12</span>
+<span class="c"># ...</span>
+</code></pre></div>
+<ul>
+<li>Use a linter such as <a href="https://github.com/hadolint/hadolint">Hadolint</a> to verify the content of the <code>Dockerfile</code>.
+ Automated code linting tools can be very useful in detecting common mistakes and pitfalls when developing software. Some configuration tweaks may be required however, as shown in the example below.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Ignore<span class="w"> </span>DL3008<span class="w"> </span><span class="o">(</span>Pin<span class="w"> </span>versions<span class="w"> </span><span class="k">in</span><span class="w"> </span>apt<span class="w"> </span>get<span class="w"> </span>install<span class="o">)</span>
+<span class="go">docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3008 - &lt; Dockerfile</span>
+</code></pre></div>
+<p>See the following resources for additional recommendations:</p>
+<ul>
+<li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316</a></li>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a></li>
+<li><a href="https://sysdig.com/blog/dockerfile-best-practices/">https://sysdig.com/blog/dockerfile-best-practices/</a></li>
+</ul>
+<h2 id="step-2-build-test-locally-and-push-to-registry">Step 2. Build, test locally and push to registry</h2>
+<h3 id="21-build-and-test-the-container-locally">2.1 Build and test the container locally</h3>
+<p>Docker, Podman, Kubernetes, and Apptainer container images can be created from a single Dockerfile, as all of them support the OCI container image format either natively or indirectly.</p>
+<p>Containers can be built using the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker build -t &lt;image&gt;:&lt;tag&gt; -f &lt;path-to-Dockerfile&gt;</span>
+</code></pre></div>
+<p>Run your image locally, so that minor errors can be immediately fixed before proceeding with the next steps:</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker run &lt;options&gt; &lt;image&gt;:&lt;tag&gt;</span>
+</code></pre></div>
+<h3 id="example">Example</h3>
+<p>A container with the following Dockerfile:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>FROM<span class="w"> </span>python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
+
+<span class="w">   </span>#<span class="w"> </span>Create<span class="w"> </span>TRE<span class="w"> </span>directories
+<span class="w">   </span>RUN<span class="w"> </span>mkdir<span class="w"> </span>/safe_data<span class="w"> </span>/safe_outputs<span class="w"> </span>/scratch
+
+<span class="w">   </span>#<span class="w"> </span>Add<span class="w"> </span>app<span class="w"> </span>files
+<span class="w">   </span>COPY<span class="w"> </span>.<span class="w"> </span>/app
+<span class="w">   </span>WORKDIR<span class="w"> </span>/app
+
+<span class="w">   </span>#<span class="w"> </span>Install<span class="w"> </span>Python<span class="w"> </span>dependencies
+<span class="w">   </span>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="w">   </span>#<span class="w"> </span>Default<span class="w"> </span>command
+<span class="w">   </span>CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;python&quot;</span>,<span class="w"> </span><span class="s2">&quot;app.py&quot;</span><span class="o">]</span>
+</code></pre></div>
+<p>where this is the app structure:</p>
+<div class="highlight"><pre><span></span><code><span class="go">.</span>
+<span class="go">├── app.py</span>
+<span class="go">├── requirements.txt</span>
+<span class="go">└── Dockerfile</span>
+</code></pre></div>
+<p>can be built with the command:</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker build -t myapp:v1.1 . --platform linux/amd64</span>
+</code></pre></div>
+<p>where <code>--platform linux/amd64</code> is added to ensure image compatibility with the TRE environment in case the image is being built on a different platform.</p>
+<p>The container can then be tested with:</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker run --rm myapp:v1.1</span>
+</code></pre></div>
+<p>Podman can be used equivalently to Docker in the commands above.</p>
+<h3 id="22-automating-dockerfile-validation">2.2 Automating Dockerfile validation</h3>
+<p>During development, we recommend that tools like GitHub or GitLab are used for version control and recording of the image content. Using the <a href="https://pre-commit.com/"><code>pre-commit</code></a> tool, it is possible to configure your local repository so that Hadolint (and similar tools) are run automatically each time <code>git commit</code> is run. This is recommended to ensure linting and auto-formatting tools are always run before code is pushed to GitHub.</p>
+<p>To run Hadolint, include the hook in your <code>.pre-commit-config.yaml</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hadolint/hadolint</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2.12.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hadolint-docker</span>
+</code></pre></div>
+<h3 id="23-push-to-ghcr">2.3 Push to GHCR</h3>
+<p>To prepare the image before pushing to GHCR, we recommend to save the image with a unique, descriptive tag. While it is useful to define a <code>latest</code> tag, each production image should also be tagged with a label such as the version or build date. For non-local images, the registry and repository should also be included. Images can also be tagged multiple times.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">docker build \</span>
+<span class="go">   --tag ghcr.io/my/image:v1.2.3 \</span>
+<span class="go">   --tag ghcr.io/my/image:latest \</span>
+<span class="go">   ...</span>
+</code></pre></div>
+<p>The following commands can be used to upload the image to a private GHCR repository.</p>
+<div class="highlight"><pre><span></span><code><span class="go">echo &quot;${GHCR_TOKEN}&quot; | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin</span>
+<span class="go">docker build . --tag &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG&quot; --tag &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest&quot;</span>
+<span class="go">docker push &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest&quot;</span>
+<span class="go">docker push &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG&quot;</span>
+<span class="go">docker logout</span>
+</code></pre></div>
+<h3 id="25-optional-build-and-upload-automation-using-github-actions">2.5 Optional - Build and upload automation using GitHub Actions</h3>
+<h4 id="building-in-ci">Building in CI</h4>
+<p>Below is a sample GHA configuration which runs Hadolint, builds a container named <code>ghcr.io/my/repo</code>, then runs the <a href="https://aquasecurity.github.io/trivy">Trivy</a> container scanning tool. The Trivy <a href="https://www.cisa.gov/sbom">SBOM</a> report is then uploaded as a job artifact.</p>
+<p>This assumes:</p>
+<ul>
+<li>The repo contains a <code>Dockerfile</code> in the top-level directory,</li>
+<li>The <code>Dockerfile</code> contains an <code>ARG</code> or <code>ENV</code> variable which defines the version of the packaged software.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># File .github/workflows/main.yaml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-22.04</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run hadolint</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker run --rm -i ghcr.io/hadolint/hadolint hadolint --failure-threshold error - &lt; Dockerfile</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build image</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">set -euxo pipefail</span>
+<span class="w">          </span><span class="no">repository=&quot;ghcr.io/myrepo&quot;</span>
+<span class="w">          </span><span class="no">version=&quot;myversion&quot;</span>
+<span class="w">          </span><span class="no">image=&quot;${repository}:${version}&quot;</span>
+<span class="w">          </span><span class="no">docker build . --tag &quot;${image}&quot;</span>
+<span class="w">          </span><span class="no">echo &quot;image=${image}&quot; &gt;&gt; &quot;$GITHUB_ENV&quot;</span>
+<span class="w">          </span><span class="no">echo &quot;Built ${image}&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push image</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">set -euxo pipefail</span>
+<span class="w">          </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | docker login ghcr.io -u $ --password-stdin</span>
+<span class="w">          </span><span class="no">docker push &quot;${image}&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run trivy</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aquasecurity/trivy-action@master</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">image-ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">env.image</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;github&#39;</span>
+<span class="w">          </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dependency-results.sbom.json&#39;</span>
+<span class="w">          </span><span class="nt">github-pat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">secrets.GITHUB_TOKEN</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;MEDIUM,CRITICAL,HIGH&#39;</span>
+<span class="w">          </span><span class="nt">scanners</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vuln&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upload trivy report</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;trivy-sbom-report&#39;</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dependency-results.sbom.json&#39;</span>
+</code></pre></div>
+<p>Note that manually running Hadolint via pre-commit can be skipped if you are using pre-commit and the <a href="https://pre-commit.ci/">pre-commit.ci</a> service.</p>
+<h4 id="publishing-in-ci">Publishing in CI</h4>
+<p><strong>Note</strong> Images can also be built and pushed from your local environment as normal.</p>
+<p>Once the stage has been reached where your software package is ready for distribution, the GHA example above can be extended to automatically publish new image versions to the GHCR. An introduction to GHCR can be found in the GitHub docs <a href="https://docs.github.com/en/packages/quickstart">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># After the image has been built and scanned</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push image</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">set -euxo pipefail</span>
+<span class="w">    </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | docker login ghcr.io -u $ --password-stdin</span>
+<span class="w">    </span><span class="no">docker push &quot;${image}&quot;</span>
+</code></pre></div>
+<h2 id="step-3-test-in-ces-test-environment">Step 3. Test in CES test environment</h2>
+<p>EPCC provides a test environment that allows users to test their containers in a TRE-like environment without having to be logged into the TRE itself. Containers that run successfully in such environment can then be expected to perform in the same way in the TRE.</p>
+<h3 id="31-accessing-test-environment">3.1 Accessing test environment</h3>
+<p>The test environment is located in the eidf147 project. Please ask your research coordinator to contact EPCC and request for you to be added to the test environment.</p>
+<h3 id="32-pull-and-run">3.2 Pull and run</h3>
+<div class="admonition warning">
+<p class="admonition-title">Do not use container CLIs directly</p>
+<p>The CES wrapper scripts <strong>must</strong> be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.</p>
+<p>You <strong>must not</strong> use commands such as <code>podman run ...</code> or <code>docker run ...</code> directly.</p>
+</div>
+<p>Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a <code>ces-pull</code> script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.</p>
+<p>Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the command:</p>
+<div class="highlight"><pre><span></span><code>ces-pull<span class="w"> </span>&lt;container-engine&gt;<span class="w"> </span>&lt;github_user&gt;<span class="w"> </span>&lt;github_token&gt;<span class="w"> </span>ghcr.io/&lt;namespace&gt;/&lt;container_name&gt;:&lt;container_tag&gt;
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+The three container engines available are Podman and Apptainer, with <code>ces-pull</code> defaulting to Podman if no container engine is specified.</p>
+</blockquote>
+<p>To run the container, use:</p>
+<div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>&lt;container-engine&gt;<span class="w"> </span>ghcr.io/&lt;namespace&gt;/&lt;container_name&gt;<span class="o">[</span>:&lt;container_tag&gt;<span class="o">]</span>
+</code></pre></div>
+<p>When using Podman and Apptainer, extra arguments can be passed using <code>env-file</code>, <code>opt-file</code> and <code>arg-file</code>. Containers that require a GPU can be run adding the <code>--gpu</code> option. See <code>ces-run --help</code> for all available options:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ces-run<span class="w"> </span>--help
+<span class="go">WARNING: container runtime is defaulting to podman</span>
+<span class="go">Running: /usr/local/bin/ces-pm-run --help</span>
+<span class="go">Run a container in the TRE</span>
+
+<span class="go">Usage:</span>
+<span class="go">  ces-pm-run [options] &lt;container&gt;</span>
+
+<span class="go">Available Options:</span>
+<span class="go">  -c|--cores      CPU cores to allocate (default is sharing all of them)</span>
+<span class="go">  --dry-run       Do not run the container, print out all the command options</span>
+<span class="go">  --env-file      File with env vars to pass to container</span>
+<span class="go">  --gpu           Connect the container to the local GPU</span>
+<span class="go">  -h|--help       Print this stuff</span>
+<span class="go">  -m|--memory     Memory to allocate in Gb (default is 4Gb)</span>
+<span class="go">  -n|--name       Assign a name to the container</span>
+<span class="go">  --opt-file      File with additional options to pass to run command</span>
+<span class="go">  --arg-file      File with additional arguments to append to run command</span>
+<span class="go">  -v|--verbose    Print out all command options</span>
+<span class="go">  --version       Print out version string</span>
+</code></pre></div>
+<p>We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option <code>--network=none</code> through the <code>opt-file</code>.</p>
+<p>Once the container runs successfully in the test environment, it is ready to be used inside the TRE.</p>
+<h2 id="step-4-pull-and-run-container-inside-the-tre">Step 4. Pull and run container inside the TRE</h2>
+<p>To use the containers inside the TRE, log into the desired VM using the steps described in the EIDF User Documentation: <a href="https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/">https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/</a></p>
+<p>The same steps described in <a href="#32-pull-and-run">Section 3.2</a> of this document can then be used to pull and run the container.</p>
 
 
 
