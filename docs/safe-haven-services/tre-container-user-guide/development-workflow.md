@@ -23,7 +23,7 @@ This document describes in detail the [four steps](./introduction.md#overview) r
 
 - Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the TRE VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
-- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible. 
+- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible.
 
 <!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
 
@@ -327,16 +327,30 @@ Once access has been granted to the test environemnt in the eidf147 project, the
 ces-pull <container-engine> <github_user> <github_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-> [!NOTE]
-> The three container engines available are Podman and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
+The three container engines available are:
 
-To run the container, use:
+- `Podman`, configured in rootless mode,
+- `Kubernetes` (or `k8s`), using a local single-node Microk8s cluster,
+- `Apptainer`
+
+Docker is not currently available.
+
+!!! note "Podman is the default container engine"
+     `ces-pull` defaults to Podman if no container engine is specified.
+
+To run a container, use:
 
 ```sh
 ces-run <container-engine> ghcr.io/<namespace>/<container_name>[:<container_tag>]
 ```
 
-When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
+Most container engines support the following arguments to `ces-run`:
+
+- `--opt-file` may specify a file containing additional options to the container engine run command
+- `--env-file` may specify a file containing environment variables which will be added to the container environment
+- `--arg-file` may specify a file containing arguments to pass to the container entrypoint
+
+The Kubernetes engine does not support `--opt-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help`, and `ces-run <container-engine> --help` for all available options:
 
 ```console
 $ ces-run --help
@@ -361,7 +375,9 @@ Available Options:
   --version       Print out version string
 ```
 
-We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
+The `--dry-run` option can be useful when working with kubernetes, as it will print the generated job spec. This can then be saved and edited if configuration is needed, and manually applied with `kubectl apply -f <file>` as normal.
+
+We recommend that containers are tested without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
 Once the container runs successfully in the test environment, it is ready to be used inside the TRE.
 
