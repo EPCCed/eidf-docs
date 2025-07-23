@@ -2,9 +2,15 @@
 
 ## Introduction
 
-EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as EIDF Virtual Machines Service (VMS).
+EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as the EIDF Virtual Machines Service (VMS).
 
 Mounting is done at a project level, so the whole project CephFS tree is mounted. For users who have used our Cerebras or Cirrus services, the whole of the top-level project directory is mounted, e.g. `/home/eidf124` on Cirrus is the same as `/home/eidf124` on the VM, and users can manipulate files in that directory.
+
+!!! note
+    Changing file properties on CephFS on a VM will cause the effect to be visible wherever the file is visible, ie on other systems.
+
+If you set a file stored on CephFS to be world readable on your VM, it will also be world readable (ie viewable by any user) on shared-access systems such as Cerebras or Cirrus. This also applies to files in the top-level shared directory. For example, files in `/home/eidf124/shared` are visible wherever `/home/eidf124` is mounted. User VMs typically only mount the project tree, not the complete CephFS tree.
+
 
 ## Pre-requisites
 
