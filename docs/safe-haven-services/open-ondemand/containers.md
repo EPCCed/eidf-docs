@@ -20,7 +20,7 @@ The registries supported by the Container Execution Service, and so accessible f
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
-| DockerHub | `ghcr.io/` | `ghcr.io/mikej888/hello-tre:1.0` |
+| GitHub    | `ghcr.io/` | `ghcr.io/mikej888/hello-tre:1.0` |
 
 ---
 
