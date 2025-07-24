@@ -3047,8 +3047,8 @@
 
 
 <h1 id="workflow-examples">Workflow Examples</h1>
-<p>The following sections will guide the user in the process of creating different types of containers.
-For a complete list of examples, please see our TRE Container Samples repository: https://github.com/EPCCed/tre-container-samples</p>
+<p>The following sections will guide the user in the process of creating different types of containers.</p>
+<p>For a complete list of examples, please see our TRE Container Samples repository, at <a href="https://github.com/EPCCed/tre-container-samples">EPCCed/tre-container-samples</a>.</p>
 <h2 id="example-1-pytorch">Example 1 - PyTorch</h2>
 <p>This section will explain how to create a container that runs a script using PyTorch inside the TRE. The expected directory structure is:</p>
 <div class="highlight"><pre><span></span><code><span class="go">  ├── Dockerfile</span>
@@ -3056,12 +3056,13 @@ For a complete list of examples, please see our TRE Container Samples repository
 <span class="go">  ├── torch_gpu_test.py</span>
 </code></pre></div>
 <p>where <code>requirements.txt</code> contains:</p>
-<div class="highlight"><pre><span></span><code><span class="go">numpy </span>
+<div class="highlight"><pre><span></span><code><span class="go">numpy</span>
 <span class="go">torch</span>
 </code></pre></div>
 <p>and <code>torch_gpy_test.py</code> is any script that performs a test task using PyTorch.</p>
 <h3 id="e1-step-1-writing-the-dockerfile">E1 - Step 1. Writing the Dockerfile</h3>
-<p>In our Dockerfile, we want to start by using an officially supported image that already contains as much of the software required to run the script as possible. In our case, we want a ready-made python 3 image to start with, which we can find in <a href="https://hub.docker.com/search?q=python">DockerHub</a>. The latest stable version at the time of writing is <a href="https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1">3.13.3</a>, so we will use this and include the digest in our Dockerfile.</p>
+<p>In our Dockerfile, we want to start by using an officially supported image that already contains as much of the software required to run the script as possible.</p>
+<p>In our case, we want a ready-made python 3 image to start with, which we can find in <a href="https://hub.docker.com/search?q=python">DockerHub</a>. The latest stable version at the time of writing is <a href="https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1">3.13.3</a>, so we will use this and include the digest in our Dockerfile.</p>
 <p>Next, we need to set up the TRE directories, copy our files into the container, install the necessary packages and finally execute the script. This process can be accomplished with the following Dockerfile:</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377</span>
 
@@ -3096,12 +3097,12 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 </code></pre></div>
 <p>If the container runs without errors, we can push our image to GHCR using our namespace and token:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:v1.1&quot;</span><span class="w"> </span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:v1.1&quot;</span>
 docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:latest&quot;</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <h3 id="e1-step-3-test-in-ces-test-environment">E1 - Step 3. Test in CES test environment</h3>
-<p>Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES. </p>
+<p>Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.</p>
 <p>Then, pull and run the container using the commands:</p>
 <div class="highlight"><pre><span></span><code>ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span><span class="nv">$GHCR_TOKEN</span><span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/pytorch-test:v1.1
 ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/pytorch-test:v1.1
@@ -3109,7 +3110,7 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w
 <h3 id="e1-step-4-pull-and-run-in-the-tre">E1 - Step 4. Pull and run in the TRE</h3>
 <p>The container can be imported and run inside the TRE using the same commands as the <a href="#e1---step-3-test-in-ces-test-environment">previous step</a>.</p>
 <h2 id="example-2-python-ml">Example 2 - Python ML</h2>
-<p>This example demonstrates how to build a container which requires a ML model that would normally be downloaded from the internet when first run. Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it. </p>
+<p>This example demonstrates how to build a container which requires a ML model that would normally be downloaded from the internet when first run. Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it.</p>
 <p>The approach we take is to run a sample piece of code during the container build phase, which downloads the model to the hidden cache directory. This then becomes part of the container.</p>
 <p>The expected directory structure is:</p>
 <div class="highlight"><pre><span></span><code><span class="go">  ├── Dockerfile</span>
@@ -3151,7 +3152,7 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w
         <span class="nb">print</span><span class="p">(</span><span class="n">entities</span><span class="p">)</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">out_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<p>and <code>doc1.png</code> is an image that contains text. </p>
+<p>and <code>doc1.png</code> is an image that contains text.</p>
 <h3 id="e2-step-1-writing-the-dockerfile">E2 - Step 1. Writing the Dockerfile</h3>
 <p>Similarly to the PyTorch example, we will start our Dockerfile using the <code>python:3</code> image:</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377</span>
@@ -3215,7 +3216,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 </code></pre></div>
 <p>If the container runs without errors, we can push our image to GHCR using our namespace and token:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:v1.1&quot;</span><span class="w"> </span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:v1.1&quot;</span>
 docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:latest&quot;</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
@@ -3243,7 +3244,7 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 
 <span class="c1"># basic graph</span>
-<span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpg</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpg</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span>
 
 <span class="c1"># a data frame with all the annotation info</span>
@@ -3254,14 +3255,15 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w
 <span class="p">)</span>
 
 <span class="c1"># Add text</span>
-<span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">annotation</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="w">                 </span><span class="p">,</span><span class="w"> </span>
-<span class="w">           </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">annotation</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="w">                 </span><span class="p">,</span>
+<span class="w">           </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span>
 <span class="w">           </span><span class="n">size</span><span class="o">=</span><span class="m">7</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">angle</span><span class="o">=</span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">fontface</span><span class="o">=</span><span class="s">&quot;bold&quot;</span><span class="w"> </span><span class="p">)</span>
 
 <span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;test_figure.png&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="e3-step-1-writing-the-dockerfile">E3 - Step 1. Writing the Dockerfile</h3>
-<p>We start the process by selecting the parent image. Searching for Rocker in <a href="https://hub.docker.com/search?q=rocker">DockerHub</a>, we are presented with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the <a href="https://rocker-project.org/">Rocker Project</a>. For this example, we choose the latest version of Rocker RStudio: https://hub.docker.com/r/rocker/rstudio</p>
+<p>We start the process by selecting the parent image. Searching for Rocker in <a href="https://hub.docker.com/search?q=rocker">DockerHub</a>, we are presented with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the <a href="https://rocker-project.org/">Rocker Project</a>.</p>
+<p>For this example, we choose the latest version of Rocker RStudio, <a href="https://hub.docker.com/r/rocker/rstudio">rocker/rstudio</a> from <a href="https://hub.docker.com/">Docker Hub</a>.</p>
 <p>Clicking on "tags", we can then select "latest" and see the full signature of the image. We can then include the pinned image in our Dockerfile:</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/rocker/rstudio:latest@sha256:ee7c4efa46f0b5d46e051393ef05f262aceb959463b15fc3648955965290d231</span>
 </code></pre></div>
@@ -3292,10 +3294,10 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>--gpu<span class="w
 <span class="k">RUN</span><span class="w"> </span>r<span class="w"> </span>install_packages.R
 </code></pre></div>
 <h3 id="e3-step-2-build-and-push-to-ghcr">E3 - Step 2. Build and push to GHCR</h3>
-<p>Before building our container, we want to check the Dockerfile with a linting tool to detect common mistakes:
+<p>Before building our container, we want to check the Dockerfile with a linting tool to detect common mistakes:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Ignore DL3008 (Pin versions in apt get install)</span>
 docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span>-i<span class="w"> </span>docker.io/hadolint/hadolint:latest<span class="w"> </span>hadolint<span class="w"> </span>--ignore<span class="w"> </span>DL3008<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>Dockerfile
-</code></pre></div></p>
+</code></pre></div>
 <p>We can then define our GHCR variables:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GHCR_NAMESPACE</span><span class="o">=</span>mynamespace
 <span class="nb">export</span><span class="w"> </span><span class="nv">GHCR_TOKEN</span><span class="o">=</span>mytoken
@@ -3309,18 +3311,18 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 <p>We can then access RStudio by navigating to 'localhost:8787' in a browser. At the login page, type 'root' and 'test' for username and password respectively. Note that you will only be 'root' within the context of the container and not outside of it. The same applies in the test environment and TRE.</p>
 <p>Once we made sure the container runs, we can push our image to GHCR using our namespace and token:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:v1.1&quot;</span><span class="w"> </span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:v1.1&quot;</span>
 docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:latest&quot;</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <h3 id="e3-step-3-test-in-ces-test-environment">E3 - Step 3. Test in CES test environment</h3>
-<p>Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES. </p>
+<p>Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.</p>
 <p>Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the TRE - and our test environemnt - using podman. To pull the container using podman as our container engine, we use the command:</p>
 <div class="highlight"><pre><span></span><code>ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span><span class="nv">$GHCR_TOKEN</span><span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
 </code></pre></div>
 <p>The Rocker container was designed to be run using docker. In order for it to run successfully with podman, the container directories <code>/var/lib/rstudio-server</code> and <code>/run</code> need to be mounted to a tmpfs. As such, the following options are required:</p>
-<div class="highlight"><pre><span></span><code><span class="s1">&#39;--mount type=tmpfs,destination=/var/lib/rstudio-server&#39;</span><span class="w"> </span>
-<span class="s1">&#39;--mount type=tmpfs,destination=/run&#39;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;--mount type=tmpfs,destination=/var/lib/rstudio-server&#39;</span>
+<span class="s1">&#39;--mount type=tmpfs,destination=/run&#39;</span>
 </code></pre></div>
 <p>Our full <code>opt-file.txt</code> then looks like this:</p>
 <div class="highlight"><pre><span></span><code>-p 8787:8787
@@ -3355,10 +3357,12 @@ docker<span class="w"> </span><span class="nb">logout</span>
 ces-run<span class="w"> </span>podman<span class="w"> </span>--opt-file<span class="w"> </span><span class="nv">$opt_file</span><span class="w"> </span>--env-file<span class="w"> </span><span class="nv">$env_file</span><span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
 </code></pre></div>
 <p>After executing the <code>run.sh</code> script, we can open a browser tab and access RStudio at <code>localhost:8787</code>. As done previously during the local test, we can log in using the credentials <code>root</code> and <code>test</code> for username and password respectively. From within RStudio, we can then run our script, which can be found in <code>/src</code>, and then copy our output to <code>/safe_output</code> so that it can be preserved after we exit the container.</p>
-<p>The container is running successfully if:
-- The log-in is successful.
-- The rstudio user has full access to TRE directories <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code>.
-- The files saved in <code>/safe_outputs</code> and <code>/safe_data</code> (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user. </p>
+<p>The container is running successfully if:</p>
+<ul>
+<li>The log-in is successful.</li>
+<li>The rstudio user has full access to TRE directories <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code>.</li>
+<li>The files saved in <code>/safe_outputs</code> and <code>/safe_data</code> (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user.</li>
+</ul>
 <h3 id="e3-step-4-pull-and-run-in-the-tre">E3 - Step 4. Pull and run in the TRE</h3>
 <p>The container can then be imported inside the TRE using the same commands as <a href="#e3---step-3-test-in-ces-test-environment">Step 3</a>.</p>
 
