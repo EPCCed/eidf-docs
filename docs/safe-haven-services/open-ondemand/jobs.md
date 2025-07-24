@@ -87,6 +87,10 @@ When a job is submitted, a runtime is also requested, in addition to resources. 
 
     Container Execution Service apps will run for a maximum of 6 hours.
 
+!!! Warning
+
+    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+
 For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. It then waits for an app-specific time for the running app to send a notification to Open OnDemand that it is running. This is termed the **connection timeout**. If the app does not notify Open OnDemand within this time, then the job is cancelled.
 
 !!! Note

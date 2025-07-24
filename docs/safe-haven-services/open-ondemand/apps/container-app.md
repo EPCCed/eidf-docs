@@ -52,6 +52,10 @@ When the container has started a 'Please wait until your job has completed' mess
 
     Your job, and so your container. will run for a maximum of 6 hours.
 
+!!! Warning
+
+    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+
 ---
 
 ## Sharing files between the back-end and the container

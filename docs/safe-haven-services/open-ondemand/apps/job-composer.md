@@ -52,6 +52,10 @@ Click **Submit job** (green play icon) to submit your job.
 
 ![Submit Job button, a green play icon](../../../images/open-ondemand/job-composer-play-button.png){: class="border-img center"} ***Submit Job** button*
 
+!!! Warning
+
+    Any running jobs will be killed during the monthly TRE maintenance period.
+
 ---
 
 ## Browse and manage jobs
