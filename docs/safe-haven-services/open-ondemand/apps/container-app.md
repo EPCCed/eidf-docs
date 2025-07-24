@@ -62,11 +62,11 @@ See [Sharing files between a back-end and a container](../containers.md#sharing-
 
 ## View job files
 
-On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
 !!! Info
 
-    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
+    When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 
 ---
 
@@ -84,7 +84,7 @@ Your container job will continue to run even if you do the following:
 
 * Close the browser tab.
 * Log out of Open OnDemand.
-* Log out of the host from which you accessed Open OnDemand.
+* Log out of the VM from which you accessed Open OnDemand.
 
 ---
 
@@ -124,10 +124,10 @@ Run the 'hello-tre' example:
 1. Click **Launch**.
 1. The job card for the job should appear.
 1. View the log file, `container_app_output-RUNID.log`, for the job (where `RUNID` is a numerical identifier):
-    * If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:
-        1. Click the **Session ID** link in the job card to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+    * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
+        1. Click the **Session ID** link in the job card to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand VM.
         1. Click on the log file, `container_app_output-RUNID.log`.
-    * If you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then:
+    * If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
         1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
         1. Change into the job context directory for the job on the back-end and show the log file:
 
@@ -211,10 +211,10 @@ Run the 'hello-tre' example:
     * `safe_data.txt`, with information on the directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory mounted into the container at `/safe_data/`
     * `safe_outputs.txt`, with a 'This text is in safe_outputs.txt' message.
     * View the `outputs-NUMBER` directory:
-        * If you selected a back-end where your home directory is common to both the Open OnDemand host and the back-end, then:
+        * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
             1. Click **Home Directory** in the [File Manager](../files.md), to go to your home directory.
             1. Click `outputs-NUMBER` to view the directory and its files.
-        * If you selected a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then change into your home directory:
+        * If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then change into your home directory:
 
         ```bash
         cd

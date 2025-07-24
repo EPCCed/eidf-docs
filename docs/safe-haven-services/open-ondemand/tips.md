@@ -60,7 +60,7 @@ A job may stay in a 'Queued' state for the following reasons:
 
 ## Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'
 
-If you delete your `ondemand` directory on the Open OnDemand host, you may see an error like the following:
+If you delete your `ondemand` directory on the Open OnDemand VM, you may see an error like the following:
 
 ```bash
 $ rm -rf ondemand/

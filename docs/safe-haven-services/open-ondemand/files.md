@@ -18,18 +18,18 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Info
 
-    The File Manager allows you to **only** manipulate files on the Open OnDemand host. For most back-ends, your home directory is common to both the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Unsynched home directories](jobs.md#unsynched-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
+    The File Manager allows you to **only** manipulate files on the Open OnDemand VM. For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Unsynched home directories](jobs.md#unsynched-home-directories) - and you will have to log into the back-end - see [Log into back-ends](./ssh.md).
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand host.
+    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
 
 ### **Open in Terminal**
 
-Click **Open in Terminal** to log into a specific host:
+Click **Open in Terminal** to log into a specific VM:
 
 * The default is the first back-end you have access to in alphabetical order.
-* To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific host.
+* To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific VM.
 
 ![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal.png){: class="border-img center"} ***Open in Terminal** button and menu*
 
@@ -43,9 +43,9 @@ If, after you have logged into the back-end, you see an error like:
 bash: line 1: cd: /home/user/ondemand: No such file or directory
 ```
 
-then this means that the directory you are currently viewing in the File Manager on the Open OnDemand host is not available on the back-end.
+then this means that the directory you are currently viewing in the File Manager on the Open OnDemand VM is not available on the back-end.
 
-This can arise if you select a back-end where your home directory is not common to both the Open OnDemand host and the back-end and you have not yet run a job on that back-end. See [Unsynched home directories](jobs.md#unsynched-home-directories) for back-ends this relates to.
+This can arise if you select a back-end where your home directory is not common to both the Open OnDemand VM and the back-end and you have not yet run a job on that back-end. See [Unsynched home directories](jobs.md#unsynched-home-directories) for back-ends this relates to.
 
 ---
 
@@ -55,7 +55,7 @@ Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to ope
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
 
-On a job's job card, click the **Session ID** link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand host.
+On a job's job card, click the **Session ID** link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
 
 ---
 
@@ -65,7 +65,7 @@ Open the [Active Jobs](./apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in File Manager** to open the File Manager pointing at the job context directory for the job on the Open OnDemand host.
+Click **Open in File Manager** to open the File Manager pointing at the job context directory for the job on the Open OnDemand VM.
 
 ---
 

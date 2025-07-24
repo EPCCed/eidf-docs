@@ -4,23 +4,23 @@
 
 ## Introduction
 
-Open OnDemand allows you to log into a back-end or the Open OnDemand host (if applicable) in a number of ways.
+Open OnDemand allows you to log into a back-end or the Open OnDemand VM (if applicable) in a number of ways.
 
-In each case, a new browser tab will open for the selected host.
+In each case, a new browser tab will open for the selected VM.
 
 When prompted, enter your project username and password.
 
 !!! Info
 
-    If you see 'Open OnDemand host Shell Access' listed as an option anywhere, then you can log into the Open OnDemand host. This is supported for users who have access to back-ends where user home directories are not common to both the Open OnDemand host and those back-ends.
+    If you see 'Open OnDemand host Shell Access' listed as an option anywhere, then you can log into the Open OnDemand VM. This is supported for users who have access to back-ends where user home directories are not common to both the Open OnDemand VM and those back-ends.
 
 ---
 
 ## **Clusters** menu
 
-The **Clusters** menu lists every back-end to which you have access, and the Open OnDemand host (if applicable).
+The **Clusters** menu lists every back-end to which you have access, and the Open OnDemand VM (if applicable).
 
-Select a host-specific menu option to log into the selected host.
+Select a VM-specific menu option to log into the selected VM.
 
 When prompted, enter your project username and password.
 
@@ -30,9 +30,9 @@ When prompted, enter your project username and password.
 
 Select the **Apps** menu, **All Apps** option to go to the All Apps page.
 
-The All Apps page lists every back-end to which you have access, and the Open OnDemand host (if applicable).
+The All Apps page lists every back-end to which you have access, and the Open OnDemand VM (if applicable).
 
-Click a host-specific **Shell Access** link to log into the selected host.
+Click a VM-specific **Shell Access** link to log into the selected VM.
 
 ---
 

@@ -28,7 +28,7 @@ The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed
 
 To see details about a job, click the **>** button, by the job of interest.
 
-The 'Output Location' is the location of the job context directory for the job on the Open OnDemand host.
+The 'Output Location' is the location of the job context directory for the job on the Open OnDemand VM.
 
 ![Active Jobs app job details](../../../images/open-ondemand/active-jobs-job-details.png){: class="border-img center"} *Job details within the Active Jobs app*
 
@@ -36,7 +36,7 @@ The 'Output Location' is the location of the job context directory for the job o
 
 ## Open File Manager to job context directory
 
-Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand host.
+Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand VM.
 
 ---
 

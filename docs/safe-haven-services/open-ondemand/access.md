@@ -1,13 +1,13 @@
 # Access Open OnDemand
 
-Open OnDemand is accessed by running a browser on a host within your safe haven.
+Open OnDemand is accessed by running a browser on a VM within your safe haven.
 
 ## Access Open OnDemand within your safe haven
 
 To access Open OnDemand:
 
-1. Start a remote desktop (RDP) session with a host within your safe haven, as described in [Safe Haven Service Access](../../safe-haven-access/).
-1. Start a web browser within your safe haven host.
+1. Start a remote desktop (RDP) session with a VM within your safe haven, as described in [Safe Haven Service Access](../../safe-haven-access/).
+1. Start a web browser within your safe haven VM.
 1. Enter the Open OnDemand URL for your safe haven:
     * National Safe Haven, `https://nsh-ondemand.nsh.loc`
     * ODAP, `https://odp-ondemand.nsh.loc`
@@ -22,7 +22,7 @@ To access Open OnDemand:
 
     ![Open OnDemand log in page](../../images/open-ondemand/login-page.png){: class="border-img center"} *Open OnDemand log in page*
 
-1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven host.
+1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven VM.
 1. Click **Log in**
 1. [Open OnDemand](./portal.md) will open.
 

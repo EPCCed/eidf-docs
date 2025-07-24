@@ -38,7 +38,7 @@ Within the Open OnDemand portal, back-ends are typically referred to via human-r
 
 A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.
 
-Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' host names. However, a convention is adopted whereby short-names for safe haven-specific back-ends include the text 'tenant'. So, for example, the short-names corresponding to the above back-ends are:
+Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby short-names for safe haven-specific back-ends include the text 'tenant'. So, for example, the short-names corresponding to the above back-ends are:
 
 * dap_tenant_2021_009
 * nsh_tenant_gpu_desktop01
@@ -46,7 +46,7 @@ Within some interactive apps, you will see back-ends referred to via 'short-name
 * smartdf_tenant_gpu_desktop01
 * shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
 
-On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the host IP addresses upon which the jobs are running.
+On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM IP addresses upon which the jobs are running.
 
 !!! Note
 
@@ -97,7 +97,7 @@ For interactive apps, Open OnDemand uses the job scheduler to determine when the
 
 ## Your `ondemand` directory
 
-Within your home directory on the Open OnDemand host, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
+Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
 
 Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
 
@@ -139,28 +139,28 @@ Open OnDemand caches information within this `ondemand` directory including info
 
 ## Unsynched home directories
 
-For most back-ends, your home directory is common to both the Open OnDemand host and the back-ends so your directories and files on the Open OnDemand host, and changes to these, are reflected on the back-ends and vice-versa.
+For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
 
-However, you may have access to back-ends where your home directory is not common to both the Open OnDemand host and the back-end i.e., you have unsynched, separate, home directories on each host.
+However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM.
 
-Currently, the back-ends where home directories are not common to both the Open OnDemand host and the back-ends are as follows:
+Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* DataLoch hosts, dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
+* DataLoch VMs, dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
 
 When using such back-ends, your `ondemand` directory, and so your job files, are automatically copied, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
 
-If your job creates files on the back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand host. You will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
+If your job creates files on the back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand VM. You will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
 
 ### Enable automated copy of `ondemand` directory to a back-end
 
-To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand host and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand host and the back-end.
+To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.
 
 !!! Note
 
-    Setting up SSH keys does **not** need to be done for back-ends where your home directory is common to both on the Open OnDemand host and the back-ends.
+    Setting up SSH keys does **not** need to be done for back-ends where your home directory is common to both on the Open OnDemand VM and the back-ends.
 
-Set up a passphrase-less SSH key between the Open OnDemand host and the back-end:
+Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
 1. A new browser tab with an SSH session to the back-end on which the job is running will appear.
@@ -205,7 +205,7 @@ Set up a passphrase-less SSH key between the Open OnDemand host and the back-end
 
 ## Job log files
 
-When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand host.
+When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand VM.
 
 Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
@@ -250,7 +250,7 @@ Briefly, when a job is submitted, the following occurs:
 
 1. Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
     * A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
-    * For back-ends where your home directory is not common to both both the Open OnDemand host and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
+    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
@@ -310,11 +310,11 @@ For 'Running' jobs, click the **Host** link to log into the back-end on which th
 
 ### Open File Manager to job context directory
 
-Click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand host.
+Click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
 !!! Info
 
-    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
+    When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 
 ### Cancel a job
 

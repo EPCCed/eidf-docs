@@ -81,11 +81,11 @@ See [Sharing files between a back-end and a container](../containers.md#sharing-
 
 ## View job files
 
-On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand host.
+On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
 !!! Info
 
-    When using a back-end where your home directory is not common to both the Open OnDemand host and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
+    When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 
 ---
 
@@ -105,7 +105,7 @@ Your container job will continue to run even if you do the following:
 * Log out of RStudio Server via **File**, **Quit Session...**.
 * Close the browser tab.
 * Log out of Open OnDemand.
-* Log out of the host from which you accessed Open OnDemand.
+* Log out of the VM from which you accessed Open OnDemand.
 
 You can re-access your running container via the **Connect to RStudio Server** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
 
