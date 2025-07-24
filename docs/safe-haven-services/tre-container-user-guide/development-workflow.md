@@ -23,7 +23,7 @@ This document describes in detail the [four steps](./introduction.md#overview) r
 
 - Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the TRE VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
-- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible. 
+- Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible.
 
 <!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
 
