@@ -1,7 +1,8 @@
 # Workflow Examples
 
 The following sections will guide the user in the process of creating different types of containers.
-For a complete list of examples, please see our TRE Container Samples repository: https://github.com/EPCCed/tre-container-samples
+
+For a complete list of examples, please see our TRE Container Samples repository, at [EPCCed/tre-container-samples](https://github.com/EPCCed/tre-container-samples).
 
 ## Example 1 - PyTorch
 
@@ -16,7 +17,7 @@ This section will explain how to create a container that runs a script using PyT
 where `requirements.txt` contains:
 
 ```console
-numpy 
+numpy
 torch
 ```
 
@@ -24,7 +25,9 @@ and `torch_gpy_test.py` is any script that performs a test task using PyTorch.
 
 ### E1 - Step 1. Writing the Dockerfile
 
-In our Dockerfile, we want to start by using an officially supported image that already contains as much of the software required to run the script as possible. In our case, we want a ready-made python 3 image to start with, which we can find in [DockerHub](https://hub.docker.com/search?q=python). The latest stable version at the time of writing is [3.13.3](https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1), so we will use this and include the digest in our Dockerfile.
+In our Dockerfile, we want to start by using an officially supported image that already contains as much of the software required to run the script as possible.
+
+In our case, we want a ready-made python 3 image to start with, which we can find in [DockerHub](https://hub.docker.com/search?q=python). The latest stable version at the time of writing is [3.13.3](https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1), so we will use this and include the digest in our Dockerfile.
 
 Next, we need to set up the TRE directories, copy our files into the container, install the necessary packages and finally execute the script. This process can be accomplished with the following Dockerfile:
 
@@ -78,14 +81,14 @@ If the container runs without errors, we can push our image to GHCR using our na
 
 ```sh
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
-docker push "ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1" 
+docker push "ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1"
 docker push "ghcr.io/$GHCR_NAMESPACE/pytorch-test:latest"
 docker logout
 ```
 
 ### E1 - Step 3. Test in CES test environment
 
-Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES. 
+Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
 
 Then, pull and run the container using the commands:
 
@@ -100,7 +103,7 @@ The container can be imported and run inside the TRE using the same commands as 
 
 ## Example 2 - Python ML
 
-This example demonstrates how to build a container which requires a ML model that would normally be downloaded from the internet when first run. Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it. 
+This example demonstrates how to build a container which requires a ML model that would normally be downloaded from the internet when first run. Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it.
 
 The approach we take is to run a sample piece of code during the container build phase, which downloads the model to the hidden cache directory. This then becomes part of the container.
 
@@ -153,7 +156,7 @@ for filename in sys.argv[1:]:
     shutil.copyfile(out_file, dst + out_file.split("/")[2])
 ```
 
-and `doc1.png` is an image that contains text. 
+and `doc1.png` is an image that contains text.
 
 ### E2 - Step 1. Writing the Dockerfile
 
@@ -209,6 +212,7 @@ ENTRYPOINT [ "python3", "/src/test_easyocr.py", "/src/doc1.png"]
 ```
 
 ### E2 - Step 2. Build and push to GHCR
+
 As mentioned in our guidelines, before building our container we first want to check the Dockerfile with a linting tool to detect common mistakes:
 
 ```sh
@@ -252,7 +256,7 @@ If the container runs without errors, we can push our image to GHCR using our na
 
 ```sh
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
-docker push "ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1" 
+docker push "ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1"
 docker push "ghcr.io/$GHCR_NAMESPACE/python-ml-test:latest"
 docker logout
 ```
@@ -297,9 +301,9 @@ and `plot_example.R` is a simple script that generates a graph:
 library(ggplot2)
 
 # basic graph
-p <- ggplot(mtcars, aes(x = wt, y = mpg)) + 
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point()
- 
+
 # a data frame with all the annotation info
 annotation <- data.frame(
    x = c(2,4.5),
@@ -308,8 +312,8 @@ annotation <- data.frame(
 )
 
 # Add text
-p + geom_text(data=annotation, aes( x=x, y=y, label=label),                 , 
-           color="orange", 
+p + geom_text(data=annotation, aes( x=x, y=y, label=label),                 ,
+           color="orange",
            size=7 , angle=45, fontface="bold" )
 
 ggsave("test_figure.png")
@@ -317,7 +321,9 @@ ggsave("test_figure.png")
 
 ### E3 - Step 1. Writing the Dockerfile
 
-We start the process by selecting the parent image. Searching for Rocker in [DockerHub](https://hub.docker.com/search?q=rocker), we are presented with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the [Rocker Project](https://rocker-project.org/). For this example, we choose the latest version of Rocker RStudio: https://hub.docker.com/r/rocker/rstudio
+We start the process by selecting the parent image. Searching for Rocker in [DockerHub](https://hub.docker.com/search?q=rocker), we are presented with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the [Rocker Project](https://rocker-project.org/).
+
+For this example, we choose the latest version of Rocker RStudio, [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio) from [Docker Hub](https://hub.docker.com/).
 
 Clicking on "tags", we can then select "latest" and see the full signature of the image. We can then include the pinned image in our Dockerfile:
 
@@ -361,7 +367,7 @@ This gives us the following Dockerfile:
 FROM docker.io/rocker/rstudio:latest@sha256:ee7c4efa46f0b5d46e051393ef05f262aceb959463b15fc3648955965290d231
 
 RUN mkdir /safe_data /safe_outputs /scratch /src
- 
+
 COPY ./src/* /src
 
 WORKDIR /src
@@ -372,6 +378,7 @@ RUN r install_packages.R
 ### E3 - Step 2. Build and push to GHCR
 
 Before building our container, we want to check the Dockerfile with a linting tool to detect common mistakes:
+
 ```sh
 # Ignore DL3008 (Pin versions in apt get install)
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3008 - < Dockerfile
@@ -402,14 +409,14 @@ Once we made sure the container runs, we can push our image to GHCR using our na
 
 ```sh
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
-docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1" 
+docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1"
 docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:latest"
 docker logout
 ```
 
 ### E3 - Step 3. Test in CES test environment
 
-Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES. 
+Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
 
 Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the TRE - and our test environemnt - using podman. To pull the container using podman as our container engine, we use the command:
 
@@ -420,13 +427,13 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:
 The Rocker container was designed to be run using docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
 
 ```sh
-'--mount type=tmpfs,destination=/var/lib/rstudio-server' 
-'--mount type=tmpfs,destination=/run' 
+'--mount type=tmpfs,destination=/var/lib/rstudio-server'
+'--mount type=tmpfs,destination=/run'
 ```
 
 Our full `opt-file.txt` then looks like this:
 
-```
+```text
 -p 8787:8787
 -it
 --mount type=tmpfs,destination=/var/lib/rstudio-server
@@ -435,7 +442,7 @@ Our full `opt-file.txt` then looks like this:
 
 If we want to set our password, we can add it to the `env-file.txt` as follows:
 
-```
+```text
 PASSWORD=test
 ```
 
@@ -471,9 +478,10 @@ ces-run podman --opt-file $opt_file --env-file $env_file ghcr.io/$GHCR_NAMESPACE
 After executing the `run.sh` script, we can open a browser tab and access RStudio at `localhost:8787`. As done previously during the local test, we can log in using the credentials `root` and `test` for username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
 
 The container is running successfully if:
+
 - The log-in is successful.
 - The rstudio user has full access to TRE directories `/safe_data`, `/safe_outputs` and `/scratch`.
-- The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user. 
+- The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user.
 
 ### E3 - Step 4. Pull and run in the TRE
 
