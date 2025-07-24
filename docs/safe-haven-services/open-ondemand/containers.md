@@ -16,11 +16,14 @@ Open OnDemand uses the Container Execution Service tools to run containers. Cons
 
 ## Container registries
 
-The registries supported by the Container Execution Service, and so accessible from within Open OnDemand are as follows:
+The container registries supported by the Container Execution Service, and so accessible from within Open OnDemand, are as follows:
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
 | GitHub    | `ghcr.io/` | `ghcr.io/mikej888/hello-tre:1.0` |
+| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk/` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/hello-tre:1.0` |
+
+Note: For ECDF GitLab, do not put the port number, 5050, into the URL. The Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
 
 ---
 
