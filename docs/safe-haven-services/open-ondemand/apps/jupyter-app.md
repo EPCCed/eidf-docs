@@ -38,7 +38,6 @@ Click **Connect to JupyterLab**.
 
     Your job, and so your container. will run for a maximum of 6 hours.
 
-
 !!! Warning
 
     Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
