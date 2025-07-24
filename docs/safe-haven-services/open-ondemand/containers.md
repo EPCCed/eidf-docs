@@ -61,6 +61,8 @@ In such cases, the log file for the job, in a `.log` file in the job's `ondemand
 Cannot open project data: /safe_data/cannot_determine_project_from_groups
 ```
 
+If this problem occurs, then please contact your Research Coordinator (or equivalent).
+
 ---
 
 ## Containers and 'root' users
