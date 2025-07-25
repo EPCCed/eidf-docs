@@ -2796,8 +2796,13 @@
 
 <h1 id="shared-filesystem-cephfs">Shared Filesystem (CephFS)</h1>
 <h2 id="introduction">Introduction</h2>
-<p>EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as EIDF Virtual Machines Service (VMS).</p>
-<p>Mounting is done at a project level, so the whole project CephFS tree is mounted. For users who have used our Cerebras or Cirrus services, the whole of the top-level project directory is mounted, e.g. <code>/home/eidf124</code> on Cirrus is the same as <code>/home/eidf124</code> on the VM, and users can manipulate files in that directory.</p>
+<p>EIDF allows projects with storage space allocated on our CephFS filesystem to access that space on different compute resources such as the EIDF Virtual Machines Service (VMS).</p>
+<p>On VMs, mounting is done at a project level, i.e. the project subtree part of CephFS is mounted. For users who have used our Cerebras or Cirrus services, <code>/home/eidf124</code> on Cirrus is the same as <code>/home/eidf124</code> on the VM, and users can manipulate files in that directory. However, such VMs would not typically have access to <code>/home/eidf421</code> or other project directories.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing file properties on CephFS on a VM will cause the effect to be visible wherever the file is visible, ie on other systems.</p>
+</div>
+<p>If you set a file stored on CephFS to be world readable on your VM, it will also be world readable (i.e. viewable by any user) on shared-access systems such as Cerebras or Cirrus. This also applies to files in the top-level shared directory. For example, files in <code>/home/eidf124/shared</code> are visible wherever <code>/home/eidf124</code> is mounted.</p>
 <h2 id="pre-requisites">Pre-requisites</h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
