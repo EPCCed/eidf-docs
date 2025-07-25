@@ -75,7 +75,7 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user.
 
-As a concrete example, consider the `hello-tre` example container (described in [Run a 'hello-tre' example container](./apps/container-app.md#run-a-hello-tre-example-container)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `hello-tre` example container (described in [Getting started with Open OnDemand](./getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
 If `hello-tre` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 
