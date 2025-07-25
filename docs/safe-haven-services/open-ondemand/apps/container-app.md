@@ -102,7 +102,7 @@ You can end your job by as follows:
 
 ## Run a 'hello-tre' example container
 
-The app form is prepopulated with a 'hello TRE' image, `ghcr.io/mikej888/hello-tre:1.0`, and its complementary read-only credentials. When run, the image's container logs a greeting and information about folders mounted into the container. The container's behaviour can be configured as follows:
+The app form is prepopulated with the configuration to pull and run a 'hello TRE' image, `ghcr.io/mikej888/hello-tre:1.0` (the cited credentials provide read-only access to pull the container). When run, the image's container logs a greeting and information about folders mounted into the container. The container's behaviour can be configured as follows:
 
 * A `HELLO_TRE` environment variable will cause the container to print the variable's value as a greeting. For example, if `HELLO_TRE=Greetings` is set, then the greeting is `Greetings`. If `HELLO_TRE` is undefined, then the greeting is `Hello`.
 * A `-d|--duration INTEGER` argument to the container will cause it to sleep for that number of seconds. For example, if `-d 10` is passed, then the container sleeps for 10 seconds. If `-d` is undefined, then the container does not sleep.
