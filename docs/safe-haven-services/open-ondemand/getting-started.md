@@ -318,7 +318,7 @@ then, this can arise as sometimes there is a lag between the container having st
 
 Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab** button again.
 
-## Use JupyterLab
+### Use JupyterLab
 
 JupyterLab running in the container is password-protected. The password is auto-generated. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
