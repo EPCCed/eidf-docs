@@ -69,8 +69,6 @@ To run a job, including those created by apps, you need to select the resources 
 
     Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
-When running apps, you will need to select the number of CPUs/cores and memory you would like for your job.
-
 !!! Info
 
     As back-ends are used by multiple users, be considerate to other users, and take care to request only the resources you think your job will need. This helps to ensure fair use for everyone.
