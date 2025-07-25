@@ -56,7 +56,12 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 ## Job scheduling and execution
 
-With the help of a job scheduler, Open OnDemand schedules jobs onto a selected back-end based upon the number of CPUs/cores and amount of memory they need.
+To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need. Open OnDemand then submits the job to a **job scheduler** which schedules the job onto the selected back-end based upon the resources requested. Your job will be queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
+
+* Resources available on your selected back-end.
+* Extent to which jobs currently running on the back-end are using the back-end's resources.
+* Resources requested by your job.
+* Jobs from yourself and others already in the queue.
 
 !!! Note
 
@@ -69,13 +74,6 @@ When running apps, you will need to select the number of CPUs/cores and memory y
 !!! Info
 
     As back-ends are used by multiple users, be considerate to other users, and take care to request only the resources you think your job will need. This helps to ensure fair use for everyone.
-
-Your job will be queued until resources are available on the selected back-end to run your job. This will depend upon:
-
-* Resources available on your selected back-end.
-* Extent to which jobs currently running on the back-end are using the back-end's resources.
-* Resources requested by your job.
-* Jobs from yourself and others already in the queue.
 
 !!! Tip
 
