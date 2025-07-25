@@ -150,7 +150,7 @@ However, you may have access to back-ends where your home directory is not commo
 Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* DataLoch VMs, dap-gpu01.nsh.loc, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
+* DataLoch VMs, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
 
 When using such back-ends, your `ondemand` directory, and so your job files, are automatically copied, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
 
