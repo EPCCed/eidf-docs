@@ -1,6 +1,6 @@
 # Getting started with Open OnDemand
 
-Open OnDemand allows you to run compute and data-related tasks on compute resources available within your safe haven. Here, we'll introduce you to the key features of, and information about, using the TRE Open OnDemand service to run containers via the TRE Container Execution Service on compute resources available to your safe haven.
+Open OnDemand allows you to run compute and data-related tasks on compute resources available within your safe haven. Here, we'll introduce you to the key concepts behind, features of, and information about, using the TRE Open OnDemand service to run containers via the TRE Container Execution Service on compute resources available to your safe haven.
 
 First some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end** or **cluster**. Each run of a task on a back-end is called a **job**. Open OnDemand components that allow you to run jobs, or other useful functions, are called **apps**.
 
