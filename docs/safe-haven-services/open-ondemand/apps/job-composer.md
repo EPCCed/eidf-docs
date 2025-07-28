@@ -76,7 +76,7 @@ Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.m
 
 !!! Info
 
-    When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
+    When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 
 ### Log into to back-end
 
