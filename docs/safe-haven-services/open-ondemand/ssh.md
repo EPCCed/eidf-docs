@@ -38,7 +38,7 @@ Click a VM-specific **Shell Access** link to log into the selected VM.
 
 ## File Manager **Open in Terminal** button
 
-Select the **Files** menu, **Home Directory** option to open the [File Manager](./files.md), then click **[Open in Terminal](./files.md#open-in-terminal)**.
+Select the **Files** menu, **Home Directory** option to open the [File Manager](files.md), then click **[Open in Terminal](files.md#open-in-terminal)**.
 
 ---
 
@@ -54,7 +54,7 @@ On a 'Running' job's job card, click the **Host** link to log into the back-end 
 
 ## Active Jobs app and back-ends on which jobs are running or ran
 
-Open the [Active Jobs](./apps/active-jobs.md) app.
+Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
@@ -64,7 +64,7 @@ Click **Open in Terminal** to log into the back-end on which the job is running.
 
 ## Job Composer app and back-ends on which jobs will be run, are running, or ran
 
-Open the [Job Composer](./apps/job-composer.md) app.
+Open the [Job Composer](apps/job-composer.md) app.
 
 Select a job.
 

@@ -68,7 +68,7 @@ The job status can be one of: 'Not Submitted', 'Queued', 'Running', 'Hold', 'Sus
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](active-jobs.md) app.
 
 ### Open File Manager to job context directory
 

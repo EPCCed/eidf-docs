@@ -52,7 +52,7 @@ then this can arise if you have requested more memory for your job than is avail
 A job may stay in a 'Queued' state for the following reasons:
 
 * You requested more CPUs/cores than are available on the back-end. If this is the case, then you need to cancel the job and resubmit it, requesting a number of CPUs/cores that the back-end can provide.
-* You requested a number of CPUs/cores and/or memory that is available on the back-end, but those resources are not available at the moment due to other users' jobs. Your job will remain 'Queued' until one or more of the other users' jobs complete and resources are available for your job. You can see if this is the case via the [Job details](./apps/active-jobs.md#job-details) in the [Active Jobs](./apps/active-jobs.md). If so then your job state will be one of:
+* You requested a number of CPUs/cores and/or memory that is available on the back-end, but those resources are not available at the moment due to other users' jobs. Your job will remain 'Queued' until one or more of the other users' jobs complete and resources are available for your job. You can see if this is the case via the [Job details](apps/active-jobs.md#job-details) in the [Active Jobs](apps/active-jobs.md). If so then your job state will be one of:
     * 'State: PENDING', 'Reason: Resources': your job is waiting for resources, and when these are available your job will run.
     * 'State: PENDING', 'Reason: Priority': your job is waiting for resources, but there are are other jobs ahead of yours.
 

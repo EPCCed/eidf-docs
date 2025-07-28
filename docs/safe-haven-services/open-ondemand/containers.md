@@ -39,11 +39,11 @@ When the container is run, three directories on the back-end are mounted into th
 
 Together, these mounts provides a means for data, configuration files and protoype scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-You can interact with your project's `/safe_data/` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](./ssh.md).
+You can interact with your project's `/safe_data/` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data/`, if applicable) via the [File Manager](./files.md) and/or by logging into the back-end, see [Log into back-ends](./ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data/`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data/`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](./ssh.md).
+When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data/`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](ssh.md).
 
 !!! Info
 
@@ -51,13 +51,13 @@ When using a back-end where your home directory is **not** common to both the Op
 
 !!! Tip
 
-    If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](./files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
+    If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
 
 ### Troubleshooting: 'Cannot open project data: /safe_data/cannot_determine_project_from_groups'
 
 If your project cannot be inferred from your user group or there is no subdirectory of `/safe_data/` for your project group, and you are not using a `$HOME/safe_data/` directory, then the job running the container will fail.
 
-As described in [Job cards](./jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
 In such cases, the log file for the job, in a `.log` file in the job's `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/` folder will include a message:
 
@@ -79,7 +79,7 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user.
 
-As a concrete example, consider the `hello-tre` example container (described in [Getting started with Open OnDemand](./getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `hello-tre` example container (described in [Getting started with Open OnDemand](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
 If `hello-tre` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 

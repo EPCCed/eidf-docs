@@ -10,11 +10,11 @@ The Open OnDemand portal's front page provides menus and icons to allow you to a
 
 Open OnDemand's features are described on the following pages:
 
-* [Run jobs](./jobs.md)
-* [Run containers](./containers.md)
-* [View and access apps](./apps.md)
-* [Browse and manage files](./files.md)
-* [Log into back-ends](./ssh.md)
+* [Run jobs](jobs.md)
+* [Run containers](containers.md)
+* [View and access apps](apps.md)
+* [Browse and manage files](files.md)
+* [Log into back-ends](ssh.md)
 
 General purpose features are described below.
 

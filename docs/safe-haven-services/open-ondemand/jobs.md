@@ -8,7 +8,7 @@ Open OnDemand allows you to run tasks on compute resources available within your
 
 Certain users of certain safe havens may also have access to TRE-level compute resources, notably the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks. The page, [Run containers](./containers.md), focuses on how containers are run via such tasks.
+This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks. The page, [Run containers](containers.md), focuses on how containers are run via such tasks.
 
 ---
 
@@ -18,7 +18,7 @@ A compute resource upon which tasks are run is called a **back-end** or **cluste
 
 Each run of a task on a back-end is called a **job**.
 
-An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](./apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
+An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
 A subset of apps that run jobs on back-ends are called **interactive apps**. All Container Execution Service apps that run containers are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
@@ -67,7 +67,7 @@ To run a job, including those created by apps, you need to select the resources 
 
     Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
-    Unless using the [Job Composer](./apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    Unless using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
 !!! Info
 
@@ -75,7 +75,7 @@ To run a job, including those created by apps, you need to select the resources 
 
 !!! Tip
 
-    See [Open OnDemand tips](./tips.md) for tips and troubleshooting relating to relating to requesting resources and job queues.
+    See [Open OnDemand tips](tips.md) for tips and troubleshooting relating to relating to requesting resources and job queues.
 
 When a job is submitted, a runtime is also requested, in addition to resources. If a job takes longer than this runtime, then it is cancelled.
 
@@ -101,7 +101,7 @@ Within your home directory on the Open OnDemand VM, Open OnDemand creates an `on
 
 Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
 
-[Job Composer](./apps/job-composer.md) app job files are created in a directory:
+[Job Composer](apps/job-composer.md) app job files are created in a directory:
 
 ```bash
 ondemand/data/sys/myjobs/projects/default/JOB_ID/
@@ -150,7 +150,7 @@ Currently, the back-ends where home directories are not common to both the Open 
 
 To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your `ondemand` directory, and so your job files, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
 
-If your job creates files on such a back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand VM. You will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
+If your job creates files on such a back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand VM. You will have to log into the back-end to view your files - see [Log into back-ends](ssh.md).
 
 ### Enable automated copy of `ondemand` directory to a back-end
 
@@ -236,7 +236,7 @@ An example of the contents of a log file is as follows:
 Briefly, when a job is submitted, the following occurs:
 
 1. Open OnDemand creates a job context directory under your `ondemand` directory.
-    * For [Job Composer](./apps/job-composer.md) app:
+    * For [Job Composer](apps/job-composer.md) app:
 
     ```bash
     ondemand/data/sys/myjobs/projects/default/JOB_ID/
@@ -253,21 +253,21 @@ Briefly, when a job is submitted, the following occurs:
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
-    * For jobs created via the [Job Composer](./apps/job-composer.md), the job status will be 'Running'.
+    * For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
     * For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
 ---
 
 ## Browse and manage jobs
 
-You can browse and manage jobs via the [Active Jobs](./apps/active-jobs.md) app.
+You can browse and manage jobs via the [Active Jobs](apps/active-jobs.md) app.
 
-For interactive app jobs (not those created by the [Job Composer](./apps/job-composer) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
+For interactive app jobs (not those created by the [Job Composer](apps/job-composer.md) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
 
 ---
 
@@ -281,7 +281,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 !!! Note
 
-    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](./apps/job-composer.md) are shown on that app's own page.
+    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
 
 ### Job cards
 
@@ -302,7 +302,7 @@ When an interactive app's job is submitted, a job card is created and shown with
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./apps/active-jobs.md) app.
+    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
 ### Log in to back-end on which job is running
 
@@ -310,7 +310,7 @@ For 'Running' jobs, click the **Host** link to log into the back-end on which th
 
 ### Open File Manager to job context directory
 
-Click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand VM.
+Click the **Session ID** link to open the [File Manager](files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
 !!! Info
 

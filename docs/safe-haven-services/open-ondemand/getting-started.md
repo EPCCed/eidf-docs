@@ -6,9 +6,9 @@ First some Open OnDemand terminology. A compute resource upon which tasks can be
 
 Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:
 
-* [Run Container](./apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those that perform some computational or data-related task without human interaction.
-* [Run JupyterLab](./apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
-* [Active Jobs](./apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
+* [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those that perform some computational or data-related task without human interaction.
+* [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
+* [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 ---
 
@@ -24,13 +24,13 @@ However, you may have access to back-ends where your home directory is not commo
 
 For the back-ends used by this walkthrough this only needs to be done by users of the **DataLoch safe haven** only. Users of **other safe havens** can **skip to the next section**, [Run the 'Run Container' app](#run-the-run-container-app) below.
 
-To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in [Enable copy of `ondemand` directory to a back-end](./jobs.md#enable-automated-copy-of-ondemand-directory-to-a-back-end) to enable this for a 'desktop' back-end to which you know you have access, then return to this page.
+To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in [Enable copy of `ondemand` directory to a back-end](jobs.md#enable-automated-copy-of-ondemand-directory-to-a-back-end) to enable this for a 'desktop' back-end to which you know you have access, then return to this page.
 
 ---
 
 ## Run the 'Run Container' app
 
-[Run Container](./apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those that perform some computational or data-related task without human interaction.
+[Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those that perform some computational or data-related task without human interaction.
 
 Click the 'Run Container' app on the Open OnDemand portal.
 
@@ -255,7 +255,7 @@ Cleaning up...
 
 ## Run the 'Active Jobs' app
 
-[Active Jobs](./apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
+[Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 Click the 'Active Jobs' app on the Open OnDemand portal.
 
@@ -273,7 +273,7 @@ You should see details for your job with a status of 'Completed'.
 
 ## Run the 'Run JupyterLab' app
 
-[Run JupyterLab](./apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
+[Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
 
 Click the 'Run JupyterLab' app on the Open OnDemand portal.
 
@@ -326,9 +326,9 @@ Within JupyterLab, you are the 'root' user and group, but **only** within the co
 
 TODO
 
-On a job's job card, click the **Session ID** link to open the [File Manager](./files.md), pointing at the job context directory for the job on the Open OnDemand VM.
+On a job's job card, click the **Session ID** link to open the [File Manager](files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
-When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](./ssh.md).
+When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](ssh.md).
 
 While the job is running, click the **Host** link to log into to back-end on which the job is running.
 
@@ -336,7 +336,7 @@ TODO Edit safe_outputs/scratch files via Terminal within JupyterLab, see effect 
 
 TODO Edit safe_outputs/scratch files via File Manager/SSH, see effect via Terminal within JupyterLab
 
-If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](./files.md) or `ls -l` to identify those corresponding to your most recent job.
+If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
 
 Click the 'Active Jobs' app on the Open OnDemand portal.
 
@@ -393,8 +393,8 @@ Remember to delete `$HOME/safe_data/` when done.
 
 The following pages provide more detailed information about the aspects of Open OnDemand covered in this walkthrough:
 
-* [Run jobs](./jobs.md)
-* [Run containers](./containers.md)
-* [View and run apps](./apps.md)
-* [Browse and manage files](./files.md)
-* [Log into back-ends](./ssh.md)
+* [Run jobs](jobs.md)
+* [Run containers](containers.md)
+* [View and run apps](apps.md)
+* [Browse and manage files](files.md)
+* [Log into back-ends](ssh.md)
