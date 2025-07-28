@@ -114,10 +114,10 @@ nav:
        - "Workflow Examples": safe-haven-services/tre-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
      - "TRE Open OnDemand service":
-       - "About Open OnDemand": safe-haven-services/open-ondemand/about.md
+       - "About the TRE Open OnDemand service": safe-haven-services/open-ondemand/about.md
        - "Access Open OnDemand": safe-haven-services/open-ondemand/access.md
-       - "Open OnDemand portal": safe-haven-services/open-ondemand/portal.md
        - "Getting Started": safe-haven-services/open-ondemand/getting-started.md
+       - "Open OnDemand portal": safe-haven-services/open-ondemand/portal.md
        - "Run jobs": safe-haven-services/open-ondemand/jobs.md
        - "Run containers": safe-haven-services/open-ondemand/containers.md
        - "View and run apps": safe-haven-services/open-ondemand/apps.md
