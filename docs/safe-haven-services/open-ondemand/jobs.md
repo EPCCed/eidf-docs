@@ -253,7 +253,7 @@ Briefly, when a job is submitted, the following occurs:
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
-    * For jobs created via the [Job Composer](apps/job-composer.md), the job status will be 'Running'.
+    * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
     * For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
@@ -281,7 +281,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 !!! Note
 
-    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) are shown on that app's own page.
+    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) app are shown on that app's own page.
 
 ### Job cards
 
