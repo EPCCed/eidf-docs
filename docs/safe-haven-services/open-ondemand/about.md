@@ -10,9 +10,3 @@ To quickly get started with Open OnDemand:
 
 * [Access Open OnDemand](access.md).
 * Follow [Getting started with Open OnDemand](getting-started.md) to walk through the key points of Open OnDemand and using it to run containers via the TRE Container Execution Service.
-
-You can then:
-
-* Find out, in more detail, how to Open OnDemand runs tasks, which it terms 'jobs', on compute resources available within your safe haven in [Run jobs](jobs.md).
-* Then, read in detail about how to Open OnDemand runs containers via jobs in [Run containers](containers.md).
-* Run containers via the Open OnDemand [apps](apps.md).
