@@ -28,7 +28,7 @@ A subset of apps that run jobs on back-ends are called **interactive apps**. All
 
 ### Back-end (cluster) names
 
-Within the Open OnDemand portal, back-ends are typically referred to via human-readable names. A selection of back-end names includes:
+Within Open OnDemand, back-ends are typically referred to via human-readable names. A selection of back-end names includes:
 
 * DataLoch 2021 009 GPU server
 * eDRIS National Safe Haven GPU desktop 01

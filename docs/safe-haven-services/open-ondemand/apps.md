@@ -28,7 +28,7 @@ In each case, selecting an app will open an app-specific page, from which you ca
 
 ## Jobs panel
 
-The Jobs panel on the Open OnDemand front page has a **selection** of the apps available to you.
+The Jobs panel on the Open OnDemand home page has a **selection** of the apps available to you.
 
 Click on an app button to access that app.
 
@@ -52,7 +52,7 @@ Select an app-specific menu option to access that app.
 
 !!! Note
 
-    If you are wondering why the **Apps** menu and **Jobs** menu overlap, this is because each app has a 'category' label. This is used by Open OnDemand both to group app buttons on the front page and to create menus with apps belonging to a specific category. All Container Execution Service apps are within a 'Jobs' category, hence the overlap.
+    If you are wondering why the **Apps** menu and **Jobs** menu overlap, this is because each app has a 'category' label. This is used by Open OnDemand both to group app buttons on the home page and to create menus with apps belonging to a specific category. All Container Execution Service apps are within a 'Jobs' category, hence the overlap.
 
 ---
 

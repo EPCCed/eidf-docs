@@ -1,12 +1,12 @@
-# Open OnDemand portal
+# Open OnDemand home page
 
 ---
 
 ## Introduction
 
-The Open OnDemand portal's front page provides menus and icons to allow you to access Open OnDemand's features.
+Open OnDemand's home page provides menus and icons to allow you to access Open OnDemand's features.
 
-![Open OnDemand portal front page](../../images/open-ondemand/portal.png){: class="border-img center"} *Open OnDemand portal front page*
+![Open OnDemand home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Open OnDemand home page*
 
 Open OnDemand's features are described on the following pages:
 

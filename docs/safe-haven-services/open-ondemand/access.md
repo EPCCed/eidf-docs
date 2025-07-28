@@ -24,7 +24,7 @@ To access Open OnDemand:
 
 1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven VM.
 1. Click **Log in**
-1. [Open OnDemand](portal.md) will open.
+1. The [Open OnDemand home page](home-page.md) will open.
 
 ### Troubleshooting: Bad Request
 

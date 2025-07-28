@@ -32,7 +32,7 @@ To use a DataLoch VM to run Open OnDemand apps, please follow the instructions i
 
 [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those that perform some computational or data-related task without human interaction.
 
-Click the 'Run Container' app on the Open OnDemand portal.
+Click the 'Run Container' app on the Open OnDemand home page.
 
 The 'Run Container' app form will open.
 
@@ -257,7 +257,7 @@ Cleaning up...
 
 [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
-Click the 'Active Jobs' app on the Open OnDemand portal.
+Click the 'Active Jobs' app on the Open OnDemand home page.
 
 The 'Active Jobs' app will open to show a table of running and recently completed jobs.
 
@@ -275,7 +275,7 @@ You should see details for your job with a status of 'Completed'.
 
 [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
 
-Click the 'Run JupyterLab' app on the Open OnDemand portal.
+Click the 'Run JupyterLab' app on the Open OnDemand home page.
 
 The 'Run JupyterLab' app form will open.
 
@@ -338,7 +338,7 @@ TODO Edit safe_outputs/scratch files via File Manager/SSH, see effect via Termin
 
 If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
 
-Click the 'Active Jobs' app on the Open OnDemand portal.
+Click the 'Active Jobs' app on the Open OnDemand home page.
 
 TODO What alse can identify the job?
 
@@ -352,7 +352,7 @@ Or, click **Cancel** on a job card.
 
 The Job status on the job card will update to 'Completed'.
 
-Click the 'Active Jobs' app on the Open OnDemand portal.
+Click the 'Active Jobs' app on the Open OnDemand home page.
 
 TODO What alse can identify the job?
 
