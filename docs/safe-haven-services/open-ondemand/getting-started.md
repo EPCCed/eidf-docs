@@ -346,7 +346,7 @@ We can use JupyterLab to further explore how directories on a back-end are mount
 
 Click the **Host** link to log into to back-end on which the job, and JupyterLab container, is running.
 
-Now, within JupyterLab, click 'Terminal'. This opens up a command-line session within the container.
+Now, within JupyterLab, click the 'Terminal' icon within the 'Launcher' tab. This opens up a command-line session within the container.
 
 Now run the following:
 
@@ -420,7 +420,7 @@ hello-from-jupyterlab-to-outputs.txt
 hello-from-outputs-to-jupyterlab.txt
 ```
 
-Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
+This demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
 
 As a reminder, `outputs-NUMBER` will persist after the job which created the container ends but `scratch-NUMBER` will be deleted.
 
@@ -458,19 +458,23 @@ mkdir $HOME/safe_data/
 touch $HOME/safe_data/a.txt
 touch $HOME/safe_data/b.txt
 touch $HOME/safe_data/c.txt
-ls -1 $HOME/safe_data
 ```
 
-Rerun the 'Run Container' app. This time `outputs-NUMBER/safe_data.txt` should list the files you created:
+Rerun the 'Run JupyterLab' app and, again, once JupyterLab has started, click the 'Terminal' icon within the 'Launcher' tab.
+
+List the contents of `/safe_data/`:
 
 ```bash
-/safe_data: root (0) root(0) drwxr-xr-x
-/safe_data/a.txt: root (0) root(0) -rw-r--r--
-/safe_data/c.txt: root (0) root(0) -rw-r--r--
-/safe_data/b.txt: root (0) root(0) -rw-r--r--
+ls -1 /safe_data/
 ```
 
-You could also use the 'Run JupyterLab' app and explore accessing files you create within `$HOME/safe_data/` from within `/safe_data/` within the JupyterLab container and vice versa.
+and you should see the files you created:
+
+```bash
+a.txt
+b.txt
+c.txt
+```
 
 Remember to delete `$HOME/safe_data/` when you are done.
 
