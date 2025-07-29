@@ -4,25 +4,27 @@
 
 ## Introduction
 
-Open OnDemand allows you to run tasks on compute resources available within your safe haven.
+Open OnDemand allows you to run compute and data-related tasks on compute resources available to your safe haven.
 
-Certain users of certain safe havens may also have access to TRE-level compute resources, notably the Superdome Flex high-performance computing cluster.
+Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks and information you need to know about when running tasks. The page, [Run containers](containers.md), focuses on how containers are run via such tasks.
+This page introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. The page, [Run containers](containers.md), focuses on aspects of running containers within this environment.
 
 ---
 
 ## Back-ends, clusters, jobs and apps
 
-A compute resource upon which tasks are run is called a **back-end** or **cluster**
+A compute resource upon which tasks can be run is called a **back-end**, or, in some parts of Open OnDemand, a **cluster**.
 
-Each run of a task on a back-end is called a **job**.
+Each run of a task on a back-end is called a **job**
 
-An **app** is an Open OnDemand component that performs a specific function. Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
+An Open OnDemand component that allows you to run jobs, or other useful functions, is called an **app**.
+
+Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
 A subset of apps that run jobs on back-ends are called **interactive apps**. All Container Execution Service apps that run containers are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
 
-!!! Note
+!!! Info
 
     In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps.
 
@@ -38,7 +40,7 @@ Within Open OnDemand, back-ends are typically referred to via human-readable nam
 
 A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.
 
-Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby short-names for safe haven-specific back-ends include the text 'tenant'. So, for example, the short-names corresponding to the above back-ends are:
+Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access. So, for example, the short-names corresponding to the above back-ends are:
 
 * dap_tenant_2021_009
 * nsh_tenant_gpu_desktop01
@@ -46,9 +48,9 @@ Within some interactive apps, you will see back-ends referred to via 'short-name
 * smartdf_tenant_gpu_desktop01
 * shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
 
-On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM IP addresses upon which the jobs are running.
+On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
 
-!!! Note
+!!! Info
 
     The use of 'tenant' in short-names is adopted as a means to exploit Open OnDemand's use of filters to constrain certain apps to only be applicable to certain back-ends.
 
@@ -56,18 +58,18 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 ## Job scheduling and execution
 
-To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need. Open OnDemand then submits the job to a **job scheduler** which schedules the job onto the selected back-end based upon the resources requested. Your job will be queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
+To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need. Open OnDemand then submits the job to a **job scheduler** which schedules the job onto the selected back-end based upon the resources requested. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
 
 * Resources available on your selected back-end.
 * Extent to which jobs currently running on the back-end are using the back-end's resources.
 * Resources requested by your job.
 * Jobs from yourself and others already in the queue.
 
-!!! Note
+!!! Info
 
     Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
-    Unless using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    Unless you are using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
 !!! Tip
 
@@ -77,7 +79,7 @@ To run a job, including those created by apps, you need to select the resources 
 
     See [Open OnDemand tips](tips.md) for tips and troubleshooting relating to relating to requesting resources and job queues.
 
-When a job is submitted, a runtime is also requested, in addition to resources. If a job takes longer than this runtime, then it is cancelled.
+When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled.
 
 !!! Warning
 
@@ -87,11 +89,11 @@ When a job is submitted, a runtime is also requested, in addition to resources. 
 
     Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
 
-For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. It then waits for an app-specific time for the running app to send a notification to Open OnDemand that it is running. This is termed the **connection timeout**. If the app does not notify Open OnDemand within this time, then the job is cancelled.
+For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will terminate itself.
 
 !!! Note
 
-    In standard deployments of Open OnDemand, the notification sent by the app includes information required by Open OnDemand to display how to connect to web- or GUI-based services started by the app. However, as mentioned above, all Container Execution Service apps that run containers use Open OnDemand's application programming interface for interactive apps, so you will see the connection timeout for the apps that run non-interactive containers too.
+    In standard deployments of Open OnDemand, the notification sent by the app includes information required by Open OnDemand to display how to connect to web- or GUI-based services started by the app. However, as mentioned above, all Container Execution Service apps that run containers use Open OnDemand's application programming interface for interactive apps, so you may see the connection timeout for the apps that run non-interactive containers too.
 
 ---
 
@@ -146,11 +148,11 @@ However, you may have access to back-ends where your home directory is not commo
 Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* DataLoch VMs, dap-2021-009.nsh.loc, dap-2022-028.nsh.loc.
+* All DataLoch VMs.
 
 To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your `ondemand` directory, and so your job files, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
 
-If your job creates files on such a back-end, then there is no automatic copy of files from these back-ends back to the Open OnDemand VM. You will have to log into the back-end to view your files - see [Log into back-ends](ssh.md).
+You will also have to log into these back-end to view files created on these back-ends when you run jobs - see [Log into back-ends](ssh.md)
 
 ### Enable automated copy of `ondemand` directory to a back-end
 
@@ -257,10 +259,10 @@ Briefly, when a job is submitted, the following occurs:
     ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
     ```
 
-1. Open OnDemand submits the job to the Slurm job scheduler to run the job on your chosen back-end.
-    * A Slurm preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
-    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a Slurm preprocessing step automatically copies your `ondemand` directory to the back-end.
-1. Slurm queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
+1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
+    * A job scheduler preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
+    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
+1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
     * For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
@@ -301,8 +303,8 @@ When an interactive app's job is submitted, a job card is created and shown with
 * 'Created at': For 'Queued' jobs, the time the job was submitted.
 * 'Time Requested': For 'Queued' jobs, the runtime requested for the job.
 * 'Time Remaining': For 'Starting' and 'Running' jobs, the runtime remaining.
-* 'Connection timeout': For 'Starting' jobs, the time Open OnDemand will wait after the job has started running, determined from the job scheduler, for the app to send a notification to Open OnDemand.
-* App-specific configuration parameters.
+* App-specific information, which includes values from the app form.
+    * For some apps, this will include the 'Connection timeout'.
 * App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.
 
 ![Example job card for Run Container app](../../images/open-ondemand/job-card-container-app.png){: class="border-img center"} *Example job card for the Run Container app*
