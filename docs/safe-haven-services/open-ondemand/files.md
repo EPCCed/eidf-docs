@@ -18,7 +18,9 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    The File Manager allows you to **only** manipulate files on the Open OnDemand VM. For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa. However, for some back-ends, this will not be the case - see [Unsynched home directories](jobs.md#unsynched-home-directories) - and you will have to log into the back-end - see [Log into back-ends](ssh.md).
+    The File Manager allows you to **only** manipulate files on the Open OnDemand VM. For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
+
+    However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM, and you will have to log into a back-end to view files created on the back-end when you run jobs. For more information, see [Unsynched home directories](jobs.md#unsynched-home-directories) and [Log into back-ends](ssh.md).
 
 !!! Note
 
