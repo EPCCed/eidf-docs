@@ -51,6 +51,7 @@ nav:
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
+      - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
