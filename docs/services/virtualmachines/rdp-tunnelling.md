@@ -9,7 +9,7 @@ RDP tunneling is a technique that relies on SSH to create a secure channel that 
 
 By setting up an SSH tunnel, a local port is forwarded to the remote server's RDP port (3389). The RDP client is then connected to `localhost:<local_port>`, ensuring that the RDP session is encrypted.
 
-## SSH commands
+## SSH Commands
 
 ### Steps
 
@@ -29,11 +29,11 @@ ssh -J u666@eidf-gateway.epcc.ed.ac.uk -i ~/.ssh/eidf666-vm -o ServerAliveInterv
 
 Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.
 
-Once the connection is established, on Windows App or similar use pc name: `localhost:39001`. When prompted, the username will be 'u666' with corresponding password. 
+Once the connection is established, on Windows App or similar use pc name: `localhost:39001`. When prompted, the username will be 'u666' with corresponding password.
 
-### SSH config
+### SSH Configuration
 
-All of the above can also be achieved using an SSH configuration file:
+All of the above can also be achieved adding the following to the SSH `.config` file:
 
 ```sh
 host eidf666_gateway
