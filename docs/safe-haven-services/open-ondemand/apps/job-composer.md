@@ -20,7 +20,7 @@ To create a Slurm job, select the **New Job** menu, then select:
 
         !!! Note
 
-            **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+            **National Safe Haven users**: If using a'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
     1. Click **Open Dir** to view the template job files.
     1. Click **Create New Job** to create the job files.

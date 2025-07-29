@@ -48,11 +48,11 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is to use the `hello-tre` container.
 * **Container registry username** is a username to access the container registry.
     * Leave this value as-is.
-* **Container registry password/access token** is an access token with read-only access to the container registry.
+* **Container registry password/access token** ia an access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
-* **Container runner** is the container runner with which to run container on the back-end.
+* **Container runner** is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
-* **Container name** is the name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run e.g., `laurie-060416105069-hello-tre`.
+* **Container name** is the name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
     * Leave this value as-is.
 * **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `hello-tre` container does not need any more.
@@ -117,7 +117,7 @@ The Job status on the job card will update to 'Completed'.
 
 ### How containers exchange files with back-ends
 
-Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service, and `hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
+Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the TRE Container Execution Service, and `hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -313,7 +313,7 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab server to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab service to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
@@ -438,7 +438,7 @@ Your job will have a status of 'Running'.
 
 You can end your job by as follows:
 
-* Either, shut down JupyterLab via **File**, **Shut Down**.
+* Either, shut down JupyterLab via the **File** menu, **Shut Down** option.
 * Or, click **Cancel** on the app's job card.
 
 The Job status on the job card will update to 'Completed'.

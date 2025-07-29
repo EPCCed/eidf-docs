@@ -14,10 +14,10 @@ Complete the following information the app form:
 
     !!! Note
 
-        **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+        **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
 * **Container name**: Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `epcc-ces-jupyter`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-epcc-ces-jupyter`.
-* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 
 Click **Launch**.
@@ -32,7 +32,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab service to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
@@ -73,7 +73,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab
 
 ---
 
-## Log in
+## Log in to JupyterLab
 
 You will not be prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. The service is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
@@ -86,21 +86,6 @@ You will not be prompted for a username and password. The JupyterLab service run
 ## Sharing files between the back-end and the container
 
 See [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container)
-
----
-
-## Take a break
-
-Your container job will continue to run even if you do the following:
-
-* Log out of JupyterLab via **File**, **Log Out**.
-* Close the browser tab.
-* Log out of Open OnDemand.
-* Log out of the VM from which you accessed Open OnDemand.
-
-You can re-access your running container via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
-
-![My Interactive Sessions menu button, an overlaid squares icon](../../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
 
 ---
 
@@ -122,9 +107,24 @@ If the job has completed, see [Log into back-ends](../ssh.md) for ways to log in
 
 ---
 
+## Take a break
+
+Your container job will continue to run even if you do the following:
+
+* Log out of JupyterLab via the **File** menu, **Log Out** option.
+* Close the browser tab.
+* Log out of Open OnDemand.
+* Log out of the VM from which you accessed Open OnDemand.
+
+You can re-access your running container via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
+
+![My Interactive Sessions menu button, an overlaid squares icon](../../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
+---
+
 ## End your job
 
 You can end your job by as follows:
 
-* Either, shut down JupyterLab via **File**, **Shut Down**.
+* Either, shut down JupyterLab via the **File** menu, **Shut Down** option.
 * Or, cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../jobs.md#browse-and-manage-jobs).

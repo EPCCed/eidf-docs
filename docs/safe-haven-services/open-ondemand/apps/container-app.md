@@ -4,7 +4,7 @@ Run Container is a Container Execution Service app that allows you to run a cont
 
 The app is designed to run batch containers, those that perform some computational or data-related task. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
-Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the Container Execution Service.
+Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the TRE Container Execution Service.
 
 ---
 
@@ -16,14 +16,14 @@ Complete the following information the app form:
 
     !!! Note
 
-        **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+        **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: Username to access the container registry.
 * **Container registry password/access token**: Access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
-* **Container runner**: Container runner - 'podman' or 'apptainer' with which to run container on the back-end. The selected runner must be available on the selected back-end.
+* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
 * **Container name** (Podman only): Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
-* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 * **Use GPU?**: Request that the container use a GPU. If selected, then your selected back-end must have a GPU.
 * **Command-line options to pass to container runner** are Podman- or Apptainer-specific options to control the container runner's behaviour.
@@ -34,6 +34,7 @@ Complete the following information the app form:
     ```
 
     * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
+
 * **Arguments to pass to container**: Container-specific arguments to be passed directly to the container when it runs. For example:
 
     ```text

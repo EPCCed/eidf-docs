@@ -14,11 +14,11 @@ Complete the following information the app form:
 
     !!! Note
 
-        **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
+        **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
 * **Container name**: Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `epcc-ces-rstudio`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-epcc-ces-rstudio`.
 * **RStudio Server password**: RStudio Server running in the container needs to be password-protected. Specify the password to use.
-* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 
 Click **Launch**.
@@ -33,7 +33,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server service to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
@@ -74,7 +74,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to RStudio Se
 
 ---
 
-## Log in
+## Log in to RStudio Server
 
 A Sign in to RStudio page will appear. Enter:
 
@@ -117,8 +117,8 @@ If the job has completed, see [Log into back-ends](../ssh.md) for ways to log in
 
 Your container job will continue to run even if you do the following:
 
-* Log out of RStudio Server via **File**, **Sign Out**.
-* Log out of RStudio Server via **File**, **Quit Session...**.
+* Log out of RStudio Server via the **File** menu, **Sign Out** option.
+* Log out of RStudio Server via the **File** menu, **Quit Session...** option.
 * Close the browser tab.
 * Log out of Open OnDemand.
 * Log out of the VM from which you accessed Open OnDemand.
