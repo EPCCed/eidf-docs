@@ -37,10 +37,10 @@ Complete the following information the app form:
 
 * **Arguments to pass to container**: Container-specific arguments to be passed directly to the container when it is run. For example:
 
-    ````text
+    ```text
     -d 5
     -n container-app-user
-    ````
+    ```
 
 Click **Launch**.
 

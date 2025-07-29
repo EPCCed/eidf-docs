@@ -168,14 +168,18 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. Create a passphrase-less SSH key:
 
     ```bash
-    $ ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
-    ...
+    ssh-keygen -t rsa -b 4096 -C "open-ondemand" -N ""
     ```
 
 1. Copy public key to back-end:
 
     ```bash
-    $ ssh-copy-id BACK-END-HOSTNAME.nsh.loc
+    ssh-copy-id BACK-END-HOSTNAME.nsh.loc
+    ```
+
+    Example output:
+
+    ```bash
     /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
     /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
     /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
@@ -195,7 +199,12 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. Check passphrase-less access to back-end:
 
     ```bash
-    $ ssh BACK-END-HOSTNAME.nsh.loc hostname
+    ssh BACK-END-HOSTNAME.nsh.loc hostname
+    ```
+
+    Example output:
+
+    ```bash
     BACK-END-HOSTNAME.nsh.loc hostname
     ```
 

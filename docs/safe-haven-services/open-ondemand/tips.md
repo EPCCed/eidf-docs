@@ -7,9 +7,14 @@
 You can find the number of CPUs available on a back-end by logging into the back-end and running one of the following commands which count the number of occurrences of the terms in the `/proc/cpuinfo` file which gives the number of CPUs and cores available.
 
 ```bash
-$ cat /proc/cpuinfo | grep processor | wc -l
+cat /proc/cpuinfo | grep processor | wc -l
+cat /proc/cpuinfo | grep 'core id' | wc -l
+```
+
+Example output:
+
+```bash
 8
-$ cat /proc/cpuinfo | grep 'core id' | wc -l
 8
 ```
 
@@ -22,8 +27,13 @@ This back-end has 8 CPUs and 8 cores.
 You can find the total memory available on a back end by logging into the back-end and running the following command:
 
 ```bash
-$ free -h
-               total        used        free      shared  buff/cache   available
+free -h
+```
+
+Example output:
+
+```bash
+total        used        free      shared  buff/cache   available
 Mem:           125Gi       5.2Gi       6.0Gi       140Mi       114Gi       119Gi
 Swap:             0B          0B          0B
 ```
@@ -38,7 +48,7 @@ If, on submitting a job you get an error:
 
 > Failed to submit session with the following error:
 >
-> ```text
+> ```bash
 > sbatch: error: Memory specification can not be satisfied
 > sbatch: error: Batch job submission failed: Requested node configuration is not available
 > ```
@@ -63,7 +73,6 @@ A job may stay in a 'Queued' state for the following reasons:
 If you delete your `ondemand` directory on the Open OnDemand VM, you may see an error like the following:
 
 ```bash
-$ rm -rf ondemand/
 rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Device or resource busy
 ```
 

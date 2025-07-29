@@ -350,7 +350,7 @@ Now, within JupyterLab, click 'Terminal'. This opens up a command-line session w
 
 Now run the following:
 
-```console
+```bash
 ls -1 /safe_data/
 ```
 
@@ -358,7 +358,7 @@ You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY/` on the back
 
 Check this by running, in your Open OnDemand command-line session with the back-end:
 
-```console
+```bash
 ls -1 /safe_data/PROJECT_SUBDIRECTORY/
 ```
 
@@ -366,54 +366,56 @@ The same files and subdirectories should be listed.
 
 Now, within the JupyterLab Terminal, create a file in each directory (`touch` creates an empty file):
 
-```console
+```bash
 touch /scratch/hello-from-jupyterlab-to-scratch.txt
 touch /safe_outputs/hello-from-jupyterlab-to-outputs.txt
 ```
 
 Within your Open OnDemand command-line session with the back-end, first find out the most recent `outputs-NUMBER` and `scratch-NUMBER` directories in your home directory (`ls -l` lists files and directories and when they were last modified):
 
-```console
+```bash
 ls -l
 ```
 
 Now list their contents of the most recent directories:
 
-```console
+```bash
 ls -1 scratch-NUMBER
 ls -1 outputs-NUMBER
 ```
 
 You should see the above files:
 
-```text
+```bash
 hello-from-jupyterlab-to-scratch.txt
 hello-from-jupyterlab-to-outputs.txt
 ```
 
 Now, within your Open OnDemand command-line session with the back-end, create files in these folders:
 
-```console
+```bash
 touch scratch-NUMBER/hello-from-scratch-to-jupyterlab.txt
 touch outputs-NUMBER/hello-from-outputs-to-jupyterlab.txt
 ```
 
-And, then, within the JupyterLab Terminal, list the contents of the corresponding directories and you should see the files you created on the back-end plus those you created within JupyterLab:
+Then, within the JupyterLab Terminal, list the contents of the corresponding `/scratch/` directory and you should see the files you created on the back-end plus those you created within JupyterLab:
 
-```console
+```bash
 ls -1 /scratch/
 ```
 
-```text
+```bash
 hello-from-jupyterlab-to-scratch.txt
 hello-from-scratch-to-jupyterlab.txt
 ```
 
-```console
+And similarly for `/safe_outputs/`:
+
+```bash
 ls -1 /safe_outputs/
 ```
 
-```text
+```bash
 hello-from-jupyterlab-to-outputs.txt
 hello-from-outputs-to-jupyterlab.txt
 ```
@@ -465,7 +467,7 @@ ls -1 $HOME/safe_data
 
 Rerun the 'Run Container' app. This time `outputs-NUMBER/safe_data.txt` should list the files you created:
 
-```text
+```bash
 /safe_data: root (0) root(0) drwxr-xr-x
 /safe_data/a.txt: root (0) root(0) -rw-r--r--
 /safe_data/c.txt: root (0) root(0) -rw-r--r--

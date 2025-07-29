@@ -156,12 +156,15 @@ If you selected a back-end where your home directory is common to both the Open 
 If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
 
 1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View the job context directory:
+1. View the job context directory and its contents:
 
     ```bash
-    $ pwd
+    pwd
+    ls -1
+    ```
+
+    ```
     /home/someuser/ondemand/data/sys/myjobs/projects/default/1
-    $ ls -1
     main_job.sh
     output_file
     res.txt
@@ -170,13 +173,19 @@ If you selected a back-end where your home directory is not common to both the O
 1. View `res.txt`:
 
     ```bash
-    $ cat res.txt
+    cat res.txt
+    ```
+
+    ```
     Created output file with 'Hello World'
     ```
 
 1. View `output_file`:
 
     ```bash
-    $ cat output_file
+    cat output_file
+    ```
+
+    ```
     Hello World to someuser from some-vm.nsh.loc
     ```
