@@ -130,7 +130,7 @@ When the `hello-tre` container is run, it writes two files into `/safe_outputs/`
 * `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data/`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will also be available on the Open OnDemand VM. Open OnDemand provides a File Manager which allows you to browse files in your home directory on the Open OnDemand VM. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, our project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
 
 For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
 
