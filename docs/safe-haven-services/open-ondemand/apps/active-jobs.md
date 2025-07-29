@@ -1,6 +1,6 @@
 # Active Jobs
 
-Active Jobs is an Open OnDemand app that allows you to browse and manage jobs created via both apps and the [Job Composer](job-composer.md) app.
+[Active Jobs](apps/active-jobs.md) is an Open OnDemand app that allows you to see which of your jobs have been submitted, are running, or have completed.
 
 The Active Jobs app shows a table of running and recently completed jobs.
 
@@ -8,13 +8,15 @@ The Active Jobs app shows a table of running and recently completed jobs.
 
 ## Jobs table
 
-The job ID is a unique job ID created by the Slurm job scheduler, when you submitted the job.
+The job ID is a unique job ID created by the job scheduler, when you submitted the job.
 
 ![Active Jobs app jobs table](../../../images/open-ondemand/active-jobs.png){: class="border-img center"} *The Active Jobs app job table*
 
 !!! Note
 
-    The job ID is not the same as the session ID for an app. The latter is an identifier created by Open OnDemand itself. Each job created by an app will have both an Open OnDemand session ID and a Slurm job ID.
+    Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.
+
+    Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
 The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
 
