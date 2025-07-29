@@ -23,7 +23,9 @@ The container registries supported by the Container Execution Service, and so ac
 | GitHub    | `ghcr.io/` | `ghcr.io/mikej888/hello-tre:1.0` |
 | University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk/` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/hello-tre:1.0` |
 
-Note: For ECDF GitLab, do not put the port number, 5050, into the URL. The Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
+!!! Note
+
+    For ECDF GitLab, do not put the port number, 5050, into the URL. The Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
 
 ---
 
@@ -47,7 +49,11 @@ When using a back-end where your home directory is **not** common to both the Op
 
 !!! Info
 
-    `/safe_data/PROJECT_SUBDIRECTORY` is **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
+    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+
+!!! Info
+
+    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
 !!! Tip
 
