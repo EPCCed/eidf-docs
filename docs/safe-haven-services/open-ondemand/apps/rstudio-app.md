@@ -10,26 +10,38 @@ The container is run using Podman.
 
 Complete the following information the app form:
 
-* **Cluster**: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific  short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
 
     !!! Note
 
         **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container name**: Name to be given to the container when it is run.
-    * Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-rstudio`.
-    * If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-rstudio`.
+* **Container name**: Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `epcc-ces-rstudio`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-epcc-ces-rstudio`.
 * **RStudio Server password**: RStudio Server running in the container needs to be password-protected. Specify the password to use.
-* **Cores (max 28)**: Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
-* **Memory in GiB (max 58 GiB)**: Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
+* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 
 Click **Launch**.
 
-Open OnDemand will submit a job to your chosen back-end to create and run the container.
+Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory and then submits the job for the app to the job scheduler.
 
-When the container has started a **Connect to RStudio Server** button will appear.
+Open OnDemand will show an app job card with information about the app's job including:
 
-Click **Connect to RStudio Server**.
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* App-specific information, which includes values from the app form:
+    * 'Container name'
+    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Cores'
+    * 'Memory in GiB'
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
+
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which is the back-end on which the job, and so the RStudio Server container, is now running. A **Connect to RStudio Server** button will also appear on the job card. The RStudio Server container is now ready for use.
+
+Click **Connect to RStudio Server**. A new browser tab will open with the RStudio Server service.
 
 !!! Warning
 
@@ -41,7 +53,7 @@ Click **Connect to RStudio Server**.
 
 !!! Warning
 
-    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
 ### Troubleshooting: Proxy Error
 
@@ -64,7 +76,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to RStudio Se
 
 ## Log in
 
-A Sign in to RStudio page will appears. Enter:
+A Sign in to RStudio page will appear. Enter:
 
 * **Username**: root
 * **Password**: password you selected when completing the app form.

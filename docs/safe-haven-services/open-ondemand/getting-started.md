@@ -1,8 +1,8 @@
 # Getting started
 
-Open OnDemand allows you to run compute and data-related tasks on compute resources available within your safe haven. Here, we introduce using Open OnDemand to run containers via the TRE Container Execution Service on compute resources available to your safe haven.
+The TRE Open OnDemand service allows you to run compute and data-related tasks on compute resources available to your safe haven. Here, we introduce using Open OnDemand to run containers - which package up software, services, and their dependencies - via the TRE Container Execution Service on compute resources available to your safe haven.
 
-First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end** (or, in some areas of Open OnDemand, a **cluster**). Each run of a task on a back-end is called a **job**. Open OnDemand components that allow you to run jobs, or other useful functions, are called **apps**.
+First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end**, or, in some parts of Open OnDemand, a **cluster**. Each run of a task on a back-end is called a **job**. An Open OnDemand component that allows you to run jobs, or other useful functions, is called an **app**.
 
 Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:
 
@@ -42,7 +42,7 @@ The app form is prepopulated with the configuration to pull and run a 'hello TRE
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
-* **Cluster** selects a back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant', to distinguish them from TRE-level back-ends to which you might have access.
+* **Cluster** selects a back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry** cites a URL specifying both the container to run and the container registry from which it is to be pulled.
     * Leave this value as-is to use the `hello-tre` container.
@@ -54,11 +54,11 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
 * **Container name** is the name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run e.g., `laurie-060416105069-hello-tre`.
     * Leave this value as-is.
-* **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
+* **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `hello-tre` container does not need any more.
-* **Memory in GiB** is the memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
+* **Memory in GiB** is the memory requested for this job. Your selected back-end must have at least that amount of memory available.
     * Leave this value as-is as the all back-ends can provide the default memory, and the `hello-tre` container does not need any more.
-* **Use GPU?** requests that the container use a GPU. If selected, then the selected back-end must have GPUs available.
+* **Use GPU?** requests that the container use a GPU. If selected, then your selected back-end must have a GPU.
     * Leave this value as-is, as the `hello-tre` container does not require a GPU.
 * **Command-line options to pass to container runner** are Podman- or Apptainer-specific options to control the container runner's behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
@@ -85,19 +85,6 @@ Click **Launch**.
 
 Open OnDemand will create job files for the app's job in a job-specific job context directory in an app-specific directory under your `ondemand` directory.
 
-Open OnDemand will show an app **job card** with information about the app's job including:
-
-* Job status (on the top right of the job card): initially 'Queued'.
-* **Created at**: The time the job was submitted.
-* **Time Requested**: The runtime requested for the job which defaultsa to 6 hours.
-* **Session ID**: An auto-generated value which is used as the name of the job-specific job context directory.
-* App-specific information, which includes values from the app form:
-    * **Container/image URL in container registry**
-    * **Container runner**
-    * **Container name**
-    * **Cores**
-    * **Memory in GiB**
-
 Open OnDemand submits the job for the app to a **job scheduler** which schedules the job onto the back-end based upon the resources - the number of CPUs/cores and amount of memory - requested for your job in the app form. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
 
 * Resources available on your selected back-end.
@@ -105,7 +92,22 @@ Open OnDemand submits the job for the app to a **job scheduler** which schedules
 * Resources requested by your job.
 * Jobs from yourself and others already in the queue for the back-end.
 
-When the job starts, the Job status on the job card will update to 'Starting' and **Time Requested** will switch to **Time Remaining**, the time your job has left to run before it is terminated by the job schedler.
+When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled. The default runtime is 6 hours.
+
+Open OnDemand will show an app **job card** with information about the app's job including:
+
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* App-specific information, which includes values from the app form:
+    * 'Container/image URL in container registry'
+    * 'Container runner'
+    * 'Container name'
+    * 'Cores'
+    * 'Memory in GiB'
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
 
@@ -130,7 +132,7 @@ When the `hello-tre` container is run, it writes two files into `/safe_outputs/`
 * `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data/`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, our project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
 
 For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
 
@@ -274,7 +276,7 @@ Your job will have a status of 'Completed'.
 
 Each job has a unique **job ID** created by the job scheduler when you submitted the job.
 
-Unfortunately, the job ID is not the same as the session ID created by Open OnDemand for an app. Ratther, the job ID is created by the job scheduler.
+Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
 To see more details about the job, click the **>** button, by the job.
 
@@ -301,27 +303,27 @@ Leave the other settings as-is.
 
 Click **Launch**.
 
-Again, Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory.
+Again, Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory and then submits the job for the app to the job scheduler.
 
-Again, Open OnDemand will show an app **job card** with information about the app's job including:
+Again, Open OnDemand will show an app job card with information about the app's job including:
 
 * Job status (on the top right of the job card): initially 'Queued'.
-* Created at: The time the job was submitted.
-* Time Requested: The runtime requested for the job which defaultsa to 6 hours.
-* Session ID: An auto-generated value which is used as the name of the job-specific job context directory.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job which defaultsa to 6 hours.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
-    * Container name:
-    * Connection timeout: when the app's job starts running, the app's job will wait for this duration (1200 seconds i.e., 20 minutes) for the JupyterLab server to become available. If this does not occur, then the app will terminate itself.
-    * Cores
-    * Memory in GiB
+    * 'Container name'
+    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab server to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
+    * 'Cores'
+    * 'Memory in GiB'
 
-Again, the app's job is sumbitted to the job scheduler  and, when the job starts, the Job status on the job card will update to 'Starting' and **Time Requested** will switch to **Time Remaining**, the time your job has left to run before it is terminated by the job schedler.
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which is the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
 
 Click **Connect to JupyterLab**. A new browser tab will open with the JupyterLab service.
 
-You may wonder why you were not prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. Again, the 'root' user is within the context of the container only. The service is protected with an auto-generated password. The button is configured to automatically log you into the container using this password.
+You may wonder why you were not prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. The 'root' user is within the context of the container only. The service is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
 #### Troubleshooting: Proxy Error
 
@@ -344,7 +346,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab
 
 We can use JupyterLab to further explore how directories on a back-end are mounted into a container.
 
-Click the **Host** link to log into to back-end on which the job, and JupyterLab container, is running.
+Click the **Host** link to log into the back-end on which the job, and JupyterLab container, is running.
 
 Now, within JupyterLab, click the 'Terminal' icon within the 'Launcher' tab. This opens up a command-line session within the container.
 

@@ -54,7 +54,7 @@ Click **Submit job** (green play icon) to submit your job.
 
 !!! Warning
 
-    Any running jobs will be killed during the monthly TRE maintenance period.
+    Any running jobs will be cancelled during the monthly TRE maintenance period.
 
 ---
 

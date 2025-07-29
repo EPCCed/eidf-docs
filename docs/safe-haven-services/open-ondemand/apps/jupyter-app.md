@@ -10,25 +10,37 @@ The container is run using Podman.
 
 Complete the following information the app form:
 
-* **Cluster**: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific  short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
 
     !!! Note
 
         **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container name**: Name to be given to the container when it is run.
-    * Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. For example, `user-052010544547-my-jupyter`.
-    * If omitted, then the container image name is used. For example, `user-052010544552-epcc-ces-jupyter`.
-* **Cores (max 28)**: Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
-* **Memory in GiB (max 58 GiB)**: Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
+* **Container name**: Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `epcc-ces-jupyter`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-epcc-ces-jupyter`.
+* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 
 Click **Launch**.
 
-Open OnDemand will submit a job to your chosen back-end to create and run the container.
+Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory and then submits the job for the app to the job scheduler.
 
-When the container has started a **Connect to JupyterLab** button will appear.
+Open OnDemand will show an app job card with information about the app's job including:
 
-Click **Connect to JupyterLab**.
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* App-specific information, which includes values from the app form:
+    * 'Container name'
+    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Cores'
+    * 'Memory in GiB'
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
+
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which is the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use.
+
+Click **Connect to JupyterLab**. A new browser tab will open with the JupyterLab service.
 
 !!! Warning
 
@@ -40,7 +52,7 @@ Click **Connect to JupyterLab**.
 
 !!! Warning
 
-    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
 ### Troubleshooting: Proxy Error
 
@@ -63,9 +75,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab
 
 ## Log in
 
-JupyterLab running in the container is password-protected. The password is auto-generated. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
-
-Within JupyterLab, you are the 'root' user and group.
+You will not be prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. The service is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
 !!! Note
 

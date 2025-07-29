@@ -12,30 +12,29 @@ Containers run **must** conform to the [Container requirements](../containers.md
 
 Complete the following information the app form:
 
-* **Cluster**: The back-end (cluster) within your safe haven on which to run the container. Back-end short-names are used in the drop-down list and safe haven-specific back-ends include the text 'tenant' (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific  short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information).
 
     !!! Note
 
         **National Safe Haven users**: If you want to use a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container/image URL in container registry**: For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
-* **Container registry username**.
-* **Container registry password/access token**: An access token with read-only access to the container registry is strongly recommended but a token with read-write access or a password can also be used.
-* **Container runner**: Container execution tool with which to run container. The selected tool must be available on the selected back-end. Options are 'podman' or 'apptainer'.
-* **Container name**: (Podman only) Name to be given to the container when it is run. If omitted, then the container image name is used. For example, if the container image name is `my-container:1.0` then the container name is `my-container`. Your user name and a timestamp will be added as a prefix to the name to prevent name clashes if running multiple containers from the same image. So, the container name will be `yourusername-timestamp-containername` e.g., `laurie-060416105069-hello-tre`.
-* **Cores (max 1152)**: Number of cores/CPUs requested for this job. Your selected back-end (cluster) must have the selected number of cores/CPUs available.
-* **Memory in GiB (max 17830 GiB)**: Memory requested for this job. Your selected back-end (cluster) must have the selected memory available.
-* **Use GPU?**: Request that the container use a GPU. If selected, then the selected back-end must have GPUs available.
-* **Command-line options to pass to container runner**: Podman- or Apptainer-specific options to control the container runner's behaviour.
-* **Environment variables to pass to container**: Environment variable passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
+* **Container registry username**: Username to access the container registry.
+* **Container registry password/access token**: Access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
+* **Container runner**: Container runner - 'podman' or 'apptainer' with which to run container on the back-end. The selected runner must be available on the selected back-end.
+* **Container name** (Podman only): Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
+* **Cores**: Number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
+* **Use GPU?**: Request that the container use a GPU. If selected, then your selected back-end must have a GPU.
+* **Command-line options to pass to container runner** are Podman- or Apptainer-specific options to control the container runner's behaviour.
+* **Environment variables to pass to container**: Environment variables to be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
     ```text
     HELLO_TRE=Greetings
     ```
 
     * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
-
-* **Arguments to pass to container**: Container-specific arguments to be passed directly to the container when it is run. For example:
+* **Arguments to pass to container**: Container-specific arguments to be passed directly to the container when it runs. For example:
 
     ```text
     -d 5
@@ -44,17 +43,32 @@ Complete the following information the app form:
 
 Click **Launch**.
 
-Open OnDemand will submit a job to your chosen back-end to create and run the container.
+Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory and then submits the job for the app to the job scheduler.
 
-When the container has started a 'Please wait until your job has completed' message will appear.
+Open OnDemand will show an app job card with information about the app's job including:
+
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* App-specific information, which includes values from the app form:
+    * 'Container/image URL in container registry'
+    * 'Container runner'
+    * 'Container name'
+    * 'Cores'
+    * 'Memory in GiB'
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
+
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
 
 !!! Warning
 
-    Your job, and so your container. will run for a maximum of 6 hours.
+    Your job, and so your container. will run for a maximum of 6 hours, after which it will be cancelled.
 
 !!! Warning
 
-    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
 ---
 

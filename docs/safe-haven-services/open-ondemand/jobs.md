@@ -87,9 +87,9 @@ When a job is submitted, a runtime is also requested. If a job takes longer than
 
 !!! Warning
 
-    Any running jobs, and containers, will be killed during the monthly TRE maintenance period.
+    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
-For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will terminate itself.
+For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will cancel itself.
 
 !!! Note
 
