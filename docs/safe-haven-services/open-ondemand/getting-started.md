@@ -309,7 +309,7 @@ Again, Open OnDemand will show an app job card with information about the app's 
 
 * Job status (on the top right of the job card): initially 'Queued'.
 * 'Created at': The time the job was submitted.
-* 'Time Requested': The runtime requested for the job which defaultsa to 6 hours.
+* 'Time Requested': The runtime requested for the job which defaults to 6 hours.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
