@@ -116,5 +116,5 @@ If the job has completed, see [Log into back-ends](../ssh.md) for ways to log in
 
 You can end your job by as follows:
 
-* Either, log out of JupyterLab via **File**, **Log Out**.
+* Either, shut down JupyterLab via **File**, **Shut Down**.
 * Or, cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../jobs.md#browse-and-manage-jobs).

@@ -432,22 +432,18 @@ You will see a 'ood_jupyter_app' entry for your app's job.
 
 Your job will have a status of 'Running'.
 
-TODO-double-check
-
 ### Finish your 'Run JupyterLab' app job
 
 You can end your job by as follows:
 
-* Either, log out of JupyterLab via **File**, **Log Out**.
-* Or, click **Cancel** on a job card.
+* Either, shut down JupyterLab via **File**, **Shut Down**.
+* Or, click **Cancel** on the app's job card.
 
 The Job status on the job card will update to 'Completed'.
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
 Your job will now have a status of 'Completed'.
-
-TODO-double-check
 
 ---
 
