@@ -2,7 +2,7 @@
 
 Job Composer is an Open OnDemand app that allows you to submit a Slurm batch job to a back-end.
 
-!!! Info
+!!! Note
 
     To use the Job Composer app requires you to have some familiarity with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager. In particular, how to write Slurm job submission files.
 
@@ -74,7 +74,7 @@ The job status can be one of: 'Not Submitted', 'Queued', 'Running', 'Hold', 'Sus
 
 Click **Open Dir** or click **Edit Files** to open the [File Manager](../files.md) pointing at the job context directory for the currently selected job.
 
-!!! Info
+!!! Note
 
     When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 

@@ -87,7 +87,7 @@ See [Sharing files between a back-end and a container](../containers.md#sharing-
 
 On a job's job card, click the **Session ID** link to open the [File Manager](../files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
-!!! Info
+!!! Note
 
     When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](../ssh.md).
 

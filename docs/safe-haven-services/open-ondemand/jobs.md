@@ -69,7 +69,7 @@ To run a job, including those created by apps, you need to select the resources 
 
     Unless using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
-!!! Info
+!!! Tip
 
     As back-ends are used by multiple users, be considerate to other users, and take care to request only the resources you think your job will need. This helps to ensure fair use for everyone.
 
@@ -312,7 +312,7 @@ For 'Running' jobs, click the **Host** link to log into the back-end on which th
 
 Click the **Session ID** link to open the [File Manager](files.md), pointing at the job context directory for the job on the Open OnDemand VM.
 
-!!! Info
+!!! Note
 
     When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files.
 

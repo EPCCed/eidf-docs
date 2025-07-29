@@ -47,11 +47,11 @@ When using a back-end where your home directory is common to both the Open OnDem
 
 When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data/`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](ssh.md).
 
-!!! Info
+!!! Note
 
     Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
 
-!!! Info
+!!! Note
 
     Your project data files, in a project-specific directory under `/safe_data/` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
