@@ -6,7 +6,7 @@ First, some Open OnDemand terminology. A compute resource upon which tasks can b
 
 Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:
 
-* [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those containers that perform some computational or data-related task without human interaction when they are running.
+* [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
 * [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
@@ -30,7 +30,7 @@ To use a DataLoch VM to run Open OnDemand apps, please follow the instructions i
 
 ## Run the 'Run Container' app
 
-[Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean those containers that perform some computational or data-related task without human interaction when they are running.
+[Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
 
 Click the 'Run Container' app on the Open OnDemand home page.
 
@@ -107,19 +107,19 @@ Open OnDemand submits the job for the app to a **job scheduler** which schedules
 
 When the job starts, the Job status on the job card will update to 'Starting' and **Time Requested** will switch to **Time Remaining**, the time your job has left to run before it is terminated by the job schedler.
 
-When the Job status updates to 'Running', a **Host** value will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
 
 All going well, the container, and its job, should complete quickly.
 
 The Job status on the job card will update to 'Completed'.
 
-### View the container's output files
+### How containers exchange files with back-ends
 
 Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service, and `hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
-| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/`| If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
+| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/` | If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
 | `$HOME/outputs-NUMBER` | `/safe_outputs/` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch-NUMBER` | `/scratch/` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
 
@@ -133,6 +133,8 @@ When the `hello-tre` container is run, it writes two files into `/safe_outputs/`
 As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, our project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
 
 For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
+
+### View the container's output files
 
 View the `outputs-NUMBER` directory via the Open OnDemand File Manager:
 
@@ -282,6 +284,7 @@ If any app does not run promptly, but is in a 'Queued' state then the 'Active Jo
 
 ## Run the 'Run JupyterLab' app
 
+In contrast to 'Run Container', which runs a container on a back-end without human interaction when it is running,
 [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
 
 Click the 'Run JupyterLab' app on the Open OnDemand home page.
@@ -314,7 +317,7 @@ Again, Open OnDemand will show an app **job card** with information about the ap
 
 Again, the app's job is sumbitted to the job scheduler  and, when the job starts, the Job status on the job card will update to 'Starting' and **Time Requested** will switch to **Time Remaining**, the time your job has left to run before it is terminated by the job schedler.
 
-When the Job status updates to 'Running', the **Host** will appear on the job card, the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which is the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
 
 Click **Connect to JupyterLab**. A new browser tab will open with the JupyterLab service.
 
@@ -337,23 +340,87 @@ then, this can arise as sometimes there is a lag between the container having st
 
 Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab** button again.
 
-### Use JupyterLab
+### Use JupyterLab to explore how directories on a back-end are mounted into a container
 
-TODO
+We can use JupyterLab to further explore how directories on a back-end are mounted into a container.
 
-'Terminal'
+Click the **Host** link to log into to back-end on which the job, and JupyterLab container, is running.
 
-On a job's job card, click the **Session ID** link to open the [File Manager](files.md), pointing at the job context directory for the job on the Open OnDemand VM.
+Now, within JupyterLab, click 'Terminal'. This opens up a command-line session within the container.
 
-When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see [Log into back-ends](ssh.md).
+Now run the following:
 
-While the job is running, click the **Host** link to log into to back-end on which the job is running.
+```console
+ls -1 /safe_data/
+```
 
-TODO Edit safe_outputs/scratch files via Terminal within JupyterLab, see effect via File Manager/SSH.
+You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY/` on the back-end.
 
-TODO Edit safe_outputs/scratch files via File Manager/SSH, see effect via Terminal within JupyterLab
+Check this by running, in your Open OnDemand command-line session with the back-end:
 
-If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
+```console
+ls -1 /safe_data/PROJECT_SUBDIRECTORY/
+```
+
+The same files and subdirectories should be listed.
+
+Now, within the JupyterLab Terminal, create a file in each directory (`touch` creates an empty file):
+
+```console
+touch /scratch/hello-from-jupyterlab-to-scratch.txt
+touch /safe_outputs/hello-from-jupyterlab-to-outputs.txt
+```
+
+Within your Open OnDemand command-line session with the back-end, first find out the most recent `outputs-NUMBER` and `scratch-NUMBER` directories in your home directory (`ls -l` lists files and directories and when they were last modified):
+
+```console
+ls -l
+```
+
+Now list their contents of the most recent directories:
+
+```console
+ls -1 scratch-NUMBER
+ls -1 outputs-NUMBER
+```
+
+You should see the above files:
+
+```text
+hello-from-jupyterlab-to-scratch.txt
+hello-from-jupyterlab-to-outputs.txt
+```
+
+Now, within your Open OnDemand command-line session with the back-end, create files in these folders:
+
+```console
+touch scratch-NUMBER/hello-from-scratch-to-jupyterlab.txt
+touch outputs-NUMBER/hello-from-outputs-to-jupyterlab.txt
+```
+
+And, then, within the JupyterLab Terminal, list the contents of the corresponding directories and you should see the files you created on the back-end plus those you created within JupyterLab:
+
+```console
+ls -1 /scratch/
+```
+
+```text
+hello-from-jupyterlab-to-scratch.txt
+hello-from-scratch-to-jupyterlab.txt
+```
+
+```console
+ls -1 /safe_outputs/
+```
+
+```text
+hello-from-jupyterlab-to-outputs.txt
+hello-from-outputs-to-jupyterlab.txt
+```
+
+Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
+
+As a reminder, `outputs-NUMBER` will persist after the job which created the container ends but `scratch-NUMBER` will be deleted.
 
 ### Revisit the 'Active Jobs' app
 
@@ -361,13 +428,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 You will see a 'ood_jupyter_app' entry for your app's job.
 
-TODO-double-check
-
 Your job will have a status of 'Running'.
-
-TODO-double-check
-
-To see more details about the job, click the **>** button, by the job.
 
 TODO-double-check
 
