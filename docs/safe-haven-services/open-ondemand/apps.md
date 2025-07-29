@@ -50,7 +50,7 @@ The **Jobs** menu shows **all** of the apps available to you.
 
 Select an app-specific menu option to access that app.
 
-!!! Note
+!!! Info
 
     If you are wondering why the **Apps** menu and **Jobs** menu overlap, this is because each app has a 'category' label. This is used by Open OnDemand both to group app buttons on the home page and to create menus with apps belonging to a specific category. All Container Execution Service apps are within a 'Jobs' category, hence the overlap.
 

@@ -26,7 +26,7 @@ Select the **Help (?)** menu, **Restart Web Server** option to restart your Open
 
 ![Help menu button](../../images/open-ondemand/help-menu.png){: class="border-img center"} ***Help (?)** menu button*
 
-!!! Note
+!!! Info
 
     Despite its name, this option does not restart the Open OnDemand web server! It restarts your session only. It does not affect other users!
 

@@ -6,6 +6,8 @@ The TRE Open OnDemand service is intended to allow you to run jobs that run cont
 
 Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
 
+[Run jobs](jobs.md) introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. The page focuses on aspects of running containers within this job execution environment.
+
 ---
 
 ## Container requirements
@@ -83,7 +85,7 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user within the  container.
 
-As a concrete example, consider the `hello-tre` example container (described in [Getting started with Open OnDemand](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `hello-tre` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
 If `hello-tre` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 
@@ -99,7 +101,7 @@ If `hello-tre` is run via Podman, then you will be the 'root' user within the co
 /safe_data: root (0) root(0) drwxr-xr-x ext2/ext3
 ```
 
-as this is in your home directory, and, again, you are `root` **in the container**.
+as this is in your home directory, and, again, you are `root` but **only** within the container.
 
 The other directories, mounted from directories in your home directory, likewise have user, and group, `root`.
 

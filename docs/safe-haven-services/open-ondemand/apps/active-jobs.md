@@ -1,6 +1,6 @@
 # Active Jobs
 
-[Active Jobs](apps/active-jobs.md) is an Open OnDemand app that allows you to see which of your jobs have been submitted, are running, or have completed.
+Active Jobs is an Open OnDemand app that allows you to see which of your jobs have been submitted, are running, or have completed.
 
 The Active Jobs app shows a table of running and recently completed jobs.
 
@@ -22,7 +22,7 @@ The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job.
+    The job status does **not** display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job.
 
 ---
 

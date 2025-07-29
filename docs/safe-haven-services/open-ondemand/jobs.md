@@ -8,7 +8,7 @@ Open OnDemand allows you to run compute and data-related tasks on compute resour
 
 Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. The page, [Run containers](containers.md), focuses on aspects of running containers within this environment.
+This page introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. [Run containers](containers.md) focuses on aspects of running containers within this job execution environment.
 
 ---
 
@@ -26,13 +26,13 @@ A subset of apps that run jobs on back-ends are called **interactive apps**. All
 
 !!! Info
 
-    In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps.
+    In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps!
 
 ### Back-end (cluster) names
 
 Within Open OnDemand, back-ends are typically referred to via human-readable names. A selection of back-end names includes:
 
-* DataLoch 2021 009 GPU server
+* DataLoch 1234 5678 GPU server
 * eDRIS National Safe Haven GPU desktop 01
 * ODAP GPU desktop 01
 * Smart Data Foundry GPU desktop 01
@@ -42,13 +42,13 @@ A convention is adopted whereby safe haven-specific back-ends always cite the sa
 
 Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access. So, for example, the short-names corresponding to the above back-ends are:
 
-* dap_tenant_2021_009
+* dap_tenant_1234_5678
 * nsh_tenant_gpu_desktop01
 * odp_tenant_gpu_desktop01
 * smartdf_tenant_gpu_desktop01
 * shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
 
-On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
+Within [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
 
 !!! Info
 
@@ -58,14 +58,16 @@ On [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sess
 
 ## Job scheduling and execution
 
-To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need. Open OnDemand then submits the job to a **job scheduler** which schedules the job onto the selected back-end based upon the resources requested. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
+To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need.
+
+Open OnDemand then submits the job to a **job scheduler** which schedules the job onto the selected back-end based upon the resources requested. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
 
 * Resources available on your selected back-end.
 * Extent to which jobs currently running on the back-end are using the back-end's resources.
 * Resources requested by your job.
 * Jobs from yourself and others already in the queue.
 
-!!! Info
+!!! Note
 
     Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
@@ -179,7 +181,7 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
     ssh-copy-id BACK-END-HOSTNAME.nsh.loc
     ```
 
-    Example output:
+    Information on the copy will be output:
 
     ```bash
     /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
@@ -204,7 +206,7 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
     ssh BACK-END-HOSTNAME.nsh.loc hostname
     ```
 
-    Example output:
+    For example:
 
     ```bash
     BACK-END-HOSTNAME.nsh.loc hostname
@@ -247,7 +249,7 @@ An example of the contents of a log file is as follows:
 Briefly, when a job is submitted, the following occurs:
 
 1. Open OnDemand creates a job context directory under your `ondemand` directory.
-    * For [Job Composer](apps/job-composer.md) app:
+    * For the [Job Composer](apps/job-composer.md) app:
 
     ```bash
     ondemand/data/sys/myjobs/projects/default/JOB_ID/
@@ -270,7 +272,7 @@ Briefly, when a job is submitted, the following occurs:
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+    The job status does **not** display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
 ---
 
@@ -288,7 +290,7 @@ Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to ope
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
 
-The My Interactive Sessions page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a [job card](#job-cards).
+The My Interactive Sessions page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a job card.
 
 !!! Note
 
@@ -296,7 +298,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 ### Job cards
 
-When an interactive app's job is submitted, a job card is created and shown with information about the app's job including:
+When an interactive app's job is submitted, a **job card** is created and shown with information about the app's job including:
 
 * Job status (on the top right of the job card): One of 'Queued', 'Starting', 'Running', 'Held', 'Suspended', 'Completed', 'Undetermined'.
 * 'Host': For 'Running' jobs, the back-end on which the job is running.
@@ -313,7 +315,7 @@ When an interactive app's job is submitted, a job card is created and shown with
 
 !!! Note
 
-    The job status does not display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+    The job status does **not** display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
 ### Log in to back-end on which job is running
 
@@ -343,4 +345,4 @@ Click **Delete** on a job card to delete the job card.
 
 !!! Note
 
-    Deleting a job card does not delete the associated job context directory from the `ondemand` directory.
+    Deleting a job card does **not** delete the associated job context directory from the `ondemand` directory.
