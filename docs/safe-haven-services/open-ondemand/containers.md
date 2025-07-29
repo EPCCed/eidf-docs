@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The TRE Open OnDemand service is intended to allow you to run jobs that run containers. This includes both your own project-specific containers that you have been authorised to run within your safe haven as well as standard containers with useful services such as JupyterLab and RStudio Server.
+The TRE Open OnDemand service is intended to allow you to run jobs that run containers, which package up software, services a nd their dependencies. This includes both your own project-specific containers that you have been authorised to run within your safe haven as well as standard containers with useful services such as JupyterLab and RStudio Server.
 
 Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
 
@@ -10,7 +10,7 @@ Container are typically run using Podman or Apptainer, depending on which of the
 
 ## Container requirements
 
-Open OnDemand uses the Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service. See the [TRE Container User Guide](../tre-container-user-guide/introduction.md).
+Open OnDemand uses the Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service. See the [TRE Container User Guide](../tre-container-user-guide/introduction.md) for details of these requirements.
 
 ---
 
@@ -35,11 +35,11 @@ When the container is run, three directories on the back-end are mounted into th
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
-| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/`| If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
-| `$HOME/outputs-NUMBER` | `/safe_outputs/` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end. The directory persists after the job which created the container ends. |
-| `$HOME/scratch-NUMBER` | `/scratch/` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
+| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/` | If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
+| `$HOME/outputs-NUMBER` | `/safe_outputs/` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/scratch-NUMBER` | `/scratch/` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
 
-Together, these mounts provides a means for data, configuration files and protoype scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
 You can interact with your project's `/safe_data/` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
@@ -77,13 +77,11 @@ If this problem occurs, then please contact your Research Coordinator (or equiva
 
 ## Containers and 'root' users
 
-For some containers run using Podman that you will find that you the 'root' user within the container.
-
-For these containers, you are the 'root' user **only** within the context of the container. You will not have 'root' access to the back-end on which the container is running!
+For some containers run using Podman that you will find that you the 'root' user within the container but **only** within the container. You do **not** have 'root' access to the back-end on which the container is running!
 
 Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
 
-For containers run using Apptainer, you will be your own user.
+For containers run using Apptainer, you will be your own user within the  container.
 
 As a concrete example, consider the `hello-tre` example container (described in [Getting started with Open OnDemand](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
