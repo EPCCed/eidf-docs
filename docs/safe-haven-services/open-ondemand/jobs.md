@@ -111,7 +111,7 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 ondemand/data/sys/myjobs/projects/default/JOB_ID/
 ```
 
-where `JOB_ID` is a numerical identifier. For example,
+where `JOB_ID` is a unique job ID created by the job scheduler, when you submitted the job. For example:
 
 ```bash
 ondemand/data/sys/myjobs/projects/default/1/
@@ -213,34 +213,6 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
     ```
 
 1. You should not be prompted for a passphrase or password.
-
----
-
-## Job log files
-
-When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand VM.
-
-Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
-
-An example of the contents of a log file is as follows:
-
-```text
-# Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME
-# Time: YYYY-MM-DD HH:MM:SS
-# Process: PROCESS-ID
-# Open OnDemand server environment
-...values environment variables in current Open OnDemand environment...
-# sbatch arguments from Open OnDemand
-...arguments passed from Open OnDemand to 'sbatch' command which runs job...
-```
-
-!!! Note
-
-    You should not have to concern yourself with the contents of these log files but they might prove useful if you need help with troubleshooting issues with running jobs via Open OnDemand.
-
-!!! Tip
-
-    You can safely delete these log files, if they're taking up too much space.
 
 ---
 
@@ -346,3 +318,47 @@ Click **Delete** on a job card to delete the job card.
 !!! Note
 
     Deleting a job card does **not** delete the associated job context directory from the `ondemand` directory.
+
+---
+
+## Log files
+
+### Job scheduler log files
+
+When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand VM.
+
+Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
+
+An example of the contents of a log file is as follows:
+
+```text
+# Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME
+# Time: YYYY-MM-DD HH:MM:SS
+# Process: PROCESS-ID
+# Open OnDemand server environment
+...values environment variables in current Open OnDemand environment...
+# sbatch arguments from Open OnDemand
+...arguments passed from Open OnDemand to 'sbatch' command which runs job...
+```
+
+!!! Note
+
+    You should not have to concern yourself with the contents of these log files but they might prove useful if you need help with troubleshooting issues with running jobs via Open OnDemand.
+
+!!! Tip
+
+    You can safely delete these log files, if they're taking up too much space.
+
+### App log files
+
+When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from anything spawned by the app, for example, containers, as these runs.
+
+It can be useful to check the log file when debugging.
+
+Depending on the app implementation, the log file may include a job ID, a unique job ID created by the job scheduler, when you submitted the job.
+
+!!! Note
+
+    Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.
+
+    Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
