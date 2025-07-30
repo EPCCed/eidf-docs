@@ -9,4 +9,4 @@ The service provides a number of apps that allow for researchers' containers - w
 To quickly get started with the TRE Open OnDemand Service (hereon referred to as Open OnDemand for brevity):
 
 * [Access Open OnDemand](access.md).
-* Follow [Getting started Open OnDemand](getting-started.md) to walk through the key points of the service and using it to run containers via the TRE Container Execution Service.
+* Follow [Getting started](getting-started.md) to walk through the key points of the service and using it to run containers via the TRE Container Execution Service.
