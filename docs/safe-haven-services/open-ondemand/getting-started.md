@@ -1,12 +1,12 @@
 # Getting started
 
-The TRE Open OnDemand service allows you to run compute and data-related tasks on compute resources available to your safe haven. Here, we introduce using Open OnDemand to run containers - which package up software, services, and their dependencies - via the TRE Container Execution Service on compute resources available to your safe haven.
+The TRE Open OnDemand service allows you to run compute and data-related tasks on compute resources available to your safe haven. Here, we introduce using Open OnDemand to run containers - which package up software, services, and their dependencies - via the TRE Container Execution Service - on compute resources available to your safe haven.
 
 First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end**, or, in some parts of Open OnDemand, a **cluster**. Each run of a task on a back-end is called a **job**. An Open OnDemand component that allows you to run jobs, or other useful functions, is called an **app**.
 
 Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:
 
-* [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
+* [Run Container](apps/container-app.md) allows you to run a container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task, those that perform some computational or data-related task without human interaction when they are running.
 * [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
@@ -38,14 +38,14 @@ The 'Run Container' app form will open.
 
 ### Review and complete the 'Run Container' app form
 
-The app form is prepopulated with the configuration to pull and run a 'hello TRE' container, `ghcr.io/mikej888/hello-tre:1.0`. When run, the container logs a greeting and information about folders mounted into the container.
+The app form is prepopulated with the configuration to pull and run a 'hello TRE' container. When run, the container logs a greeting and information about folders mounted into the container.
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
 * **Cluster** selects a back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry** cites a URL specifying both the container to run and the container registry from which it is to be pulled.
-    * Leave this value as-is to use the `hello-tre` container.
+    * Leave this value as-is to use the `ghcr.io/mikej888/hello-tre:1.0` container, hereon termed `hello-tre`.
 * **Container registry username** is a username to access the container registry.
     * Leave this value as-is.
 * **Container registry password/access token** ia an access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
@@ -60,7 +60,7 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is as the all back-ends can provide the default memory, and the `hello-tre` container does not need any more.
 * **Use GPU?** requests that the container use a GPU. If selected, then your selected back-end must have a GPU.
     * Leave this value as-is, as the `hello-tre` container does not require a GPU.
-* **Command-line options to pass to container runner** are Podman- or Apptainer-specific options to control the container runner's behaviour.
+* **Command-line options to pass to container runner** are container runner-specific options to control the container runner's behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
 * **Environment variables to pass to container** are environment variables to be passed on by the container runner and set within the container when it runs. The `hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
     * Enter:
@@ -76,7 +76,7 @@ Read the form entries in conjunction with the explanations below and make the su
 
         ```text
         -d 10
-        -n PUT_YOUR_FIRST_NAME_HERE
+        -n YOUR_FIRST_NAME
         ```
 
 ### Launch the 'Run Container' app job
@@ -121,22 +121,22 @@ Open OnDemand uses TRE Container Execution Service tools to run containers and c
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
-| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/` | If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
-| `$HOME/outputs-NUMBER` | `/safe_outputs/` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
-| `$HOME/scratch-NUMBER` | `/scratch/` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
+| Project-specific `/safe_data` subdirectory | `$HOME/safe_data` OR `/safe_data/PROJECT_SUBDIRECTORY` | If `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
+| `$HOME/outputs-NUMBER` | `/safe_outputs` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/scratch-NUMBER` | `/scratch` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-When the `hello-tre` container is run, it writes two files into `/safe_outputs/` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
+When the `hello-tre` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
 
-* `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data/`.
+* `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+### View the container's output files
+
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
 
 For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
-
-### View the container's output files
 
 View the `outputs-NUMBER` directory via the Open OnDemand File Manager:
 
@@ -159,11 +159,13 @@ View the `outputs-NUMBER` directory within the back-end:
     cat outputs-NUMBER/safe_outputs.txt
     ```
 
-As you have accessed Open OnDemand from your 'desktop' VM, you could access the files directly on your 'desktop' VM, however, we use the **Shell Access** approach to introduce this feature of Open OnDemand.
+As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
 ### View the app log file within the job context directory
 
-When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from the container as it runs. For the `hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
+When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from the container as it runs. It can be useful to check the log file when debugging.
+
+For the `hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
 
 The log file has name, `container_app_output-RUNID.log`, where `RUNID` is a numerical identifier.
 
@@ -181,6 +183,11 @@ View the log file within the back-end:
 
     ```bash
     cd ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/SESSION_ID/
+    ```
+
+1. View the log file:
+
+    ```bash
     cat container_app_output-RUNID.log
     ```
 
@@ -231,7 +238,7 @@ YOUR_FIRST_NAME
 
 For some containers run via Podman, including `hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `outputs-NUMBER` on the back-end.
 
-Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument and messages indicating that the container is sleeping for the duration specified by the `-d` container argument:
+Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
 
 ```text
 Hello there YOUR_FIRST_NAME!
@@ -274,13 +281,11 @@ You will see a 'container_app' entry for your app's job.
 
 Your job will have a status of 'Completed'.
 
-Each job has a unique **job ID** created by the job scheduler when you submitted the job.
-
-Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+Each job has a unique **job ID** created by the job scheduler when you submitted the job. The job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
 To see more details about the job, click the **>** button, by the job.
 
-If any app does not run promptly, but is in a 'Queued' state then the 'Active Jobs' app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
+If any app does not run promptly, but is in a 'Queued' state, then the 'Active Jobs' app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
 
 ---
 
@@ -313,17 +318,17 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab service to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which is the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
 
-Click **Connect to JupyterLab**. A new browser tab will open with the JupyterLab service.
+Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
-You may wonder why you were not prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. The 'root' user is within the context of the container only. The service is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
+You may wonder why you were not prompted for a username and password. JupyterLab running in the container runs as a 'root' user. The 'root' user is within the context of the container only. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
 #### Troubleshooting: Proxy Error
 
@@ -348,7 +353,7 @@ We can use JupyterLab to further explore how directories on a back-end are mount
 
 Click the **Host** link to log into the back-end on which the job, and JupyterLab container, is running.
 
-Now, within JupyterLab, click the 'Terminal' icon within the 'Launcher' tab. This opens up a command-line session within the container.
+Now, within JupyterLab, click the **Terminal** icon within the 'Launcher' tab. This opens up a command-line session within the container.
 
 Now run the following:
 
@@ -356,7 +361,7 @@ Now run the following:
 ls -1 /safe_data/
 ```
 
-You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY/` on the back-end.
+You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY` on the back-end.
 
 Check this by running, in your Open OnDemand command-line session with the back-end:
 
@@ -400,7 +405,7 @@ touch scratch-NUMBER/hello-from-scratch-to-jupyterlab.txt
 touch outputs-NUMBER/hello-from-outputs-to-jupyterlab.txt
 ```
 
-Then, within the JupyterLab Terminal, list the contents of the corresponding `/scratch/` directory and you should see the files you created on the back-end plus those you created within JupyterLab:
+Then, within the JupyterLab Terminal, list the contents of the corresponding `/scratch` directory and you should see the files you created on the back-end plus those you created within JupyterLab:
 
 ```bash
 ls -1 /scratch/
@@ -411,7 +416,7 @@ hello-from-jupyterlab-to-scratch.txt
 hello-from-scratch-to-jupyterlab.txt
 ```
 
-And similarly for `/safe_outputs/`:
+And similarly for `/safe_outputs`:
 
 ```bash
 ls -1 /safe_outputs/
@@ -422,7 +427,7 @@ hello-from-jupyterlab-to-outputs.txt
 hello-from-outputs-to-jupyterlab.txt
 ```
 
-This demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
+Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
 
 As a reminder, `outputs-NUMBER` will persist after the job which created the container ends but `scratch-NUMBER` will be deleted.
 
@@ -449,11 +454,11 @@ Your job will now have a status of 'Completed'.
 
 ---
 
-## Use `$HOME/safe_data/`
+## Use `$HOME/safe_data`
 
-As mentioned, if `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted into a container. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
+As mentioned, if `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted into a container. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found.
 
-Using the File Manager, or via a session on the back-end accessed from within Open OnDemand, or on the 'desktop' VM from which you accessed Open OnDemand, create a `$HOME/safe_data/` directory and then create some files in it. For example:
+Using the File Manager, or via a session on the back-end accessed from within Open OnDemand, or on the 'desktop' VM from which you accessed Open OnDemand, create a `$HOME/safe_data` directory and then create some files in it. For example:
 
 ```bash
 mkdir $HOME/safe_data/
@@ -462,9 +467,9 @@ touch $HOME/safe_data/b.txt
 touch $HOME/safe_data/c.txt
 ```
 
-Rerun the 'Run JupyterLab' app and, again, once JupyterLab has started, click the 'Terminal' icon within the 'Launcher' tab.
+Rerun the 'Run JupyterLab' app and, again, once JupyterLab has started, click the **Terminal** icon within the 'Launcher' tab.
 
-List the contents of `/safe_data/`:
+List the contents of `/safe_data`:
 
 ```bash
 ls -1 /safe_data/
@@ -478,7 +483,7 @@ b.txt
 c.txt
 ```
 
-Remember to delete `$HOME/safe_data/` when you are done.
+Remember to delete `$HOME/safe_data` when you are done.
 
 ---
 
