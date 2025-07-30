@@ -99,7 +99,7 @@ Open OnDemand will show an app **job card** with information about the app's job
 * Job status (on the top right of the job card): initially 'Queued'.
 * 'Created at': The time the job was submitted.
 * 'Time Requested': The runtime requested for the job.
-* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container/image URL in container registry'
     * 'Container runner'
@@ -194,10 +194,11 @@ View the log file within the back-end:
 For the `hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
 
 ```text
-Fri Jun 13 12:17:44 UTC 2025 before.sh: JOB_FOLDER: $HOME/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/SESSION_ID
+Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
+Script starting...
 ...
-Fri Jun 13 12:17:50 UTC 2025 script.sh: Running ces-run podman ...
-Running: /usr/local/bin/ces-pm-run ...
+Wed Jul 30 11:32:41 UTC 2025 script.sh: Running ces-pull podman ...
+...
 ```
 
 This is followed by information from the container itself about your user name within the container and the directories mounted into the container:
@@ -228,12 +229,12 @@ Look for optional 'HELLO_TRE' environment variable
 Found optional 'HELLO_TRE' environment variable with value: Hello there
 
 Parse command-line arguments
-Number of arguments: 5
+Number of arguments: 4
 Arguments (one per line):
--d
-30
--n
-YOUR_FIRST_NAME
+    -d
+    10
+    -n
+    Mike
 ```
 
 For some containers run via Podman, including `hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `outputs-NUMBER` on the back-end.
@@ -241,9 +242,9 @@ For some containers run via Podman, including `hello-tre`, you are the 'root' us
 Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
 
 ```text
-Hello there YOUR_FIRST_NAME!
+Hello there Mike!
 
-Sleeping for 30 seconds...
+Sleeping for 10 seconds...
 1
 2
 3
@@ -258,7 +259,7 @@ Sleeping for 30 seconds...
 
 For more container examples and ideas, visit:
   https://github.com/EPCCed/tre-container-samples
-Goodbye YOUR_FIRST_NAME!
+Goodbye Mike!
 ```
 
 Finally, the log file includes information from the app itself as it completes:
@@ -315,7 +316,7 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * Job status (on the top right of the job card): initially 'Queued'.
 * 'Created at': The time the job was submitted.
 * 'Time Requested': The runtime requested for the job which defaults to 6 hours.
-* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
+* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
     * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (1200 seconds i.e., 20 minutes), then the app's job will cancel itself.
