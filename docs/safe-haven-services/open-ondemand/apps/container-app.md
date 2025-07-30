@@ -24,7 +24,7 @@ Complete the following information the app form:
 * **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 * **Use GPU?**: Request that the container use a GPU. If selected, then your selected back-end must have a GPU.
-* **Command-line options to pass to container runner** are Podman- or Apptainer-specific options to control the container runner's behaviour.
+* **Command-line options to pass to container runner** are container runner-specific options to control the container runner's behaviour.
 * **Environment variables to pass to container**: Environment variables to be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
     ```text
