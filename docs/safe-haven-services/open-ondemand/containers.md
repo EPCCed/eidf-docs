@@ -67,7 +67,7 @@ If your project cannot be inferred from your user group or there is no subdirect
 
 As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
-In such cases, the log file for the job, in a `.log` file in the job's `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID` folder will include a message:
+In such cases, the log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID`, will include a message:
 
 ```text
 Cannot open project data: /safe_data/cannot_determine_project_from_groups

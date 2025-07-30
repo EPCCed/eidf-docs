@@ -38,7 +38,7 @@ The 'Run Container' app form will open.
 
 ### Review and complete the 'Run Container' app form
 
-The app form is prepopulated with the configuration to pull and run a 'hello TRE' container. When run, the container logs a greeting and information about folders mounted into the container.
+The app form is prepopulated with the configuration to pull and run a 'hello TRE' container. When run, the container logs a greeting and information about directories mounted into the container.
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
@@ -399,7 +399,7 @@ hello-from-jupyterlab-to-scratch.txt
 hello-from-jupyterlab-to-outputs.txt
 ```
 
-Now, within your Open OnDemand command-line session with the back-end, create files in these folders:
+Now, within your Open OnDemand command-line session with the back-end, create files in these directories:
 
 ```bash
 touch scratch-NUMBER/hello-from-scratch-to-jupyterlab.txt

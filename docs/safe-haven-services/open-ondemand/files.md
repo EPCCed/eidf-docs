@@ -101,4 +101,4 @@ and
 
 then click **OK**.
 
-This error can arise if you have not used the app before and, so, its `APP_NAME` subdirectory will not exist under your `ondemand` folder.
+This error can arise if you have not used the app before and, so, its `APP_NAME` subdirectory will not exist under your `ondemand` directory.
