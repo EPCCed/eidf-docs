@@ -24,11 +24,11 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your
 
 ### **Open in Terminal**
 
@@ -87,7 +87,7 @@ Click **Open Dir** or click **Edit Files** to open the File Manager pointing at 
 
 ## App **data root directory**
 
-Within an app's form, click the **data root directory** link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/`, under which the job's files will be created.
+Within an app's form, click the **data root directory** link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME`, under which the job's files will be created.
 
 ### Troubleshooting: 'Error occurred when attempting to access ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
 

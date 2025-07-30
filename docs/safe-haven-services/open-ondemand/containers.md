@@ -22,8 +22,8 @@ The container registries supported by the Container Execution Service, and so ac
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
-| GitHub    | `ghcr.io/` | `ghcr.io/mikej888/hello-tre:1.0` |
-| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk/` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/hello-tre:1.0` |
+| GitHub    | `ghcr.io` | `ghcr.io/mikej888/hello-tre:1.0` |
+| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/hello-tre:1.0` |
 
 !!! Note
 
@@ -37,25 +37,25 @@ When the container is run, three directories on the back-end are mounted into th
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
-| Project-specific `/safe_data/` subdirectory | `$HOME/safe_data/` OR `/safe_data/PROJECT_SUBDIRECTORY/` | If `$HOME/safe_data/` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data/` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
-| `$HOME/outputs-NUMBER` | `/safe_outputs/` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
-| `$HOME/scratch-NUMBER` | `/scratch/` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
+| Project-specific `/safe_data` subdirectory | `$HOME/safe_data` OR `/safe_data/PROJECT_SUBDIRECTORY` | If `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
+| `$HOME/outputs-NUMBER` | `/safe_outputs` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/scratch-NUMBER` | `/scratch` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-You can interact with your project's `/safe_data/` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
+You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data/`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data/`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](ssh.md).
-
-!!! Note
-
-    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on the Open OnDemand VM.
+When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](ssh.md).
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data/` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
+
+!!! Note
+
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
 
 !!! Tip
 
@@ -63,11 +63,11 @@ When using a back-end where your home directory is **not** common to both the Op
 
 ### Troubleshooting: 'Cannot open project data: /safe_data/cannot_determine_project_from_groups'
 
-If your project cannot be inferred from your user group or there is no subdirectory of `/safe_data/` for your project group, and you are not using a `$HOME/safe_data/` directory, then the job running the container will fail.
+If your project cannot be inferred from your user group or there is no subdirectory of `/safe_data` for your project group, and you are not using a `$HOME/safe_data` directory, then the job running the container will fail.
 
 As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
 
-In such cases, the log file for the job, in a `.log` file in the job's `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/` folder will include a message:
+In such cases, the log file for the job, in a `.log` file in the job's `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID` folder will include a message:
 
 ```text
 Cannot open project data: /safe_data/cannot_determine_project_from_groups
@@ -95,7 +95,7 @@ If `hello-tre` is run via Podman, then you will be the 'root' user within the co
 /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
 ```
 
-`/safe_data/` has user `nobody` as typically the user that owns `/safe_data/` on the back-end won't be known within the container. If using `$HOME/safe_data/` then the permissions logged would be:
+`/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. If using `$HOME/safe_data` then the permissions logged would be:
 
 ```text
 /safe_data: root (0) root(0) drwxr-xr-x ext2/ext3
@@ -113,7 +113,7 @@ In contrast, if `hello-tre` is run via Apptainer, then the directory permissions
 /safe_outputs: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
 ```
 
-Again `/safe_data/` has user `nobody` as typically the user that owns `/safe_data/` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data/` then the permissions logged would be:
+Again `/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data` then the permissions logged would be:
 
 ```text
 /safe_data: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
