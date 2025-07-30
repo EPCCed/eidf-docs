@@ -22,13 +22,13 @@ For most back-ends, your home directory is common to both the Open OnDemand VM a
 
 However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM. To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your `ondemand` directory, and so your job files, to the back-end when you submit a job.
 
-For the back-ends used by this walkthrough this **only** needs to be done by users of the **DataLoch safe haven**. Users of **other safe havens** can **skip to the next section**, [Run the 'Run Container' app](#run-the-run-container-app) below.
+For the back-ends used by this walkthrough this **only** needs to be done by users of the **DataLoch safe haven**. Users of **other safe havens** can **skip to the next section**, [Run the Run Container app](#run-the-run-container-app) below.
 
 To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in [Enable copy of `ondemand` directory to a back-end](jobs.md#enable-automated-copy-of-ondemand-directory-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, then return to this page.
 
 ---
 
-## Run the 'Run Container' app
+## Run the Run Container app
 
 [Run Container](apps/container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
 
@@ -36,7 +36,10 @@ Click the 'Run Container' app on the Open OnDemand home page.
 
 The 'Run Container' app form will open.
 
-### Review and complete the 'Run Container' app form
+![Excerpt of Run Container app form](../../images/open-ondemand/getting-started-01-run-container-form.png){: class="border-img center"}
+*Excerpt of Run Container app form*
+
+### Review and complete the Run Container app form
 
 The app form is prepopulated with the configuration to pull and run a 'hello TRE' container. When run, the container logs a greeting and information about directories mounted into the container.
 
@@ -48,7 +51,7 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is to use the `ghcr.io/mikej888/hello-tre:1.0` container, hereon termed `hello-tre`.
 * **Container registry username** is a username to access the container registry.
     * Leave this value as-is.
-* **Container registry password/access token** ia an access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
+* **Container registry password/access token** is an access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
 * **Container runner** is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
@@ -79,7 +82,7 @@ Read the form entries in conjunction with the explanations below and make the su
         -n YOUR_FIRST_NAME
         ```
 
-### Launch the 'Run Container' app job
+### Launch the Run Container app job
 
 Click **Launch**.
 
@@ -107,13 +110,22 @@ Open OnDemand will show an app **job card** with information about the app's job
     * 'Cores'
     * 'Memory in GiB'
 
+![Run Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-02-run-container-queued.png){: class="border-img center"}
+*Run Container app job card showing job status as 'Queued'*
+
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
 
+![Run Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-03-run-container-running.png){: class="border-img center"}
+*Run Container app job card showing job status as 'Running'*
+
 All going well, the container, and its job, should complete quickly.
 
 The Job status on the job card will update to 'Completed'.
+
+![Run Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-04-run-container-completed.png){: class="border-img center"}
+*Run Container app job card showing job status as 'Completed'*
 
 ### How containers exchange files with back-ends
 
@@ -144,6 +156,12 @@ View the `outputs-NUMBER` directory via the Open OnDemand File Manager:
 1. Click **Home Directory**, to go to your home directory.
 1. Click `outputs-NUMBER` view the directory
 1. Click on `safe_data.txt` and `safe_outputs.txt` to view their contents.
+
+![File Manager showing home directory after Run Container app completes with outputs directory highlighted](../../images/open-ondemand/getting-started-05-file-manager-home.png){: class="border-img center"}
+*File Manager showing home directory after Run Container app completes*
+
+![File Manager showing outputs directory contents after Run Container app completes](../../images/open-ondemand/getting-started-06-file-manager-outputs.png){: class="border-img center"}
+*File Manager showing outputs directory contents after Run Container app completes*
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
 
@@ -177,6 +195,9 @@ View the log file via the Open OnDemand File Manager:
 
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
 1. Click on the log file, `container_app_output-JOB_ID.log`.
+
+![File Manager showing log file highlighted within Run Container app's job context directory](../../images/open-ondemand/getting-started-08-run-container-log.png){: class="border-img center"}
+*File Manager showing log file within Run Container app's job context directory*
 
 View the log file within the back-end:
 
@@ -272,13 +293,13 @@ Cleaning up...
 
 ---
 
-## Run the 'Active Jobs' app
+## Run the Active Jobs app
 
 [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
-The 'Active Jobs' app will open to show a table of running and recently completed jobs.
+The Active Jobs app will open to show a table of running and recently completed jobs.
 
 You will see a 'container_app' entry for your app's job.
 
@@ -288,18 +309,23 @@ As stated earlier, each job has a unique job ID created by the job scheduler whe
 
 To see more details about the job, click the **>** button, by the job.
 
-If any app does not run promptly, but is in a 'Queued' state, then the 'Active Jobs' app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
+![Active Jobs app showing details of completed Run Container app job](../../images/open-ondemand/getting-started-07-active-jobs.png){: class="border-img center"}
+*Active Jobs app showing details of completed Run Container app job*
+
+If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
 
 ---
 
-## Run the 'Run JupyterLab' app
+## Run the Run JupyterLab app
 
-In contrast to 'Run Container', which runs a container on a back-end without human interaction when it is running,
-[Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
+In contrast to Run Container, which runs a container on a back-end without human interaction when it is running, [Run JupyterLab](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
 
 Click the 'Run JupyterLab' app on the Open OnDemand home page.
 
-The 'Run JupyterLab' app form will open.
+The Run JupyterLab app form will open.
+
+![Excerpt of Run JupyterLab app form](../../images/open-ondemand/getting-started-09-run-jupyter-form.png){: class="border-img center"}
+*Excerpt of Run JupyterLab app form*
 
 This app's form has far less settings since it is designed to run, using Podman, a JupyterLab container created for use with the TRE Container Execution Service.
 
@@ -307,7 +333,7 @@ For **Cluster**, select the 'desktop' VM on which you are running the browser in
 
 Leave the other settings as-is.
 
-### Launch the 'Run JupyterLab' app job
+### Launch the Run JupyterLab app job
 
 Click **Launch**.
 
@@ -325,13 +351,22 @@ Again, Open OnDemand will show an app job card with information about the app's 
     * 'Cores'
     * 'Memory in GiB'
 
+![Run JupyterLab app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-10-run-jupyter-queued.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Queued'*
+
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
 
+![Run JupyterLab app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-11-run-jupyter-running.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Running'*
+
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You may wonder why you were not prompted for a username and password. JupyterLab running in the container runs as a 'root' user. The 'root' user is within the context of the container only. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
+
+![JupyterLab running within a container](../../images/open-ondemand/getting-started-12-run-jupyter-lab.png){: class="border-img center"}
+*JupyterLab running within a container*
 
 #### Troubleshooting: Proxy Error
 
@@ -361,15 +396,18 @@ Now, within JupyterLab, click the **Terminal** icon within the 'Launcher' tab. T
 Now run the following:
 
 ```bash
-ls -1 /safe_data/
+ls /safe_data/
 ```
 
 You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY` on the back-end.
 
+![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-13-run-jupyter-lab-mounts.png){: class="border-img center"}
+*Viewing mounted directories within JupyterLab*
+
 Check this by running, in your Open OnDemand command-line session with the back-end:
 
 ```bash
-ls -1 /safe_data/PROJECT_SUBDIRECTORY/
+ls /safe_data/PROJECT_SUBDIRECTORY/
 ```
 
 The same files and subdirectories should be listed.
@@ -434,7 +472,7 @@ Hopefully, this demonstrates how the mounted directories provides a means for da
 
 As a reminder, `outputs-NUMBER` will persist after the job which created the container ends but `scratch-NUMBER` will be deleted.
 
-### Revisit the 'Active Jobs' app
+### Revisit the Active Jobs app
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
@@ -442,7 +480,10 @@ You will see a 'ood_jupyter_app' entry for your app's job.
 
 Your job will have a status of 'Running'.
 
-### Finish your 'Run JupyterLab' app job
+![Active Jobs app showing details of running Run JupyterLab app job](../../images/open-ondemand/getting-started-14-active-jobs.png){: class="border-img center"}
+*Active Jobs app showing details of running Run JupyterLab app job*
+
+### Finish your Run JupyterLab app job
 
 You can end your job by as follows:
 
@@ -450,6 +491,9 @@ You can end your job by as follows:
 * Or, click **Cancel** on the app's job card.
 
 The Job status on the job card will update to 'Completed'.
+
+![Run JupyterLab app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-15-run-jupyter-completed.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Completed'*
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
@@ -470,7 +514,7 @@ touch $HOME/safe_data/b.txt
 touch $HOME/safe_data/c.txt
 ```
 
-Rerun the 'Run JupyterLab' app and, again, once JupyterLab has started, click the **Terminal** icon within the 'Launcher' tab.
+Rerun the Run JupyterLab app and, again, once JupyterLab has started, click the **Terminal** icon within the 'Launcher' tab.
 
 List the contents of `/safe_data`:
 
