@@ -32,7 +32,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for the JupyterLab service to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
@@ -40,7 +40,7 @@ When the job starts, the Job status on the job card will update to 'Starting' an
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use.
 
-Click **Connect to JupyterLab**. A new browser tab will open with the JupyterLab service.
+Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
 
@@ -75,7 +75,7 @@ Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab
 
 ## Log in to JupyterLab
 
-You will not be prompted for a username and password. The JupyterLab service running in the container runs as a 'root' user. The service is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
+You will not be prompted for a username and password. JupyterLab running in the container runs as a 'root' user. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
 
 !!! Note
 

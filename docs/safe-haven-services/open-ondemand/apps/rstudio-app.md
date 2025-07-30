@@ -33,7 +33,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container name'
-    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server service to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
 
@@ -41,7 +41,7 @@ When the job starts, the Job status on the job card will update to 'Starting' an
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A **Connect to RStudio Server** button will also appear on the job card. The RStudio Server container is now ready for use.
 
-Click **Connect to RStudio Server**. A new browser tab will open with the RStudio Server service.
+Click **Connect to RStudio Server**. A new browser tab will open with RStudio Server.
 
 !!! Warning
 
