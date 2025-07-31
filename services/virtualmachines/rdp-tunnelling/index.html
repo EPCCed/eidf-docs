@@ -2871,7 +2871,7 @@
 </ol>
 <h3 id="example">Example</h3>
 <p>Connect to eidf666 (IP address 10.24.2.224) as user u666</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>u666@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>-i<span class="w"> </span>~/.ssh/eidf666-vm<span class="w"> </span>-o<span class="w"> </span><span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">900</span><span class="w"> </span>-L<span class="w"> </span><span class="m">39001</span>:localhost:3389<span class="w"> </span>u666@10.24.2.224
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>u666@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>-L<span class="w"> </span><span class="m">39001</span>:localhost:3389<span class="w"> </span>u666@10.24.2.224
 </code></pre></div>
 <p>Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.</p>
 <p>Once the connection is established, on Windows App or similar use pc name: <code>localhost:39001</code>. When prompted, the username will be 'u666' with corresponding password.</p>
