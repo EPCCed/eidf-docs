@@ -24,7 +24,7 @@ By setting up an SSH tunnel, a local port is forwarded to the remote server's RD
 Connect to eidf666 (IP address 10.24.2.224) as user u666
 
 ```sh
-ssh -J u666@eidf-gateway.epcc.ed.ac.uk -i ~/.ssh/eidf666-vm -o ServerAliveInterval=900 -L 39001:localhost:3389 u666@10.24.2.224
+ssh -J u666@eidf-gateway.epcc.ed.ac.uk -L 39001:localhost:3389 u666@10.24.2.224
 ```
 
 Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.
