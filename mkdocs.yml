@@ -52,6 +52,7 @@ nav:
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
+      - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
@@ -95,6 +96,8 @@ nav:
     #- "Managed File Transfer":
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
+    - "Code Collaboration":
+      - "Gitlab service": services/gitlab/index.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Network Access Controls": safe-haven-services/network-access-controls.md
@@ -110,9 +113,7 @@ nav:
      - "TRE Container User Guide":
        - "Introduction": safe-haven-services/tre-container-user-guide/introduction.md
        - "Development Workflow": safe-haven-services/tre-container-user-guide/development-workflow.md
-       - "Advising IG of Required Software Stack": safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack.md
-       - "Building and Testing Containers": safe-haven-services/tre-container-user-guide/building-and-testing-containers.md
-       - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
+       - "Workflow Examples": safe-haven-services/tre-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
