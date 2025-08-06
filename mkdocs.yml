@@ -38,7 +38,6 @@ nav:
     - "Web and SSH": access/index.md
     - "EIDF Web Portal": access/project.md
     - "Virtual Desktop Interface": access/virtualmachines-vdi.md
-    - "Connecting to a Virtual Machine with a Remote Desktop Client ": access/virtualmachines-rdp-client.md
   - "Storage in the EIDF":
     - "Overview": storage/overview.md
     - "FAQs": storage/faq.md
