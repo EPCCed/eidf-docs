@@ -42,7 +42,6 @@ Many S3 tools will read environment variables so this can be a convenient way to
 | AWS_S3_ENDPOINT       | same (for R aws.s3)  |
 | AWS_ACCESS_KEY_ID     | as provided by RC    |
 | AWS_SECRET_ACCESS_KEY | as provided by RC    |
-| http_proxy            | no value             |
 
 For example, in your Terminal window (or in your login script such as `.bashrc`)
 ```
@@ -51,11 +50,13 @@ export AWS_ENDPOINT_URL=http://nsh-fs02:7070
 export AWS_S3_ENDPOINT=http://nsh-fs02:7070
 export AWS_ACCESS_KEY_ID=put_your_key_here
 export AWS_SECRET_ACCESS_KEY=put_your_secret_here
-export http_proxy=
 ```
 
 The above could be added to your login script (e.g. `.bashrc`)
-but do not change `http_proxy` there as it will prevent access to R/Python packages.
+
+Note! If your account has access to R/Python packages via a web proxy then
+you need to temporarily disable it whilst using the S3 service. This is shown
+in the examples below, by setting `http_proxy` to an empty value.
 
 ## Use from the command line
 
