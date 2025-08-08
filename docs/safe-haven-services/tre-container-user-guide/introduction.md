@@ -23,6 +23,9 @@ The development process includes the following steps:
 
 This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist users in building TRE-ready containers. Other [container examples](./container-examples.md) are also available in our [TRE Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
 
+> [!NOTE]
+> Users wishing to gain access to the CES inside a Safe Haven will need to contact their Research Coordinator and request for access.
+
 ## TRE directories
 
 Before continuing with this guide, it is important that the users are aware of the TRE file system directories so that they can be used correctly within their containers. Project data inside the TRE can be found in the `/safe_data/<project-id>` directory.
