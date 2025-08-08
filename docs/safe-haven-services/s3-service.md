@@ -118,6 +118,10 @@ The examples below also set `http_proxy` explicitly.
 ```py
 import boto3
 import os
+os.environ["AWS_ENDPOINT_URL"] = "http://nsh-fs02:7070"
+os.environ["AWS_DEFAULT_REGION"] = "us-east-1"
+os.environ["AWS_ACCESS_KEY_ID"] = "dummydata"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "put_your_secret_here"
 os.environ["http_proxy"] = ""
 resource = boto3.resource("s3")
 bucket = resource.Bucket("dummydata")
