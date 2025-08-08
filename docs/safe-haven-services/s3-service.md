@@ -110,13 +110,18 @@ source venv/bin/activate
 pip install boto3
 ```
 
+Ensure your environment variables are set, as described above.
+The examples below also set `http_proxy` explicitly.
+
 ### Download an object
 
 ```py
 import boto3
+import os
+os.environ["http_proxy"] = ""
 resource = boto3.resource("s3")
-bucket = resource.Bucket("bucket_name")
-bucket.download_file("test.txt", "copy_of_test.txt")
+bucket = resource.Bucket("dummydata")
+bucket.download_file("326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm", "downloaded.dcm")
 ```
 
 ### Load object into pydicom dataset
@@ -125,14 +130,18 @@ bucket.download_file("test.txt", "copy_of_test.txt")
 pip install pydicom
 ```
 
+This will load the data into a pydicom dataset without actually storing a file on disk:
 ```py
 import boto3
 import io
+import os
 import pydicom
 
+os.environ["http_proxy"] = ""
+
 resource = boto3.resource("s3")
-bucket = resource.Bucket("bucket_name")
-obj = bucket.Object("1.2.840.113619.2.411.3.4077533701.216.1476084945.95/1.2.840.113619.2.411.3.4077533701.216.1476084945.102/CT.1.2.840.113619.2.411.3.4077533701.216.1476084945.104.99-an.dcm")
+bucket = resource.Bucket("dummydata")
+obj = bucket.Object("326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm")
 dcm_bytes = io.BytesIO(obj.get()["Body"].read())
 ds = pydicom.dcmread(dcm_bytes)
 
@@ -142,31 +151,57 @@ print(ds["StudyInstanceUID"])
 
 ## R Usage
 
-There are three different packages for R, you can install `s3` or `aws.s3` or `paws`.
+There are three different packages for R, you can install `s3` or `aws.s3` or `paws`, but `aws.s3` is recommended and documented here.
 
-If they use the environment variables shown above
-(aws.s3 seems to use slightly different ones, or ignore them)
-you may wish to add the details to your `.Renviron` file, e.g.
+You should have the environment variables set, either in your terminal (see above), or in your `.Renviron` file, or explicitly in your R script.
+
+Note! `aws.s3` uses a different name `AWS_S3_ENDPOINT`.
+
+To set environment variables in your `.Renviron` file:
 ```
 AWS_ACCESS_KEY_ID=<my access key id>
 AWS_SECRET_ACCESS_KEY=<my secret key>
-AWS_ENDPOINT_URL=http://nsh-fs02:7070
-AWS_DEFAULT_REGION=us-east-1
+AWS_ENDPOINT_URL="http://nsh-fs02:7070"
+AWS_S3_ENDPOINT="http://nsh-fs02:7070"
+AWS_DEFAULT_REGION="us-east-1"
 ```
 
-The `paws` package is very comprehensive but slow to install and difficult to use.
+To set environment variables in your script:
+```
+Sys.setenv( AWS_ENDPOINT_URL="http://nsh-fs02:7070" )
+Sys.setenv( AWS_S3_ENDPOINT="http://nsh-fs02:7070" )
+Sys.setenv( AWS_DEFAULT_REGION="us-east-1" )
+```
 
-The simpler `aws.s3` package can be used like this to download a file:
+Note! Only *after* you have installed packages with `install.packages()` you should use
+```
+Sys.setenv( http_proxy="" )
+```
+
+An example R script to download a file from S3:
 ```
 library(aws.s3)
-my_bucket <- "bucket_name"
-my_access_key <- "an access key
+my_bucket <- "dummydata"
+my_access_key <- "dummydata"
 my_secret_key <- "abigsecretkey"
 my_region <- "us-east-1"
+my_endpoint <- "http://nsh-fs02:7070"
 my_endpoint_host <- "nsh-fs02:7070"
-my_object_path <- "test.txt"
-save_object( my_object_path, file = "copy_of_test.txt", bucket = my_bucket, base_url=my_endpoint_host, region=my_region, use_https=FALSE, key = my_access_key, secret = my_secret_key )
+my_object_path <- "326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm"
+Sys.setenv( AWS_ENDPOINT_URL="http://nsh-fs02:7070" )
+Sys.setenv( AWS_S3_ENDPOINT="http://nsh-fs02:7070" )
+Sys.setenv( AWS_DEFAULT_REGION="us-east-1" )
+Sys.setenv( http_proxy="" )
+save_object( my_object_path, file = "downloaded.dcm", bucket = my_bucket, base_url=my_endpoint_host, region="", use_https=FALSE, key = my_access_key, secret = my_secret_key )
 ```
 
+Note! You need to have the region set in the environment variable and pass `region=""` to the functions, otherwise you get a `cannot resolve host` error. The `base_url` is just the host and port, no `http://` prefix, and `use_https` is false.
+
 See also the `s3read_using` function to consume data via a temporary file.
+
 To consume data without using any files, use `rawConnection` with the data from `get_object`.
+```
+obj = get_object( my_object_path, bucket = my_bucket, base_url=my_endpoint_host, region="", use_https=FALSE, key = my_access_key, secret = my_secret_key )
+con = rawConnection(obj, "r")
+dicom_processing_function(con)
+```
