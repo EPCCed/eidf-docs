@@ -24,12 +24,12 @@ By setting up an SSH tunnel, a local port is forwarded to the remote server's RD
 Connect to eidf666 (IP address 10.24.2.224) as user u666
 
 ```sh
-ssh -J u666@eidf-gateway.epcc.ed.ac.uk -L 39001:localhost:3389 u666@10.24.2.224
+ssh -J u666@eidf-gateway.epcc.ed.ac.uk -L 23001:localhost:3389 u666@10.24.2.224
 ```
 
 Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.
 
-Once the connection is established, on Windows App or similar use pc name: `localhost:39001`. When prompted, the username will be 'u666' with corresponding password.
+Once the connection is established, on Windows App or similar use pc name: `localhost:23001`. When prompted, the username will be 'u666' with corresponding password.
 
 ### SSH Configuration
 
@@ -52,7 +52,7 @@ host eidf666_rdp
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Trusted yes
-    LocalForward 39001 localhost:3389
+    LocalForward 23001 localhost:3389
 ```
 
 Can then use the command 'ssh eidf666_rdp' to create the connection.
