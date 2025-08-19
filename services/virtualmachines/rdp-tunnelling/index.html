@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
     
     
       
@@ -960,6 +960,48 @@
   <a href="#ssh-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
     </span>
   </a>
   
@@ -2828,6 +2870,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2871,10 +2955,10 @@
 </ol>
 <h3 id="example">Example</h3>
 <p>Connect to eidf666 (IP address 10.24.2.224) as user u666</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>u666@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>-L<span class="w"> </span><span class="m">39001</span>:localhost:3389<span class="w"> </span>u666@10.24.2.224
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>u666@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389<span class="w"> </span>u666@10.24.2.224
 </code></pre></div>
 <p>Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.</p>
-<p>Once the connection is established, on Windows App or similar use pc name: <code>localhost:39001</code>. When prompted, the username will be 'u666' with corresponding password.</p>
+<p>Once the connection is established, on Windows App or similar use pc name: <code>localhost:23001</code>. When prompted, the username will be 'u666' with corresponding password.</p>
 <h3 id="ssh-configuration">SSH Configuration</h3>
 <p>All of the above can also be achieved adding the following to the SSH <code>.config</code> file:</p>
 <div class="highlight"><pre><span></span><code>host<span class="w"> </span>eidf666_gateway
@@ -2893,9 +2977,65 @@ host<span class="w"> </span>eidf666_rdp
 <span class="w">    </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">    </span>ForwardX11<span class="w"> </span>yes
 <span class="w">    </span>ForwardX11Trusted<span class="w"> </span>yes
-<span class="w">    </span>LocalForward<span class="w"> </span><span class="m">39001</span><span class="w"> </span>localhost:3389
+<span class="w">    </span>LocalForward<span class="w"> </span><span class="m">23001</span><span class="w"> </span>localhost:3389
 </code></pre></div>
 <p>Can then use the command 'ssh eidf666_rdp' to create the connection.</p>
+<h2 id="using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client">Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client</h2>
+<p>The Guacamole web interface makes it easy to connect to a remote desktop. This page details how to connect with a dedicated remote desktop client application, which can be useful for longer work. Dedicated remote desktop viewer programs allow better support for copy and pasting, file sharing and other features that may not be available on the web interface.</p>
+<div class="admonition warning">
+<p class="admonition-title">Prerequisites</p>
+<p>It is recommended to connect to the host machine via Guacamole <strong>first</strong> as this process is simpler see instructions in <a href="../../../access/virtualmachines-vdi/">Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)</a></p>
+</div>
+<p>We refer to a <strong>Host</strong> machine as the machine with an RDP server running on it, within EIDF infrastructure this is the Virtual machine.</p>
+<p>The <strong>Client</strong> machine is any machine that you are using to connect to the host machine via the RDP protocol and remote desktop viewing software.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Opening a remote connection means having full access to the host machines as though it was unlocked on your desk. You should not provide access credentials to other users you would not want using the machine or leave your client machine unattended and unlocked whilst connected as this risks the EIDF Virtual Machine being accessed by unauthorized users!</p>
+</div>
+<p>Using RDP tunnelling allows you to connect to a remote desktop machine securely through an SSH tunnel. This is particularly useful when accessing Virtual Desktop Infrastructure (VDI) machines on the EIDF.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Port forwarding is needed to get through the EIDF gateway. Whilst some remote desktop viewers support gateways they do not always support all the required features for connection to the EIDF gateway (e.g. the Windows app for macOS does not support SSH keys)</p>
+</div>
+<p>Instructions specific to the operating system in use are given in the below sections. If you have your own preferred remote desktop viewing software or cannot use the below instructions for whatever reason then the key details to be configured are:</p>
+<div class="highlight"><pre><span></span><code>PC or server name and port: localhost:23001
+VDI account credentials: We recommend leaving this blank or as &#39;Ask when
+required&#39; until you have successfully connected to the machine. If prompted for
+credentials you will need those which you have for VDI connections, the same as
+in Guacamole
+Protocol: RDP
+Friendly Name: &lt;ProjectID&gt; Remote Connection via local port
+</code></pre></div>
+<h3 id="windows">Windows</h3>
+<p>The Microsoft Windows documentation <a href="https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c">Remote Desktop Connection</a> is relevant from step 2 "<em>Use Remote Desktop to connect to the PC you set up</em>" onwards. The Remote Desktop Connection program is preinstalled on Windows machines.</p>
+<ol>
+<li>Open the 'Remote Desktop Connection' program (<code>mstsc</code> in Run)</li>
+<li>Input <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code> as the connection name<img alt="Windows Remote Desktop" src="../../../images/access/rdp_client_connect/Windows_Remote_Desktop.png" /></li>
+<li>Click 'Connect'</li>
+<li>Input VDI login credentials once prompted at the login screen</li>
+</ol>
+<h3 id="macos">macOS</h3>
+<p>These instructions use the <a href="https://learn.microsoft.com/en-us/windows-app/">Microsoft Windows App</a> a free program available from the <a href="https://apps.apple.com/us/app/windows-app/id1295203466?mt=12">Apple App Store</a>.</p>
+<ol>
+<li>Open the Windows App -&gt; Click '+' -&gt; Add PC</li>
+<li>Input into 'PC Name' the forwarded port on the local machine <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code><img alt="macOS server input" src="../../../images/access/rdp_client_connect/macos_ip_input.png" /></li>
+<li>Also add a 'friendly name' to describe the device being connected to</li>
+<li>Leave all other options as defaults at this stage</li>
+<li>Click Add</li>
+<li>Double-click on the newly created PC to connect</li>
+<li>You will be prompted for the VDI username and password</li>
+</ol>
+<h3 id="linux">Linux</h3>
+<p>The following uses <a href="https://remmina.org">Remmina</a>, a stable Linux RDP client available via most package managers.</p>
+<ol>
+<li>Install and open Remmina</li>
+<li>Select "Add a new connection profile" in the top right for the connection profile window to appear<img alt="linux add new connection" src="../../../images/access/rdp_client_connect/Add_New_Connection_Remmina.png" /></li>
+<li>Ensure that 'Protocol' is set to RDP</li>
+<li>In the 'Server' field input the localhost and forwarded port <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code><img alt="Linux configuration via Remmina" src="../../../images/access/rdp_client_connect/Connection_Config_Remmina.png" /></li>
+<li>Enter a 'Friendly Name' to describe the device being connected to</li>
+<li>Leave the 'Username' and 'Password' fields blank at this stage. After your first successful connection, save your VDI credentials here for easier connection in the future</li>
+<li>Click Save and Connect to start the remote desktop connection. You will be able to double-click on the friendly name in the main Remmina pane the next time you want to connect to the machine</li>
+</ol>
 
 
 
@@ -2944,10 +3084,10 @@ host<span class="w"> </span>eidf666_rdp
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>
