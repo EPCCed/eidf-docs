@@ -114,6 +114,7 @@ nav:
        - "Development Workflow": safe-haven-services/tre-container-user-guide/development-workflow.md
        - "Workflow Examples": safe-haven-services/tre-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
+     - "S3 Service": safe-haven-services/s3-service.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md
