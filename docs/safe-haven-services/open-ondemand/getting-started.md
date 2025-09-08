@@ -185,16 +185,12 @@ When an app job runs, a log file is created within the job-specific job context 
 
 For the `hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
 
-The log file has name, `container_app_output-JOB_ID.log`, where `JOB_ID`, is a **job ID**, a unique job ID created by the job scheduler, when you submitted the job.
-
-Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
-
 As for the output files, you can use either the File Manager (non-DataLoch safe haven users only) or log into the back-end (all users) to view the log file.
 
 View the log file via the Open OnDemand File Manager:
 
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
-1. Click on the log file, `container_app_output-JOB_ID.log`.
+1. Click on the log file, `output.log`.
 
 ![File Manager showing log file highlighted within Run Container app's job context directory](../../images/open-ondemand/getting-started-08-run-container-log.png){: class="border-img center"}
 *File Manager showing log file within Run Container app's job context directory*
@@ -211,7 +207,7 @@ View the log file within the back-end:
 1. View the log file:
 
     ```bash
-    cat container_app_output-JOB_ID.log
+    cat output.log
     ```
 
 For the `hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
@@ -305,7 +301,7 @@ You will see a 'container_app' entry for your app's job.
 
 Your job will have a status of 'Completed'.
 
-As stated earlier, each job has a unique job ID created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+Each job has a unique **job ID** created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
 To see more details about the job, click the **>** button, by the job.
 
