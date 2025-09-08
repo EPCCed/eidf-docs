@@ -14,9 +14,9 @@ The job ID is a unique job ID created by the job scheduler, when you submitted t
 
 !!! Note
 
-    Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.
+    Unfortunately, the job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
 
-    Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+    Each job created by an app has both an app ID and a job scheduler job ID
 
 The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.
 

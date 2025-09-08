@@ -108,10 +108,10 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 [Job Composer](apps/job-composer.md) app job files are created in a directory:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/JOB_ID/
+ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 ```
 
-where `JOB_ID` is a unique job ID created by the job scheduler, when you submitted the job. For example:
+where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
 
 ```bash
 ondemand/data/sys/myjobs/projects/default/1/
@@ -224,7 +224,7 @@ Briefly, when a job is submitted, the following occurs:
     * For the [Job Composer](apps/job-composer.md) app:
 
     ```bash
-    ondemand/data/sys/myjobs/projects/default/JOB_ID/
+    ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
     ```
 
     * For interactive apps:
@@ -359,6 +359,6 @@ Depending on the app implementation, the log file may include a job ID, a unique
 
 !!! Note
 
-    Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.
+    Unfortunately, the job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
 
-    Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+    Each job created by an app has both an app ID and a job scheduler job ID.

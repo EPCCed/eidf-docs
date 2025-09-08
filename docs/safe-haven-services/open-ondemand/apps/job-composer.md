@@ -28,6 +28,18 @@ To create a Slurm job, select the **New Job** menu, then select:
 * **From Specified Path** option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.
 * **From Selected job** option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.
 
+When a new job is created, the job files are created in a directory:
+
+```bash
+ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
+```
+
+where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
+
+```bash
+ondemand/data/sys/myjobs/projects/default/1/
+```
+
 ---
 
 ## Edit job files
