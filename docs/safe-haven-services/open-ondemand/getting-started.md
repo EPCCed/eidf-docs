@@ -134,8 +134,8 @@ Open OnDemand uses TRE Container Execution Service tools to run containers and c
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
 | Project-specific `/safe_data` subdirectory | `$HOME/safe_data` OR `/safe_data/PROJECT_SUBDIRECTORY` | If `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
-| `$HOME/outputs-NUMBER` | `/safe_outputs` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
-| `$HOME/scratch-NUMBER` | `/scratch` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
+| `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab](apps/jupyter-app.md)). `SESSION_ID` a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
@@ -146,15 +146,15 @@ When the `hello-tre` container is run, it writes two files into `/safe_outputs` 
 
 ### View the container's output files
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `outputs-NUMBER` and `scratch-NUMBER` directories. However, your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` directories. However, your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
 
 For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
 
-View the `outputs-NUMBER` directory via the Open OnDemand File Manager:
+View the `safe_outputs/container/SESSION_ID` directory via the Open OnDemand File Manager:
 
 1. Select the **Files** menu, **Home Directory** option to open the File Manager.
 1. Click **Home Directory**, to go to your home directory.
-1. Click `outputs-NUMBER` view the directory
+1. Click `safe_outputs/container/SESSION_ID` view the directory
 1. Click on `safe_data.txt` and `safe_outputs.txt` to view their contents.
 
 ![File Manager showing home directory after Run Container app completes with outputs directory highlighted](../../images/open-ondemand/getting-started-05-file-manager-home.png){: class="border-img center"}
@@ -165,16 +165,16 @@ View the `outputs-NUMBER` directory via the Open OnDemand File Manager:
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
 
-View the `outputs-NUMBER` directory within the back-end:
+View the `safe_outputs/container/SESSION_ID` directory within the back-end:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
 1. Change into your home directory and view the directory and its files and their contents.
 
     ```bash
     cd
-    ls outputs-NUMBER
-    cat outputs-NUMBER/safe_data.txt
-    cat outputs-NUMBER/safe_outputs.txt
+    ls safe_outputs/container/SESSION_ID
+    cat safe_outputs/container/SESSION_ID/safe_data.txt
+    cat safe_outputs/container/SESSION_ID/safe_outputs.txt
     ```
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
@@ -260,7 +260,7 @@ Arguments (one per line):
     Mike
 ```
 
-For some containers run via Podman, including `hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `outputs-NUMBER` on the back-end.
+For some containers run via Podman, including `hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/container/SESSION_ID`.
 
 Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
 
@@ -419,17 +419,11 @@ touch /scratch/hello-from-jupyterlab-to-scratch.txt
 touch /safe_outputs/hello-from-jupyterlab-to-outputs.txt
 ```
 
-Within your Open OnDemand command-line session with the back-end, first find out the most recent `outputs-NUMBER` and `scratch-NUMBER` directories in your home directory (`ls -l` lists files and directories and when they were last modified):
+List the contents of the `scratch` and `safe_outputs` and directories:
 
 ```bash
-ls -l
-```
-
-Now list their contents of the most recent directories:
-
-```bash
-ls -1 scratch-NUMBER
-ls -1 outputs-NUMBER
+ls -1 scratch/jupyter/SESSION_ID
+ls -1 safe_outputs/jupyter/SESSION_ID
 ```
 
 You should see the above files:
@@ -442,8 +436,8 @@ hello-from-jupyterlab-to-outputs.txt
 Now, within your Open OnDemand command-line session with the back-end, create files in these directories:
 
 ```bash
-touch scratch-NUMBER/hello-from-scratch-to-jupyterlab.txt
-touch outputs-NUMBER/hello-from-outputs-to-jupyterlab.txt
+touch scratch/jupyter/SESSION_ID/hello-from-scratch-to-jupyterlab.txt
+touch safe_outputs/jupyter/SESSION_ID/hello-from-outputs-to-jupyterlab.txt
 ```
 
 Then, within the JupyterLab Terminal, list the contents of the corresponding `/scratch` directory and you should see the files you created on the back-end plus those you created within JupyterLab:
@@ -470,7 +464,7 @@ hello-from-outputs-to-jupyterlab.txt
 
 Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
 
-As a reminder, `outputs-NUMBER` will persist after the job which created the container ends but `scratch-NUMBER` will be deleted.
+As a reminder, `safe_outputs/jupyter/SESSION_ID` will persist after the job which created the container ends but the `SESSION_ID` subfolder in `scratch/jupyter` will be deleted.
 
 ### Revisit the Active Jobs app
 
