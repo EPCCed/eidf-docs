@@ -18,7 +18,7 @@ Complete the following information the app form:
 
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: Username to access the container registry.
-* **Container registry password/access token**: Access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
+* **Container registry access token**: Access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
 * **Container name** (Podman only): Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
 * **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
