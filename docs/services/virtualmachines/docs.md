@@ -2,20 +2,12 @@
 
 ## Project Management Guide
 
-### Required Member Permissions
-
-VMs and user accounts can only be managed by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the **Cloud Admin** role:
-
-1. Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)
-1. On the project management page in SAFE, scroll down to "Manage Members"
-1. Click *Add project manager* or *Set member permissions*
-
-For details please refer to the SAFE documentation: [How can I designate a user as a project manager?](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager)
-
 ### Create a VM
 
 To create a new VM:
 
+1. Open the projects page in the portal at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
+   or select 'Your Projects' from the Projects menu.
 1. Select the project from the list of your projects, e.g. `eidfxxx`
 1. Click on the 'New Machine' button
 1. Complete the 'Create Machine' form as follows:
@@ -62,6 +54,7 @@ The Project PI and project managers manage user accounts for each member of the 
 Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
 however a user may have multiple accounts in a project, for example for different roles.
 
+1. Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/).
 1. From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom
 1. Complete the 'Create User Account' form as follows:
 
@@ -136,6 +129,47 @@ even if you didn't select a package when first creating the machine.
 1. Select the configuration you wish to install and press 'Submit'
 1. The configuration job runs for a few minutes.
 
+### Resize a machine
+
+An existing machine can be resized within the allowance of the project.
+This requires a reboot of your machine.
+
+1. Open the VM details page
+1. Click on 'Resize'
+1. In the form (as shown below), select a suitable machine specification.
+   The form will indicate the maximum number of cores and memory size that is available within your quota.
+    ![ResizeMachine](../../images/virtualmachines/ResizeMachine.png){: class="border-img"}
+    *Example page to resize a machine from 2 cores and 4 GB RAM to 8 cores and 16GB RAM*
+1. Click 'Submit'
+
+Please wait for the job to complete: Resizing takes a few minutes.
+After the automated reboot the machine will be available with the new specifications.
+
+If your quota does not allow resizing the machine to the desired number of cores or memory
+you can request additional resources through the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
+Within the form above please select the category 'EIDF Project extension: duration and quota'.
+
+### Resize the boot volume of a machine
+
+The disk of an existing machine can be resized within the allowance of the project.
+This requires a reboot of your machine.
+
+1. Open the VM details page
+1. Click on 'Expand Disk'
+1. In the form, enter the new disk size for your machine.
+   The form will indicate the maximum size that is available within your quota.
+1. Click 'Submit'
+
+Please wait for the job to complete: Expanding the disk takes a few minutes.
+After the job completes, the machine needs to be rebooted to expand the file system.
+You can do this by executing `sudo reboot now` from a terminal on the VM,
+or click 'Reboot' on the machine details page in the Portal.
+
+Please note that you cannot decrease the disk size.
+
+You can request additional storage through the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
+Within the form above please select the category 'EIDF Project extension: duration and quota'.
+
 ### Patching and updating
 
 It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
@@ -170,3 +204,13 @@ sudo reboot now
 ```
 
 or use the reboot button in the EIDF Portal (requires project manager permissions).
+
+### Required Member Permissions
+
+VMs and user accounts can only be managed by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the **Cloud Admin** role:
+
+1. Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)
+1. On the project management page in SAFE, scroll down to "Manage Members"
+1. Click *Add project manager* or *Set member permissions*
+
+For details please refer to the SAFE documentation: [How can I designate a user as a project manager?](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager)

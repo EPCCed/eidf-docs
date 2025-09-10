@@ -1,20 +1,5 @@
 # SSH Access to Virtual Machines using the EIDF-Gateway Jump Host
 
-<style>
-.borderimg1 {
-  border: 5px solid transparent;
-  padding: 5px;
-  /*margin: 15px;*/
-  border-color: rgba(192, 192, 192, 0.1);
-  border-radius: 10px;
-}
-
-.bold {
-  font-weight: bold;
-  color: blue;
-}
-</style>
-
 The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
 You will require three things to use the gateway:
 
@@ -60,7 +45,7 @@ If not, you'll need to generate an SSH-Key, to do this:
 1. Select the relevant project
 1. Select your username
 1. Select the plus button under  'Credentials'
-1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <ssh-key>.pub file you just created and copy its contents into the text box.
+1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the `<ssh-key>.pub` file you just created and copy its contents into the text box.
 1. Click 'Upload Credential' - it should look something like this:
 
    ![eidf-portal-ssh](../images/access/eidf-portal-ssh.png){: class="border-img"}
@@ -73,7 +58,7 @@ However, select your '[username]@EIDF' login account, not 'Archer2' as specified
 
 ## Enabling MFA via the Portal
 
-A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway. <br>
+A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway.
 
 To enable this for your EIDF account:
 
@@ -87,12 +72,13 @@ To enable this for your EIDF account:
 1. You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.
 
 !!! note
-    TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.<br>
+    TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.
     An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.
 
 ### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
 
-1. From your local terminal, import the SSH Key you generated above: <br>`ssh-add /path/to/ssh-key`
+1. From your local terminal, import the SSH Key you generated above:
+    `ssh-add /path/to/ssh-key`
 
 1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
 
@@ -115,9 +101,11 @@ ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 ```
 
 !!! info
-    If the `ssh-add` command fails saying the SSH Agent is not running, run the below command: <br>
+    If the `ssh-add` command fails saying the SSH Agent is not running, run the below command:
 
-      ``` eval `ssh-agent` ```
+    ```bash
+    eval `ssh-agent`
+    ```
 
     Then re-run the ssh-add command above.
 
@@ -147,10 +135,12 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
     ```powershell
 
     ssh-add \path\to\sshkey
+    ```
 
     For Example:
-    ssh-add .\.ssh\id_ed25519
 
+    ```powershell
+    ssh-add .\.ssh\id_ed25519
     ```
 
 1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
@@ -165,13 +155,14 @@ Windows will require the installation of OpenSSH-Server to use SSH. Putty or Mob
 
 1. Login by jumping through the gateway.
 
-    ```bash
-
+    ```powershell
     ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
+    ```
 
     For Example:
-    ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
 
+    ```powershell
+    ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
     ```
 
 You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
@@ -257,44 +248,39 @@ You can use SSH Aliases to access your VMs with a single command.
 
     For Example:
 
-    ```
-
+    ```bash
     ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
-
     ```
 
 1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
 
-    ```
-
+    ```terminalShell
     Host <vm name/alias>
       HostName 10.24.VM.IP
       User <vm username>
       IdentityFile /path/to/ssh/key
       ProxyCommand ssh eidf-gateway -W %h:%p
-
     ```
 
     For Example:
 
-    ```
-
+    ```terminalShell
     Host demo
       HostName 10.24.1.1
       User alice
       IdentityFile ~/.ssh/id_ed25519
       ProxyCommand ssh eidf-gateway -W %h:%p
-
     ```
 
+    If your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
+    `HostKeyAlgorithms +ssh-rsa`
+
 1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
-<br><br>Note for this setup, if your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
-`HostKeyAlgorithms +ssh-rsa`
 
 !!! info
     This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
-    This method allows for a much less complicated ssh command to reach your VMs. <br>
-    You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like. <br>
+    This method allows for a much less complicated ssh command to reach your VMs.
+    You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like.
     The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
 
 ## sudo, Password Setting and Password Resets

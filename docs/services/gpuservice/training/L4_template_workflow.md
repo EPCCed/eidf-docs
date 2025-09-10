@@ -2,7 +2,7 @@
 
 ## Requirements
 
- It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L2_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
+ It is recommended that users complete [Getting started with Kubernetes](./L1_getting_started.md#requirements) and [Requesting persistent volumes With Kubernetes](./L2_requesting_persistent_volumes.md#requirements) before proceeding with this tutorial.
 
 ## Overview
 
@@ -52,12 +52,14 @@ Therefore, the data download step needs to be completed asynchronously as mainta
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: lightweight-job
+     generateName: lightweight-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
+     backoffLimit: 1
      parallelism: 1
+     ttlSecondsAfterFinished: 1800
      template:
       metadata:
        name: lightweight-job
@@ -66,7 +68,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
        containers:
        - name: data-loader
          image: alpine/curl:latest
-         command: ['sh', '-c', "cd /mnt/ceph_rbd; curl https://archive.ics.uci.edu/static/public/53/iris.zip -o iris.zip"]
+         command: ['sh', '-c', "cd /mnt/ceph; curl https://archive.ics.uci.edu/static/public/53/iris.zip -o iris.zip"]
          resources:
           requests:
            cpu: 1
@@ -75,7 +77,7 @@ Therefore, the data download step needs to be completed asynchronously as mainta
            cpu: 1
            memory: "1Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -125,12 +127,14 @@ Using screen rather than a single download job can be helpful if downloading mul
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: lightweight-job
+     generateName: lightweight-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
      completions: 1
+     backoffLimit: 1
      parallelism: 1
+     ttlSecondsAfterFinished: 1800
      template:
       metadata:
        name: lightweight-pod
@@ -148,7 +152,7 @@ Using screen rather than a single download job can be helpful if downloading mul
            cpu: 1
            memory: "1Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -237,7 +241,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -325,7 +329,7 @@ You must already have a [GitHub](https://github.com) account to follow this proc
 
 This process allows code development to be conducted on any device/VM with access to the repo (GitHub/GitLab).
 
-A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available [here](https://github.com/DimmestP/template-EIDFGPU-workflow).
+A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available [here](https://github.com/EPCCed/template-EIDFGPU-workflow).
 
 ### Create a job that downloads and runs the latest code version at runtime
 
@@ -335,7 +339,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -356,7 +360,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
        volumes:
        - name: volume
@@ -370,7 +374,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -391,7 +395,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            cpu: 1
            memory: "8Gi"
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
            name: github-code
@@ -424,7 +428,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
     apiVersion: batch/v1
     kind: Job
     metadata:
-     name: template-workflow-job
+     generateName: template-workflow-job-
      labels:
       kueue.x-k8s.io/queue-name: <project-namespace>-user-queue
     spec:
@@ -446,7 +450,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            memory: "80Gi"
            nvidia.com/gpu: 1
          volumeMounts:
-         - mountPath: /mnt/ceph_rbd
+         - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
            name: github-code

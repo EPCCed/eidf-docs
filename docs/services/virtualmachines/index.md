@@ -2,7 +2,7 @@
 
 The EIDF Virtual Machine (VM) Service is the underlying infrastructure upon which the EIDF Data Science Cloud (DSC) is built.
 
-The service currenly has a mixture of hardware node types which host VMs of various [flavours](flavours.md):
+The service currently has a mixture of hardware node types which host VMs of various [flavours](flavours.md):
 
 - The mcomp nodes which host general flavour VMs are based upon AMD EPYC 7702 CPUs (128 Cores) with 1TB of DRAM
 - The hcomp nodes which host capability flavour VMs are based upon 4x Intel Xeon Platinum 8280L CPUs (224 Threads, 112 cores with HT) with 3TB of DRAM

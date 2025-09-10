@@ -1,0 +1,104 @@
+# Browse and manage files
+
+---
+
+## Introduction
+
+Open OnDemand allows you to browse and manage files via the File Manager which can be accessed in various ways.
+
+---
+
+## File Manager
+
+Select the **Files** menu, **Home Directory** option to open the File Manager.
+
+You can browse your home directory and there are buttons to create new files and directories, upload or download files, copy or move files or directories and delete files or directories and to change directory.
+
+![File Manager](../../images/open-ondemand/file-manager.png){: class="border-img center"} *The File Manager*
+
+!!! Note
+
+    The File Manager allows you to **only** manipulate files on the Open OnDemand VM. For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
+
+    However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM, and you will have to log into a back-end to view files created on the back-end when you run jobs. For more information, see [Unsynched home directories](jobs.md#unsynched-home-directories) and [Log into back-ends](ssh.md).
+
+!!! Note
+
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
+
+!!! Note
+
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your
+
+### **Open in Terminal**
+
+Click **Open in Terminal** to log into a specific VM:
+
+* The default is the first back-end you have access to in alphabetical order.
+* To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific VM.
+
+![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal.png){: class="border-img center"} ***Open in Terminal** button and menu*
+
+Once logged in, your current directory will be changed to match the job context directory.
+
+#### Troubleshooting: 'cd ... No such file or directory'
+
+If, after you have logged into the back-end, you see an error like:
+
+```bash
+bash: line 1: cd: /home/user/ondemand: No such file or directory
+```
+
+then this means that the directory you are currently viewing in the File Manager on the Open OnDemand VM is not available on the back-end.
+
+This can arise if you select a back-end where your home directory is not common to both the Open OnDemand VM and the back-end and you have not yet run a job on that back-end. See [Unsynched home directories](jobs.md#unsynched-home-directories) for back-ends this relates to.
+
+---
+
+## My Interactive Sessions page job cards and job context directory
+
+Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.
+
+![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
+On a job's job card, click the **Session ID** link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
+
+---
+
+## Active Jobs app and job context directory
+
+Open the [Active Jobs](apps/active-jobs.md) app.
+
+Click the **>** button, by the job of interest, to open the job details.
+
+Click **Open in File Manager** to open the File Manager pointing at the job context directory for the job on the Open OnDemand VM.
+
+---
+
+## Job Composer app and job context directory
+
+Open the [Job Composer](apps/job-composer.md) app.
+
+Select a job.
+
+Click **Open Dir** or click **Edit Files** to open the File Manager pointing at the job context directory for the currently selected job.
+
+---
+
+## App **data root directory**
+
+Within an app's form, click the **data root directory** link to open the File Manager pointing at the app directory, `ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME`, under which the job's files will be created.
+
+### Troubleshooting: 'Error occurred when attempting to access ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
+
+If a dialog pops up with error:
+
+'Error occurred when attempting to access /pun/sys/dashboard/files/fs/.../ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
+
+and
+
+'Cannot read file /.../ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME'
+
+then click **OK**.
+
+This error can arise if you have not used the app before and, so, its `APP_NAME` subdirectory will not exist under your `ondemand` directory.
