@@ -20,9 +20,9 @@ Selecting "Blank Project" will take to you the project creation screen. You can 
 
 GitLab offers a variety of options for project, permission and access configurations. Please consult the [GitLab Documentation](https://docs.gitlab.com/ee/user/) for specifics.
 
-## Clone repository
+## Clone repository via HTTPS
 
-To clone a repository, click on the "Code" button to get the https-based url.
+To clone a repository via HTTPS, click on the "Code" button to get the https-based url.
 
 ![GitLab New Repo](../../images/access/gitlab-newrepo.png)
 
@@ -30,6 +30,8 @@ From the command line, you can clone this repository by adding your username and
 
 ![GitLab Clone CLI](../../images/access/gitlab-httpstoken.png)
 
-## Limits
+## Clone repository via SSH
 
-EIDF GitLab currently only supports working with repositories via https and tokens. We hope to expand the service to use SSH via SSH keys shortly.
+To clone a repository using git over SSH, click on the "Code" button to get the git+ssh URL. You will need to have added an SSH key to your account for this method to work.
+
+For a more complete set of documentation relating to adding and using SSH keys with Gitlab, see the upstream [Gitlab Documentation](https://docs.gitlab.com/user/ssh/)

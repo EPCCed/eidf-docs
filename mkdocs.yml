@@ -82,9 +82,6 @@ nav:
     - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
-#    - "GitLab":
-#      - "Overview": services/gitlab/index.md
-#      - "Quickstart": services/gitlab/quickstart.md
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md
@@ -99,7 +96,8 @@ nav:
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
     - "Code Collaboration":
-      - "Gitlab service": services/gitlab/index.md
+      - "Gitlab Overview": services/gitlab/index.md
+      - "Gitlab Quickstart": services/gitlab/quickstart.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Network Access Controls": safe-haven-services/network-access-controls.md
