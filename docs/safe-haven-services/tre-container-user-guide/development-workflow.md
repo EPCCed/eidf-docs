@@ -342,7 +342,7 @@ ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 - Use `--arg-file=<file>` to specify a file containing arguments to pass to the container command or entrypoint
 - Use `--env-file=<file>` to specify a file containing environment variables which will be set inside the container
 
-Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options.
+Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run --help` for all available options.
 
 We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
