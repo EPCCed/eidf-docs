@@ -338,29 +338,6 @@ ces-run <container-engine> ghcr.io/<namespace>/<container_name>[:<container_tag>
 
 When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
 
-```console
-$ ces-run --help
-WARNING: container runtime is defaulting to podman
-Running: /usr/local/bin/ces-pm-run --help
-Run a container in the TRE
-
-Usage:
-  ces-pm-run [options] <container>
-
-Available Options:
-  -c|--cores      CPU cores to allocate (default is sharing all of them)
-  --dry-run       Do not run the container, print out all the command options
-  --env-file      File with env vars to pass to container
-  --gpu           Connect the container to the local GPU
-  -h|--help       Print this stuff
-  -m|--memory     Memory to allocate in Gb (default is 4Gb)
-  -n|--name       Assign a name to the container
-  --opt-file      File with additional options to pass to run command
-  --arg-file      File with additional arguments to append to run command
-  -v|--verbose    Print out all command options
-  --version       Print out version string
-```
-
 We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
 Once the container runs successfully in the test environment, it is ready to be used inside the TRE.
