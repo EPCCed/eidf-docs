@@ -321,19 +321,19 @@ The test environment is located in the eidf147 project. Please ask your research
 
 Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
 
-Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the command:
+Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the `ces-pull` command:
 
 ```sh
-ces-pull <container-engine> <github_user> <github_token> ghcr.io/<namespace>/<container_name>:<container_tag>
+ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
 > [!NOTE]
 > The three container engines available are Podman and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
 
-To run the container, use:
+The container can then be run with `ces-run`:
 
 ```sh
-ces-run <container-engine> ghcr.io/<namespace>/<container_name>[:<container_tag>]
+ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
 When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
