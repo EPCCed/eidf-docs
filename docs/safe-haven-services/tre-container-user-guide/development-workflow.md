@@ -327,8 +327,7 @@ Once access has been granted to the test environemnt in the eidf147 project, the
 ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-> [!NOTE]
-> The three container engines available are Podman and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
+If a runtime is not specified then podman is used as the default.
 
 The container can then be run with `ces-run`:
 
