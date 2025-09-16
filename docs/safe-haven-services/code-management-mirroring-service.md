@@ -1,4 +1,4 @@
-# TRE Code Management and Mirroring Service
+# \[Beta] TRE Code Management and Mirroring Service
 
 !!! warning "Beta Service"
     This service is in early development, and the content of this page may change significantly. Please provide all feedback to your IG team.
@@ -22,3 +22,41 @@ Available features include:
 - Pull Requests
 - Code review
 - Wikis
+
+This page provides information on accessing and using the service, however is not intended as a guide to Gitea. Please see Gitea's own [documentation][gitea_docs] for general usage information. It is also assumed that users are familiar with git and the use of version control services.
+
+## Access
+
+Access must be requested from your Research Coordinator (RC). On being granted access, you will be provided with the following information:
+
+- Gitea URL
+- Username
+- Initial Password
+
+Gitea can be accessed from your VM desktop by opening a Web Browser and navigating to the provided URL. After logging in for the first time, you will be prompted to change your password.
+
+Once logged-in, you will be presented with a dashboard showing recent activity in your organization. In Gitea, an "organization" is analagous to a project group, and you will be automatically granted access to the organization matching your TRE project identifier.
+
+## Request a Repository
+
+To request the creation of a repository in your organization, contact your RC and let them know the desired name. Multiple repositories may be created under each organization.
+
+Once created, your repository will be visible from your Gitea dashboard or under the "Explore" tab.
+
+!!! note "Repository Permissions"
+    All members of an organization (TRE project) have full read/write access to each of its repositories, regardless of who requested its creation. This is the intended behaviour and will not be changed e.g., to restrict repository access to a subset of a TRE project's members. This is equivalent to the files in each `/safe_data/<project_id>` directory being accessible to all project members.
+
+## RC Organization
+
+TODO
+
+- Test environment
+
+## Further Reading and Help
+
+- The [Gitea docs][gitea_docs] are the best reference for using this service
+- Contact your IG team if you require and help accessing or using the service
+
+<!-- Links -->
+
+[gitea_docs]: https://docs.gitea.com/
