@@ -23,9 +23,17 @@ edit_uri: edit/main/docs/
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - attr_list
 
+plugins:
+  - search
+  - mermaid2:
+      version: 11.10.1
 
 nav:
   - "Service Status": status/index.md
