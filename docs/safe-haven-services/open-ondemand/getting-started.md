@@ -51,7 +51,7 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is to use the `ghcr.io/mikej888/hello-tre:1.0` container, hereon termed `hello-tre`.
 * **Container registry username** is a username to access the container registry.
     * Leave this value as-is.
-* **Container registry password/access token** is an access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
+* **Container registry access token** is an access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
 * **Container runner** is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
