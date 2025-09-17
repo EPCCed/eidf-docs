@@ -321,45 +321,27 @@ The test environment is located in the eidf147 project. Please ask your research
 
 Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
 
-Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the command:
+Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the `ces-pull` command:
 
 ```sh
-ces-pull <container-engine> <github_user> <github_token> ghcr.io/<namespace>/<container_name>:<container_tag>
+ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-> [!NOTE]
-> The three container engines available are Podman and Apptainer, with `ces-pull` defaulting to Podman if no container engine is specified.
+If a runtime is not specified then podman is used as the default.
 
-To run the container, use:
+The container can then be run with `ces-run`:
 
 ```sh
-ces-run <container-engine> ghcr.io/<namespace>/<container_name>[:<container_tag>]
+ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-When using Podman and Apptainer, extra arguments can be passed using `env-file`, `opt-file` and `arg-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help` for all available options:
+`ces-run` supports the following optional arguments under most runtimes:
 
-```console
-$ ces-run --help
-WARNING: container runtime is defaulting to podman
-Running: /usr/local/bin/ces-pm-run --help
-Run a container in the TRE
+- Use `--opt-file=<file>` to specify a file containing additional options to be passed to the runtime
+- Use `--arg-file=<file>` to specify a file containing arguments to pass to the container command or entrypoint
+- Use `--env-file=<file>` to specify a file containing environment variables which will be set inside the container
 
-Usage:
-  ces-pm-run [options] <container>
-
-Available Options:
-  -c|--cores      CPU cores to allocate (default is sharing all of them)
-  --dry-run       Do not run the container, print out all the command options
-  --env-file      File with env vars to pass to container
-  --gpu           Connect the container to the local GPU
-  -h|--help       Print this stuff
-  -m|--memory     Memory to allocate in Gb (default is 4Gb)
-  -n|--name       Assign a name to the container
-  --opt-file      File with additional options to pass to run command
-  --arg-file      File with additional arguments to append to run command
-  -v|--verbose    Print out all command options
-  --version       Print out version string
-```
+Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run [<runtime>] --help` for all available options.
 
 We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
