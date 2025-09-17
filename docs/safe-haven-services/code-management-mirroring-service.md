@@ -3,7 +3,7 @@
 !!! warning "Beta Service"
     This service is in early development, and the content of this page may change significantly. Please provide all feedback to your IG team.
 
-The Code Management and Mirroring Service provides Researchers and IG teams with access to a platform similar to GitHub for managing code inside the TRE. Automatic inbound mirroring of external code repositories is also available if permitted by the IG team.
+The Code Management and Mirroring Service provides Researchers and IG teams with access to a platform similar to GitHub for managing code inside the TRE. If permitted by the IG team, this also supports egress of internal code to external repositories via review & approval by RCs.
 
 A separate instance of the service is available to each TRE tenancy, and each instance is accessible only within the tenancy it is deployed to.
 
