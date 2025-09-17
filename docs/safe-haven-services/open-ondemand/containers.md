@@ -38,16 +38,16 @@ When the container is run, three directories on the back-end are mounted into th
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
 | Project-specific `/safe_data` subdirectory | `$HOME/safe_data` OR `/safe_data/PROJECT_SUBDIRECTORY` | If `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found. |
-| `$HOME/outputs-NUMBER` | `/safe_outputs` | `NUMBER` is a randomly-generated number, for example `outputs-3320888`. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
-| `$HOME/scratch-NUMBER` | `/scratch` | `NUMBER` is the same as that created for `outputs-NUMBER`, for example `scratch-3320888`. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container and is then **deleted** when the job which created the container ends. |
+| `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab](apps/jupyter-app.md)). `SESSION_ID` a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `outputs-NUMBER` and `scratch-NUMBER` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `outputs-NUMBER` and `scratch-NUMBER` by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
 
 !!! Note
 
@@ -56,10 +56,6 @@ When using a back-end where your home directory is **not** common to both the Op
 !!! Note
 
     Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.
-
-!!! Tip
-
-    If you have a number of `outputs-NUMBER` or `scratch-NUMBER` directories, then use 'Modified at' values in the [File Manager](files.md) or `ls -l` on the back-end to identify those corresponding to your most recent job.
 
 ### Troubleshooting: 'Cannot open project data: /safe_data/cannot_determine_project_from_groups'
 
