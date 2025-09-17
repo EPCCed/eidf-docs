@@ -234,7 +234,7 @@ Briefly, when a job is submitted, the following occurs:
     ```
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
-    * A job scheduler preprocessing step is used to create a log file in your `ondemand/logs/slurm` directory.
+    * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
