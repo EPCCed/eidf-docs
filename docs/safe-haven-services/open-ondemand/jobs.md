@@ -359,6 +359,6 @@ Depending on the app implementation, the log file may include a job ID, a unique
 
 !!! Note
 
-    Unfortunately, the job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
+    The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
 
     Each job created by an app has both an app ID and a job scheduler job ID.
