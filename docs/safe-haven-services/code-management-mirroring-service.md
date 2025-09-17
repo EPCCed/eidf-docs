@@ -46,11 +46,18 @@ Once created, your repository will be visible from your Gitea dashboard or under
 !!! note "Repository Permissions"
     All members of an organization (TRE project) have full read/write access to each of its repositories, regardless of who requested its creation. This is the intended behaviour and will not be changed e.g., to restrict repository access to a subset of a TRE project's members. This is equivalent to the files in each `/safe_data/<project_id>` directory being accessible to all project members.
 
-## RC Organization
+## Clone a Repository
 
-TODO
+SSH access is not enabled, so HTTPS must be used to clone repositories.
 
-- Test environment
+When running `git clone`, `git fetch`, and `git push`, you will be prompted for your Gitea username and password each time. For convenience, you may wish to generate an access token to avoid re-entering your credentials on each operation. To do this:
+
+1. Click your profile picture in the top right and then on Settings
+1. Click Applications in the sidebar
+1. Create a new token
+    1. Enter a descriptive name
+    1. Expand "Select permissions" and change "repository" to "Read and Write"
+1. Clone the repo using the token, for example `git clone https://<token>@<url>/<organization>/<repo>.git`
 
 ## Further Reading and Help
 
