@@ -234,7 +234,7 @@ Briefly, when a job is submitted, the following occurs:
     ```
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
-    * A job scheduler preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
+    * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
@@ -325,7 +325,7 @@ Click **Delete** on a job card to delete the job card.
 
 ### Job scheduler log files
 
-When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand VM.
+When a job is submitted to a back-end, a log file is created within an `ondemand/logs/slurm` directory within your home directory on the Open OnDemand VM.
 
 Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
