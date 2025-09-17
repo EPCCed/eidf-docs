@@ -115,6 +115,18 @@ nav:
        - "Development Workflow": safe-haven-services/tre-container-user-guide/development-workflow.md
        - "Workflow Examples": safe-haven-services/tre-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
+     - "TRE GPU Service":
+       - "Overview": safe-haven-services/tre-gpu-service/index.md
+       - "Policies": safe-haven-services/tre-gpu-service/policies.md
+       - "Kueue": safe-haven-services/tre-gpu-service/kueue.md
+       - "Tutorials":
+          - "Getting Started": safe-haven-services/tre-gpu-service/training/L1_getting_started.md
+          - "Building and Pushing Containers to GHCR": safe-haven-services/tre-gpu-service/training/L1.1_building-and-testing-containers.md
+          - "Downloading Containers in the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L2_using-containers-in-the-tre.md
+          - "Creating your first pod template within a job yaml file": safe-haven-services/tre-gpu-service/training/L2.1_creating-your-first-pod-template.md
+          - "Transfer Data Inside the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
+          - "Persistent Volumes": safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes.md
+       - "GPU Service FAQ": safe-haven-services/tre-gpu-service/faq.md
      # TRE Open OnDemand service docs can be uncommented and added to
      # the navigation menu when the TRE Open OnDemand service is made
      # available to TRE tenants. See MikeJ for details.
