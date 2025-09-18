@@ -6,7 +6,7 @@
 
 This is the job queue system for the TRE GPU Service, starting with April 2025.
 
-**Reminder:** All users should submit jobs to their **local namespace user queue**, which follows the naming convention `tre project namespace-user-queue`, i.e. `<project_id>-ns-user-queue`.
+**Reminder:** All users should submit jobs to their **local namespace user queue**, which follows the naming convention `<tre-project-namespace>-user-queue`, i.e. `<safe_heaven>-<project_id>-ns-user-queue`.
 
 ### Changes to Job Specs
 
@@ -14,385 +14,180 @@ Jobs can be submitted as before but will require the addition of a metadata labe
 
 ```yaml
    labels:
-      kueue.x-k8s.io/queue-name:  <project namespace>-user-queue
+      kueue.x-k8s.io/queue-name:  <tre-project-namespace>-user-queue
 ```
 
 This is the only change required to make Jobs Kueue functional. A policy will be in place that will stop jobs without this label being accepted.
 
 ## Useful commands for looking at your local queue
 
-### `kubectl get queue`
+### `kubectl get queue -n <tre-project-namespace>`
 
 This command will output the high level status of your namespace queue with the number of workloads currently running and the number waiting to start:
 
 ```bash
-NAME               CLUSTERQUEUE             PENDING WORKLOADS   ADMITTED WORKLOADS
-tre001-user-queue tre001-project-gpu-cq   0                   2
+NAME                          CLUSTERQUEUE              PENDING WORKLOADS   ADMITTED WORKLOADS
+nsh-2024-0000-ns-user-queue   nsh-2024-0000-ns-gpu-cq   0                   0
 ```
 
-### `kubectl describe queue <queue>`
+### `kubectl describe queue <queue> -n <tre-project-namespace>`
 
 This command will output more detailed information on the current resource usage in your queue:
 
 ```bash
-Name:         tre001-user-queue
-Namespace:    tre001
+Name:         nsh-2024-0000-ns-user-queue
+Namespace:    nsh-2024-0000-ns
 Labels:       <none>
 Annotations:  <none>
 API Version:  kueue.x-k8s.io/v1beta1
 Kind:         LocalQueue
 Metadata:
-  Creation Timestamp:  2024-02-06T13:06:23Z
+  Creation Timestamp:  2025-08-26T13:22:20Z
   Generation:          1
-  Managed Fields:
-    API Version:  kueue.x-k8s.io/v1beta1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:spec:
-        .:
-        f:clusterQueue:
-    Manager:      kubectl-create
-    Operation:    Update
-    Time:         2024-02-06T13:06:23Z
-    API Version:  kueue.x-k8s.io/v1beta1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:status:
-        .:
-        f:admittedWorkloads:
-        f:conditions:
-          .:
-          k:{"type":"Active"}:
-            .:
-            f:lastTransitionTime:
-            f:message:
-            f:reason:
-            f:status:
-            f:type:
-        f:flavorUsage:
-          .:
-          k:{"name":"default-flavor"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"cpu"}:
-                .:
-                f:name:
-                f:total:
-              k:{"name":"memory"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-1g"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-3g"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-80"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-        f:flavorsReservation:
-          .:
-          k:{"name":"default-flavor"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"cpu"}:
-                .:
-                f:name:
-                f:total:
-              k:{"name":"memory"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-1g"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-3g"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-          k:{"name":"gpu-a100-80"}:
-            .:
-            f:name:
-            f:resources:
-              .:
-              k:{"name":"nvidia.com/gpu"}:
-                .:
-                f:name:
-                f:total:
-        f:pendingWorkloads:
-        f:reservingWorkloads:
-    Manager:         kueue
-    Operation:       Update
-    Subresource:     status
-    Time:            2024-02-14T10:54:20Z
-  Resource Version:  333898946
-  UID:               bca097e2-6c55-4305-86ac-d1bd3c767751
+  Resource Version:    4752354
+  UID:                 801163cf-fb8d-4b16-99fe-e8ece1ed3b97
 Spec:
-  Cluster Queue:  tre001-project-gpu-cq
+  Cluster Queue:  nsh-2024-0000-ns-gpu-cq
+  Stop Policy:    None
 Status:
-  Admitted Workloads:  2
+  Admitted Workloads:  1
   Conditions:
-    Last Transition Time:  2024-02-06T13:06:23Z
+    Last Transition Time:  2025-08-26T13:22:20Z
     Message:               Can submit new workloads to clusterQueue
+    Observed Generation:   1
     Reason:                Ready
     Status:                True
     Type:                  Active
   Flavor Usage:
-    Name:  gpu-a100
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  2
-    Name:     gpu-a100-3g
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  0
-    Name:     gpu-a100-1g
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  0
-    Name:     gpu-a100-80
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  0
-    Name:     default-flavor
+    Name:  default-flavor
     Resources:
       Name:   cpu
-      Total:  16
+      Total:  0
       Name:   memory
-      Total:  256Gi
-  Flavors Reservation:
-    Name:  gpu-a100
-    Resources:
+      Total:  0
       Name:   nvidia.com/gpu
+      Total:  0
+    Name:     gpu-a100
+    Resources:
+      Name:   cpu
       Total:  2
-    Name:     gpu-a100-3g
+      Name:   memory
+      Total:  1Gi
+      Name:   nvidia.com/gpu
+      Total:  1
+  Flavors:
+    Name:  default-flavor
     Resources:
+      cpu
+      memory
+      nvidia.com/gpu
+    Name:  gpu-a100
+    Node Labels:
+      nvidia.com/gpu.present:  true
+      nvidia.com/gpu.product:  NVIDIA-A100-SXM4-40GB
+    Resources:
+      cpu
+      memory
+      nvidia.com/gpu
+  Flavors Reservation:
+    Name:  default-flavor
+    Resources:
+      Name:   cpu
+      Total:  0
+      Name:   memory
+      Total:  0
       Name:   nvidia.com/gpu
       Total:  0
-    Name:     gpu-a100-1g
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  0
-    Name:     gpu-a100-80
-    Resources:
-      Name:   nvidia.com/gpu
-      Total:  0
-    Name:     default-flavor
+    Name:     gpu-a100
     Resources:
       Name:             cpu
-      Total:            16
+      Total:            2
       Name:             memory
-      Total:            256Gi
+      Total:            1Gi
+      Name:             nvidia.com/gpu
+      Total:            1
   Pending Workloads:    0
-  Reserving Workloads:  2
+  Reserving Workloads:  1
 Events:                 <none>
 ```
 
-### `kubectl get workloads`
+### `kubectl get workloads -n <tre-project-namespace>`
 
 This command will return the list of workloads in the queue:
 
 ```bash
-NAME                QUEUE                ADMITTED BY              AGE
-job-jobtest-366ab   tre001-user-queue   tre001-project-gpu-cq   4h45m
-job-jobtest-34ba9   tre001-user-queue   tre001-project-gpu-cq   6h48m
+NAME                                QUEUE                         RESERVED IN               ADMITTED   FINISHED   AGE
+job-nsh-2024-0000-job-xhw7j-6463d   nsh-2024-0000-ns-user-queue   nsh-2024-0000-ns-gpu-cq   True                  35s
+
 ```
 
-### `kubectl describe workload <workload>`
+### `kubectl describe workload <workload> -n <tre-project-namespace>`
 
 This command will return a detailed summary of the workload including status and resource usage:
 
 ```bash
-Name:         job-pytorch-job-0b664
-Namespace:    t4
-Labels:       kueue.x-k8s.io/job-uid=33bc1e48-4dca-4252-9387-bf68b99759dc
+Name:         job-nsh-2024-0000-job-xhw7j-6463d
+Namespace:    nsh-2024-0000-ns
+Labels:       kueue.x-k8s.io/job-uid=1764a53d-d6fe-4fe5-a49b-32e10c43a1ed
 Annotations:  <none>
 API Version:  kueue.x-k8s.io/v1beta1
 Kind:         Workload
 Metadata:
-  Creation Timestamp:  2024-02-14T15:22:16Z
-  Generation:          2
-  Managed Fields:
-    API Version:  kueue.x-k8s.io/v1beta1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:status:
-        f:admission:
-          f:clusterQueue:
-          f:podSetAssignments:
-            k:{"name":"main"}:
-              .:
-              f:count:
-              f:flavors:
-                f:cpu:
-                f:memory:
-                f:nvidia.com/gpu:
-              f:name:
-              f:resourceUsage:
-                f:cpu:
-                f:memory:
-                f:nvidia.com/gpu:
-        f:conditions:
-          k:{"type":"Admitted"}:
-            .:
-            f:lastTransitionTime:
-            f:message:
-            f:reason:
-            f:status:
-            f:type:
-          k:{"type":"QuotaReserved"}:
-            .:
-            f:lastTransitionTime:
-            f:message:
-            f:reason:
-            f:status:
-            f:type:
-    Manager:      kueue-admission
-    Operation:    Apply
-    Subresource:  status
-    Time:         2024-02-14T15:22:16Z
-    API Version:  kueue.x-k8s.io/v1beta1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:status:
-        f:conditions:
-          k:{"type":"Finished"}:
-            .:
-            f:lastTransitionTime:
-            f:message:
-            f:reason:
-            f:status:
-            f:type:
-    Manager:      kueue-job-controller-Finished
-    Operation:    Apply
-    Subresource:  status
-    Time:         2024-02-14T15:25:06Z
-    API Version:  kueue.x-k8s.io/v1beta1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:labels:
-          .:
-          f:kueue.x-k8s.io/job-uid:
-        f:ownerReferences:
-          .:
-          k:{"uid":"33bc1e48-4dca-4252-9387-bf68b99759dc"}:
-      f:spec:
-        .:
-        f:podSets:
-          .:
-          k:{"name":"main"}:
-            .:
-            f:count:
-            f:name:
-            f:template:
-              .:
-              f:metadata:
-                .:
-                f:labels:
-                  .:
-                  f:controller-uid:
-                  f:job-name:
-                f:name:
-              f:spec:
-                .:
-                f:containers:
-                f:dnsPolicy:
-                f:nodeSelector:
-                f:restartPolicy:
-                f:schedulerName:
-                f:securityContext:
-                f:terminationGracePeriodSeconds:
-                f:volumes:
-        f:priority:
-        f:priorityClassSource:
-        f:queueName:
-    Manager:    kueue
-    Operation:  Update
-    Time:       2024-02-14T15:22:16Z
+  Creation Timestamp:  2025-09-18T09:25:39Z
+  Finalizers:
+    kueue.x-k8s.io/resource-in-use
+  Generation:  1
   Owner References:
     API Version:           batch/v1
     Block Owner Deletion:  true
     Controller:            true
     Kind:                  Job
-    Name:                  pytorch-job
-    UID:                   33bc1e48-4dca-4252-9387-bf68b99759dc
-  Resource Version:        270812029
-  UID:                     8cfa93ba-1142-4728-bc0c-e8de817e8151
+    Name:                  nsh-2024-0000-job-xhw7j
+    UID:                   1764a53d-d6fe-4fe5-a49b-32e10c43a1ed
+  Resource Version:        4752335
+  UID:                     9b9790a9-5e6c-4d1c-8936-78420aa13230
 Spec:
+  Active:  true
   Pod Sets:
     Count:  1
     Name:   main
     Template:
       Metadata:
         Labels:
-          Controller - UID:  33bc1e48-4dca-4252-9387-bf68b99759dc
-          Job - Name:        pytorch-job
-        Name:                pytorch-pod
+          Shsuser:  u-vkil3hxdrn
+        Name:       nsh-2024-0000-job-
       Spec:
+        Active Deadline Seconds:  432000
         Containers:
           Args:
-            /mnt/ceph_rbd/example_pytorch_code.py
+            # Extract job ID from pod name by removing trailing -xxxxx
+JOB_ID=$(echo ${HOSTNAME} | sed 's/-[a-z0-9]\{5\}$//')
+echo "Resolved JOB_ID: $JOB_ID"
+sleep 60
+# Make job output directory
+mkdir -p /safe_outputs/${JOB_ID}
+
+# Copy test file if it exists
+if [ -f /safe_data/test ]; then
+  cat /safe_data/test > /safe_outputs/${JOB_ID}/test_output
+  echo "Copied /safe_data/test to /safe_outputs/${JOB_ID}/test_output"
+else
+  echo "File /safe_data/test not found!"
+fi
+
+# Run CUDA sample with required arguments
+echo "Starting CUDA sample..."
+exec /app/nbody -benchmark -numbodies=512000 -fp64 -fullscreen
+
           Command:
-            python3
-          Image:              pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+            /bin/sh
+            -c
+          Image:              tre-ghcr-proxy.nsh.loc:5006/umairayub38/cuda-sample:nbody-cuda11.7.1
           Image Pull Policy:  IfNotPresent
-          Name:               pytorch-con
+          Name:               cudasample
           Resources:
             Limits:
-              Cpu:             4
+              Cpu:             2
               Memory:          4Gi
               nvidia.com/gpu:  1
             Requests:
@@ -401,30 +196,42 @@ Spec:
           Termination Message Path:    /dev/termination-log
           Termination Message Policy:  File
           Volume Mounts:
-            Mount Path:  /mnt/ceph_rbd
-            Name:        volume
+            Mount Path:  /safe_data
+            Name:        shared-data
+            Read Only:   true
+            Mount Path:  /safe_outputs
+            Name:        user-output
+            Mount Path:  /scratch
+            Name:        scratch
         Dns Policy:      ClusterFirst
-        Node Selector:
-          nvidia.com/gpu.product:  NVIDIA-A100-SXM4-40GB
-        Restart Policy:            Never
-        Scheduler Name:            default-scheduler
+        Restart Policy:  Never
+        Scheduler Name:  default-scheduler
         Security Context:
+          Fs Group:                        1998600502
+          Run As Group:                    1998602116
+          Run As User:                     1998602116
         Termination Grace Period Seconds:  30
         Volumes:
-          Name:  volume
+          Name:  shared-data
           Persistent Volume Claim:
-            Claim Name:   pytorch-pvc
+            Claim Name:  pvc-nsh-2024-0000-shared
+          Name:          user-output
+          Persistent Volume Claim:
+            Claim Name:  pvc-nsh-2024-0000-users-uayub
+          Empty Dir:
+          Name:           scratch
   Priority:               0
-  Priority Class Source:
-  Queue Name:             t4-user-queue
+  Priority Class Name:    default-workload-priority
+  Priority Class Source:  kueue.x-k8s.io/workloadpriorityclass
+  Queue Name:             nsh-2024-0000-ns-user-queue
 Status:
   Admission:
-    Cluster Queue:  project-cq
+    Cluster Queue:  nsh-2024-0000-ns-gpu-cq
     Pod Set Assignments:
       Count:  1
       Flavors:
-        Cpu:             default-flavor
-        Memory:          default-flavor
+        Cpu:             gpu-a100
+        Memory:          gpu-a100
         nvidia.com/gpu:  gpu-a100
       Name:              main
       Resource Usage:
@@ -432,19 +239,21 @@ Status:
         Memory:          1Gi
         nvidia.com/gpu:  1
   Conditions:
-    Last Transition Time:  2024-02-14T15:22:16Z
-    Message:               Quota reserved in ClusterQueue project-cq
+    Last Transition Time:  2025-09-18T09:25:39Z
+    Message:               Quota reserved in ClusterQueue nsh-2024-0000-ns-gpu-cq
+    Observed Generation:   1
     Reason:                QuotaReserved
     Status:                True
     Type:                  QuotaReserved
-    Last Transition Time:  2024-02-14T15:22:16Z
+    Last Transition Time:  2025-09-18T09:25:39Z
     Message:               The workload is admitted
+    Observed Generation:   1
     Reason:                Admitted
     Status:                True
     Type:                  Admitted
-    Last Transition Time:  2024-02-14T15:25:06Z
-    Message:               Job finished successfully
-    Reason:                JobFinished
-    Status:                True
-    Type:                  Finished
+Events:
+  Type    Reason         Age   From             Message
+  ----    ------         ----  ----             -------
+  Normal  QuotaReserved  66s   kueue-admission  Quota reserved in ClusterQueue nsh-2024-0000-ns-gpu-cq, wait time since queued was 1s
+  Normal  Admitted       66s   kueue-admission  Admitted by ClusterQueue nsh-2024-0000-ns-gpu-cq, wait time since reservation was 0s
 ```

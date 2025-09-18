@@ -20,9 +20,7 @@ However, this means the default storage volumes within a pod are temporary.
 
 If multiple pods require access to the same large data set or they output large files, then computationally costly file transfers need to be included in every pod instance.
 
-K8s allows you to request persistent volumes that can be mounted to multiple pods to share files or collate outputs.
-
-These persistent volumes will remain even if the pods they are mounted to are deleted, are updated or crash.
+For security reasons, **users cannot create their own Persistent Volume Claims (PVCs)**. Instead, PVCs are pre-created and assigned to projects by the TRE platform team. These assigned PVCs allow data to be shared across multiple pods or retained even if the pods they are mounted to are deleted, updated, or crash.
 
 ## Predefined BeeGFS Persistent Volume Claims (PVCs)
 
@@ -45,7 +43,7 @@ You also need to ensure the container runs with the correct user and group IDs m
 
 **runAsUser:** The numeric user ID (UID) inside the container. This should match your TRE user UID.
 
-**runAsGroup:** The primary group ID (GID) inside the container. This should match your TRE user primary group.
+**runAsGroup:** The **project Group ID (GID)** inside the container. This must match the group ID associated with your project, not your own GID. Using your GID here will cause `permission denied` errors when accessing BeeGFS.
 
 **fsGroup:** The filesystem group ID to give permissions for mounted volumes, enabling proper group access inside the container.
 
@@ -63,8 +61,13 @@ id
 You will see output like this:
 
 ``` bash
-uid=10034(<tre_username>) gid=10033(tre-users) groups=10033(tre-users),...
+uid=0001(<tre_username>) gid=0001(<tre_username>) groups=0001(<tre_username>),0002(<project_id>),…
 ```
+
+In this example:
+- **runAsUser** → `0001` (your UID).  
+- **runAsGroup** → the GID associated with your `<project_id>` (e.g. `0002`).  
+- **fsGroup** → should also be set to the same `<project_id>` GID. 
 
 ### Understanding Persistent Volume Claims (PVCs)
 
@@ -73,8 +76,20 @@ uid=10034(<tre_username>) gid=10033(tre-users) groups=10033(tre-users),...
 Mounted read-only at /safe_data. Shared by all project members.
 
 **User Output PVC:**
-`claimName: "pvc-<safe_heaven>-<project_id>-users-<first part of tre_username>"`
+`claimName: "pvc-<safe_heaven>-<project_id>-users-<first part of tre_username before _ >"`
 Mounted read-write at /safe_outputs. Dedicated to the individual user identified by their FreeIPA username `<tre_username>`.
+
+!!! note "Example mapping for clarity"
+    For this example:  
+
+    - `<safe_heaven>` = `nsh`  
+    - `<project_id>` = `2024-0000`  
+    - `<tre_username>` = `test_nsh-2024-0000`  
+
+    The first part of the username before `_` is `test`, so the resulting PVC names are:
+
+    - Shared data PVC: `pvc-nsh-2024-0000-shared`  
+    - User output PVC: `pvc-nsh-2024-0000-users-test`  
 
 Your FreeIPA username `<tre_username>` corresponds to the user you log in as on the TRE portal and Desktop VM.
 

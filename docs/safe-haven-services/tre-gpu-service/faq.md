@@ -8,7 +8,8 @@ The default access route to the TRE GPU Service is via an TRE Project VM. The TR
 
 ### How do I obtain my project kubeconfig file?
 
-Project Leads and Managers can access the kubeconfig file from TRE GPU Cluster. Project Leads and Managers can provide the file on any of the project VMs or give it to individuals within the project.
+As part of project and user creation in the TRE GPU Cluster, kubeconfig files are automatically generated and placed in each user’s home directory.
+This means that once your account and project are provisioned, you can simply log in to the TRE GPU Cluster and find your kubeconfig file in your home directory for immediate use.
 
 ### Access to GPU Service resources in default namespace is 'Forbidden'
 

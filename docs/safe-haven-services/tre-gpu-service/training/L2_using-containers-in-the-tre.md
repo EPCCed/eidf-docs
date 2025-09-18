@@ -9,9 +9,14 @@ Once you have built and tested your container, you are ready to start using it w
 
 ## Pulling a container into the TRE
 
-Containers can only be downloaded on the TRE desktop hosts using shell commands. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE.
+Unlike some other platforms (e.g. EIDF, where the GPU service can automatically pull images), in the TRE you must first **manually pull the container** onto the TRE desktop VM using the CES tools before you can run jobs on the TRE GPU cluster. This ensures that the correct security and data-access controls are applied consistently.
+
+Containers can only be downloaded on the TRE desktop hosts using `ces-tools`. And containers can only be pulled from the GitHub Container Registry (GHCR) into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE.
 
 As use of containers in the TRE is a new service, it is at this stage regarded as an activity that requires additional security controls. Researcher accounts must be explicitly enabled for use of the `ces-pull` command through IG approval.
+
+*Note: Since running GPU jobs without containers is unlikely to be useful, it may be preferable in future to include CES access automatically as part of GPU access, rather than requiring users to request both separately.*
+
 
 To pull a private image, you must create an access token to authenticate with GHCR (see [Authenticating to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)). The container is then pulled by the user with the command:
 

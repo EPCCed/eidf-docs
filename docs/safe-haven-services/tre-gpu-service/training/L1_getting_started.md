@@ -4,15 +4,13 @@
 
 In order to follow this tutorial on the TRE GPU Cluster you will need to have:
 
-- An account on the TRE Portal.
+- An active TRE Project with access to the TRE GPU Service.
 
-- An active TRE Project on the Portal with access to the TRE GPU Service.
+- The TRE GPU Cluster kubernetes namespace associated with the project, e.g. nsh-2024-0000-ns.
 
-- The TRE GPU Service kubernetes namespace associated with the project, e.g. nsh-2024-0000-ns.
+- The TRE GPU Cluster queue name associated with the project, e.g. nsh-2024-0000-ns-user-queue.
 
-- The TRE GPU Service queue name associated with the project, e.g. nsh-2024-0000-ns-user-queue.
-
-- The TRE user is configured to use the TRE GPU service from Project VM along with the kubectl command line tool to interact with the K8s API.
+- The TRE user is configured to use the TRE GPU Cluster from Project VM along with the kubectl command line tool to interact with the K8s API.
 
 ## Introduction
 
@@ -20,7 +18,7 @@ Kubernetes (K8s) is a container orchestration system, originally developed by Go
 
 Nvidia GPUs are supported through K8s native Nvidia GPU Operators.
 
-The use of K8s to manage the TRE GPU Service provides two key advantages:
+The use of K8s to manage the TRE GPU Cluster provides two key advantages:
 
 - support for containers enabling reproducible analysis whilst minimising demand on system admin.
 - automated resource allocation management for GPUs and storage volumes that are shared across multiple users.
