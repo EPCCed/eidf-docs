@@ -34,14 +34,20 @@ New projects wanting to use the GPU Service should include this in their TRE Pro
 
 Each project will be given a namespace within the TRE GPU service to operate in.
 
-This namespace will normally be the TRE Project code appended with ’ns’, i.e. `nsh-2024-0000-ns` for a project with code `2024-0000`.
+This project namespace will normally be the TRE Safe Heaven and Project code appended with ’ns’, i.e. `nsh-2024-0000-ns` for a safe-heaven `nsh` and project with code `2024-0000`.
 
 Once access to the TRE GPU service has been confirmed, TRE Project VMs will be configured to use the TRE GPU cluster. - information on access to VMs is available [here](../virtual-desktop-connections.md).
 
-Since FreeIPA is integrated with the GPU cluster, project users can authenticate using their FreeIPA credentials. When you run a kubectl command for the first time (e.g., kubectl get pods), you will be prompted to enter your FreeIPA username and password. After successful authentication, your token is cached locally and remains valid until it expires or is deleted. Upon expiration, kubectl will again prompt you for login credentials.
+Since FreeIPA is integrated with the GPU cluster, project users can authenticate using their FreeIPA credentials. When you run a kubectl command for the first time (e.g., `kubectl get pods`), you will be prompted to enter your FreeIPA username and password. After successful authentication, your token is cached locally and remains valid until it expires or is deleted. Upon expiration, kubectl will again prompt you for login credentials.
 
 !!! important "First Time Login"
-    You will first be asked to select the authentication provider — choose **freeIPA** (the other option will be *local*).
+    ```text
+    You will first be asked to select the authentication provider — choose **freeIpaProvider**
+    Auth providers:
+    0 - localProvider
+    1 - freeIpaProvider
+    Select auth provider:
+    ```
 
 All TRE VMs with the project kubeconfig file downloaded can access the TRE GPU Service using the kubectl command line tool.
 

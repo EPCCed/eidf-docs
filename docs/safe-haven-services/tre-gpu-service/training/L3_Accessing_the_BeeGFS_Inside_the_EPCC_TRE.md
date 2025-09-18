@@ -1,4 +1,4 @@
-# Accessing the TRE GPU BeeGFS inside the EPCC Trusted Research Environment
+# Accessing the Storage (BeeGFS) inside the TRE GPU Cluster
 
 ## What is the BeeGFS?
 
@@ -12,7 +12,7 @@ This approach ensures secure, performant, and flexible access to shared datasets
 
 ## Managing Files and Data in the TRE GPU Environment
 
-The BeeGFS client is installed on the shs-gpucl-fs01 VM, which is used to synchronize data between the desktop VM environment and the BeeGFS file system.
+The BeeGFS client is installed on the `shs-sdf01` VM, where the file system is mounted at `/mnt/clstr-beegfs`. This VM (`shs-sdf01`) is used to synchronize data between the desktop VM environment and the BeeGFS file system
 
 This setup allows users to prepare and transfer code and datasets between the project space and BeeGFS, making them accessible to GPU jobs through Kubernetes Persistent Volumes (PVs), which are directly provisioned via the BeeGFS CSI driver.
 
@@ -24,7 +24,7 @@ There are three main file storage environments:
    Accessible only when logged in via the remote desktop. Local to the VM and **not backed up**.
 
 1. **TRE GPU Cluster BeeGFS**
-   Mounted directly on GPU compute nodes using the BeeGFS CSI driver. Provides high-performance, parallel file access for compute jobs. BeeGFS data can be synchronized from the desktop VM via the `shs-gpucl-fs01` node, where the BeeGFS client is installed. Declared in Kubernetes job definitions using Persistent Volume Claims (PVCs).
+   Mounted directly on GPU compute nodes using the BeeGFS CSI driver. Provides high-performance, parallel file access for compute jobs. BeeGFS data can be synchronized from the desktop VM via the `shs-sdf01` node, where the BeeGFS client is installed. Declared in Kubernetes job definitions using Persistent Volume Claims (PVCs).
 
 1. **Project Data in `/safe_data`**
    Accessible only from the desktop VM. Backed up and used for long-term data storage. Not accessible from GPU compute nodes.
@@ -37,14 +37,14 @@ There are three main file storage environments:
 
 #### Logging into the GPU File System
 
-Users can access the BeeGFS shared file system by SSH-ing into the **`shs-gpucl-fs01`** node from their VM desktop terminal. This is used to prepare or synchronize data for GPU workloads.
+Users can access the BeeGFS shared file system by SSH-ing into the **`shs-sdf01`** node from their VM desktop terminal. This is used to prepare or synchronize data for GPU workloads.
 
 #### Hello World Example
 
 **On the VM desktop terminal:**
 
 ```bash
-ssh shs-gpucl-fs01
+ssh shs-sdf01
 <Enter your VM password>
 
 echo "Hello BeeGFS World"
@@ -71,7 +71,7 @@ touch test.txt
 ls
 # test.txt is visible on the desktop VM
 
-ssh shs-gpucl-fs01
+ssh shs-sdf01
 <Enter your VM password>
 
 ls
@@ -79,12 +79,12 @@ ls
 exit
 
 # Use scp to copy from desktop VM to BeeGFS-accessible path
-scp test.txt shs-gpucl-fs01:/mnt/beegfs/<project_id>/users/<username>/
+scp test.txt shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/
 
-ssh shs-gpucl-fs01
+ssh shs-sdf01
 <Enter your VM password>
 
-ls /mnt/beegfs/<project_id>/users/<username>/
+ls /mnt//clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/
 # test.txt is now here in BeeGFS
 
 ```
@@ -103,12 +103,12 @@ Transferring and synchronising data sets between the project data space and the 
 man rsync # check instructions for using rsync
 
 # Sync project folder to BeeGFS mount point on shs-gpucl-fs01
-rsync -avP /safe_data/my_project/ shs-gpucl-fs01:/mnt/beegfs/<safe_heaven>/<project_id>/shared
+rsync -avP /safe_data/my_project/ shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/shared
 
-# Conduct analysis on GPU cluster using Kubernetes jobs accessing /mnt/beegfs/<project_id>/
+# Conduct analysis on GPU cluster using Kubernetes jobs accessing /mnt/clstr-beegfs/<safe-heaven>/<project-id>/
 
 # After analysis, sync results back to /safe_data (if needed)
-rsync -avP shs-gpucl-fs01:/mnt/beegfs/<safe_heaven>/<project_id>/users/<username>/ /safe_data/<project_id>/results/
+rsync -avP shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/ /safe_data/<my_project>/results/
 ```
 
 *Optionally remove the project folder from BeeGFS if no longer needed.*
