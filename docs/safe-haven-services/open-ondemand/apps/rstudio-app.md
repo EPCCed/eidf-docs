@@ -45,7 +45,7 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
 !!! Warning
 
-    Open OnDemand will wait 1200 seconds (20 minutes) for your container to start. If it does not start within this time the job will be cancelled.
+    Open OnDemand will wait 180 seconds (3 minutes) for your container to start. If it does not start within this time the job will be cancelled.
 
 !!! Warning
 
