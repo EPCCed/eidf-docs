@@ -1,4 +1,4 @@
-# Accessing the Storage (BeeGFS) inside the TRE GPU Cluster
+# Managing Files and Data in the TRE GPU Cluster
 
 ## What is the BeeGFS?
 
@@ -10,13 +10,11 @@ This approach ensures secure, performant, and flexible access to shared datasets
 
 `BeeGFS is deployed within the Trusted Research Environment (TRE). Therefore, the same restrictions apply: BeeGFS storage is fully isolated from the internet. You cannot download data directly from public sources (e.g., GitHub, external APIs), and copying, recording, or extracting any files from BeeGFS outside of the TRE is strictly prohibited unless explicitly approved through the appropriate data governance processes.`
 
-## Managing Files and Data in the TRE GPU Environment
+### Storage Overview
 
 The BeeGFS client is installed on the `shs-sdf01` VM, where the file system is mounted at `/mnt/clstr-beegfs`. This VM (`shs-sdf01`) is used to synchronize data between the desktop VM environment and the BeeGFS file system
 
 This setup allows users to prepare and transfer code and datasets between the project space and BeeGFS, making them accessible to GPU jobs through Kubernetes Persistent Volumes (PVs), which are directly provisioned via the BeeGFS CSI driver.
-
-### Storage Overview
 
 There are three main file storage environments:
 
@@ -79,12 +77,12 @@ ls
 exit
 
 # Use scp to copy from desktop VM to BeeGFS-accessible path
-scp test.txt shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/
+scp test.txt shs-sdf01:/mnt/clstr-beegfs/<safe_heaven>/<project_id>/users/<username>/
 
 ssh shs-sdf01
 <Enter your VM password>
 
-ls /mnt//clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/
+ls /mnt/clstr-beegfs/<safe_heaven>/<project_id>/users/<username>/
 # test.txt is now here in BeeGFS
 
 ```
@@ -103,12 +101,12 @@ Transferring and synchronising data sets between the project data space and the 
 man rsync # check instructions for using rsync
 
 # Sync project folder to BeeGFS mount point on shs-gpucl-fs01
-rsync -avP /safe_data/my_project/ shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/shared
+rsync -avP /safe_data/my_project/ shs-sdf01:/mnt/clstr-beegfs/<safe_heaven>/<project_id>/shared
 
-# Conduct analysis on GPU cluster using Kubernetes jobs accessing /mnt/clstr-beegfs/<safe-heaven>/<project-id>/
+# Conduct analysis on GPU cluster using Kubernetes jobs accessing /mnt/clstr-beegfs/<safe_heaven>/<project_id>/
 
 # After analysis, sync results back to /safe_data (if needed)
-rsync -avP shs-sdf01:/mnt/clstr-beegfs/<safe-heaven>/<project-id>/users/<username>/ /safe_data/<my_project>/results/
+rsync -avP shs-sdf01:/mnt/clstr-beegfs/<safe_heaven>/<project_id>/users/<username>/ /safe_data/<my_project>/results/
 ```
 
 *Optionally remove the project folder from BeeGFS if no longer needed.*
