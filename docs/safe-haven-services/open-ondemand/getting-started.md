@@ -55,7 +55,7 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is, the access token provides read-only access to pull the container.
 * **Container runner** is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
-* **Container name** is the name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
+* **Container name** is the name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
 * **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `hello-tre` container does not need any more.
@@ -115,7 +115,7 @@ Open OnDemand will show an app **job card** with information about the app's job
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A message of form 'Container hello-tre-SESSION_ID is now running. Please wait until the container completes.' will also appear on the job card.
 
 ![Run Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-03-run-container-running.png){: class="border-img center"}
 *Run Container app job card showing job status as 'Running'*
@@ -352,7 +352,7 @@ Again, Open OnDemand will show an app job card with information about the app's 
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A **Connect to JupyterLab** button will also appear on the job card. The JupyterLab container is now ready for use!
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A 'JupyterLab running in container epcc-ces-jupyter-SESSION_ID' message will appear along with a **Connect to JupyterLab** button. The JupyterLab container is now ready for use.
 
 ![Run JupyterLab app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-11-run-jupyter-running.png){: class="border-img center"}
 *Run JupyterLab app job card showing job status as 'Running'*
