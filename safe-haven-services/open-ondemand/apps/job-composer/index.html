@@ -2882,6 +2882,12 @@
 </li>
 <li><strong>From Selected job</strong> option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.</li>
 </ul>
+<p>When a new job is created, the job files are created in a directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
+</code></pre></div>
+<p>where <code>JOB_COMPOSER_ID</code> is a unique job ID created by the app. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/1/
+</code></pre></div>
 <hr />
 <h2 id="edit-job-files">Edit job files</h2>
 <p>Click <strong>Open Editor</strong> to open an editor to edit the Slurm job submission script (default name <code>main_job.sh</code>).</p>

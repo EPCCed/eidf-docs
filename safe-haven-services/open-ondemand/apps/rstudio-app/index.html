@@ -2816,7 +2816,7 @@
 </div>
 </li>
 <li>
-<p><strong>Container name</strong>: Name to be given to the container when it is run. If omitted, then the container image name is used e.g., <code>epcc-ces-rstudio</code>. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., <code>laurie-060416105069-epcc-ces-rstudio</code>.</p>
+<p><strong>Container name</strong>: Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is <code>epcc-ces-rstudio-SESSION_ID</code>, where <code>SESSION_ID</code> is a unique session identifier for the app's job.</p>
 </li>
 <li><strong>RStudio Server password</strong>: RStudio Server running in the container needs to be password-protected. Specify the password to use.</li>
 <li><strong>Cores</strong>: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.</li>
@@ -2831,7 +2831,6 @@
 <li>'Time Requested': The runtime requested for the job.</li>
 <li>'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.</li>
 <li>App-specific information, which includes values from the app form:<ul>
-<li>'Container name'</li>
 <li>'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.</li>
 <li>'Cores'</li>
 <li>'Memory in GiB'</li>
@@ -2839,11 +2838,11 @@
 </li>
 </ul>
 <p>When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.</p>
-<p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A <strong>Connect to RStudio Server</strong> button will also appear on the job card. The RStudio Server container is now ready for use.</p>
+<p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A 'RStudio Server running in container CONTAINER_NAME' message will appear along with a <strong>Connect to RStudio Server</strong> button. The RStudio Server container is now ready for use.</p>
 <p>Click <strong>Connect to RStudio Server</strong>. A new browser tab will open with RStudio Server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Open OnDemand will wait 1200 seconds (20 minutes) for your container to start. If it does not start within this time the job will be cancelled.</p>
+<p>Open OnDemand will wait 180 seconds (3 minutes) for your container to start. If it does not start within this time the job will be cancelled.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

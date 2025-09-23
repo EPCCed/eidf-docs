@@ -3000,16 +3000,16 @@
 <p>Within your home directory on the Open OnDemand VM, Open OnDemand creates an <code>ondemand</code> directory. This is where Open OnDemand stores information about your current session and previous sessions.</p>
 <p>Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific <strong>job context directory</strong> in an app-specific directory.</p>
 <p><a href="../apps/job-composer/">Job Composer</a> app job files are created in a directory:</p>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/myjobs/projects/default/JOB_ID/
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 </code></pre></div>
-<p>where <code>JOB_ID</code> is a unique job ID created by the job scheduler, when you submitted the job. For example:</p>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/myjobs/projects/default/1/
+<p>where <code>JOB_COMPOSER_ID</code> is a unique job ID created by the app. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/1/
 </code></pre></div>
 <p>Interactive app job files are created in a directory:</p>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 </code></pre></div>
 <p>where <code>APP_NAME</code> is the app name and <code>SESSION_ID</code> a unique session identifier. For example,</p>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 </code></pre></div>
 <p>Open OnDemand caches information within this <code>ondemand</code> directory including information on previous jobs and information you last entered within app forms.</p>
 <div class="admonition warning">
@@ -3088,7 +3088,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <ul>
 <li>For the <a href="../apps/job-composer/">Job Composer</a> app:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/myjobs/projects/default/JOB_ID/
+<div class="highlight"><pre><span></span><code>ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 </code></pre></div>
 <ul>
 <li>For interactive apps:</li>
@@ -3099,7 +3099,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <li>
 <p>Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.</p>
 <ul>
-<li>A job scheduler preprocessing step is used to create a log file in your <code>ondemand-slurm-logs</code> directory.</li>
+<li>A job scheduler preprocessing step is used to create a log file in an <code>ondemand/logs/slurm</code> directory.</li>
 <li>For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your <code>ondemand</code> directory to the back-end.</li>
 </ul>
 </li>
@@ -3170,7 +3170,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <hr />
 <h2 id="log-files">Log files</h2>
 <h3 id="job-scheduler-log-files">Job scheduler log files</h3>
-<p>When a job is submitted to a back-end, a log file is created within an <code>ondemand-slurm-logs</code> directory within your home directory on the Open OnDemand VM.</p>
+<p>When a job is submitted to a back-end, a log file is created within an <code>ondemand/logs/slurm</code> directory within your home directory on the Open OnDemand VM.</p>
 <p>Log files have name <code>sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME</code>. For example, <code>sbatch-20240807-082901-nsh_tenant_gpu_desktop01</code>.</p>
 <p>An example of the contents of a log file is as follows:</p>
 <div class="highlight"><pre><span></span><code># Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME
@@ -3195,8 +3195,8 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <p>Depending on the app implementation, the log file may include a job ID, a unique job ID created by the job scheduler, when you submitted the job.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.</p>
-<p>Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.</p>
+<p>The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.</p>
+<p>Each job created by an app has both an app ID and a job scheduler job ID.</p>
 </div>
 
 
