@@ -58,8 +58,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-
--When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the container, is now running. A message of form 'Container CONTAINER_NAME is now running. Please wait until the container completes.' will also appear on the job card.
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the container, is now running. A message of form 'Container CONTAINER_NAME is now running. Please wait until the container completes.' will also appear on the job card.
 
 !!! Warning
 
