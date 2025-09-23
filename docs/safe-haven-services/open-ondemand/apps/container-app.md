@@ -18,9 +18,9 @@ Complete the following information the app form:
 
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: Username to access the container registry.
-* **Container registry password/access token**: Access token to access to the container registry. An access token with **read-only** access to the container registry is **strongly recommended**.
+* **Container registry access token**: Access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
-* **Container name** (Podman only): Name to be given to the container when it is run. If omitted, then the container image name is used e.g., `hello-tre`. Your user name and a timestamp will be added as a prefix to the name when the container is run to the name to prevent name clashes if running multiple containers from the same image e.g., `laurie-060416105069-hello-tre`.
+* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
 * **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 * **Use GPU?**: Request that the container use a GPU. If selected, then your selected back-end must have a GPU.
@@ -53,13 +53,12 @@ Open OnDemand will show an app job card with information about the app's job inc
 * App-specific information, which includes values from the app form:
     * 'Container/image URL in container registry'
     * 'Container runner'
-    * 'Container name'
     * 'Cores'
     * 'Memory in GiB'
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the container, is now running. A 'Please wait until your job has completed' message will also appear on the job card.
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the container, is now running. A message of form 'Container CONTAINER_NAME is now running. Please wait until the container completes.' will also appear on the job card.
 
 !!! Warning
 
