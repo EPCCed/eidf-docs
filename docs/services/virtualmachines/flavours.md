@@ -10,4 +10,6 @@ These are the current Virtual Machine (VM) flavours (configurations) available o
 | capability.v2.16cpu     | 16    | 224        | Yes          | No  |
 | capability.v2.32cpu     | 32    | 448        | Yes          | No  |
 | capability.v2.64cpu     | 64    | 896        | Yes          | No  |
-| gpu.v1.16cpu            | 16    | 256        | Yes          | NVIDIA A100-80GB |
+| gpu.a100.v1.12cpu(*)    | 24    | 112        | Yes          | NVIDIA A100-40GB |
+
+(*) please ignore the fact the flavour name contains "12cpu" - this is a historical artefact and the flavour actually has 24 vCPUs.
