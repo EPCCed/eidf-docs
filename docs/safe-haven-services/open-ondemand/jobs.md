@@ -108,25 +108,25 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 [Job Composer](apps/job-composer.md) app job files are created in a directory:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
+$HOME/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 ```
 
 where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/1/
+$HOME/ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 Interactive app job files are created in a directory:
 
 ```bash
-ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
 
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
 ```bash
-ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
 Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.

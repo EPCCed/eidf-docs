@@ -31,13 +31,13 @@ To create a Slurm job, select the **New Job** menu, then select:
 When a new job is created, the job files are created in a directory:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
+$HOME/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 ```
 
 where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/1/
+$HOME/ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 ---
