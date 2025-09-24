@@ -108,25 +108,25 @@ Every time a job is created by an app, Open OnDemand creates the job files for t
 [Job Composer](apps/job-composer.md) app job files are created in a directory:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/JOB_ID/
+$HOME/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
 ```
 
-where `JOB_ID` is a unique job ID created by the job scheduler, when you submitted the job. For example:
+where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
 
 ```bash
-ondemand/data/sys/myjobs/projects/default/1/
+$HOME/ondemand/data/sys/myjobs/projects/default/1/
 ```
 
 Interactive app job files are created in a directory:
 
 ```bash
-ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 ```
 
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
 ```bash
-ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
 Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.
@@ -224,7 +224,7 @@ Briefly, when a job is submitted, the following occurs:
     * For the [Job Composer](apps/job-composer.md) app:
 
     ```bash
-    ondemand/data/sys/myjobs/projects/default/JOB_ID/
+    ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
     ```
 
     * For interactive apps:
@@ -234,7 +234,7 @@ Briefly, when a job is submitted, the following occurs:
     ```
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
-    * A job scheduler preprocessing step is used to create a log file in your `ondemand-slurm-logs` directory.
+    * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
@@ -325,7 +325,7 @@ Click **Delete** on a job card to delete the job card.
 
 ### Job scheduler log files
 
-When a job is submitted to a back-end, a log file is created within an `ondemand-slurm-logs` directory within your home directory on the Open OnDemand VM.
+When a job is submitted to a back-end, a log file is created within an `ondemand/logs/slurm` directory within your home directory on the Open OnDemand VM.
 
 Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
 
@@ -359,6 +359,6 @@ Depending on the app implementation, the log file may include a job ID, a unique
 
 !!! Note
 
-    Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler.
+    The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
 
-    Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+    Each job created by an app has both an app ID and a job scheduler job ID.
