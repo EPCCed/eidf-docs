@@ -32,7 +32,6 @@ Access must be requested from your Research Coordinator (RC). On being granted a
 - Gitea URL
 - Username
 - Initial Password
-- Whether egress mirroring is enabled
 
 Gitea can be accessed from your VM desktop by opening a Web Browser and navigating to the provided URL. After logging in for the first time, you will be prompted to change your password.
 
