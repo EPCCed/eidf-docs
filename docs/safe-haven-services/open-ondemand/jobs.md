@@ -283,7 +283,7 @@ When an interactive app's job is submitted, a **job card** is created and shown 
 
 ![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
-![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab Container app*
 
 !!! Note
 

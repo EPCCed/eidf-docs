@@ -1,12 +1,12 @@
-# Run RStudio Server
+# Run RStudio Server Container
 
-Run RStudio Server is a Container Execution Service app that allows you to run an RStudio Server container on a back-end within your safe haven.
+Run RStudio Server Container is a Container Execution Service app that allows you to run an RStudio Server container on a back-end within your safe haven.
 
 The container is run using Podman.
 
 ---
 
-## Run RStudio Server container
+## Run app
 
 Complete the following information the app form:
 

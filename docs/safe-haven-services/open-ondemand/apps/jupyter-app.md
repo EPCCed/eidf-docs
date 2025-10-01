@@ -1,12 +1,12 @@
-# Run JupyterLab
+# Run JupyterLab Container
 
-Run JupyterLab is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
+Run JupyterLab Container is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
 
 The container is run using Podman.
 
 ---
 
-## Run JupyterLab container
+## Run app
 
 Complete the following information the app form:
 
