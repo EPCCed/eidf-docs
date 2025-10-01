@@ -2783,23 +2783,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-the-run-jupyterlab-app" class="md-nav__link">
+  <a href="#run-the-run-jupyterlab-container-app" class="md-nav__link">
     <span class="md-ellipsis">
-      Run the Run JupyterLab app
+      Run the Run JupyterLab Container app
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run the Run JupyterLab app">
+    <nav class="md-nav" aria-label="Run the Run JupyterLab Container app">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#launch-the-run-jupyterlab-app-job" class="md-nav__link">
+  <a href="#launch-the-run-jupyterlab-container-app-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Launch the Run JupyterLab app job
+      Launch the Run JupyterLab Container app job
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Launch the Run JupyterLab app job">
+    <nav class="md-nav" aria-label="Launch the Run JupyterLab Container app job">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2835,9 +2835,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#finish-your-run-jupyterlab-app-job" class="md-nav__link">
+  <a href="#finish-your-run-jupyterlab-container-app-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Finish your Run JupyterLab app job
+      Finish your Run JupyterLab Container app job
     </span>
   </a>
   
@@ -2891,7 +2891,7 @@
 <p>Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:</p>
 <ul>
 <li><a href="../apps/batch-container-app/">Run Batch Container</a> allows you to run a container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task, those that perform some computational or data-related task without human interaction when they are running.</li>
-<li><a href="../apps/jupyter-app/">Run JupyterLab</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!</li>
+<li><a href="../apps/jupyter-app/">Run JupyterLab Container</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!</li>
 <li><a href="../apps/active-jobs/">Active Jobs</a> allows you to see which of your jobs have been submitted, are running, or have completed.</li>
 </ul>
 <hr />
@@ -3032,7 +3032,7 @@
 <tr>
 <td><code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code></td>
 <td><code>/safe_outputs</code></td>
-<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab</a>). <code>SESSION_ID</code> a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
+<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab Container</a>). <code>SESSION_ID</code> a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
 </tr>
 <tr>
 <td><code>$HOME/scratch/APP_SHORT_NAME/SESSION_ID</code></td>
@@ -3177,16 +3177,16 @@ Goodbye Mike!
 <em>Active Jobs app showing details of completed Run Batch Container app job</em></p>
 <p>If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.</p>
 <hr />
-<h2 id="run-the-run-jupyterlab-app">Run the Run JupyterLab app</h2>
-<p>In contrast to Run Batch Container, which runs a container on a back-end without human interaction when it is running, <a href="../apps/jupyter-app/">Run JupyterLab</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!</p>
-<p>Click the 'Run JupyterLab' app on the Open OnDemand home page.</p>
-<p>The Run JupyterLab app form will open.</p>
-<p><img alt="Excerpt of Run JupyterLab app form" class="border-img center" src="../../../images/open-ondemand/getting-started-09-jupyter-app-form.png" />
-<em>Excerpt of Run JupyterLab app form</em></p>
+<h2 id="run-the-run-jupyterlab-container-app">Run the Run JupyterLab Container app</h2>
+<p>In contrast to Run Batch Container, which runs a container on a back-end without human interaction when it is running, <a href="../apps/jupyter-app/">Run JupyterLab Container</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!</p>
+<p>Click the 'Run JupyterLab Container' app on the Open OnDemand home page.</p>
+<p>The Run JupyterLab Container app form will open.</p>
+<p><img alt="Excerpt of Run JupyterLab Container app form" class="border-img center" src="../../../images/open-ondemand/getting-started-09-jupyter-app-form.png" />
+<em>Excerpt of Run JupyterLab Container app form</em></p>
 <p>This app's form has far less settings since it is designed to run, using Podman, a JupyterLab container created for use with the TRE Container Execution Service.</p>
 <p>For <strong>Cluster</strong>, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.</p>
 <p>Leave the other settings as-is.</p>
-<h3 id="launch-the-run-jupyterlab-app-job">Launch the Run JupyterLab app job</h3>
+<h3 id="launch-the-run-jupyterlab-container-app-job">Launch the Run JupyterLab Container app job</h3>
 <p>Click <strong>Launch</strong>.</p>
 <p>Again, Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your <code>ondemand</code> directory and then submits the job for the app to the job scheduler.</p>
 <p>Again, Open OnDemand will show an app job card with information about the app's job including:</p>
@@ -3203,12 +3203,12 @@ Goodbye Mike!
 </ul>
 </li>
 </ul>
-<p><img alt="Run JupyterLab app job card showing job status as 'Queued'" class="border-img center" src="../../../images/open-ondemand/getting-started-10-jupyter-app-queued.png" />
-<em>Run JupyterLab app job card showing job status as 'Queued'</em></p>
+<p><img alt="Run JupyterLab Container app job card showing job status as 'Queued'" class="border-img center" src="../../../images/open-ondemand/getting-started-10-jupyter-app-queued.png" />
+<em>Run JupyterLab Container app job card showing job status as 'Queued'</em></p>
 <p>When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.</p>
 <p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A 'JupyterLab running in container epcc-ces-jupyter-SESSION_ID' message will appear along with a <strong>Connect to JupyterLab</strong> button. The JupyterLab container is now ready for use.</p>
-<p><img alt="Run JupyterLab app job card showing job status as 'Running'" class="border-img center" src="../../../images/open-ondemand/getting-started-11-jupyter-app-running.png" />
-<em>Run JupyterLab app job card showing job status as 'Running'</em></p>
+<p><img alt="Run JupyterLab Container app job card showing job status as 'Running'" class="border-img center" src="../../../images/open-ondemand/getting-started-11-jupyter-app-running.png" />
+<em>Run JupyterLab Container app job card showing job status as 'Running'</em></p>
 <p>Click <strong>Connect to JupyterLab</strong>. A new browser tab will open with JupyterLab.</p>
 <p>You may wonder why you were not prompted for a username and password. JupyterLab running in the container runs as a 'root' user. The 'root' user is within the context of the container only. JupyterLab is protected with an auto-generated password. The <strong>Connect to JupyterLab</strong> button is configured to log you into the container using this password automatically.</p>
 <p><img alt="JupyterLab running within a container" class="border-img center" src="../../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png" />
@@ -3272,17 +3272,17 @@ hello-from-outputs-to-jupyterlab.txt
 <p>Click the 'Active Jobs' app on the Open OnDemand home page.</p>
 <p>You will see a 'jupyter_app' entry for your app's job.</p>
 <p>Your job will have a status of 'Running'.</p>
-<p><img alt="Active Jobs app showing details of running Run JupyterLab app job" class="border-img center" src="../../../images/open-ondemand/getting-started-14-active-jobs.png" />
-<em>Active Jobs app showing details of running Run JupyterLab app job</em></p>
-<h3 id="finish-your-run-jupyterlab-app-job">Finish your Run JupyterLab app job</h3>
+<p><img alt="Active Jobs app showing details of running Run JupyterLab Container app job" class="border-img center" src="../../../images/open-ondemand/getting-started-14-active-jobs.png" />
+<em>Active Jobs app showing details of running Run JupyterLab Container app job</em></p>
+<h3 id="finish-your-run-jupyterlab-container-app-job">Finish your Run JupyterLab Container app job</h3>
 <p>You can end your job by as follows:</p>
 <ul>
 <li>Either, shut down JupyterLab via the <strong>File</strong> menu, <strong>Shut Down</strong> option.</li>
 <li>Or, click <strong>Cancel</strong> on the app's job card.</li>
 </ul>
 <p>The Job status on the job card will update to 'Completed'.</p>
-<p><img alt="Run JupyterLab app job card showing job status as 'Completed'" class="border-img center" src="../../../images/open-ondemand/getting-started-15-jupyter-app-completed.png" />
-<em>Run JupyterLab app job card showing job status as 'Completed'</em></p>
+<p><img alt="Run JupyterLab Container app job card showing job status as 'Completed'" class="border-img center" src="../../../images/open-ondemand/getting-started-15-jupyter-app-completed.png" />
+<em>Run JupyterLab Container app job card showing job status as 'Completed'</em></p>
 <p>Click the 'Active Jobs' app on the Open OnDemand home page.</p>
 <p>Your job will now have a status of 'Completed'.</p>
 <hr />
@@ -3294,7 +3294,7 @@ touch<span class="w"> </span><span class="nv">$HOME</span>/safe_data/a.txt
 touch<span class="w"> </span><span class="nv">$HOME</span>/safe_data/b.txt
 touch<span class="w"> </span><span class="nv">$HOME</span>/safe_data/c.txt
 </code></pre></div>
-<p>Rerun the Run JupyterLab app and, again, once JupyterLab has started, click the <strong>Terminal</strong> icon within the 'Launcher' tab.</p>
+<p>Rerun the Run JupyterLab Container app and, again, once JupyterLab has started, click the <strong>Terminal</strong> icon within the 'Launcher' tab.</p>
 <p>List the contents of <code>/safe_data</code>:</p>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>/safe_data/
 </code></pre></div>
