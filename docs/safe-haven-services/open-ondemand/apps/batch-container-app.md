@@ -1,6 +1,6 @@
-# Run Container
+# Run Batch Container
 
-Run Container is a Container Execution Service app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
+Run Batch Container is a Container Execution Service app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
 Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the TRE Container Execution Service.
 
@@ -37,7 +37,7 @@ Complete the following information the app form:
 
     ```text
     -d 5
-    -n container-app-user
+    -n batch-container-app-user
     ```
 
 Click **Launch**.

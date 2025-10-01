@@ -126,7 +126,7 @@ $HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
 ```bash
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
 Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.
@@ -281,7 +281,7 @@ When an interactive app's job is submitted, a **job card** is created and shown 
     * For some apps, this will include the 'Connection timeout'.
 * App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.
 
-![Example job card for Run Container app](../../images/open-ondemand/job-card-container-app.png){: class="border-img center"} *Example job card for the Run Container app*
+![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
 ![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
 

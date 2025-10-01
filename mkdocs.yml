@@ -130,7 +130,7 @@ nav:
      #  - "Log into back-ends": safe-haven-services/open-ondemand/ssh.md
      #  - "Apps":
      #     - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
-     #     - "Run Container": safe-haven-services/open-ondemand/apps/container-app.md
+     #     - "Run Batch Container": safe-haven-services/open-ondemand/apps/batch-container-app.md
      #     - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-app.md
      #     - "Run RStudio Server": safe-haven-services/open-ondemand/apps/rstudio-app.md
      #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
