@@ -45,7 +45,7 @@ The app form is prepopulated with the configuration to pull and run a 'hello TRE
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
-* **Cluster** selects a back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list, and safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access.
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry** cites a URL specifying both the container to run and the container registry from which it is to be pulled.
     * Leave this value as-is to use the `ghcr.io/mikej888/hello-tre:1.0` container, hereon termed `hello-tre`.
@@ -325,7 +325,7 @@ The Run JupyterLab Container app form will open.
 
 This app's form has far less settings since it is designed to run, using Podman, a JupyterLab container created for use with the TRE Container Execution Service.
 
-For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
+For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
 
 Leave the other settings as-is.
 
