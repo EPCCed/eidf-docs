@@ -152,13 +152,13 @@ Currently, the back-ends where home directories are not common to both the Open 
 * Superdome Flex, shs-sdf01.nsh.loc.
 * All DataLoch VMs.
 
-To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your `ondemand` directory, and so your job files, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. How to enable this is described in the following section on [Enable automated copy of job files to a back-end](#enable-automated-copy-of-job-files-to-a-back-end).
 
-You will also have to log into these back-end to view files created on these back-ends when you run jobs - see [Log into back-ends](ssh.md)
+You will also have to log into your chosen back-end to view files created on these back-ends when you run jobs - see [Log into back-ends](ssh.md)
 
-### Enable automated copy of `ondemand` directory to a back-end
+### Enable automated copy of job files to a back-end
 
-To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.
+To enable Open OnDemand to automatically copy job files from within your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.
 
 !!! Note
 
@@ -235,7 +235,7 @@ Briefly, when a job is submitted, the following occurs:
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
     * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
-    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
+    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your job files from within your `ondemand` directory to the back-end. The relative directory structure from the `ondemand` directory to the job files directory is preserved by the copy.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
