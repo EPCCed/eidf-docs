@@ -2953,15 +2953,9 @@
 <h2 id="ssh-commands">SSH Commands</h2>
 <h3 id="steps">Steps</h3>
 <ol>
-<li>
-<p>Jump host (-J): connect first to the eidf_gateway as an intermediary before reaching the target VM. Authentication is achieved using the identity file provided by the host (-i).</p>
-</li>
-<li>
-<p>Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.</p>
-</li>
-<li>
-<p>Configure a RDP client (for example 'Windows App') to connect to <code>localhost:&lt;local_forwarded_port&gt;</code> instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.</p>
-</li>
+<li>Jump host (-J): connect first to the eidf_gateway as an intermediary before reaching the target VM. Authentication is achieved using the identity file provided by the host (-i).</li>
+<li>Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.</li>
+<li>Configure a RDP client (for example 'Windows App') to connect to <code>localhost:&lt;local_forwarded_port&gt;</code> instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.</li>
 </ol>
 <h3 id="example">Example</h3>
 <p>Connect to eidf666 (IP address 10.24.2.224) as user u666</p>
