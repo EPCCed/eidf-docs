@@ -2899,9 +2899,9 @@
 <p>Within your home directory on the Open OnDemand VM, Open OnDemand creates an <code>ondemand</code> directory. This is where Open OnDemand stores information about your current session and previous sessions.</p>
 <p>Every time a job is created by an app, Open OnDemand creates the job files the app needs for it to run, and log files when it is running, within a job-specific <strong>job context directory</strong> in an app-specific directory.</p>
 <p>For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.</p>
-<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM. To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your <code>ondemand</code> directory, and so your job files, to the back-end when you submit a job.</p>
+<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM. To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your <code>ondemand</code> directory to your chosen back-end when you submit a job.</p>
 <p>For the back-ends used by this walkthrough this <strong>only</strong> needs to be done by users of the <strong>DataLoch safe haven</strong>. Users of <strong>other safe havens</strong> can <strong>skip to the next section</strong>, <a href="#run-the-run-batch-container-app">Run the Run Batch Container app</a> below.</p>
-<p>To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in <a href="../jobs/#enable-automated-copy-of-ondemand-directory-to-a-back-end">Enable copy of <code>ondemand</code> directory to a back-end</a> to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, then return to this page.</p>
+<p>To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in <a href="../jobs/#enable-automated-copy-of-job-files-to-a-back-end">Enable automated copy of job files to a back-end</a> to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, then return to this page.</p>
 <hr />
 <h2 id="run-the-run-batch-container-app">Run the Run Batch Container app</h2>
 <p><a href="../apps/batch-container-app/">Run Batch Container</a> allows you to run a batch container on a back-end. By <strong>batch container</strong> we mean a container that performs some computational or data-related task without human interaction when it is running.</p>
@@ -3267,7 +3267,7 @@ hello-from-scratch-to-jupyterlab.txt
 hello-from-outputs-to-jupyterlab.txt
 </code></pre></div>
 <p>Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.</p>
-<p>As a reminder, <code>safe_outputs/jupyter/SESSION_ID</code> will persist after the job which created the container ends but the <code>SESSION_ID</code> subfolder in <code>scratch/jupyter</code> will be deleted.</p>
+<p>As a reminder, <code>safe_outputs/jupyter/SESSION_ID</code> will persist after the job which created the container ends but the <code>SESSION_ID</code> subdirectory in <code>scratch/jupyter</code> will be deleted.</p>
 <h3 id="revisit-the-active-jobs-app">Revisit the Active Jobs app</h3>
 <p>Click the 'Active Jobs' app on the Open OnDemand home page.</p>
 <p>You will see a 'jupyter_app' entry for your app's job.</p>

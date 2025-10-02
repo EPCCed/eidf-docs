@@ -2766,9 +2766,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enable-automated-copy-of-ondemand-directory-to-a-back-end" class="md-nav__link">
+  <a href="#enable-automated-copy-of-job-files-to-a-back-end" class="md-nav__link">
     <span class="md-ellipsis">
-      Enable automated copy of ondemand directory to a back-end
+      Enable automated copy of job files to a back-end
     </span>
   </a>
   
@@ -3029,10 +3029,10 @@
 <li>Superdome Flex, shs-sdf01.nsh.loc.</li>
 <li>All DataLoch VMs.</li>
 </ul>
-<p>To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your <code>ondemand</code> directory, and so your job files, to the back-end when you submit a job. How to enable this is described in the following section on <a href="#enable-automated-copy-of-ondemand-directory-to-a-back-end">Enable copy of <code>ondemand</code> directory to a back-end</a>.</p>
-<p>You will also have to log into these back-end to view files created on these back-ends when you run jobs - see <a href="../ssh/">Log into back-ends</a></p>
-<h3 id="enable-automated-copy-of-ondemand-directory-to-a-back-end">Enable automated copy of <code>ondemand</code> directory to a back-end</h3>
-<p>To enable Open OnDemand to automatically copy your <code>ondemand</code> directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.</p>
+<p>To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your <code>ondemand</code> directory to your chosen back-end when you submit a job. How to enable this is described in the following section on <a href="#enable-automated-copy-of-job-files-to-a-back-end">Enable automated copy of job files to a back-end</a>.</p>
+<p>You will also have to log into your chosen back-end to view files created on these back-ends when you run jobs - see <a href="../ssh/">Log into back-ends</a></p>
+<h3 id="enable-automated-copy-of-job-files-to-a-back-end">Enable automated copy of job files to a back-end</h3>
+<p>To enable Open OnDemand to automatically copy job files from within your <code>ondemand</code> directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Setting up SSH keys does <strong>not</strong> need to be done for back-ends where your home directory is common to both on the Open OnDemand VM and the back-ends.</p>
@@ -3100,7 +3100,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <p>Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.</p>
 <ul>
 <li>A job scheduler preprocessing step is used to create a log file in an <code>ondemand/logs/slurm</code> directory.</li>
-<li>For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your <code>ondemand</code> directory to the back-end.</li>
+<li>For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your job files from within your <code>ondemand</code> directory to the back-end. The relative directory structure from the <code>ondemand</code> directory to the job files directory is preserved by the copy.</li>
 </ul>
 </li>
 <li>The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.</li>
