@@ -40,19 +40,15 @@ Within Open OnDemand, back-ends are typically referred to via human-readable nam
 
 A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.
 
-Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access. So, for example, the short-names corresponding to the above back-ends are:
+Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. So, for example, the short-names corresponding to the above back-ends are:
 
-* dap_tenant_1234_5678
-* nsh_tenant_gpu_desktop01
-* odp_tenant_gpu_desktop01
-* smartdf_tenant_gpu_desktop01
-* shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
+* dap_1234_5678
+* nsh_gpu_desktop01
+* odp_gpu_desktop01
+* smartdf_gpu_desktop01
+* shs_sdf01
 
 Within [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
-
-!!! Info
-
-    The use of 'tenant' in short-names is adopted as a means to exploit Open OnDemand's use of filters to constrain certain apps to only be applicable to certain back-ends.
 
 ---
 
@@ -327,7 +323,7 @@ Click **Delete** on a job card to delete the job card.
 
 When a job is submitted to a back-end, a log file is created within an `ondemand/logs/slurm` directory within your home directory on the Open OnDemand VM.
 
-Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
+Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_gpu_desktop01`.
 
 An example of the contents of a log file is as follows:
 
