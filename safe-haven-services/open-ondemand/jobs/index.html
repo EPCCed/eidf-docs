@@ -2945,19 +2945,15 @@
 <li>Superdome Flex</li>
 </ul>
 <p>A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.</p>
-<p>Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access. So, for example, the short-names corresponding to the above back-ends are:</p>
+<p>Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. So, for example, the short-names corresponding to the above back-ends are:</p>
 <ul>
-<li>dap_tenant_1234_5678</li>
-<li>nsh_tenant_gpu_desktop01</li>
-<li>odp_tenant_gpu_desktop01</li>
-<li>smartdf_tenant_gpu_desktop01</li>
-<li>shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.</li>
+<li>dap_1234_5678</li>
+<li>nsh_gpu_desktop01</li>
+<li>odp_gpu_desktop01</li>
+<li>smartdf_gpu_desktop01</li>
+<li>shs_sdf01</li>
 </ul>
 <p>Within <a href="#job-cards">job cards</a> on the <a href="#my-interactive-sessions-page">My Interactive Sessions</a> page, described below, you will see the VM names upon which the jobs are running.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>The use of 'tenant' in short-names is adopted as a means to exploit Open OnDemand's use of filters to constrain certain apps to only be applicable to certain back-ends.</p>
-</div>
 <hr />
 <h2 id="job-scheduling-and-execution">Job scheduling and execution</h2>
 <p>To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need.</p>
@@ -3171,7 +3167,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <h2 id="log-files">Log files</h2>
 <h3 id="job-scheduler-log-files">Job scheduler log files</h3>
 <p>When a job is submitted to a back-end, a log file is created within an <code>ondemand/logs/slurm</code> directory within your home directory on the Open OnDemand VM.</p>
-<p>Log files have name <code>sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME</code>. For example, <code>sbatch-20240807-082901-nsh_tenant_gpu_desktop01</code>.</p>
+<p>Log files have name <code>sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME</code>. For example, <code>sbatch-20240807-082901-nsh_gpu_desktop01</code>.</p>
 <p>An example of the contents of a log file is as follows:</p>
 <div class="highlight"><pre><span></span><code># Open OnDemand back-end: OPEN_ONDEMAND_CLUSTER_NAME
 # Time: YYYY-MM-DD HH:MM:SS
