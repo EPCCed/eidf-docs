@@ -14,10 +14,8 @@ By setting up an SSH tunnel, a local port is forwarded to the remote server's RD
 ### Steps
 
 1. Jump host (-J): connect first to the eidf_gateway as an intermediary before reaching the target VM. Authentication is achieved using the identity file provided by the host (-i).
-
-2. Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.
-
-3. Configure a RDP client (for example 'Windows App') to connect to `localhost:<local_forwarded_port>` instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.
+1. Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.
+1. Configure a RDP client (for example 'Windows App') to connect to `localhost:<local_forwarded_port>` instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.
 
 ### Example
 
@@ -93,30 +91,30 @@ Friendly Name: <ProjectID> Remote Connection via local port
 The Microsoft Windows documentation [Remote Desktop Connection](https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) is relevant from step 2 "_Use Remote Desktop to connect to the PC you set up_" onwards. The Remote Desktop Connection program is preinstalled on Windows machines.
 
 1. Open the 'Remote Desktop Connection' program (`mstsc` in Run)
-2. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name![Windows Remote Desktop](../../images/access/rdp_client_connect/Windows_Remote_Desktop.png)
-3. Click 'Connect'
-4. Input VDI login credentials once prompted at the login screen
+1. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name![Windows Remote Desktop](../../images/access/rdp_client_connect/Windows_Remote_Desktop.png)
+1. Click 'Connect'
+1. Input VDI login credentials once prompted at the login screen
 
 ### macOS
 
 These instructions use the [Microsoft Windows App](https://learn.microsoft.com/en-us/windows-app/) a free program available from the [Apple App Store](https://apps.apple.com/us/app/windows-app/id1295203466?mt=12).
 
 1. Open the Windows App -> Click '+' -> Add PC
-2. Input into 'PC Name' the forwarded port on the local machine `localhost:<port forwarded to>` e.g. `localhost:23001`![macOS server input](../../images/access/rdp_client_connect/macos_ip_input.png)
-3. Also add a 'friendly name' to describe the device being connected to
-4. Leave all other options as defaults at this stage
-5. Click Add
-6. Double-click on the newly created PC to connect
-7. You will be prompted for the VDI username and password
+1. Input into 'PC Name' the forwarded port on the local machine `localhost:<port forwarded to>` e.g. `localhost:23001`![macOS server input](../../images/access/rdp_client_connect/macos_ip_input.png)
+1. Also add a 'friendly name' to describe the device being connected to
+1. Leave all other options as defaults at this stage
+1. Click Add
+1. Double-click on the newly created PC to connect
+1. You will be prompted for the VDI username and password
 
 ### Linux
 
 The following uses [Remmina](https://remmina.org), a stable Linux RDP client available via most package managers.
 
 1. Install and open Remmina
-2. Select "Add a new connection profile" in the top right for the connection profile window to appear![linux add new connection](../../images/access/rdp_client_connect/Add_New_Connection_Remmina.png)
-3. Ensure that 'Protocol' is set to RDP
-4. In the 'Server' field input the localhost and forwarded port `localhost:<port forwarded to>` e.g. `localhost:23001`![Linux configuration via Remmina](../../images/access/rdp_client_connect/Connection_Config_Remmina.png)
-5. Enter a 'Friendly Name' to describe the device being connected to
-6. Leave the 'Username' and 'Password' fields blank at this stage. After your first successful connection, save your VDI credentials here for easier connection in the future
-7. Click Save and Connect to start the remote desktop connection. You will be able to double-click on the friendly name in the main Remmina pane the next time you want to connect to the machine
+1. Select "Add a new connection profile" in the top right for the connection profile window to appear![linux add new connection](../../images/access/rdp_client_connect/Add_New_Connection_Remmina.png)
+1. Ensure that 'Protocol' is set to RDP
+1. In the 'Server' field input the localhost and forwarded port `localhost:<port forwarded to>` e.g. `localhost:23001`![Linux configuration via Remmina](../../images/access/rdp_client_connect/Connection_Config_Remmina.png)
+1. Enter a 'Friendly Name' to describe the device being connected to
+1. Leave the 'Username' and 'Password' fields blank at this stage. After your first successful connection, save your VDI credentials here for easier connection in the future
+1. Click Save and Connect to start the remote desktop connection. You will be able to double-click on the friendly name in the main Remmina pane the next time you want to connect to the machine

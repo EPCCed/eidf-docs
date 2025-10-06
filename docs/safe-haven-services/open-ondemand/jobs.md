@@ -40,19 +40,15 @@ Within Open OnDemand, back-ends are typically referred to via human-readable nam
 
 A convention is adopted whereby safe haven-specific back-ends always cite the safe haven name.
 
-Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. However, a convention is adopted whereby safe haven-specific back-ends include the text 'tenant', to distinguish them from any TRE-level back-ends to which you might have access. So, for example, the short-names corresponding to the above back-ends are:
+Within some interactive apps, you will see back-ends referred to via 'short-names'. Typically, these short-names are derived from the back-ends' VM names. So, for example, the short-names corresponding to the above back-ends are:
 
-* dap_tenant_1234_5678
-* nsh_tenant_gpu_desktop01
-* odp_tenant_gpu_desktop01
-* smartdf_tenant_gpu_desktop01
-* shs_sdf01 - as the Superdome Flex is a TRE-level, not safe haven-specific, back-end its short-name does not include 'tenant'.
+* dap_1234_5678
+* nsh_gpu_desktop01
+* odp_gpu_desktop01
+* smartdf_gpu_desktop01
+* shs_sdf01
 
 Within [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
-
-!!! Info
-
-    The use of 'tenant' in short-names is adopted as a means to exploit Open OnDemand's use of filters to constrain certain apps to only be applicable to certain back-ends.
 
 ---
 
@@ -126,7 +122,7 @@ $HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
 ```bash
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+$HOME/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 ```
 
 Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.
@@ -152,13 +148,13 @@ Currently, the back-ends where home directories are not common to both the Open 
 * Superdome Flex, shs-sdf01.nsh.loc.
 * All DataLoch VMs.
 
-To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy your `ondemand` directory, and so your job files, to the back-end when you submit a job. How to enable this is described in the following section on [Enable copy of `ondemand` directory to a back-end](#enable-automated-copy-of-ondemand-directory-to-a-back-end).
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. How to enable this is described in the following section on [Enable automated copy of job files to a back-end](#enable-automated-copy-of-job-files-to-a-back-end).
 
-You will also have to log into these back-end to view files created on these back-ends when you run jobs - see [Log into back-ends](ssh.md)
+You will also have to log into your chosen back-end to view files created on these back-ends when you run jobs - see [Log into back-ends](ssh.md)
 
-### Enable automated copy of `ondemand` directory to a back-end
+### Enable automated copy of job files to a back-end
 
-To enable Open OnDemand to automatically copy your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.
+To enable Open OnDemand to automatically copy job files from within your `ondemand` directory to a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, you need to set up a passphrase-less SSH key between the Open OnDemand VM and the back-end.
 
 !!! Note
 
@@ -235,7 +231,7 @@ Briefly, when a job is submitted, the following occurs:
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
     * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
-    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your `ondemand` directory to the back-end.
+    * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your job files from within your `ondemand` directory to the back-end. The relative directory structure from the `ondemand` directory to the job files directory is preserved by the copy.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
@@ -281,9 +277,9 @@ When an interactive app's job is submitted, a **job card** is created and shown 
     * For some apps, this will include the 'Connection timeout'.
 * App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.
 
-![Example job card for Run Container app](../../images/open-ondemand/job-card-container-app.png){: class="border-img center"} *Example job card for the Run Container app*
+![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
-![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab Container app*
 
 !!! Note
 
@@ -327,7 +323,7 @@ Click **Delete** on a job card to delete the job card.
 
 When a job is submitted to a back-end, a log file is created within an `ondemand/logs/slurm` directory within your home directory on the Open OnDemand VM.
 
-Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_tenant_gpu_desktop01`.
+Log files have name `sbatch-YYYYMMDD-HHMMSS_OPEN_ONDEMAND_CLUSTER_NAME`. For example, `sbatch-20240807-082901-nsh_gpu_desktop01`.
 
 An example of the contents of a log file is as follows:
 

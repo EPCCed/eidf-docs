@@ -99,7 +99,7 @@ ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
 
 ### E1 - Step 4. Pull and run in the TRE
 
-The container can be imported and run inside the TRE using the same commands as the [previous step](#e1---step-3-test-in-ces-test-environment).
+The container can be imported and run inside the TRE using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
 
 ## Example 2 - Python ML
 
@@ -272,7 +272,7 @@ ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 
 ### E2 - Step 4. Pull and run in the TRE
 
-We can import and run the container in the TRE using the commands from the [earlier step](#e2---step-3-test-in-ces-test-environment).
+We can import and run the container in the TRE using the commands from the [earlier step](#e2-step-3-test-in-ces-test-environment).
 
 ## Example 3 - Interactive RStudio Rocker container
 
@@ -485,4 +485,4 @@ The container is running successfully if:
 
 ### E3 - Step 4. Pull and run in the TRE
 
-The container can then be imported inside the TRE using the same commands as [Step 3](#e3---step-3-test-in-ces-test-environment).
+The container can then be imported inside the TRE using the same commands as [Step 3](#e3-step-3-test-in-ces-test-environment).
