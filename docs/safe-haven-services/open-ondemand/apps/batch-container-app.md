@@ -16,7 +16,7 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `ghcr.io/mikej888/hello-tre:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: Username to access the container registry.
 * **Container registry access token**: Access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
