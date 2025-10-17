@@ -220,7 +220,7 @@ To prepare the image before pushing to GHCR, we recommend to save the image with
       ...
    ```
 
-The following commands can be used to upload the image to a private GHCR repository.
+The following commands can be used to upload the image to a GHCR repository.
 
 ```console
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
@@ -229,6 +229,8 @@ docker push "ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest"
 docker push "ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG"
 docker logout
 ```
+
+Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
 
 ### 2.5 Optional - Build and upload automation using GitHub Actions
 
@@ -287,6 +289,8 @@ jobs:
           path: 'dependency-results.sbom.json'
 ```
 
+Note: `secrets.GITHUB_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
+
 Note that manually running Hadolint via pre-commit can be skipped if you are using pre-commit and the [pre-commit.ci](https://pre-commit.ci/) service.
 
 #### Publishing in CI
@@ -321,11 +325,15 @@ The test environment is located in the eidf147 project. Please ask your research
 
 Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
 
-Once access has been granted to the test environemnt in the eidf147 project, the user can pull a container from their private GHCR repository using the `ces-pull` command:
+Once access has been granted to the test environment in the eidf147 project, the user can pull a container from their GHCR repository using the `ces-pull` command:
 
 ```sh
 ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
+
+Note: `<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io/<namespace>/<container_name>:<container_tag>'. When pulling containers into the test environment or the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+
+Note: The `<github_user>` and `<ghcr_token>` arguments to `ces-pull` are mandatory.
 
 If a runtime is not specified then podman is used as the default.
 

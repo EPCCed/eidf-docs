@@ -4,7 +4,7 @@
 
 The Container Execution Service (CES) has been introduced to allow project code developed and tested by researchers outside the Trusted Research Environment (TRE) in personal development environments to be imported and run on the project data inside the TRE using a well-documented, transparent, secure workflow.
 The primary role of the TRE is to store and share data securely; it is not intended to be a software development and testing environment. The CES helps researchers perform software development tasks in their chosen environment, rather than the restricted one offered in the TRE.
-This guide describes the process of building and testing TRE-ready containers outside the TRE, specifically within a test enviroment created in the EIDF, so that they are ready to be pulled and used inside the TRE.
+This guide describes the process of building and testing TRE-ready containers outside the TRE, specifically within a test environment created in the EIDF, so that they are ready to be pulled and used inside the TRE.
 
 We assume that users are already familiar with container concepts and have some experience in building their own images. If a user is new to container tools, the following resources would be a good starting point:
 
