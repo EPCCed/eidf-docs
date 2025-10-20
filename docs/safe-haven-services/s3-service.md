@@ -207,3 +207,40 @@ dicom_processing_function(con)
 ```
 
 Examples of such functions are `oro.dicom::parseDICOMHeader()` and `espadon::dicom.browser()`
+
+## Example GUI to view DICOM files
+
+This example uses a customised program that can view and download DICOM files from the S3 service.
+It is not installed in the National Safe Haven but you can import it as a container image.
+
+You will need these provided by your Research Coordinator:
+* a CSV file which contains a list of StudyInstanceUID and SeriesInstanceUID
+* a github token to download the container image
+
+In a terminal window run this command to obtain the container image, replacing TOKEN with the github token you were given:
+```
+ces-pull podman howff TOKEN ghcr.io/howff/dcmaudit:cpu
+```
+You will see the container image listed when you run:
+```
+podman images
+
+REPOSITORY                TAG    IMAGE ID      CREATED       SIZE
+ghcr.io/howff/dcmaudit    cpu    4f994194efa8  11 days ago   2.67 GB
+```
+Now you will need a 's3' directory in your home directory so create that, or run:
+```
+mkdir ~/s3
+```
+
+To run the container use:
+```
+ces-pm-run --opt-file <(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu
+```
+That is difficult to type every time you need it, so we will create a script:
+```
+echo '#!/bin/bash' > ~/dcmaudit.sh
+echo 'ces-pm-run --opt-file <(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu' >> ~/dcmaudit.sh
+chmod +x ~/dcmaudit.sh
+```
+Now to run the viewer you can run `~/dcmaudit.sh` from a terminal window or double-click on it in a file browser.
