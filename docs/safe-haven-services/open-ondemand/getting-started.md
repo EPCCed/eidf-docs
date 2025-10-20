@@ -48,7 +48,7 @@ Read the form entries in conjunction with the explanations below and make the su
 * **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry** cites a URL specifying both the container to run and the container registry from which it is to be pulled.
-    * Leave this value as-is to use the `ghcr.io/mikej888/hello-tre:1.0` container, hereon termed `hello-tre`.
+    * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1` container, hereon termed `epcc-ces-hello-tre`.
 * **Container registry username** is a username to access the container registry.
     * Leave this value as-is.
 * **Container registry access token** is an access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
@@ -58,21 +58,21 @@ Read the form entries in conjunction with the explanations below and make the su
 * **Container name** is the name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
 * **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
-    * Leave this value as-is as the all back-ends can provide the default number of cores, and the `hello-tre` container does not need any more.
+    * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello-tre` container does not need any more.
 * **Memory in GiB** is the memory requested for this job. Your selected back-end must have at least that amount of memory available.
-    * Leave this value as-is as the all back-ends can provide the default memory, and the `hello-tre` container does not need any more.
+    * Leave this value as-is as the all back-ends can provide the default memory, and the `epcc-ces-hello-tre` container does not need any more.
 * **Use GPU?** requests that the container use a GPU. If selected, then your selected back-end must have a GPU.
-    * Leave this value as-is, as the `hello-tre` container does not require a GPU.
+    * Leave this value as-is, as the `epcc-ces-hello-tre` container does not require a GPU.
 * **Command-line options to pass to container runner** are container runner-specific options to control the container runner's behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
-* **Environment variables to pass to container** are environment variables to be passed on by the container runner and set within the container when it runs. The `hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
+* **Environment variables to pass to container** are environment variables to be passed on by the container runner and set within the container when it runs. The `epcc-ces-hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
     * Enter:
 
         ```text
         HELLO_TRE=Hello there
         ```
 
-* **Arguments to pass to container** are container-specific arguments to be passed directly to the container when it runs. The `hello-tre` container supports two container-specific arguments:
+* **Arguments to pass to container** are container-specific arguments to be passed directly to the container when it runs. The `epcc-ces-hello-tre` container supports two container-specific arguments:
     * A `-d|--duration INTEGER` argument which causes the container to sleep (pause) for that number of seconds. If undefined, then the container does not sleep.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
     * Enter the following to request a sleep of 10 seconds and a greeting with your name:
@@ -115,7 +115,7 @@ Open OnDemand will show an app **job card** with information about the app's job
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `hello-tre` container, is now running. A message of form 'Container hello-tre-SESSION_ID is now running. Please wait until the container completes.' will also appear on the job card.
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `epcc-ces-hello-tre` container, is now running. A message of form 'Container epcc-ces-hello-tre-SESSION_ID is now running. Please wait until the container completes.' will also appear on the job card.
 
 ![Run Batch Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-03-batch-container-app-running.png){: class="border-img center"}
 *Run Batch Container app job card showing job status as 'Running'*
@@ -129,7 +129,7 @@ The Job status on the job card will update to 'Completed'.
 
 ### How containers exchange files with back-ends
 
-Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the TRE Container Execution Service, and `hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
+Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the TRE Container Execution Service, and `epcc-ces-hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -139,7 +139,7 @@ Open OnDemand uses TRE Container Execution Service tools to run containers and c
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-When the `hello-tre` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
+When the `epcc-ces-hello-tre` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
 
 * `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
@@ -183,7 +183,7 @@ As you have accessed Open OnDemand from your 'desktop' VM, you could also access
 
 When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from the container as it runs. It can be useful to check the log file when debugging.
 
-For the `hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
+For the `epcc-ces-hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
 
 As for the output files, you can use either the File Manager (non-DataLoch safe haven users only) or log into the back-end (all users) to view the log file.
 
@@ -210,7 +210,7 @@ View the log file within the back-end:
     cat output.log
     ```
 
-For the `hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
+For the `epcc-ces-hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
 
 ```text
 Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
@@ -256,7 +256,7 @@ Arguments (one per line):
     Mike
 ```
 
-For some containers run via Podman, including `hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/batch_container/SESSION_ID`.
+For some containers run via Podman, including `epcc-ces-hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/batch_container/SESSION_ID`.
 
 Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
 
