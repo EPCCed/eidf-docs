@@ -58,7 +58,7 @@ Workloads without this queue name tag will be rejected.
 
 ## PVC Creation
 
-TRE GPU Cluster Users are **not permitted to create their own PersistentVolumeClaims (PVCs)**. All PVCs must be provisioned by system administrators.  
+TRE GPU Cluster Users are **not permitted to create their own PersistentVolumeClaims (PVCs)**. All PVCs must be provisioned by system administrators.
 PVC creation attempts from user workloads will be denied automatically.
 
 ## Interacting with Other Users' Containers
@@ -66,11 +66,11 @@ PVC creation attempts from user workloads will be denied automatically.
 To protect workloads and data privacy, users are **not permitted to `exec` into, modify, or delete** containers that belong to other users.
 
 - **Exec Blocking:** The system enforces a policy that denies `kubectl exec` commands if the requesting username does not match the `shsuser` label on the target Pod.
-- **Deletion Blocking:** Where possible, the system prevents deletion of other users’ Pods.  
+- **Deletion Blocking:** Where possible, the system prevents deletion of other users’ Pods.
 - **Code of Conduct:** Even in cases where Kubernetes RBAC allows destructive actions (e.g., deleting a Pod in your namespace), users must **never** interfere with another user’s running workloads. This includes not deleting Pods for resource reclamation unless explicitly agreed with the owner or instructed by administrators.
 
 **Expected Behaviour:**
+
 - Only interact with workloads you own.
 - Use delete commands **only** on your own resources.
 - Report issues to the support team rather than trying to “fix” other users’ workloads yourself.
-

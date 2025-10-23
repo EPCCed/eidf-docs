@@ -4,7 +4,7 @@
 
 ### How do I access the GPU Service?
 
-The default access route to the TRE GPU Service is via an TRE Project VM. The TRE Project VM will have access to all TRE resources for your project and can be accessed through the VDI (SSH or if enabled RDP). [Safe Haven Service Access](../safe-haven-access.md) 
+The default access route to the TRE GPU Service is via an TRE Project VM. The TRE Project VM will have access to all TRE resources for your project and can be accessed through the VDI (SSH or if enabled RDP). [Safe Haven Service Access](../safe-haven-access.md)
 
 ### How do I obtain my project kubeconfig file?
 
