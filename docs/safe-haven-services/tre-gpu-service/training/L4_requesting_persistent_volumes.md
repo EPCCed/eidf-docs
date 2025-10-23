@@ -65,9 +65,10 @@ uid=0001(<tre_username>) gid=0001(<tre_username>) groups=0001(<tre_username>),00
 ```
 
 In this example:
-- **runAsUser** → `0001` (your UID).  
-- **runAsGroup** → the GID associated with your `<project_id>` (e.g. `0002`).  
-- **fsGroup** → should also be set to the same `<project_id>` GID. 
+
+- **runAsUser** → `0001` (your UID).
+- **runAsGroup** → the GID associated with your `<project_id>` (e.g. `0002`).
+- **fsGroup** → should also be set to the same `<project_id>` GID.
 
 ### Understanding Persistent Volume Claims (PVCs)
 
@@ -80,16 +81,16 @@ Mounted read-only at /safe_data. Shared by all project members.
 Mounted read-write at /safe_outputs. Dedicated to the individual user identified by their FreeIPA username `<tre_username>`.
 
 !!! note "Example mapping for clarity"
-    For this example:  
+    For this example:
 
-    - `<safe_heaven>` = `nsh`  
-    - `<project_id>` = `2024-0000`  
-    - `<tre_username>` = `test_nsh-2024-0000`  
+    - `<safe_heaven>` = `nsh`
+    - `<project_id>` = `2024-0000`
+    - `<tre_username>` = `test_nsh-2024-0000`
 
     The first part of the username before `_` is `test`, so the resulting PVC names are:
 
-    - Shared data PVC: `pvc-nsh-2024-0000-shared`  
-    - User output PVC: `pvc-nsh-2024-0000-users-test`  
+    - Shared data PVC: `pvc-nsh-2024-0000-shared`
+    - User output PVC: `pvc-nsh-2024-0000-users-test`
 
 Your FreeIPA username `<tre_username>` corresponds to the user you log in as on the TRE portal and Desktop VM.
 

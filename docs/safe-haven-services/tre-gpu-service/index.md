@@ -41,6 +41,7 @@ Once access to the TRE GPU service has been confirmed, TRE Project VMs will be c
 Since FreeIPA is integrated with the GPU cluster, project users can authenticate using their FreeIPA credentials. When you run a kubectl command for the first time (e.g., `kubectl get pods`), you will be prompted to enter your FreeIPA username and password. After successful authentication, your token is cached locally and remains valid until it expires or is deleted. Upon expiration, kubectl will again prompt you for login credentials.
 
 !!! important "First Time Login"
+
     ```text
     You will first be asked to select the authentication provider — choose **freeIpaProvider**
     Auth providers:

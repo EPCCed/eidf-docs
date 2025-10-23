@@ -17,7 +17,6 @@ As use of containers in the TRE is a new service, it is at this stage regarded a
 
 *Note: Since running GPU jobs without containers is unlikely to be useful, it may be preferable in future to include CES access automatically as part of GPU access, rather than requiring users to request both separately.*
 
-
 To pull a private image, you must create an access token to authenticate with GHCR (see [Authenticating to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)). The container is then pulled by the user with the command:
 
 ```bash
