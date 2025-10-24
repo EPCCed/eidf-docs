@@ -35,3 +35,7 @@ From the command line, you can clone this repository by adding your username and
 To clone a repository using git over SSH, click on the "Code" button to get the git+ssh URL. You will need to have added an SSH key to your account for this method to work.
 
 For a more complete set of documentation relating to adding and using SSH keys with Gitlab, see the upstream [Gitlab Documentation](https://docs.gitlab.com/user/ssh/)
+
+## CI/CD Examples
+
+A repository containing some common Gitlab CI/CD configurations and relevant examples is maintained at at [Gitlab CI/Cd Examples](https://gitlab.eidf.ac.uk/Liz/cicd-examples)
