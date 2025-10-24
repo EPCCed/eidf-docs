@@ -53,23 +53,6 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
     Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
-### Troubleshooting: Proxy Error
-
-If you click **Connect to JupyterLab** and get:
-
-> Proxy Error
->
-> The proxy server received an invalid response from an upstream server.
-> The proxy server could not handle the request
->
-> Reason: Error reading from remote server
->
-> Apache/2.4.52 (Ubuntu) Server at host Port 443
-
-then, this can arise as sometimes there is a lag between the container having started and JupyterLab within the container being ready for connections.
-
-Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab** button again.
-
 ---
 
 ## Log in to JupyterLab

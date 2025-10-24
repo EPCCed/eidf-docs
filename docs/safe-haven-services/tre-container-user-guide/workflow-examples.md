@@ -65,7 +65,9 @@ export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
 
-build our container:
+Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
+
+We can now build our container:
 
 ```sh
 docker build . --tag ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1 --tag ghcr.io/$GHCR_NAMESPACE/pytorch-test:latest --platform linux/amd64
@@ -97,9 +99,15 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/pytorch-test
 ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
 ```
 
+Note: The namespace and token arguments to `ces-pull` are mandatory.
+
+Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+
 ### E1 - Step 4. Pull and run in the TRE
 
-The container can be imported and run inside the TRE using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
+The container can be pulled and run inside the TRE using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
+
+Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 2 - Python ML
 
@@ -229,7 +237,9 @@ export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
 
-build our container:
+Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
+
+We can now build our container:
 
 ```sh
 docker build . --tag ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1 --tag ghcr.io/$GHCR_NAMESPACE/python-ml-test:latest --platform linux/amd64
@@ -270,9 +280,15 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/python-ml-te
 ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 ```
 
+Note: The namespace and token arguments to `ces-pull` are mandatory.
+
+Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+
 ### E2 - Step 4. Pull and run in the TRE
 
 We can import and run the container in the TRE using the commands from the [earlier step](#e2-step-3-test-in-ces-test-environment).
+
+Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 3 - Interactive RStudio Rocker container
 
@@ -391,7 +407,9 @@ export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
 
-build our container:
+Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
+
+We can now build our container:
 
 ```sh
 docker build . --tag ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1 --tag ghcr.io/$GHCR_NAMESPACE/rocker-test:latest --platform linux/amd64
@@ -418,11 +436,15 @@ docker logout
 
 Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
 
-Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the TRE - and our test environemnt - using podman. To pull the container using podman as our container engine, we use the command:
+Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the TRE - and our test environment - using podman. To pull the container using podman as our container engine, we use the command:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
+
+Note: The namespace and token arguments to `ces-pull` are mandatory.
+
+Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 The Rocker container was designed to be run using docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
 
@@ -486,3 +508,5 @@ The container is running successfully if:
 ### E3 - Step 4. Pull and run in the TRE
 
 The container can then be imported inside the TRE using the same commands as [Step 3](#e3-step-3-test-in-ces-test-environment).
+
+Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
