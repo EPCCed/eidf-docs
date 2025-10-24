@@ -26,9 +26,9 @@ In each case, selecting an app will open an app-specific page, from which you ca
 
 ---
 
-## Jobs panel
+## Open OnDemand home page
 
-The Jobs panel on the Open OnDemand home page has a **selection** of the apps available to you.
+The Open OnDemand home page has a **selection** of the apps available to you.
 
 Click on an app button to access that app.
 
@@ -38,7 +38,7 @@ Click on an app button to access that app.
 
 The Apps menu provides access to **all** of the apps available to you.
 
-Select an app-specific menu option to access that app. The app-specific menu options correspond to the apps available via the Jobs panel.
+Select an app-specific menu option to access that app. The app-specific menu options correspond to apps available on the Open OnDemand home page.
 
 To see all of the apps available to you, select the **All Apps** option to go to the All Apps page.
 
