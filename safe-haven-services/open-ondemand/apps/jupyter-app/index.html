@@ -2711,21 +2711,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run app">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-proxy-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting: Proxy Error
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2851,17 +2836,6 @@
 <p class="admonition-title">Warning</p>
 <p>Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.</p>
 </div>
-<h3 id="troubleshooting-proxy-error">Troubleshooting: Proxy Error</h3>
-<p>If you click <strong>Connect to JupyterLab</strong> and get:</p>
-<blockquote>
-<p>Proxy Error</p>
-<p>The proxy server received an invalid response from an upstream server.
-The proxy server could not handle the request</p>
-<p>Reason: Error reading from remote server</p>
-<p>Apache/2.4.52 (Ubuntu) Server at host Port 443</p>
-</blockquote>
-<p>then, this can arise as sometimes there is a lag between the container having started and JupyterLab within the container being ready for connections.</p>
-<p>Wait 30 seconds, then refresh the web page, or click the <strong>Connect to JupyterLab</strong> button again.</p>
 <hr />
 <h2 id="log-in-to-jupyterlab">Log in to JupyterLab</h2>
 <p>You will not be prompted for a username and password. JupyterLab running in the container runs as a 'root' user. JupyterLab is protected with an auto-generated password. The <strong>Connect to JupyterLab</strong> button is configured to log you into the container using this password automatically.</p>

@@ -2799,21 +2799,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Launch the Run JupyterLab Container app job">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-proxy-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting: Proxy Error
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -3213,17 +3198,6 @@ Goodbye Mike!
 <p>You may wonder why you were not prompted for a username and password. JupyterLab running in the container runs as a 'root' user. The 'root' user is within the context of the container only. JupyterLab is protected with an auto-generated password. The <strong>Connect to JupyterLab</strong> button is configured to log you into the container using this password automatically.</p>
 <p><img alt="JupyterLab running within a container" class="border-img center" src="../../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png" />
 <em>JupyterLab running within a container</em></p>
-<h4 id="troubleshooting-proxy-error">Troubleshooting: Proxy Error</h4>
-<p>If you click <strong>Connect to JupyterLab</strong> and get:</p>
-<blockquote>
-<p>Proxy Error</p>
-<p>The proxy server received an invalid response from an upstream server.
-The proxy server could not handle the request</p>
-<p>Reason: Error reading from remote server</p>
-<p>Apache/2.4.52 (Ubuntu) Server at host Port 443</p>
-</blockquote>
-<p>then, this can arise as sometimes there is a lag between the container having started and JupyterLab within the container being ready for connections.</p>
-<p>Wait 30 seconds, then refresh the web page, or click the <strong>Connect to JupyterLab</strong> button again.</p>
 <h3 id="use-jupyterlab-to-explore-how-directories-on-a-back-end-are-mounted-into-a-container">Use JupyterLab to explore how directories on a back-end are mounted into a container</h3>
 <p>We can use JupyterLab to further explore how directories on a back-end are mounted into a container.</p>
 <p>Click the <strong>Host</strong> link to log into the back-end on which the job, and JupyterLab container, is running.</p>
