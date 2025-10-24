@@ -1,10 +1,10 @@
 # Overview
 
-The TRE GPU Service (Trusted Research Environment GPU Service) provides access to full Nvidia A100 40GB GPUs. There are no MIG (Multi-instance GPU) configurations available. The TRE GPU Service is built upon [Kubernetes](https://kubernetes.io).
+The SHS GPU Cluster (Trusted Research Environment GPU Service) provides access to full Nvidia A100 40GB GPUs. There are no MIG (Multi-instance GPU) configurations available. The SHS GPU Cluster is built upon [Kubernetes](https://kubernetes.io).
 
 ## Current Configuration
 
-The full specification of the TRE GPU Service as of May 2025:
+The full specification of the SHS GPU Cluster as of May 2025:
 
 - 672 CPU Cores (AMD EPYC and Intel Xeon)
 - 2.54 TiB Memory
@@ -21,22 +21,22 @@ The full specification of the TRE GPU Service as of May 2025:
 
 > **NOTE**
 >
-> If you request a GPU on the TRE GPU Service you will be assigned one at random unless you specify a GPU type.
+> If you request a GPU on the SHS GPU Cluster you will be assigned one at random unless you specify a GPU type.
 > Please see [Getting started with Kubernetes](training/L1_getting_started.md) to learn about specifying GPU resources.
 
 ## Service Access
 
-Users should have an [TRE Account](../safe-haven-access.md) as the TRE GPU Service is only accessible through TRE Virtual Machines.
+Users should have an [TRE Account](../safe-haven-access.md) as the SHS GPU Cluster is only accessible through TRE Virtual Machines.
 
-Existing projects can request access to the TRE GPU Service through a service request to the [TRE helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
+Existing projects can request access to the SHS GPU Cluster through a service request to the [TRE helpdesk](https://portal.eidf.ac.uk/queries/submit) or emailing [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk).
 
 New projects wanting to use the GPU Service should include this in their TRE Project Application.
 
-Each project will be given a namespace within the TRE GPU service to operate in.
+Each project will be given a namespace within the SHS GPU Cluster to operate in.
 
 This project namespace will normally be the TRE Safe Heaven and Project code appended with ’ns’, i.e. `nsh-2024-0000-ns` for a safe-heaven `nsh` and project with code `2024-0000`.
 
-Once access to the TRE GPU service has been confirmed, TRE Project VMs will be configured to use the TRE GPU cluster. - information on access to VMs is available [here](../virtual-desktop-connections.md).
+Once access to the SHS GPU Cluster has been confirmed, TRE Project VMs will be configured to use the TRE GPU cluster. - information on access to VMs is available [here](../virtual-desktop-connections.md).
 
 Since FreeIPA is integrated with the GPU cluster, project users can authenticate using their FreeIPA credentials. When you run a kubectl command for the first time (e.g., `kubectl get pods`), you will be prompted to enter your FreeIPA username and password. After successful authentication, your token is cached locally and remains valid until it expires or is deleted. Upon expiration, kubectl will again prompt you for login credentials.
 
@@ -50,17 +50,17 @@ Since FreeIPA is integrated with the GPU cluster, project users can authenticate
     Select auth provider:
     ```
 
-All TRE VMs with the project kubeconfig file downloaded can access the TRE GPU Service using the kubectl command line tool.
+All TRE VMs with the project kubeconfig file downloaded can access the SHS GPU Cluster using the kubectl command line tool.
 
 The VM does not require to be GPU-enabled.
 
-A quick check to see if a VM has access to the TRE GPU service can be completed by typing `kubectl -n <project-namespace> get jobs` into the command line.
+A quick check to see if a VM has access to the SHS GPU Cluster can be completed by typing `kubectl -n <project-namespace> get jobs` into the command line.
 
 If this is the first time you have connected to the GPU service the response should be `No resources found in <project-namespace> namespace`.
 
-!!! important "TRE GPU Service vs TRE GPU-Enabled VMs"
+!!! important "SHS GPU Cluster vs TRE GPU-Enabled VMs"
 
-    The TRE GPU Service is a container-based service which is accessed from TRE Virtual Desktop VMs.
+    The SHS GPU Cluster is a container-based service which is accessed from TRE Virtual Desktop VMs.
 
     This allows a project to access multiple GPUs of different types.
 
@@ -84,7 +84,7 @@ A standard project namespace has the following initial quota (subject to ongoing
 
 ## Project Queues
 
-TRE GPU Service has been using the Kueue system since May 2025. The use of this is detailed in the [Kueue](kueue.md).
+SHS GPU Cluster has been using the Kueue system since May 2025. The use of this is detailed in the [Kueue](kueue.md).
 
 !!! important "Job Queuing"
 
@@ -98,9 +98,9 @@ TRE GPU Service has been using the Kueue system since May 2025. The use of this 
 
 Additional information on service policies can be found [here](policies.md).
 
-## TRE GPU Service Tutorial
+## SHS GPU Cluster Tutorial
 
-This tutorial teaches users how to submit tasks to the TRE GPU Service, but it is not a comprehensive overview of Kubernetes.
+This tutorial teaches users how to submit tasks to the SHS GPU Cluster, but it is not a comprehensive overview of Kubernetes.
 
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
