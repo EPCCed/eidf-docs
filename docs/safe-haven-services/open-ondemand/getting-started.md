@@ -364,23 +364,6 @@ You may wonder why you were not prompted for a username and password. JupyterLab
 ![JupyterLab running within a container](../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png){: class="border-img center"}
 *JupyterLab running within a container*
 
-#### Troubleshooting: Proxy Error
-
-If you click **Connect to JupyterLab** and get:
-
-> Proxy Error
->
-> The proxy server received an invalid response from an upstream server.
-> The proxy server could not handle the request
->
-> Reason: Error reading from remote server
->
-> Apache/2.4.52 (Ubuntu) Server at host Port 443
-
-then, this can arise as sometimes there is a lag between the container having started and JupyterLab within the container being ready for connections.
-
-Wait 30 seconds, then refresh the web page, or click the **Connect to JupyterLab** button again.
-
 ### Use JupyterLab to explore how directories on a back-end are mounted into a container
 
 We can use JupyterLab to further explore how directories on a back-end are mounted into a container.
