@@ -2,11 +2,9 @@
 
 ## Overview
 
-[Kueue](https://kueue.sigs.k8s.io/docs/overview/) is a native Kubernetes quota and job management system.
+[Kueue](https://kueue.sigs.k8s.io/docs/overview/) is a native Kubernetes quota and job management system. This is the job queue system for the TRE GPU Cluster.
 
-This is the job queue system for the TRE GPU Service, starting with April 2025.
-
-**Reminder:** All users should submit jobs to their **local namespace user queue**, which follows the naming convention `<tre-project-namespace>-user-queue`, i.e. `<safe_heaven>-<project_id>-ns-user-queue`.
+**Reminder:** All users should submit jobs to their **local namespace user queue**, which follows the naming convention `<safe_heaven>-<project_id>-ns-user-queue`, e.g. `nsh-2024-0000-ns-user-queue`.
 
 ### Changes to Job Specs
 
