@@ -25,7 +25,7 @@ Submitting jobs with `name` only would allow several jobs to have the same name,
 
 ## Kubernetes Job Time to Live
 
-All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished` automatically. The default TTL for jobs using the service will be 1 week (604800 seconds). A completed job (in success or error state) will be deleted from the service once one week has elapsed after execution has completed. This will reduce excessive object accumulation on the service.
+All completed Kubernetes jobs will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished` automatically. A completed job (in success or error state) will be deleted from the service once this period has elapsed since execution has completed. This will reduce excessive object accumulation on the service. The default TTL for jobs using the service is one week (604800 seconds). 
 
 !!! important
     This policy is automated and does not require users to change their job specifications.
@@ -35,13 +35,13 @@ All Kubernetes Jobs submitted to the service will have a Time to Live (TTL) appl
 
 ## Kubernetes Active Deadline Seconds
 
-All Kubernetes User Pods submitted to the service will have an Active Deadline Seconds (ADS) applied via `spec.spec.activeDeadlineSeconds` automatically. The default ADS for pods using the service will be 5 days (432000 seconds). A pod will be terminated 5 days after execution has begun. This will reduce the number of unused pods remaining on the service.
+All Kubernetes user pods submitted to the service will have an Active Deadline Seconds (ADS) applied via `spec.spec.activeDeadlineSeconds` automatically. A pod will be terminated once this period has elapsed after execution has begun. This will reduce the number of unused pods remaining on the service. The default ADS for pods using the service is five days (432000 seconds). 
 
 !!! important
     This policy is automated and does not require users to change their job or pod specifications.
 
 !!! important
-    The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration errors in your code can lead to the container running for the whole duration, but not yielding a result and taking cluster resources away from other users.
+    The preference would be that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration or other errors in your code can lead to the container running for the whole duration, but not yielding a result and unnecessarily taking cluster resources away from other users.
 
 ## Kueue
 
@@ -67,7 +67,7 @@ To protect workloads and data privacy, users are **not permitted to `exec` into,
 
 - **Exec Blocking:** The system enforces a policy that denies `kubectl exec` commands if the requesting username does not match the `shsuser` label on the target Pod.
 - **Deletion Blocking:** Where possible, the system prevents deletion of other users’ Pods.
-- **Code of Conduct:** Even in cases where Kubernetes RBAC allows destructive actions (e.g., deleting a Pod in your namespace), users must **never** interfere with another user’s running workloads. This includes not deleting Pods for resource reclamation unless explicitly agreed with the owner or instructed by administrators.
+- **Code of Conduct:** Even in cases where Kubernetes allows destructive actions (e.g., deleting a Pod in your namespace), users must **never** interfere with another user’s running workloads. This includes not deleting Pods for resource reclamation unless explicitly agreed with the owner or instructed by administrators.
 
 **Expected Behaviour:**
 
