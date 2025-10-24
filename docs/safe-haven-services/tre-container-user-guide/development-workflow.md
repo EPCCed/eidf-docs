@@ -25,6 +25,8 @@ This document describes in detail the [four steps](./introduction.md#overview) r
 
 - Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible.
 
+- Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the TRE. However, users within the TRE need to provide both a username and an access token to do so. This is a requirement of the 'ces-tools' used to pull containers into the TRE.
+
 <!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
 
 ### 1.2 General recommendations
