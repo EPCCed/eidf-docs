@@ -2714,9 +2714,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sharing-files-between-the-back-end-and-the-container" class="md-nav__link">
+  <a href="#sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs" class="md-nav__link">
     <span class="md-ellipsis">
-      Sharing files between the back-end and the container
+      Sharing files between the back-end and the container and persisting state between app runs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-tre-web-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the TRE web proxy
     </span>
   </a>
   
@@ -2844,8 +2853,81 @@
 <p>Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.</p>
 </div>
 <hr />
-<h2 id="sharing-files-between-the-back-end-and-the-container">Sharing files between the back-end and the container</h2>
-<p>See <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a></p>
+<h2 id="sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs">Sharing files between the back-end and the container and persisting state between app runs</h2>
+<p>The app mounts three directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code>. For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<p>If required, you can mount additional directories into your container:</p>
+<ul>
+<li>
+<p>If using Apptainer, your container already has access to your home directory environment, so there is nothing that need be done. However, if you need to mount these at specific points in the container then this can be done by adding Apptainer-specific parameters into the <strong>Command-line options to pass to container runner</strong> field, one parameter per line. For example:</p>
+<div class="highlight"><pre><span></span><code>--bind ${HOME}/my_content:/mnt/my_content
+</code></pre></div>
+</li>
+<li>
+<p>If using Podman, then this can be done by adding the Podman-specific syntax to mount the directories into the <strong>Command-line options to pass to container runner</strong> field, one parameter per line. For example:</p>
+<div class="highlight"><pre><span></span><code>-v ${HOME}/my_content:/mnt/my_content
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any mounted directories must exist on the back-end on which the app runs.</p>
+</div>
+<hr />
+<h2 id="accessing-the-tre-web-proxy">Accessing the TRE web proxy</h2>
+<p>If your container needs to access the TRE web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:</p>
+<ol>
+<li>Select <strong>Clusters</strong> menu, back-end <strong>Shell Access</strong> option to log into the back-end.</li>
+<li>
+<p>See the values of your web proxy variables:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-in<span class="w"> </span>proxy
+<span class="nv">CURLHTTPS_PROXY</span><span class="o">=</span>...
+<span class="nv">CURLHTTP_PROXY</span><span class="o">=</span>...
+<span class="nv">FTP_PROXY</span><span class="o">=</span>...
+<span class="nv">HTTPS_PROXY</span><span class="o">=</span>...
+<span class="nv">HTTP_PROXY</span><span class="o">=</span>...
+<span class="nv">https_proxy</span><span class="o">=</span>...
+<span class="nv">http_proxy</span><span class="o">=</span>...
+<span class="nv">NO_PROXY</span><span class="o">=</span>...
+<span class="nv">no_proxy</span><span class="o">=</span>...
+</code></pre></div>
+</li>
+<li>
+<p>Paste the following variables and their values into the <strong>Environment variables to pass to container</strong>, one variable-value per line. For example:</p>
+<div class="highlight"><pre><span></span><code>CURLHTTPS_PROXY=...
+CURLHTTP_PROXY=...
+FTP_PROXY=...
+HTTPS_PROXY=...
+HTTP_PROXY=...
+https_proxy=...
+http_proxy=...
+NO_PROXY=...
+no_proxy=...
+</code></pre></div>
+</li>
+</ol>
+<p>Alternatively:</p>
+<ol>
+<li>Select <strong>Clusters</strong> menu, back-end <strong>Shell Access</strong> option to log into the back-end.</li>
+<li>
+<p>Extract your web proxy variables and values into a bash script and add an <code>export</code> to each to give a bash script which defines your variables:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="nv">proxy</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^/export &#39;</span>/<span class="w"> </span>&gt;<span class="w"> </span>set-proxy-env.sh
+$<span class="w"> </span>cat<span class="w"> </span>set-proxy-env.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">CURLHTTPS_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">CURLHTTP_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">FTP_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">NO_PROXY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">no_proxy</span><span class="o">=</span>...
+</code></pre></div>
+</li>
+<li>
+<p>Add this bash script to a directory that is mounted into your container.</p>
+</li>
+<li><code>source</code> this bash script within your container.</li>
+</ol>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>

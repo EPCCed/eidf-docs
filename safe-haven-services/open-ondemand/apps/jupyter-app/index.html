@@ -2723,9 +2723,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sharing-files-between-the-back-end-and-the-container" class="md-nav__link">
+  <a href="#sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs" class="md-nav__link">
     <span class="md-ellipsis">
-      Sharing files between the back-end and the container
+      Sharing files between the back-end and the container and persisting state between app runs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-python-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Python packages
     </span>
   </a>
   
@@ -2844,8 +2853,12 @@
 <p>You are the 'root' user <strong>only</strong> within the context of the container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
 </div>
 <hr />
-<h2 id="sharing-files-between-the-back-end-and-the-container">Sharing files between the back-end and the container</h2>
-<p>See <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a></p>
+<h2 id="sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs">Sharing files between the back-end and the container and persisting state between app runs</h2>
+<p>The app mounts three directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code> . For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/jupyter_app/</code> in your home directory on the back-end and nounts this into the container at <code>/mnt/jupyter_host</code>. If you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
+<hr />
+<h2 id="installing-python-packages">Installing Python packages</h2>
+<p>The container is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> so that you can reuse these the next time you run your container.</p>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>
