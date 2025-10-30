@@ -25,7 +25,9 @@ However, you may have access to back-ends where your home directory is not commo
 * Superdome Flex, shs-sdf01.nsh.loc.
 * All DataLoch VMs.
 
-To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. As Superdome Flex is not used in this walkthrough, this set up  **only** needs to be done by users of the **DataLoch safe haven** who should now follow the instructions in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, before returning to this page.
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job.
+
+As Superdome Flex is not used in this walkthrough, this set up **only** needs to be done by users of the **DataLoch safe haven** who should now follow the instructions in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, before returning to this page.
 
 ---
 
