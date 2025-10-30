@@ -12,13 +12,13 @@ Container are typically run using Podman or Apptainer, depending on which of the
 
 ## Container requirements
 
-Open OnDemand uses the Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Container Execution Service. See the [TRE Container User Guide](../tre-container-user-guide/introduction.md) for details of these requirements.
+Open OnDemand uses the TRE Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the TRE Container Execution Service. See the [TRE Container User Guide](../tre-container-user-guide/introduction.md) for details of these requirements.
 
 ---
 
 ## Container registries
 
-The container registries supported by the Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:
+The container registries supported by the TRE Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
@@ -27,13 +27,13 @@ The container registries supported by the Container Execution Service, and so su
 
 !!! Note
 
-    For ECDF GitLab, do not put the port number, 5050, into the URL. The Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
+    For ECDF GitLab, do not put the port number, 5050, into the URL. The TRE Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
 
 ---
 
 ## Sharing files between a back-end and a container
 
-When a container is run via the Container Execution Service, three directories on the back-end are always mounted into the container:
+When a container is run via the TRE Container Execution Service, three directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
