@@ -1,6 +1,6 @@
 # Active Jobs
 
-Active Jobs is an Open OnDemand app that allows you to see which of your jobs have been submitted, are running, or have completed.
+Active Jobs is an app that allows you to see which of your jobs have been submitted, are running, or have completed.
 
 The Active Jobs app shows a table of running and recently completed jobs.
 
