@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Open OnDemand allows you to run compute and data-related tasks on compute resources available to your safe haven.
+Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
 
 Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.
 
-This page introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. [Run containers](containers.md) focuses on aspects of running containers within this job execution environment.
+This page describes concepts you need to know about how Open OnDemand runs tasks and apps.
 
 ---
 
@@ -22,11 +22,11 @@ An Open OnDemand component that allows you to run jobs, or other useful function
 
 Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. All Container Execution Service apps that run containers are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!
+A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
 
-!!! Info
+!!! Note
 
-    In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps!
+    Open OnDemand's application programming interface for interactive apps is significantly less complex than its interface for non-interactive (in the Open OnDemand sense) apps!
 
 ### Back-end (cluster) names
 
@@ -48,7 +48,7 @@ Within some interactive apps, you will see back-ends referred to via 'short-name
 * smartdf_gpu_desktop01
 * shs_sdf01
 
-Within [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs are running.
+Within [job cards](#job-cards) on the [My Interactive Sessions](#my-interactive-sessions-page) page, described below, you will see the VM names upon which the jobs for interactive apps are running.
 
 ---
 
@@ -81,17 +81,17 @@ When a job is submitted, a runtime is also requested. If a job takes longer than
 
 !!! Warning
 
-    Container Execution Service apps will run for a maximum of 6 hours.
+    Apps run for a maximum of 6 hours.
 
 !!! Warning
 
-    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly TRE maintenance period.
 
 For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will cancel itself.
 
 !!! Note
 
-    In standard deployments of Open OnDemand, the notification sent by the app includes information required by Open OnDemand to display how to connect to web- or GUI-based services started by the app. However, as mentioned above, all Container Execution Service apps that run containers use Open OnDemand's application programming interface for interactive apps, so you may see the connection timeout for the apps that run non-interactive containers too.
+    As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
 
 ---
 
@@ -113,7 +113,7 @@ where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
 $HOME/ondemand/data/sys/myjobs/projects/default/1/
 ```
 
-Interactive app job files are created in a directory:
+An interactive app's job files are created in a directory:
 
 ```bash
 $HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
@@ -235,7 +235,7 @@ Briefly, when a job is submitted, the following occurs:
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
     * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
-    * For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
+    * For jobs created via interactive apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
 !!! Note
@@ -248,7 +248,7 @@ Briefly, when a job is submitted, the following occurs:
 
 You can browse and manage jobs via the [Active Jobs](apps/active-jobs.md) app.
 
-For interactive app jobs (not those created by the [Job Composer](apps/job-composer.md) app), you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
+For an interactive app's job, you can also use the [My Interactive Sessions](#my-interactive-sessions-page) page, which provides more app-specific information.
 
 ---
 
@@ -262,7 +262,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 !!! Note
 
-    Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's [Job Composer](apps/job-composer.md) app are shown on that app's own page.
+    Only information for jobs for interactive apps is shown. Information on jobs submitted via the [Job Composer](apps/job-composer.md) app are shown on that app's own page.
 
 ### Job cards
 
@@ -275,11 +275,11 @@ When an interactive app's job is submitted, a **job card** is created and shown 
 * 'Time Remaining': For 'Starting' and 'Running' jobs, the runtime remaining.
 * App-specific information, which includes values from the app form.
     * For some apps, this will include the 'Connection timeout'.
-* App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.
+* App-specific status information, and, for apps that run interactive web- or GUI-based services, a button to connect to the service.
 
 ![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
-![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab Container app*
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
 
 !!! Note
 
@@ -347,7 +347,7 @@ An example of the contents of a log file is as follows:
 
 ### App log files
 
-When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from anything spawned by the app, for example, containers, as these runs.
+When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.
 
 It can be useful to check the log file when debugging.
 
