@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Open OnDemand's home page provides menus and icons to allow you to access Open OnDemand's features.
+The home page provides menus and buttons to allow you to access Open OnDemand's functionality, its app suite.
 
 ![Open OnDemand home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Open OnDemand home page*
 
-Open OnDemand's features are described on the following pages:
+Open OnDemand's key concepts and its app suite are described on the following pages:
 
 * [Run jobs](jobs.md)
 * [Run containers](containers.md)
@@ -16,23 +16,21 @@ Open OnDemand's features are described on the following pages:
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
 
-General purpose features are described below.
-
 ---
 
-## Restart your Open OnDemand session
+## Restart your session
 
-Select the **Help (?)** menu, **Restart Web Server** option to restart your Open OnDemand session.
+Select the **Help (?)** menu, **Restart Web Server** option to restart your session.
 
 ![Help menu button](../../images/open-ondemand/help-menu.png){: class="border-img center"} ***Help (?)** menu button*
 
 !!! Info
 
-    Despite its name, this option does not restart the Open OnDemand web server! It restarts your session only. It does not affect other users!
+    Despite its name, this option does not restart the web server upon which Open OnDemand runs! It restarts your session only. It does not affect other users!
 
 !!! Tip
 
-    If the Open OnDemand service or apps have been updated during your session, then **Restart Web Server** allows you to pick up such changes without having to log out and log back into Open OnDemand,
+    If Open OnDemand has been updated during your session, then **Restart Web Server** allows you to pick up such changes without having to log out and log back in again.
 
 ---
 
@@ -46,6 +44,6 @@ Click the **Avatar** (head and shoulders icon) on the menu bar to display your l
 
 ## Log out
 
-Click **Log Out** (right arrow icon) on the menu bar to log out of Open OnDemand.
+Click **Log Out** (right arrow icon) on the menu bar to log out.
 
 ![Log Out menu button, a right arrow icon](../../images/open-ondemand/logout-button.png){: class="border-img center"} ***Log Out** menu button*
