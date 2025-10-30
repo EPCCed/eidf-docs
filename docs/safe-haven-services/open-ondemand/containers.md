@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The TRE Open OnDemand service is intended to allow you to run jobs that run containers, which package up software, services a nd their dependencies. This includes both your own project-specific containers that you have been authorised to run within your safe haven as well as standard containers with useful services such as JupyterLab and RStudio Server.
+Some Open OnDemand apps allow you to run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers built for the TRE Open OnDemand service (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.
 
 Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
 
-[Run jobs](jobs.md) introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. The page focuses on aspects of running containers within this job execution environment.
+[Run jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.
 
 ---
 
@@ -18,7 +18,7 @@ Open OnDemand uses the Container Execution Service tools to run containers. Cons
 
 ## Container registries
 
-The container registries supported by the Container Execution Service, and so accessible from within Open OnDemand, are as follows:
+The container registries supported by the Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
@@ -33,7 +33,7 @@ The container registries supported by the Container Execution Service, and so ac
 
 ## Sharing files between a back-end and a container
 
-When the container is run, three directories on the back-end are mounted into the container:
+When a container is run via the Container Execution Service, three directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -42,6 +42,10 @@ When the container is run, three directories on the back-end are mounted into th
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+
+!!! Note
+
+    Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
@@ -79,7 +83,7 @@ For some containers run using Podman that you will find that you the 'root' user
 
 Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
 
-For containers run using Apptainer, you will be your own user within the  container.
+For containers run using Apptainer, you will be your own user within the container.
 
 As a concrete example, consider the `epcc-ces-hello-tre` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
