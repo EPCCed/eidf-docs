@@ -20,11 +20,12 @@ Every time a job is created by an app, Open OnDemand creates the job files the a
 
 For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
 
-However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM. To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job.
+However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
-For the back-ends used by this walkthrough this **only** needs to be done by users of the **DataLoch safe haven**. Users of **other safe havens** can **skip to the next section**, [Run the Run Batch Container app](#run-the-run-batch-container-app) below.
+* Superdome Flex, shs-sdf01.nsh.loc.
+* All DataLoch VMs.
 
-To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, then return to this page.
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. As Superdome Flex is not used in this walkthrough, this set up  **only** needs to be done by users of the **DataLoch safe haven** who should now follow the instructions in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, before returning to this page.
 
 ---
 
