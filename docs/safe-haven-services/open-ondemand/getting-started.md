@@ -1,13 +1,13 @@
 # Getting started
 
-The TRE Open OnDemand service allows you to run compute and data-related tasks on compute resources available to your safe haven. Here, we introduce using Open OnDemand to run containers - which package up software, services, and their dependencies - via the TRE Container Execution Service - on compute resources available to your safe haven.
+The TRE Open OnDemand service is a web service that runs within a safe haven. The service provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven. Here, we introduce by means of a walkthrough, Open OnDemand and its apps.
 
 First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end**, or, in some parts of Open OnDemand, a **cluster**. Each run of a task on a back-end is called a **job**. An Open OnDemand component that allows you to run jobs, or other useful functions, is called an **app**.
 
-Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:
+This walkthrough is centred around three apps:
 
-* [Run Batch Container](apps/batch-container-app.md) allows you to run a container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task, those that perform some computational or data-related task without human interaction when they are running.
-* [Run JupyterLab Container](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!
+* [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
+* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 ---
@@ -30,7 +30,7 @@ To use a DataLoch VM to run Open OnDemand apps, please follow the instructions i
 
 ## Run the Run Batch Container app
 
-[Run Batch Container](apps/batch-container-app.md) allows you to run a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
+[Run Batch Container](apps/batch-container-app.md) runs a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
 
 Click the 'Run Batch Container' app on the Open OnDemand home page.
 
@@ -129,7 +129,7 @@ The Job status on the job card will update to 'Completed'.
 
 ### How containers exchange files with back-ends
 
-Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand **must** conform to the requirements of the TRE Container Execution Service, and `epcc-ces-hello-tre` does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:
+When a container is run, three directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -138,6 +138,10 @@ Open OnDemand uses TRE Container Execution Service tools to run containers and c
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. |
 
 Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+
+!!! Note
+
+    Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
 
 When the `epcc-ces-hello-tre` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
 
@@ -314,7 +318,7 @@ If any app does not run promptly, but is in a 'Queued' state, then the Active Jo
 
 ## Run the Run JupyterLab Container app
 
-In contrast to Run Batch Container, which runs a container on a back-end without human interaction when it is running, [Run JupyterLab Container](apps/jupyter-app.md) allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!
+[Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end.
 
 Click the 'Run JupyterLab Container' app on the Open OnDemand home page.
 
