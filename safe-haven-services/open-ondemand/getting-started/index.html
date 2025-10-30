@@ -2871,12 +2871,12 @@
 
 
 <h1 id="getting-started">Getting started</h1>
-<p>The TRE Open OnDemand service allows you to run compute and data-related tasks on compute resources available to your safe haven. Here, we introduce using Open OnDemand to run containers - which package up software, services, and their dependencies - via the TRE Container Execution Service - on compute resources available to your safe haven.</p>
+<p>The TRE Open OnDemand service is a web service that runs within a safe haven. The service provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven. Here, we introduce by means of a walkthrough, Open OnDemand and its apps.</p>
 <p>First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a <strong>back-end</strong>, or, in some parts of Open OnDemand, a <strong>cluster</strong>. Each run of a task on a back-end is called a <strong>job</strong>. An Open OnDemand component that allows you to run jobs, or other useful functions, is called an <strong>app</strong>.</p>
-<p>Within the TRE Open OnDemand service, apps are provided to run containers on back-ends. This walkthrough is centred around three apps:</p>
+<p>This walkthrough is centred around three apps:</p>
 <ul>
-<li><a href="../apps/batch-container-app/">Run Batch Container</a> allows you to run a container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task, those that perform some computational or data-related task without human interaction when they are running.</li>
-<li><a href="../apps/jupyter-app/">Run JupyterLab Container</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service that you can use. Please be reassured that no Python knowledge is assumed or required!</li>
+<li><a href="../apps/batch-container-app/">Run Batch Container</a> runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.</li>
+<li><a href="../apps/jupyter-app/">Run JupyterLab Container</a> runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that no Python knowledge is assumed or required!</li>
 <li><a href="../apps/active-jobs/">Active Jobs</a> allows you to see which of your jobs have been submitted, are running, or have completed.</li>
 </ul>
 <hr />
@@ -2884,12 +2884,16 @@
 <p>Within your home directory on the Open OnDemand VM, Open OnDemand creates an <code>ondemand</code> directory. This is where Open OnDemand stores information about your current session and previous sessions.</p>
 <p>Every time a job is created by an app, Open OnDemand creates the job files the app needs for it to run, and log files when it is running, within a job-specific <strong>job context directory</strong> in an app-specific directory.</p>
 <p>For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.</p>
-<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynchronised, separate, home directories on each VM. To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your <code>ondemand</code> directory to your chosen back-end when you submit a job.</p>
-<p>For the back-ends used by this walkthrough this <strong>only</strong> needs to be done by users of the <strong>DataLoch safe haven</strong>. Users of <strong>other safe havens</strong> can <strong>skip to the next section</strong>, <a href="#run-the-run-batch-container-app">Run the Run Batch Container app</a> below.</p>
-<p>To use a DataLoch VM to run Open OnDemand apps, please follow the instructions in <a href="../jobs/#enable-automated-copy-of-job-files-to-a-back-end">Enable automated copy of job files to a back-end</a> to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, then return to this page.</p>
+<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:</p>
+<ul>
+<li>Superdome Flex, shs-sdf01.nsh.loc.</li>
+<li>All DataLoch VMs.</li>
+</ul>
+<p>To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your <code>ondemand</code> directory to your chosen back-end when you submit a job.</p>
+<p>As Superdome Flex is not used in this walkthrough, this set up <strong>only</strong> needs to be done by users of the <strong>DataLoch safe haven</strong> who should now follow the instructions in <a href="../jobs/#enable-automated-copy-of-job-files-to-a-back-end">Enable automated copy of job files to a back-end</a> to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, before returning to this page.</p>
 <hr />
 <h2 id="run-the-run-batch-container-app">Run the Run Batch Container app</h2>
-<p><a href="../apps/batch-container-app/">Run Batch Container</a> allows you to run a batch container on a back-end. By <strong>batch container</strong> we mean a container that performs some computational or data-related task without human interaction when it is running.</p>
+<p><a href="../apps/batch-container-app/">Run Batch Container</a> runs a batch container on a back-end. By <strong>batch container</strong> we mean a container that performs some computational or data-related task without human interaction when it is running.</p>
 <p>Click the 'Run Batch Container' app on the Open OnDemand home page.</p>
 <p>The 'Run Batch Container' app form will open.</p>
 <p><img alt="Excerpt of Run Batch Container app form" class="border-img center" src="../../../images/open-ondemand/getting-started-01-batch-container-app-form.png" />
@@ -2999,7 +3003,7 @@
 <p><img alt="Run Batch Container app job card showing job status as 'Completed'" class="border-img center" src="../../../images/open-ondemand/getting-started-04-batch-container-app-completed.png" />
 <em>Run Batch Container app job card showing job status as 'Completed'</em></p>
 <h3 id="how-containers-exchange-files-with-back-ends">How containers exchange files with back-ends</h3>
-<p>Open OnDemand uses TRE Container Execution Service tools to run containers and containers run via Open OnDemand <strong>must</strong> conform to the requirements of the TRE Container Execution Service, and <code>epcc-ces-hello-tre</code> does. For this walkthrough, the key points are that containers need to support three directories, so that when the container is run, three directories on the back-end can be mounted into the container:</p>
+<p>When a container is run, three directories on the back-end are always mounted into the container:</p>
 <table>
 <thead>
 <tr>
@@ -3027,6 +3031,10 @@
 </tbody>
 </table>
 <p>Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.</p>
+</div>
 <p>When the <code>epcc-ces-hello-tre</code> container is run, it writes two files into <code>/safe_outputs</code> within the container, and so into a <code>$HOME/outputs-NUMBER</code> on your home directory on the back-end:</p>
 <ul>
 <li><code>safe_data.txt</code>, which lists a selection of directories and files in the <code>/safe_data/PROJECT_SUBDIRECTORY</code> directory that was mounted into the container at <code>/safe_data</code>.</li>
@@ -3163,12 +3171,11 @@ Goodbye Mike!
 <p>If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.</p>
 <hr />
 <h2 id="run-the-run-jupyterlab-container-app">Run the Run JupyterLab Container app</h2>
-<p>In contrast to Run Batch Container, which runs a container on a back-end without human interaction when it is running, <a href="../apps/jupyter-app/">Run JupyterLab Container</a> allows you to run a JupyterLab container on a back-end, which creates an interactive JupyterLab service you can use. Please be reassured that no Python knowledge is assumed or required!</p>
+<p><a href="../apps/jupyter-app/">Run JupyterLab Container</a> runs an interactive JupyterLab service, within a container, on a back-end.</p>
 <p>Click the 'Run JupyterLab Container' app on the Open OnDemand home page.</p>
 <p>The Run JupyterLab Container app form will open.</p>
 <p><img alt="Excerpt of Run JupyterLab Container app form" class="border-img center" src="../../../images/open-ondemand/getting-started-09-jupyter-app-form.png" />
 <em>Excerpt of Run JupyterLab Container app form</em></p>
-<p>This app's form has far less settings since it is designed to run, using Podman, a JupyterLab container created for use with the TRE Container Execution Service.</p>
 <p>For <strong>Cluster</strong>, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.</p>
 <p>Leave the other settings as-is.</p>
 <h3 id="launch-the-run-jupyterlab-container-app-job">Launch the Run JupyterLab Container app job</h3>

@@ -2776,8 +2776,8 @@
 cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;core id&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="m">8</span>
-<span class="m">8</span>
+<div class="highlight"><pre><span></span><code>8
+8
 </code></pre></div>
 <p>This back-end has 8 CPUs and 8 cores.</p>
 <hr />
@@ -2786,9 +2786,9 @@ cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">
 <div class="highlight"><pre><span></span><code>free<span class="w"> </span>-h
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>total<span class="w">        </span>used<span class="w">        </span>free<span class="w">      </span>shared<span class="w">  </span>buff/cache<span class="w">   </span>available
-Mem:<span class="w">           </span>125Gi<span class="w">       </span><span class="m">5</span>.2Gi<span class="w">       </span><span class="m">6</span>.0Gi<span class="w">       </span>140Mi<span class="w">       </span>114Gi<span class="w">       </span>119Gi
-Swap:<span class="w">             </span>0B<span class="w">          </span>0B<span class="w">          </span>0B
+<div class="highlight"><pre><span></span><code>total        used        free      shared  buff/cache   available
+Mem:           125Gi       5.2Gi       6.0Gi       140Mi       114Gi       119Gi
+Swap:             0B          0B          0B
 </code></pre></div>
 <p>This back-end has 125 Gib memory in total.</p>
 <hr />
@@ -2796,8 +2796,8 @@ Swap:<span class="w">             </span>0B<span class="w">          </span>0B<s
 <p>If, on submitting a job you get an error:</p>
 <blockquote>
 <p>Failed to submit session with the following error:</p>
-<div class="highlight"><pre><span></span><code>sbatch:<span class="w"> </span>error:<span class="w"> </span>Memory<span class="w"> </span>specification<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>satisfied
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<div class="highlight"><pre><span></span><code>sbatch: error: Memory specification can not be satisfied
+sbatch: error: Batch job submission failed: Requested node configuration is not available
 </code></pre></div>
 </blockquote>
 <p>then this can arise if you have requested more memory for your job than is available on the back-end.</p>
@@ -2815,10 +2815,10 @@ sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w
 <hr />
 <h2 id="troubleshooting-cannot-remove-ondemanddatasysappnfs">Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'</h2>
 <p>If you delete your <code>ondemand</code> directory on the Open OnDemand VM, you may see an error like the following:</p>
-<div class="highlight"><pre><span></span><code>rm:<span class="w"> </span>cannot<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002&#39;</span>:<span class="w"> </span>Device<span class="w"> </span>or<span class="w"> </span>resource<span class="w"> </span>busy
+<div class="highlight"><pre><span></span><code>rm: cannot remove &#39;ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002&#39;: Device or resource busy
 </code></pre></div>
-<p>The file is a system file held by a lingering process created by Open OnDemand as part of your session.</p>
-<p>Within Open OnDemand, select the <strong>Help (?)</strong> menu, <strong>Restart Web Server</strong> option to restart your Open OnDemand session, which ends the process and allows you to remove the file, and directory.</p>
+<p>The file is a system file held by a lingering process created during your session.</p>
+<p>Log into Open OnDemand (if you are not already logged in) and, within Open OnDemand, select the <strong>Help (?)</strong> menu, <strong>Restart Web Server</strong> option to restart your session. This will end the lingering process and allow you to remove the file, and directory.</p>
 
 
 

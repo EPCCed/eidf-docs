@@ -2921,19 +2921,19 @@
 <h1 id="run-jobs">Run jobs</h1>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>Open OnDemand allows you to run compute and data-related tasks on compute resources available to your safe haven.</p>
+<p>Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.</p>
 <p>Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.</p>
-<p>This page introduces how Open OnDemand runs tasks, and information you need to know about when running tasks. <a href="../containers/">Run containers</a> focuses on aspects of running containers within this job execution environment.</p>
+<p>This page describes concepts you need to know about how Open OnDemand runs tasks and apps.</p>
 <hr />
 <h2 id="back-ends-clusters-jobs-and-apps">Back-ends, clusters, jobs and apps</h2>
 <p>A compute resource upon which tasks can be run is called a <strong>back-end</strong>, or, in some parts of Open OnDemand, a <strong>cluster</strong>.</p>
 <p>Each run of a task on a back-end is called a <strong>job</strong></p>
 <p>An Open OnDemand component that allows you to run jobs, or other useful functions, is called an <strong>app</strong>.</p>
 <p>Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the <a href="../apps/active-jobs/">Active Jobs</a> app which allows you to see which of your jobs have been submitted, are running, or have completed.</p>
-<p>A subset of apps that run jobs on back-ends are called <strong>interactive apps</strong>. All Container Execution Service apps that run containers are classed, in Open OnDemand terms, as 'interactive' even those apps that run non-interactive containers!</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>In standard deployments of Open OnDemand, interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, Open OnDemand's application programming interface for interactive apps is used to implement both apps that run containers that run such services and those that run any other containers, because that interface is easier to implement apps with than that for non-interactive (in the Open OnDemand sense) apps!</p>
+<p>A subset of apps that run jobs on back-ends are called <strong>interactive apps</strong>. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Open OnDemand's application programming interface for interactive apps is significantly less complex than its interface for non-interactive (in the Open OnDemand sense) apps!</p>
 </div>
 <h3 id="back-end-cluster-names">Back-end (cluster) names</h3>
 <p>Within Open OnDemand, back-ends are typically referred to via human-readable names. A selection of back-end names includes:</p>
@@ -2953,7 +2953,7 @@
 <li>smartdf_gpu_desktop01</li>
 <li>shs_sdf01</li>
 </ul>
-<p>Within <a href="#job-cards">job cards</a> on the <a href="#my-interactive-sessions-page">My Interactive Sessions</a> page, described below, you will see the VM names upon which the jobs are running.</p>
+<p>Within <a href="#job-cards">job cards</a> on the <a href="#my-interactive-sessions-page">My Interactive Sessions</a> page, described below, you will see the VM names upon which the jobs for interactive apps are running.</p>
 <hr />
 <h2 id="job-scheduling-and-execution">Job scheduling and execution</h2>
 <p>To run a job, including those created by apps, you need to select the resources - the number of CPUs/cores and amount of memory - you think your job will need.</p>
@@ -2980,16 +2980,16 @@
 <p>When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Container Execution Service apps will run for a maximum of 6 hours.</p>
+<p>Apps run for a maximum of 6 hours.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.</p>
+<p>Any running jobs are cancelled during the monthly TRE maintenance period.</p>
 </div>
 <p>For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the <strong>connection timeout</strong>, then the app's job will cancel itself.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In standard deployments of Open OnDemand, the notification sent by the app includes information required by Open OnDemand to display how to connect to web- or GUI-based services started by the app. However, as mentioned above, all Container Execution Service apps that run containers use Open OnDemand's application programming interface for interactive apps, so you may see the connection timeout for the apps that run non-interactive containers too.</p>
+<p>As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.</p>
 </div>
 <hr />
 <h2 id="your-ondemand-directory">Your <code>ondemand</code> directory</h2>
@@ -3001,7 +3001,7 @@
 <p>where <code>JOB_COMPOSER_ID</code> is a unique job ID created by the app. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/1/
 </code></pre></div>
-<p>Interactive app job files are created in a directory:</p>
+<p>An interactive app's job files are created in a directory:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 </code></pre></div>
 <p>where <code>APP_NAME</code> is the app name and <code>SESSION_ID</code> a unique session identifier. For example,</p>
@@ -3019,8 +3019,7 @@
 <hr />
 <h2 id="unsynched-home-directories">Unsynched home directories</h2>
 <p>For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.</p>
-<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM.</p>
-<p>Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:</p>
+<p>However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:</p>
 <ul>
 <li>Superdome Flex, shs-sdf01.nsh.loc.</li>
 <li>All DataLoch VMs.</li>
@@ -3102,7 +3101,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <li>The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.</li>
 <li>When resources become available on the back-end, your job runs:<ul>
 <li>For jobs created via the <a href="../apps/job-composer/">Job Composer</a> app, the job status will be 'Running'.</li>
-<li>For jobs created via apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.</li>
+<li>For jobs created via interactive apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.</li>
 </ul>
 </li>
 <li>Your job will complete. The job status will be 'Completed'.</li>
@@ -3114,7 +3113,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <hr />
 <h2 id="browse-and-manage-jobs">Browse and manage jobs</h2>
 <p>You can browse and manage jobs via the <a href="../apps/active-jobs/">Active Jobs</a> app.</p>
-<p>For interactive app jobs (not those created by the <a href="../apps/job-composer/">Job Composer</a> app), you can also use the <a href="#my-interactive-sessions-page">My Interactive Sessions</a> page, which provides more app-specific information.</p>
+<p>For an interactive app's job, you can also use the <a href="#my-interactive-sessions-page">My Interactive Sessions</a> page, which provides more app-specific information.</p>
 <hr />
 <h2 id="my-interactive-sessions-page">My Interactive Sessions page</h2>
 <p>Click <strong>My Interactive Sessions</strong> (overlaid squares icon) on the menu bar to open the My Interactive Sessions page.</p>
@@ -3122,7 +3121,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <p>The My Interactive Sessions page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a job card.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Only information for jobs arising from what Open OnDemand terms 'interactive apps' is shown. All Container Execution Service apps are classed as 'interactive apps'. Information on jobs submitted by Open OnDemand's <a href="../apps/job-composer/">Job Composer</a> app are shown on that app's own page.</p>
+<p>Only information for jobs for interactive apps is shown. Information on jobs submitted via the <a href="../apps/job-composer/">Job Composer</a> app are shown on that app's own page.</p>
 </div>
 <h3 id="job-cards">Job cards</h3>
 <p>When an interactive app's job is submitted, a <strong>job card</strong> is created and shown with information about the app's job including:</p>
@@ -3136,10 +3135,10 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <li>For some apps, this will include the 'Connection timeout'.</li>
 </ul>
 </li>
-<li>App-specific status information, and, for apps that run containers with interactive web- or GUI-based services, a button to connect to the service.</li>
+<li>App-specific status information, and, for apps that run interactive web- or GUI-based services, a button to connect to the service.</li>
 </ul>
 <p><img alt="Example job card for Run Batch Container app" class="border-img center" src="../../../images/open-ondemand/job-card-batch-container-app.png" /> <em>Example job card for the Run Batch Container app</em></p>
-<p><img alt="Example job card for JupyterLab app" class="border-img center" src="../../../images/open-ondemand/job-card-jupyter-app.png" /> <em>Example job card for the Run JupyterLab Container app</em></p>
+<p><img alt="Example job card for JupyterLab app" class="border-img center" src="../../../images/open-ondemand/job-card-jupyter-app.png" /> <em>Example job card for the Run JupyterLab app</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The job status does <strong>not</strong> display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../apps/active-jobs/">Active Jobs</a> app.</p>
@@ -3186,7 +3185,7 @@ and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </spa
 <p>You can safely delete these log files, if they're taking up too much space.</p>
 </div>
 <h3 id="app-log-files">App log files</h3>
-<p>When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your <code>ondemand</code> directory. This log file includes information from the app itself plus logs captured from anything spawned by the app, for example, containers, as these runs.</p>
+<p>When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your <code>ondemand</code> directory. This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.</p>
 <p>It can be useful to check the log file when debugging.</p>
 <p>Depending on the app implementation, the log file may include a job ID, a unique job ID created by the job scheduler, when you submitted the job.</p>
 <div class="admonition note">
