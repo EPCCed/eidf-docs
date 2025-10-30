@@ -327,8 +327,6 @@ The Run JupyterLab Container app form will open.
 ![Excerpt of Run JupyterLab Container app form](../../images/open-ondemand/getting-started-09-jupyter-app-form.png){: class="border-img center"}
 *Excerpt of Run JupyterLab Container app form*
 
-This app's form has far less settings since it is designed to run, using Podman, a JupyterLab container created for use with the TRE Container Execution Service.
-
 For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
 
 Leave the other settings as-is.
