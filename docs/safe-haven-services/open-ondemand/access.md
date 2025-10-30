@@ -14,16 +14,16 @@ To access Open OnDemand:
     * Smart Data Foundry, `https://smartdf-ondemand.nsh.loc`
     * DataLoch, `https://dap-ondemand.nsh.loc`
 1. If using Falkon and an SSL Certificate Error! dialog appears with text 'Would you like to make an exception for this certificate?', then:
-    * Click **Yes**. It is OK to ignore this error in this specific case, as you are within your safe haven within the TRE, contacting a Safe Haven Services service also running within your safe haven. This error arises as, at time of writing, the certificates for the TRE services have not been installed on your VM.
+    * Click **Yes**. It is OK to ignore this error in this specific case, as you are within your safe haven within the TRE, contacting a Safe Haven Services service also running within your safe haven. This error arises because, at time of writing, certificates for this service have not been installed on your VM.
 1. If using Firefox and a Warning: Potential Security Risk Ahead page appears with text 'Error code: SEC_ERROR_UNKNOWN_ISSUER', then
     1. Click **Advanced...**
-    1. Click **Accept the Risk and Continue**. It is OK to accept this risk in this specific case, as you are within your safe haven within the TRE, contacting a Safe Haven Services service also running within your safe haven. This warning arises as, at time of writing, the certificates for the TRE services have not been installed on your VM.
-1. The Open OnDemand log in page will appear.
+    1. Click **Accept the Risk and Continue**. It is OK to accept this risk in this specific case, as you are within your safe haven within the TRE, contacting a Safe Haven Services service also running within your safe haven. This warning arises because, at time of writing, certificates for this service have not been installed on your VM.
+1. A log in page will open.
 
-    ![Open OnDemand log in page](../../images/open-ondemand/login-page.png){: class="border-img center"} *Open OnDemand log in page*
+    ![Log in page](../../images/open-ondemand/login-page.png){: class="border-img center"} *Log in page*
 
-1. Enter your project username and password. These are the same username and password that you used when logging into your safe haven VM.
-1. Click **Log in**
+1. Enter your project username and password. These are the same username and password that you use when logging into your safe haven VM.
+1. Click **Log in**.
 1. The [Open OnDemand home page](home-page.md) will open.
 
 ### Troubleshooting: Bad Request
@@ -32,8 +32,8 @@ If you see a page with text:
 
 > Your browser sent a request that this server could not understand.
 
-then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous Open OnDemand session.
+then revisit the URL and try to log in again. This can arise if there is information in your browser cache from a previous session.
 
 ### Troubleshooting: Cannot access Open OnDemand
 
-'For any other problems logging into Open OnDemand, first double-check your username and password. If you still have no success, then please contact your Research Coordinator (or equivalent).
+For any other problems logging in, first double-check your username and password. If you still have no success, then please contact your Research Coordinator (or equivalent).

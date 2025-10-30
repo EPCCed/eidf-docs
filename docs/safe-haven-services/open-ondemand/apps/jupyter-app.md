@@ -1,8 +1,6 @@
 # Run JupyterLab Container
 
-Run JupyterLab Container is a Container Execution Service app that allows you to run a JupyterLab container on a back-end within your safe haven.
-
-The container is run using Podman.
+Run JupyterLab Container is an app that runs a JupyterLab container on a back-end within your safe haven. The JupyterLab container was built for the TRE Open OnDemand service. The container is run using Podman.
 
 ---
 

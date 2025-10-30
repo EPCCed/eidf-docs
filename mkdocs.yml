@@ -117,12 +117,12 @@ nav:
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
      # TRE Open OnDemand service docs can be uncommented and added to
      # the navigation menu when the TRE Open OnDemand service is made
-     # available to TRE tenants. See MikeJ and Kostas for details.
+     # available to TRE tenants. See MikeJ for details.
      #- "TRE Open OnDemand service":
      #  - "About the TRE Open OnDemand service": safe-haven-services/open-ondemand/about.md
-     #  - "Access Open OnDemand": safe-haven-services/open-ondemand/access.md
+     #  - "Access": safe-haven-services/open-ondemand/access.md
      #  - "Getting started": safe-haven-services/open-ondemand/getting-started.md
-     #  - "Open OnDemand home page": safe-haven-services/open-ondemand/home-page.md
+     #  - "Home page": safe-haven-services/open-ondemand/home-page.md
      #  - "Run jobs": safe-haven-services/open-ondemand/jobs.md
      #  - "Run containers": safe-haven-services/open-ondemand/containers.md
      #  - "View and run apps": safe-haven-services/open-ondemand/apps.md

@@ -13,7 +13,7 @@ cat /proc/cpuinfo | grep 'core id' | wc -l
 
 For example:
 
-```bash
+```text
 8
 8
 ```
@@ -32,7 +32,7 @@ free -h
 
 For example:
 
-```bash
+```text
 total        used        free      shared  buff/cache   available
 Mem:           125Gi       5.2Gi       6.0Gi       140Mi       114Gi       119Gi
 Swap:             0B          0B          0B
@@ -48,7 +48,7 @@ If, on submitting a job you get an error:
 
 > Failed to submit session with the following error:
 >
-> ```bash
+> ```text
 > sbatch: error: Memory specification can not be satisfied
 > sbatch: error: Batch job submission failed: Requested node configuration is not available
 > ```
@@ -72,10 +72,10 @@ A job may stay in a 'Queued' state for the following reasons:
 
 If you delete your `ondemand` directory on the Open OnDemand VM, you may see an error like the following:
 
-```bash
+```text
 rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Device or resource busy
 ```
 
-The file is a system file held by a lingering process created by Open OnDemand as part of your session.
+The file is a system file held by a lingering process created during your session.
 
-Within Open OnDemand, select the **Help (?)** menu, **Restart Web Server** option to restart your Open OnDemand session, which ends the process and allows you to remove the file, and directory.
+Log into Open OnDemand (if you are not already logged in) and, within Open OnDemand, select the **Help (?)** menu, **Restart Web Server** option to restart your session. This will end the lingering process and allow you to remove the file, and directory.

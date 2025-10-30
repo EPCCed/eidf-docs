@@ -4,21 +4,21 @@
 
 ## Introduction
 
-The following apps are available on Open OnDemand.
+The following apps are available as part of Open OnDemand's app suite:
 
 | App | Type | Description |
 | --- | ---- | ----------- |
-| [Active Jobs](apps/active-jobs.md) | System Installed App | Open OnDemand app that allows you to browse and manage jobs created via both apps and the Job Composer app |
-| [Run Batch Container](apps/batch-container-app.md) | Tenant and TRE Service | Container Execution Service app that allows you to run a batch container on a back-end |
-| [Run JupyterLab Container](apps/jupyter-app.md) | Tenant Service | Container Execution Service app that allows you to run a JupyterLab container on a back-end |
-| [Run RStudio Server Container](apps/rstudio-app.md) | Tenant Service | Container Execution Service app that allows you to run an RStudio Server container on a back-end |
-| [Job Composer](apps/job-composer.md) | System Installed App | Open OnDemand app that allows you to submit a Slurm batch job to a back-end |
+| [Active Jobs](apps/active-jobs.md) | System Installed App | Browse and manage jobs created via both apps and the Job Composer app |
+| [Run Batch Container](apps/batch-container-app.md) | Tenant and TRE Service | Run a batch container on a back-end |
+| [Run JupyterLab Container](apps/jupyter-app.md) | Tenant Service | Run a JupyterLab container on a back-end |
+| [Run RStudio Server Container](apps/rstudio-app.md) | Tenant Service | Run an RStudio Server container on a back-end |
+| [Job Composer](apps/job-composer.md) | System Installed App | Write and submit a Slurm batch job to a back-end |
 
 The app types are:
 
-* 'System Installed App': apps provided with Open OnDemand.
-* 'Tenant Service': apps to run jobs on back-ends within your safe haven.
-* 'Tenant and TRE Service': apps to run jobs on back-ends within both your safe haven and on TRE-level compute resources.
+* 'System Installed App': General purpose apps provided with Open OnDemand.
+* 'Tenant Service': Apps to run jobs on back-ends within your safe haven.
+* 'Tenant and TRE Service': Apps to run jobs on back-ends within both your safe haven and on TRE-level compute resources.
 
 Open OnDemand supports a number of ways by which you can see the apps available to you and select an app to run.
 
@@ -60,6 +60,6 @@ Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to ope
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
 
-The My Interactive Sessions page has a **selection** of the apps available to you on the left-hand-side.
+The My Interactive Sessions page has a **selection** of the interactive apps available to you on the left-hand-side.
 
 Click an app-specific button to access that app.
