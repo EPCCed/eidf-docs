@@ -6,15 +6,15 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 
 ## Overview
 
-In the following lesson, we'll build a CNN neural network and train it using the EIDF GPU Service.
+In this tutorial, we will build a Convolutional Neural Network (CNN) and train it using the SHS GPU Cluster.
 
 The model was taken from the [PyTorch Tutorials](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
-The lesson will be split into three parts:
+The tutorial will be split into three parts:
 
 - Requesting a persistent volume and transferring code/data to it
 - Creating a pod with a PyTorch container downloaded from DockerHub
-- Submitting a job to the EIDF GPU Service and retrieving the results
+- Submitting a job to the SHS GPU Cluster and retrieving the results
 
 ## Load training data and ML code into a persistent volume
 
@@ -196,11 +196,11 @@ This is not intended to be an introduction to PyTorch, please see the [online tu
 
 ## Using a Kubernetes job to train the pytorch model multiple times
 
-A common ML training workflow may consist of training multiple iterations of a model: such as models with different hyperparameters or models trained on multiple different data sets.
+A common ML training workflow may consist of training multiple iterations of a model, such as models with different hyperparameters or models trained on multiple different data sets.
 
 A Kubernetes job can create and manage multiple pods with identical or different initial parameters.
 
-NVIDIA provide a detailed tutorial on how to conduct a ML hyperparameter search with a [Kubernetes job](https://developer.nvidia.com/blog/kubernetes-ai-hyperparameter-search-experiments/).
+Nvidia provide a detailed tutorial on how to conduct a ML hyperparameter search with a [Kubernetes job](https://developer.nvidia.com/blog/kubernetes-ai-hyperparameter-search-experiments/).
 
 Below is an example job yaml for running the pytorch model which will continue to create pods until three have successfully completed the task of training the model.
 
