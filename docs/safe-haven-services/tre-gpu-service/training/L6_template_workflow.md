@@ -2,7 +2,7 @@
 
 ## Requirements
 
- It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L4_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
+It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) and [Requesting persistent volumes With Kubernetes](../L4_requesting_persistent_volumes/#requirements) before proceeding with this tutorial.
 
 ## Overview
 
@@ -20,7 +20,7 @@ Therefore, it is recommended to separate code, software, and data preparation in
 
 1. Code development with K8s: Iteratively changing and testing code in a job.
 
-The workflow describes different strategies to tackle the three common stages in code development and analysis using the EIDF GPU Service.
+The workflow describes different strategies to tackle the three common stages in code development and analysis using the SHS GPU Cluster.
 
 The three stages are interchangeable and may not be relevant to every project.
 
@@ -28,7 +28,7 @@ Some strategies in the workflow require a [GitHub](https://github.com) account a
 
 ## Data loading
 
-The EIDF GPU service contains GPUs with 40Gb/80Gb of on board memory and it is expected that data sets of > 100 Gb will be loaded onto the service to utilise this hardware.
+The SHS GPU Cluster contains GPUs with 40Gb/80Gb of on board memory and it is expected that data sets of > 100 Gb will be loaded onto the service to utilise this hardware.
 
 Persistent volume claims need to be of sufficient size to hold the input data, any expected output data and a small amount of additional empty space to facilitate IO.
 
@@ -223,7 +223,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     ```
 
 !!! important "Building images for different CPU architectures"
-    Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.
+    Be aware that docker images built for Apple ARM64 architectures will not function optimally on the SHS GPU Cluster's AMD64 based architecture.
 
     If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function.
 
@@ -319,7 +319,7 @@ Production code can be included within a Docker image to aid reproducibility as 
 
 However, binding the code to the docker image during development can delay the testing cycle as re-downloading all of the software for every change in a code block can take time.
 
-If the docker image is consistent across tests, then it can be cached locally on the EIDFGPU Service instead of being re-downloaded (this occurs automatically although the cache is node specific and is not shared across nodes).
+If the docker image is consistent across tests, then it can be cached locally on the SHS GPU Cluster instead of being re-downloaded (this occurs automatically although the cache is node specific and is not shared across nodes).
 
 A pod yaml file can be defined to automatically pull the latest code version before running any tests.
 
@@ -329,7 +329,7 @@ You must already have a [GitHub](https://github.com) account to follow this proc
 
 This process allows code development to be conducted on any device/VM with access to the repo (GitHub/GitLab).
 
-A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available [here](https://github.com/EPCCed/template-EIDFGPU-workflow).
+A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available in [in our user documentation](https://github.com/EPCCed/template-EIDFGPU-workflow).
 
 ### Create a job that downloads and runs the latest code version at runtime
 
