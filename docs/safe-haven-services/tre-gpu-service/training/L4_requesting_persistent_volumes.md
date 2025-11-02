@@ -8,19 +8,13 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 
 !!! important "BeeGFS - ReadWriteMany Volume Recommendation*"
 
-    As of May 2025, the GPU cluster has migrated to **BeeGFS** The new default, **BeeGFS**, supports `ReadWriteMany`, enabling multiple pods to mount and use the same volume concurrently.
+    As of May 2025, the SHS GPU Cluster has migrated to **BeeGFS** storage. The new default, **BeeGFS**, supports `ReadWriteMany`, enabling multiple pods to mount and use the same volume concurrently.
 
-Pods in the K8s TRE GPU Cluster are intentionally ephemeral.
-
-They only last as long as required to complete the task that they were created for.
-
-Keeping pods ephemeral ensures the cluster resources are released for other users to request.
-
-However, this means the default storage volumes within a pod are temporary.
+Pods in the K8s SHS GPU Cluster are intentionally ephemeral. They only last as long as required to complete the task that they were created for. Keeping pods ephemeral ensures that the Cluster resources are released for other users to request. However, this means the default storage volumes within a pod are temporary.
 
 If multiple pods require access to the same large data set or they output large files, then computationally costly file transfers need to be included in every pod instance.
 
-For security reasons, **users cannot create their own Persistent Volume Claims (PVCs)**. Instead, PVCs are pre-created and assigned to projects by the TRE platform team. These assigned PVCs allow data to be shared across multiple pods or retained even if the pods they are mounted to are deleted, updated, or crash.
+For security reasons, **users cannot create their own Persistent Volume Claims (PVCs)**. Instead, PVCs are pre-created and assigned to projects by the SHS platform team. These assigned PVCs allow data to be shared across multiple pods or retained even if the pods they are mounted to are deleted, updated, or crash.
 
 ## Predefined BeeGFS Persistent Volume Claims (PVCs)
 
@@ -37,11 +31,11 @@ These PVCs are automatically provisioned and do not require user creation.
 ## Mounting BeeGFS Volumes to a Pod
 
 To use BeeGFS-based shared and output directories in a container, add `volumeMounts` and `volumes` entries to your pod/job YAML.
-You also need to ensure the container runs with the correct user and group IDs matching your TRE user identity. This is critical for BeeGFS storage permissions and volume mounts to work properly.
+You also need to ensure the container runs with the correct user and group IDs matching your SHS user identity. This is critical for BeeGFS storage permissions and volume mounts to work properly.
 
 ### Security Context Explained
 
-**runAsUser:** The numeric user ID (UID) inside the container. This should match your TRE user UID.
+**runAsUser:** The numeric user ID (UID) inside the container. This should match your SHS user UID.
 
 **runAsGroup:** The **project Group ID (GID)** inside the container. This must match the group ID associated with your project, not your own GID. Using your GID here will cause `permission denied` errors when accessing BeeGFS.
 
@@ -50,9 +44,9 @@ You also need to ensure the container runs with the correct user and group IDs m
 !!! important "Why is this important?"
     BeeGFS uses POSIX file permissions for access control. Setting these IDs ensures the container’s processes can access mounted BeeGFS directories with the correct permissions. Without this, the volumes may fail to mount or be inaccessible.
 
-### How to Find Your UID and GID on the TRE Desktop VM
+### How to Find Your UID and GID on the SHS Desktop VM
 
-Open a terminal on the TRE Desktop VM and type:
+Open a terminal on the SHS Desktop VM and type:
 
 ``` bash
 id
