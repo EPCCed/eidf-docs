@@ -337,23 +337,34 @@ Note: `<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access t
 
 Note: The `<github_user>` and `<ghcr_token>` arguments to `ces-pull` are mandatory.
 
-If a runtime is not specified then podman is used as the default.
+The three container engines available are:
 
-The container can then be run with `ces-run`:
+- `Podman`, configured in rootless mode,
+- `Kubernetes` (or `k8s`), using a local single-node Microk8s cluster,
+- `Apptainer`
+
+Docker is not currently available.
+
+!!! note "Podman is the default container engine"
+     `ces-pull` defaults to Podman if no container engine is specified.
+
+To run a container, use:
 
 ```sh
 ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-`ces-run` supports the following optional arguments under most runtimes:
+Most container engines support the following arguments to `ces-run`:
 
 - Use `--opt-file=<file>` to specify a file containing additional options to be passed to the runtime
 - Use `--arg-file=<file>` to specify a file containing arguments to pass to the container command or entrypoint
 - Use `--env-file=<file>` to specify a file containing environment variables which will be set inside the container
 
-Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run [<runtime>] --help` for all available options.
+The Kubernetes engine does not support `--opt-file`. Containers that require a GPU can be run adding the `--gpu` option. See `ces-run --help`, and `ces-run <container-engine> --help` for all available options.
 
-We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
+The `--dry-run` option can be useful when working with kubernetes, as it will print the generated job spec. This can then be saved and edited if configuration is needed, and manually applied with `kubectl apply -f <file>` as normal.
+
+We recommend that containers are tested without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
 Once the container runs successfully in the test environment, it is ready to be used inside the TRE.
 
