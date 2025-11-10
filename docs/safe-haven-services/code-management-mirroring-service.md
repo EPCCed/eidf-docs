@@ -39,7 +39,7 @@ Once logged-in, you will be presented with a dashboard showing recent activity i
 
 ## Request a Repository
 
-To request the creation of a repository in your organization, contact your RC and let them know the desired name and external mirror repository, if applicable. The external repository must be empty, as any existing content will be overwritten by the mirroring process.
+To request the creation of a repository, contact your RC and let them know the desired name.
 
 Once created, your repository will be visible from your Gitea dashboard or under the "Explore" tab.
 
@@ -63,11 +63,31 @@ When running `git clone`, `git pull`, and `git push`, you will be prompted for y
 1. Clone the repo using the token, for example `git clone https://<token>@<url>/<organization>/<repo>.git`
     1. Note that in the test environment you will have to use "http" instead of "https"
 
+## Request Egress Setup for a Repository
+
+To add egress mirroring to an existing TRE repository, you must first setup an external repository that will be the target for the mirror. The target repository must be empty, as any existing content will be overwritten by the mirroring process.
+
+Once the repository has been created, you must generate an access token allowing write access to the repo. Examine the documentation of the external platform (e.g., GitLab, GitHub) to determine how to do this. As an example, in GitLab this can be achieved by:
+
+1. On the repository page, navigate to "Settings" -> "Access Tokens"
+1. Click "Add new token"
+1. On the next page
+    1. Enter a name e.g., "tre-mirror"
+    1. Clear the expiration date
+    1. Set the token's role to "maintainer"
+    1. Check "write_repository"
+    1. Click "Create project access token"
+1. Copy the generated token, and ensure you save it as it will not be displayed again
+
+Next, contact your RC to ask for egress mirroring, providing the TRE repository name, the URL to the external repository, and the access token.
+
+Once this is complete, there a branch named `egress-mirror` will be present in the TRE repository.
+
 ## Request Code Egress
 
-Egress mirroring is achieved through merging of code into a branch named `egress-mirror`. This is pre-created and will contain the same initial commit as the `main` branch.
+Egress mirroring is achieved through merging of code into a branch named `egress-mirror`. This must first be requested by following the steps in the previous topic.
 
-If enabled, you may submit Pull Requests (PRs) for code to be mirrored to a repository external to the TRE:
+Once enabled, you may submit Pull Requests (PRs) for code to be mirrored to a repository external to the TRE:
 
 1. From the repository page in Gitea, click "Pull Request"
 1. Click "New Pull Request"
