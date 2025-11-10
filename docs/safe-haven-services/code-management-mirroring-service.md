@@ -37,6 +37,9 @@ Gitea can be accessed from your VM desktop by opening a Web Browser and navigati
 
 Once logged-in, you will be presented with a dashboard showing recent activity in your organization. In Gitea, an "organization" is analagous to a project group, and you will be automatically granted access to the organization matching your TRE project identifier.
 
+!!! danger
+    If you are part of multiple projects in the TRE, you will have multiple VM accounts and potentially multiple Gitea accounts. If this is the case, you must ensure that you only access the corresponding Gitea account for the project you are currently working in. Failing to follow this may be considered a breach by the IG team.
+
 ## Request a Repository
 
 To request the creation of a repository, contact your RC and let them know the desired name.
