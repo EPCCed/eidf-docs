@@ -6,9 +6,9 @@
 
 **Reminder:** All users should submit jobs to their **local namespace user queue**, which follows the naming convention `<safe_heaven>-<project_id>-ns-user-queue`, e.g. `nsh-2024-0000-ns-user-queue`.
 
-### Changes to Job Specs
+### Job Specs
 
-Jobs can be submitted as before but will require the addition of a metadata label:
+To make Jobs functional with Kueue, you must add a metadata label specifying the queue:
 
 ```yaml
    labels:
