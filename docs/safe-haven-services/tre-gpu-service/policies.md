@@ -4,12 +4,6 @@
 
 Each project will be given a namespace which will have an applied quota.
 
-Default Quota:
-
-- CPU: 100 Cores
-- Memory: 1TiB
-- GPU: 12
-
 ## Kubeconfig
 
 Each project will be assigned a kubeconfig file for access to the service which will allow operation in the assigned namespace and access to exposed service operators, for example the GPU operator.
