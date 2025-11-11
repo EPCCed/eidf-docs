@@ -14,7 +14,6 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container name**: Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `epcc-ces-rstudio-SESSION_ID`, where `SESSION_ID` is a unique session identifier for the app's job.
 * **RStudio Server password**: RStudio Server running in the container needs to be password-protected. Specify the password to use.
 * **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
@@ -36,7 +35,7 @@ Open OnDemand will show an app job card with information about the app's job inc
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A 'RStudio Server is running in Podman container CONTAINER_NAME' message will appear along with a **Connect to RStudio Server** button. The RStudio Server container is now ready for use.
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A 'RStudio Server is running in Podman container epcc-ces-rstudio-SESSION_ID' message will appear along with a **Connect to RStudio Server** button. The RStudio Server container is now ready for use.
 
 Click **Connect to RStudio Server**. A new browser tab will open with RStudio Server.
 
