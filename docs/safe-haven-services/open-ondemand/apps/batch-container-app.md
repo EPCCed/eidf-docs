@@ -1,6 +1,6 @@
 # Run Batch Container
 
-Run Batch Container is a Container Execution Service app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
+Run Batch Container is an app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
 Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the TRE Container Execution Service.
 
@@ -70,9 +70,85 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 ---
 
-## Sharing files between the back-end and the container
+## Sharing files between the back-end and the container and persisting state between app runs
 
-See [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container)
+The app mounts three directories from the back-end into the container at `/safe_data`, `/safe_outputs` and `.scratch`. For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+
+If required, you can mount additional directories into your container:
+
+* If using Apptainer, your container already has access to your home directory environment, so there is nothing that need be done. However, if you need to mount these at specific points in the container then this can be done by adding Apptainer-specific parameters into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+
+    ```text
+    --bind ${HOME}/my_content:/mnt/my_content
+    ```
+
+* If using Podman, then this can be done by adding the Podman-specific syntax to mount the directories into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+
+    ```text
+    -v ${HOME}/my_content:/mnt/my_content
+    ```
+
+!!! Note
+
+    Any mounted directories must exist on the back-end on which the app runs.
+
+---
+
+## Accessing the TRE web proxy
+
+If your container needs to access the TRE web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:
+
+1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+1. See the values of your web proxy variables:
+
+    ```bash
+    $ set | grep -in proxy
+    CURLHTTPS_PROXY=...
+    CURLHTTP_PROXY=...
+    FTP_PROXY=...
+    HTTPS_PROXY=...
+    HTTP_PROXY=...
+    https_proxy=...
+    http_proxy=...
+    NO_PROXY=...
+    no_proxy=...
+    ```
+
+1. Paste the following variables and their values into the **Environment variables to pass to container**, one variable-value per line. For example:
+
+    ```text
+    CURLHTTPS_PROXY=...
+    CURLHTTP_PROXY=...
+    FTP_PROXY=...
+    HTTPS_PROXY=...
+    HTTP_PROXY=...
+    https_proxy=...
+    http_proxy=...
+    NO_PROXY=...
+    no_proxy=...
+    ```
+
+Alternatively:
+
+1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+1. Extract your web proxy variables and values into a bash script and add an `export` to each to give a bash script which defines your variables:
+
+    ```bash
+    $ set | grep -i proxy= | sed 's/^/export '/ > set-proxy-env.sh
+    $ cat set-proxy-env.sh
+    export CURLHTTPS_PROXY=...
+    export CURLHTTP_PROXY=...
+    export FTP_PROXY=...
+    export HTTPS_PROXY=...
+    export HTTP_PROXY=...
+    export https_proxy=...
+    export http_proxy=...
+    export NO_PROXY=...
+    export no_proxy=...
+    ```
+
+1. Add this bash script to a directory that is mounted into your container.
+1. `source` this bash script within your container.
 
 ---
 

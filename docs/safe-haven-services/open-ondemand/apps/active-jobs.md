@@ -1,6 +1,6 @@
 # Active Jobs
 
-Active Jobs is an Open OnDemand app that allows you to see which of your jobs have been submitted, are running, or have completed.
+Active Jobs is an app that allows you to see which of your jobs have been submitted, are running, or have completed.
 
 The Active Jobs app shows a table of running and recently completed jobs.
 
@@ -8,9 +8,15 @@ The Active Jobs app shows a table of running and recently completed jobs.
 
 ## Jobs table
 
+The job name is a job name set when the job is created and used by the job scheduler. Job names are app-specific and job scheduler-specific.
+
 The job ID is a unique job ID created by the job scheduler, when you submitted the job.
 
 ![Active Jobs app jobs table](../../../images/open-ondemand/active-jobs.png){: class="border-img center"} *The Active Jobs app job table*
+
+!!! Note
+
+    The job name is an app-specific job scheduler-specific job name. For the Job Composer and Slurm, the job name is the value of the Slurm `--job-name` parameter (set by `#SBATCH --job-name=...` in the job file). This job name is not the same as the job name shown in the Jobs table is used by the Job Composer. That job name is one entered in the **Job Name** field when completing the Job Composer's job submission forms.
 
 !!! Note
 
