@@ -304,7 +304,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 The Active Jobs app will open to show a table of running and recently completed jobs.
 
-You will see a 'batch_container_app' entry for your app's job.
+You will see an 'epcc-ces-hello-tre:1.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
 
 Your job will have a status of 'Completed'.
 
@@ -347,7 +347,6 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * 'Time Requested': The runtime requested for the job which defaults to 6 hours.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
-    * 'Container name'
     * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (180 seconds i.e., 3 minutes), then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
@@ -357,7 +356,7 @@ Again, Open OnDemand will show an app job card with information about the app's 
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A 'JupyterLab running in container epcc-ces-jupyter-SESSION_ID' message will appear along with a **Connect to JupyterLab** button. The JupyterLab container is now ready for use.
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will appear along with a **Connect to JupyterLab** button. The JupyterLab container is now ready for use.
 
 ![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-11-jupyter-app-running.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Running'*
@@ -454,7 +453,9 @@ As a reminder, `safe_outputs/jupyter/SESSION_ID` will persist after the job whic
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
-You will see a 'jupyter_app' entry for your app's job.
+You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab Container app jobs have this name.
+
+You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 

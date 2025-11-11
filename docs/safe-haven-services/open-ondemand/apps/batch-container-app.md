@@ -20,10 +20,12 @@ Complete the following information the app form:
 * **Container registry username**: Username to access the container registry.
 * **Container registry access token**: Access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
+* **Reuse existing SIF file** (Apptainer only): When Apptainer is used to run a container, the container is pulled and an Apptainer SIF file created. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after the local image name. For example, for an image `epcc-ces-hello-tre:1.1`, the SIF file is `epcc-ces-hello-tre:1.1.sif`.
 * **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
 * **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
 * **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
 * **Use GPU?**: Request that the container use a GPU. If selected, then your selected back-end must have a GPU.
+
 * **Command-line options to pass to container runner** are container runner-specific options to control the container runner's behaviour.
 * **Environment variables to pass to container**: Environment variables to be passed on by the container runner and set within the container when it runs. Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
@@ -67,6 +69,10 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 !!! Warning
 
     Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
+
+!!! Note
+
+    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello-tre:1.1'.
 
 ---
 
