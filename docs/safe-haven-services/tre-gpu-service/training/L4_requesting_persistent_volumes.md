@@ -86,7 +86,7 @@ Mounted read-write at /safe_outputs. Dedicated to the individual user identified
     - Shared data PVC: `pvc-nsh-2024-0000-shared`
     - User output PVC: `pvc-nsh-2024-0000-users-test`
 
-Your FreeIPA username `<tre_username>` corresponds to the user you log in as on the TRE portal and Desktop VM.
+Your FreeIPA username `<tre_username>` corresponds to the user you log in as on the Desktop VM.
 
 ### Example pod specification yaml with mounted persistent volume
 
