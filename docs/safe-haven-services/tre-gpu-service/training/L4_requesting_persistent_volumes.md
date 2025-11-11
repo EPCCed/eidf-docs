@@ -10,9 +10,9 @@ It is recommended that users complete [Getting started with Kubernetes](../L1_ge
 
     As of May 2025, the SHS GPU Cluster has migrated to **BeeGFS** storage. The new default, **BeeGFS**, supports `ReadWriteMany`, enabling multiple pods to mount and use the same volume concurrently.
 
-Pods in the K8s SHS GPU Cluster are intentionally ephemeral. They only last as long as required to complete the task that they were created for. Keeping pods ephemeral ensures that the Cluster resources are released for other users to request. However, this means the default storage volumes within a pod are temporary.
+Pods in the K8s SHS GPU Cluster are intentionally ephemeral—they exist only for the duration of the tasks they run. However, unlike default ephemeral storage, all project and user data is stored on Persistent Volume Claims (PVCs) that are pre-created and assigned to projects.
 
-If multiple pods require access to the same large data set or they output large files, then computationally costly file transfers need to be included in every pod instance.
+Persistent storage via PVCs allows multiple pods in the same project for same user to access the same data without repeating computationally costly file transfers.
 
 For security reasons, **users cannot create their own Persistent Volume Claims (PVCs)**. Instead, PVCs are pre-created and assigned to projects by the SHS platform team. These assigned PVCs allow data to be shared across multiple pods or retained even if the pods they are mounted to are deleted, updated, or crash.
 
