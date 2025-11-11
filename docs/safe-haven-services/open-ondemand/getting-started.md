@@ -347,7 +347,6 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * 'Time Requested': The runtime requested for the job which defaults to 6 hours.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
-    * 'Container name'
     * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (180 seconds i.e., 3 minutes), then the app's job will cancel itself.
     * 'Cores'
     * 'Memory in GiB'
