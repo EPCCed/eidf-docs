@@ -31,9 +31,9 @@ This project namespace will normally be formatted as the SHS Safe Heaven and Pro
 
 Once access to the SHS GPU Cluster has been confirmed, SHS project VMs will be configured to use the SHS GPU cluster - information on access to VMs is available in our [virtual desktop connections documentation](../virtual-desktop-connections.md).
 
-Users can authenticate with the GPU Cluster using their project account credentials. When they run a kubectl command for the first time  (e.g., `kubectl get pods`), they will be prompted to enter their project username and password. After successful authentication, their token is cached locally and remains valid until it expires or is deleted. Upon expiration, kubectl will again prompt for login credentials.
+Project users can authenticate to the GPU Cluster using their FreeIPA credentials. When you run a kubectl command, you will be prompted to enter your FreeIPA username and password if no valid token is cached locally. After successful authentication, your token is cached and remains valid until it expires or is deleted. Once the token expires, kubectl will prompt you again for your FreeIPA credentials in the same format.
 
-!!! important "First Time Login"
+!!! important "Authentication Prompt"
 
     ```text
     You will first be asked to select the authentication provider — choose **freeIpaProvider**
