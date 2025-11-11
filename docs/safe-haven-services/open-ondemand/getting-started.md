@@ -304,7 +304,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 The Active Jobs app will open to show a table of running and recently completed jobs.
 
-You will see a 'batch_container_app' entry for your app's job.
+You will see an 'epcc-ces-hello-tre:1.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
 
 Your job will have a status of 'Completed'.
 
@@ -453,7 +453,9 @@ As a reminder, `safe_outputs/jupyter/SESSION_ID` will persist after the job whic
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
-You will see a 'jupyter_app' entry for your app's job.
+You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab Container app jobs have this name.
+
+You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 
