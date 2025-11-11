@@ -6,9 +6,9 @@ The EPCC SHS GPU Cluster provides access to full Nvidia A100 40GB GPUs. The SHS 
 
 The full specification of the SHS GPU Cluster as of October 2025 is as follows:
 
-- 672 CPU Cores (AMD EPYC and Intel Xeon)
+- 672 CPU Cores (AMD EPYC)
 - 2.54 TiB Memory
-- BeeGFS Persistent Volumes using BeeGFS CSI – up to 100TiB
+- BeeGFS Storage upto 1.3 PiB
 - 24 Nvidia A100 40GB (Full GPU, no MIG)
 
 !!! important "Quotas"
