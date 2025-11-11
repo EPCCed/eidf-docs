@@ -3389,6 +3389,10 @@
 <p class="admonition-title">Warning</p>
 <p>Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Within the job scheduler, and the <a href="../active-jobs/">Active Jobs</a> app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello-tre:1.1'.</p>
+</div>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs">Sharing files between the back-end and the container and persisting state between app runs</h2>
 <p>The app mounts three directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code>. For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
