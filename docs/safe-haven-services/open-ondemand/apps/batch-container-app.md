@@ -70,6 +70,10 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
     Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
+!!! Note
+
+    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello-tre:1.1'.
+
 ---
 
 ## Sharing files between the back-end and the container and persisting state between app runs

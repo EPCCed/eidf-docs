@@ -50,6 +50,10 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
     Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
+!!! Note
+
+    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'jupyter_app'.
+
 ---
 
 ## Log in to JupyterLab

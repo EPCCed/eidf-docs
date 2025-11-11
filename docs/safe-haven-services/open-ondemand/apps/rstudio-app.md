@@ -51,6 +51,10 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
     Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
 
+!!! Note
+
+    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'rstudio_app'.
+
 ---
 
 ## Log in to RStudio Server
