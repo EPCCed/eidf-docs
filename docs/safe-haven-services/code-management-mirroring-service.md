@@ -138,6 +138,15 @@ gitGraph title Git Branch Workflow for Egress Mirroring
   merge main id: "8. Merge to egress-mirror"
 ```
 
+## Request an Ingress Mirror
+
+To request the creation of a repository which automatically mirrors an external repository, contact your RC and let them know:
+
+- The URL of the external repository
+- An access token which has read access to the repository
+
+Once created, the internal mirror will be regularly updated from the `main` branch of the external reposioty.
+
 ## Further Reading and Help
 
 - The [Gitea docs][gitea_docs] are the best reference for using this service
