@@ -18,14 +18,14 @@ As use of containers in the SHS is a new service, it is at this stage regarded a
 To pull a private image, you must create an access token to authenticate with GHCR (see [Authenticating to the container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)). The container is then pulled by the user with the following command:
 
 ```bash
-ces-pull <github_user> <github_token> ghcr.io/<namespace>/<container_name>[:<container_tag>]
+ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-To pull a public image, which does not require authenticating with username and token, pass two empty strings:
+Note: <gitlab_user> is a GitHub user name, <ghcr_token> is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io//:'. When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is recommended you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
-```bash
-ces-pull "" "" ghcr.io/<namespace>/<container_name>[:<container_tag>]
-```
+Note: The <github_user> and <ghcr_token> arguments to ces-pull are mandatory.
+
+If a runtime is not specified then podman is used as the default.
 
 Once the container image has been pulled into the SHS desktop host, the image can be managed with Podman commands.
 
