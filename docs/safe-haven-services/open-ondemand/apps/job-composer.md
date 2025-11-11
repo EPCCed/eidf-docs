@@ -4,7 +4,7 @@ Job Composer is an app that allows you to write and submit a Slurm batch job to 
 
 !!! Note
 
-    To use the Job Composer app requires you to have some familiarity with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager. In particular, how to write Slurm job submission files.
+    To use the Job Composer requires you to have some familiarity with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager. In particular, how to write Slurm job submission files.
 
 ---
 
@@ -73,6 +73,12 @@ Click **Submit job** (green play icon) to submit your job.
 ## Browse and manage jobs
 
 ### Jobs table
+
+The job name is the name of the job you specified when completing the [Create Slurm job](#create-slurm-job) form.
+
+!!! Note
+
+    The job name shown in the Jobs table is one entered in the **Job Name** when completing the Job Composer's job submission forms. This job name is not the same as the job name shown in the [Active Jobs](./active-jobs.md) app. That job name is an app-specific job scheduler-specific job name. For the Job Composer and Slurm, the Active Jobs job name is the value of the Slurm `--job-name` parameter (set by `#SBATCH --job-name=...` in the job file).
 
 The job ID is a unique job ID created by the Slurm job scheduler, when you submitted the job.
 
