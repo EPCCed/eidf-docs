@@ -24,8 +24,7 @@ The service provides a **BeeGFS CSI driver** provisioner, which allows for `Read
 
 ## How many GPUs can I use in a pod?
 
-The current limit is 8 GPUs per pod, as each underlying host node has 8 GPUs. If you request 8 GPUs, your pod will be placed in a queue until a node with 8 GPUs is available. If you request fewer than 8 GPUs (e.g., 4 GPUs), your pod can still run on an 8-GPU node, as the scheduler allows partial allocation.
-Note: We do not have 4-GPU nodes in our infrastructure; all GPU nodes have 8 GPUs.
+The current limit is 8 GPUs per pod, as each underlying host node has 8 GPUs.
 
 ## Why did a validation error occur when submitting a pod or job with a valid specification file?
 
