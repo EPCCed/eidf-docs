@@ -14,9 +14,9 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **RStudio Server password**: RStudio Server running in the container needs to be password-protected. Specify the password to use.
-* **Cores**: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.
-* **Memory in GiB**: Memory requested for this job. Your selected back-end must have at least that amount of memory available.
+* **RStudio Server password**: A password is required to secure RStudio Server. Provide a password to use.
+* **CPUs/cores**: CPUs/cores requested for the app's job. Your chosen back-end must have the requested number of cores/CPUs available.
+* **Memory (GiB)**: Memory requested for the app's job. Your chosen back-end must have the requested memory available.
 
 Click **Launch**.
 
@@ -29,9 +29,9 @@ Open OnDemand will show an app job card with information about the app's job inc
 * 'Time Requested': The runtime requested for the job.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.
 * App-specific information, which includes values from the app form:
-    * 'Connection timeout': when the app's job starts running, the app will then wait for RStudio Server to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.
-    * 'Cores'
-    * 'Memory in GiB'
+    * 'Connection timeout (s)': when the app's job starts running, the app will then wait for RStudio Server to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'CPUs/cores': The value you selected on the app form.
+    * 'Memory (GiB)' The value you selected on the app form.
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
