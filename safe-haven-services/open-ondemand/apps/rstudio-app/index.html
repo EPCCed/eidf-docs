@@ -3244,10 +3244,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs" class="md-nav__link">
+  <a href="#sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sharing files between the back-end and the container and persisting state between app runs
+        Sharing files between the back-end and RStudio Server and persisting state between app runs
       
     </span>
   </a>
@@ -3330,13 +3330,13 @@
 
 
 <h1 id="run-rstudio-server-container">Run RStudio Server Container</h1>
-<p>Run RStudio Server Container is an app that runs an RStudio Server container on a back-end within your safe haven. The RStudio Server container was built for the TRE Open OnDemand service. The container is run using Podman.</p>
+<p>Run RStudio Server Container is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Podman.</p>
 <hr />
 <h2 id="run-app">Run app</h2>
 <p>Complete the following information the app form:</p>
 <ul>
 <li>
-<p><strong>Cluster</strong>: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list (see <a href="../../jobs/#back-end-cluster-names">Back-end (cluster) names</a> for more information). If there is only one back-end available to you then this form field won't be shown.</p>
+<p><strong>Cluster</strong>: A back-end (cluster) within your safe haven on which to run RStudio Server. Back-end-specific short-names are used in the drop-down list (see <a href="../../jobs/#back-end-cluster-names">Back-end (cluster) names</a> for more information). If there is only one back-end available to you then this form field won't be shown.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>National Safe Haven users</strong>: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.</p>
@@ -3364,19 +3364,21 @@
 </li>
 </ul>
 <p>When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.</p>
-<p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so the RStudio Server container, is now running. A 'RStudio Server is running in Podman container epcc-ces-rstudio-SESSION_ID' message will appear along with a <strong>Connect to RStudio Server</strong> button. The RStudio Server container is now ready for use.</p>
+<p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so RStudio Server, is now running.</p>
+<p>A <strong>Connect to RStudio Server</strong> button will appear. RStudio Server is now ready for use.</p>
+<p>A 'RStudio Server is running in Podman container epcc-ces-rstudio-SESSION_ID' message will also appear.</p>
 <p>Click <strong>Connect to RStudio Server</strong>. A new browser tab will open with RStudio Server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Open OnDemand will wait 180 seconds (3 minutes) for your container to start. If it does not start within this time the job will be cancelled.</p>
+<p>Open OnDemand will wait 180 seconds (3 minutes) for RStudio Server to start. If it does not start within this time the job will be cancelled.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Your job, and so your container. will run for a maximum of 6 hours.</p>
+<p>RStudio Server will run for a maximum of 6 hours, after which it will be cancelled.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.</p>
+<p>Any running jobs are cancelled during the monthly TRE maintenance period.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3392,15 +3394,15 @@
 <p>Click <strong>Sign in</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You are the 'root' user <strong>only</strong> within the context of the container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
+<p>You are the 'root' user <strong>only</strong> within the context of the RStudio Server container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
 </div>
 <hr />
-<h2 id="sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs">Sharing files between the back-end and the container and persisting state between app runs</h2>
-<p>The app mounts three directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code> . For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/rstudio_app/</code> in your home directory on the back-end and nounts this into the container at <code>/mnt/rstudio_host</code>. If you create virtual environments and/or install Python packages into <code>/mnt/rstudio_host</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
+<h2 id="sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs">Sharing files between the back-end and RStudio Server and persisting state between app runs</h2>
+<p>The app mounts three directories from the back-end into RStudio Server at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code> . For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/rstudio_app/</code> in your home directory on the back-end and nounts this into RStudio Server at <code>/mnt/rstudio_host</code>. If you install R packages into <code>/mnt/rstudio_host</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
-<p>The container is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you create virtual environments and/or install R packages into <code>/mnt/rstudio_host</code> so that you can reuse these the next time you run your container.</p>
+<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/rstudio_host</code> so that you can reuse these the next time you run the app on the same back-end.</p>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>
@@ -3414,7 +3416,7 @@
 <p>If the job has completed, see <a href="../../ssh/">Log into back-ends</a> for ways to log into the back-end.</p>
 <hr />
 <h2 id="take-a-break">Take a break</h2>
-<p>Your container job will continue to run even if you do the following:</p>
+<p>RStudio Server will continue to run even if you do the following:</p>
 <ul>
 <li>Log out of RStudio Server via the <strong>File</strong> menu, <strong>Sign Out</strong> option.</li>
 <li>Log out of RStudio Server via the <strong>File</strong> menu, <strong>Quit Session...</strong> option.</li>
@@ -3422,7 +3424,7 @@
 <li>Log out of Open OnDemand.</li>
 <li>Log out of the VM from which you accessed Open OnDemand.</li>
 </ul>
-<p>You can re-access your running container via the <strong>Connect to RStudio Server</strong> on your session's <a href="../../jobs/#job-cards">job card</a> on the <a href="../../jobs/#my-interactive-sessions-page">My Interactive Sessions</a> page accessed via <strong>My Interactive Sessions</strong> (overlaid squares icon) on the menu bar.</p>
+<p>You can re-access your running RStudio Server via the <strong>Connect to RStudio Server</strong> on your session's <a href="../../jobs/#job-cards">job card</a> on the <a href="../../jobs/#my-interactive-sessions-page">My Interactive Sessions</a> page accessed via <strong>My Interactive Sessions</strong> (overlaid squares icon) on the menu bar.</p>
 <p><img alt="My Interactive Sessions menu button, an overlaid squares icon" class="border-img center" src="../../../../images/open-ondemand/my-interactive-sessions-button.png" /> <em><strong>My Interactive Sessions</strong> menu button</em></p>
 <hr />
 <h2 id="end-your-job">End your job</h2>
