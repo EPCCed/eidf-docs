@@ -3454,45 +3454,47 @@
 <li>Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.</li>
 </ul>
 </li>
-<li><strong>Container/image URL in container registry</strong> cites a URL specifying both the container to run and the container registry from which it is to be pulled.<ul>
+<li><strong>Container/image URL in container registry</strong>: URL specifying both the container to run and the container registry from which it is to be pulled.<ul>
 <li>Leave this value as-is to use the <code>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1</code> container, hereon termed <code>epcc-ces-hello-tre</code>.</li>
 </ul>
 </li>
-<li><strong>Container registry username</strong> is a username to access the container registry.<ul>
+<li><strong>Container registry username</strong>: A container registry username is required.<ul>
 <li>Leave this value as-is.</li>
 </ul>
 </li>
-<li><strong>Container registry access token</strong> is an access token to access to the container registry. An access token granting <strong>read-only</strong> access to the container registry is <strong>strongly recommended</strong>.<ul>
+<li><strong>Container registry access token</strong>: An access token associated with the username is required. Using an access token that grants <strong>read-only</strong> access to the container registry is <strong>strongly recommended</strong>.<ul>
 <li>Leave this value as-is, the access token provides read-only access to pull the container.</li>
 </ul>
 </li>
-<li><strong>Container runner</strong> is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.<ul>
+<li><strong>Container runner</strong>: Container runner - 'podman' or 'apptainer' - with which to run the container. Your selected back-end must have the container runner installed.<ul>
 <li>Leave this value as-is i.e., 'podman', as this is available on all back-ends.</li>
 </ul>
 </li>
-<li><strong>Container name</strong> is the name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is <code>CONTAINER_NAME-SESSION_ID</code>, where <code>CONTAINER_NAME</code> is derived from the image name (if the image name is <code>my-container:1.0</code> then <code>CONTAINER_NAME</code> is <code>my-container</code>) and <code>SESSION_ID</code> is a unique session identifier for the app's job.<ul>
+<li><strong>Container name</strong> (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is <code>CONTAINER_NAME-SESSION_ID</code>, where <code>CONTAINER_NAME</code> is derived from the image name (if the image name is <code>my-container:1.0</code> then <code>CONTAINER_NAME</code> is <code>my-container</code>) and <code>SESSION_ID</code> is a unique session identifier for the app's job.<ul>
 <li>Leave this value as-is.</li>
 </ul>
 </li>
-<li><strong>Cores</strong> is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.<ul>
+<li><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores. Your chosen back-end must have the requested number of cores/CPUs available.<ul>
 <li>Leave this value as-is as the all back-ends can provide the default number of cores, and the <code>epcc-ces-hello-tre</code> container does not need any more.</li>
 </ul>
 </li>
-<li><strong>Memory in GiB</strong> is the memory requested for this job. Your selected back-end must have at least that amount of memory available.<ul>
+<li><strong>Memory (GiB)</strong>: Memory requested for the app's job. Your chosen back-end must have the requested memory available.<ul>
 <li>Leave this value as-is as the all back-ends can provide the default memory, and the <code>epcc-ces-hello-tre</code> container does not need any more.</li>
 </ul>
 </li>
-<li><strong>Use GPU?</strong> requests that the container use a GPU. If selected, then your selected back-end must have a GPU.<ul>
+<li><strong>Use GPU?</strong>: Request that the container use a GPU. Your chosen back-end must have GPUs available.<ul>
 <li>Leave this value as-is, as the <code>epcc-ces-hello-tre</code> container does not require a GPU.</li>
 </ul>
 </li>
-<li><strong>Command-line options to pass to container runner</strong> are container runner-specific options to control the container runner's behaviour.<ul>
+<li><strong>Container runner command-line arguments</strong>: Command-line arguments to pass to the chosen container runner to control its behaviour.<ul>
 <li>Leave this value as-is, as the container does not require any such options to be set.</li>
 </ul>
 </li>
 <li>
-<p><strong>Environment variables to pass to container</strong> are environment variables to be passed on by the container runner and set within the container when it runs. The <code>epcc-ces-hello-tre</code> container looks for a <code>HELLO_TRE</code> environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is <code>Hello</code>.</p>
+<p><strong>Environment variables</strong>: Environment variables to be set within the container when it runs.</p>
 <ul>
+<li>Each line should define one environment variable and value, each in the form, <code>ENVIRONMENT_VARIABLE=value</code>.</li>
+<li>The <code>epcc-ces-hello-tre</code> container looks for a <code>HELLO_TRE</code> environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is <code>Hello</code>.</li>
 <li>
 <p>Enter:</p>
 <div class="highlight"><pre><span></span><code>HELLO_TRE=Hello there
@@ -3501,7 +3503,7 @@
 </ul>
 </li>
 <li>
-<p><strong>Arguments to pass to container</strong> are container-specific arguments to be passed directly to the container when it runs. The <code>epcc-ces-hello-tre</code> container supports two container-specific arguments:</p>
+<p><strong>Container-specific command-line arguments</strong>: Container-specific command-line arguments to be passed to the container when it is run. The <code>epcc-ces-hello-tre</code> container supports two container-specific arguments:</p>
 <ul>
 <li>A <code>-d|--duration INTEGER</code> argument which causes the container to sleep (pause) for that number of seconds. If undefined, then the container does not sleep.</li>
 <li>A <code>-n|--name STRING</code> argument which causes the container to print a greeting with that name. If undefined, then the name is <code>user</code>.</li>
@@ -3532,11 +3534,10 @@
 <li>'Time Requested': The runtime requested for the job.</li>
 <li>'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.</li>
 <li>App-specific information, which includes values from the app form:<ul>
-<li>'Container/image URL in container registry'</li>
-<li>'Container runner'</li>
-<li>'Container name'</li>
-<li>'Cores'</li>
-<li>'Memory in GiB'</li>
+<li>'Container/image URL in container registry': The value you selected on the app form.</li>
+<li>'Container runner': The value you selected on the app form.</li>
+<li>'CPUs/cores': The value you selected on the app form.</li>
+<li>'Memory (GiB)' The value you selected on the app form.</li>
 </ul>
 </li>
 </ul>
@@ -3642,7 +3643,7 @@ cat<span class="w"> </span>safe_outputs/batch_container/SESSION_ID/safe_outputs.
 </li>
 </ol>
 <p>For the <code>epcc-ces-hello-tre</code> container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:</p>
-<div class="highlight"><pre><span></span><code>Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
+<div class="highlight"><pre><span></span><code>Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/someuser/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
 Script starting...
 ...
 Wed Jul 30 11:32:41 UTC 2025 script.sh: Running ces-pull podman ...
@@ -3736,9 +3737,9 @@ Goodbye Mike!
 <li>'Time Requested': The runtime requested for the job which defaults to 6 hours.</li>
 <li>'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.</li>
 <li>App-specific information, which includes values from the app form:<ul>
-<li>'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (180 seconds i.e., 3 minutes), then the app's job will cancel itself.</li>
-<li>'Cores'</li>
-<li>'Memory in GiB'</li>
+<li>'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.</li>
+<li>'CPUs/cores': The value you selected on the app form.</li>
+<li>'Memory (GiB)' The value you selected on the app form.</li>
 </ul>
 </li>
 </ul>

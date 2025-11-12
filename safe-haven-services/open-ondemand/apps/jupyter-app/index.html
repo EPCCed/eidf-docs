@@ -3343,9 +3343,9 @@
 </div>
 </li>
 <li>
-<p><strong>Cores</strong>: Number of cores/CPUs requested for this job. Your selected back-end must have at least that number of cores/CPUs request.</p>
+<p><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job. Your chosen back-end must have the requested number of cores/CPUs available.</p>
 </li>
-<li><strong>Memory in GiB</strong>: Memory requested for this job. Your selected back-end must have at least that amount of memory available.</li>
+<li><strong>Memory (GiB)</strong>: Memory requested for the app's job. Your chosen back-end must have the requested memory available.</li>
 </ul>
 <p>Click <strong>Launch</strong>.</p>
 <p>Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your <code>ondemand</code> directory and then submits the job for the app to the job scheduler.</p>
@@ -3356,9 +3356,9 @@
 <li>'Time Requested': The runtime requested for the job.</li>
 <li>'Session ID': An auto-generated value which is used as the name of the job-specific job context directory.</li>
 <li>App-specific information, which includes values from the app form:<ul>
-<li>'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period, then the app's job will cancel itself.</li>
-<li>'Cores'</li>
-<li>'Memory in GiB'</li>
+<li>'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.</li>
+<li>'CPUs/cores': The value you selected on the app form.</li>
+<li>'Memory (GiB)' The value you selected on the app form.</li>
 </ul>
 </li>
 </ul>
