@@ -50,32 +50,34 @@ Read the form entries in conjunction with the explanations below and make the su
 
 * **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
-* **Container/image URL in container registry** cites a URL specifying both the container to run and the container registry from which it is to be pulled.
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled.
     * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1` container, hereon termed `epcc-ces-hello-tre`.
-* **Container registry username** is a username to access the container registry.
+* **Container registry username**: A container registry username is required.
     * Leave this value as-is.
-* **Container registry access token** is an access token to access to the container registry. An access token granting **read-only** access to the container registry is **strongly recommended**.
+* **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
-* **Container runner** is the container runner - 'podman' or 'apptainer' - with which to run container on the back-end. The selected runner must be available on the selected back-end.
+* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container. Your selected back-end must have the container runner installed.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
-* **Container name** is the name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
+* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
-* **Cores** is the number of cores/CPUs requested for this job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of cores/CPUs. Your selected back-end must have at least that number of cores/CPUs request.
+* **CPUs/cores**: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores. Your chosen back-end must have the requested number of cores/CPUs available.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello-tre` container does not need any more.
-* **Memory in GiB** is the memory requested for this job. Your selected back-end must have at least that amount of memory available.
+* **Memory (GiB)**: Memory requested for the app's job. Your chosen back-end must have the requested memory available.
     * Leave this value as-is as the all back-ends can provide the default memory, and the `epcc-ces-hello-tre` container does not need any more.
-* **Use GPU?** requests that the container use a GPU. If selected, then your selected back-end must have a GPU.
+* **Use GPU?**: Request that the container use a GPU. Your chosen back-end must have GPUs available.
     * Leave this value as-is, as the `epcc-ces-hello-tre` container does not require a GPU.
-* **Command-line options to pass to container runner** are container runner-specific options to control the container runner's behaviour.
+* **Container runner command-line arguments**: Command-line arguments to pass to the chosen container runner to control its behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
-* **Environment variables to pass to container** are environment variables to be passed on by the container runner and set within the container when it runs. The `epcc-ces-hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
+* **Environment variables**: Environment variables to be set within the container when it runs.
+    * Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`.
+    * The `epcc-ces-hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
     * Enter:
 
         ```text
         HELLO_TRE=Hello there
         ```
 
-* **Arguments to pass to container** are container-specific arguments to be passed directly to the container when it runs. The `epcc-ces-hello-tre` container supports two container-specific arguments:
+* **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello-tre` container supports two container-specific arguments:
     * A `-d|--duration INTEGER` argument which causes the container to sleep (pause) for that number of seconds. If undefined, then the container does not sleep.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
     * Enter the following to request a sleep of 10 seconds and a greeting with your name:
@@ -107,11 +109,10 @@ Open OnDemand will show an app **job card** with information about the app's job
 * 'Time Requested': The runtime requested for the job.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
-    * 'Container/image URL in container registry'
-    * 'Container runner'
-    * 'Container name'
-    * 'Cores'
-    * 'Memory in GiB'
+    * 'Container/image URL in container registry': The value you selected on the app form.
+    * 'Container runner': The value you selected on the app form.
+    * 'CPUs/cores': The value you selected on the app form.
+    * 'Memory (GiB)' The value you selected on the app form.
 
 ![Run Batch Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-02-batch-container-app-queued.png){: class="border-img center"}
 *Run Batch Container app job card showing job status as 'Queued'*
@@ -220,7 +221,7 @@ View the log file within the back-end:
 For the `epcc-ces-hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
 
 ```text
-Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
+Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/someuser/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
 Script starting...
 ...
 Wed Jul 30 11:32:41 UTC 2025 script.sh: Running ces-pull podman ...
@@ -347,9 +348,9 @@ Again, Open OnDemand will show an app job card with information about the app's 
 * 'Time Requested': The runtime requested for the job which defaults to 6 hours.
 * 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
 * App-specific information, which includes values from the app form:
-    * 'Connection timeout': when the app's job starts running, the app will then wait for JupyterLab to become available within the container. If this does not occur within this app-specific period (180 seconds i.e., 3 minutes), then the app's job will cancel itself.
-    * 'Cores'
-    * 'Memory in GiB'
+    * 'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'CPUs/cores': The value you selected on the app form.
+    * 'Memory (GiB)' The value you selected on the app form.
 
 ![Run JupyterLab Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-10-jupyter-app-queued.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Queued'*
