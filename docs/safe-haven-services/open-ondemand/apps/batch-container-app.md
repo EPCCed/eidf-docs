@@ -64,11 +64,11 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 !!! Warning
 
-    Your job, and so your container. will run for a maximum of 6 hours, after which it will be cancelled.
+    Your job will run for a maximum of 6 hours, after which it will be cancelled.
 
 !!! Warning
 
-    Any running jobs, and containers, will be cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly TRE maintenance period.
 
 !!! Note
 
@@ -178,7 +178,7 @@ If the job has completed, see [Log into back-ends](../ssh.md) for ways to log in
 
 ## Take a break
 
-Your container job will continue to run even if you do the following:
+Your container will continue to run even if you do the following:
 
 * Close the browser tab.
 * Log out of Open OnDemand.
