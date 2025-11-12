@@ -43,9 +43,9 @@ Project users can authenticate to the GPU Cluster using their FreeIPA credential
     Select auth provider:
     ```
 
-All SHS VMs with the project kubeconfig file downloaded can access the SHS GPU Cluster using the kubectl command line tool.
+All user accounts with the project kubeconfig file downloaded can access the SHS GPU Cluster using the kubectl command line tool.
 
-A quick check to see if a VM has access to the SHS GPU Cluster can be completed by typing `kubectl -n <project-namespace> get jobs` into the command line.
+A quick check to see if a user has access to the SHS GPU Cluster can be completed by typing `kubectl -n <project-namespace> get jobs` into the command line.
 
 If this is the first time you have connected to the GPU Cluster the response should be `No resources found in <project-namespace> namespace`.
 
