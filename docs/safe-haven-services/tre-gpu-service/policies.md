@@ -52,8 +52,7 @@ Workloads without this queue name tag will be rejected.
 
 ## PVC Creation
 
-TRE GPU Cluster Users are **not permitted to create their own PersistentVolumeClaims (PVCs)**. All PVCs must be provisioned by system administrators.
-PVC creation attempts from user workloads will be denied automatically.
+The SHS GPU Cluster users are **not permitted to create their own PersistentVolumeClaims (PVCs)**. PVC creation attempts from user workloads will be denied automatically. All PVCs are provisioned by system administrators on receipt of a ticket from a Research Coordinator asking that access to the SHS GPU Cluster be enabled for a user account. The required information is the project ID and, if known, the user account.
 
 ## Interacting with Other Users' Containers
 
