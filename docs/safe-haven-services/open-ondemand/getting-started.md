@@ -357,17 +357,22 @@ Again, Open OnDemand will show an app job card with information about the app's 
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so the JupyterLab container, is now running. A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will appear along with a **Connect to JupyterLab** button. The JupyterLab container is now ready for use.
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the
+job, and so JupyterLab, is now running.
+
+A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
+
+A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
 
 ![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-11-jupyter-app-running.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Running'*
 
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
-You may wonder why you were not prompted for a username and password. JupyterLab running in the container runs as a 'root' user. The 'root' user is within the context of the container only. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into the container using this password automatically.
+You may wonder why you were not prompted for a username and password. JupyterLab runs within the container as a 'root' user. The 'root' user is within the context of the container **only**. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into JupyterLab using this password automatically.
 
-![JupyterLab running within a container](../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png){: class="border-img center"}
-*JupyterLab running within a container*
+![JupyterLab](../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png){: class="border-img center"}
+*JupyterLab*
 
 ### Use JupyterLab to explore how directories on a back-end are mounted into a container
 
@@ -375,7 +380,7 @@ We can use JupyterLab to further explore how directories on a back-end are mount
 
 Click the **Host** link to log into the back-end on which the job, and JupyterLab container, is running.
 
-Now, within JupyterLab, click the **Terminal** icon within the 'Launcher' tab. This opens up a command-line session within the container.
+Now, within JupyterLab, click the **Terminal** icon within the 'Launcher' tab. This opens up a command-line session within JupyterLab.
 
 Now run the following:
 
@@ -446,7 +451,7 @@ hello-from-jupyterlab-to-outputs.txt
 hello-from-outputs-to-jupyterlab.txt
 ```
 
-Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself.
+Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which a container is running and the environment within the container itself.
 
 As a reminder, `safe_outputs/jupyter/SESSION_ID` will persist after the job which created the container ends but the `SESSION_ID` subdirectory in `scratch/jupyter` will be deleted.
 
