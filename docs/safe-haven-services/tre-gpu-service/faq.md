@@ -20,11 +20,13 @@ Some version of the above error is common when submitting jobs/pods to the GPU C
 ## Can I mount my PVC in multiple containers or pods at the same time?
 
 The service provides a **BeeGFS CSI driver** provisioner, which allows for `ReadWriteMany` PVCs. This means a PVC can be mounted to multiple pods at the same time.
-**Note:** Θsers cannot create their own PVCs, so this information is only relevant if your project has been provisioned with a BeeGFS-backed PVC by the system administrators.
+**Note:** Users cannot create their own PVCs, so this information is only relevant if your project has been provisioned with a BeeGFS-backed PVC by the system administrators.
 
 ## How many GPUs can I use in a pod?
 
-The current limit is 8 GPUs per pod, as each underlying host node has 8 GPUs.
+The maximum number of GPUs you can request per pod is limited by both the node capacity and your project quota.
+Each node has 8 GPUs, so technically a pod could use up to 8 GPUs if available. However, your project quota may be lower. For example, if your project is allocated 4 GPUs, the maximum a single pod can request is 4 GPUs.
+**Note:** Always ensure your pod’s GPU request does not exceed the available quota for your project.
 
 ## Why did a validation error occur when submitting a pod or job with a valid specification file?
 
