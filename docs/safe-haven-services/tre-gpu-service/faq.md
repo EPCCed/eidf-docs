@@ -20,6 +20,7 @@ Some version of the above error is common when submitting jobs/pods to the GPU C
 ## Can I mount my PVC in multiple containers or pods at the same time?
 
 The service provides a **BeeGFS CSI driver** provisioner, which allows for `ReadWriteMany` PVCs. This means a PVC can be mounted to multiple pods at the same time.
+
 **Note:** Users cannot create their own PVCs, so this information is only relevant if your project has been provisioned with a BeeGFS-backed PVC by the system administrators.
 
 ## How many GPUs can I use in a pod?
