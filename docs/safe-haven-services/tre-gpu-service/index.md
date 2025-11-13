@@ -62,8 +62,8 @@ If this is the first time you have connected to the GPU Cluster the response sho
 A standard project namespace has the following initial quota (subject to ongoing review):
 
 - CPU: 100 Cores
-- Memory: 1TiB
-- GPU: 12
+- Memory: 500 GiB
+- GPU: 4
 
 !!! important "Quota is a maximum on a Shared Resource"
 
