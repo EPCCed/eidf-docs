@@ -19,7 +19,7 @@ Submitting jobs with `name` only would allow several jobs to have the same name,
 
 ## Kubernetes Job Time to Live
 
-All completed Kubernetes jobs will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished` automatically. A completed job (in success or error state) will be deleted from the service once this period has elapsed since execution has completed. This will reduce excessive object accumulation on the service. The default TTL for jobs using the service is one week (604800 seconds). 
+All completed Kubernetes jobs will have a Time to Live (TTL) applied via `spec.ttlSecondsAfterFinished` automatically. A completed job (in success or error state) will be deleted from the service once this period has elapsed since execution has completed. This will reduce excessive object accumulation on the service. The default TTL for jobs using the service is one week (604800 seconds).
 
 !!! important
     This policy is automated and does not require users to change their job specifications.
@@ -29,7 +29,7 @@ All completed Kubernetes jobs will have a Time to Live (TTL) applied via `spec.t
 
 ## Kubernetes Active Deadline Seconds
 
-All Kubernetes user pods submitted to the service will have an Active Deadline Seconds (ADS) applied via `spec.spec.activeDeadlineSeconds` automatically. A pod will be terminated once this period has elapsed after execution has begun. This will reduce the number of unused pods remaining on the service. The default ADS for pods using the service is five days (432000 seconds). 
+All Kubernetes user pods submitted to the service will have an Active Deadline Seconds (ADS) applied via `spec.spec.activeDeadlineSeconds` automatically. A pod will be terminated once this period has elapsed after execution has begun. This will reduce the number of unused pods remaining on the service. The default ADS for pods using the service is five days (432000 seconds).
 
 !!! important
     This policy is automated and does not require users to change their job or pod specifications.
