@@ -8,7 +8,12 @@ This approach ensures secure, performant, and flexible access to shared datasets
 
 ### Key Point
 
-`BeeGFS is deployed within the SHS. Therefore, the same restrictions apply: BeeGFS storage is fully isolated from the internet. You cannot download data directly from public sources (e.g., GitHub, external APIs), and copying, recording, or extracting any files from BeeGFS outside of the SHS is strictly prohibited unless explicitly approved through the appropriate Information Governance processes. It is also prohibited to use the BeeGFS to share data with other users or with projects to which you have access.`
+`BeeGFS is deployed within the SHS. Therefore, the same restrictions apply: BeeGFS storage is
+fully isolated from the internet. You cannot download data directly from public sources
+(e.g., GitHub, external APIs), and copying, recording, or extracting any files from BeeGFS
+outside of the SHS is strictly prohibited unless explicitly approved through the appropriate
+Information Governance processes. It is also prohibited to use the BeeGFS to share data with
+other users or with projects to which you have access.`
 
 ### Storage Overview
 
