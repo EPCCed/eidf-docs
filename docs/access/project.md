@@ -46,8 +46,6 @@ begin a new project application which gives you access to pricing calculator.
 
 *To use EIDF, you must have funding or a means to pay.*
 
-
-
 Navigate to the [EIDF Portal](https://portal.eidf.ac.uk/) and log
 in via SAFE if necessary (see above).
 
@@ -69,6 +67,7 @@ applications and their status, or follow the link
 Fill in each section of the application as required:
 
 #### Case for Support
+
 Please include here how you intend to pay for services on EIDF
 You *must* include reference to either a 
 
@@ -86,7 +85,6 @@ If you do not have either, but need to use the pricing calculaor for a grant cos
 
 You can edit and save each section separately and revisit the application at a later time.
 
-
 #### Pricing
 
 Please use the pricing calcultor to itemise what services you require.
@@ -96,8 +94,6 @@ The calcultor will price your projected usage.
 You can then use this costing in any grant appliction, or in a Purchase Order.
 
 *If you have funding secure, please proceed with your application*
-
-
 
 #### Editors
 
@@ -117,10 +113,7 @@ There may be some projects we are simply unable to host for data protection reas
 
 Add an estimate for each size and type of VM that is required.
 
-
-
 ### Submission
-
 
 When you are happy with your application, and you have funds, please click "Submit".
 
@@ -132,8 +125,6 @@ now you have to wait while the EIDF team considers your application.
 You may be contacted if there are any questions regarding your application or further
 information is required.
 
-
-
 ### Re-visting Application with Secured Funding
 
 If you have yet to secure funding and are creating an application for a cost estimate at this stage, you do not need to "Sumbit".
@@ -142,16 +133,13 @@ Your application is automatically saved
 
 Once you have your grant confirmed or your Purchase Order in place, you can add details of funding to your applicaiton, then "Submit"
 
-
 #### Note on Pricing
 
 Our pricing calulator includes an inflation escalator for costs.
 
 Cost for access to EIDF will increase, and as such any application for use in the future should budget for cost increases.
 
-
 ### Approved Project
-
 
 If your application was approved, refer to
 [Data Science Virtual Desktops: Quickstart](../services/virtualmachines/quickstart.md)
