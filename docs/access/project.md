@@ -93,7 +93,7 @@ The calcultor will price your projected usage.
 
 You can then use this costing in any grant appliction, or in a Purchase Order.
 
-*If you have funding secure, please proceed with your application*
+_If you have funding secured, please proceed with your application_
 
 #### Editors
 
