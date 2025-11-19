@@ -28,7 +28,7 @@ the PI or a project manager and ask them to create one for you.
 
 ## How to apply to use EIDF Services
 
-We welcome applications from Principle Investigtors who hold acdemic reserach grants and commerical customers.
+We welcome applications from Principal Investigtors who hold academic reserach grants and commercial customers.
 
 To apply for a project on EIDF, you must have funding secured or a means to pay
 
@@ -77,9 +77,9 @@ OR a
 
 * Purchase Order to the University of Edinburgh
 
-Please contact the EIDF Helpdesk if you requrie a Purchase Order.
+Please contact the EIDF Helpdesk if you require a Purchase Order.
 
-If you do not have either, but need to use the pricing calculaor for a grant costing or estimate for a Purchase order, please continue.
+If you do not have either, but need to use the pricing calculator for a grant costing or estimate for a Purchase Order, please continue.
 
 #### EIDF Services Required
 
@@ -89,9 +89,9 @@ You can edit and save each section separately and revisit the application at a l
 
 Please use the pricing calcultor to itemise what services you require.
 
-The calcultor will price your projected usage.
+The calculator will price your projected usage.
 
-You can then use this costing in any grant appliction, or in a Purchase Order.
+You can then use this costing in any grant application, or in a Purchase Order.
 
 If you have funding secured, please proceed with your application
 
@@ -125,17 +125,17 @@ now you have to wait while the EIDF team considers your application.
 You may be contacted if there are any questions regarding your application or further
 information is required.
 
-### Re-visting Application with Secured Funding
+### Re-visting an Application with Secured Funding
 
 If you have yet to secure funding and are creating an application for a cost estimate at this stage, you do not need to "Sumbit".
 
 Your application is automatically saved
 
-Once you have your grant confirmed or your Purchase Order in place, you can add details of funding to your applicaiton, then "Submit"
+Once you have your grant confirmed or your Purchase Order in place, you can add details of funding to your application, then "Submit"
 
 #### Note on Pricing
 
-Our pricing calulator includes an inflation escalator for costs.
+Our pricing calculator includes an inflation escalator for costs.
 
 Cost for access to EIDF will increase, and as such any application for use in the future should budget for cost increases.
 
