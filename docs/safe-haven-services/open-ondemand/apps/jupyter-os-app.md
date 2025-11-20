@@ -1,6 +1,6 @@
-# Run JupyterLab Container
+# Run JupyterLab
 
-Run JupyterLab Container is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Podman.
+Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is assumed to have been installed onto the back-end.
 
 ---
 
@@ -38,8 +38,6 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
-A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
-
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
@@ -64,25 +62,11 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
-Within JupyterLab you are the 'root' user.
-
-!!! Note
-
-    You are the 'root' user **only** within the context of the JupyterLab container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
-
----
-
-## Sharing files between the back-end and JupyterLab and persisting state between app runs
-
-The app mounts three directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
-
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and nounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
-
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab.
 
 ---
 

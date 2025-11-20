@@ -10,6 +10,7 @@ The following apps are available as part of Open OnDemand's app suite:
 | --- | ---- | ----------- |
 | [Active Jobs](apps/active-jobs.md) | System Installed App | Browse and manage jobs created via both apps and the Job Composer app |
 | [Run Batch Container](apps/batch-container-app.md) | Tenant and TRE Service | Run a batch container on a back-end |
+| [Run JupyterLab](apps/jupyter-os-app.md) | Tenant Service | Run JupyterLab on a back-end which has JupyterLab installed |
 | [Run JupyterLab Container](apps/jupyter-app.md) | Tenant Service | Run a JupyterLab container on a back-end |
 | [Run RStudio Server Container](apps/rstudio-app.md) | Tenant Service | Run an RStudio Server container on a back-end |
 | [Job Composer](apps/job-composer.md) | System Installed App | Write and submit a Slurm batch job to a back-end |
