@@ -2,362 +2,410 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.eidf.ac.uk/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/access/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/access/project/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/access/ssh/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/access/virtualmachines-vdi/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/faq/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/known-issues/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/overview/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/overview/acknowledgements/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/overview/contacts/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/network-access-controls/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/overview/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/using-the-hpc-cluster/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/virtual-desktop-connections/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/about/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/access/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/containers/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/files/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/getting-started/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/home-page/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/jobs/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/ssh/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/tips/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/active-jobs/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/batch-container-app/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/job-composer/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/jupyter-app/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/jupyter-os-app/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/rstudio-app/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/superdome-flex-tutorial/L3_submitting_scripts_to_slurm/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/superdome-flex-tutorial/L4_parallelised_python_analysis/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/superdome-flex-tutorial/L5_parallelised_r_analysis/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-container-user-guide/container-examples/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-container-user-guide/development-workflow/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-container-user-guide/introduction/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-container-user-guide/workflow-examples/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/faq/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/kueue/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/policies/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L1.1_building-and-testing-containers/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L1_getting_started/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L2.1_creating-your-first-pod-template/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L2_using-containers-in-the-tre/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L5_running_a_pytorch_task/</loc>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L6_template_workflow/</loc>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/cerebras/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/cerebras/access/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/cerebras/connect/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/cerebras/run/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/datacatalogue/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/datacatalogue/metadata/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/datapublishing/catalogue/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/datapublishing/service/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/experimental/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gitlab/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gitlab/quickstart/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/faq/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/kueue/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/policies/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/shared-cephfs/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/training/L1_getting_started/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/training/L2_requesting_persistent_volumes/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/training/L3_running_a_pytorch_task/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/gpuservice/training/L4_template_workflow/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/faq/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/training/L1_getting_started/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/training/L2_multiple_IPU/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/training/L3_profiling/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/graphcore/training/L4_other_frameworks/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/jhub/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/jhub/quickstart/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/mft/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/mft/quickstart/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/mft/using-the-mft/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/s3/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/s3/manage/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/s3/tutorial/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/ultra2/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/ultra2/access/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/ultra2/connect/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/ultra2/run/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/docs/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/flavours/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/policies/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/quickstart/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/rdp-tunnelling/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/sharedfs/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/status/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/storage/faq/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/storage/overview/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/tutorial-videos/</loc>
-         <lastmod>2025-11-20</lastmod>
+         <lastmod>2025-11-25</lastmod>
     </url>
 </urlset>
