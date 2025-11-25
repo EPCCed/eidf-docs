@@ -3422,13 +3422,17 @@
 <h2 id="software">Software</h2>
 <p>The user-nodes are equipped with a normal developer packages. If you feel that something is missing, please submit a ticket via the <a href="https://portal.eidf.ac.uk/queries/submit">Portal</a></p>
 <h2 id="virtual-environment-setup">Virtual Environment Setup</h2>
-<p>In general, our system is compatible with the documentation from <a href="https://training-docs.cerebras.ai/rel-2.5.0/getting-started/setup-and-installation">Cerebras</a> which should be followed.
-In this early phase, a few small tweaks are required:</p>
-<p>Use Cerebras <a href="https://github.com/Cerebras/modelzoo/">ModelZoo 2.5.0</a> for compatibility to the Cerebras machine's installed software-sdk version
-For completness both the clone and checkout are included below:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Cerebras/modelzoo.git<span class="w"> </span>./modelzoo
-<span class="nb">cd</span><span class="w"> </span>modelzoo
-git<span class="w"> </span>checkout<span class="w"> </span>Release_2.5.0
+<p>In general, our system is compatible with the documentation from <a href="https://training-docs.cerebras.ai/rel-2.6.0/getting-started/setup-and-installation">Cerebras</a> which should be followed.
+However, a few small tweaks are required:</p>
+<p>Use Cerebras <a href="https://github.com/Cerebras/modelzoo/tree/Release_2.6.0">ModelZoo R2.6.0</a> for compatibility to the Cerebras machine's installed software-sdk version</p>
+<p>You will need to pin the version of the <code>peft</code> library to <code>0.17.1</code></p>
+<p>For completness both the modelzoo clone and virtual environmment setup are included below:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>Release_2.6.0<span class="w"> </span>https://github.com/Cerebras/modelzoo.git<span class="w"> </span>./modelzoo
+python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>modelzoo_venv
+<span class="nb">source</span><span class="w"> </span>modelzoo_venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">peft</span><span class="o">==</span><span class="m">0</span>.17.1
+pip<span class="w"> </span>install<span class="w"> </span>--editable<span class="w"> </span>./modelzoo
 </code></pre></div>
 <h2 id="running-codes">Running codes</h2>
 <p>Run as per the normal Cerebras documentation. It is advisable to run codes inside a <code>tmux</code> session so you can return to them without having to leave SSH sessions active whilst jobs run.</p>
