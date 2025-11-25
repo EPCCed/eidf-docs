@@ -6,16 +6,22 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.5.0/getting-started/setup-and-installation) which should be followed.
-In this early phase, a few small tweaks are required:
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.6.0/getting-started/setup-and-installation) which should be followed.
+However, a few small tweaks are required:
 
-Use Cerebras [ModelZoo 2.5.0](https://github.com/Cerebras/modelzoo/) for compatibility to the Cerebras machine's installed software-sdk version
-For completness both the clone and checkout are included below:
+Use Cerebras [ModelZoo R2.6.0](https://github.com/Cerebras/modelzoo/tree/Release_2.6.0) for compatibility to the Cerebras machine's installed software-sdk version
+
+You will need to pin the version of the `peft` library to `0.17.1`
+
+For completness both the modelzoo clone and virtual environmment setup are included below:
 
 ```bash
-git clone https://github.com/Cerebras/modelzoo.git ./modelzoo
-cd modelzoo
-git checkout Release_2.5.0
+git clone -b Release_2.6.0 https://github.com/Cerebras/modelzoo.git ./modelzoo
+python3.11 -m venv modelzoo_venv
+source modelzoo_venv/bin/activate
+pip install --upgrade pip
+pip install peft==0.17.1
+pip install --editable ./modelzoo
 ```
 
 ## Running codes
