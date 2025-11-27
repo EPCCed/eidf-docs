@@ -29,6 +29,13 @@ Users should have a [SHS Account](../safe-haven-access.md) as the SHS GPU Cluste
 
 Research co-ordinators can request that specific user-accounts have access to the SHS GPU Cluster through a service request to the their dedicated helpdesk.
 
+When submitting a request, the Research Co-ordinator must provide:
+
+- **Safe Heaven and Project/Study name**
+- **Users requiring access**
+- **Number of GPUs required** (by default, *4 GPUs are assigned*)
+- **SHS Project VM name** from which access to the cluster will be granted
+
 Each project will be given a namespace within the SHS GPU Cluster to operate in.
 
 This project namespace will normally be formatted as the SHS Safe Heaven and Project code appended with "ns", e.g. `nsh-2024-0000-ns` for the `nsh` Safe Haven project with code `2024-0000`.
