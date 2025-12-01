@@ -3337,12 +3337,12 @@
 </li>
 <li><strong>Container registry username</strong>: A container registry username is required.</li>
 <li><strong>Container registry access token</strong>: An access token associated with the username is required. Using an access token that grants <strong>read-only</strong> access to the container registry is <strong>strongly recommended</strong>.</li>
-<li><strong>Container runner</strong>: Container runner - 'podman' or 'apptainer' - with which to run the container. Your selected back-end must have the container runner installed.</li>
+<li><strong>Container runner</strong>: Container runner - 'podman' or 'apptainer' - with which to run the container.</li>
 <li><strong>Reuse Apptainer SIF file</strong> (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, <code>epcc-ces-hello-tre:1.1.sif</code>.</li>
 <li><strong>Container name</strong> (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is <code>CONTAINER_NAME-SESSION_ID</code>, where <code>CONTAINER_NAME</code> is derived from the image name (if the image name is <code>my-container:1.0</code> then <code>CONTAINER_NAME</code> is <code>my-container</code>) and <code>SESSION_ID</code> is a unique session identifier for the app's job.</li>
-<li><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job. Your chosen back-end must have the requested number of cores/CPUs available.</li>
-<li><strong>Memory (GiB)</strong>: Memory requested for the app's job. Your chosen back-end must have the requested memory available.</li>
-<li><strong>Use GPU?</strong>: Request that the container use a GPU. Your chosen back-end must have GPUs available.</li>
+<li><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job.</li>
+<li><strong>Memory (GiB)</strong>: Memory requested for the app's job.</li>
+<li><strong>Use GPU?</strong>: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.</li>
 <li><strong>Container runner command-line arguments</strong>: Command-line arguments to pass to the chosen container runner to control its behaviour.</li>
 <li>
 <p><strong>Environment variables</strong>: Environment variables to be set within the container when it runs.</p>
