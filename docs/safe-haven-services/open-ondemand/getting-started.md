@@ -56,15 +56,15 @@ Read the form entries in conjunction with the explanations below and make the su
     * Leave this value as-is.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
-* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container. Your selected back-end must have the container runner installed.
+* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
 * **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
-* **CPUs/cores**: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores. Your chosen back-end must have the requested number of cores/CPUs available.
+* **CPUs/cores**: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello-tre` container does not need any more.
-* **Memory (GiB)**: Memory requested for the app's job. Your chosen back-end must have the requested memory available.
+* **Memory (GiB)**: Memory requested for the app's job.
     * Leave this value as-is as the all back-ends can provide the default memory, and the `epcc-ces-hello-tre` container does not need any more.
-* **Use GPU?**: Request that the container use a GPU. Your chosen back-end must have GPUs available.
+* **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
     * Leave this value as-is, as the `epcc-ces-hello-tre` container does not require a GPU.
 * **Container runner command-line arguments**: Command-line arguments to pass to the chosen container runner to control its behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
