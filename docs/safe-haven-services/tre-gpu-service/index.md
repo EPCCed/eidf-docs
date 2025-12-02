@@ -31,10 +31,10 @@ Research co-ordinators can request that specific user-accounts have access to th
 
 When submitting a request, the Research Co-ordinator must provide:
 
-- **Safe Heaven and Project/Study name**
-- **Users requiring access**
+- **Project/Study name**
+- **VM name** from which access to the cluster will be granted
+- **Username**
 - **Number of GPUs required** (by default, *4 GPUs are assigned*)
-- **SHS Project VM name** from which access to the cluster will be granted
 
 Each project will be given a namespace within the SHS GPU Cluster to operate in.
 
