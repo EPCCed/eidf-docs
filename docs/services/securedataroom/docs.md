@@ -39,6 +39,19 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 For changing the allowed list of domains that can be accessed by this machine, users with privileges to access the Squid Router `<projectID>-router`machine should edit the squid access control list in `<projectID>-router $ /etc/squid/allowlist_domains.txt` adding the domain name following [access control list rules defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section [squid doesnt match my subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains). The rules are then updated with  the `sudo squid -k reconfigure` command.
 
+By default the allowed list of domains allows Secure Virtual Machines to:
+    - Access common package repositories for operating system updates and software installation (R06, R09)
+    - Access EIDF services including the MFT server for data transfer (R04)
+    - Access popular container registries for downloading (but not uploading) container images (R10)
+        - Docker Hub
+        - GitHub Container Registry
+        - EIDF Container Registry
+    - Access common software pacakages: (R11)
+        - CRAN
+        - PyPI
+        - Bioconductor
+    - Specific EIDF S3 buckets for data transfer (R08)
+
 ### Required Member Permissions
 
 VMs and user accounts can only be managed by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the **Cloud Admin** role:
@@ -206,4 +219,3 @@ sudo reboot now
 ```
 
 or use the reboot button in the EIDF Portal (requires project manager permissions).
-
