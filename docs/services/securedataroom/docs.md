@@ -81,7 +81,8 @@ including the machine specification, its `10.24.*.*` IP address and any configur
 
 ### Quota and Usage
 
-Quotas and Usage are the same as those for the [standard EIDF VM service](../virtualmachines/docs.md#quota-and-usage)
+Quotas and Usage are the same as those for the [standard EIDF VM service](../virtualmachines/docs.md#quota-and-usage).
+
 Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
 You will not be able to create a VM if it exceeds the quota.
 
@@ -93,6 +94,7 @@ Please contact the helpdesk if your quota requirements have changed.
 
 ### Add a user account
 
+TBD
 <!-- User accounts allow project members to log in to the VMs in a project.
 The Project PI and project managers manage user accounts for each member of the project.
 Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
@@ -112,6 +114,7 @@ The user can now set the password for their new account on the account details p
 
 ## Adding Access to the VM for a User
 
+TBD
 <!-- User accounts can be granted or denied access to existing VMs.
 
 1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page, or click on the account name and then 'Manage' on the account details page
@@ -127,20 +130,11 @@ If a user only has one connection available in the VDI they will be automaticall
 
 ### Sudo permissions
 
-<!-- A project manager or PI may also grant sudo permissions to users on selected VMs.
-Management of sudo permissions must be requested in the project application - if it was not requested or the request was denied the functionality described below is not available.
-
-1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page
-1. Select the checkboxes in the column "Sudo" for the VMs on which this account is granted sudo permissions or uncheck to remove permissions
-1. Make sure "Access" is also selected for the sudo VMs to allow login
-1. Click the 'Update' button
-
-After a few minutes, the job to give the user account sudo permissions on the selected VMs will complete.
-On the account detail page a "sudo" badge will appear next to the selected VMs.
-
-Please contact the helpdesk if sudo permission management is required but is not available in your project. -->
+Sudo permissions are only granted to users in the VM Admin role to restrict as much as possible the data management capabilities of users in the Secure Virtual Desktop environment and remove the opportunity for data ingress/egress outwith the proper channels.
 
 ## First login
+
+These instructions match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#first-login).
 
 A new user account must reset the password before they can log in for the first time.
 To do this:
@@ -153,6 +147,8 @@ To do this:
 
 ### Adding RDP Access
 
+The instructions in this section match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#adding-rdp-access).
+
 If you did not select RDP access when you created the VM you can add it later:
 
 1. Open the VM details page by selecting the name on the project page
@@ -163,6 +159,8 @@ Once the RDP job is completed, all users that are allowed to access the VM
 will also be permitted to use the RDP connection.
 
 ### Software catalogue
+
+The instructions in this section match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#software-catalogue).
 
 You can install packages from the software catalogue at a later time,
 even if you didn't select a package when first creating the machine.
@@ -209,6 +207,3 @@ sudo reboot now
 
 or use the reboot button in the EIDF Portal (requires project manager permissions).
 
-## Updating Access for machines in the PPZ
-
-TBD
