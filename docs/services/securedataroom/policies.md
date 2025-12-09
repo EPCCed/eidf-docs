@@ -11,11 +11,13 @@ Secure Virtual Desktop VMs are placed within a standard TRE PPZ project subnet, 
 The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
     - Login Activity
     - Network requests
-    - S3 data ingress and egress(==?==)
+    - ==S3 data ingress and egress==?
 
-## Machine management policies
+## Machine management policies (R06)
 
-EIDF Secure Virtual Desktop VMs are managed
+The Secure Virtual Desktop VMs are managed by the VM Admin users within the project. The EIDF team will manage ONLY the underlying infrastructure, hypervisors and cloud management software as part of the EIDF Maintenance sessions.
+
+EIDF Secure Virtual Desktop VMs are provided in a state that allows easy customisation by VM Admin users to meet the requirements of their project. [Documentation is provided](docs.md) to guide VM Admin users on how to customise and manage their VMs for their own needs.
 
 ## End of Life Policy for User Accounts and Projects
 
