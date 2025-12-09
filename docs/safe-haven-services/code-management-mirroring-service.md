@@ -23,7 +23,10 @@ Available features include:
 - Code review
 - Wikis
 
-This page provides information on accessing and using the service, however is not intended as a guide to Gitea. Please see Gitea's own [documentation][gitea_docs] for general usage information. It is also assumed that users are familiar with git and the use of version control services.
+This guide provides information on accessing and using the service, however is not intended as a guide to Git or Gitea. We suggest the following resources as learning material:
+
+- The [Version Control with Git](https://swcarpentry.github.io/git-novice/) workshop by The Carpentries
+- Gitea's [documentation][gitea_docs] for general usage information
 
 ## Access
 
