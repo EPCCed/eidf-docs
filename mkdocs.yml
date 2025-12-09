@@ -23,9 +23,17 @@ edit_uri: edit/main/docs/
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - attr_list
 
+plugins:
+  - search
+  - mermaid2:
+      version: 11.10.1
 
 nav:
   - "Service Status": status/index.md
@@ -51,6 +59,7 @@ nav:
       - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
+      - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
@@ -94,6 +103,9 @@ nav:
     #- "Managed File Transfer":
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
+    - "Code Collaboration":
+      - "Gitlab Overview": services/gitlab/index.md
+      - "Gitlab Quickstart": services/gitlab/quickstart.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Network Access Controls": safe-haven-services/network-access-controls.md
@@ -109,10 +121,47 @@ nav:
      - "TRE Container User Guide":
        - "Introduction": safe-haven-services/tre-container-user-guide/introduction.md
        - "Development Workflow": safe-haven-services/tre-container-user-guide/development-workflow.md
-       - "Advising IG of Required Software Stack": safe-haven-services/tre-container-user-guide/advise-ig-required-software-stack.md
-       - "Building and Testing Containers": safe-haven-services/tre-container-user-guide/building-and-testing-containers.md
-       - "Using Containers in the TRE": safe-haven-services/tre-container-user-guide/using-containers-in-the-tre.md
+       - "Workflow Examples": safe-haven-services/tre-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/tre-container-user-guide/container-examples.md
+     # TRE GPU service docs can be uncommented and added to
+     # the navigation menu when the TRE GPU service is made
+     # available to TRE tenants. See Umair Ayub and Kostas for details.
+     # - "TRE GPU Service":
+     #   - "Overview": safe-haven-services/tre-gpu-service/index.md
+     #   - "Policies": safe-haven-services/tre-gpu-service/policies.md
+     #   - "Kueue": safe-haven-services/tre-gpu-service/kueue.md
+     #   - "Tutorials":
+     #      - "Getting Started": safe-haven-services/tre-gpu-service/training/L1_getting_started.md
+     #      - "Building and Pushing Containers to GHCR": safe-haven-services/tre-gpu-service/training/L1.1_building-and-testing-containers.md
+     #      - "Downloading Containers in the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L2_using-containers-in-the-tre.md
+     #      - "Creating your first pod template within a job yaml file": safe-haven-services/tre-gpu-service/training/L2.1_creating-your-first-pod-template.md
+     #      - "Transfer Data Inside the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
+     #      - "Persistent Volumes": safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes.md
+     #   - "GPU Service FAQ": safe-haven-services/tre-gpu-service/faq.md
+     # TRE Open OnDemand service docs can be uncommented and added to
+     # the navigation menu when the TRE Open OnDemand service is made
+     # available to TRE tenants. See MikeJ for details.
+     #- "TRE Open OnDemand service":
+     #  - "About the TRE Open OnDemand service": safe-haven-services/open-ondemand/about.md
+     #  - "Access": safe-haven-services/open-ondemand/access.md
+     #  - "Getting started": safe-haven-services/open-ondemand/getting-started.md
+     #  - "Home page": safe-haven-services/open-ondemand/home-page.md
+     #  - "Run jobs": safe-haven-services/open-ondemand/jobs.md
+     #  - "Run containers": safe-haven-services/open-ondemand/containers.md
+     #  - "View and run apps": safe-haven-services/open-ondemand/apps.md
+     #  - "Browse and manage files": safe-haven-services/open-ondemand/files.md
+     #  - "Log into back-ends": safe-haven-services/open-ondemand/ssh.md
+     #  - "Apps":
+     #     - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
+     #     - "Run Batch Container": safe-haven-services/open-ondemand/apps/batch-container-app.md
+     #     - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-os-app.md
+     #     - "Run JupyterLab Container": safe-haven-services/open-ondemand/apps/jupyter-app.md
+     #     - "Run RStudio Server Container": safe-haven-services/open-ondemand/apps/rstudio-app.md
+     #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
+     #  - "Tips": safe-haven-services/open-ondemand/tips.md
+
+     # WIP: TRE Code Management docs
+     # - "[Beta] Code Management and Mirroring Service": safe-haven-services/code-management-mirroring-service.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md
