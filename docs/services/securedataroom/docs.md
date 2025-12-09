@@ -37,8 +37,6 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 ### Updating the allowed access for Secure Virtual Desktop VMs
 
-For changing the allowed list of domains that can be accessed by this machine, users with privileges to access the Squid Router `<projectID>-router`machine should edit the squid access control list in `<projectID>-router $ /etc/squid/allowlist_domains.txt` adding the domain name following [access control list rules defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section [squid doesnt match my subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains). The rules are then updated with  the `sudo squid -k reconfigure` command.
-
 By default the allowed list of domains allows Secure Virtual Machines to:
     - Access common package repositories for operating system updates and software installation (R06, R09)
     - Access EIDF services including the MFT server for data transfer (R04)
@@ -51,6 +49,28 @@ By default the allowed list of domains allows Secure Virtual Machines to:
         - PyPI
         - Bioconductor
     - Specific EIDF S3 buckets for data transfer (R08)
+
+Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
+
+The VM Admin with access to the Squid Router `<projectID>-router` machine can edit the squid access control list. The access control list is available under
+
+```bash
+<projectID>-router $ /etc/squid/allowlist_domains.txt
+```
+
+Within this is a detailed list of domains and their reasons for being allowed. The VM Admin can add or remove domain names following the syntax of [access control lists defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section [squid does not match my subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains).
+
+S3 buckets access is handled in a different location due to some technical details of allowing EIDF S3 buckets access. The list of allowed S3 buckets is available under
+
+```bash
+/etc/squid/allowlist_buckets.txt
+```
+
+After editing the allowlist Squid must be reconfigured using the command:
+
+```bash
+sudo squid -k reconfigure
+```
 
 ### Required Member Permissions
 
