@@ -1,8 +1,8 @@
-# FAQs for the Secure Data Room Service
+# FAQs for the Secure Virtual Desktop Service
 
 ## http_proxy and https_proxy environment variables
 
-http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Data Room
+http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Virtual Desktop
 
 ```bash
 export http_proxy=http://<proxy address>:3128
@@ -13,7 +13,7 @@ Where the `<proxy address>` can be found in the EIDF portal under the **Private 
 
 These variables are also set by default in the /etc/environment files.
 
-It is always worth checking these are set if you are having trouble with internet access from within a Secure Data Room VM.
+It is always worth checking these are set if you are having trouble with internet access from within a Secure Virtual Desktop VM.
 
 ## AWS CLI
 

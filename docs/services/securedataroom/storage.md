@@ -11,7 +11,7 @@ Mounting is done at a project level, so the whole project CephFS tree is mounted
 To mount CephFS on a VM:
 
 1. The project must have space allocated on CephFS.
-1. A mount key must be created exist. PI's should contact the EIDF helpdesk to have this created.
+1. A mount key must be created or exist. PI's should contact the EIDF helpdesk to have this created.
 
 If both pre-requisites are met, PIs and PMs will be able to see the **Mount** button under **CephFS Mounts** in the project management page in the EIDF portal.
 

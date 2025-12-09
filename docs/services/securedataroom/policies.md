@@ -1,20 +1,21 @@
-# EIDF Secure Data Room Policies 
+# EIDF Secure Virtual Desktop Policies
 
 ## Networking Policies (R03,R12,R13,R14, R15, R16)
 
-The EIDF Secure Data Room service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Data Room VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infastructure to the VMs.
+The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infrastructure to the VMs.
 
-Secure data room VMs are placed within a standard TRE PPZ project subnet, leveraging understanding and pentesting from development of the infastructure for the Scottish National Safe Haven also run by the EIDF.
+Secure Virtual Desktop VMs are placed within a standard TRE PPZ project subnet, leveraging understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven also run by the EIDF.
 
 ## Audit policies (R05)
 
-The EIDF Secure Data Room service provides logging of user activity within the Secure Data Room service VMs. This includes:
+The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
     - Login Activity
     - Network requests
     - S3 data ingress and egress(==?==)
 
 ## Machine management policies
-EIDF Secure Data Room VMs are managed
+
+EIDF Secure Virtual Desktop VMs are managed
 
 ## End of Life Policy for User Accounts and Projects
 
