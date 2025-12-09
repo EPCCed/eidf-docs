@@ -159,7 +159,9 @@ nav:
      #     - "Run RStudio Server Container": safe-haven-services/open-ondemand/apps/rstudio-app.md
      #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
      #  - "Tips": safe-haven-services/open-ondemand/tips.md
-     - "[Beta] Code Management and Mirroring Service": safe-haven-services/code-management-mirroring-service.md
+
+     # WIP: TRE Code Management docs
+     # - "[Beta] Code Management and Mirroring Service": safe-haven-services/code-management-mirroring-service.md
   - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md
