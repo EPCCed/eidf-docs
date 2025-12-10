@@ -2830,6 +2830,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run-a-container-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run a container example
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3017,6 +3026,181 @@ res.txt
 </code></pre></div>
 </li>
 </ol>
+<hr />
+<h2 id="run-a-container-example">Run a container example</h2>
+<p>This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the 'hello TRE' container which is used within the <a href="../../getting-started/">Getting started</a> and the <a href="../batch-container-app/">Run Batch Container</a> app. The container is run using the TRE Container Execution Tools' commands <code>ces-pull</code>, to pull the container, and <code>ces-run</code> to run the container.</p>
+<p>Create a job to run the container using Podman:</p>
+<ol>
+<li>Select <strong>New Job</strong> menu, <strong>From Template</strong> option.</li>
+<li>Enter Job Name: Run Container</li>
+<li>Select a Cluster, back-end.</li>
+<li>Click <strong>Create New Job</strong>.</li>
+<li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
+<li>A new browser tab will appear with an editor.</li>
+<li>
+<p>Update the script as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=hello-tre</span>
+<span class="c1">#SBATCH --output=output.txt</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --time=10:00</span>
+<span class="c1">#SBATCH --mem-per-cpu=100</span>
+
+<span class="nv">CR_URL</span><span class="o">=</span>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1
+<span class="nv">CR_USER</span><span class="o">=</span>anonymous
+<span class="nv">CR_TOKEN</span><span class="o">=</span>...see<span class="w"> </span>below...
+ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SCRATCH</span><span class="o">=</span><span class="nv">$HOME</span>/scratch/hello-tre
+<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SAFE_OUTPUTS</span><span class="o">=</span><span class="nv">$HOME</span>/safe_outputs/hello-tre
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SCRATCH</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SAFE_OUTPUTS</span>
+
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; env_file.txt</span>
+<span class="s">HELLO_TRE=Greetings</span>
+<span class="s">EOF</span>
+
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; arg_file.txt</span>
+<span class="s">-d 10</span>
+<span class="s">-n $USER</span>
+<span class="s">EOF</span>
+
+ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> </span>hello-tre<span class="w"> </span>--env-file<span class="w"> </span>env_file.txt<span class="w"> </span>--arg-file<span class="w"> </span>arg_file.txt<span class="w"> </span><span class="nv">$CR_URL</span>
+</code></pre></div>
+<ul>
+<li>For <code>CR_TOKEN</code>, copy in the 'hello TRE' container's 'Container registry access token' from the <a href="../batch-container-app/">Run Batch Container</a> app's form.</li>
+<li>By default, <code>ces-run</code> creates directories with random names - <code>scratch-NNNN</code> and <code>outputs-NNNN</code> - and mounts these into a container at <code>/scratch</code> and <code>/safe_outputs</code>. However, <code>ces-run</code> supports <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of <code>$HOME</code> and define <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> to tell <code>ces-run</code> to mount these directories.</li>
+<li>The script creates a file, <code>env_file.txt</code>, with an environment variable to be passed to the 'hello TRE' container. The container uses the environment variable <code>HELLO_TRE</code> to customise the greeting it prints.</li>
+<li>The script also creates a file, <code>arg_file.txt</code>, with container-specific arguments to be passed directly to the container when it is run. The 'hello TRE' container will pause for <code>-d</code> seconds, then issue a greeting to the name cited in <code>-n</code> (here, the current user).</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+<p>Submit job:</p>
+<ol>
+<li>Switch to the Job Composer browser tab.</li>
+<li>
+<p>Click <strong>Submit job</strong> (green play icon).</p>
+<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
+</li>
+<li>
+<p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
+</li>
+</ol>
+<p>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:</p>
+<ol>
+<li>Click <code>output.txt</code> under <strong>Folder Contents</strong>.</li>
+<li>
+<p>A new browser tab will appear with the contents of the file:</p>
+<div class="highlight"><pre><span></span><code>...
+Hello TRE!
+...
+Greetings USER!
+
+Sleeping for 10 seconds...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...and awake!
+
+For more container examples and ideas, visit:
+  https://github.com/EPCCed/tre-container-samples
+Goodbye USER!
+</code></pre></div>
+</li>
+<li>
+<p>Close the tab.</p>
+</li>
+</ol>
+<p>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:</p>
+<ol>
+<li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
+<li>
+<p>View the job context directory's contents:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>arg_file.txt
+env_file.txt
+main_job.sh
+output.txt
+</code></pre></div>
+</li>
+<li>
+<p>View <code>output.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output.txt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>...
+Hello TRE!
+...
+Greetings USER!
+
+Sleeping for 10 seconds...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...and awake!
+
+For more container examples and ideas, visit:
+  https://github.com/EPCCed/tre-container-samples
+Goodbye USER!
+</code></pre></div>
+</li>
+</ol>
+<p>Create a new job from the current job to run the container using Apptainer:</p>
+<ol>
+<li>Switch to the Job Composer browser tab.</li>
+<li>Select <strong>New Job</strong> menu, <strong>From Selected Job</strong> option.</li>
+<li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
+<li>
+<p>Replace use of <code>podman</code> with <code>apptainer</code> as follows:</p>
+<ol>
+<li>
+<p>Replace the <code>ces-pull podman</code> line with:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
+<span class="nv">SIF_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/epcc-ces-hello-tre:1.1.sif
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$SLURM_SUBMIT_DIR</span>
+</code></pre></div>
+<ul>
+<li><code>ces-pull apptainer</code> creates a SIF file in the current directory whose name is derived from the last part of the container URL. We change into <code>$HOME</code> so that the SIF file is created in <code>$HOME</code> before moving back to the directory with the job files, <code>$SLURM_SUBMIT_DIR</code>. This means we'll only ever have one copy of this SIF file in our <code>$HOME</code> directory, rather than one copy for each run of the job, which would quickly consume space!</li>
+</ul>
+</li>
+<li>
+<p>Replace the <code>ces-run podman</code> line with:</p>
+<div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>apptainer<span class="w"> </span>-n<span class="w"> </span>hello-tre<span class="w"> </span>--env-file<span class="w"> </span>env_file.txt<span class="w"> </span>--arg-file<span class="w"> </span>arg_file.txt<span class="w"> </span><span class="nv">$SIF_FILE</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+</ol>
+<p>Submit job:</p>
+<ol>
+<li>Switch to the Job Composer browser tab.</li>
+<li>
+<p>Click <strong>Submit job</strong> (green play icon).</p>
+<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
+</li>
+<li>
+<p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
+</li>
+</ol>
+<p>View <code>output.txt</code> as described previously.</p>
 
 
 
