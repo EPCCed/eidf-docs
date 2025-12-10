@@ -257,7 +257,7 @@ Create a job to run the container using Podman:
     * For `CR_TOKEN`, copy in the 'hello TRE' container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
     * By default, `ces-run` creates directories with random names - `scratch-NNNN` and `outputs-NNNN` - and mounts these into a container at `/scratch` and `/safe_outputs`. However, `ces-run` supports `CES_SCRATCH` and `CES_SAFE_OUTPUTS` environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of `$HOME` and define `CES_SCRATCH` and `CES_SAFE_OUTPUTS` to tell `ces-run` to mount these directories.
     * The script creates a file, `env_file.txt`, with an environment variable to be passed to the 'hello TRE' container. The container uses the environment variable `HELLO_TRE` to customise the greeting it prints.
-    * The script also creates a file, `arg_file.txt`, with container-specific arguments to be passed directly to the container when it is run. The 'hello TRE' container will pause for `-d` seconds issue a greeting to the name cited in `-n` (here, the current user).
+    * The script also creates a file, `arg_file.txt`, with container-specific arguments to be passed directly to the container when it is run. The 'hello TRE' container will pause for `-d` seconds, then issue a greeting to the name cited in `-n` (here, the current user).
 
 1. Click **Save**.
 
