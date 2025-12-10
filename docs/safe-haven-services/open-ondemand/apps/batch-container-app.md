@@ -19,12 +19,12 @@ Complete the following information the app form:
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: A container registry username is required.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
-* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container. Your selected back-end must have the container runner installed.
+* **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
 * **Reuse Apptainer SIF file** (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, `epcc-ces-hello-tre:1.1.sif`.
 * **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
-* **CPUs/cores**: CPUs/cores requested for the app's job. Your chosen back-end must have the requested number of cores/CPUs available.
-* **Memory (GiB)**: Memory requested for the app's job. Your chosen back-end must have the requested memory available.
-* **Use GPU?**: Request that the container use a GPU. Your chosen back-end must have GPUs available.
+* **CPUs/cores**: CPUs/cores requested for the app's job.
+* **Memory (GiB)**: Memory requested for the app's job.
+* **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
 * **Container runner command-line arguments**: Command-line arguments to pass to the chosen container runner to control its behaviour.
 * **Environment variables**: Environment variables to be set within the container when it runs.
     * Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:

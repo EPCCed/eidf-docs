@@ -15,8 +15,8 @@ Complete the following information the app form:
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
 * **RStudio Server password**: A password is required to secure RStudio Server. Provide a password to use.
-* **CPUs/cores**: CPUs/cores requested for the app's job. Your chosen back-end must have the requested number of cores/CPUs available.
-* **Memory (GiB)**: Memory requested for the app's job. Your chosen back-end must have the requested memory available.
+* **CPUs/cores**: CPUs/cores requested for the app's job.
+* **Memory (GiB)**: Memory requested for the app's job.
 
 Click **Launch**.
 

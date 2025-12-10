@@ -26,9 +26,25 @@ You cannot request accounts, this has to be done by your project manager.
 If you cannot see any accounts in the project after joining please get in touch with
 the PI or a project manager and ask them to create one for you.
 
-## How to apply for a project as a Principal Investigator
+## How to apply to use EIDF Services
+
+We welcome applications from Principal Investigtors who hold academic reserach grants and commercial customers.
+
+To apply for a project on EIDF, you must have funding secured or a means to pay
+
+### I don't have funding yet, how can I find out how much it costs to use?
+
+Our web pages have detailed costs and prices
+Please visit the [our web pages](https://edinburgh-international-data-facility.ed.ac.uk/access) for the current costs.
+
+Please note, costs are correct at the time of publication, but will change.
+
+To get a detailed, full cost to include in a any grant application or for an estimate, you can 
+begin a new project application which gives you access to pricing calculator.
 
 ### Create a new project application
+
+*To use EIDF, you must have funding or a means to pay.*
 
 Navigate to the [EIDF Portal](https://portal.eidf.ac.uk/) and log
 in via SAFE if necessary (see above).
@@ -50,17 +66,39 @@ applications and their status, or follow the link
 
 Fill in each section of the application as required:
 
-* Case for Support
-* EIDF Services Required
+#### Case for Support
+
+Please include here how you intend to pay for services on EIDF
+You *must* include reference to either a 
+
+* UKRI Grant number
+
+OR a 
+
+* Purchase Order to the University of Edinburgh
+
+Please contact the EIDF Helpdesk if you require a Purchase Order.
+
+If you do not have either, but need to use the pricing calculator for a grant costing or estimate for a Purchase Order, please continue.
+
+#### EIDF Services Required
 
 You can edit and save each section separately and revisit the application at a later time.
+
+#### Pricing
+
+Please use the pricing calcultor to itemise what services you require.
+
+The calculator will price your projected usage.
+
+You can then use this costing in any grant application, or in a Purchase Order.
+
+If you have funding secured, please proceed with your application
 
 #### Editors
 
 You may invite other editors to your application.
 Editors must have a valid SAFE login and they will receive an email with your invitation and a link.
-After accepting, they have write access to all parts of the proposal.
-However, only the owner of the application has permission to submit the application.
 
 #### Datasets
 
@@ -68,6 +106,7 @@ You are required to fill in a "Dataset" form for each dataset that you are plann
 
 We are required to ensure that projects involving "sensitive" data have the necessary permissions in place.
 The answers to these questions will enable us to decide what additional documentation we may need, and whether your project may need to be set up in an independently governed Safe Haven.
+
 There may be some projects we are simply unable to host for data protection reasons.
 
 #### Virtual Desktop Requirements
@@ -76,14 +115,29 @@ Add an estimate for each size and type of VM that is required.
 
 ### Submission
 
-When you are happy with your application, click "Submit".
+When you are happy with your application, and you have funds, please click "Submit".
+
 If there are missing fields that are required these are highlighted and your submission will fail.
 
 When your submission was successful the application status is marked as "Submitted" and
-now you have to wait while the EIDF approval team considers your application.
+now you have to wait while the EIDF team considers your application.
+
 You may be contacted if there are any questions regarding your application or further
-information is required,
-and you will be notified of the outcome of your application.
+information is required.
+
+### Re-visting an Application with Secured Funding
+
+If you have yet to secure funding and are creating an application for a cost estimate at this stage, you do not need to "Sumbit".
+
+Your application is automatically saved
+
+Once you have your grant confirmed or your Purchase Order in place, you can add details of funding to your application, then "Submit"
+
+#### Note on Pricing
+
+Our pricing calculator includes an inflation escalator for costs.
+
+Cost for access to EIDF will increase, and as such any application for use in the future should budget for cost increases.
 
 ### Approved Project
 
