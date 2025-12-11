@@ -2891,11 +2891,9 @@ We recommend specifying <code>--user</code> to install packages into your user d
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;<span class="w"> </span>--user
 </code></pre></div>
 <h2 id="data">Data</h2>
-<p>There is a project space mounted in <code>/project_data</code>. Only project accounts have permissions to view and write to their project folder in this space.
-Here you can share data with other notebook users in your project.
-Data placed in <code>/project_data/shared</code> is shared with other notebook users outside your project.</p>
-<p>You can also share data with DSC VMs in your project.
-Please contact the helpdesk if you would like to mount this project space to one of your VMs.</p>
+<p>If your project has a <a href="../../../storage/overview/#shared-filesystem-cephfs">CephFS</a> allocation the project folder can be mounted to the Notebook Service. Here you can share data with other notebook users in your project, or to other EIDF services such as Virtual Desktops, GPU service, Cirrus and Cerebras.</p>
+<p>In the notebook service, users only have access to their project's own CephFS directory. The read and write permissions in the CephFS project folder are those of the user that you selected when logging in to the Notebook service.</p>
+<p>Once mounted, the project space is available at the path <code>/sharedfs</code> in your notebooks. Please contact the helpdesk if you would like your project space to be mounted.</p>
 <h2 id="limits">Limits</h2>
 <p>Note that there are limited amounts of memory and cores available per user. Users do not have sudo permissions in the containers so you cannot install any system packages.</p>
 <p>Currently there is no access to GPUs. You can submit jobs to the EIDF GPU Service but you cannot run your notebooks on a GPU.</p>
