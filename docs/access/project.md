@@ -39,7 +39,7 @@ Please visit the [our web pages](https://edinburgh-international-data-facility.e
 
 Please note, costs are correct at the time of publication, but will change.
 
-To get a detailed, full cost to include in a any grant application or for an estimate, you can 
+To get a detailed, full cost to include in a any grant application or for an estimate, you can
 begin a new project application which gives you access to pricing calculator.
 
 ### Create a new project application
@@ -69,11 +69,11 @@ Fill in each section of the application as required:
 #### Case for Support
 
 Please include here how you intend to pay for services on EIDF
-You *must* include reference to either a 
+You *must* include reference to either a
 
 * UKRI Grant number
 
-OR a 
+OR a
 
 * Purchase Order to the University of Edinburgh
 
