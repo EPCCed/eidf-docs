@@ -60,7 +60,7 @@ See more details about [S3 at EIDF](../services/s3/index.md).
 
 ### Shared Filesystem (CephFS)
 
-Our Shared Filesystem (CephFS) provides a parallel file system accessible across EIDF services. It is directly accessible from the VM service, GPU service, Ultra2 and Cerebras.
+Our Shared Filesystem (CephFS) provides a parallel file system accessible across EIDF services. It is directly accessible from the VM service, GPU service, Notebook service, Cirrus and Cerebras.
 
 Cerebras only uses Shared Filesystem (CephFS). PIs can make it available on their VMs; see how on the documentation [mounting CephFS on VMs](../services/virtualmachines/sharedfs.md).
 
