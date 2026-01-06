@@ -4,7 +4,7 @@
 
 The TRE Safe Haven services are protected against open, global access by IPv4 source address filtering. These network access controls ensure that connections are permitted only from Safe Haven controller partner networks and collaborating research institutions.
 
-Network access controls for each Safe Haven are managed by the Safe Haven service controllers who instruct EPCC to add and remove the IPv4 addresses allowed to connect to the service gateway. 
+Network access controls for each Safe Haven are managed by the Safe Haven service controllers who instruct EPCC to add and remove the IPv4 addresses allowed to connect to the service gateway.
 
 !!! note "Requirement"
       Users must connect to the Safe Haven service by first connecting to their institution or corporate VPN. If the institution or corporate VPN is not already allowed to access the Safe Haven service, research coordinators will ask researchers to provide an IP range to be added to the allow list.
@@ -16,8 +16,8 @@ Safe Haven services are accessed from a registered network connection address us
 The Safe Haven login process has three stages:
 
 1. Multi-factor authentication
-2. Remote Desktop Gateway login
-3. Project Desktop login
+1. Remote Desktop Gateway login
+1. Project Desktop login
 
 Researchers who are active in many research projects and in more than one Safe Haven will need to pay attention to the service they connect to, the project desktop they login to, and the accounts and identities they are using.
 
