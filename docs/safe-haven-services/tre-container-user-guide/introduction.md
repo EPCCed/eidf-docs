@@ -1,6 +1,6 @@
-# Introduction
+# The Safe Haven Container Execution Service - CES
 
-## Overview
+## What is the CES?
 
 The Container Execution Service (CES) has been introduced to allow project code developed and tested by researchers outside the Trusted Research Environment (TRE) in personal development environments to be imported and run on the project data inside the TRE using a well-documented, transparent, secure workflow.
 The primary role of the TRE is to store and share data securely; it is not intended to be a software development and testing environment. The CES helps researchers perform software development tasks in their chosen environment, rather than the restricted one offered in the TRE.
