@@ -13,6 +13,14 @@ The EIDF Secure Virtual Desktop service provides logging of user activity within
     - Network requests
     - ==S3 data ingress and egress==?
 
+### Network access logging
+
+The Squid web proxy logs all network traffic like web requests made by Secure Virtual Desktop VMs. These logs are stored in the EIDF Squid router and are configured to be retained for a period of 30 days before being automatically deleted.
+
+The access logs are available in /var/log/squid/access.log.x where x is the log rotation number, with access.log.0 being the most recent log file.
+
+The log retention period can be adjusted by changing the logfile_rotate parameter in the squid configuration file located at /etc/squid/squid.conf and the cronjob that runs the log rotation command. By default the log rotation happens everyday at midnight. This is the [frequency recommended by Squid](https://wiki.squid-cache.org/SquidFaq/SquidLogs#which-log-files-can-i-delete-safely) to ensure log files do not grow too large.
+
 ## Machine management policies (R06)
 
 The Secure Virtual Desktop VMs are managed by the VM Admin users within the project. The EIDF team will manage ONLY the underlying infrastructure, hypervisors and cloud management software as part of the EIDF Maintenance sessions.
