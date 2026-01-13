@@ -9,7 +9,6 @@ To quickly get started with the TRE Open OnDemand Service (hereon referred to as
 * [Access Open OnDemand](access.md).
 * Follow [Getting started](getting-started.md) to walk through the key points of the service.
 
-
 !!! Note
 
     The TRE Open OnDemand service is implemented using [Open OnDemand](https://openondemand.org/).
