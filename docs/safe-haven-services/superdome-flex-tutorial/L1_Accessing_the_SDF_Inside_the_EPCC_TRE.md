@@ -1,4 +1,4 @@
-# Accessing the Superdome Flex inside the EPCC Trusted Research Environment
+# The Safe Haven HPC Service - Superdome Flex
 
 ## What is the Superdome Flex?
 
@@ -15,9 +15,8 @@ The software specification of the SDF are:
 - Access to local copies of R (CRAN) and python (conda) repositories
 - [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) container platform
 
-### Key Point
-
-`The SDF is within the TRE. Therefore, the same restrictions apply, i.e. the SDF is isolated from the internet (no downloading code from public GitHub repos) and copying/recording/extracting anything on the SDF outside of the TRE is strictly prohibited unless through approved processes.`
+!!! warning "Network access controls"
+    The SDF is within the TRE, therefore, the same restrictions apply, i.e. outside access is limited by Safe Haven IG controls, and copying/recording/extracting code or data outside of the TRE is strictly prohibited unless through approved processes.
 
 ## Accessing the SDF
 
