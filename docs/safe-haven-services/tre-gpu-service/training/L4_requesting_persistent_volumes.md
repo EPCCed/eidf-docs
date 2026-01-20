@@ -2,7 +2,7 @@
 
 ## Requirements
 
-It is recommended that users complete [Getting started with Kubernetes](../L1_getting_started/#requirements) before proceeding with this tutorial.
+It is recommended that users complete [Getting started with Kubernetes](../training/L1_getting_started/#requirements) before proceeding with this tutorial.
 
 ## Overview
 
