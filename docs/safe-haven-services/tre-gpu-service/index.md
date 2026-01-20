@@ -94,9 +94,13 @@ The SHS GPU Cluster has been using the Kueue system since May 2025. The use of t
 
     Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
-## Additional Service Policy Information
+## Additional Service Information
 
-Additional information on service policies can be found in our [policies documentation](policies.md).
+Additional information on service can be found in following pages
+
+- [Kueue](kueue.md)
+- [Policies](policies.md)
+- [FAQ](faq.md)
 
 ## SHS GPU Cluster Tutorial
 
@@ -105,9 +109,11 @@ This tutorial teaches users how to submit tasks to the SHS GPU Cluster. It assum
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
-| [Requesting persistent volumes with Kubernetes](training/L4_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
-| [Running a PyTorch task](training/L5_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the GPU Cluster.<br>c. Inspecting the results. |
-| [Template workflow](training/L6_template_workflow.md)                               | a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job. |
+| [Building and Testing Containers](training/L1.1_building-and-testing-containers.md)           | a. How to build container images.<br>b. How to test containers locally.<br>c. Best practices for container setup. |
+| [Using Containers in the TRE](training/L2_using-containers-in-the-tre.md)                     | a. How to run containers inside the TRE.<br>b. Security considerations for TRE containers.<br>c. How to manage container dependencies. |
+| [Creating Your First Pod Template](training/L2.1_creating-your-first-pod-template.md)         | a. What is a Kubernetes pod template.<br>b. How to define pod resources.<br>c. How to submit a pod to the GPU cluster. |
+| [Accessing the BeeGFS Inside the EPCC TRE](training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md)         | a. How to access BeeGFS from the TRE.<br>b. How to read/write data efficiently.<br>c. Best practices for using shared storage. |
+| [Requesting Persistent Volumes](training/L4_requesting_persistent_volumes.md)         | a. What persistent volumes are.<br>b. How to request storage for tasks.<br>c. How to attach volumes to pods. |
 
 ## Further Reading and Help
 
