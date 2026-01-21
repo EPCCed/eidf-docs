@@ -88,3 +88,10 @@ For users who do not have standard `English (UK)` keyboard layouts, key presses 
 are transmitted to your VM. Please contact the EIDF helpdesk at [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) if you
 are experiencing difficulties with your keyboard mapping, and we will help to resolve this by changing some settings
 in the Guacamole VDI connection configuration.
+
+## SSH via the VDI
+
+Some users will be able to access a virtual console to login to their VM. This may be useful in situations where you are unable to use a SSH client
+on your local system e.g. when using a corporate or institutional desktop where you are unable to install a suitable terminal or SSH application.
+The [Guacamole menu](https://guacamole.apache.org/doc/gug/using-guacamole.html#the-guacamole-menu) as described above has a setting for font, font-size and colour scheme for
+those who wish to change it for ease of use. Using SSH via the VDI requires a password set to be able to login as with the GUI login method.
