@@ -9,8 +9,8 @@ Secure Virtual Desktop VMs are placed within a standard TRE PPZ project subnet, 
 ## Audit policies (R05)
 
 The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
-    - Login Activity
     - Network requests
+    - Login Activity
     - ==S3 data ingress and egress==?
 
 ### Network access logging
@@ -20,6 +20,14 @@ The Squid web proxy logs all network traffic like web requests made by Secure Vi
 The access logs are available in /var/log/squid/access.log.x where x is the log rotation number, with access.log.0 being the most recent log file.
 
 The log retention period can be adjusted by changing the logfile_rotate parameter in the squid configuration file located at /etc/squid/squid.conf and the cronjob that runs the log rotation command. By default the log rotation happens everyday at midnight. This is the [frequency recommended by Squid](https://wiki.squid-cache.org/SquidFaq/SquidLogs#which-log-files-can-i-delete-safely) to ensure log files do not grow too large.
+
+### Login Activity
+
+Login activity is automatically logged by the access tools (XRDP and SSH). The relevant log files follow these naming patterns: `xrdp-sesman.log*` for XRDP logins and `auth.log*` for SSH authentication.
+
+Login activity to the Secure Virtual Desktop VMs is copied periodically from each VM to the project router VM `<projectID>-router`, where it is stored in the `ubuntu` user's home directory `/home/ubuntu/log-replications/`.
+
+Logs are retained for a default period of 30 days before being automatically deleted. Each machine has its own log file and type of log file.
 
 ## Machine management policies (R06)
 
