@@ -1,6 +1,6 @@
 ## Storage in the Secure Virtual Desktop Service
 
-The EIDF Secure Virtual Desktop Service provides options for privaliged users to store and transfer data securely to and from the Secure Virtual Desktop VMs.
+The EIDF Secure Virtual Desktop Service provides options for privileged users to store and transfer data securely to and from the Secure Virtual Desktop VMs. To move data from the EIDF Secure Virtual Desktop VMs to other systems, users require an intermediate transfer storage location to reduce the access of the Secure Virtual Desktop VMs to the internet and non-authorised users. Any data should be transferred off of the transfer storage location and onto the VM disk.
 
 ## Encrypted S3 Storage
 
