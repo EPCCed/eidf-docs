@@ -1,41 +1,20 @@
-# Shared Filesystem (CephFS)
+## Storage in the Secure Virtual Desktop Service
 
-## Introduction
+The EIDF Secure Virtual Desktop Service provides options for privaliged users to store and transfer data securely to and from the Secure Virtual Desktop VMs.
 
-EIDF allows projects with storage space allocated on our CephFS filesystem to mount that space on different compute resources such as EIDF Virtual Machines Service (VMS).
+## Encrypted S3 Storage
 
-Mounting is done at a project level, so the whole project CephFS tree is mounted. For users who have used our Cerebras or Cirrus services, the whole of the top-level project directory is mounted, e.g. `/home/eidf124` on Cirrus is the same as `/home/eidf124` on the VM, and users can manipulate files in that directory.
+The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled, specific buckets can be added to enable data ingres and egress from the machine.
 
-<!-- ## Pre-requisites
+To use S3 storage with Secure Virtual Desktop VMs, users must first create an S3 repo in the EIDF Portal, and then a bucket within this repo that will be accessible from the Secure Virtual Desktop VMs.
+This bucket must then be added by the VM-Admin to the allowed S3 buckets list on the Secure Virtual Desktop projects router machine, `<projectID>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries in the form below, where the allowed buckets name should be added using the pattern shown
 
-To mount CephFS on a VM:
+```txt
+^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>`
+```
 
-1. The project must have space allocated on CephFS.
-1. A mount key must be created or exist. PI's should contact the EIDF helpdesk to have this created.
+For the example of a bucket named `eidf-xxx-bucket` we would add the bucket id to the end of the url pattern like so:
 
-If both pre-requisites are met, PIs and PMs will be able to see the **Mount** button under **CephFS Mounts** in the project management page in the EIDF portal.
-
-   ![CephFSMountButton](../../images/virtualmachines/CephFSMountButton.png){: class="border-img"}
-   *Mount button displayed in project management page*
-
-## Mounting CephFS on a VM
-
-When CephFS is mounted on a VM, it can become the home directory for users logging into that VM. PIs and PMs can enable this mounting for individual VMs via the management page in the Portal.
-
-!!! warning
-    Mounting CephFS on a VM of a project where project users have superuser (`sudo`) permissions will allow these project users to see and manipulate files on the CephFS belonging to all other project users.
-
-!!! note
-    If there is existing data in the VM-local `/home`, it will be moved to `/local-home` before mounting.
-    You will have to manually move this data to the mounted home if you wish it accessible by users without superuser permissions.<BR>
-    If your VM runs Ubuntu and you don't mount at `/home` the target location **MUST** be empty. A non-empty mountpoint will cause the mount to fail.
-
-To mount CephFS on a VM:
-
-1. Click the **Mount** button in the project management page under CephFS (see screenshot above).
-1. Follow the instructions, selecting either to mount as `/home` or specifying an alternative mount location
-1. Select the VMs on which to mount CephFS at the specified location.
-1. Click **Submit**
-
-   ![CephFSMountPage](../../images/virtualmachines/CephFSMountPage.png){: class="border-img"}
-   *Example mounting page for project eidf124* -->
+```txt
+^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
+```
