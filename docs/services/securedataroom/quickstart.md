@@ -41,9 +41,6 @@ Now you have to wait for your PI or project manager to accept your request to jo
    log in directly at [https://eidf-vdi.epcc.ed.ac.uk/vdi/](https://eidf-vdi.epcc.ed.ac.uk/vdi/).
    Please see the [VDI](../../access/virtualmachines-vdi.md#navigating-the-eidf-vdi) guide for more information.
 
-1. You can also log in via the [EIDF Gateway Jump Host](https://epcced.github.io/eidf-docs/access/ssh/)
-   if this is available in your project.
-
 !!! warning
     You must set a password for a new account before you log in for the first time.
 
