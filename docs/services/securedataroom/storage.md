@@ -19,6 +19,6 @@ For the example of a bucket named `eidf-xxx-bucket` we would add the bucket id t
 ^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
 ```
 
-## Managed File Transfer using the EIDF Managed File Transfer Service!
+## Managed File Transfer using the EIDF Managed File Transfer Service
 
 The EIDF Managed File Transfer service provides a secure method to transfer files to and from EIDF services including the Secure Virtual Desktop service. The service uses the SERV-U software to provide SFTP and FTP/S access to users. [Documentation for the EIDF Managed File transfer](../mft/using-the-mft.md) should be used.
