@@ -1,7 +1,8 @@
 # Quickstart
 
-Projects using the Virtual Desktop cloud service are accessed via the
-[EIDF Portal](https://portal.eidf.ac.uk/).
+Projects using the Secure Virtual Desktop cloud service are accessed via the
+[EIDF Portal](https://portal.eidf.ac.uk/). This documentation closely follows that of the
+[Virtual Desktop Service Quickstart](../virtualmachines/quickstart.md).
 
 Authentication is provided by SAFE, so if you do not have an active web browser session in SAFE,
 you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
@@ -31,7 +32,7 @@ Now you have to wait for your PI or project manager to accept your request to jo
 
 1. Select a project and view your user accounts on the project page.
 
-1. Click on an account name to view details of the VMs that are you allowed to access
+1. Click on an account name to view details of the VMs that you are allowed to access
    with this account, and to change the password for this account.
 
 1. Before you log in for the first time with a new user account, you must change your password as described
@@ -58,10 +59,12 @@ There may be a short delay while the change is implemented before the new passwo
 
 ## Further information
 
-[Managing VMs](./docs.md): Project management guide to creating, configuring and removing VMs and managing user accounts in the portal.
+[Managing VMs](./docs.md): Project management guide to creating, configuring and removing Secure Virtual Desktops and managing user accounts in the portal.
+
+[Frequently Asked Questions](./faq.md): Common questions and solutions for working with the Secure Virtual Desktop service.
+
+[policies](./policies.md): Policies governing the use of the Secure Virtual Desktop service.
 
 [Virtual Desktop Interface](../../access/virtualmachines-vdi.md): Working with the VDI interface.
-
-[EIDF Gateway](../../access/ssh.md): SSH access to VMs via the EIDF SSH Gateway jump host.
 
 [Storage and data transfer options for the Secure Virtual Desktop](./storage.md)

@@ -4,10 +4,10 @@ The EIDF Secure Virtual Desktop Service provides options for privileged users to
 
 ## Encrypted S3 Storage
 
-The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled, specific buckets can be added to enable data ingres and egress from the machine.
+The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
 
 To use S3 storage with Secure Virtual Desktop VMs, users must first create an S3 repo in the EIDF Portal, and then a bucket within this repo that will be accessible from the Secure Virtual Desktop VMs.
-This bucket must then be added by the VM-Admin to the allowed S3 buckets list on the Secure Virtual Desktop projects router machine, `<projectID>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries in the form below, where the allowed buckets name should be added using the regex pattern shown:
+This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Secure Virtual Desktop project's router, `<projectID>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries in the form below, where the allowed buckets name should be added using the regex pattern shown:
 
 ```txt
 ^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
@@ -25,6 +25,6 @@ After editing the allowlist Squid must be reconfigured using the command:
 sudo squid -k reconfigure
 ```
 
-## Managed File Transfer using the EIDF Managed File Transfer Service
+## Data Transfer to Secure Virtual Desktop service via the EIDF Managed File Transfer Service
 
-The EIDF Managed File Transfer service provides a secure method to transfer files to and from EIDF services including the Secure Virtual Desktop service. The service uses the SERV-U software to provide SFTP and FTP/S access to users. [Documentation for the EIDF Managed File transfer](../mft/using-the-mft.md) should be used.
+The EIDF Managed File Transfer service provides a secure method to transfer files to and from EIDF services including the Secure Virtual Desktop service. The service uses the SERV-U software to provide file transfer access to users. [Documentation for the EIDF Managed File Transfer](../mft/using-the-mft.md) should be used.
