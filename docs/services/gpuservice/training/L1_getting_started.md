@@ -93,6 +93,7 @@ metadata:
  generateName: jobtest-
  labels:
   kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
+  eidf/user: "user-account"
 spec:
  completions: 1
  backoffLimit: 1
@@ -131,6 +132,7 @@ The EIDF GPU Service requires all pods have `requests` and `limits` tags for CPU
 GPU resources requests are optional and only an entry under the `limits` tag is needed to specify the use of a GPU, `nvidia.com/gpu: 1`. Without this no GPU will be available to the pod.
 
 The label `kueue.x-k8s.io/queue-name` specifies the queue you are submitting your job to. This is part of the Kueue system in operation on the service to allow for improved resource management for users.
+The label `eidf/user:` specifies the user account you are submitting this from. You will need to replace `user-account` with whatever user account you used to log into the virtual machine.
 
 ## Submitting your first job
 
@@ -285,6 +287,7 @@ metadata:
   generateName: jobtest-
   labels:
     kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
+    eidf/user: "user-account"
 spec:
   completions: 1
   backoffLimit: 1
@@ -327,6 +330,7 @@ metadata:
  generateName: jobtest-
  labels:
     kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
+    eidf/user: "user-account"
 spec:
  completions: 1
  backoffLimit: 1
