@@ -60,13 +60,13 @@ nav:
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
       - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
-    - "Secure Virtual Desktop":
-      - "Overview": services/securedataroom/index.md
-      - "QuickStart": services/securedataroom/quickstart.md
-      - "Managing VMs": services/securedataroom/docs.md
-      - "Policies": services/securedataroom/policies.md
-      - "Storage": services/securedataroom/storage.md
-      - "FAQs": services/securedataroom/faq.md
+    # - "Secure Virtual Desktop":
+    #   - "Overview": services/securedataroom/index.md
+    #   - "QuickStart": services/securedataroom/quickstart.md
+    #   - "Managing VMs": services/securedataroom/docs.md
+    #   - "Policies": services/securedataroom/policies.md
+    #   - "Storage": services/securedataroom/storage.md
+    #   - "FAQs": services/securedataroom/faq.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
