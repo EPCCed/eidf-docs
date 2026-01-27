@@ -9,19 +9,19 @@
 !!! info
     All names are separate from those in SAFE and are for the purpose of the EIDF Secure Virtual Desktop service only
 
-**Data Users** - _Typical users - have access to read only on some data directory(s)_
+**Data Users** - _Typical users - have access to read only on some data directories_
 
-**Data managers** - _Have read and write access to some data directory(s)_
+**Data managers** - _Have read and write access to some data directories_
 
-**VM-admin** - _Access to the data manager group and sudo access_
+**VM Admin** - _Access to the data manager group and sudo access_
 
 #### Detailed roles, groups and their file permissions
 
 | Role         | Code | TRE Equivalent User  | Group Access                                       | SUDO | Router access |
 | ------------ | ---- | -------------------- | -------------------------------------------------- | ---- | ------------- |
-| Data User    | DU   | SHS Ops Team         | `<project-name>`                                   | No   | No            |
+| Data User    | DU   | Researcher           | `<project-name>`                                   | No   | No            |
 | Data Manager | DM   | Research Coordinator | `<project-name>`, `<project-name>-manager`         | No   | No            |
-| VM Admin     | VA   | Researcher           | `<project-name>`, `<project-name>-manager`, `sudo` | Yes  | Yes           |
+| VM Admin     | VA   | SHS Ops Team         | `<project-name>`, `<project-name>-manager`, `sudo` | Yes  | Yes           |
 
 There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
 
@@ -37,18 +37,19 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 ### Updating the allowed access for Secure Virtual Desktop VMs
 
-By default the allowed list of domains allows Secure Virtual Machines to:
-    - Access common package repositories for operating system updates and software installation (R06, R09)
-    - Access EIDF services including the MFT server for data transfer (R04)
-    - Access popular container registries for downloading (but not uploading) container images (R10)
-        - Docker Hub
-        - GitHub Container Registry
-        - EIDF Container Registry
-    - Access common software pacakages: (R11)
-        - CRAN
-        - PyPI
-        - Bioconductor
-    - Specific EIDF S3 buckets for data transfer (R08)
+By default the allowed list of domains allows Secure Virtual Desktop VMs to:
+
+- Access common package repositories for operating system updates and software installation (R06, R09)
+- Access EIDF services including the MFT server for data transfer (R04)
+- Access popular container registries for downloading (but not uploading) container images (R10)
+  - Docker Hub
+  - GitHub Container Registry
+  - EIDF Container Registry
+- Access common software packages: (R11)
+  - CRAN
+  - PyPI
+  - Bioconductor
+- Specific EIDF S3 buckets for data transfer (R08)
 
 Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
 
@@ -66,7 +67,7 @@ S3 buckets access is handled in a different location due to some technical detai
 /etc/squid/allowlist_buckets.txt
 ```
 
-After editing the allowlist Squid must be reconfigured using the command:
+After editing allowlists Squid must be reconfigured using the command:
 
 ```bash
 sudo squid -k reconfigure
@@ -84,13 +85,13 @@ For details please refer to the SAFE documentation: [How can I designate a user 
 
 ### Create a VM
 
-To create a new Private Secure Virtual Desktop VM:
+To create a new Secure Virtual Desktop VM:
 
 1. Select the project from the list of your projects, e.g. `eidfxxx`
 1. Click on the 'New Private Machine' button
 1. Complete the 'Create Machine' form as follows:
 
-   1. Select the PPZ router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
+   1. Select the PPZ (Private Project Zone) router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
    1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
    1. Select a suitable operating system
    1. Select a machine specification that is suitable
@@ -161,7 +162,7 @@ If a user only has one connection available in the VDI they will be automaticall
 
 ### Setting up the correct groups and permissions on the VM
 
-User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-manager` group. The VM admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
+User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-manager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
 
 ### Sudo permissions
 
@@ -174,7 +175,7 @@ These instructions match the instructions given in the [EIDF Virtual Machine Ser
 A new user account must reset the password before they can log in for the first time.
 To do this:
 
-1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop down.
+1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop-down.
 1. From the project page, they can select their account from the 'Your Accounts' table
 1. Finally, click the 'Set Password' button from the 'User Account Info' table.
 

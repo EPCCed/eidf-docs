@@ -70,10 +70,10 @@ Git can be configured to work through a proxy by use of the following configurat
 
 ```gitconfig
 [http]
-proxy = http://10.2.0.208:3128
+proxy = http://<proxy address>:3128
 
 [https]
-proxy = https://10.2.0.208:3129
+proxy = https://<proxy address>:3129
 sslCAPath = /etc/pki/ca-trust/source/anchors/squid_proxyCA.crt
 ```
 
@@ -82,7 +82,7 @@ sslCAPath = /etc/pki/ca-trust/source/anchors/squid_proxyCA.crt
 To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
 
 ```conf
-proxy=http://10.2.0.208:3128
+proxy=http://<proxy address>:3128
 ```
 
 ## Firefox add cert

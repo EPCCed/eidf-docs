@@ -4,22 +4,22 @@
 
 The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infrastructure to the VMs.
 
-Secure Virtual Desktop VMs are placed within a standard TRE PPZ project subnet, leveraging understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven also run by the EIDF.
+Secure Virtual Desktop VMs are placed within a standard TRE Private Project Zone (PPZ) subnet, leveraging understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven also run by the EIDF.
 
 ## Audit policies (R05)
 
 The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
-    - Network requests
-    - Login Activity
-    - ==S3 data ingress and egress==?
+
+- Network requests
+- Login Activity
 
 ### Network access logging
 
-The Squid web proxy logs all network traffic like web requests made by Secure Virtual Desktop VMs. These logs are stored in the EIDF Squid router and are configured to be retained for a period of 30 days before being automatically deleted.
+The Squid web proxy logs all network traffic like web requests made by Secure Virtual Desktop VMs. These logs are stored in the EIDF Squid router and are configured to be retained for a default period of 30 days before being automatically deleted.
 
 The access logs are available in /var/log/squid/access.log.x where x is the log rotation number, with access.log.0 being the most recent log file.
 
-The log retention period can be adjusted by changing the logfile_rotate parameter in the squid configuration file located at /etc/squid/squid.conf and the cronjob that runs the log rotation command. By default the log rotation happens everyday at midnight. This is the [frequency recommended by Squid](https://wiki.squid-cache.org/SquidFaq/SquidLogs#which-log-files-can-i-delete-safely) to ensure log files do not grow too large.
+The log retention period can be adjusted by changing the logfile_rotate parameter in the squid configuration file located at /etc/squid/squid.conf and the cronjob that runs the log rotation command. By default the log rotation happens every day at midnight. This is the [frequency recommended by Squid](https://wiki.squid-cache.org/SquidFaq/SquidLogs#which-log-files-can-i-delete-safely) to ensure log files do not grow too large.
 
 ### Login Activity
 
@@ -39,14 +39,14 @@ EIDF Secure Virtual Desktop VMs are provided in a state that allows easy customi
 
 ### What happens when an account or project is no longer required, or a user leaves a project
 
-These will match those of the main Virtual Machine service. Please see [EIDF VM Service Policies](../vm/policies.md#end-of-life-policy-for-user-accounts-and-projects) for details.
+These will match those of the main Virtual Machine service. Please see [EIDF VM Service Policies](../virtualmachines/policies.md#end-of-life-policy-for-user-accounts-and-projects) for details.
 
 ## Backup policies
 
-The current policy, matching that of the main Virtual Machine service (see [EIDF VM Service Policies](../vm/policies.md#backup-policies)), is:
+The current policy, matching that of the main Virtual Machine service (see [EIDF VM Service Policies](../virtualmachines/policies.md#backup-policies)), is:
 
-* The content of VM disk images is not backed up
-* The VM disk images are not backed up
+- The content of VM disk images is not backed up
+- The VM disk images are not backed up
 
 We strongly advise that you keep copies of any critical data on one of our fully backed-up systems such as the encrypted S3 storage or own servers transferred via [SERV-U](https://www.solarwinds.com/serv-u) .
 
