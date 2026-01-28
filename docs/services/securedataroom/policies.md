@@ -1,12 +1,12 @@
 # EIDF Secure Virtual Desktop Policies
 
-## Networking Policies (R03,R12,R13,R14, R15, R16)
+## Networking Policies
 
 The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infrastructure to the VMs.
 
 Secure Virtual Desktop VMs are placed within a standard TRE Private Project Zone (PPZ) subnet, leveraging understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven also run by the EIDF.
 
-## Audit policies (R05)
+## Audit policies
 
 The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
 
@@ -29,7 +29,7 @@ Login activity to the Secure Virtual Desktop VMs is copied periodically from eac
 
 Logs are retained for a default period of 30 days before being automatically deleted. Each machine has its own log file and type of log file.
 
-## Machine management policies (R06)
+## Machine management policies
 
 The Secure Virtual Desktop VMs are managed by the VM Admin users within the project. The EIDF team will manage ONLY the underlying infrastructure, hypervisors and cloud management software as part of the EIDF Maintenance sessions.
 

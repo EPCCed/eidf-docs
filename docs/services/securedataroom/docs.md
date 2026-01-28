@@ -39,17 +39,17 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 By default the allowed list of domains allows Secure Virtual Desktop VMs to:
 
-- Access common package repositories for operating system updates and software installation (R06, R09)
-- Access EIDF services including the MFT server for data transfer (R04)
-- Access popular container registries for downloading (but not uploading) container images (R10)
+- Access common package repositories for operating system updates and software installation
+- Access EIDF services including the MFT server for data transfer
+- Access popular container registries for downloading (but not uploading) container images
     - Docker Hub
     - GitHub Container Registry
     - EIDF Container Registry
-- Access common software packages: (R11)
+- Access common software packages:
     - CRAN
     - PyPI
     - Bioconductor
-- Specific EIDF S3 buckets for data transfer (R08)
+- Specific EIDF S3 buckets for data transfer
 
 Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
 
