@@ -2,11 +2,13 @@
 
 ## http_proxy and https_proxy environment variables
 
-http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Virtual Desktop
+http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Virtual Desktop. Uppercase versions are also required by some tools.
 
 ```bash
 export http_proxy=http://<proxy address>:3128
 export https_proxy=http://<proxy address>:3129
+export HTTP_PROXY=http://<proxy address>:3128
+export HTTPS_PROXY=http://<proxy address>:3129
 ```
 
 Where the `<proxy address>` can be found in the EIDF portal under the **Private Project Zone (PPZ)** heading.
