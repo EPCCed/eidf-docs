@@ -48,7 +48,7 @@ The current policy, matching that of the main Virtual Machine service (see [EIDF
 - The content of VM disk images is not backed up
 - The VM disk images are not backed up
 
-We strongly advise that you keep copies of any critical data on one of our fully backed-up systems such as the encrypted S3 storage or own servers transferred via [SERV-U](https://www.solarwinds.com/serv-u) .
+We strongly advise that you keep copies of any critical data on one of our fully backed-up systems such as the S3 storage or own servers transferred via [SERV-U](https://www.solarwinds.com/serv-u) .
 
 ## Patching of User VMs
 
