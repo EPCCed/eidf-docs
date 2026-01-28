@@ -42,13 +42,13 @@ By default the allowed list of domains allows Secure Virtual Desktop VMs to:
 - Access common package repositories for operating system updates and software installation (R06, R09)
 - Access EIDF services including the MFT server for data transfer (R04)
 - Access popular container registries for downloading (but not uploading) container images (R10)
-  - Docker Hub
-  - GitHub Container Registry
-  - EIDF Container Registry
+    - Docker Hub
+    - GitHub Container Registry
+    - EIDF Container Registry
 - Access common software packages: (R11)
-  - CRAN
-  - PyPI
-  - Bioconductor
+    - CRAN
+    - PyPI
+    - Bioconductor
 - Specific EIDF S3 buckets for data transfer (R08)
 
 Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
@@ -91,12 +91,12 @@ To create a new Secure Virtual Desktop VM:
 1. Click on the 'New Private Machine' button
 1. Complete the 'Create Machine' form as follows:
 
-   1. Select the PPZ (Private Project Zone) router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
-   1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
-   1. Select a suitable operating system
-   1. Select a machine specification that is suitable
-   1. Choose the required disk size (in GB) or leave blank for the default
-   1. Tick the checkbox "Configure RDP access" if you would like to install RDP
+    1. Select the PPZ (Private Project Zone) router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
+    1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
+    1. Select a suitable operating system
+    1. Select a machine specification that is suitable
+    1. Choose the required disk size (in GB) or leave blank for the default
+    1. Tick the checkbox "Configure RDP access" if you would like to install RDP
       and configure VDI connections via RDP for your VM.
 
 1. Click on 'Create'
