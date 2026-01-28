@@ -4,7 +4,7 @@
 
 The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infrastructure to the VMs.
 
-Secure Virtual Desktop VMs are placed within a standard TRE Private Project Zone (PPZ) subnet, leveraging understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven also run by the EIDF.
+Secure Virtual Desktop VMs are placed within a standard Trusted Research Environment (TRE) subnet. This design leverages understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven, which is also run by the EIDF. This subnet is isolated from other EIDF services and the internet by a Squid web proxy server that filters network traffic from the VMs. This service differs from TREs used in the Safe Haven in that project users have administrative access to their VMs to install software and manage networking access for the VMs as required.
 
 ## Audit policies
 
