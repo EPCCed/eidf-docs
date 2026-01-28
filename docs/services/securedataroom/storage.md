@@ -2,6 +2,10 @@
 
 The EIDF Secure Virtual Desktop Service provides options for privileged users to store and transfer data securely to and from the Secure Virtual Desktop VMs. To move data from the EIDF Secure Virtual Desktop VMs to other systems, users require an intermediate transfer storage location to reduce the access of the Secure Virtual Desktop VMs to the internet and non-authorised users. Any data should be transferred off of the transfer storage location and onto the VM disk.
 
+## Roles and their Access to Storage Locations
+
+We define three roles in the Secure Virtual Desktop service as described in the [Service Documentation](./docs.md#user-roles-and-their-permissions). These roles are in place to limit who can initiate data transfers to and from the Secure Virtual Desktop VMs. Typically we recommend that only VM Admin users and Data Manager users have access to transfer data to and from the Secure Virtual Desktop VMs. As such the below options for storage and data transfer are recommended as only available to these roles.
+
 ## S3 Storage
 
 The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
