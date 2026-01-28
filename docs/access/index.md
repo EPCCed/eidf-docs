@@ -18,7 +18,7 @@ how to apply for a new project
 [VDI access to virtual machines](./virtualmachines-vdi.md): how to connect to the virtual
 desktop interface.
 
-[VDI access to Secure Data Room VMs](../services/securedataroom/quickstart.md): how to connect to the Secure Virtual Desktop service.
+[VDI access to Secure Virtual Desktop VMs](../services/securedataroom/quickstart.md): how to connect to the Secure Virtual Desktop service.
 
 ## SSH Access to Virtual Machines
 
@@ -26,7 +26,7 @@ Users with the appropriate permissions can also [use `ssh` to login to Virtual D
 
 ### SSH Access to Secure Virtual Desktop Service
 
-SSH access to Secure Virtual Desktop VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Secure Data Room Quickstart](../services/securedataroom/quickstart.md) guide.
+SSH access to Secure Virtual Desktop VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Secure Virtual Desktop Quickstart](../services/securedataroom/quickstart.md) guide.
 
 ## SSH Access to Computing Services
 
