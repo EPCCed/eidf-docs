@@ -4,6 +4,12 @@ The Secure Virtual Desktop service is a specialised offering within EIDF, design
 
 The service currently has a mixture of hardware node types which host VMs of various flavours, [these are the same as the virtual machine service](../virtualmachines/flavours.md):
 
+## Data Processing Requirements for Secure Virtual Desktop Service
+
+EIDF supports processing many kinds of data including sensitive and personal data. We have policies in place about the kinds of data that are permitted in the EIDF and that certain requirements are in place to ensure data complies with EIDF and regulatory processing requirements before it is processed.
+
+For processing some types of data, the Secure Virtual Desktop service may be appropriate; for others, a Safe Haven TRE may be required. For a full list of data types and their restrictions or requirements please see the [EIDF Third Party Data Policy](https://edinburgh-international-data-facility.ed.ac.uk/about/policies/third-party-data).
+
 ## Service Access
 
 Users should have an EIDF account - [EIDF Accounts](../../access/project.md).
