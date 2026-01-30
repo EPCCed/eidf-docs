@@ -2,15 +2,15 @@
 
 ## System software and user software
 
-All system-level software installed and configured in the Safe Haven is managed by the TRE admin team.
+All system-level software installed and configured in the Safe Haven is managed by the SHS Platform team.
 
-Users are given access to Safe Haven controller-approved online sources such as PyPy and CRAN to install and manage additional software specific to their projects.
+Users are given access to Safe Haven controller-approved online sources such as PyPi and CRAN to install and manage additional software specific to their projects.
 
-Users can also import packaged or containerised code via a request to their research coordinator. For more details on how to prepare containers for Safe Havens, check the [Safe Haven container service](./tre-container-user-guide/introduction.md) documentation.
+Users can also import packaged or containerised code via a request to their research coordinator. For more details on how to prepare containers for Safe Havens, check the [Safe Haven container service](./shs-container-user-guide/introduction.md) documentation.
 
 ## System maintenance
 
-Minor system-level software changes and patches will be made as soon as admin effort can be allocated. Major changes and patches are likely to be scheduled for the TRE monthly maintenance session including all Safe Haven services on **the first Thursday of each month**.
+Minor system-level software changes and patches will be made as soon as admin effort can be allocated. Major changes and patches are likely to be scheduled for the SHS monthly maintenance session including all Safe Haven services on **the first Thursday of each month**.
 
 Depending on the type of maintenance, the service may be at risk and inaccessible during this period. The type of maintenance will be announced in advance via email.
 

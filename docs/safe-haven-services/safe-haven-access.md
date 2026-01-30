@@ -2,14 +2,14 @@
 
 ## Safe Haven Network Access Controls
 
-The TRE Safe Haven services are protected against open, global access by IPv4 source address filtering. These network access controls ensure that connections are permitted only from Safe Haven controller partner networks and collaborating research institutions.
+The Safe Haven Services (SHS) are protected against open, global access by IPv4 source address filtering. These network access controls ensure that connections are permitted only from Safe Haven controller partner networks and collaborating institutions.
 
-Network access controls for each Safe Haven are managed by the Safe Haven service controllers who instruct EPCC to add and remove the IPv4 addresses allowed to connect to the service gateway.
+Network access controls for each Safe Haven are managed by the SHS controllers who instruct EPCC to add and remove the IPv4 addresses allowed to connect to the service gateway.
 
 !!! note "Requirement"
-      Users must connect to the Safe Haven service by first connecting to their institution or corporate VPN. If the institution or corporate VPN is not already allowed to access the Safe Haven service, research coordinators will ask researchers to provide an IP range to be added to the allow list.
+      Users must connect to the SHS by first connecting to their institution or corporate VPN. If the institution or corporate VPN is not already allowed to access the SHS, research coordinators will ask researchers to provide an IP range to be added to the allow list.
 
-Safe Haven services are accessed from a registered network connection address using a browser. The service URL will be "[https://shs.epcc.ed.ac.uk/<service\>](https://shs.epcc.ed.ac.uk/<service\>)" where `<service>` is the Safe Haven service name.
+SHS are accessed from a registered network connection address using a browser. The research co-ordinators will provide the service URL to users.
 
 ## Safe Haven Login
 
@@ -48,7 +48,7 @@ The third stage in the process is to select the virtual connection from those av
    ![VDI-Connections-Available-Page](../images/access/vdi-home-screen.png)
    *VM connections available home page*
 
-The remote desktop gateway software used in the Safe Haven services in the TRE is the Apache Guacamole web application. Users new to this application can [find the user manual here](https://guacamole.apache.org/doc/gug/using-guacamole.html). It is recommended that users read this short guide, but note that the data sharing features such as copy and paste, connection sharing, and file transfers are disabled on all connections in the TRE Safe Havens.
+The remote desktop gateway software used in the Safe Haven services in the SHS is the Apache Guacamole web application. Users new to this application can [find the user manual here](https://guacamole.apache.org/doc/gug/using-guacamole.html). It is recommended that users read this short guide, but note that the data sharing features such as copy and paste, connection sharing, and file transfers are disabled on all connections in the SHS.
 
 A remote desktop or SSH connection is used to access data provided for a specific research project. If a researcher is working on multiple projects within a Safe Haven they can only login to one project at a time. Some connections may allow the user to login to any project and some connections will only allow the user to login into one specific project. This depends on project IG restrictions specified by the Safe Haven and project controllers.
 
@@ -64,7 +64,9 @@ Project desktop accounts are managed by the Safe Haven IG controller and researc
 When a VM SSH connection is selected, the browser screen becomes a text terminal. The user is prompted to "Login as: " with a project account name, and then prompted for the account password. This connection type is equivalent to a standard xterm SSH session.
 
 !!! warning "Symbols and shortcuts"
-    Note that Apache Guacamole translates keyboard input from your browser to the remote desktops. Sometimes this mapping is not compatible due to a difference in operating systems or keyboard layouts, causing certain symbols and shortcuts to be different. Passwords typed in an SSH terminal are often hidden for privacy reasons. If you are unsure about what you are typing, test this as your username without pressing enter.
+    Apache Guacamole translates keyboard input from your browser to the remote desktop. In some cases, this mapping may not match exactly due to differences in operating systems or keyboard layouts, which can cause certain symbols or shortcuts to behave differently.
+
+    When typing a password in an SSH terminal, the characters are intentionally hidden for security. If you want to confirm that your keyboard input is producing the expected characters, try typing the same text as your username first—without pressing Enter—to verify the output.
 
 #### Connecting to a Remote Desktop Session
 
@@ -75,7 +77,7 @@ When a VM RDP connection is selected the browser screen becomes a remote desktop
    ![VM-VDI-connection-login](../images/access/vm-vdi-connection-login.png)
    *VM virtual desktop connection user account login screen*
 
-Once the project account credentials have been accepted, a remote dekstop similar to the one shown below is presented. The default VM environment in the TRE is Ubuntu 22.04 with the Xfce desktop.
+Once the project account credentials have been accepted, a remote dekstop similar to the one shown below is presented. The default VM environment in the SHS is Ubuntu 22.04 with the Xfce desktop.
 
    ![VM-VDI-connection](../images/access/vm-vdi-connection.png)
    *VM virtual desktop*

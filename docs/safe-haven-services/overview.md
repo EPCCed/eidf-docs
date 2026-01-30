@@ -1,26 +1,26 @@
 # Safe Haven Services Overview
 
-## The EIDF TRE
+## The EPCC SHS
 
-The EIDF [Trusted Research Environment (TRE)](https://zenodo.org/record/4594704) hosts several Safe Haven services that enable researchers to work with sensitive data in a secure environment. These services are operated by EPCC in partnership with Safe Haven controllers who manage the Information Governance (IG) appropriate for the research activities and the data access of their Safe Haven service.
+The EPCC Safe Haven Services (SHS) that enable researchers to work with sensitive data in a secure environment. These services are operated by EPCC in partnership with Safe Haven controllers who manage the Information Governance (IG) appropriate for the research activities and the data access of their Safe Haven service.
 
-The TRE service offers secure data sharing and analysis environments allowing researchers access to sensitive data under the terms and conditions prescribed by the Data Providers. The service prioritises the requirements of the Data Provider over the demands of the Researcher, and is an academic TRE operating under the guidance of the [Five Safes framework](https://core.ac.uk/download/pdf/323894811.pdf).
+The SHS service offers secure data sharing and analysis environments allowing researchers access to sensitive data under the terms and conditions prescribed by the Data Providers. The service prioritises the requirements of the Data Provider over the demands of the Researcher, and is an academic SHS operating under the guidance of the [Five Safes framework](https://core.ac.uk/download/pdf/323894811.pdf).
 
-The TRE has dedicated, private cloud infrastructure at EPCC's Advanced Computing Facility (ACF) data centre and has its own high-performance file systems. When a new Safe Haven service is commissioned in the TRE, it is created in a new virtual private cloud providing the Safe Haven service controller with an independent IG domain separate from other Safe Havens in the TRE. All TRE service infrastructure and all TRE project data are hosted at ACF.
+The SHS has dedicated, private cloud infrastructure at EPCC's Advanced Computing Facility (ACF) data centre and has its own high-performance file systems. When a new Safe Haven service is commissioned in the SHS, it is created in a new virtual private cloud providing the Safe Haven service controller with an independent IG domain separate from other Safe Havens in the SHS. All SHS service infrastructure and all SHS project data are hosted at ACF.
 
-Safe Haven services include all services provided under the EIDF TRE umbrella, such as dedicated HPC and GPU clusters.
+All Safe Haven Services can access services provided under the EPCC SHS umbrella, such as HPC and GPU clusters. These are exclusive to the SHS, and some such services, e.g. the HPC and GPU clusters, are shared across Safe Havens.
 
 ## Roles and responsibilities
 
 ### Safe Haven operator
 
-It is the responsibility of EPCC as the Safe Haven operator to design, implement and administer the technical controls required to deliver the Safe Haven security regime demanded by the Safe Haven controller.
+It is the responsibility of EPCC as the Safe Haven operator to design, implement and administer the technical controls required to deliver the Safe Haven security regime required by the Safe Haven controller.
 
 ### Safe Haven controller
 
 The role of the Safe Haven controller is to satisfy the needs of the researchers and the data suppliers. The controller is responsible for guaranteeing the confidentiality needs of the data suppliers and matching these with the availability needs of the researchers.
 
-Typically Safe Haven controllers will have research project co-ordination teams and will assign a research coordinator to a project as the main contact.
+Typically Safe Haven controllers will have research project co-ordination teams and may assign a research coordinator to a project as the main contact.
 
 ### Researcher
 
@@ -36,4 +36,4 @@ If you are a researcher looking for access to a Safe Haven, please contact the S
 
 If you are an existing user of the Safe Haven services and are facing any issues, want to request access to additional services, or have any questions, please contact your assigned research coordinator.
 
-For any general enquiries about the EIDF TRE or the Safe Haven services, [please contact EPCC](https://epcced.github.io/eidf-docs/overview/contacts/).
+For any general enquiries about the EPCC SHS or the Safe Haven services, [please contact EPCC](https://epcced.github.io/eidf-docs/overview/contacts/).

@@ -1,6 +1,6 @@
 # Container Examples
 
-To help with writing your own Dockerfiles to run within the TRE via the CES, a set of examples for commonly used software stacks can be found in our [TRE Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
+To help with writing your own Dockerfiles to run within the SHS via the CES, a set of examples for commonly used software stacks can be found in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
 
 Please contact your Service Manager if you need further support with the use of containers.
 
@@ -13,7 +13,7 @@ Please contact your Service Manager if you need further support with the use of 
 | Quarto           | Separate containers for R and Jupyter |
 | Rocker           |  Interactive |
 
-Additional examples can be made available on request. To do so, please contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) referencing this page, otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) with the subject line "TRE Container Support".
+Additional examples can be made available on request. To do so, please contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) referencing this page, otherwise send your query by email to [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) with the subject line "SHS Container Support".
 
 | Available on demand   |   Comments |
 | ---------------  |   -------- |
