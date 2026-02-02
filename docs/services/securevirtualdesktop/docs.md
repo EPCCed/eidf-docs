@@ -15,11 +15,11 @@
 
 #### Detailed roles, groups and their file permissions
 
-| Role         | Code | TRE Equivalent User  | Group Access                                       | SUDO | Router access |
-| ------------ | ---- | -------------------- | -------------------------------------------------- | ---- | ------------- |
-| Data User    | DU   | Researcher           | `<project-name>`                                   | No   | No            |
-| Data Manager | DM   | Research Coordinator | `<project-name>`, `<project-name>-manager`         | No   | No            |
-| VM Admin     | VA   | SHS Ops Team         | `<project-name>`, `<project-name>-manager`, `sudo` | Yes  | Yes           |
+| Role         | TRE Equivalent User  | Group Access                                       |  Router access |
+| ------------ | -------------------- | -------------------------------------------------- |  ------------- |
+| Data User    | Researcher           | `<project-name>`                                   |  No            |
+| Data Manager | Research Coordinator | `<project-name>`, `<project-name>-manager`         |  No            |
+| VM Admin     | N/A                  | `<project-name>`, `<project-name>-manager`, `sudo` |  Yes           |
 
 There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
 
