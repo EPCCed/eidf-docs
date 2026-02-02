@@ -143,6 +143,10 @@ however a user may have multiple accounts in a project, for example for differen
 
 The user can now set the password for their new account on the account details page.
 
+### Setting up the correct groups and permissions for user accounts
+
+User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-manager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
+
 ## Adding Access to the VM for a User
 
 User accounts can be granted or denied access to existing VMs.
@@ -157,10 +161,6 @@ newly added connections may not appear in their connections list immediately.
 They must log out and log in again to refresh the connection information, or wait until the login token expires and is refreshed automatically - this might take a while.
 
 If a user only has one connection available in the VDI they will be automatically directed to the VM with the default connection.
-
-### Setting up the correct groups and permissions on the VM
-
-User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-manager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
 
 ### Sudo permissions
 
