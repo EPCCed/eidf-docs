@@ -35,41 +35,7 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 ### Updating the allowed access for Secure Virtual Desktop VMs
 
-By default the allowed list of domains allows Secure Virtual Desktop VMs to:
-
-- Access common package repositories for operating system updates and software installation
-- Access EIDF services including the MFT server for data transfer
-- Access popular container registries for downloading (but not uploading) container images
-    - Docker Hub
-    - GitHub Container Registry
-    - EIDF Container Registry
-- Access common software packages:
-    - CRAN
-    - PyPI
-    - Bioconductor
-- Specific EIDF S3 buckets for data transfer
-
-Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
-
-The VM Admin with access to the Squid Router `<projectID>-router` machine can edit the squid access control list. The access control list is available under
-
-```bash
-<projectID>-router $ /etc/squid/allowlist_domains.txt
-```
-
-Within this is a detailed list of domains and their reasons for being allowed. The VM Admin can add or remove domain names following the syntax of [access control lists defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section [squid does not match my subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains).
-
-S3 buckets access is handled in a different location due to some technical details of allowing EIDF S3 buckets access. The list of allowed S3 buckets is available under
-
-```bash
-/etc/squid/allowlist_buckets.txt
-```
-
-After editing allowlists Squid must be reconfigured using the command:
-
-```bash
-sudo squid -k reconfigure
-```
+See [router-docs.md](router-docs.md) for documentation on updating the allowed access for Secure Virtual Desktop VMs.
 
 ### Required Member Permissions
 
@@ -208,7 +174,7 @@ even if you didn't select a package when first creating the machine.
 
 It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
 
-Since updates and patches require access to the internet, users should ensure that their Secure Virtual Desktop VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the above section [Updating the allowed access for Secure Virtual Desktop VMs](#updating-the-allowed-access-for-secure-virtual-desktop-vms).
+Since updates and patches require access to the internet, users should ensure that their Secure Virtual Desktop VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for Secure Virtual Desktop VMs](router-docs.md#updating-the-allowed-access-for-secure-virtual-desktop-vms).
 
 #### Ubuntu
 
