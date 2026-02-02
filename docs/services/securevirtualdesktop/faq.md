@@ -79,6 +79,8 @@ proxy = https://<proxy address>:3129
 sslCAPath = /etc/pki/ca-trust/source/anchors/squid_proxyCA.crt
 ```
 
+While we recommend setting up the HTTP/HTTPS proxy above, only Git remotes using HTTPS URLs (for example, `https://github.com/...`) are permitted through the proxy server. SSH-based Git remotes (for example, `git@github.com:...` or `ssh://...`) are blocked by the SSH firewall restrictions.
+
 ## Rocky Package manager YUM
 
 To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
