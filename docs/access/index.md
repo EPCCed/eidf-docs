@@ -24,9 +24,9 @@ desktop interface.
 
 Users with the appropriate permissions can also [use `ssh` to login to Virtual Desktop VMs](./ssh.md)
 
-### SSH Access to Secure Virtual Desktop Service
+## SSH Access to Secure Virtual Desktop Service
 
-SSH access to Secure Virtual Desktop VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Secure Virtual Desktop Quickstart](../services/securevirtualdesktop/quickstart.md) guide.
+Remote SSH access to Secure Virtual Desktop VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Secure Virtual Desktop Quickstart](../services/securevirtualdesktop/quickstart.md) guide.
 
 ## SSH Access to Computing Services
 
