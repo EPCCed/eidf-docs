@@ -7,7 +7,7 @@ Authentication is provided by SAFE, so if you do not have an active web browser 
 you will be redirected to the [SAFE log on page](https://safe.epcc.ed.ac.uk).
 If you do not have a SAFE account follow the instructions in the
 [SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
-how to register and receive your password.
+on how to register and receive your password.
 
 ## Accessing your projects
 
