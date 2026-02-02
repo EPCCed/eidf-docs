@@ -4,8 +4,6 @@
 
 ### User Roles and their Permissions
 
-#### Roles summary
-
 !!! info
     All names are separate from those in SAFE and are for the purpose of the EIDF Secure Virtual Desktop service only
 
