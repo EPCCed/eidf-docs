@@ -64,6 +64,7 @@ nav:
     #   - "Overview": services/securevirtualdesktop/index.md
     #   - "QuickStart": services/securevirtualdesktop/quickstart.md
     #   - "Managing VMs": services/securevirtualdesktop/docs.md
+    #   - "Router Configuration": services/securevirtualdesktop/router-docs.md
     #   - "Policies": services/securevirtualdesktop/policies.md
     #   - "Storage": services/securevirtualdesktop/storage.md
     #   - "FAQs": services/securevirtualdesktop/faq.md
