@@ -112,8 +112,8 @@ This tutorial teaches users how to submit tasks to the SHS GPU Cluster. It assum
 | [Building and Testing Containers](training/L1.1_building-and-testing-containers.md)           | a. How to build container images.<br>b. How to test containers locally.<br>c. Best practices for container setup. |
 | [Using Containers in the SHS](training/L2_using-containers-in-the-tre.md)                     | a. How to run containers inside the SHS.<br>b. Security considerations for SHS containers.<br>c. How to manage container dependencies. |
 | [Creating Your First Pod Template](training/L2.1_creating-your-first-pod-template.md)         | a. What is a Kubernetes pod template.<br>b. How to define pod resources.<br>c. How to submit a pod to the GPU cluster. |
-| [Accessing the BeeGFS Inside the EPCC SHS](training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md)         | a. How to access BeeGFS from the SHS.<br>b. How to read/write data efficiently.<br>c. Best practices for using shared storage. |
-| [Requesting Persistent Volumes](training/L4_requesting_persistent_volumes.md)         | a. What persistent volumes are.<br>b. How to request storage for tasks.<br>c. How to attach volumes to pods. |
+| [Accessing the BeeGFS Inside the SHS _GPU Cluster_](training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md)         | a. How to access BeeGFS from the SHS _GPU Cluster_.<br>b. How to read/write data efficiently.<br>c. Best practices for using shared storage. |
+| [Requesting Persistent Volumes](training/L4_requesting_persistent_volumes.md)         | a. How pods use persistent storage (Persistent Volumes and Persistent Volume Claims).<br>b. How SHS _GPU Cluster_ users access pre-provisioned storage via Persistent Volume Claims.<br>c. How to attach Persistent Volume Claims to pods using volumeMounts and proper securityContext. | 
 
 ## Further Reading and Help
 
