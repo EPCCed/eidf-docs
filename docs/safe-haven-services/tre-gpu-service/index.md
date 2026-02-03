@@ -96,7 +96,7 @@ The SHS GPU Cluster has been using the Kueue system since May 2025. The use of t
 
 ## Additional Service Information
 
-Additional information on service can be found in following pages
+Additional information on service can be found in _the_ following pages:
 
 - [Kueue](kueue.md)
 - [Policies](policies.md)
