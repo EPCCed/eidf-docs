@@ -1,12 +1,12 @@
 # Development Workflow
 
-This document describes in detail the [four steps](./introduction.md#overview) recommended for the development of containers for TRE use.
+This document describes in detail the [four steps](./introduction.md#overview) recommended for the development of containers for SHS use.
 
 ## Step 1. Writing a `Dockerfile`
 
-### 1.1 TRE-specific advice
+### 1.1 SHS-specific advice
 
-- Declare TRE specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your Dockerfile. While the CES tools automatically generate these directories within the container, explicitly creating them
+- Declare SHS specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your Dockerfile. While the CES tools automatically generate these directories within the container, explicitly creating them
    enhances transparency and helps others more easily understand the container’s structure and operation.
    Note that files should not be added to these directories through the Dockerfile prior to mounting, as they would be overwritten during the mounting process. The directories will be fully accessible within the container during run time.
 
@@ -21,11 +21,11 @@ This document describes in detail the [four steps](./introduction.md#overview) r
 
 - Do not copy data files into the image. As a general rule, images should only contain software and configuration files. Any data files required will be presented to the container at runtime (e.g. via the `/safe_data` mount) and should not be copied into the container during the build.
 
-- Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the TRE VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
+- Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile. Since the SHS VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
 - Apply the principle of least privilege, that is select a non-privileged user inside the container whenever possible.
 
-- Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the TRE. However, users within the TRE need to provide both a username and an access token to do so. This is a requirement of the 'ces-tools' used to pull containers into the TRE.
+- Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the SHS. However, users within the SHS need to provide both a username and an access token to do so. This is a requirement of the 'ces-tools' used to pull containers into the SHS.
 
 <!--- Some containers are meant to be started by the root user, for example Rocker. In this case, please use Podman and avoid Kubernetes. In our CES Kubernetes setup, security policies and configurations enforce a non-root execution model. This means containers are explicitly prohibited from running as the root user.-->
 
@@ -156,7 +156,7 @@ A container with the following Dockerfile:
 ```dockerfile
    FROM python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
 
-   # Create TRE directories
+   # Create SHS directories
    RUN mkdir /safe_data /safe_outputs /scratch
 
    # Add app files
@@ -185,7 +185,7 @@ can be built with the command:
 docker build -t myapp:v1.1 . --platform linux/amd64
 ```
 
-where `--platform linux/amd64` is added to ensure image compatibility with the TRE environment in case the image is being built on a different platform.
+where `--platform linux/amd64` is added to ensure image compatibility with the SHS environment in case the image is being built on a different platform.
 
 The container can then be tested with:
 
@@ -312,7 +312,7 @@ Once the stage has been reached where your software package is ready for distrib
 
 ## Step 3. Test in CES test environment
 
-EPCC provides a test environment that allows users to test their containers in a TRE-like environment without having to be logged into the TRE itself. Containers that run successfully in such environment can then be expected to perform in the same way in the TRE.
+EPCC provides a test environment that allows users to test their containers in a SHS-like environment without having to be logged into the SHS itself. Containers that run successfully in such environment can then be expected to perform in the same way in the SHS.
 
 ### 3.1 Accessing test environment
 
@@ -321,11 +321,11 @@ The test environment is located in the eidf147 project. Please ask your research
 ### 3.2 Pull and run
 
 !!! warning "Do not use container CLIs directly"
-    The CES wrapper scripts **must** be used to run containers in the TRE. This is to ensure that the correct data directories are automatically made available.
+    The CES wrapper scripts **must** be used to run containers in the SHS. This is to ensure that the correct data directories are automatically made available.
 
     You **must not** use commands such as `podman run ...` or `docker run ...` directly.
 
-Containers can only be used on the TRE desktop hosts using shell commands. Containers can only be pulled from the GHCR into the TRE using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the TRE. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the TRE.
+Containers can only be used on the SHS desktop hosts using shell commands. Containers can only be pulled from the GHCR into the SHS using a `ces-pull` script. Hence containers must be pushed to GHCR for them to be used in the SHS. Although alternative methods can be used in the test environment, we encourage users to follow the exact same procedure as they would in the SHS.
 
 Once access has been granted to the test environment in the eidf147 project, the user can pull a container from their GHCR repository using the `ces-pull` command:
 
@@ -333,7 +333,7 @@ Once access has been granted to the test environment in the eidf147 project, the
 ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-Note: `<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io/<namespace>/<container_name>:<container_tag>'. When pulling containers into the test environment or the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+Note: `<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io/<namespace>/<container_name>:<container_tag>'. When pulling containers into the test environment or the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 Note: The `<github_user>` and `<ghcr_token>` arguments to `ces-pull` are mandatory.
 
@@ -353,12 +353,12 @@ ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 
 Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run [<runtime>] --help` for all available options.
 
-We recommend to test containers without network connection to best mimick their functionality inside the TRE, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
+We recommend to test containers without network connection to best mimick their functionality inside the SHS, where the container will not be able to access the internet. With Podman, for example, this can be achieved by passing the option `--network=none` through the `opt-file`.
 
-Once the container runs successfully in the test environment, it is ready to be used inside the TRE.
+Once the container runs successfully in the test environment, it is ready to be used inside the SHS.
 
-## Step 4. Pull and run container inside the TRE
+## Step 4. Pull and run container inside the SHS
 
-To use the containers inside the TRE, log into the desired VM using the steps described in the EIDF User Documentation: <https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/>
+To use the containers inside the SHS, log into the desired VM using the steps described in the EIDF User Documentation: <https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/>
 
 The same steps described in [Section 3.2](#32-pull-and-run) of this document can then be used to pull and run the container.
