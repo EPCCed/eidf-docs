@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/safe-haven-access/">
       
       
-        <link rel="prev" href="../network-access-controls/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../virtual-desktop-connections/">
+        <link rel="next" href="../software-management/">
       
       
       <link rel="icon" href="../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Safe Haven Access - EIDF User Documentation</title>
+        <title>Access - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#safe-haven-service-access" class="md-skip">
+        <a href="#safe-haven-services-access" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Safe Haven Access
+              Access
             
           </span>
         </div>
@@ -2224,29 +2224,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../network-access-controls/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Network Access Controls
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -2264,7 +2241,7 @@
   
   
   <span class="md-ellipsis">
-    Safe Haven Access
+    Access
     
   </span>
   
@@ -2277,7 +2254,7 @@
   
   
   <span class="md-ellipsis">
-    Safe Haven Access
+    Access
     
   </span>
   
@@ -2300,29 +2277,86 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#safe-haven-network-access-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safe Haven Network Access Controls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#safe-haven-login" class="md-nav__link">
     <span class="md-ellipsis">
       Safe Haven Login
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remote-desktop-gateway-login" class="md-nav__link">
+    <nav class="md-nav" aria-label="Safe Haven Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-multi-factor-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Remote Desktop Gateway Login
+      1. Multi-Factor Authentication
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#project-desktop-connection" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-remote-desktop-gateway-login" class="md-nav__link">
     <span class="md-ellipsis">
-      Project Desktop Connection
+      2. Remote Desktop Gateway login
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-project-desktop-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Project Desktop login
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Project Desktop login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-time-login-and-account-password-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Time Login and Account Password Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-ssh-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to a Remote SSH Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-desktop-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to a Remote Desktop Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2342,35 +2376,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtual-desktop-connections/" class="md-nav__link">
+      <a href="../software-management/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Connections
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../using-the-hpc-cluster/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Using the HPC Cluster
+    Software Management
     
   </span>
   
@@ -2396,15 +2407,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    Superdome Flex Tutorial
+    HPC Service
     
   </span>
   
@@ -2412,10 +2423,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
-            Superdome Flex Tutorial
+            HPC Service
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2426,12 +2437,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../superdome-flex-tutorial/L1_Accessing_the_SDF_Inside_the_EPCC_TRE/" class="md-nav__link">
+      <a href="../shs-superdome-flex/L1_Accessing_the_SDF_Inside_the_EPCC_SHS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Accessing the SDF Inside the EPCC TRE
+    Accessing HPC in Safe Havens
     
   </span>
   
@@ -2449,7 +2460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../superdome-flex-tutorial/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+      <a href="../shs-superdome-flex/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
         
   
   
@@ -2472,7 +2483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../superdome-flex-tutorial/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+      <a href="../shs-superdome-flex/L3_submitting_scripts_to_slurm/" class="md-nav__link">
         
   
   
@@ -2495,7 +2506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../superdome-flex-tutorial/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../shs-superdome-flex/L4_parallelised_python_analysis/" class="md-nav__link">
         
   
   
@@ -2518,7 +2529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../superdome-flex-tutorial/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../shs-superdome-flex/L5_parallelised_r_analysis/" class="md-nav__link">
         
   
   
@@ -2557,15 +2568,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
         
           
-          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    TRE Container User Guide
+    Container Service
     
   </span>
   
@@ -2573,10 +2584,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
-            TRE Container User Guide
+            Container Service
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2587,12 +2598,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../tre-container-user-guide/introduction/" class="md-nav__link">
+      <a href="../shs-container-user-guide/introduction/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Introduction
+    Accessing and running containers in Safe Havens
     
   </span>
   
@@ -2610,7 +2621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tre-container-user-guide/development-workflow/" class="md-nav__link">
+      <a href="../shs-container-user-guide/development-workflow/" class="md-nav__link">
         
   
   
@@ -2633,7 +2644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tre-container-user-guide/workflow-examples/" class="md-nav__link">
+      <a href="../shs-container-user-guide/workflow-examples/" class="md-nav__link">
         
   
   
@@ -2656,7 +2667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tre-container-user-guide/container-examples/" class="md-nav__link">
+      <a href="../shs-container-user-guide/container-examples/" class="md-nav__link">
         
   
   
@@ -2780,29 +2791,86 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#safe-haven-network-access-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safe Haven Network Access Controls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#safe-haven-login" class="md-nav__link">
     <span class="md-ellipsis">
       Safe Haven Login
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remote-desktop-gateway-login" class="md-nav__link">
+    <nav class="md-nav" aria-label="Safe Haven Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-multi-factor-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Remote Desktop Gateway Login
+      1. Multi-Factor Authentication
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#project-desktop-connection" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-remote-desktop-gateway-login" class="md-nav__link">
     <span class="md-ellipsis">
-      Project Desktop Connection
+      2. Remote Desktop Gateway login
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-project-desktop-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Project Desktop login
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Project Desktop login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-time-login-and-account-password-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Time Login and Account Password Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-ssh-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to a Remote SSH Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-desktop-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to a Remote Desktop Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2825,27 +2893,63 @@
   
 
 
-<h1 id="safe-haven-service-access">Safe Haven Service Access</h1>
-<p>Safe Haven services are accessed from a registered network connection address using a browser. The service URL will be "<a href="https://shs.epcc.ed.ac.uk/&lt;service&gt;">https://shs.epcc.ed.ac.uk/&lt;service&gt;</a>" where &lt;service&gt; is the Safe Haven service name.</p>
-<p>The Safe Haven access process is in three stages from multi-factor authentication to project desktop login.</p>
-<p>Researchers who are active in many research projects and in more than one Safe Haven will need to pay attention to the service they connect to, the project desktop they login to, and the accounts and identities they are using.</p>
+<h1 id="safe-haven-services-access">Safe Haven Services Access</h1>
+<h2 id="safe-haven-network-access-controls">Safe Haven Network Access Controls</h2>
+<p>The Safe Haven Services (SHS) are protected against open, global access by IPv4 source address filtering. These network access controls ensure that connections are permitted only from Safe Haven controller partner networks and collaborating institutions.</p>
+<p>Network access controls for each Safe Haven are managed by the SHS controllers who instruct EPCC to add and remove the IPv4 addresses allowed to connect to the service gateway.</p>
+<div class="admonition note">
+<p class="admonition-title">Requirement</p>
+<p>Users must connect to the SHS by first connecting to their institution or corporate VPN. If the institution or corporate VPN is not already allowed to access the SHS, research coordinators will ask researchers to provide an IP range to be added to the allow list.</p>
+</div>
+<p>SHS are accessed from a registered network connection address using a browser. The research co-ordinators will provide the service URL to users.</p>
 <h2 id="safe-haven-login">Safe Haven Login</h2>
+<p>The Safe Haven login process has three stages:</p>
+<ol>
+<li>Multi-factor authentication</li>
+<li>Remote Desktop Gateway login</li>
+<li>Project Desktop login</li>
+</ol>
+<p>Researchers who are active in many research projects and in more than one Safe Haven will need to pay attention to the service they connect to, the project desktop they login to, and the accounts and identities they are using.</p>
+<h3 id="1-multi-factor-authentication">1. Multi-Factor Authentication</h3>
 <p>The first step in the process prompts the user for a Safe Haven username and then for a session PIN code sent via SMS text to the mobile number registered for the username.</p>
-<p>Valid PIN code entry allows the user access to all of the Safe Haven service remote desktop gateways for up to 24 hours without entry of a new PIN code. A user who has successfully entered a PIN code once can access shs.epcc.ed.ac.uk/haven1 and shs.epcc.ed.ac.uk/haven2 without repeating PIN code identity verification.</p>
+<p>Valid PIN code entry allows the user access to all of the Safe Haven service remote desktop gateways for up to 24 hours without entry of a new PIN code. A user who has successfully entered a PIN code once can access <code>shs.epcc.ed.ac.uk/haven1</code> and <code>shs.epcc.ed.ac.uk/haven2</code> without repeating PIN code identity verification.</p>
 <p>When a valid PIN code is accepted, the user is prompted to accept the service use terms and conditions.</p>
-<p>Registration of the user mobile phone number is managed by the Safe Haven IG controller and research project co-ordination teams by submitting and confirming user account changes through the dedicated service help desk via email.</p>
-<h2 id="remote-desktop-gateway-login">Remote Desktop Gateway Login</h2>
-<p>The second step in the access process is for the user to login to the Safe Haven service remote desktop gateway so that a project desktop connection can be chosen. The user is prompted for a Safe Haven service account identity.</p>
+<div class="admonition note">
+<p class="admonition-title">Requirement</p>
+<p>As part of the user registration process, research coordinators will ask users to provide their mobile numbers for Multi-Factor Authentication setup.</p>
+</div>
+<h3 id="2-remote-desktop-gateway-login">2. Remote Desktop Gateway login</h3>
+<p>The second step in the access process is for the user to login to the Safe Haven service Remote Desktop Gateway so that a project Desktop connection can be chosen. The user is prompted for a Safe Haven service account identity.</p>
 <p><img alt="VDI-Safe-Haven-Login-Page" src="../../images/access/UoE-Data-Safe-Haven-VDI-Login.png" />
    <em>VDI Safe Haven Service Login Page</em></p>
-<p>Safe Haven accounts are managed by the Safe Haven IG controller and research project co-ordination teams by submitting and confirming user account changes through the dedicated service help desk via email.</p>
-<h2 id="project-desktop-connection">Project Desktop Connection</h2>
-<p>The third stage in the process is to select the virtual connection from those available on the account's home page. An example home page is shown below offering two connection options to the same virtual machine. Remote desktop connections will have an _rdp suffix and SSH terminal connections have an _ssh suffix. The most recently used connections are shown as screen thumbnails at the top of the page and all the connections available to the user are shown in a tree list below this.</p>
+<p>Safe Haven accounts are managed by the Safe Haven IG controller and research project co-ordination teams.</p>
+<h3 id="3-project-desktop-login">3. Project Desktop login</h3>
+<p>The third stage in the process is to select the virtual connection from those available on the account's home page. An example home page is shown below offering two connection options to the same virtual machine. Remote desktop connections will have an <code>_rdp</code> suffix and SSH terminal connections have an <code>_ssh</code> suffix. The most recently used connections are shown as screen thumbnails at the top of the page and all the connections available to the user are shown in a tree list below this.</p>
 <p><img alt="VDI-Connections-Available-Page" src="../../images/access/vdi-home-screen.png" />
    <em>VM connections available home page</em></p>
-<p>The remote desktop gateway software used in the Safe Haven services in the TRE is the Apache Guacamole web application. Users new to this application can <a href="https://guacamole.apache.org/doc/gug/using-guacamole.html">find the user manual here</a>. It is recommended that users read this short guide, but note that the data sharing features such as copy and paste, connection sharing, and file transfers are disabled on all connections in the TRE Safe Havens.</p>
+<p>The remote desktop gateway software used in the Safe Haven services in the SHS is the Apache Guacamole web application. Users new to this application can <a href="https://guacamole.apache.org/doc/gug/using-guacamole.html">find the user manual here</a>. It is recommended that users read this short guide, but note that the data sharing features such as copy and paste, connection sharing, and file transfers are disabled on all connections in the SHS.</p>
 <p>A remote desktop or SSH connection is used to access data provided for a specific research project. If a researcher is working on multiple projects within a Safe Haven they can only login to one project at a time. Some connections may allow the user to login to any project and some connections will only allow the user to login into one specific project. This depends on project IG restrictions specified by the Safe Haven and project controllers.</p>
-<p>Project desktop accounts are managed by the Safe Haven IG controller and research project co-ordination teams by submitting and confirming user account changes through the dedicated service help desk via email.</p>
+<p>Project desktop accounts are managed by the Safe Haven IG controller and research project co-ordination teams.</p>
+<h4 id="first-time-login-and-account-password-changes">First Time Login and Account Password Changes</h4>
+<div class="admonition warning">
+<p class="admonition-title">Account Password Changes</p>
+<p>Note that first time account login cannot be through RDP as a password change is required. Password reset logins must be SSH terminal sessions as password changes can only be made through SSH connections.</p>
+</div>
+<h4 id="connecting-to-a-remote-ssh-session">Connecting to a Remote SSH Session</h4>
+<p>When a VM SSH connection is selected, the browser screen becomes a text terminal. The user is prompted to "Login as: " with a project account name, and then prompted for the account password. This connection type is equivalent to a standard xterm SSH session.</p>
+<div class="admonition warning">
+<p class="admonition-title">Symbols and shortcuts</p>
+<p>Apache Guacamole translates keyboard input from your browser to the remote desktop. In some cases, this mapping may not match exactly due to differences in operating systems or keyboard layouts, which can cause certain symbols or shortcuts to behave differently.</p>
+<p>When typing a password in an SSH terminal, the characters are intentionally hidden for security. If you want to confirm that your keyboard input is producing the expected characters, try typing the same text as your username first—without pressing Enter—to verify the output.</p>
+</div>
+<h4 id="connecting-to-a-remote-desktop-session">Connecting to a Remote Desktop Session</h4>
+<p>Remote desktop connections work best by first placing the browser in Full Screen mode and leaving it in this mode for the entire duration of the Safe Haven session.</p>
+<p>When a VM RDP connection is selected the browser screen becomes a remote desktop presenting the login screen shown below.</p>
+<p><img alt="VM-VDI-connection-login" src="../../images/access/vm-vdi-connection-login.png" />
+   <em>VM virtual desktop connection user account login screen</em></p>
+<p>Once the project account credentials have been accepted, a remote dekstop similar to the one shown below is presented. The default VM environment in the SHS is Ubuntu 22.04 with the Xfce desktop.</p>
+<p><img alt="VM-VDI-connection" src="../../images/access/vm-vdi-connection.png" />
+   <em>VM virtual desktop</em></p>
 
 
 
