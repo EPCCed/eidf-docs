@@ -29,6 +29,20 @@ After editing the allowlist Squid must be reconfigured using the command:
 sudo squid -k reconfigure
 ```
 
-## Data Transfer to Secure Virtual Desktop service via the EIDF Managed File Transfer Service
+## Data Transfer to Secure Virtual Desktop service via scp
 
-The EIDF Managed File Transfer service provides a secure method to transfer files to and from EIDF services including the Secure Virtual Desktop service. The service uses the SERV-U software to provide file transfer access to users. [Documentation for the EIDF Managed File Transfer](../mft/using-the-mft.md) should be used.
+Data transfer to and from the Secure Virtual Desktop VMs can be performed using [`scp`](https://linux.die.net/man/1/scp). This is **only possible for users with the Data Manager role** and requires that the user has SSH key access to the Secure Virtual Desktop Router `<projectID>-router`. Data transfer using `scp` is performed by jumping through the Secure Virtual Desktop project's router, `<projectID>-router`, which acts as an intermediary for data transfer and access.
+
+To transfer data to the Secure Virtual Desktop VMs using `scp`, the following command format should be used:
+
+```bash
+scp -o ProxyJump=<username>@<projectID>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:<remote-file-path>
+```
+
+Where:
+
+- `<username>` is the user's SSH username for both the router and the Secure Virtual Desktop VM
+- `<projectID>` is the EIDF project ID
+- `<local-file-path>` is the path to the file on the user's local machine
+- `<secure-virtual-desktop-vm-ip>` is the IP address of the Secure Virtual Desktop VM
+- `<remote-file-path>` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
