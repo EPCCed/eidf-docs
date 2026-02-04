@@ -42,15 +42,17 @@ For a user to transfer data to and from the Secure Virtual Desktop VMs using `sc
 
 Data transfer using `scp` is performed by jumping through the Secure Virtual Desktop project's router, `<projectID>-router`, which acts as an intermediary for data transfer and access.
 
+Because all traffic to EIDF services must first go through the gateway, the below command needs to do a double jump via both the EIDF gateway and the Secure Virtual Desktop router.
+
 To transfer data to the Secure Virtual Desktop VMs using `scp`, the following command format should be used:
 
 ```bash
-scp -o ProxyJump=<username>@<projectID>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:<remote-file-path>
+scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<projectID>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:<remote-file-path>
 ```
 
 Where:
 
-- `<username>` is the user's SSH username for both the router and the Secure Virtual Desktop VM
+- `<username>` is the user's SSH username for EIDF gateway, router and the Secure Virtual Desktop VM
 - `<projectID>` is the EIDF project ID
 - `<local-file-path>` is the path to the file on the user's local machine
 - `<secure-virtual-desktop-vm-ip>` is the IP address of the Secure Virtual Desktop VM
