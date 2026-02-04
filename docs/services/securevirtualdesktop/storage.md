@@ -35,9 +35,9 @@ Data transfer to and from the Secure Virtual Desktop VMs can be performed using 
 
 For a user to transfer data to and from the Secure Virtual Desktop VMs using `scp` the following is required:
 
-- **The user has the Data Manager role**
+- The user has the Data Manager role
 - The user has been added to the EIDF gateway, Secure Virtual Desktop Router `<projectID>-router` and the target Secure Virtual Desktop VM in the EIDF Portal
-- An SSH client is installed on the user's local machine
+- An SSH client is installed on the user's local machine (see [SSH connection to EIDF](../../access/ssh.md) for more details)
 - The user has SSH access to the Secure Virtual Desktop Router `<projectID>-router`
 
 Data transfer using `scp` is performed by jumping through the Secure Virtual Desktop project's router, `<projectID>-router`, which acts as an intermediary for data transfer and access.
