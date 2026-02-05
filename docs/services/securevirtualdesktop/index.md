@@ -2,7 +2,7 @@
 
 The Secure Virtual Desktop service is a specialised offering within EIDF, designed to provide enhanced security and controlled access for sensitive data projects. The Secure Virtual Desktop service is built on the same underlying EIDF Virtual Machine (VM) Service infrastructure with additional access controls, network isolation, and policy requirements to meet the needs of secure data handling. Development of this service makes use of work done on the Scottish Safe Haven Trusted Research Environment. This section describes the service features specific to the Secure Virtual Desktop, and highlights differences from the general VM Service where relevant.
 
-The service currently has a mixture of hardware node types which host VMs of various flavours, [these are the same as the virtual machine service](../virtualmachines/flavours.md):
+The service currently has a mixture of hardware node types which host VMs of various flavours. [These match the virtual machine service flavours](../virtualmachines/flavours.md).
 
 ## Data Processing Requirements for Secure Virtual Desktop Service
 
