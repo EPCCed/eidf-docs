@@ -100,9 +100,9 @@ If required, you can mount additional directories into your container:
 
 ---
 
-## Accessing the TRE web proxy
+## Accessing the web proxy
 
-If your container needs to access the TRE web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:
+If your container needs to access the web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:
 
 1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
 1. See the values of your web proxy variables:
