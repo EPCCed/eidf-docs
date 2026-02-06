@@ -22,7 +22,7 @@ An Open OnDemand component that allows you to run jobs, or other useful function
 
 Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
+A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
 
 !!! Note
 
@@ -91,7 +91,7 @@ For interactive apps, Open OnDemand uses the job scheduler to determine when the
 
 !!! Note
 
-    As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
+    As mentioned above, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
 
 ---
 
