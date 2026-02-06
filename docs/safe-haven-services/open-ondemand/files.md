@@ -28,7 +28,7 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.
 
 ### **Open in Terminal**
 
