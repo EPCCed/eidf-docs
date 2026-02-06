@@ -9,17 +9,16 @@ The following apps are available as part of Open OnDemand's app suite:
 | App | Type | Description |
 | --- | ---- | ----------- |
 | [Active Jobs](apps/active-jobs.md) | System Installed App | Browse and manage jobs created via both apps and the Job Composer app |
-| [Run Batch Container](apps/batch-container-app.md) | Tenant and TRE Service | Run a batch container on a back-end |
-| [Run JupyterLab](apps/jupyter-os-app.md) | Tenant Service | Run JupyterLab on a back-end which has JupyterLab installed |
-| [Run JupyterLab Container](apps/jupyter-app.md) | Tenant Service | Run a JupyterLab container on a back-end |
-| [Run RStudio Server Container](apps/rstudio-app.md) | Tenant Service | Run an RStudio Server container on a back-end |
+| [Run Batch Container](apps/batch-container-app.md) | SHS App | Run a batch container on a back-end |
+| [Run JupyterLab](apps/jupyter-os-app.md) | SHS App | Run JupyterLab on a back-end which has JupyterLab installed |
+| [Run JupyterLab Container](apps/jupyter-app.md) | SHS App | Run a JupyterLab container on a back-end |
+| [Run RStudio Server Container](apps/rstudio-app.md) | SHS App | Run an RStudio Server container on a back-end |
 | [Job Composer](apps/job-composer.md) | System Installed App | Write and submit a Slurm batch job to a back-end |
 
 The app types are:
 
 * 'System Installed App': General purpose apps provided with Open OnDemand.
-* 'Tenant Service': Apps to run jobs on back-ends within your safe haven.
-* 'Tenant and TRE Service': Apps to run jobs on back-ends within both your safe haven and on TRE-level compute resources.
+* 'SHS App': Safe Haven Services Application Services apps to run jobs on back-ends specific your safe haven or on shared resources to which your safe haven has access.
 
 Open OnDemand supports a number of ways by which you can see the apps available to you and select an app to run.
 
