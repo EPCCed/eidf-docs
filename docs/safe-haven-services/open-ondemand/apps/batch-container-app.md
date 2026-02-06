@@ -2,7 +2,7 @@
 
 Run Batch Container is an app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
-Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the TRE Container Execution Service.
+Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the Safe Haven Services Container Execution Service.
 
 ---
 

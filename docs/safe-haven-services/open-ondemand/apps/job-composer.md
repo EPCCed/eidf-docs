@@ -212,7 +212,7 @@ If you selected a back-end where your home directory is not common to both the O
 
 ## Run a container example
 
-This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the TRE Container Execution Tools' commands `ces-pull`, to pull the container, and `ces-run` to run the container.
+This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the Safe Haven Services Container Execution Tools' commands `ces-pull`, to pull the container, and `ces-run` to run the container.
 
 Create a job to run the container using Podman:
 
