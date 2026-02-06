@@ -22,8 +22,8 @@ The container registries supported by the TRE Container Execution Service, and s
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
-| GitHub    | `ghcr.io` | `ghcr.io/epcc/hello-tre:1.0` |
-| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1` |
+| GitHub    | `ghcr.io` | `ghcr.io/epcc/epcc-ces-hello:1.0` |
+| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0` |
 
 !!! Note
 
@@ -85,9 +85,9 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user within the container.
 
-As a concrete example, consider the `epcc-ces-hello-tre` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
 
-If `epcc-ces-hello-tre` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
+If `epcc-ces-hello` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 
 ```text
 /safe_data: nobody (65534) root(0) drwxrwx--- nfs
@@ -105,7 +105,7 @@ as this is in your home directory, and, again, you are `root` but **only** withi
 
 The other directories, mounted from directories in your home directory, likewise have user, and group, `root`.
 
-In contrast, if `epcc-ces-hello-tre` is run via Apptainer, then the directory permissions logged are:
+In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permissions logged are:
 
 ```text
 /safe_data: nobody (65534) your_project_group(4797) drwxrwx--- nfs
