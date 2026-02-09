@@ -17,8 +17,8 @@ The following apps are available:
 
 The app types are:
 
-* 'System Installed App': General purpose apps provided with Open OnDemand.
-* 'SHS App': Safe Haven Services Application Services apps to run jobs on back-ends specific your safe haven or on shared resources to which your safe haven has access.
+* 'System Installed App': General purpose app provided with Open OnDemand.
+* 'SHS App': Safe Haven Services Application Services app to run jobs on back-ends specific your safe haven or on shared resources to which your safe haven has access.
 
 Open OnDemand supports a number of ways by which you can see the apps available to you and select an app to run.
 
