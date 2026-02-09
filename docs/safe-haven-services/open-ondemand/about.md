@@ -1,6 +1,6 @@
 # About Safe Haven Services Application Services
 
-Safe Haven Services Application Services run within a safe haven and provide a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
+Safe Haven Services Application Services run within a safe haven and provides apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
 
 ![Safe Haven Services Application Services home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Safe Haven Services Application Services home page*
 

@@ -4,11 +4,11 @@
 
 ## Introduction
 
-The home page provides menus and buttons to allow you to access Open OnDemand's functionality, its app suite.
+The home page provides menus and buttons to allow you to access Open OnDemand's apps and other functionality.
 
 ![Open OnDemand home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Open OnDemand home page*
 
-Open OnDemand's key concepts and its app suite are described on the following pages:
+Open OnDemand's key concepts and its apps are described on the following pages:
 
 * [Run jobs](jobs.md)
 * [Run containers](containers.md)

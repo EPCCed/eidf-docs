@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
+Open OnDemand provides apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
 
 Depending on your safe haven, you may also have access to compute resources outwith your safe haven, for example, the Superdome Flex high-performance computing cluster.
 

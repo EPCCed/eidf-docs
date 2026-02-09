@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The following apps are available as part of Open OnDemand's app suite:
+The following apps are available:
 
 | App | Type | Description |
 | --- | ---- | ----------- |
