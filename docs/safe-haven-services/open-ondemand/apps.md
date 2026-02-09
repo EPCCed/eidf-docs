@@ -54,6 +54,16 @@ Click an app-specific link to access that app.
 
 ---
 
+## **Jobs** menu
+
+The Jobs menu provides access to a **subset** of the apps available to you, those that relate to running jobs.
+
+Some apps are grouped by sub-categories. The Safe Haven Services apps that run containers are part of a 'Containers' sub-category and are shown grouped by that name in the menu.
+
+Select an app-specific menu option to access that app.
+
+---
+
 ## My Interactive Sessions page apps list
 
 Click **My Interactive Sessions** (overlaid squares icon) on the menu bar to opens the My Interactive Sessions page.
