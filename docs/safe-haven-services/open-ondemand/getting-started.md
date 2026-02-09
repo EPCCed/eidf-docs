@@ -7,7 +7,7 @@ First, some Open OnDemand terminology. A compute resource upon which tasks can b
 This walkthrough is centred around three apps:
 
 * [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
-* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that no Python knowledge is assumed or required!
+* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 ---
@@ -150,7 +150,7 @@ Together, these mounts provides a means for data, configuration files, scripts a
 
     Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
 
-When the `epcc-ces-hello` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
+When the `epcc-ces-hello` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` directory on the back-end:
 
 * `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
@@ -219,17 +219,17 @@ View the log file within the back-end:
     cat output.log
     ```
 
-For the `epcc-ces-hello` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
+For the `epcc-ces-hello` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container. For example:
 
 ```text
-Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/someuser/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
-Script starting...
+Mon Feb  9 14:41:19 UTC 2026 before.sh: Started before.sh
+Mon Feb  9 14:41:29 UTC 2026 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/d49351c9-59a8-4a45-ac29-cc7b5ba16a8c
 ...
-Wed Jul 30 11:32:41 UTC 2025 script.sh: Running ces-pull podman ...
-...
+Mon Feb  9 14:41:30 UTC 2026 script.sh: Running ces-run podman ...
+Running: ...
 ```
 
-This is followed by information from the container itself about your user name within the container and the directories mounted into the container:
+This is followed by information from the container itself about your user name within the container and the directories mounted into the container. For example:
 
 ```text
 Hello!
@@ -239,7 +239,7 @@ Your container is now running.
 Your user 'id' within the container is: uid=0(root) gid=0(root) groups=0(root).
 
 Check mounted directories, ownership, permissions, file system type:
-/safe_data: nobody (65534) root(0) drwxrwx--- nfs
+/safe_data: nobody (65534) root(0) drwxrws--- ext2/ext3
 /scratch: root (0) root(0) drwxr-xr-x ext2/ext3
 /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
 
@@ -267,7 +267,7 @@ Arguments (one per line):
 
 For some containers run via Podman, including `epcc-ces-hello`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/batch_container/SESSION_ID`.
 
-Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `GREETING` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
+Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `GREETING` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument. For example:
 
 ```text
 Hello there Mike!
@@ -288,9 +288,10 @@ Sleeping for 10 seconds...
 Goodbye Mike!
 ```
 
-Finally, the log file includes information from the app itself as it completes:
+Finally, the log file includes information from the app itself as it completes. For example:
 
 ```text
+Mon Feb  9 14:41:40 UTC 2026 script.sh: Finished script.sh
 Cleaning up...
 ```
 
