@@ -37,7 +37,7 @@ Click **Open in Terminal** to log into a specific VM:
 * The default is the first back-end you have access to in alphabetical order.
 * To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific VM.
 
-![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal.png){: class="border-img center"} ***Open in Terminal** button and menu*
+![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal-button.png){: class="border-img center"} ***Open in Terminal** button and menu*
 
 Once logged in, your current directory will be changed to match the job context directory.
 
