@@ -53,7 +53,7 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 

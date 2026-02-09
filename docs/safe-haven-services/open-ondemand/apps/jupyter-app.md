@@ -52,7 +52,7 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 

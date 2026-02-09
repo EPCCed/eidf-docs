@@ -1,13 +1,13 @@
 # Getting started
 
-The TRE Open OnDemand service is a web service that runs within a safe haven. The service provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven. Here, we introduce by means of a walkthrough, Open OnDemand and its apps.
+The Open OnDemand service is a web service that runs within a safe haven. The service provides apps that allow you to run compute and data-related tasks and packages on compute resources available to your safe haven. Here, we introduce by means of a walkthrough, Open OnDemand and its apps.
 
 First, some Open OnDemand terminology. A compute resource upon which tasks can be run is called a **back-end**, or, in some parts of Open OnDemand, a **cluster**. Each run of a task on a back-end is called a **job**. An Open OnDemand component that allows you to run jobs, or other useful functions, is called an **app**.
 
 This walkthrough is centred around three apps:
 
 * [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
-* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that no Python knowledge is assumed or required!
+* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 ---
@@ -44,14 +44,14 @@ The 'Run Batch Container' app form will open.
 
 ### Review and complete the Run Batch Container app form
 
-The app form is prepopulated with the configuration to pull and run a 'hello TRE' container. When run, the container logs a greeting and information about directories mounted into the container.
+The app form is prepopulated with the configuration to pull and run a 'hello world' container. When run, the container logs a greeting and information about directories mounted into the container.
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
 * **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled.
-    * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1` container, hereon termed `epcc-ces-hello-tre`.
+    * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0` container, hereon termed `epcc-ces-hello`.
 * **Container registry username**: A container registry username is required.
     * Leave this value as-is.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
@@ -61,23 +61,23 @@ Read the form entries in conjunction with the explanations below and make the su
 * **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
 * **CPUs/cores**: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores.
-    * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello-tre` container does not need any more.
+    * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello` container does not need any more.
 * **Memory (GiB)**: Memory requested for the app's job.
-    * Leave this value as-is as the all back-ends can provide the default memory, and the `epcc-ces-hello-tre` container does not need any more.
+    * Leave this value as-is as the all back-ends can provide the default memory, and the `epcc-ces-hello` container does not need any more.
 * **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
-    * Leave this value as-is, as the `epcc-ces-hello-tre` container does not require a GPU.
+    * Leave this value as-is, as the `epcc-ces-hello` container does not require a GPU.
 * **Container runner command-line arguments**: Command-line arguments to pass to the chosen container runner to control its behaviour.
     * Leave this value as-is, as the container does not require any such options to be set.
 * **Environment variables**: Environment variables to be set within the container when it runs.
     * Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`.
-    * The `epcc-ces-hello-tre` container looks for a `HELLO_TRE` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
+    * The `epcc-ces-hello` container looks for a `GREETING` environment variable. If set, then the container will print the variable's value as a greeting. If undefined, then the greeting is `Hello`.
     * Enter:
 
         ```text
-        HELLO_TRE=Hello there
+        GREETING=Hello there
         ```
 
-* **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello-tre` container supports two container-specific arguments:
+* **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello` container supports two container-specific arguments:
     * A `-d|--duration INTEGER` argument which causes the container to sleep (pause) for that number of seconds. If undefined, then the container does not sleep.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
     * Enter the following to request a sleep of 10 seconds and a greeting with your name:
@@ -119,9 +119,12 @@ Open OnDemand will show an app **job card** with information about the app's job
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `epcc-ces-hello-tre` container, is now running. A message of form 'Container epcc-ces-hello-tre-SESSION_ID is now running. Please wait until the container completes.' will also appear on the job card.
+![Run Batch Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-03-batch-container-app-starting.png){: class="border-img center"}
+*Run Batch Container app job card showing job status as 'Starting'*
 
-![Run Batch Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-03-batch-container-app-running.png){: class="border-img center"}
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job, and so the `epcc-ces-hello` container, is now running. A message of form 'Container epcc-ces-hello-SESSION_ID is now running. Please wait until the container completes.' will also appear on the job card.
+
+![Run Batch Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-04-batch-container-app-running.png){: class="border-img center"}
 *Run Batch Container app job card showing job status as 'Running'*
 
 All going well, the container, and its job, should complete quickly.
@@ -147,7 +150,7 @@ Together, these mounts provides a means for data, configuration files, scripts a
 
     Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
 
-When the `epcc-ces-hello-tre` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/outputs-NUMBER` on your home directory on the back-end:
+When the `epcc-ces-hello` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` directory on the back-end:
 
 * `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data`.
 * `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
@@ -165,10 +168,7 @@ View the `safe_outputs/batch_container/SESSION_ID` directory via the Open OnDema
 1. Click `safe_outputs/batch_container/SESSION_ID` view the directory
 1. Click on `safe_data.txt` and `safe_outputs.txt` to view their contents.
 
-![File Manager showing home directory after Run Batch Container app completes with outputs directory highlighted](../../images/open-ondemand/getting-started-05-file-manager-home.png){: class="border-img center"}
-*File Manager showing home directory after Run Batch Container app completes*
-
-![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-06-file-manager-outputs.png){: class="border-img center"}
+![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-05-batch-container-app-outputs.png){: class="border-img center"}
 *File Manager showing outputs directory contents after Run Batch Container app completes*
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
@@ -191,17 +191,18 @@ As you have accessed Open OnDemand from your 'desktop' VM, you could also access
 
 When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from the container as it runs. It can be useful to check the log file when debugging.
 
-For the `epcc-ces-hello-tre` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
+For the `epcc-ces-hello` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
 
 As for the output files, you can use either the File Manager (non-DataLoch safe haven users only) or log into the back-end (all users) to view the log file.
 
 View the log file via the Open OnDemand File Manager:
 
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
-1. Click on the log file, `output.log`.
 
-![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-08-batch-container-app-log.png){: class="border-img center"}
-*File Manager showing log file within Run Batch Container app's job context directory*
+    ![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-06-batch-container-app-logs.png){: class="border-img center"}
+    *File Manager showing log files within Run Batch Container app's job context directory*
+
+1. Click on the log file, `output.log`.
 
 View the log file within the back-end:
 
@@ -218,27 +219,27 @@ View the log file within the back-end:
     cat output.log
     ```
 
-For the `epcc-ces-hello-tre` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container:
+For the `epcc-ces-hello` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container. For example:
 
 ```text
-Wed Jul 30 11:32:41 UTC 2025 before.sh: JOB_FOLDER: /home/someuser/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/4e0efea9-c556-4800-bcfd-414dbd92ed3c
-Script starting...
+Mon Feb  9 14:41:19 UTC 2026 before.sh: Started before.sh
+Mon Feb  9 14:41:29 UTC 2026 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/d49351c9-59a8-4a45-ac29-cc7b5ba16a8c
 ...
-Wed Jul 30 11:32:41 UTC 2025 script.sh: Running ces-pull podman ...
-...
+Mon Feb  9 14:41:30 UTC 2026 script.sh: Running ces-run podman ...
+Running: ...
 ```
 
-This is followed by information from the container itself about your user name within the container and the directories mounted into the container:
+This is followed by information from the container itself about your user name within the container and the directories mounted into the container. For example:
 
 ```text
-Hello TRE!
+Hello!
 
 Your container is now running.
 
 Your user 'id' within the container is: uid=0(root) gid=0(root) groups=0(root).
 
 Check mounted directories, ownership, permissions, file system type:
-/safe_data: nobody (65534) root(0) drwxrwx--- nfs
+/safe_data: nobody (65534) root(0) drwxrws--- ext2/ext3
 /scratch: root (0) root(0) drwxr-xr-x ext2/ext3
 /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
 
@@ -252,8 +253,8 @@ Check write to /scratch
 Contents of /scratch/scratch.txt:
 This text is in scratch.txt
 
-Look for optional 'HELLO_TRE' environment variable
-Found optional 'HELLO_TRE' environment variable with value: Hello there
+Look for optional 'GREETING' environment variable
+Found optional 'GREETING' environment variable with value: Hello there
 
 Parse command-line arguments
 Number of arguments: 4
@@ -264,9 +265,9 @@ Arguments (one per line):
     Mike
 ```
 
-For some containers run via Podman, including `epcc-ces-hello-tre`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/batch_container/SESSION_ID`.
+For some containers run via Podman, including `epcc-ces-hello`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs/batch_container/SESSION_ID`.
 
-Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `HELLO_TRE` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument.
+Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `GREETING` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument. For example:
 
 ```text
 Hello there Mike!
@@ -284,14 +285,13 @@ Sleeping for 10 seconds...
 10
 ...and awake!
 
-For more container examples and ideas, visit:
-  https://github.com/EPCCed/tre-container-samples
 Goodbye Mike!
 ```
 
-Finally, the log file includes information from the app itself as it completes:
+Finally, the log file includes information from the app itself as it completes. For example:
 
 ```text
+Mon Feb  9 14:41:40 UTC 2026 script.sh: Finished script.sh
 Cleaning up...
 ```
 
@@ -305,15 +305,18 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 The Active Jobs app will open to show a table of running and recently completed jobs.
 
-You will see an 'epcc-ces-hello-tre:1.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
+You will see an 'epcc-ces-hello:1.0' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
 
 Your job will have a status of 'Completed'.
 
 Each job has a unique **job ID** created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
+![Active Jobs app jobs list](../../images/open-ondemand/getting-started-07-active-jobs.png){: class="border-img center"}
+*Active Jobs app jobs list*
+
 To see more details about the job, click the **>** button, by the job.
 
-![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-07-active-jobs.png){: class="border-img center"}
+![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-08-active-jobs-details.png){: class="border-img center"}
 *Active Jobs app showing details of completed Run Batch Container app job*
 
 If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
@@ -357,6 +360,9 @@ Again, Open OnDemand will show an app job card with information about the app's 
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
+![Run JupyterLab Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-11-jupyter-app-starting.png){: class="border-img center"}
+*Run JupyterLab Container app job card showing job status as 'Starting'*
+
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the
 job, and so JupyterLab, is now running.
 
@@ -364,14 +370,14 @@ A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
 A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
 
-![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-11-jupyter-app-running.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-12-jupyter-app-running.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Running'*
 
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You may wonder why you were not prompted for a username and password. JupyterLab runs within the container as a 'root' user. The 'root' user is within the context of the container **only**. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into JupyterLab using this password automatically.
 
-![JupyterLab](../../images/open-ondemand/getting-started-12-jupyter-app-jupyter-lab.png){: class="border-img center"}
+![JupyterLab](../../images/open-ondemand/getting-started-13-jupyter-app-jupyter-lab.png){: class="border-img center"}
 *JupyterLab*
 
 ### Use JupyterLab to explore how directories on a back-end are mounted into a container
@@ -390,7 +396,7 @@ ls /safe_data/
 
 You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY` on the back-end.
 
-![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-13-jupyter-app-mounts.png){: class="border-img center"}
+![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-14-jupyter-app-mounts.png){: class="border-img center"}
 *Viewing mounted directories within JupyterLab*
 
 Check this by running, in your Open OnDemand command-line session with the back-end:
@@ -465,7 +471,12 @@ You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 
-![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-14-active-jobs.png){: class="border-img center"}
+![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-15-active-jobs.png){: class="border-img center"}
+*Active Jobs app showing running Run JupyterLab Container app job*
+
+To see more details about the job, click the **>** button, by the job.
+
+![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-16-active-jobs-details.png){: class="border-img center"}
 *Active Jobs app showing details of running Run JupyterLab Container app job*
 
 ### Finish your Run JupyterLab Container app job
@@ -477,7 +488,7 @@ You can end your job by as follows:
 
 The Job status on the job card will update to 'Completed'.
 
-![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-15-jupyter-app-completed.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-17-jupyter-app-completed.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Completed'*
 
 Click the 'Active Jobs' app on the Open OnDemand home page.

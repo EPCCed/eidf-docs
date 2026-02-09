@@ -28,7 +28,7 @@ You can browse your home directory and there are buttons to create new files and
 
 !!! Note
 
-    Your project data files, in a project-specific directory under `/safe_data` are **not** available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.
 
 ### **Open in Terminal**
 
@@ -37,7 +37,7 @@ Click **Open in Terminal** to log into a specific VM:
 * The default is the first back-end you have access to in alphabetical order.
 * To select a specific back-end, click the **Open in Terminal** button's **>** side-button to open a drop down-menu to allow you to choose a specific VM.
 
-![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal.png){: class="border-img center"} ***Open in Terminal** button and menu*
+![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal-button.png){: class="border-img center"} ***Open in Terminal** button and menu*
 
 Once logged in, your current directory will be changed to match the job context directory.
 

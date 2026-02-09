@@ -2,7 +2,7 @@
 
 Run Batch Container is an app that allows you to run a container on a back-end. The app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running. The app is **not** designed for containers that spawn interactive services (for example, JupyterLab).
 
-Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the TRE Container Execution Service.
+Containers run **must** conform to the [Container requirements](../containers.md#container-requirements) of the Safe Haven Services Container Execution Service.
 
 ---
 
@@ -16,11 +16,11 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1`. See [Container registries](../containers.md#container-registries) for supported container registries.
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
 * **Container registry username**: A container registry username is required.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
-* **Reuse Apptainer SIF file** (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, `epcc-ces-hello-tre:1.1.sif`.
+* **Reuse Apptainer SIF file** (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, `epcc-ces-hello:1.0.sif`.
 * **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
 * **CPUs/cores**: CPUs/cores requested for the app's job.
 * **Memory (GiB)**: Memory requested for the app's job.
@@ -30,7 +30,7 @@ Complete the following information the app form:
     * Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
         ```text
-        HELLO_TRE=Greetings
+        GREETINGS=Greetings
         ```
 
     * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
@@ -68,11 +68,11 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 
-    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello-tre:1.1'.
+    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello:1.0'.
 
 ---
 
@@ -100,9 +100,9 @@ If required, you can mount additional directories into your container:
 
 ---
 
-## Accessing the TRE web proxy
+## Accessing the web proxy
 
-If your container needs to access the TRE web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:
+If your container needs to access the web proxy, then you need to pass your web proxy environment variables into the container. This can be done as follows:
 
 1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
 1. See the values of your web proxy variables:

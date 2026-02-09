@@ -136,11 +136,11 @@ nav:
      #      - "Transfer Data Inside the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
      #      - "Persistent Volumes": safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes.md
      #   - "GPU Service FAQ": safe-haven-services/tre-gpu-service/faq.md
-     # TRE Open OnDemand service docs can be uncommented and added to
-     # the navigation menu when the TRE Open OnDemand service is made
-     # available to TRE tenants. See MikeJ for details.
-     #- "TRE Open OnDemand service":
-     #  - "About the TRE Open OnDemand service": safe-haven-services/open-ondemand/about.md
+     # Application Services (Open OnDemand) docs can be uncommented
+     # and added to the navigation menu when the service is made
+     # available to safe haven users. See MikeJ for details.
+     #- "Application Services":
+     #  - "About Safe Haven Services Application Services": safe-haven-services/open-ondemand/about.md
      #  - "Access": safe-haven-services/open-ondemand/access.md
      #  - "Getting started": safe-haven-services/open-ondemand/getting-started.md
      #  - "Home page": safe-haven-services/open-ondemand/home-page.md

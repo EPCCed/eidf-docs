@@ -4,9 +4,9 @@
 
 ## Introduction
 
-Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
+Open OnDemand provides apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
 
-Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.
+Depending on your safe haven, you may also have access to compute resources outwith your safe haven, for example, the Superdome Flex high-performance computing cluster.
 
 This page describes concepts you need to know about how Open OnDemand runs tasks and apps.
 
@@ -22,7 +22,7 @@ An Open OnDemand component that allows you to run jobs, or other useful function
 
 Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
+A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
 
 !!! Note
 
@@ -85,13 +85,13 @@ When a job is submitted, a runtime is also requested. If a job takes longer than
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will cancel itself.
 
 !!! Note
 
-    As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
+    As mentioned above, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
 
 ---
 
