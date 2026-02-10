@@ -2739,15 +2739,15 @@
 
 <h1 id="run-containers">Run containers</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Some Open OnDemand apps allow you to run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers built for the TRE Open OnDemand service (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.</p>
+<p>Some Open OnDemand apps allow you to run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.</p>
 <p>Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.</p>
 <p><a href="../jobs/">Run jobs</a> described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.</p>
 <hr />
 <h2 id="container-requirements">Container requirements</h2>
-<p>Open OnDemand uses the TRE Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand <strong>must</strong> conform to the requirements of the TRE Container Execution Service. See the <a href="../tre-container-user-guide/introduction.md">TRE Container User Guide</a> for details of these requirements.</p>
+<p>Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand <strong>must</strong> conform to the requirements of the Safe Haven Services Container Execution Service. See the <a href="../tre-container-user-guide/introduction.md">Container User Guide</a> for details of these requirements.</p>
 <hr />
 <h2 id="container-registries">Container registries</h2>
-<p>The container registries supported by the TRE Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:</p>
+<p>The container registries supported by the Safe Haven Services Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:</p>
 <table>
 <thead>
 <tr>
@@ -2760,22 +2760,22 @@
 <tr>
 <td>GitHub</td>
 <td><code>ghcr.io</code></td>
-<td><code>ghcr.io/epcc/hello-tre:1.0</code></td>
+<td><code>ghcr.io/epcc/epcc-ces-hello:1.0</code></td>
 </tr>
 <tr>
 <td>University of Edinburgh ECDF GitLab</td>
 <td><code>git.ecdf.ed.ac.uk</code></td>
-<td><code>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1</code></td>
+<td><code>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For ECDF GitLab, do not put the port number, 5050, into the URL. The TRE Container Execution Service tools will automatically insert this into ECDF GitLab URLs.</p>
+<p>For ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.</p>
 </div>
 <hr />
 <h2 id="sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</h2>
-<p>When a container is run via the TRE Container Execution Service, three directories on the back-end are always mounted into the container:</p>
+<p>When a container is run via the Safe Haven Services Container Execution Service, three directories on the back-end are always mounted into the container:</p>
 <table>
 <thead>
 <tr>
@@ -2816,7 +2816,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on TRE-level back-ends (e.g., the Superdome Flex). For these, you will need to stage your data to the TRE-level back-end following your project- and safe haven-specific processes for the use of TRE-level services.</p>
+<p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.</p>
 </div>
 <h3 id="troubleshooting-cannot-open-project-data-safe_datacannot_determine_project_from_groups">Troubleshooting: 'Cannot open project data: /safe_data/cannot_determine_project_from_groups'</h3>
 <p>If your project cannot be inferred from your user group or there is no subdirectory of <code>/safe_data</code> for your project group, and you are not using a <code>$HOME/safe_data</code> directory, then the job running the container will fail.</p>
@@ -2830,8 +2830,8 @@
 <p>For some containers run using Podman that you will find that you the 'root' user within the container but <strong>only</strong> within the container. You do <strong>not</strong> have 'root' access to the back-end on which the container is running!</p>
 <p>Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
 <p>For containers run using Apptainer, you will be your own user within the container.</p>
-<p>As a concrete example, consider the <code>epcc-ces-hello-tre</code> example container (described in <a href="../getting-started/">Getting started</a>) which outputs in a log file the permissions of the directories mounted into the a container (as described above).</p>
-<p>If <code>epcc-ces-hello-tre</code> is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:</p>
+<p>As a concrete example, consider the <code>epcc-ces-hello</code> example container (described in <a href="../getting-started/">Getting started</a>) which outputs in a log file the permissions of the directories mounted into the a container (as described above).</p>
+<p>If <code>epcc-ces-hello</code> is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:</p>
 <div class="highlight"><pre><span></span><code>/safe_data: nobody (65534) root(0) drwxrwx--- nfs
 /scratch: root (0) root(0) drwxr-xr-x ext2/ext3
 /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
@@ -2841,7 +2841,7 @@
 </code></pre></div>
 <p>as this is in your home directory, and, again, you are <code>root</code> but <strong>only</strong> within the container.</p>
 <p>The other directories, mounted from directories in your home directory, likewise have user, and group, <code>root</code>.</p>
-<p>In contrast, if <code>epcc-ces-hello-tre</code> is run via Apptainer, then the directory permissions logged are:</p>
+<p>In contrast, if <code>epcc-ces-hello</code> is run via Apptainer, then the directory permissions logged are:</p>
 <div class="highlight"><pre><span></span><code>/safe_data: nobody (65534) your_project_group(4797) drwxrwx--- nfs
 /scratch: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
 /safe_outputs: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3

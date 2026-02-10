@@ -2875,8 +2875,8 @@
 <h1 id="run-jobs">Run jobs</h1>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.</p>
-<p>Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.</p>
+<p>Open OnDemand provides apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.</p>
+<p>Depending on your safe haven, you may also have access to compute resources outwith your safe haven, for example, the Superdome Flex high-performance computing cluster.</p>
 <p>This page describes concepts you need to know about how Open OnDemand runs tasks and apps.</p>
 <hr />
 <h2 id="back-ends-clusters-jobs-and-apps">Back-ends, clusters, jobs and apps</h2>
@@ -2884,7 +2884,7 @@
 <p>Each run of a task on a back-end is called a <strong>job</strong></p>
 <p>An Open OnDemand component that allows you to run jobs, or other useful functions, is called an <strong>app</strong>.</p>
 <p>Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the <a href="../apps/active-jobs/">Active Jobs</a> app which allows you to see which of your jobs have been submitted, are running, or have completed.</p>
-<p>A subset of apps that run jobs on back-ends are called <strong>interactive apps</strong>. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.</p>
+<p>A subset of apps that run jobs on back-ends are called <strong>interactive apps</strong>. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Open OnDemand's application programming interface for interactive apps is significantly less complex than its interface for non-interactive (in the Open OnDemand sense) apps!</p>
@@ -2938,12 +2938,12 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Any running jobs are cancelled during the monthly TRE maintenance period.</p>
+<p>Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.</p>
 </div>
 <p>For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the <strong>connection timeout</strong>, then the app's job will cancel itself.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.</p>
+<p>As mentioned above, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.</p>
 </div>
 <hr />
 <h2 id="your-ondemand-directory">Your <code>ondemand</code> directory</h2>
