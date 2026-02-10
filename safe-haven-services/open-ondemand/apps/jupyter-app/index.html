@@ -2815,6 +2815,10 @@
 <h2 id="sharing-files-between-the-back-end-and-jupyterlab-and-persisting-state-between-app-runs">Sharing files between the back-end and JupyterLab and persisting state between app runs</h2>
 <p>The app mounts three directories from the back-end into JupyterLab at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code> . For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
 <p>The app also creates a <code>$HOME/.local/share/ondemand/apps/jupyter_app/</code> in your home directory on the back-end and nounts this into JupyterLab at <code>/mnt/jupyter_host</code>. If you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that this directory be used for configuration files, code, scripts and Python packages only. It should <strong>not</strong> be used for data.</p>
+</div>
 <hr />
 <h2 id="installing-python-packages">Installing Python packages</h2>
 <p>JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> so that you can reuse these the next time you run the app on the same back-end.</p>

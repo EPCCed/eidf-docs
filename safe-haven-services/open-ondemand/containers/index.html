@@ -2786,23 +2786,28 @@
 </thead>
 <tbody>
 <tr>
-<td>Project-specific <code>/safe_data</code> subdirectory</td>
-<td><code>$HOME/safe_data</code> OR <code>/safe_data/PROJECT_SUBDIRECTORY</code></td>
-<td>If <code>$HOME/safe_data</code> exists in your home directory on the back-end, then that is mounted. Otherwise, a subdirectory of <code>/safe_data</code> corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found.</td>
+<td><code>/safe_data/PROJECT_SUBDIRECTORY</code></td>
+<td><code>/safe_data</code></td>
+<td><code>PROJECT_SUBDIRECTORY</code> is your project group, inferred from your user groups. If such a  project-specific subdirectory of <code>/safe_data</code> is found, then it is mounted into the container (but see below). Any files written into <code>/safe_data</code> in the container will be visible to you and and other project members within <code>/safe_data/PROJECT_SUBDIRECTORY</code> on the back-end.</td>
+</tr>
+<tr>
+<td><code>$HOME/safe_data</code></td>
+<td><code>/safe_data</code></td>
+<td>If <code>$HOME/safe_data</code> is found, then it is mounted into the container. <code>$HOME/safe_data</code> takes precedence over any <code>/safe_data/PROJECT_SUBDIRECTORY</code> directory when looking for the directory to mount into the container at <code>/safe_data</code>. Any files written into <code>/safe_data</code> in the container will be visible to you only within <code>$HOME/safe_data</code> on the back-end.</td>
 </tr>
 <tr>
 <td><code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code></td>
 <td><code>/safe_outputs</code></td>
-<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab Container</a>). <code>SESSION_ID</code> a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
+<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab Container</a>). <code>SESSION_ID</code> is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
 </tr>
 <tr>
 <td><code>$HOME/scratch/APP_SHORT_NAME/SESSION_ID</code></td>
 <td><code>/scratch</code></td>
-<td><code>APP_SHORT_NAME</code> and <code>SESSION_ID</code> are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The <code>SESSION_ID</code> sub-directory is <strong>deleted</strong> when the job which created the container ends.</td>
+<td><code>APP_SHORT_NAME</code> and <code>SESSION_ID</code> are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The <code>SESSION_ID</code> sub-directory is <strong>deleted</strong> when the job which created the container ends. It is recommended that this directory be used for temporary files only.</td>
 </tr>
 </tbody>
 </table>
-<p>Together, these mounts provides a means for data, configuration files, scripts and code to be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
+<p>Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.</p>
