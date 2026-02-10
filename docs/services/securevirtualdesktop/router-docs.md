@@ -18,10 +18,10 @@ By default the allowed list of domains allows Secure Virtual Desktop VMs to:
 
 Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
 
-The VM Admin with access to the Squid Router `<projectID>-router` machine can edit the squid access control list. The access control list is available through the file
+The VM Admin with access to the Squid Router `<project_id>-router` machine can edit the squid access control list. The access control list is available through the file
 
 ```bash
-<projectID>-router$  /etc/squid/allowlist_domains.txt
+<project_id>-router$  /etc/squid/allowlist_domains.txt
 ```
 
 Within this is a detailed list of domains and their reasons for being allowed. The VM Admin can add or remove domain names following the syntax of [access control lists defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section '[Squid Does Not Match My Subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains)'.
@@ -29,7 +29,7 @@ Within this is a detailed list of domains and their reasons for being allowed. T
 S3 bucket access is handled in a different location due to some technical details of allowing EIDF S3 bucket access. The list of allowed S3 buckets is available through the file:
 
 ```bash
-<projectID>-router$  /etc/squid/allowlist_buckets.txt
+<project_id>-router$  /etc/squid/allowlist_buckets.txt
 ```
 
 After editing allowlists Squid must be reconfigured using the command:
