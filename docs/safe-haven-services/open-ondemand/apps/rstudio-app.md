@@ -82,6 +82,10 @@ The app mounts three directories from the back-end into RStudio Server at `/safe
 
 The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your home directory on the back-end and nounts this into RStudio Server at `/mnt/rstudio_host`. If you install R packages into `/mnt/rstudio_host` when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
 
+!!! Note
+
+    It is recommended that this directory be used for configuration files, code, scripts and R packages only. It should **not** be used for data.
+
 ---
 
 ## Installing R packages
