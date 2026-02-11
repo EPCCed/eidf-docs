@@ -281,7 +281,7 @@ Give public read access to a bucket (listing and downloading files):
     "Principal": "*",
     "Action": ["s3:ListBucket"],
     "Resource": [
-      f"arn:aws:s3::eidfXX1:somebucket"
+      "arn:aws:s3::eidfXX1:somebucket"
     ]
   },
   {
@@ -289,9 +289,9 @@ Give public read access to a bucket (listing and downloading files):
     "Principal": "*",
     "Action": ["s3:GetObject"],
     "Resource": [
-      f"arn:aws:s3::eidfXX1:somebucket/*"
+      "arn:aws:s3::eidfXX1:somebucket/*"
     ]
-   }
+  }
  ]
 }
 ```
@@ -301,7 +301,7 @@ Give public read access to a bucket (listing and downloading files):
 Grant permissions stored in an IAM policy file:
 
 ```bash
-aws put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
+aws s3api put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
 ```
 
 ### Set policy using Python `boto3`
