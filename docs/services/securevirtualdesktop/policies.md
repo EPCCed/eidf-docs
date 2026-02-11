@@ -25,7 +25,7 @@ The log retention period can be adjusted by changing the `logfile_rotate` parame
 
 Login activity is automatically logged by the access tools (XRDP and SSH). The relevant log files follow these naming patterns: `xrdp-sesman.log*` for XRDP logins and `auth.log*` for SSH authentication.
 
-Login activity to the Secure Virtual Desktop VMs is copied periodically from each VM to the project router VM `<project_id>-router`, where it is stored in the `ubuntu` user's home directory `/home/ubuntu/log-replications/`.
+Login activity to the Secure Virtual Desktop VMs is copied periodically from each VM to the project router VM `<project_code>-router`, where it is stored in the `ubuntu` user's home directory `/home/ubuntu/log-replications/`.
 
 Logs are retained for a default period of 30 days before being automatically deleted. Each machine has its own log file and type of log file.
 

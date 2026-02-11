@@ -8,7 +8,7 @@ We define three roles in the Secure Virtual Desktop service as described in the 
 
 ## Data Manager Group directory
 
-A directory is created for users with the Data Manager role on Secure Virtual Desktop VMs, this is located at `/home/<project_id>-datamanager` where `<project_id>` is the EIDF project_id e.g. eidfxyz. This directory is owned by root and has group ownership set to a group named `<project_id>-datamanager`, which all users with the Data Manager role for the project should be added to following [Setting up the correct groups and permissions for user accounts](./docs.md#setting-up-the-correct-groups-and-permissions-for-user-accounts).
+A directory is created for users with the Data Manager role on Secure Virtual Desktop VMs, this is located at `/data/<project_code>-datamanager` where `<project_code>` is the EIDF project code e.g. eidfxyz. This directory is owned by root and has group ownership set to a group named `<project_code>-datamanager`, which all users with the Data Manager role for the project should be added to following [Setting up the correct groups and permissions for user accounts](./docs.md#setting-up-the-correct-groups-and-permissions-for-user-accounts).
 
 This directory can be used as a controlled staging area for data that is being transferred to or from Secure Virtual Desktop VMs, before that data is made available to additional users or copied off the VM.
 
@@ -17,7 +17,7 @@ This directory can be used as a controlled staging area for data that is being t
 The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
 
 To use S3 storage with Secure Virtual Desktop VMs, users must first create an S3 repo in the EIDF Portal, and then a bucket within this repo that will be accessible from the Secure Virtual Desktop VMs.
-This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Secure Virtual Desktop project's router, `<project_id>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries in the form below, where the allowed buckets name should be added using the regex pattern shown:
+This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Secure Virtual Desktop project's router, `<project_code>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries in the form below, where the allowed buckets name should be added using the regex pattern shown:
 
 ```txt
 ^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
@@ -42,24 +42,24 @@ Data transfer to and from the Secure Virtual Desktop VMs can be performed using 
 For a user to transfer data to and from the Secure Virtual Desktop VMs using `scp` the following is required:
 
 - The user has the Data Manager role
-- The user has been added to the EIDF gateway, Secure Virtual Desktop Router `<project_id>-router` and the target Secure Virtual Desktop VM in the EIDF Portal
+- The user has been added to the EIDF gateway, Secure Virtual Desktop Router `<project_code>-router` and the target Secure Virtual Desktop VM in the EIDF Portal
 - An SSH client is installed on the user's local machine (see [SSH connection to EIDF](../../access/ssh.md) for more details)
-- The user has SSH access to the Secure Virtual Desktop Router `<project_id>-router`
+- The user has SSH access to the Secure Virtual Desktop Router `<project_code>-router`
 
-Data transfer using `scp` is performed by jumping through the Secure Virtual Desktop project's router, `<project_id>-router`, which acts as an intermediary for data transfer and access.
+Data transfer using `scp` is performed by jumping through the Secure Virtual Desktop project's router, `<project_code>-router`, which acts as an intermediary for data transfer and access.
 
 Because all traffic to EIDF services must first go through the gateway, the below command needs to do a double jump via both the EIDF gateway and the Secure Virtual Desktop router.
 
 To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
 
 ```bash
-scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project_id>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/home/<project_id>-datamanager/
+scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project_code>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/<project_code>-datamanager/
 ```
 
 Where:
 
 - `<username>` is the user's SSH username for EIDF gateway, router and the Secure Virtual Desktop VM
-- `<project_id>` is the EIDF project_id
+- `<project_code>` is the EIDF project_code
 - `<local-file-path>` is the path to the file on the user's local machine
 - `<secure-virtual-desktop-vm-ip>` is the IP address of the Secure Virtual Desktop VM
-- `/home/<project_id>-datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
+- `/data/<project_code>-datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
