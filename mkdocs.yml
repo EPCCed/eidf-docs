@@ -106,6 +106,10 @@ nav:
     - "Code Collaboration":
       - "Gitlab Overview": services/gitlab/index.md
       - "Gitlab Quickstart": services/gitlab/quickstart.md
+      - "Container Image Registry Overview": services/registry/index.md
+      - "Container Image Registry Projects and Caches": services/registry/projects.md
+      - "Container Image Registry Use": services/registry/working-with.md
+      - "Container Image Registry FAQ": services/registry/faq.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Access": safe-haven-services/safe-haven-access.md
