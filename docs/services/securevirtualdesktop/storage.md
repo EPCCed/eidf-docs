@@ -8,7 +8,7 @@ We define three roles in the Secure Virtual Desktop service as described in the 
 
 ## Data Manager Group directory
 
-A directory is created for users with the Data Manager role on Secure Virtual Desktop VMs, this is located at `/data/<project_code>-datamanager` where `<project_code>` is the EIDF project code e.g. eidfxyz. This directory is owned by root and has group ownership set to a group named `<project_code>-datamanager`, which all users with the Data Manager role for the project should be added to following [Setting up the correct groups and permissions for user accounts](./docs.md#setting-up-the-correct-groups-and-permissions-for-user-accounts).
+A directory is created for users with the Data Manager role on Secure Virtual Desktop VMs, this is located at `/data/datamanager`. This directory is owned by root and has group ownership set to a group named `<project_code>-datamanager`, which all users with the Data Manager role for the project should be added to following [Setting up the correct groups and permissions for user accounts](./docs.md#setting-up-the-correct-groups-and-permissions-for-user-accounts).
 
 This directory can be used as a controlled staging area for data that is being transferred to or from Secure Virtual Desktop VMs, before that data is made available to additional users or copied off the VM.
 
@@ -53,7 +53,7 @@ Because all traffic to EIDF services must first go through the gateway, the belo
 To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
 
 ```bash
-scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project_code>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/<project_code>-datamanager/
+scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project_code>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/datamanager/
 ```
 
 Where:
@@ -62,4 +62,4 @@ Where:
 - `<project_code>` is the EIDF project_code
 - `<local-file-path>` is the path to the file on the user's local machine
 - `<secure-virtual-desktop-vm-ip>` is the IP address of the Secure Virtual Desktop VM
-- `/data/<project_code>-datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
+- `/data/datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
