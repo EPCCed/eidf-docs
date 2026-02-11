@@ -2,7 +2,7 @@
 
 ## Projects within EIDF
 
-Every EIDF project can request an ECIR project is created for them. This project will be private to the project and only project members will have access.
+Every EIDF project can request that a ECIR project is created for them. An ECIR project is a namespace within the registry which contains repositories for container images private to users of that EIDF project.
 
 ### Project Quota
 
@@ -71,18 +71,18 @@ Users can submit images to be added to the Library where they think these would 
 
 ### Public Caches
 
-Four main public registries are routed through proxy caches on ECIR. The proxy cache means that a user can pull a public image from a public registry and the ECIR will store a copy of that image. Images in the cache which are pulled in a 7 day period will be retained, otherwise images unused for 7 days will be removed from the cache.
+Several main public registries are routed through proxy caches on ECIR. The proxy cache means that a user can pull a public image from a public registry and the ECIR will store a copy of that image. Images in the cache which are pulled in a 7 day period will be retained, otherwise images not pulled for 7 days will be removed from the cache.
 
 This is to reduce pressure on public registries from EIDF systems and to reduce the chance of the public services rate limiting.
 
-The four services which have cache projects are:
+The services which have cache projects are:
 
 * Dockerhub [https://hub.docker.com](https://hub.docker.com) - Project docker-cache
 * GHCR [https://ghcr.io](https://ghcr.io) - Project ghcr-cache
-* NVCR [https://nvcr.io](https://nvcr.io) - Project nvcr-cache
+* Nvidia NGC Registry [https://nvcr.io](https://catalog.ngc.nvidia.com/) - Project nvidia-cache
 * Quay.io [https://quay.io](http://quay.io) - Project quay-cache
 
-To use a cache project, the ECIR address and the project name should be pre-pending the name of the image, for example to pull the image, `nvidia/pytorch:25.05-py3` from the Nvidia (NVCR) registry, you would use:
+To use a cache project, the ECIR address and the project name should be pre-pending the name of the image, for example to pull the image, `nvidia/pytorch:25.05-py3` from the Nvidia (NVCR.io) registry, you would use:
 
 ```bash
 registry.eidf.ac.uk/nvidia-cache/nvidia/pytorch:25.05-py3

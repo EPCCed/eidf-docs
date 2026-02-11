@@ -4,13 +4,13 @@
 
 ### Unauthorised error when logging into the registry from Docker
 
-If you have been logged in to the Harbor web UI for a long time (> 5 hours) and you attempt to login to the registry from Docker you may get an error of the form:
+If you have been logged in to the ECIR web UI for a long time (> 5 hours) and you attempt to login to the registry from Docker you may get an error of the form:
 
 ```bash
 Error response from daemon: Get "https://registry.eidf.ac.uk/v2/": unauthorized:
 ```
 
-This means the OAUTH token given to your account by the SAFE has expired, to rectify this you should logout from the Harbor web UI and then login again via the SAFE.
+This means the OAUTH token given to your account by the SAFE has expired, to rectify this you should logout from the ECIR web UI and then login again via the SAFE.
 
 You can check the status of your SAFE OAUTH token by visiting [safe.epcc.ed.ac.uk/TransitionServlet/Tokens/](https://safe.epcc.ed.ac.uk/TransitionServlet/Tokens/).
 

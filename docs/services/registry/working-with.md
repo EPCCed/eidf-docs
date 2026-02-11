@@ -11,7 +11,7 @@ User tokens can be access from the User Profile from the dropdown under your Use
 ![UserProfile](../../images/registry/userprofile.png){: class="border-img"}
    *Example User Profile*
 
-See the FAQ section ['Unauthorised' error when logging into the registry from Docker](faq.md#unauthorised-error-when-logging-into-the-registry-from-docker) for help with token expiry and authorisation issues.
+See the FAQ section ['Unauthorised' error when logging into the registry from Docker](./faq.md#unauthorised-error-when-logging-into-the-registry-from-docker) for help with token expiry and authorisation issues.
 
 ## Push Commands
 
@@ -44,7 +44,7 @@ If you have not logged in, the following prompt will appear:
 Username:
 ```
 
-You should enter the username (your SAFE preferred username) which appears in the User profile from the web page.
+You should enter the username (your SAFE preferred username) which appears in the User profile section of the Harbor, ECIR web interface.
 
 ```bash
 Password:
