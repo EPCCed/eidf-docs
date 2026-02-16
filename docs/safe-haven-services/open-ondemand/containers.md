@@ -12,7 +12,7 @@ Container are typically run using Podman or Apptainer, depending on which of the
 
 ## Container requirements
 
-Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Safe Haven Services Container Execution Service. See the [Container User Guide](../tre-container-user-guide/introduction.md) for details of these requirements.
+Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Safe Haven Services Container Execution Service. See the [Container User Guide](../shs-container-user-guide/introduction.md) for details of these requirements.
 
 ---
 
