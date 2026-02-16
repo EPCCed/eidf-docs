@@ -2744,7 +2744,7 @@
 <p><a href="../jobs/">Run jobs</a> described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.</p>
 <hr />
 <h2 id="container-requirements">Container requirements</h2>
-<p>Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand <strong>must</strong> conform to the requirements of the Safe Haven Services Container Execution Service. See the <a href="../tre-container-user-guide/introduction.md">Container User Guide</a> for details of these requirements.</p>
+<p>Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand <strong>must</strong> conform to the requirements of the Safe Haven Services Container Execution Service. See the <a href="../../shs-container-user-guide/introduction/">Container User Guide</a> for details of these requirements.</p>
 <hr />
 <h2 id="container-registries">Container registries</h2>
 <p>The container registries supported by the Safe Haven Services Container Execution Service, and so supported by Open OnDemand and its apps, are as follows:</p>
@@ -2775,7 +2775,7 @@
 </div>
 <hr />
 <h2 id="sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</h2>
-<p>When a container is run via the Safe Haven Services Container Execution Service, three directories on the back-end are always mounted into the container:</p>
+<p>When a container is run via the Safe Haven Services Container Execution Service, the following directories on the back-end are always mounted into the container:</p>
 <table>
 <thead>
 <tr>
@@ -2807,18 +2807,18 @@
 </tr>
 </tbody>
 </table>
-<p>Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
+<p>Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.</p>
+<p>If a container is run using Apptainer, then any files on the back-end are available within the container.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
 <p>You can interact with your project's <code>/safe_data</code> subdirectory on the back-end, by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
 <p>When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both <code>safe_outputs/APP_SHORT_NAME/SESSION_ID</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> (and <code>$HOME/safe_data</code>, if applicable) via the <a href="../files/">File Manager</a> and/or by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
 <p>When using a back-end where your home directory is <strong>not</strong> common to both the Open OnDemand VM and the back-end, then you can interact with <code>/safe_data/PROJECT_SUBDIRECTORY</code> (or <code>$HOME/safe_data</code>, if applicable), <code>safe_outputs/APP_SHORT_NAME/SESSION_ID</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on the Open OnDemand VM.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.</p>

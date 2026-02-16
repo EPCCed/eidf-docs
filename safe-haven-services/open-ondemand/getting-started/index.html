@@ -2960,7 +2960,7 @@
 <p><img alt="Run Batch Container app job card showing job status as 'Completed'" class="border-img center" src="../../../images/open-ondemand/getting-started-04-batch-container-app-completed.png" />
 <em>Run Batch Container app job card showing job status as 'Completed'</em></p>
 <h3 id="how-containers-exchange-files-with-back-ends">How containers exchange files with back-ends</h3>
-<p>When a container is run, three directories on the back-end are always mounted into the container:</p>
+<p>When a container is run, the following directories on the back-end are always mounted into the container:</p>
 <table>
 <thead>
 <tr>
@@ -2992,10 +2992,14 @@
 </tr>
 </tbody>
 </table>
-<p>Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
+<p>Together, these mounts (and additional, app-specific, mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.</p>
+<p>Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
 <p>When the <code>epcc-ces-hello</code> container is run, it writes two files into <code>/safe_outputs</code> within the container, and so into a <code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code> directory on the back-end:</p>
 <ul>

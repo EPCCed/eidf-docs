@@ -2677,6 +2677,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accessing-files-outside-the-scope-of-your-home-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing files outside the scope of your home directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-python-packages" class="md-nav__link">
     <span class="md-ellipsis">
       Installing Python packages
@@ -2796,6 +2805,25 @@
 <hr />
 <h2 id="log-in-to-jupyterlab">Log in to JupyterLab</h2>
 <p>You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and <strong>Connect to JupyterLab</strong> button is configured to log you in automatically using this password.</p>
+<hr />
+<h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
+<p>A feature of JupyterLab is that it constrains your ability to browse files to your home directory and subdirectories. This means that you <strong>cannot</strong> access your project's <code>/safe_data</code> subdirectory via:</p>
+<ul>
+<li>File browser panel.</li>
+<li><strong>File</strong> menu, <strong>Open from Path...</strong> menu option.</li>
+</ul>
+<p>However, you <strong>can</strong> access these directories and files via:</p>
+<ul>
+<li>Python code.</li>
+<li>JupyterLab Terminal.</li>
+<li><strong>File</strong> menu, <strong>Save Notebook As...</strong> menu option.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A workaround to make this directory visible via JupyterLab file browsers is to create symbolic links from your home directory to this directory. This can be done within a JupyterLab Terminal as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/PROJECT_SUBDIRECTORY<span class="w"> </span>safe_data
+</code></pre></div>
+</div>
 <hr />
 <h2 id="installing-python-packages">Installing Python packages</h2>
 <p>JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab.</p>

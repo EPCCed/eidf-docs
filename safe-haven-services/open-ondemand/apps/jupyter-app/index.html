@@ -2686,6 +2686,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accessing-files-outside-the-scope-of-your-home-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing files outside the scope of your home directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-python-packages" class="md-nav__link">
     <span class="md-ellipsis">
       Installing Python packages
@@ -2813,11 +2822,37 @@
 </div>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-jupyterlab-and-persisting-state-between-app-runs">Sharing files between the back-end and JupyterLab and persisting state between app runs</h2>
-<p>The app mounts three directories from the back-end into JupyterLab at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code> . For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/jupyter_app/</code> in your home directory on the back-end and nounts this into JupyterLab at <code>/mnt/jupyter_host</code>. If you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
+<p>The app mounts directories from the back-end into JupyterLab at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/jupyter_app/</code> in your home directory on the back-end and mounts this into JupyterLab at <code>/mnt/jupyter_host</code>. If you create virtual environments and/or install Python packages into <code>/mnt/jupyter_host</code> when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is recommended that this directory be used for configuration files, code, scripts and Python packages only. It should <strong>not</strong> be used for data.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
+</div>
+<hr />
+<h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
+<p>A feature of JupyterLab is that it constrains your ability to browse files to your home directory (<code>/root</code> within the container) and subdirectories. This means that you <strong>cannot</strong> access the mounted <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/jupyter_host</code> directories via:</p>
+<ul>
+<li>File browser panel.</li>
+<li><strong>File</strong> menu, <strong>Open from Path...</strong> menu option.</li>
+</ul>
+<p>However, you <strong>can</strong> access these directories and files via:</p>
+<ul>
+<li>Python code.</li>
+<li>JupyterLab Terminal.</li>
+<li><strong>File</strong> menu, <strong>Save Notebook As...</strong> menu option.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A workaround to make these directories visible via JupyterLab file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within a JupyterLab Terminal as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
+<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
+<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
+<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/mnt/jupyter_host<span class="w"> </span>lib
+</code></pre></div>
 </div>
 <hr />
 <h2 id="installing-python-packages">Installing Python packages</h2>

@@ -2818,7 +2818,15 @@
 </div>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-the-container-and-persisting-state-between-app-runs">Sharing files between the back-end and the container and persisting state between app runs</h2>
-<p>The app mounts three directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>.scratch</code>. For information on what these directories can be used for, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<p>The app mounts directories from the back-end into the container at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code>. For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a container is run using Apptainer, then any files on the back-end are available within the container.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
+</div>
 <p>If required, you can mount additional directories into your container:</p>
 <ul>
 <li>
