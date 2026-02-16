@@ -94,7 +94,7 @@ The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your h
 
 ## Accessing files outside the scope of your home directory
 
-A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/jupyter_host` directories via:
+A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/rstudio_host` directories via:
 
 * **Session** menu, **Set Working Directory**, **Choose Directory** menu option.
 * **Tools** menu, **Global Options** tab.
