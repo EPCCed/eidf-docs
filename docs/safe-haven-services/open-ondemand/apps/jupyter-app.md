@@ -74,13 +74,17 @@ Within JupyterLab you are the 'root' user.
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts three directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and nounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and mounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
 
 !!! Note
 
     It is recommended that this directory be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
+
+!!! Warning
+
+    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 ---
 
