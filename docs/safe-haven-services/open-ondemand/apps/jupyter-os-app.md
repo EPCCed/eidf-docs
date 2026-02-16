@@ -62,6 +62,30 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
+
+---
+
+## Accessing files outside the scope of your home directory
+
+A feature of JupyterLab is that it constrains your ability to browse files to your home directory and subdirectories. This means that you **cannot** access your project's `/safe_data` subdirectory via:
+
+* File browser panel.
+* **File** menu, **Open from Path...** menu option.
+
+However, you **can** access these directories and files via:
+
+* Python code.
+* JupyterLab Terminal.
+* **File** menu, **Save Notebook As...** menu option.
+
+!!! Tip
+
+    A workaround to make this directory visible via JupyterLab file browsers is to create symbolic links from your home directory to this directory. This can be done within a JupyterLab Terminal as follows:
+
+    ```console
+    $ ln -s /safe_data/PROJECT_SUBDIRECTORY safe_data
+    ```
+
 ---
 
 ## Installing Python packages

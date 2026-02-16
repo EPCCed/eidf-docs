@@ -92,6 +92,33 @@ The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your h
 
 ---
 
+## Accessing files outside the scope of your home directory
+
+A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`,` `/scratch` or `/mnt/jupyter_host` directories via:
+
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option.
+* **Tools** menu, **Global Options** tab.
+
+However, you **can** access these directories and files via:
+
+* R code.
+* RStudio Server Terminal.
+* **File** menu, **Open File** menu option, by entering the directory into the **Open File** dialog, **File name** field.
+* **Files** pane, by clicking **...**, then entering the directory into the **Go To Folder** dialog box.
+
+!!! Tip
+
+    A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:
+
+    ```console
+    $ ln -s /safe_data/
+    $ ln -s /safe_outputs/
+    $ ln -s /scratch/
+    $ ln -s /mnt/rstudio_host lib
+    ```
+
+---
+
 ## Installing R packages
 
 RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/mnt/rstudio_host` so that you can reuse these the next time you run the app on the same back-end.
