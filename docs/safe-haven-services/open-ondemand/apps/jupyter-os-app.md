@@ -62,7 +62,6 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
-
 ---
 
 ## Accessing files outside the scope of your home directory
