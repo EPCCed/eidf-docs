@@ -78,13 +78,44 @@ Click **Sign in**.
 
 ## Sharing files between the back-end and RStudio Server and persisting state between app runs
 
-The app mounts three directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your home directory on the back-end and nounts this into RStudio Server at `/mnt/rstudio_host`. If you install R packages into `/mnt/rstudio_host` when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your home directory on the back-end and mounts this into RStudio Server at `/mnt/rstudio_host`. If you install R packages into `/mnt/rstudio_host` when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
 
 !!! Note
 
     It is recommended that this directory be used for configuration files, code, scripts and R packages only. It should **not** be used for data.
+
+!!! Warning
+
+    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
+
+---
+
+## Accessing files outside the scope of your home directory
+
+A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/jupyter_host` directories via:
+
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option.
+* **Tools** menu, **Global Options** tab.
+
+However, you **can** access these directories and files via:
+
+* R code.
+* RStudio Server Terminal.
+* **File** menu, **Open File** menu option, by entering the directory into the **Open File** dialog, **File name** field.
+* **Files** pane, by clicking **...**, then entering the directory into the **Go To Folder** dialog box.
+
+!!! Tip
+
+    A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:
+
+    ```console
+    $ ln -s /safe_data/
+    $ ln -s /safe_outputs/
+    $ ln -s /scratch/
+    $ ln -s /mnt/rstudio_host lib
+    ```
 
 ---
 

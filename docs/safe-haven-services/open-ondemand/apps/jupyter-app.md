@@ -74,13 +74,43 @@ Within JupyterLab you are the 'root' user.
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts three directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and nounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and mounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
 
 !!! Note
 
     It is recommended that this directory be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
+
+!!! Warning
+
+    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be **deleted** when the container is deleted.
+
+---
+
+## Accessing files outside the scope of your home directory
+
+A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/jupyter_host` directories via:
+
+* File browser panel.
+* **File** menu, **Open from Path...** menu option.
+
+However, you **can** access these directories and files via:
+
+* Python code.
+* JupyterLab Terminal.
+* **File** menu, **Save Notebook As...** menu option.
+
+!!! Tip
+
+    A workaround to make these directories visible via JupyterLab file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within a JupyterLab Terminal as follows:
+
+    ```console
+    $ ln -s /safe_data/
+    $ ln -s /safe_outputs/
+    $ ln -s /scratch/
+    $ ln -s /mnt/jupyter_host lib
+    ```
 
 ---
 

@@ -136,7 +136,7 @@ The Job status on the job card will update to 'Completed'.
 
 ### How containers exchange files with back-ends
 
-When a container is run, three directories on the back-end are always mounted into the container:
+When a container is run, the following directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -145,11 +145,15 @@ When a container is run, three directories on the back-end are always mounted in
 | `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab Container](apps/jupyter-app.md)). `SESSION_ID` is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
 
-Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+Together, these mounts (and additional, app-specific, mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
 !!! Note
 
-    Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
+    Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
+
+!!! Warning
+
+    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 When the `epcc-ces-hello` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` directory on the back-end:
 

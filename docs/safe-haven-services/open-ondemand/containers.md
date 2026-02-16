@@ -12,7 +12,7 @@ Container are typically run using Podman or Apptainer, depending on which of the
 
 ## Container requirements
 
-Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Safe Haven Services Container Execution Service. See the [Container User Guide](../tre-container-user-guide/introduction.md) for details of these requirements.
+Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand **must** conform to the requirements of the Safe Haven Services Container Execution Service. See the [Container User Guide](../shs-container-user-guide/introduction.md) for details of these requirements.
 
 ---
 
@@ -33,7 +33,7 @@ The container registries supported by the Safe Haven Services Container Executio
 
 ## Sharing files between a back-end and a container
 
-When a container is run via the Safe Haven Services Container Execution Service, three directories on the back-end are always mounted into the container:
+When a container is run via the Safe Haven Services Container Execution Service, the following directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
@@ -42,21 +42,21 @@ When a container is run via the Safe Haven Services Container Execution Service,
 | `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab Container](apps/jupyter-app.md)). `SESSION_ID` is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
 
-Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
 !!! Note
 
-    Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
+    If a container is run using Apptainer, then any files on the back-end are available within the container.
+
+!!! Warning
+
+    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
 When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
 When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
-
-!!! Note
-
-    Your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
 
 !!! Note
 
