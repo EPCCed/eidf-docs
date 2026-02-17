@@ -81,8 +81,8 @@ However, you **can** access these directories and files via:
 
     A workaround to make this directory visible via JupyterLab file browsers is to create symbolic links from your home directory to this directory. This can be done within a JupyterLab Terminal as follows:
 
-    ```console
-    $ ln -s /safe_data/PROJECT_SUBDIRECTORY safe_data
+    ```bash
+    ln -s /safe_data/PROJECT_SUBDIRECTORY safe_data
     ```
 
 ---
@@ -90,6 +90,59 @@ However, you **can** access these directories and files via:
 ## Installing Python packages
 
 JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab.
+
+If installing packages you may need to install these within your home directory. Two examples are as follows. Python and JupyterLab resources online may suggest others.
+
+### Install packages within your home directory
+
+Install packages within a subdirectory of your home directory. For example:
+
+1. Select **Launcher**, **Terminal**.
+1. Create directory for packages:
+
+    ```bash
+    mkdir -t mypips
+    ```
+
+1. Install package:
+
+    ```bash
+    pip install -t mypips PACKAGE_NAME
+    ```
+
+Any Python code that needs the packages needs to include the path to the subdirectory. For example:
+
+```python
+import os
+import sys
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mypips'))
+import PACKAGE_NAME
+```
+
+### Create a virtual environment within your home directory
+
+Create a virtual environment within your home directory and install packages into that virtual environment. For example:
+
+1. Select **Launcher**, **Terminal**.
+1. Create and activate a Python virtual environment:
+
+    ```bash
+    python3 -m venv my-venv
+    source my-venv/bin/activate
+    ```
+
+1. Install package into virtual environment:
+
+    ```bash
+    python -m pip install PACKAGE_NAME
+    ```
+
+1. Register the virtual environment with JupyterLab, to create new IPython kernels to provide access to the virtual environment within JupyterLab Notebook and Console sessions:
+
+    ```bash
+    python -m pip install ipykernel
+    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    ```
 
 ---
 

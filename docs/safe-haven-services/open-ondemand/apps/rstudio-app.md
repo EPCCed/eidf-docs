@@ -84,7 +84,7 @@ The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your h
 
 !!! Note
 
-    It is recommended that this directory be used for configuration files, code, scripts and R packages only. It should **not** be used for data.
+    It is recommended that `/mnt/rstudio_host` be used for configuration files, code, scripts and R packages only. It should **not** be used for data.
 
 !!! Warning
 
@@ -110,11 +110,11 @@ However, you **can** access these directories and files via:
 
     A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:
 
-    ```console
-    $ ln -s /safe_data/
-    $ ln -s /safe_outputs/
-    $ ln -s /scratch/
-    $ ln -s /mnt/rstudio_host lib
+    ```bash
+    ln -s /safe_data/
+    ln -s /safe_outputs/
+    ln -s /scratch/
+    ln -s /mnt/rstudio_host lib
     ```
 
 ---
@@ -122,6 +122,32 @@ However, you **can** access these directories and files via:
 ## Installing R packages
 
 RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/mnt/rstudio_host` so that you can reuse these the next time you run the app on the same back-end.
+
+There are a number of ways you can use such a directory within RStudio Server. One examples is as follows. R and RStudio Server resources online may suggest others.
+
+### Install packages within `/mnt/rstudio_host`
+
+Install packages within `/mnt/rstudio_host`. For example:
+
+```R
+> install.packages('PACKAGE_NAME', lib='/mnt/rstudio_host/')
+```
+
+Any R code that needs the packages needs to include the path to the directory. For example:
+
+```R
+> .libPaths('/mnt/rstudio_host')
+> find.package('PACKAGE_NAME')
+[1] "/mnt/rstudio_host/PACKAGE_NAME"
+> library(PACKAGE_NAME)
+```
+
+Any packages will be visible on the back-end upon which the app runs. For example:
+
+```bash
+$ ls $HOME/.local/share/ondemand/apps/rstudio_app/
+PACKAGE_NAME
+```
 
 ---
 
