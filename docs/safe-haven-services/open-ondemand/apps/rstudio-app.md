@@ -123,7 +123,7 @@ However, you **can** access these directories and files via:
 
 RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/mnt/rstudio_host` so that you can reuse these the next time you run the app on the same back-end.
 
-There are a number of ways you can use such a directory within RStudio Server. One examples is as follows. R and RStudio Server resources online may suggest others.
+There are a number of ways you can use such a directory within RStudio Server. One example is as follows. R and RStudio Server resources online may suggest others.
 
 ### Install packages within `/mnt/rstudio_host`
 
