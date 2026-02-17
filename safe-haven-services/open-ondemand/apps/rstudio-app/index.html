@@ -2701,6 +2701,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Installing R packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-packages-within-mntrstudio_host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install packages within /mnt/rstudio_host
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2831,7 +2846,7 @@
 <p>The app also creates a <code>$HOME/.local/share/ondemand/apps/rstudio_app/</code> in your home directory on the back-end and mounts this into RStudio Server at <code>/mnt/rstudio_host</code>. If you install R packages into <code>/mnt/rstudio_host</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is recommended that this directory be used for configuration files, code, scripts and R packages only. It should <strong>not</strong> be used for data.</p>
+<p>It is recommended that <code>/mnt/rstudio_host</code> be used for configuration files, code, scripts and R packages only. It should <strong>not</strong> be used for data.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2854,15 +2869,30 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
-<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
-<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
-<span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/mnt/rstudio_host<span class="w"> </span>lib
+<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
+ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
+ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
+ln<span class="w"> </span>-s<span class="w"> </span>/mnt/rstudio_host<span class="w"> </span>lib
 </code></pre></div>
 </div>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
 <p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/rstudio_host</code> so that you can reuse these the next time you run the app on the same back-end.</p>
+<p>There are a number of ways you can use such a directory within RStudio Server. One examples is as follows. R and RStudio Server resources online may suggest others.</p>
+<h3 id="install-packages-within-mntrstudio_host">Install packages within <code>/mnt/rstudio_host</code></h3>
+<p>Install packages within <code>/mnt/rstudio_host</code>. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/mnt/rstudio_host/&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Any R code that needs the packages needs to include the path to the directory. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/mnt/rstudio_host&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">find.package</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/mnt/rstudio_host/PACKAGE_NAME&quot;</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">PACKAGE_NAME</span><span class="p">)</span>
+</code></pre></div>
+<p>Any packages will be visible on the back-end upon which the app runs. For example:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/.local/share/ondemand/apps/rstudio_app/
+PACKAGE_NAME
+</code></pre></div>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>
