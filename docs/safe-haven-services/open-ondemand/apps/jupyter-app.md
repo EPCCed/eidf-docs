@@ -80,7 +80,7 @@ The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your h
 
 !!! Note
 
-    It is recommended that this directory be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
+    It is recommended that `/mnt/jupyter_host` be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
 
 !!! Warning
 
@@ -105,18 +105,97 @@ However, you **can** access these directories and files via:
 
     A workaround to make these directories visible via JupyterLab file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within a JupyterLab Terminal as follows:
 
-    ```console
-    $ ln -s /safe_data/
-    $ ln -s /safe_outputs/
-    $ ln -s /scratch/
-    $ ln -s /mnt/jupyter_host lib
+    ```bash
+    ln -s /safe_data/
+    ln -s /safe_outputs/
+    ln -s /scratch/
+    ln -s /mnt/jupyter_host lib
     ```
 
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+
+There are a number of ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online may suggest others.
+
+### Install packages within a `/mnt/jupyter_host` subdirectory
+
+Install packages within a `/mnt/jupyter_host` subdirectory. For example:
+
+1. Select **Launcher**, **Terminal**.
+1. Create directory for packages:
+
+    ```bash
+    mkdir -t /mnt/jupyter_host/mypips
+    ```
+
+1. Install package:
+
+    ```bash
+    pip install -t /mnt/jupyter_host/mypips PACKAGE_NAME
+    ```
+
+Any Python code that needs the packages needs to include the path to the subdirectory. For example:
+
+```python
+import sys
+sys.path.append('/mnt/jupyter_host/mypips')
+import PACKAGE_NAME
+```
+
+The subdirectory and packages will be persisted on the back-end upon which the app runs. For example:
+
+```bash
+$ ls $HOME/.local/share/ondemand/apps/jupyter_app/
+mypips
+$ ls $HOME/.local/share/ondemand/apps/jupyter_app/mypips/
+...
+PACKAGE_NAME
+...
+```
+
+### Create a virtual environment within `/mnt/jupyter_host`
+
+Create a virtual environment within `/mnt/jupyter_host` and install packages into that virtual environment. For example:
+
+1. Select **Launcher**, **Terminal**.
+1. Create and activate a Python virtual environment:
+
+    ```bash
+    python -m venv /mnt/jupyter_host/my-venv
+    source /mnt/jupyter_host/my-venv/bin/activate
+    ```
+
+1. Install package into virtual environment:
+
+    ```bash
+    python -m pip install PACKAGE_NAME
+    ```
+
+1. Register the virtual environment with JupyterLab, to create new IPython kernels to provide access to the virtual environment within JupyterLab Notebook and Console sessions:
+
+    ```bash
+    python -m pip install ipykernel
+    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    ```
+
+!!! Note
+
+    The next time you run this app you will need to activate the virtual environment and recreate the kernels within a JupyterLab Terminal:
+
+    ```bash
+    source /mnt/jupyter_host/my-venv/bin/activate
+    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    ```
+
+The virtual environment and its contents will be persisted on the back-end upon which the app runs. For example:
+
+```bash
+$ ls .local/share/ondemand/apps/jupyter_app/
+my-venv/
+```
 
 ---
 
