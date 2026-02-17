@@ -2878,7 +2878,7 @@ ln<span class="w"> </span>-s<span class="w"> </span>/mnt/rstudio_host<span class
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
 <p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/rstudio_host</code> so that you can reuse these the next time you run the app on the same back-end.</p>
-<p>There are a number of ways you can use such a directory within RStudio Server. One examples is as follows. R and RStudio Server resources online may suggest others.</p>
+<p>There are a number of ways you can use such a directory within RStudio Server. One example is as follows. R and RStudio Server resources online may suggest others.</p>
 <h3 id="install-packages-within-mntrstudio_host">Install packages within <code>/mnt/rstudio_host</code></h3>
 <p>Install packages within <code>/mnt/rstudio_host</code>. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/mnt/rstudio_host/&#39;</span><span class="p">)</span>
