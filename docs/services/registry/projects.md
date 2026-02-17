@@ -4,6 +4,10 @@
 
 Every EIDF project can request that a ECIR project is created for them. An ECIR project is a namespace within the registry which contains repositories for container images private to users of that EIDF project.
 
+!!! important "ECIR Projects"
+
+    EIDF and other EPCC Projects can have ECIR Projects, all users in the owning project can access the ECIR project. The ECIR project is only for image storage and scanning. The owning project can have access to a wide range of other services.
+
 ### Project Quota
 
 The default project quota for image storage will be 50 GiB.
@@ -33,15 +37,15 @@ Vulnerability scanning is provided via Trivy, more information about severity le
 
 ### Permissions
 
-ECIR users have the [project maintainer role permissions](https://goharbor.io/docs/2.14.0/administration/managing-users/user-permissions-by-role/), this allows users to:
+ECIR users have the [Harbor project maintainer role permissions](https://goharbor.io/docs/2.14.0/administration/managing-users/user-permissions-by-role/), this allows ECIR users to:
 
-* Create and delete repositories in a project
-* Push and pull images from a project
+* Create and delete repositories in their projects
+* Push and pull images from their projects
 * Initiate vulnerability and SBOM scans
 * View the results of scans
-* Edit the labels available to a project
+* Edit the labels available to their projects
 
-Project maintainers **do not** have the permissions to:
+ECIR Project maintainers **do not** have the permissions to:
 
 * Create new projects
 * Edit project configuration

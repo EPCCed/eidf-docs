@@ -8,6 +8,8 @@ ECIR provides projects with a private space on the service where a project can h
 
 ECIR hosts public cache projects for commonly used images. If you use an image which is commonly pulled from public repositories, using a cache copy can reduce the impact on public services.
 
+Using ECIR for pulling and storing images should help with quick deployment and access contorl of images for projects. Reducing overhead of EIDF Services pulling repeatedly from external registries.
+
 For information on what projects can use within an ECIR private space and Public Caches, see [ECIR Projects and Caches](./projects.md).
 
 ## Working with ECIR

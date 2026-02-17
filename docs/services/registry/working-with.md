@@ -6,7 +6,7 @@ EIDF Users can access the registry through their SAFE account.
 
 The registry can be logged into at [https://registry.eidf.ac.uk](https://registry.eidf.ac.uk). If you are not logged into SAFE, the registry will redirect you to SAFE.
 
-User tokens can be access from the User Profile from the dropdown under your Username at the top right hand corner of the page. These will be needed to log into the registry from Docker and other container services.
+User tokens can be accessed from the User Profile from the dropdown under your Username at the top right hand corner of the page. These will be needed to log into the registry from Docker and other container services.
 
 ![UserProfile](../../images/registry/userprofile.png){: class="border-img"}
    *Example User Profile*
@@ -68,7 +68,11 @@ From your command line, you can now push and pull images to the registry.
 
 To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period.
 
-If you are regularly using a repository from a project where you are sharing resources, it is recommended to create a robot account with limited read only privileges, this can be created via the EIDF Portal by a Project PI or Manager.
+If you are regularly using a repository from a project where you are sharing resources, it is recommended to create a robot account with limited read only privileges, this can be requested via a Helpdesk Request for your project.
+
+!!! important "Portal Management"
+
+    There will be new functionality soon added to the EIDF Portal to allow for project users to create read only robot accounts and for PI/Managers to create read/write robot accounts for use in CI/CD pipelines for image building.
 
 This is then treated like a normal user secret when you have the robot credentials.
 
@@ -109,6 +113,9 @@ Important: Run these commands on a system that has kubectl installed and has acc
 You do not need to be logged in to Docker to perform this setup, we manually encode our details and pass it to YAML.
 
 Encode your authorisation information into base64 for inclusion in the Kubernetes secret. The CLI Secret value is taken from your User profile in the registry web interface.
+
+![UserProfile](../../images/registry/userprofile.png){: class="border-img"}
+   *User Profile*
 
 ```bash
 echo '{"auths":{"https://registry.eidf.ac.uk":{"username":"<your username>","password":"<your CLI Secret>"}}}' | base64
