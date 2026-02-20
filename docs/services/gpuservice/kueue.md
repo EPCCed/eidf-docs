@@ -19,6 +19,8 @@ Jobs can be submitted as before but will require the addition of a metadata labe
 
 This is the only change required to make Jobs Kueue functional. A policy will be in place that will stop jobs without this label being accepted.
 
+See [Maximum Execution Time](./policies.md#maximum-execution-time-kueue-workloads) for information on how to set your workload maximum execution time.
+
 ## Useful commands for looking at your local queue
 
 ### `kubectl get queue`
