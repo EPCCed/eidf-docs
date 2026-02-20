@@ -1500,6 +1500,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#what-are-the-maximum-resources-for-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the maximum resources for a Pod?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#why-did-a-validation-error-occur-when-submitting-a-pod-or-job-with-a-valid-specification-file" class="md-nav__link">
     <span class="md-ellipsis">
       Why did a validation error occur when submitting a pod or job with a valid specification file?
@@ -1530,6 +1539,15 @@
   <a href="#my-large-number-of-gpus-job-takes-a-long-time-to-be-scheduled" class="md-nav__link">
     <span class="md-ellipsis">
       My large number of GPUs Job takes a long time to be scheduled
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my-job-is-rejected-due-to-the-following-error-the-metadata-label-eidfuser-is-missing-or-has-an-empty-value-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      My job is rejected due to the following error: "The metadata label 'eidf/user' is missing or has an empty value set."
     </span>
   </a>
   
@@ -2860,6 +2878,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#what-are-the-maximum-resources-for-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the maximum resources for a Pod?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#why-did-a-validation-error-occur-when-submitting-a-pod-or-job-with-a-valid-specification-file" class="md-nav__link">
     <span class="md-ellipsis">
       Why did a validation error occur when submitting a pod or job with a valid specification file?
@@ -2890,6 +2917,15 @@
   <a href="#my-large-number-of-gpus-job-takes-a-long-time-to-be-scheduled" class="md-nav__link">
     <span class="md-ellipsis">
       My large number of GPUs Job takes a long time to be scheduled
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my-job-is-rejected-due-to-the-following-error-the-metadata-label-eidfuser-is-missing-or-has-an-empty-value-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      My job is rejected due to the following error: "The metadata label 'eidf/user' is missing or has an empty value set."
     </span>
   </a>
   
@@ -2934,6 +2970,15 @@
 <p>The service now provides a CephFS provisioner which allows for ReadWriteMany PVCs. To mount a PVC to multiple pods, please create a PVC using the <code>csi-cephfs-sc</code> storage class.</p>
 <h3 id="how-many-gpus-can-i-use-in-a-pod">How many GPUs can I use in a pod?</h3>
 <p>The current limit is 8 GPUs per pod. Each underlying host node has either 4 or 8 GPUs. If you request 8 GPUs, you will be placed in a queue until a node with 8 GPUs is free or other jobs to run. If you request 4 GPUs this could run on a node with 4 or 8 GPUs.</p>
+<h3 id="what-are-the-maximum-resources-for-a-pod">What are the maximum resources for a Pod?</h3>
+<p>A single pod exists on a single node of the service and can only use up to the resources of that node.</p>
+<p>To try to maximise how many nodes a pod could run on, the current maximum limits for pods are:</p>
+<ul>
+<li>CPU: 192</li>
+<li>Memory: 890GiB</li>
+<li>GPU Count: 8</li>
+</ul>
+<p>Note that this is a compromise and some nodes are smaller than this so cannot schedule pods requesting the maximum.</p>
 <h3 id="why-did-a-validation-error-occur-when-submitting-a-pod-or-job-with-a-valid-specification-file">Why did a validation error occur when submitting a pod or job with a valid specification file?</h3>
 <p>If an error like the below occurs:</p>
 <div class="highlight"><pre><span></span><code>error:<span class="w"> </span>error<span class="w"> </span>validating<span class="w"> </span><span class="s2">&quot;myjobfile.yml&quot;</span>:<span class="w"> </span>error<span class="w"> </span>validating<span class="w"> </span>data:<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>allow<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>requested<span class="w"> </span>resource<span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>choose<span class="w"> </span>to<span class="w"> </span>ignore<span class="w"> </span>these<span class="w"> </span>errors,<span class="w"> </span>turn<span class="w"> </span>validation<span class="w"> </span>off<span class="w"> </span>with<span class="w"> </span>--validate<span class="o">=</span><span class="nb">false</span>
@@ -2977,6 +3022,15 @@
 </code></pre></div>
 <h3 id="my-large-number-of-gpus-job-takes-a-long-time-to-be-scheduled">My large number of GPUs Job takes a long time to be scheduled</h3>
 <p>When requesting a large number of GPUs for a job, this may require an entire node to be free. This could take some time to become available, the default scheduling algorithm in the queues in place is Best Effort FIFO - this means that large jobs will not block small jobs from running if there is sufficient quota and space available.</p>
+<h3 id="my-job-is-rejected-due-to-the-following-error-the-metadata-label-eidfuser-is-missing-or-has-an-empty-value-set">My job is rejected due to the following error: "The metadata label 'eidf/user' is missing or has an empty value set."</h3>
+<p>Some projects with very large user numbers have additional policies implemented. The error "The metadata label 'eidf/user' is missing or has an empty value set." is for a policy that requires users in a project to have a metadata label 'eidf/user' with their project VM username present.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-label-</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eidf000ns</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">eidf/user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myusername</span>
+<span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eidf000ns-user-queue</span>
+</code></pre></div>
 
 
 

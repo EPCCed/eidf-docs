@@ -2888,6 +2888,7 @@
 <span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
 </code></pre></div>
 <p>This is the only change required to make Jobs Kueue functional. A policy will be in place that will stop jobs without this label being accepted.</p>
+<p>See <a href="../policies/#maximum-execution-time-kueue-workloads">Maximum Execution Time</a> for information on how to set your workload maximum execution time.</p>
 <h2 id="useful-commands-for-looking-at-your-local-queue">Useful commands for looking at your local queue</h2>
 <h3 id="kubectl-get-queue"><code>kubectl get queue</code></h3>
 <p>This command will output the high level status of your namespace queue with the number of workloads currently running and the number waiting to start:</p>

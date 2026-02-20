@@ -1274,20 +1274,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kubernetes-active-deadline-seconds" class="md-nav__link">
+  <a href="#kueue" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes Active Deadline Seconds
+      Kueue
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kueue" class="md-nav__link">
+  <a href="#maximum-execution-time-kueue-workloads" class="md-nav__link">
     <span class="md-ellipsis">
-      Kueue
+      Maximum Execution Time (Kueue Workloads)
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-pods-ready-kueue-and-pending-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait For Pods Ready (Kueue and Pending Pods)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-or-replaced-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated or Replaced Policies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deprecated or Replaced Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-active-deadline-seconds-deprecated-in-favour-of-maximum-execution-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Active Deadline Seconds (Deprecated in favour of Maximum Execution Time)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2799,20 +2832,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kubernetes-active-deadline-seconds" class="md-nav__link">
+  <a href="#kueue" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes Active Deadline Seconds
+      Kueue
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kueue" class="md-nav__link">
+  <a href="#maximum-execution-time-kueue-workloads" class="md-nav__link">
     <span class="md-ellipsis">
-      Kueue
+      Maximum Execution Time (Kueue Workloads)
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-pods-ready-kueue-and-pending-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait For Pods Ready (Kueue and Pending Pods)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-or-replaced-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated or Replaced Policies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deprecated or Replaced Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-active-deadline-seconds-deprecated-in-favour-of-maximum-execution-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Active Deadline Seconds (Deprecated in favour of Maximum Execution Time)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2845,7 +2911,7 @@
 <li>GPU: 12</li>
 </ul>
 <h2 id="kubeconfig">Kubeconfig</h2>
-<p>Each project will be assigned a kubeconfig file for access to the service which will allow operation in the assigned namespace and access to exposed service operators, for example the GPU and CephRBD operators.</p>
+<p>Each project will be assigned a kubeconfig file for access to the service which will allow operation in the assigned namespace and access to exposed service operators, for example the GPU, CephRBD, and CephFS operators.</p>
 <h2 id="kubernetes-job-names">Kubernetes Job Names</h2>
 <p>All Kubernetes Jobs submitted will need to use the <code>metadata.generateName</code> field instead of the <code>metadata.name</code> field. This is to ensure jobs can be identified for purporses of  maintenance and troubleshooting.</p>
 <p>Submitting jobs with <code>name</code> only would allow several jobs to have the same name, potentially blocking you from submitting the job until the previous one was deleted. Support would have difficulties troubleshooting as the name remains the same, but execution results can be different each time.</p>
@@ -2863,16 +2929,6 @@
 <p class="admonition-title">Important</p>
 <p>We recommend setting a lower value, unless you absolutely need the job to remain for debugging. Completed jobs serve no other purpose and can potentially make identifying your workloads more difficult.</p>
 </div>
-<h2 id="kubernetes-active-deadline-seconds">Kubernetes Active Deadline Seconds</h2>
-<p>All Kubernetes User Pods submitted to the service will have an Active Deadline Seconds (ADS) applied via <code>spec.spec.activeDeadlineSeconds</code> automatically. The default ADS for pods using the service will be 5 days (432000 seconds). A pod will be terminated 5 days after execution has begun. This will reduce the number of unused pods remaining on the service.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This policy is automated and does not require users to change their job or pod specifications.</p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. Any configuration errors in your code can lead to the container running for the whole duration, but not yielding a result and taking cluster resources away from other users.</p>
-</div>
 <h2 id="kueue">Kueue</h2>
 <p>All jobs will be managed through the Kueue scheduling system. All pods will be required to be owned by a Kubernetes workload.</p>
 <p>Each project will have a local user queue in their namespace. This will provide access to their cluster queue. To enable the use of the queue in your job definitions, the following will need to be added to the job specification file as part of the metadata:</p>
@@ -2880,6 +2936,48 @@
 <span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
 </code></pre></div>
 <p>Workloads without this queue name tag will be rejected.</p>
+<h2 id="maximum-execution-time-kueue-workloads">Maximum Execution Time (Kueue Workloads)</h2>
+<p>All Workloads submitted to the service will have a maximum execution time seconds (METS) applied via the label <code>kueue.x-k8s.io/max-exec-time-seconds</code> automatically. The default METS for workloads using the service will be 35 days (3024000 seconds). A workload will be terminated at this point. Upon reaching the maximum, all pods for the workload will be deleted.</p>
+<p>The maximum runtime is based on what was the default possible under the previous combination Active Deadline Seconds and Job Backoff Limit. This value may be revised.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This policy is automated and does not require users to change their job or pod specifications.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. If you do not have a good exit condition or internal code errors will not terminate the workload, a workload could end up running for the entire maximum time, blocking resources and incurring unneeded costs.</p>
+</div>
+<p>Applying a shorter maximum execution time can ensure you do not consume more resources than was intended, to do this you can apply the label 'kueue.x-k8s.io/max-exec-time-seconds' to your workload:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="w">      </span><span class="nt">kueue.x-k8s.io/max-exec-time-seconds</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">seconds&#39;</span>
+</code></pre></div>
+<p>If your value is at or below the default value, the system will not change it. If it is larger, it will reset it to the default.</p>
+<p>If you want to continue using activeDeadlineSeconds, you can but the maximum-exec-time-seconds value will take priority if it is smaller than activeDeadlineSeconds.</p>
+<h2 id="wait-for-pods-ready-kueue-and-pending-pods">Wait For Pods Ready (Kueue and Pending Pods)</h2>
+<p>To prevent "Pending" pods from indefinitely stalling project resources, the Wait for Pods Ready Kueue feature is enabled.</p>
+<p>Pods can get stuck in a Pending state due to:</p>
+<ul>
+<li>Resource Fragmentation: A project and the service has enough total capacity, but not in the correct node configuration.</li>
+<li>Storage Issues: Persistent Volume Claims (PVCs) failing to mount or not existing.</li>
+</ul>
+<p>How it Works</p>
+<ul>
+<li>Timeout: If a pod remains in a Pending state for 20 minutes, the queue manager will terminate it.</li>
+<li>Requeuing: The job will be automatically re-queued. The wait time between retries will incrementally increase up to a maximum of 1 hour.</li>
+<li>Persistence: Jobs will continue to retry indefinitely.</li>
+</ul>
+<p>Singleton Pods</p>
+<p>Though it is recommended using Jobs or other controllers as a default workload, singleton pods are supported. However, these are handled differently and because singletons lack a parent controller, they will be deleted rather than re-queued once the timeout is reached.</p>
+<p>You can inspect why a singleton was deleted for up to 1 hour after the event using:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>--field-selector<span class="w"> </span>involvedObject.kind<span class="o">=</span>Pod,involvedObject.name<span class="o">=</span>&lt;pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
+</code></pre></div>
+<p>To check if your job was affected by this timeout, run:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>describe<span class="w"> </span>job<span class="w"> </span>&lt;job-name&gt;
+</code></pre></div>
+<p>If you see an event labeled "Exceeded the PodsReady timeout," your job has been triggered for requeuing.</p>
+<h2 id="deprecated-or-replaced-policies">Deprecated or Replaced Policies</h2>
+<h3 id="kubernetes-active-deadline-seconds-deprecated-in-favour-of-maximum-execution-time">Kubernetes Active Deadline Seconds (Deprecated in favour of Maximum Execution Time)</h3>
 
 
 
