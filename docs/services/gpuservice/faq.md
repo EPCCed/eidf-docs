@@ -90,3 +90,16 @@ Example fragment for a Bash command start:
 ### My large number of GPUs Job takes a long time to be scheduled
 
 When requesting a large number of GPUs for a job, this may require an entire node to be free. This could take some time to become available, the default scheduling algorithm in the queues in place is Best Effort FIFO - this means that large jobs will not block small jobs from running if there is sufficient quota and space available.
+
+### My job is rejected due to the following error: "The metadata label 'eidf/user' is missing or has an empty value set."
+
+Some projects with very large user numbers have additional policies implemented. The error "The metadata label 'eidf/user' is missing or has an empty value set." is for a policy that requires users in a project to have a metadata label with their VM or Project user name present.
+
+```yaml
+  metadata:
+    generateName: example-label-
+    namespace: eidf000ns
+    labels:
+      eidf/user: myusername
+      kueue.x-k8s.io/queue-name: eidf000ns-user-queue
+```
