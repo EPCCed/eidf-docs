@@ -105,7 +105,7 @@ When requesting a large number of GPUs for a job, this may require an entire nod
 
 ### My job is rejected due to the following error: "The metadata label 'eidf/user' is missing or has an empty value set."
 
-Some projects with very large user numbers have additional policies implemented. The error "The metadata label 'eidf/user' is missing or has an empty value set." is for a policy that requires users in a project to have a metadata label with their VM or Project user name present.
+Some projects with very large user numbers have additional policies implemented. The error "The metadata label 'eidf/user' is missing or has an empty value set." is for a policy that requires users in a project to have a metadata label 'eidf/user' with their project VM username present.
 
 ```yaml
   metadata:
