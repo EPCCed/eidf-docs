@@ -28,6 +28,18 @@ The service now provides a CephFS provisioner which allows for ReadWriteMany PVC
 
 The current limit is 8 GPUs per pod. Each underlying host node has either 4 or 8 GPUs. If you request 8 GPUs, you will be placed in a queue until a node with 8 GPUs is free or other jobs to run. If you request 4 GPUs this could run on a node with 4 or 8 GPUs.
 
+### What are the maximum resources for a Pod?
+
+A single pod exists on a single node of the service and can only use up to the resources of that node.
+
+To try to maximise how many nodes a pod could run on, the current maximum limits for pods are:
+
+- CPU: 192
+- Memory: 890GiB
+- GPU Count: 8
+
+Note that this is a compromise and some nodes are smaller than this so cannot schedule pods requesting the maximum.
+
 ### Why did a validation error occur when submitting a pod or job with a valid specification file?
 
 If an error like the below occurs:
