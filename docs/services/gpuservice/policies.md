@@ -58,7 +58,7 @@ The maximum runtime is based on what was the default possible under the previous
 !!! important
     The preference would be, that you lower this number unless you are confident you need the workload to run for the maximum duration. If you do not have a good exit condition or internal code errors will not terminate the workload, a workload could end up running for the entire maximum time, blocking resources and incurring unneeded costs.
 
-To apply a shorter maximum execution time, to ensure you do not consume more resources than was intended, you can apply the label on your workload:
+Applying a shorter maximum execution time can ensure you do not consume more resources than was intended, to do this you can apply the label 'kueue.x-k8s.io/max-exec-time-seconds' to your workload:
 
 ```yaml
    labels:
