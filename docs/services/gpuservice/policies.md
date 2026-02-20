@@ -46,7 +46,7 @@ Each project will have a local user queue in their namespace. This will provide 
 
 Workloads without this queue name tag will be rejected.
 
-## Maximum Execution Time (Kueue Workloads))
+## Maximum Execution Time (Kueue Workloads)
 
 All Workloads submitted to the service will have a maximum execution time seconds (METS) applied via the label `kueue.x-k8s.io/max-exec-time-seconds` automatically. The default METS for workloads using the service will be 35 days (3024000 seconds). A workload will be terminated at this point. Upon reaching the maximum, all pods for the workload will be deleted.
 
