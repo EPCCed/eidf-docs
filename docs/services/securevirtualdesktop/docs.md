@@ -26,12 +26,12 @@ For those familiar with Trusted Research Environments (TREs) the following table
 
 There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
 
-| Group                           | Files                                       | Permission | Note                                                                   |
-| ------------------------------- | ------------------------------------------- | ---------- | ---------------------------------------------------------------------- |
-| `sudo` group on router machine  | `/etc/squid/allowlist_buckets.txt`          | Owner W+R  | (implicit via machine access)                                          |
-|                                 | `/etc/squid/allowlist_domains.txt`          | Owner W+R  | (implicit via machine access)                                          |
-|                                 | `/etc/squid/squid.conf`                     | Owner W+R  | (implicit via machine access; Squid proxy configuration)               |
-| `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                        |
+| Group                           | Files                                       | Permission | Note                                                                                                                                                     |
+| ------------------------------- | ------------------------------------------- | ---------- | ----------------------------------------------------------------------                                                                                   |
+| `sudo` group on router machine  | `/etc/squid/allowlist_buckets.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
+|                                 | `/etc/squid/allowlist_domains.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
+|                                 | `/etc/squid/squid.conf`                     | Owner W+R  | (implicit via machine access; Squid proxy configuration)                                                                                                 |
+| `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
 | `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Secure Virtual Desktop VMs via approved transfer methods. |
 
 ### Updating the allowed access for Secure Virtual Desktop VMs
@@ -109,7 +109,7 @@ User accounts should be placed in the correct groups on the VM to ensure they ha
 The VM Admin must be given sudo permissions on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike addition to the `datamanager` group, sudo permissions are set on a per-VM basis via the portal.
 
 The following sections give instructions for setting up the required groups for the different roles in a Secure Virtual Desktop project:
- 
+
 - For creating and adding users to the `datamanager` group under the SAFE see [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
 - See the Virtual Desktop Interface documentation for [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions) for guidance on giving sudo permissions to the VM Admin role for each VM.
 
