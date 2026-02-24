@@ -5,7 +5,6 @@
 By default the allowed list of domains allows Secure Virtual Desktop VMs to:
 
 - Access common package repositories for operating system updates and software installation
-- Access EIDF services including the MFT server for data transfer
 - Access popular container registries for downloading (but not uploading) container images
     - Docker Hub
     - GitHub Container Registry
