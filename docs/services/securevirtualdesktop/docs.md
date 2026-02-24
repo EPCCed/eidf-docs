@@ -18,8 +18,8 @@
 | Role         | TRE Equivalent User  | Group Access                                       |  Router access |
 | ------------ | -------------------- | -------------------------------------------------- |  ------------- |
 | Data User    | Researcher           | `<project-name>`                                   |  No            |
-| Data Manager | Research Coordinator | `<project-name>`, `<project-name>-manager`         |  No            |
-| VM Admin     | N/A                  | `<project-name>`, `<project-name>-manager`, `sudo` |  Yes           |
+| Data Manager | Research Coordinator | `<project-name>`, `<project-name>-datamanager`         |  No            |
+| VM Admin     | N/A                  | `<project-name>`, `<project-name>-datamanager`, `sudo` |  Yes           |
 
 There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
 
@@ -28,8 +28,8 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 | `<project-name>-admin`,`<sudo>` | `/etc/squid/allowlist_buckets.txt`      | Owner W+R  | (implicit via machine access)                                          |
 |                                 | `/etc/squid/allowlist_domains.txt`      | Owner W+R  | (implicit via machine access)                                          |
 |                                 | `/etc/squid/squid.conf`                 | Owner W+R  | (implicit via machine access)                                          |
-|                                 | Permissions of `<project-name>-manager` | Owner W+R  |                                                                        |
-| `<project-name>-manager`        | `/mnt/<EIDF-MFT>`                       | W+R        | Serv-U machine for data transfer by data manager in and out of machine |
+|                                 | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                        |
+| `<project-name>-datamanager`        | `/mnt/<EIDF-MFT>`                       | W+R        | Serv-U machine for data transfer by data manager in and out of machine |
 | `<project-name>` (data user)    | `/mnt/<EIDF-MFT>`                       | R          |                                                                        |
 |                                 |                                         |            |                                                                        |
 
@@ -111,7 +111,7 @@ The user can now set the password for their new account on the account details p
 
 ### Setting up the correct groups and permissions for user accounts
 
-User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-manager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
+User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
 
 ## Adding Access to the VM for a User
 
