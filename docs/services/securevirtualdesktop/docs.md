@@ -111,7 +111,14 @@ The user can now set the password for their new account on the account details p
 
 ### Setting up the correct groups and permissions for user accounts
 
-User accounts require to be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group as well as the `sudo` group. To add a user to the group follow the guidance for the SAFE. [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group).
+User accounts should be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group also.
+
+The VM Admin must be added to the sudo group on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike the datamanager group, sudo permissions are set on a per-VM basis via the portal.
+
+The following sections give instructions for setting up the required groups for the different roles in a Secure Virtual Desktop project:
+
+- For creating and adding users to the datamanager group under the SAFE: [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
+- For adding users to the sudo group on a VM see the instructions in the virtual machine documentation [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions)
 
 ## Adding Access to the VM for a User
 
