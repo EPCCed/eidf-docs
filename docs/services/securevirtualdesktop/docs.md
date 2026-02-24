@@ -11,32 +11,35 @@
 
 **Data managers** - _Have read and write access to some data directories_
 
-**VM Admin** - _Access to the data manager group and sudo access_
+**VM Admin** - _Access to the data manager group (project wide) and sudo access (per VM)_
 
 #### Detailed roles, groups and their file permissions
 
-| Role         | TRE Equivalent User  | Group Access                                       |  Router access |
-| ------------ | -------------------- | -------------------------------------------------- |  ------------- |
-| Data User    | Researcher           | `<project-name>`                                   |  No            |
-| Data Manager | Research Coordinator | `<project-name>`, `<project-name>-datamanager`         |  No            |
-| VM Admin     | N/A                  | `<project-name>`, `<project-name>-datamanager`, `sudo` |  Yes           |
+
+A description of the roles defined within the EIDF Secure Virtual Desktop service and some access they have is given in the below table.
+For those familiar with Trusted Research Environments (TREs) the following table includes a mapping of roles in the EIDF Secure Virtual Desktop service which are conceptually similar to the roles in a TRE.
+
+| Role         | TRE Equivalent User  | Router Access | Should be given sudo permissions on VMs & router |
+| ------------ | -------------------- | ------------- | ------------------------------------------------ |
+| Data User    | Researcher           | No            | No                                               |
+| Data Manager | Research Coordinator | No            | No                                               |
+| VM Admin     | N/A                  | Yes           | Yes                                              |
 
 There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
 
-| Group                           | Files                                   | Permission | Note                                                                   |
-| ------------------------------- | --------------------------------------- | ---------- | ---------------------------------------------------------------------- |
-| `<project-name>-admin`,`<sudo>` | `/etc/squid/allowlist_buckets.txt`      | Owner W+R  | (implicit via machine access)                                          |
-|                                 | `/etc/squid/allowlist_domains.txt`      | Owner W+R  | (implicit via machine access)                                          |
-|                                 | `/etc/squid/squid.conf`                 | Owner W+R  | (implicit via machine access)                                          |
-|                                 | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                        |
-| `<project-name>-datamanager`        | `/mnt/<EIDF-MFT>`                       | W+R        | Serv-U machine for data transfer by data manager in and out of machine |
-| `<project-name>` (data user)    | `/mnt/<EIDF-MFT>`                       | R          |                                                                        |
-|                                 |                                         |            |                                                                        |
+| Group                           | Files                                       | Permission | Note                                                                   |
+| ------------------------------- | ------------------------------------------- | ---------- | ---------------------------------------------------------------------- |
+| `sudo` group on router machine  | `/etc/squid/allowlist_buckets.txt`          | Owner W+R  | (implicit via machine access)                                          |
+|                                 | `/etc/squid/allowlist_domains.txt`          | Owner W+R  | (implicit via machine access)                                          |
+|                                 | `/etc/squid/squid.conf`                     | Owner W+R  | (implicit via machine access; Squid proxy configuration)               |
+| `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                        |
+| `<project-name>-datamanager`    | `/mnt/<EIDF-MFT>`                           | W+R        | Serv-U machine for data transfer by data manager in and out of machine |
+| `<project-name>` (data user)    | `/mnt/<EIDF-MFT>`                           | R          |                                                                        |
+|                                 |                                             |            |                                                                        |
 
 ### Updating the allowed access for Secure Virtual Desktop VMs
 
 See [router-docs.md](router-docs.md) for documentation on updating the allowed access for Secure Virtual Desktop VMs.
-
 
 ### Create a VM
 
@@ -106,12 +109,12 @@ Portal management of VMs and user accounts can only be done by project members w
 
 User accounts should be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group also.
 
-The VM Admin must be added to the sudo group on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike the datamanager group, sudo permissions are set on a per-VM basis via the portal.
+The VM Admin must be given sudo permissions on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike addition to the `datamanager` group, sudo permissions are set on a per-VM basis via the portal.
 
 The following sections give instructions for setting up the required groups for the different roles in a Secure Virtual Desktop project:
 
-- For creating and adding users to the datamanager group under the SAFE: [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
-- For adding users to the sudo group on a VM see the instructions in the virtual machine documentation [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions)
+- For creating and adding users to the `datamanager` group under the SAFE see [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
+- See the Virtual Desktop Interface documentation for [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions) for guidance on giving sudo permissions to the VM Admin role for each VM.
 
 ## Adding Access to the VM for a User
 
