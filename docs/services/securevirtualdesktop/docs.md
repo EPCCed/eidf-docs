@@ -37,15 +37,6 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 
 See [router-docs.md](router-docs.md) for documentation on updating the allowed access for Secure Virtual Desktop VMs.
 
-### Required Member Permissions
-
-VMs and user accounts can only be managed by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). Through SAFE the PI can designate project managers and the PI and PMs can grant a project member the **Cloud Admin** role:
-
-1. Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)
-1. On the project management page in SAFE, scroll down to "Manage Members"
-1. Click _Add project manager_ or _Set member permissions_
-
-For details please refer to the SAFE documentation: [How can I designate a user as a project manager?](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-designate-a-user-as-a-project-manager)
 
 ### Create a VM
 
@@ -110,6 +101,8 @@ however a user may have multiple accounts in a project, for example for differen
 The user can now set the password for their new account on the account details page.
 
 ### Setting up the correct groups and permissions for user accounts
+
+Portal management of VMs and user accounts can only be done by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). The PI and PMs can grant a project member the **Cloud Admin** role through the SAFE. There is more information in the virtual machine documentation under the section [Required Member Permissions](../virtualmachines/docs.md#required-member-permissions).
 
 User accounts should be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group also.
 
