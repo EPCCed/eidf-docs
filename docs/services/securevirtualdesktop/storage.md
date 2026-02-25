@@ -35,7 +35,7 @@ After editing the allowlist Squid must be reconfigured using the command:
 sudo squid -k reconfigure
 ```
 
-## Data Transfer to Secure Virtual Desktop service via scp
+## Data Transfer using scp (with and without SSH config)
 
 Data transfer to and from the Secure Virtual Desktop VMs can be performed using [`scp`](https://linux.die.net/man/1/scp).
 
@@ -50,16 +50,33 @@ Data transfer using `scp` is performed by jumping through the Secure Virtual Des
 
 Because all traffic to EIDF services must first go through the gateway, the below command needs to do a double jump via both the EIDF gateway and the Secure Virtual Desktop router.
 
-To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
+### Where users have set up a SSH config file with configuration for the router and VM (recommended)
+
+Users should first set up an SSH config file with configuration for the router and VM, as described in the documentation section [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) and [SSH Access to Secure Virtual Desktop VMs via the Router](./router-docs.md#ssh-access-to-secure-virtual-desktop-vms-via-the-router). After this is configured, they can use a simplified `scp` command. In this case, the `scp` command is:
 
 ```bash
-scp -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project_code>-router <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/datamanager/
+scp <local-file-path> eidfxxx-VM:/data/datamanager/
 ```
 
 Where:
 
+- `eidfxxx-VM` is the Host defined in the user's SSH config file for the target Secure Virtual Desktop VM
+- `/data/datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
+- `<local-file-path>` is the path to the file on the user's local machine
+
+### Where users do not have a SSH config file set up with configuration for the router and VM
+
+To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
+
+```bash
+scp -i <path-to-private-key> -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project-router-ip> <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/datamanager/
+```
+
+Where:
+
+- `<path-to-private-key>` is the path to the user's private SSH key that corresponds to the public SSH key added for the user in the EIDF Portal for access to the router and VM, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
 - `<username>` is the user's SSH username for EIDF gateway, router and the Secure Virtual Desktop VM
-- `<project_code>` is the EIDF project_code
+- `<project-router-ip>` is the IP address of the Secure Virtual Desktop Router for the project. This IP address can be found in the EIDF Portal on the project details page, in the `machines` section, for the router machine named `<project_code>-router`.
 - `<local-file-path>` is the path to the file on the user's local machine
 - `<secure-virtual-desktop-vm-ip>` is the IP address of the Secure Virtual Desktop VM
 - `/data/datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to

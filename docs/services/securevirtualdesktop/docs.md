@@ -134,14 +134,18 @@ Sudo permissions should only be granted to users in the VM Admin role to restric
 
 ## First login
 
-These instructions match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#first-login).
-
 A new user account must reset the password before they can log in for the first time.
 To do this:
 
 1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop-down.
 1. From the project page, they can select their account from the 'Your Accounts' table
 1. Finally, click the 'Set Password' button from the 'User Account Info' table.
+
+Users will then be able to log in using the VDI as described in the [VDI documentation](../../access/virtualmachines-vdi.md).
+
+!!! Warning
+    Access to the Secure Virtual Desktop VMs is only possible through the VDI or the project router.
+    You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) for more information on how to access the router and then the VMs via SSH.
 
 ## Updating an existing machine
 

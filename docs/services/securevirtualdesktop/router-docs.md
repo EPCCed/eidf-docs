@@ -1,5 +1,60 @@
 # Secure Virtual Desktop Router Documentation
 
+## SSH Access to the Secure Virtual Desktop Router
+
+VM Admins can access the Secure Virtual Desktop Router `<project_code>-router` machine via SSH using the VM Admin user for the project. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.
+
+This requires users have set up the EIDF Gateway for their user as this must be jumped through to access the router. An example SSH config file entry for the router is shown below:
+
+```bash
+host eidf-gateway
+    Hostname eidf-gateway.epcc.ed.ac.uk
+    User bc-eidfstaff
+    IdentityFile <SSH credential for user>
+
+Host eidfxxx-router 
+    HostName <Router IP Address>
+    User ubuntu
+    ProxyCommand SSH eidf-gateway -W %h:%p
+    IdentityFile <SSH credential for user>
+```
+
+Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the Private Project Zone Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, eidfxxx-router is the correct address to use for ssh access to the router.
+
+SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
+
+You can then connect to the router using the command:
+
+```bash
+ssh eidfxxx-router
+```
+
+Where `eidfxxx-router` is the name of the host entry in the SSH config file for the router.
+
+## SSH Access to Secure Virtual Desktop VMs via the Router
+
+VM Admins can access the Secure Virtual Desktop VMs via SSH by first connecting to the project router `<project_code>-router` and then jumping from there to the target VM. This is the only way to access the VMs via SSH as direct SSH access to the VMs is disabled for security of the service. This is easiest done using a SSH config file with the appropriate ProxyJump configuration, adding to the existing `~/.ssh/config` entry described above for the router.
+
+```bash
+Host eidfxxx-VM
+    HostName <VM IP Address>
+    User <VM Admin Username>
+    ProxyCommand  ssh eidfxxx-router -W %h:%p
+    IdentityFile <SSH credential for user>
+```
+
+Where the VM IP Address can be found in the EIDF Portal under the project details page, under the `machines` section for the relevant VM.
+
+SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [ssh Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
+
+
+You can then connect to the VM using the command:
+
+```bash
+ssh eidfxxx-VM
+```
+
+
 ## Updating the allowed access for Secure Virtual Desktop VMs
 
 By default the allowed list of domains allows Secure Virtual Desktop VMs to:

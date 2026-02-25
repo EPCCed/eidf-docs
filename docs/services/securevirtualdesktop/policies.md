@@ -2,7 +2,7 @@
 
 ## Networking Policies
 
-The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet except those allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs prevent any incoming network connections (ingress) from the internet, or lateral movements from VMs in the same project or EIDF Infrastructure to the VMs.
+The EIDF Secure Virtual Desktop service provides VMs that prevent all host initiated network connections (egress) to the internet, except for those destinations explicitly allowed in the web proxy allow lists by the project PI. The Secure Virtual Desktop VMs also prevent any incoming network connections (ingress) from the internet, as well as any lateral movements from VMs in the same project or from the EIDF Infrastructure to these VMs. This includes incoming connections from other VMs in the same project and from machines outwith the project. As a result, the EIDF Secure Virtual Desktop VMs cannot be accessed via SSH or RDP from the internet or the EIDF Gateway, and can only be accessed via the project router or VDI.
 
 Secure Virtual Desktop VMs are placed within an isolated network. This design leverages understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven, which is also run by the EIDF. The Secure Virtual Desktop subnet is isolated from other EIDF services and the internet by a Squid web proxy server that filters network traffic from the VMs. This service differs from TREs used in the Safe Haven in that project users have administrative access to their VMs to install software and manage networking access for the VMs as required.
 
