@@ -36,6 +36,9 @@ SSL validation failed for https://s3.eidf.ac.uk/ [SSL: CERTIFICATE_VERIFY_FAILED
 
 ### Docker Service via HTTP Proxy
 
+!!! note
+    Docker is not installed by default on the Secure Virtual Desktop VMs, so these instructions are only relevant if you have installed Docker yourself.
+
 Typically docker will use the system proxy settings, however to ensure that docker Service uses the HTTP proxy you need to create a systemd drop-in file for the docker service.
 
 Add service at startup
@@ -86,6 +89,20 @@ sslCAPath = /etc/pki/ca-trust/source/anchors/squid_proxyCA.crt
 ```
 
 While we recommend setting up the HTTP/HTTPS proxy above, only Git remotes using HTTPS URLs (for example, `https://github.com/...`) are permitted through the proxy server. SSH-based Git remotes (for example, `git@github.com:...` or `ssh://...`) are blocked by the SSH firewall restrictions.
+
+!!! note
+    GitHub and GitLab are by default not in the proxy allow list for the Secure Virtual Desktop service. If you want to use Git with these services, you should ask your VM Admin to add them to the allow list. ECDF and EIDF GitLab instances are by default in the allow list.
+
+The following instructions are intended for VM Admins (router administrators) who have access to configure the Secure Virtual Desktop Router.
+
+To add full GitLab and GitHub access on the router, add the following lines to the allow list file `/etc/squid/allowlist_buckets.txt`:
+
+```txt
+.github.com
+.gitlab.com
+```
+
+More information on how to edit the allow list can be found in the documentation section on [Details of the Secure Virtual Desktop Router](./router-docs.md#updating-the-allowed-access-for-secure-virtual-desktop-vms).
 
 ### Rocky Package manager YUM
 
