@@ -34,9 +34,9 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 | `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
 | `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Secure Virtual Desktop VMs via approved transfer methods. |
 
-### Updating the allowed access for Secure Virtual Desktop VMs
+### Updating the allowed access configuration for Secure Virtual Desktop VMs
 
-See [router-docs.md](router-docs.md) for documentation on updating the allowed access for Secure Virtual Desktop VMs.
+See [router-docs.md](router-docs.md) for documentation on updating the allowed access configuration for Secure Virtual Desktop VMs.
 
 ### Create a VM
 
