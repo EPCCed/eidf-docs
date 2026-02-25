@@ -1,5 +1,25 @@
 # Secure Virtual Desktop Router Documentation
 
+## Details of the Secure Virtual Desktop Router
+
+The Secure Virtual Desktop Router is a virtual machine that acts as a gateway for the Secure Virtual Desktop VMs. It is used to manage network access to the Secure Virtual Desktop VMs and to provide a secure connection point for users to access the VMs via SSH.
+
+Secure Virtual Desktop VMs use the Secure Virtual Desktop Router as a proxy for network traffic, as such Secure Virtual Desktop VMs may need some extra options around network access for software that is not installed by default. Many of these are set up on deployment of the service for a project or documented in the [FAQs](./faq.md). For software that is not installed by default the following details may be useful for users to know when setting up software on the VMs.
+
+### Proxy router address
+
+When configuring software on the Secure Virtual Desktop VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section.
+
+### Proxy ports
+
+HTTP and HTTPS traffic from the secure Virtual Desktop VMs is proxied through the Squid proxy server on the Secure Virtual Desktop Router. The proxy server listens on the following ports:
+- HTTP: port 3128
+- HTTPS: port 3129
+
+### Certificate when using the proxy for HTTPS traffic
+
+Because the Squid proxy server on the Secure Virtual Desktop Router is intercepting and filtering network traffic from the Secure Virtual Desktop VMs, it uses a self-signed certificate to decrypt and inspect HTTPS traffic. This means that when users are accessing websites over HTTPS from the Secure Virtual Desktop VMs, they may encounter security warnings in their web browsers due to the self-signed certificate used by the Squid proxy. This proxy certificate is stored at `/usr/local/share/ca-certificates/extra/` and must be imported into the browser.
+
 ## SSH Access to the Secure Virtual Desktop Router
 
 VM Admins can access the Secure Virtual Desktop Router `<project_code>-router` machine via SSH using the VM Admin user for the project. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.

@@ -1,6 +1,12 @@
 # FAQs for the Secure Virtual Desktop Service
 
-## http_proxy and https_proxy environment variables
+## Using the proxy for some common software on the Secure Virtual Desktop VMs
+
+Below we outline a number of common software that you may require and how they can be used with the proxy server on the Secure Virtual Desktop Router from the Secure Virtual Desktop VMs. You may find a number of these work out of the box. These make use of the proxy address given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section and the proxy ports 3128 for HTTP and 3129 for HTTPS.
+
+Some more general information on using the proxy server on the Secure Virtual Desktop Router can be found in the documentation section on [Details of the Secure Virtual Desktop Router](./router-docs.md#details-of-the-secure-virtual-desktop-router).
+
+### http_proxy and https_proxy environment variables
 
 http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Virtual Desktop. Uppercase versions are also required by some tools.
 
@@ -17,7 +23,7 @@ These variables are also set by default in the /etc/environment files.
 
 It is always worth checking these are set if you are having trouble with internet access from within a Secure Virtual Desktop VM.
 
-## AWS CLI
+### AWS CLI
 
 If using S3, as well as usual credentials file you must also define the proxy certificate:
 by adding to `~/.aws/credentials` the line
@@ -28,7 +34,7 @@ $ aws s3 ls
 SSL validation failed for https://s3.eidf.ac.uk/ [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1032)
 ```
 
-## Docker Service via HTTP Proxy
+### Docker Service via HTTP Proxy
 
 Typically docker will use the system proxy settings, however to ensure that docker Service uses the HTTP proxy you need to create a systemd drop-in file for the docker service.
 
@@ -66,7 +72,7 @@ Check added
 sudo systemctl show --property=Environment docker
 ```
 
-## Git
+### Git
 
 Git can be configured to work through a proxy by use of the following configuration items in `/etc/gitconfig`:
 
@@ -81,7 +87,7 @@ sslCAPath = /etc/pki/ca-trust/source/anchors/squid_proxyCA.crt
 
 While we recommend setting up the HTTP/HTTPS proxy above, only Git remotes using HTTPS URLs (for example, `https://github.com/...`) are permitted through the proxy server. SSH-based Git remotes (for example, `git@github.com:...` or `ssh://...`) are blocked by the SSH firewall restrictions.
 
-## Rocky Package manager YUM
+### Rocky Package manager YUM
 
 To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
 
@@ -89,6 +95,6 @@ To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
 proxy=http://<proxy address>:3128
 ```
 
-## Firefox add cert
+### Adding the proxy certificate to Firefox
 
 /etc/ssl/ca-certificates/squidProxyCA.crt
