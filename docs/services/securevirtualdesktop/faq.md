@@ -39,7 +39,7 @@ SSL validation failed for https://s3.eidf.ac.uk/ [SSL: CERTIFICATE_VERIFY_FAILED
 !!! note
     Docker is not installed by default on the Secure Virtual Desktop VMs, so these instructions are only relevant if you have installed Docker yourself.
 
-Typically docker will use the system proxy settings, however to ensure that docker Service uses the HTTP proxy you need to create a systemd drop-in file for the docker service.
+Typically docker will use the system proxy settings, however to ensure that docker service uses the HTTP proxy you need to create a systemd drop-in file for the docker service.
 
 Add service at startup
 
@@ -54,7 +54,7 @@ This is taken directly from the [Docker documentation](https://docs.docker.com/e
 sudo mkdir -p /etc/systemd/system/docker.service.d
 ```
 
-Add a file called http-proxy.conf
+Add to the newly created directory a file called http-proxy.conf
 
 ```http-proxy.conf
 [Service]
@@ -69,11 +69,13 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-Check added
+Check this has been added with
 
 ```bash
 sudo systemctl show --property=Environment docker
 ```
+
+Which should show the HTTP_PROXY and HTTPS_PROXY variables with the correct proxy address.
 
 ### Git
 
