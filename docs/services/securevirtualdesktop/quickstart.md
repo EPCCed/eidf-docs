@@ -10,7 +10,7 @@ If you do not have a SAFE account follow the instructions in the
 [SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/)
 on how to register and receive your password.
 
-## Accessing your projects
+## Accessing Your Projects
 
 1. Log into the portal at [https://portal.eidf.ac.uk/](https://portal.eidf.ac.uk/).
    The login will redirect you to the [SAFE](https://safe.epcc.ed.ac.uk/).
@@ -18,7 +18,7 @@ on how to register and receive your password.
 1. View the projects that you have access to
    at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
 
-## Joining a project
+## Joining a Project
 
 1. Navigate to [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/)
    and click the link to "Request access", or choose "Request Access" in the "Project" menu.
@@ -45,7 +45,7 @@ Now you have to wait for your PI or project manager to accept your request to jo
 !!! warning
     You must set a password for a new account before you log in for the first time.
 
-## Set or change the password for a user account
+## Set or Change the Password for a User Account
 
 Follow these instructions to set a password for a new account before you log in for the first time.
 If you have forgotten your password you may reset the password as described here.
@@ -57,7 +57,7 @@ If you have forgotten your password you may reset the password as described here
 
 There may be a short delay while the change is implemented before the new password becomes usable.
 
-## Further information
+## Further Information
 
 [Managing VMs](./docs.md): Project management guide to creating, configuring and removing Secure Virtual Desktops and managing user accounts in the portal.
 

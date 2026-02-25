@@ -6,14 +6,14 @@ The EIDF Secure Virtual Desktop service provides VMs that prevent all host initi
 
 Secure Virtual Desktop VMs are placed within an isolated network. This design leverages understanding and pentesting from development of the infrastructure for the Scottish National Safe Haven, which is also run by the EIDF. The Secure Virtual Desktop subnet is isolated from other EIDF services and the internet by a Squid web proxy server that filters network traffic from the VMs. This service differs from TREs used in the Safe Haven in that project users have administrative access to their VMs to install software and manage networking access for the VMs as required.
 
-## Audit policies
+## Audit Policies
 
 The EIDF Secure Virtual Desktop service provides logging of user activity within the Secure Virtual Desktop service VMs. This includes:
 
 - Network requests
 - Login Activity
 
-### Network access logging
+### Network Access Logging
 
 The Squid web proxy logs all network traffic like web requests made by Secure Virtual Desktop VMs. These logs are stored in the EIDF Squid router and are configured to be retained for a default period of 30 days before being automatically deleted.
 
@@ -29,7 +29,7 @@ Login activity to the Secure Virtual Desktop VMs is copied periodically from eac
 
 Logs are retained for a default period of 30 days before being automatically deleted. Each machine has its own log file and type of log file.
 
-## Machine management policies
+## Machine Management Policies
 
 The Secure Virtual Desktop VMs are managed by the VM Admin users within the project. The EIDF team will manage ONLY the underlying infrastructure, hypervisors and cloud management software as part of the EIDF Maintenance sessions.
 
@@ -37,11 +37,11 @@ EIDF Secure Virtual Desktop VMs are provided in a state that allows easy customi
 
 ## End of Life Policy for User Accounts and Projects
 
-### What happens when an account or project is no longer required, or a user leaves a project
+### What Happens When an Account or Project Is No Longer Required, or a User Leaves a Project
 
 These will match those of the main Virtual Machine service. Please see [EIDF VM Service Policies](../virtualmachines/policies.md#end-of-life-policy-for-user-accounts-and-projects) for details.
 
-## Backup policies
+## Backup Policies
 
 The current policy, matching that of the main Virtual Machine service (see [EIDF VM Service Policies](../virtualmachines/policies.md#backup-policies)), is:
 

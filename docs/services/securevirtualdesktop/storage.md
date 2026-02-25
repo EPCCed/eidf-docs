@@ -2,11 +2,11 @@
 
 The EIDF Secure Virtual Desktop Service provides options for privileged users to store and transfer data securely to and from the Secure Virtual Desktop VMs. To move data from the EIDF Secure Virtual Desktop VMs to other systems, users require an intermediate transfer storage location to reduce the access of the Secure Virtual Desktop VMs to the internet and non-authorised users. Any data should be transferred off of the transfer storage location and onto the VM disk.
 
-## Roles and their Access to Storage Locations
+## Roles and Their Access to Storage Locations
 
 We define three roles in the Secure Virtual Desktop service as described in the [Service Documentation](./docs.md#user-roles-and-their-permissions). These roles are in place to limit who can initiate data transfers to and from the Secure Virtual Desktop VMs. Typically we recommend that only VM Admin users and Data Manager users have access to transfer data to and from the Secure Virtual Desktop VMs. As such the below options for storage and data transfer are recommended as only available to these roles.
 
-## Data Manager Group directory
+## Data Manager Group Directory
 
 A directory is created for users with the Data Manager role on Secure Virtual Desktop VMs, this is located at `/data/datamanager`. This directory is owned by root and has group ownership set to a group named `<project_code>-datamanager`, which all users with the Data Manager role for the project should be added to following [Setting up the correct groups and permissions for user accounts](./docs.md#setting-up-the-correct-groups-and-permissions-for-user-accounts).
 
@@ -35,7 +35,7 @@ After editing the allowlist Squid must be reconfigured using the command:
 sudo squid -k reconfigure
 ```
 
-## Data Transfer using scp (with and without SSH config)
+## Data Transfer Using SCP (With and Without SSH Config)
 
 Data transfer to and from the Secure Virtual Desktop VMs can be performed using [`scp`](https://linux.die.net/man/1/scp).
 
@@ -50,7 +50,7 @@ Data transfer using `scp` is performed by jumping through the Secure Virtual Des
 
 Because all traffic to EIDF services must first go through the gateway, the below command needs to do a double jump via both the EIDF gateway and the Secure Virtual Desktop router.
 
-### Where users have set up a SSH config file with configuration for the router and VM (recommended)
+### Where Users Have Set Up an SSH Config File With Configuration for the Router and VM (Recommended)
 
 Users should first set up an SSH config file with configuration for the router and VM, as described in the documentation section [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) and [SSH Access to Secure Virtual Desktop VMs via the Router](./router-docs.md#ssh-access-to-secure-virtual-desktop-vms-via-the-router). After this is configured, they can use a simplified `scp` command. In this case, the `scp` command is:
 
@@ -64,7 +64,7 @@ Where:
 - `/data/datamanager/` is the destination path on the Secure Virtual Desktop VM where the file will be copied to
 - `<local-file-path>` is the path to the file on the user's local machine
 
-### Where users do not have a SSH config file set up with configuration for the router and VM
+### Where Users Do Not Have an SSH Config File Set Up With Configuration for the Router and VM
 
 To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
 

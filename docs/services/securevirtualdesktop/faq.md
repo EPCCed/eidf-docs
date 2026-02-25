@@ -1,12 +1,12 @@
 # FAQs for the Secure Virtual Desktop Service
 
-## Using the proxy for some common software on the Secure Virtual Desktop VMs
+## Using the Proxy for Some Common Software on the Secure Virtual Desktop VMs
 
 Below we outline a number of common software that you may require and how they can be used with the proxy server on the Secure Virtual Desktop Router from the Secure Virtual Desktop VMs. You may find a number of these work out of the box. These make use of the proxy address given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section and the proxy ports 3128 for HTTP and 3129 for HTTPS.
 
 Some more general information on using the proxy server on the Secure Virtual Desktop Router can be found in the documentation section on [Details of the Secure Virtual Desktop Router](./router-docs.md#details-of-the-secure-virtual-desktop-router).
 
-### http_proxy and https_proxy environment variables
+### http_proxy and https_proxy Environment Variables
 
 http_proxy and https_proxy environment variables are used by many command line tools to route traffic via a proxy server. They should be set by default as follows to the Squid proxy server in the Secure Virtual Desktop. Uppercase versions are also required by some tools.
 
@@ -106,7 +106,7 @@ To add full GitLab and GitHub access on the router, add the following lines to t
 
 More information on how to edit the allow list can be found in the documentation section on [Details of the Secure Virtual Desktop Router](./router-docs.md#updating-the-allowed-access-for-secure-virtual-desktop-vms).
 
-### Rocky Package manager YUM
+### Rocky Package Manager YUM
 
 To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
 
@@ -114,6 +114,6 @@ To force proxy usage we need to put http proxy into the `/etc/yum.conf` e.g.
 proxy=http://<proxy address>:3128
 ```
 
-### Adding the proxy certificate to Firefox
+### Adding the Proxy Certificate to Firefox
 
 /etc/ssl/ca-certificates/squidProxyCA.crt

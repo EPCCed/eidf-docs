@@ -6,17 +6,18 @@ The Secure Virtual Desktop Router is a virtual machine that acts as a gateway fo
 
 Secure Virtual Desktop VMs use the Secure Virtual Desktop Router as a proxy for network traffic, as such Secure Virtual Desktop VMs may need some extra options around network access for software that is not installed by default. Many of these are set up on deployment of the service for a project or documented in the [FAQs](./faq.md). For software that is not installed by default the following details may be useful for users to know when setting up software on the VMs.
 
-### Proxy router address
+### Proxy Router Address
 
 When configuring software on the Secure Virtual Desktop VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section.
 
-### Proxy ports
+### Proxy Ports
 
 HTTP and HTTPS traffic from the secure Virtual Desktop VMs is proxied through the Squid proxy server on the Secure Virtual Desktop Router. The proxy server listens on the following ports:
+
 - HTTP: port 3128
 - HTTPS: port 3129
 
-### Certificate when using the proxy for HTTPS traffic
+### Certificate When Using the Proxy for HTTPS Traffic
 
 Because the Squid proxy server on the Secure Virtual Desktop Router is intercepting and filtering network traffic from the Secure Virtual Desktop VMs, it uses a self-signed certificate to decrypt and inspect HTTPS traffic. This means that when users are accessing websites over HTTPS from the Secure Virtual Desktop VMs, they may encounter security warnings in their web browsers due to the self-signed certificate used by the Squid proxy. This proxy certificate is stored at `/usr/local/share/ca-certificates/extra/` and must be imported into the browser.
 
@@ -67,15 +68,13 @@ Where the VM IP Address can be found in the EIDF Portal under the project detail
 
 SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [ssh Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
 
-
 You can then connect to the VM using the command:
 
 ```bash
 ssh eidfxxx-VM
 ```
 
-
-## Updating the allowed access for Secure Virtual Desktop VMs
+## Updating the Allowed Access for Secure Virtual Desktop VMs
 
 By default the allowed list of domains allows Secure Virtual Desktop VMs to:
 

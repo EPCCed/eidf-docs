@@ -2,7 +2,7 @@
 
 ## Project Management Guide
 
-### User Roles and their Permissions
+### User Roles and Their Permissions
 
 !!! info
     All names are separate from those in SAFE and are for the purpose of the EIDF Secure Virtual Desktop service only
@@ -13,7 +13,7 @@
 
 **VM Admin** - _Access to the data manager group (project wide) and sudo access (per VM)_
 
-#### Detailed roles, groups and their file permissions
+#### Detailed Roles, Groups and Their File Permissions
 
 A description of the roles defined within the EIDF Secure Virtual Desktop service and some access they have is given in the below table.
 For those familiar with Trusted Research Environments (TREs) the following table includes a mapping of roles in the EIDF Secure Virtual Desktop service which are conceptually similar to the roles in a TRE.
@@ -34,7 +34,7 @@ There are a few different roles associated with Secure Virtual Desktop projects 
 | `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
 | `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Secure Virtual Desktop VMs via approved transfer methods. |
 
-### Updating the allowed access configuration for Secure Virtual Desktop VMs
+### Updating the Allowed Access Configuration for Secure Virtual Desktop VMs
 
 See [router-docs.md](router-docs.md) for documentation on updating the allowed access configuration for Secure Virtual Desktop VMs.
 
@@ -81,7 +81,7 @@ you can refresh it manually by pressing the "Refresh" button at the top of the t
 
 Please contact the helpdesk if your quota requirements have changed.
 
-### Add a user account
+### Add a User Account
 
 User accounts allow project members to log in to the VMs in a project.
 The Project PI and project managers manage user accounts for each member of the project.
@@ -100,7 +100,7 @@ however a user may have multiple accounts in a project, for example for differen
 
 The user can now set the password for their new account on the account details page.
 
-### Setting up the correct groups and permissions for user accounts
+### Setting Up the Correct Groups and Permissions for User Accounts
 
 Portal management of VMs and user accounts can only be done by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). The PI and PMs can grant a project member the **Cloud Admin** role through the SAFE. There is more information in the virtual machine documentation under the section [Required Member Permissions](../virtualmachines/docs.md#required-member-permissions).
 
@@ -128,11 +128,11 @@ They must log out and log in again to refresh the connection information, or wai
 
 If a user only has one connection available in the VDI they will be automatically directed to the VM with the default connection.
 
-### Sudo permissions
+### Sudo Permissions
 
 Sudo permissions should only be granted to users in the VM Admin role to restrict as much as possible the data management capabilities of users in the Secure Virtual Desktop environment and remove the opportunity for data ingress/egress outwith the proper channels.
 
-## First login
+## First Login
 
 A new user account must reset the password before they can log in for the first time.
 To do this:
@@ -147,7 +147,7 @@ Users will then be able to log in using the VDI as described in the [VDI documen
     Access to the Secure Virtual Desktop VMs is only possible through the VDI or the project router.
     You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) for more information on how to access the router and then the VMs via SSH.
 
-## Updating an existing machine
+## Updating an Existing Machine
 
 ### Adding RDP Access
 
@@ -162,7 +162,7 @@ If you did not select RDP access when you created the VM you can add it later:
 Once the RDP job is completed, all users that are allowed to access the VM
 will also be permitted to use the RDP connection.
 
-### Software catalogue
+### Software Catalogue
 
 The instructions in this section match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#software-catalogue).
 
@@ -174,7 +174,7 @@ even if you didn't select a package when first creating the machine.
 1. Select the configuration you wish to install and press 'Submit'
 1. The configuration job runs for a few minutes.
 
-### Patching and updating
+### Patching and Updating
 
 It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
 
