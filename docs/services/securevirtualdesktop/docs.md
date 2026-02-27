@@ -46,7 +46,7 @@ To create a new Secure Virtual Desktop VM:
 1. Click on the 'New Private Machine' button
 1. Complete the 'Create Machine' form as follows:
 
-    1. Select the PPZ (Private Project Zone) router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
+    1. Select the 'Secure Virtual Desktop' router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
     1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
     1. Select a suitable operating system
     1. Select a machine specification that is suitable

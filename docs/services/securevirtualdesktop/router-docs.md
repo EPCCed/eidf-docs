@@ -8,7 +8,7 @@ Secure Virtual Desktop VMs use the Secure Virtual Desktop Router as a proxy for 
 
 ### Proxy Router Address
 
-When configuring software on the Secure Virtual Desktop VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section.
+When configuring software on the Secure Virtual Desktop VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the **"Secure Virtual Desktop (SVD)"** Proxy address section.
 
 ### Proxy Ports
 
@@ -40,7 +40,7 @@ Host eidfxxx-router
     IdentityFile <SSH credential for user>
 ```
 
-Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the Private Project Zone Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, eidfxxx-router is the correct address to use for ssh access to the router.
+Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the Secure Virtual Desktop Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, eidfxxx-router is the correct address to use for ssh access to the router.
 
 SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
 

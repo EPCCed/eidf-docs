@@ -2,7 +2,7 @@
 
 ## Using the Proxy for Some Common Software on the Secure Virtual Desktop VMs
 
-Below we outline a number of common software that you may require and how they can be used with the proxy server on the Secure Virtual Desktop Router from the Secure Virtual Desktop VMs. You may find a number of these work out of the box. These make use of the proxy address given in the EIDF portal for your project under the "Private Project Zone (PPZ)" Proxy address section and the proxy ports 3128 for HTTP and 3129 for HTTPS.
+Below we outline a number of common software that you may require and how they can be used with the proxy server on the Secure Virtual Desktop Router from the Secure Virtual Desktop VMs. You may find a number of these work out of the box. These make use of the proxy address given in the EIDF portal for your project under the **"Secure Virtual Desktop (SVD)"** Proxy address section and the proxy ports 3128 for HTTP and 3129 for HTTPS.
 
 Some more general information on using the proxy server on the Secure Virtual Desktop Router can be found in the documentation section on [Details of the Secure Virtual Desktop Router](./router-docs.md#details-of-the-secure-virtual-desktop-router).
 
@@ -17,7 +17,7 @@ export HTTP_PROXY=http://<proxy address>:3128
 export HTTPS_PROXY=http://<proxy address>:3129
 ```
 
-Where the `<proxy address>` can be found in the EIDF portal under the **Private Project Zone (PPZ)** heading.
+Where the `<proxy address>` can be found in the EIDF portal under the **Secure Virtual Desktop (SVD)** heading.
 
 These variables are also set by default in the /etc/environment files.
 
