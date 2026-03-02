@@ -192,7 +192,7 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. When prompted, enter your project username and password. For example:
 
     ```bash
-    (user@shs-sdf01.nsh.log) Password:
+    (user@shs-sdf01.nsh.loc) Password:
     ```
 
 1. The key will then be added to the back-end. For example:
