@@ -2989,7 +2989,7 @@
 <p>Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:</p>
 <ol>
 <li>Select <strong>Clusters</strong> menu, <strong>Open OnDemand host Shell Access</strong> option.</li>
-<li>A new browser tab with an SSH session to the back-end will appear.</li>
+<li>A new browser tab with an SSH session to the Open OnDemand host will appear.</li>
 <li>When prompted, enter your project username and password.</li>
 <li>
 <p>Create a passphrase-less SSH key:</p>
@@ -2998,34 +2998,39 @@
 </li>
 <li>
 <p>Copy public key to back-end:</p>
-<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>BACK-END-HOSTNAME.nsh.loc
+<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>BACK-END-HOST
 </code></pre></div>
-<p>Information on the copy will be output:</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh-copy-id<span class="w"> </span>shs-sdf01.nsh.loc
+</code></pre></div>
+<p>Information on the copy will be output. For example:</p>
 <div class="highlight"><pre><span></span><code>/usr/bin/ssh-copy-id:<span class="w"> </span>INFO:<span class="w"> </span>Source<span class="w"> </span>of<span class="w"> </span>key<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>installed:<span class="w"> </span><span class="s2">&quot;/home/user/.ssh/id_rsa.pub&quot;</span>
 /usr/bin/ssh-copy-id:<span class="w"> </span>INFO:<span class="w"> </span>attempting<span class="w"> </span>to<span class="w"> </span>log<span class="w"> </span><span class="k">in</span><span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>key<span class="o">(</span>s<span class="o">)</span>,<span class="w"> </span>to<span class="w"> </span>filter<span class="w"> </span>out<span class="w"> </span>any<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>already<span class="w"> </span>installed
 /usr/bin/ssh-copy-id:<span class="w"> </span>INFO:<span class="w"> </span><span class="m">1</span><span class="w"> </span>key<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>remain<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>installed<span class="w"> </span>--<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>prompted<span class="w"> </span>now<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>keys
-<span class="o">(</span>user@BACK-END-HOSTNAME.nsh.loc<span class="o">)</span><span class="w"> </span>Password:
 </code></pre></div>
 </li>
 <li>
-<p>When prompted, enter your project username and password. The key will then be added to the back-end:</p>
+<p>When prompted, enter your project username and password. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>user@shs-sdf01.nsh.log<span class="o">)</span><span class="w"> </span>Password:
+</code></pre></div>
+</li>
+<li>
+<p>The key will then be added to the back-end. For example:</p>
 <div class="highlight"><pre><span></span><code>Number<span class="w"> </span>of<span class="w"> </span>key<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>added:<span class="w"> </span><span class="m">1</span>
 
-Now<span class="w"> </span>try<span class="w"> </span>logging<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>machine,<span class="w"> </span>with:<span class="w">   </span><span class="s2">&quot;ssh &#39;BACK-END-HOSTNAME.nsh.loc&#39;&quot;</span>
+Now<span class="w"> </span>try<span class="w"> </span>logging<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>machine,<span class="w"> </span>with:<span class="w">   </span><span class="s2">&quot;ssh &#39;shs-sdf01.nsh.loc&#39;&quot;</span>
 
 and<span class="w"> </span>check<span class="w"> </span>to<span class="w"> </span>make<span class="w"> </span>sure<span class="w"> </span>that<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>key<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>you<span class="w"> </span>wanted<span class="w"> </span>were<span class="w"> </span>added.
 </code></pre></div>
 </li>
 <li>
-<p>Check passphrase-less access to back-end:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>BACK-END-HOSTNAME.nsh.loc<span class="w"> </span>hostname
+<p>Check passphrase-less access to back-end.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>BACK-END-HOST<span class="w"> </span>hostname
 </code></pre></div>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code>BACK-END-HOSTNAME.nsh.loc<span class="w"> </span>hostname
+<p>You should not be prompted for a passphrase or password and the host name should be displayed. For example:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>shs-sdf01.nsh.loc<span class="w"> </span>hostname
+shs-sdf01.nsh.loc
 </code></pre></div>
-</li>
-<li>
-<p>You should not be prompted for a passphrase or password.</p>
 </li>
 </ol>
 <hr />
