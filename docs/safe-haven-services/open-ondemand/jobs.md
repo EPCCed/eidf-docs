@@ -161,7 +161,7 @@ To enable Open OnDemand to automatically copy job files from within your `ondema
 Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-1. A new browser tab with an SSH session to the back-end will appear.
+1. A new browser tab with an SSH session to the Open OnDemand host will appear.
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
@@ -172,41 +172,51 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. Copy public key to back-end:
 
     ```bash
-    ssh-copy-id BACK-END-HOSTNAME.nsh.loc
-    ```
-
-    Information on the copy will be output:
-
-    ```bash
-    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
-    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-    (user@BACK-END-HOSTNAME.nsh.loc) Password:
-    ```
-
-1. When prompted, enter your project username and password. The key will then be added to the back-end:
-
-    ```bash
-    Number of key(s) added: 1
-
-    Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
-
-    and check to make sure that only the key(s) you wanted were added.
-    ```
-
-1. Check passphrase-less access to back-end:
-
-    ```bash
-    ssh BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id BACK-END-HOST
     ```
 
     For example:
 
     ```bash
-    BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id shs-sdf01.nsh.loc
     ```
 
-1. You should not be prompted for a passphrase or password.
+    Information on the copy will be output. For example:
+
+    ```bash
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    ```
+
+1. When prompted, enter your project username and password. For example:
+
+    ```bash
+    (user@shs-sdf01.nsh.log) Password:
+    ```
+
+1. The key will then be added to the back-end. For example:
+
+    ```bash
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'shs-sdf01.nsh.loc'"
+
+    and check to make sure that only the key(s) you wanted were added.
+    ```
+
+1. Check passphrase-less access to back-end.
+
+    ```bash
+    ssh BACK-END-HOST hostname
+    ```
+
+    You should not be prompted for a passphrase or password and the host name should be displayed. For example:
+
+    ```bash
+    $ ssh shs-sdf01.nsh.loc hostname
+    shs-sdf01.nsh.loc
+    ```
 
 ---
 
