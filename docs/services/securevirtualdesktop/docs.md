@@ -178,6 +178,10 @@ even if you didn't select a package when first creating the machine.
 
 It is the responsibility of project PIs to keep the VMs in their projects up to date as stated in the [policy](policies.md#patching-of-user-vms).
 
+!!! important "Snap packages"
+
+    Snap packages are not supported by default on the Secure Virtual Desktop VMs. Snap requires data egress to install software packages. Allowing this could potentially be used to bypass the security of the Secure Virtual Desktop. If you require snap packages then the VM Admin can enable usage by following the instructions in the [FAQs](./faq.md#unable-to-download-packages-from-snap-on-the-secure-virtual-desktop-vms).
+
 Since updates and patches require access to the internet, users should ensure that their Secure Virtual Desktop VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for Secure Virtual Desktop VMs](router-docs.md#updating-the-allowed-access-for-secure-virtual-desktop-vms).
 
 #### Ubuntu
