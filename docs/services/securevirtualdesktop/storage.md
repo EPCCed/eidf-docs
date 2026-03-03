@@ -16,7 +16,9 @@ This directory can be used as a controlled staging area for data that is being t
 
 The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
 
-To use S3 storage with Secure Virtual Desktop VMs, users must first create an S3 repo in the EIDF Portal, and then a bucket within this repo that will be accessible from the Secure Virtual Desktop VMs.
+To use S3 storage with Secure Virtual Desktop VMs, an S3 repository must exist or be created in the EIDF Portal. Project leads can request an object store allocation through a request to the EIDF helpdesk.
+
+Once the S3 repository is created, a bucket must be created within this repository that will be accessible from the Secure Virtual Desktop VMs.
 This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Secure Virtual Desktop project's router, `<project_code>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries where the allowed buckets name should be added using the regex pattern as shown in the form below.
 
 ```txt
