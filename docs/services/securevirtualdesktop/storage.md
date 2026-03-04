@@ -14,28 +14,32 @@ This directory can be used as a controlled staging area for data that is being t
 
 ## S3 Storage
 
-The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
+The Secure Virtual Desktop service allows users to transfer data using EIDF S3 buckets, by default all EIDF S3 buckets except for one with the project name are disabled. VM Admins can add buckets to the allowlist to enable data ingress and egress from the machine using them.
 
+For each S3 bucket you want to use, you must decide whether it should be read-only or read-write from the VM. This is controlled by adding the bucket to the appropriate allowlist domains:
+
+- To only allow pulling data into the VM from a bucket, add the bucket to the `/etc/squid/allowlist_domains.txt` file on the Secure Virtual Desktop project's router (`<project_code>-router`), as with access for any read only site. Buckets on this allowlist can be accessed with read permissions only.
+- To allow both pulling data into the VM and pushing data from the VM to a bucket, add the bucket to the `/etc/squid/allowlist_buckets.txt` file on the Secure Virtual Desktop project's router (`<project_code>-router`). Buckets on this allowlist can be accessed with both read and write permissions.
 To use S3 storage with Secure Virtual Desktop VMs, an S3 repository must exist or be created in the EIDF Portal. Project leads can request an object store allocation through a request to the EIDF helpdesk.
 
 Once the S3 repository is created, a bucket must be created within this repository that will be accessible from the Secure Virtual Desktop VMs.
 This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Secure Virtual Desktop project's router, `<project_code>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries where the allowed buckets name should be added using the regex pattern as shown in the form below.
 
-```txt
-^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
-```
+    ```txt
+    ^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
+    ```
 
 For the example of a bucket named `eidf-xxx-bucket` we would add the bucket id to the end of the url pattern like so:
 
-```txt
-^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
-```
+    ```txt
+    ^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
+    ```
 
 After editing the allowlist Squid must be reconfigured using the command:
 
-```bash
-sudo squid -k reconfigure
-```
+    ```bash
+    sudo squid -k reconfigure
+    ```
 
 ## Data Transfer Using SCP (With and Without SSH Config)
 
@@ -56,9 +60,9 @@ Because all traffic to EIDF services must first go through the gateway, the belo
 
 Users should first set up an SSH config file with configuration for the router and VM, as described in the documentation section [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) and [SSH Access to Secure Virtual Desktop VMs via the Router](./router-docs.md#ssh-access-to-secure-virtual-desktop-vms-via-the-router). After this is configured, they can use a simplified `scp` command. In this case, the `scp` command is:
 
-```bash
-scp <local-file-path> eidfxxx-VM:/data/datamanager/
-```
+    ```bash
+    scp <local-file-path> eidfxxx-VM:/data/datamanager/
+    ```
 
 Where:
 
@@ -70,9 +74,9 @@ Where:
 
 To transfer data **to** the Secure Virtual Desktop VMs from a local machine using `scp`, the following command format should be used:
 
-```bash
-scp -i <path-to-private-key> -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project-router-ip> <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/datamanager/
-```
+    ```bash
+    scp -i <path-to-private-key> -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project-router-ip> <local-file-path> <username>@<secure-virtual-desktop-vm-ip>:/data/datamanager/
+    ```
 
 Where:
 
