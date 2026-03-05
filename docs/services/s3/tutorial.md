@@ -40,6 +40,9 @@ export AWS_SECRET_ACCESS_KEY=<secret>
 export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
 ```
 
+!!! Important
+    Secure Virtual Desktop users should see the [Secure Virtual Desktop FAQs](../securevirtualdesktop/faq.md#aws-cli) for additional steps on how to set up AWS CLI in the Secure Virtual Desktop environment.
+
 ### Commands
 
 List the buckets in your account:
