@@ -2,11 +2,11 @@
 
 The following sections will guide the user in the process of creating different types of containers.
 
-For a complete list of examples, please see our TRE Container Samples repository, at [EPCCed/tre-container-samples](https://github.com/EPCCed/tre-container-samples).
+For a complete list of examples, please see our SHS Container Samples repository, at [EPCCed/shs-container-samples](https://github.com/EPCCed/tre-container-samples).
 
 ## Example 1 - PyTorch
 
-This section will explain how to create a container that runs a script using PyTorch inside the TRE. The expected directory structure is:
+This section will explain how to create a container that runs a script using PyTorch inside the SHS. The expected directory structure is:
 
 ```console
   ├── Dockerfile
@@ -29,12 +29,12 @@ In our Dockerfile, we want to start by using an officially supported image that 
 
 In our case, we want a ready-made python 3 image to start with, which we can find in [DockerHub](https://hub.docker.com/search?q=python). The latest stable version at the time of writing is [3.13.3](https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1), so we will use this and include the digest in our Dockerfile.
 
-Next, we need to set up the TRE directories, copy our files into the container, install the necessary packages and finally execute the script. This process can be accomplished with the following Dockerfile:
+Next, we need to set up the SHS directories, copy our files into the container, install the necessary packages and finally execute the script. This process can be accomplished with the following Dockerfile:
 
 ``` Dockerfile
 FROM python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
 
-# Create TRE directories
+# Create SHS directories
 RUN mkdir /safe_data /safe_outputs /scratch
 
 WORKDIR /usr/app
@@ -103,11 +103,11 @@ Note: The namespace and token arguments to `ces-pull` are mandatory.
 
 Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
-### E1 - Step 4. Pull and run in the TRE
+### E1 - Step 4. Pull and run in the SHS
 
-The container can be pulled and run inside the TRE using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
+The container can be pulled and run inside the SHS using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
 
-Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 2 - Python ML
 
@@ -182,13 +182,13 @@ COPY cache_easyocr.py .
 RUN python ./cache_easyocr.py
 ```
 
-As there is no internet in the TRE, we need to make sure that HuggingFace does not attempt hub access:
+As there is no internet in the SHS, we need to make sure that HuggingFace does not attempt hub access:
 
 ```dockerfile
 ENV HF_HUB_OFFLINE=1
 ```
 
-We can then create the TRE directories, copy the files inside the container and execute the script:
+We can then create the SHS directories, copy the files inside the container and execute the script:
 
 ```dockerfile
 RUN mkdir /safe_data /safe_outputs /scratch /src
@@ -211,7 +211,7 @@ RUN python ./cache_easyocr.py
 # Set environment variable to prevent HuggingFace hub access
 ENV HF_HUB_OFFLINE=1
 
-# Create TRE directories
+# Create SHS directories
 RUN mkdir /safe_data /safe_outputs /scratch /src
 # Copy files inside the container
 COPY test_easyocr.py doc1.png /src/
@@ -284,15 +284,15 @@ Note: The namespace and token arguments to `ces-pull` are mandatory.
 
 Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
-### E2 - Step 4. Pull and run in the TRE
+### E2 - Step 4. Pull and run in the SHS
 
-We can import and run the container in the TRE using the commands from the [earlier step](#e2-step-3-test-in-ces-test-environment).
+We can import and run the container in the SHS using the commands from the [earlier step](#e2-step-3-test-in-ces-test-environment).
 
-Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 3 - Interactive RStudio Rocker container
 
-This section guides users through the process of creating a Rocker RStudio container that can be imported into the TRE and used for data analysis. In the example, a script is copied into the container, and the necessary packages are installed to ensure it runs correctly. Finally, RStudio is accessed from the host, allowing users to interact with the application as if it were running natively.
+This section guides users through the process of creating a Rocker RStudio container that can be imported into the SHS and used for data analysis. In the example, a script is copied into the container, and the necessary packages are installed to ensure it runs correctly. Finally, RStudio is accessed from the host, allowing users to interact with the application as if it were running natively.
 
 We will assume that this is the directory structure of our files:
 
@@ -347,13 +347,13 @@ Clicking on "tags", we can then select "latest" and see the full signature of th
 FROM docker.io/rocker/rstudio:latest@sha256:ee7c4efa46f0b5d46e051393ef05f262aceb959463b15fc3648955965290d231
 ```
 
-The next step is to include the TRE directories:
+The next step is to include the SHS directories:
 
 ```dockerfile
 RUN mkdir /safe_data /safe_outputs /scratch
 ```
 
-We then want to copy our script inside the container. As we do not mean to preserve the script, only its output, we will copy it in a new `/src` directory. Note that we cannot save the files to `/scratch` as they would otherwise be overwritten during the mounting process to the TRE directories. To avoid repeating the `RUN` command, we will simply add our new directory to it:
+We then want to copy our script inside the container. As we do not mean to preserve the script, only its output, we will copy it in a new `/src` directory. Note that we cannot save the files to `/scratch` as they would otherwise be overwritten during the mounting process to the SHS directories. To avoid repeating the `RUN` command, we will simply add our new directory to it:
 
 ```dockerfile
 RUN mkdir /safe_data /safe_outputs /scratch /src
@@ -421,7 +421,7 @@ and run it locally:
 docker run --rm -e "PASSWORD=test" -p 8787:8787 ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-We can then access RStudio by navigating to 'localhost:8787' in a browser. At the login page, type 'root' and 'test' for username and password respectively. Note that you will only be 'root' within the context of the container and not outside of it. The same applies in the test environment and TRE.
+We can then access RStudio by navigating to 'localhost:8787' in a browser. At the login page, type 'root' and 'test' for username and password respectively. Note that you will only be 'root' within the context of the container and not outside of it. The same applies in the test environment and SHS.
 
 Once we made sure the container runs, we can push our image to GHCR using our namespace and token:
 
@@ -436,7 +436,7 @@ docker logout
 
 Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
 
-Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the TRE - and our test environment - using podman. To pull the container using podman as our container engine, we use the command:
+Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the SHS - and our test environment - using podman. To pull the container using podman as our container engine, we use the command:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
@@ -502,11 +502,11 @@ After executing the `run.sh` script, we can open a browser tab and access RStudi
 The container is running successfully if:
 
 - The log-in is successful.
-- The rstudio user has full access to TRE directories `/safe_data`, `/safe_outputs` and `/scratch`.
+- The rstudio user has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
 - The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user.
 
-### E3 - Step 4. Pull and run in the TRE
+### E3 - Step 4. Pull and run in the SHS
 
-The container can then be imported inside the TRE using the same commands as [Step 3](#e3-step-3-test-in-ces-test-environment).
+The container can then be imported inside the SHS using the same commands as [Step 3](#e3-step-3-test-in-ces-test-environment).
 
-Note: When pulling containers into the TRE, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.

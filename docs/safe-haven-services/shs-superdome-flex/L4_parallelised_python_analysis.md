@@ -167,7 +167,7 @@ print(time)
 
 Your task is to parallelise this code using Dask Array functionality.
 Using the base python code above, extend it with Dask Array for the main arrays in the computation. Remember you need to specify a chunk size with Dask Arrays, and you will also need to call compute at some point to force Dask to actually undertake the computation. Note, depending on where you run this you may not see any actual speed up of the computation. You need access to extra resources (compute cores) for the calculation to go faster.
-If in doubt, submit a python script of your solution to the SDF compute nodes to see if you see speed up there.
+If in doubt, submit a python script of your solution to the SDFlex compute nodes to see if you see speed up there.
 If you are struggling with this parallelisation exercise, there is a solution available for you [here](https://github.com/EPCCed/archer2-data-science/blob/master/exercises/dask/dask-mandel.py).
 
 ## Pi Exercise
@@ -208,7 +208,7 @@ print("Obtained value of Pi: " + str(p))
 print("Time taken: " + str(stop - start) + " seconds")
 ```
 
-For this exercise, your task is to implemented the above code on the SDF, and then parallelise using Dask. There are a number of different ways you could parallelise this using Dask, but we suggest using the Futures map functionality to run the pi_chunk function on a range of different inputs. Futures map has the following definition:
+For this exercise, your task is to implemented the above code on the SDFlex, and then parallelise using Dask. There are a number of different ways you could parallelise this using Dask, but we suggest using the Futures map functionality to run the pi_chunk function on a range of different inputs. Futures map has the following definition:
 
 ```python
 Client.map(func, *iterables[, key, workers, ...])

@@ -4,9 +4,9 @@
 
 ## Introduction
 
-Open OnDemand provides a suite of apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
+Open OnDemand provides apps that allows you to run compute and data-related tasks and packages on compute resources available to your safe haven.
 
-Certain users of certain safe havens may also have access to TRE-level compute resources, for example, the Superdome Flex high-performance computing cluster.
+Depending on your safe haven, you may also have access to compute resources outwith your safe haven, for example, the Superdome Flex high-performance computing cluster.
 
 This page describes concepts you need to know about how Open OnDemand runs tasks and apps.
 
@@ -22,7 +22,7 @@ An Open OnDemand component that allows you to run jobs, or other useful function
 
 Many apps allow you to run jobs on back-ends. However, other apps perform other useful functions, for example, the [Active Jobs](apps/active-jobs.md) app which allows you to see which of your jobs have been submitted, are running, or have completed.
 
-A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
+A subset of apps that run jobs on back-ends are called **interactive apps**. In standard deployments of Open OnDemand interactive apps refer only to apps that run web- or GUI-based services or software. However, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps'.
 
 !!! Note
 
@@ -85,13 +85,13 @@ When a job is submitted, a runtime is also requested. If a job takes longer than
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 For interactive apps, Open OnDemand uses the job scheduler to determine when the job has started. Apps that run interactive services (e.g., JupyterLab or RStudio Server) will then wait for the service to become available. If this does not occur within an app-specific period, the **connection timeout**, then the app's job will cancel itself.
 
 !!! Note
 
-    As mentioned above, within the TRE Open OnDemand service, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
+    As mentioned above, within the Safe Haven Services deployment of Open OnDemand, certain apps that run tasks that have no interactive aspect are also classed as 'interactive apps', so you may see the connection timeout for these apps too.
 
 ---
 
@@ -161,7 +161,7 @@ To enable Open OnDemand to automatically copy job files from within your `ondema
 Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-1. A new browser tab with an SSH session to the back-end will appear.
+1. A new browser tab with an SSH session to the Open OnDemand host will appear.
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
@@ -172,41 +172,51 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. Copy public key to back-end:
 
     ```bash
-    ssh-copy-id BACK-END-HOSTNAME.nsh.loc
-    ```
-
-    Information on the copy will be output:
-
-    ```bash
-    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
-    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-    (user@BACK-END-HOSTNAME.nsh.loc) Password:
-    ```
-
-1. When prompted, enter your project username and password. The key will then be added to the back-end:
-
-    ```bash
-    Number of key(s) added: 1
-
-    Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
-
-    and check to make sure that only the key(s) you wanted were added.
-    ```
-
-1. Check passphrase-less access to back-end:
-
-    ```bash
-    ssh BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id BACK-END-HOST
     ```
 
     For example:
 
     ```bash
-    BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id shs-sdf01.nsh.loc
     ```
 
-1. You should not be prompted for a passphrase or password.
+    Information on the copy will be output. For example:
+
+    ```bash
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    ```
+
+1. When prompted, enter your project username and password. For example:
+
+    ```bash
+    (user@shs-sdf01.nsh.loc) Password:
+    ```
+
+1. The key will then be added to the back-end. For example:
+
+    ```bash
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'shs-sdf01.nsh.loc'"
+
+    and check to make sure that only the key(s) you wanted were added.
+    ```
+
+1. Check passphrase-less access to back-end.
+
+    ```bash
+    ssh BACK-END-HOST hostname
+    ```
+
+    You should not be prompted for a passphrase or password and the host name should be displayed. For example:
+
+    ```bash
+    $ ssh shs-sdf01.nsh.loc hostname
+    shs-sdf01.nsh.loc
+    ```
 
 ---
 
@@ -277,7 +287,7 @@ When an interactive app's job is submitted, a **job card** is created and shown 
 
 ![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
-![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab Container app*
 
 !!! Note
 

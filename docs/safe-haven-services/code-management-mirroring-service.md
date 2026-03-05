@@ -1,14 +1,14 @@
-# \[Beta] TRE Code Management and Mirroring Service
+# \[Beta] SHS Code Management and Mirroring Service
 
 !!! warning "Beta Service"
     This service is in early development, and the content of this page may change significantly. Please provide all feedback to your IG team.
 
-The Code Management and Mirroring Service provides Researchers and IG teams with access to a platform similar to GitHub for managing code inside the TRE. If permitted by the IG team, this also supports egress of internal code to external repositories via review & approval by RCs.
+The Code Management and Mirroring Service provides Researchers and IG teams with access to a platform similar to GitHub for managing code inside the SHS. If permitted by the IG team, this also supports egress of internal code to external repositories via review & approval by RCs.
 
-A separate instance of the service is available to each TRE tenancy, and each instance is accessible only within the tenancy it is deployed to.
+A separate instance of the service is available to each SHS tenancy, and each instance is accessible only within the tenancy it is deployed to.
 
 !!! note "Availabilty"
-    This service is an add-on to the base tenancy offering, and so may not be available to all TRE users. Please enquire with your IG team to determine if it is available to you.
+    This service is an add-on to the base tenancy offering, and so may not be available to all SHS users. Please enquire with your IG team to determine if it is available to you.
 
 ## Overview
 
@@ -17,7 +17,7 @@ The service is based on the [Gitea](https://about.gitea.com/) collaborative vers
 Available features include:
 
 - Software version control
-- Pull and push while inside the TRE
+- Pull and push while inside the SHS
 - Bug and issue tracking
 - Pull Requests
 - Code review
@@ -38,10 +38,10 @@ Access must be requested from your Research Coordinator (RC). On being granted a
 
 Gitea can be accessed from your VM desktop by opening a Web Browser and navigating to the provided URL. After logging in for the first time, you will be prompted to change your password.
 
-Once logged-in, you will be presented with a dashboard showing recent activity in your organization. In Gitea, an "organization" is analagous to a project group, and you will be automatically granted access to the organization matching your TRE project identifier.
+Once logged-in, you will be presented with a dashboard showing recent activity in your organization. In Gitea, an "organization" is analagous to a project group, and you will be automatically granted access to the organization matching your SHS project identifier.
 
 !!! danger
-    If you are part of multiple projects in the TRE, you will have multiple VM accounts and potentially multiple Gitea accounts. If this is the case, you must ensure that you only access the corresponding Gitea account for the project you are currently working in. Failing to follow this may be considered a breach by the IG team.
+    If you are part of multiple projects in the SHS, you will have multiple VM accounts and potentially multiple Gitea accounts. If this is the case, you must ensure that you only access the corresponding Gitea account for the project you are currently working in. Failing to follow this may be considered a breach by the IG team.
 
 ## Request a Repository
 
@@ -50,7 +50,7 @@ Each Gitea organization may contain one or more code repositories. You will be a
 To request the creation of a new repository, contact your RC and let them know the desired name. Once it has been created, your repository will be visible from your Gitea dashboard or under the "Explore" tab.
 
 !!! note "Repository Permissions"
-    All members of an organization (TRE project) have full read/write access to each of its repositories, regardless of who requested its creation. This is the intended behaviour and will not be changed e.g., to restrict repository access to a subset of a TRE project's members. This is equivalent to the files in each `/safe_data/<project_id>` directory being accessible to all project members.
+    All members of an organization (SHS project) have full read/write access to each of its repositories, regardless of who requested its creation. This is the intended behaviour and will not be changed e.g., to restrict repository access to a subset of a SHS project's members. This is equivalent to the files in each `/safe_data/<project_id>` directory being accessible to all project members.
 
 Multiple repositories may be created under each organization.
 
@@ -82,10 +82,10 @@ When running further git commands, you will be prompted for your Gitea username 
 
 If permitted by the IG team, a repository may be setup so that changes merged into a special branch are automatically mirrored to another repository. This branch can only be merged into by RCs. This is called "egress mirroring".
 
-To add egress mirroring to an existing TRE repository, an target repository must first be created as the target for the mirror. The target repository must be empty, as any existing content will be overwritten by the mirroring process.
+To add egress mirroring to an existing SHS repository, an target repository must first be created as the target for the mirror. The target repository must be empty, as any existing content will be overwritten by the mirroring process.
 
 !!! note "Internal Mirroring"
-    The target of the egress mirror may be another repo in the same Gitea instance. This may, for example, allow one project to share code with another project without code leaving the TRE. In this situation, the RC review is still in place so as to ensure all code movement between projects is checked.
+    The target of the egress mirror may be another repo in the same Gitea instance. This may, for example, allow one project to share code with another project without code leaving the SHS. In this situation, the RC review is still in place so as to ensure all code movement between projects is checked.
 
     **In this case, you must request the creation of the target repository from your RC instead of following the steps below.**
 
@@ -94,16 +94,16 @@ Once the target repository has been created, you must generate an access token a
 1. On the repository page, navigate to "Settings" -> "Access Tokens"
 1. Click "Add new token"
 1. On the next page
-    1. Enter a name e.g., "tre-mirror"
+    1. Enter a name e.g., "shs-mirror"
     1. Clear the expiration date
     1. Set the token's role to "maintainer"
     1. Check "write_repository"
     1. Click "Create project access token"
 1. Copy the generated token, and ensure you save it as it will not be displayed again
 
-Next, contact your RC to ask for egress mirroring, providing the TRE repository name, the URL to the target repository, and the access token.
+Next, contact your RC to ask for egress mirroring, providing the SHS repository name, the URL to the target repository, and the access token.
 
-Once this is complete, there a branch named `egress-mirror` will be present in the TRE repository.
+Once this is complete, there a branch named `egress-mirror` will be present in the SHS repository.
 
 ## Request Code Egress (Pull Requests)
 
@@ -159,7 +159,7 @@ gitGraph title Git Branch Workflow for Egress Mirroring
 
 ## Request an Ingress Mirror
 
-To request the creation of a repository which automatically mirrors an external repository into the TRE, contact your RC and let them know:
+To request the creation of a repository which automatically mirrors an external repository into the SHS, contact your RC and let them know:
 
 - The URL of the external repository
 - An access token which has read access to the repository

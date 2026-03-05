@@ -4,7 +4,7 @@ This lesson is adapted from a workshop introducing users to [running R scripts o
 
 ## Introduction
 
-In this exercise we are going to try different methods of parallelising R on the SDF. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes.
+In this exercise we are going to try different methods of parallelising R on the SDFlex. This will include single node parallelisation functionality (e.g. using threads or processes to use cores within a single node), and distributed memory functionality that enables the parallelisation of R programs across multiple nodes.
 
 ## Example parallelised R code
 
@@ -14,7 +14,7 @@ You may need to activate an R conda environment.
 conda activate r-v4.2
 ```
 
-Try running the following R script using R on the SDF login node:
+Try running the following R script using R on the SDFlex login node:
 
 ```r
 n <- 8*2048
@@ -23,7 +23,7 @@ B <- matrix( rnorm(n*n), ncol=n, nrow=n )
 C <- A %*% B
 ```
 
-You can run this as follows on the SDF (assuming you have saved the above code into a file named matrix.R):
+You can run this as follows on the SDFlex (assuming you have saved the above code into a file named matrix.R):
 
 ```r
 Rscript ./matrix.R
@@ -56,7 +56,7 @@ You may also notice that not all the R script is parallelised. Only the actual m
 
 ## Parallelisation with data.tables
 
-We can also experiment with the implicit parallelism in other libraries, such as data.table. You will first need to install this library on the SDF. To do this you can simply run the following command:
+We can also experiment with the implicit parallelism in other libraries, such as data.table. You will first need to install this library on the SDFlex. To do this you can simply run the following command:
 
 ```r
 install.packages(data.table)
@@ -117,7 +117,7 @@ res <- mclapply(1:3, function(i) {
 })
 ```
 
-Try experimenting with the above functions on large numbers of iterations, both with lapply and mclapply. Can you achieve better performance using the MC_CORES environment variable to specify how many parallel processes R uses to complete these calculations? The default on the SDF is 2 cores, but you can increase this in the same way we did for OMP_NUM_THREADS, e.g.:
+Try experimenting with the above functions on large numbers of iterations, both with lapply and mclapply. Can you achieve better performance using the MC_CORES environment variable to specify how many parallel processes R uses to complete these calculations? The default on the SDFlex is 2 cores, but you can increase this in the same way we did for OMP_NUM_THREADS, e.g.:
 
 ```bash
 export MC_CORES=16
@@ -221,7 +221,7 @@ cl <- makeCluster(4)
 res <- try(parSapply(cl=cl, 1:40, mySum))
 ```
 
-The program above will fail because `variableA` and `variableB` are not present on the cluster workers. Try the above on the SDF and see what result you get.
+The program above will fail because `variableA` and `variableB` are not present on the cluster workers. Try the above on the SDFlex and see what result you get.
 
 To fix this issue you can modify the program using `clusterExport` to send `variableA` and `variableB` to the workers, prior to running the `parSapply` e.g.:
 

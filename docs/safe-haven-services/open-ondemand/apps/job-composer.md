@@ -66,7 +66,7 @@ Click **Submit job** (green play icon) to submit your job.
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 ---
 
@@ -212,7 +212,7 @@ If you selected a back-end where your home directory is not common to both the O
 
 ## Run a container example
 
-This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the 'hello TRE' container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the TRE Container Execution Tools' commands `ces-pull`, to pull the container, and `ces-run` to run the container.
+This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the Safe Haven Services Container Execution Tools' commands `ces-pull`, to pull the container, and `ces-run` to run the container.
 
 Create a job to run the container using Podman:
 
@@ -226,24 +226,24 @@ Create a job to run the container using Podman:
 
     ```bash
     #!/bin/bash
-    #SBATCH --job-name=hello-tre
+    #SBATCH --job-name=hello-there
     #SBATCH --output=output.txt
     #SBATCH --ntasks=1
     #SBATCH --time=10:00
     #SBATCH --mem-per-cpu=100
 
-    CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello-tre:1.1
+    CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
     CR_USER=anonymous
     CR_TOKEN=...see below...
     ces-pull podman $CR_USER $CR_TOKEN $CR_URL
 
-    export CES_SCRATCH=$HOME/scratch/hello-tre
-    export CES_SAFE_OUTPUTS=$HOME/safe_outputs/hello-tre
+    export CES_SCRATCH=$HOME/scratch/hello-there
+    export CES_SAFE_OUTPUTS=$HOME/safe_outputs/hello-there
     mkdir -p $CES_SCRATCH
     mkdir -p $CES_SAFE_OUTPUTS
 
     cat << EOF > env_file.txt
-    HELLO_TRE=Greetings
+    GREETING=Greetings
     EOF
 
     cat << EOF > arg_file.txt
@@ -251,13 +251,13 @@ Create a job to run the container using Podman:
     -n $USER
     EOF
 
-    ces-run podman -n hello-tre --env-file env_file.txt --arg-file arg_file.txt $CR_URL
+    ces-run podman -n epcc-ces-hello --env-file env_file.txt --arg-file arg_file.txt $CR_URL
     ```
 
-    * For `CR_TOKEN`, copy in the 'hello TRE' container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
+    * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
     * By default, `ces-run` creates directories with random names - `scratch-NNNN` and `outputs-NNNN` - and mounts these into a container at `/scratch` and `/safe_outputs`. However, `ces-run` supports `CES_SCRATCH` and `CES_SAFE_OUTPUTS` environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of `$HOME` and define `CES_SCRATCH` and `CES_SAFE_OUTPUTS` to tell `ces-run` to mount these directories.
-    * The script creates a file, `env_file.txt`, with an environment variable to be passed to the 'hello TRE' container. The container uses the environment variable `HELLO_TRE` to customise the greeting it prints.
-    * The script also creates a file, `arg_file.txt`, with container-specific arguments to be passed directly to the container when it is run. The 'hello TRE' container will pause for `-d` seconds, then issue a greeting to the name cited in `-n` (here, the current user).
+    * The script creates a file, `env_file.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
+    * The script also creates a file, `arg_file.txt`, with container-specific arguments to be passed directly to the container when it is run. The `epcc-ces-hello` container will pause for `-d` seconds, then issue a greeting to the name cited in `-n` (here, the current user).
 
 1. Click **Save**.
 
@@ -277,7 +277,7 @@ If you selected a back-end where your home directory is common to both the Open 
 
     ```text
     ...
-    Hello TRE!
+    Hello!
     ...
     Greetings USER!
 
@@ -294,8 +294,6 @@ If you selected a back-end where your home directory is common to both the Open 
     10
     ...and awake!
 
-    For more container examples and ideas, visit:
-      https://github.com/EPCCed/tre-container-samples
     Goodbye USER!
     ```
 
@@ -325,7 +323,7 @@ If you selected a back-end where your home directory is not common to both the O
 
     ```text
     ...
-    Hello TRE!
+    Hello!
     ...
     Greetings USER!
 
@@ -342,8 +340,6 @@ If you selected a back-end where your home directory is not common to both the O
     10
     ...and awake!
 
-    For more container examples and ideas, visit:
-      https://github.com/EPCCed/tre-container-samples
     Goodbye USER!
     ```
 
@@ -359,7 +355,7 @@ Create a new job from the current job to run the container using Apptainer:
         ```bash
         cd $HOME
         ces-pull apptainer $CR_USER $CR_TOKEN $CR_URL
-        SIF_FILE=$HOME/epcc-ces-hello-tre:1.1.sif
+        SIF_FILE=$HOME/epcc-ces-hello:1.0.sif
         cd $SLURM_SUBMIT_DIR
         ```
 
@@ -368,7 +364,7 @@ Create a new job from the current job to run the container using Apptainer:
     1. Replace the `ces-run podman` line with:
 
         ```bash
-        ces-run apptainer -n hello-tre --env-file env_file.txt --arg-file arg_file.txt $SIF_FILE
+        ces-run apptainer -n epcc-ces-hello --env-file env_file.txt --arg-file arg_file.txt $SIF_FILE
         ```
 
 Submit job:
