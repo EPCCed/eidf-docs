@@ -41,7 +41,7 @@ export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
 ```
 
 !!! Important
-    Secure Virtual Desktop users should see the [Secure Virtual Desktop FAQs](../securevirtualdesktop/faq.md#aws-cli) for additional steps on how to set up AWS CLI in the Secure Virtual Desktop environment.
+    Confidential Data Workspace users should see the [Confidential Data Workspace FAQs](../confidentialdataworkspace/faq.md#aws-cli) for additional steps on how to set up AWS CLI in the Confidential Data Workspace environment.
 
 ### Commands
 

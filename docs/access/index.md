@@ -18,15 +18,15 @@ how to apply for a new project
 [VDI access to virtual machines](./virtualmachines-vdi.md): how to connect to the virtual
 desktop interface.
 
-[VDI access to Secure Virtual Desktop VMs](../services/securevirtualdesktop/quickstart.md): how to connect to the Secure Virtual Desktop service.
+[VDI access to Confidential Data Workspace VMs](../services/confidentialdataworkspace/quickstart.md): how to connect to the Confidential Data Workspace service.
 
 ## SSH Access to Virtual Machines
 
 Users with the appropriate permissions can also [use `ssh` to login to Virtual Desktop VMs](./ssh.md)
 
-## SSH Access to Secure Virtual Desktop Service
+## SSH Access to Confidential Data Workspace Service
 
-Remote SSH access to Secure Virtual Desktop VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Secure Virtual Desktop Quickstart](../services/securevirtualdesktop/quickstart.md) guide.
+Remote SSH access to Confidential Data Workspace VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Confidential Data Workspace Quickstart](../services/confidentialdataworkspace/quickstart.md) guide.
 
 ## SSH Access to Computing Services
 

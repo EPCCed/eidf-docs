@@ -1,6 +1,6 @@
 # Quickstart
 
-Projects using the Secure Virtual Desktop cloud service are accessed via the
+Projects using the Confidential Data Workspace cloud service are accessed via the
 [EIDF Portal](https://portal.eidf.ac.uk/). This documentation closely follows that of the
 [Virtual Desktop Service Quickstart](../virtualmachines/quickstart.md).
 
@@ -59,12 +59,12 @@ There may be a short delay while the change is implemented before the new passwo
 
 ## Further Information
 
-[Managing VMs](./docs.md): Project management guide to creating, configuring and removing Secure Virtual Desktops and managing user accounts in the portal.
+[Managing VMs](./docs.md): Project management guide to creating, configuring and removing Confidential Data Workspaces and managing user accounts in the portal.
 
-[Frequently Asked Questions](./faq.md): Common questions and solutions for working with the Secure Virtual Desktop service.
+[Frequently Asked Questions](./faq.md): Common questions and solutions for working with the Confidential Data Workspace service.
 
-[policies](./policies.md): Policies governing the use of the Secure Virtual Desktop service.
+[policies](./policies.md): Policies governing the use of the Confidential Data Workspace service.
 
 [Virtual Desktop Interface](../../access/virtualmachines-vdi.md): Working with the VDI interface.
 
-[Storage and data transfer options for the Secure Virtual Desktop](./storage.md)
+[Storage and data transfer options for the Confidential Data Workspace](./storage.md)

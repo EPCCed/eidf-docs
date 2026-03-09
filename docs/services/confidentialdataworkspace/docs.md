@@ -5,7 +5,7 @@
 ### User Roles and Their Permissions
 
 !!! info
-    All names are separate from those in SAFE and are for the purpose of the EIDF Secure Virtual Desktop service only
+    All names are separate from those in SAFE and are for the purpose of the EIDF Confidential Data Workspace service only
 
 **Data Users** - _Typical users - have access to read only on some data directories_
 
@@ -15,8 +15,8 @@
 
 #### Detailed Roles, Groups and Their File Permissions
 
-A description of the roles defined within the EIDF Secure Virtual Desktop service and some access they have is given in the below table.
-For those familiar with Trusted Research Environments (TREs) the following table includes a mapping of roles in the EIDF Secure Virtual Desktop service which are conceptually similar to the roles in a TRE.
+A description of the roles defined within the EIDF Confidential Data Workspace service and some access they have is given in the below table.
+For those familiar with Trusted Research Environments (TREs) the following table includes a mapping of roles in the EIDF Confidential Data Workspace service which are conceptually similar to the roles in a TRE.
 
 | Role         | TRE Equivalent User  | Router Access | Should be given sudo permissions on VMs & router |
 | ------------ | -------------------- | ------------- | ------------------------------------------------ |
@@ -24,29 +24,29 @@ For those familiar with Trusted Research Environments (TREs) the following table
 | Data Manager | Research Coordinator | No            | No                                               |
 | VM Admin     | N/A                  | Yes           | Yes                                              |
 
-There are a few different roles associated with Secure Virtual Desktop projects that determine what actions a user can perform in the EIDF Portal.
+There are a few different roles associated with Confidential Data Workspace projects that determine what actions a user can perform in the EIDF Portal.
 
 | Group                           | Files                                       | Permission | Note                                                                                                                                                     |
 | ------------------------------- | ------------------------------------------- | ---------- | ----------------------------------------------------------------------                                                                                   |
 | `sudo` group on router machine  | `/etc/squid/allowlist_buckets.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
 |                                 | `/etc/squid/allowlist_domains.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
 |                                 | `/etc/squid/squid.conf`                     | Owner W+R  | (implicit via machine access; Squid proxy configuration)                                                                                                 |
-| `sudo` group on a SVD VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
-| `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Secure Virtual Desktop VMs via approved transfer methods. |
+| `sudo` group on a CDW VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
+| `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Confidential Data Workspace VMs via approved transfer methods. |
 
-### Updating the Allowed Access Configuration for Secure Virtual Desktop VMs
+### Updating the Allowed Access Configuration for Confidential Data Workspace VMs
 
-See [router-docs.md](router-docs.md) for documentation on updating the allowed access configuration for Secure Virtual Desktop VMs.
+See [router-docs.md](router-docs.md) for documentation on updating the allowed access configuration for Confidential Data Workspace VMs.
 
 ### Create a VM
 
-To create a new Secure Virtual Desktop VM:
+To create a new Confidential Data Workspace VM:
 
 1. Select the project from the list of your projects, e.g. `eidfxxx`
 1. Click on the 'New Private Machine' button
 1. Complete the 'Create Machine' form as follows:
 
-    1. Select the 'Secure Virtual Desktop' router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
+    1. Select the 'Confidential Data Workspace' router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
     1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
     1. Select a suitable operating system
     1. Select a machine specification that is suitable
@@ -108,7 +108,7 @@ User accounts should be placed in the correct groups on the VM to ensure they ha
 
 The VM Admin must be given sudo permissions on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike addition to the `datamanager` group, sudo permissions are set on a per-VM basis via the portal.
 
-The following sections give instructions for setting up the required groups for the different roles in a Secure Virtual Desktop project:
+The following sections give instructions for setting up the required groups for the different roles in a Confidential Data Workspace project:
 
 - For creating and adding users to the `datamanager` group under the SAFE see [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
 - See the Virtual Desktop Interface documentation for [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions) for guidance on giving sudo permissions to the VM Admin role for each VM.
@@ -130,7 +130,7 @@ If a user only has one connection available in the VDI they will be automaticall
 
 ### Sudo Permissions
 
-Sudo permissions should only be granted to users in the VM Admin role to restrict as much as possible the data management capabilities of users in the Secure Virtual Desktop environment and remove the opportunity for data ingress/egress outwith the proper channels.
+Sudo permissions should only be granted to users in the VM Admin role to restrict as much as possible the data management capabilities of users in the Confidential Data Workspace environment and remove the opportunity for data ingress/egress outwith the proper channels.
 
 ## First Login
 
@@ -144,8 +144,8 @@ To do this:
 Users will then be able to log in using the VDI as described in the [VDI documentation](../../access/virtualmachines-vdi.md).
 
 !!! Warning
-    Access to the Secure Virtual Desktop VMs is only possible through the VDI or the project router.
-    You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the Secure Virtual Desktop Router](./router-docs.md#ssh-access-to-the-secure-virtual-desktop-router) for more information on how to access the router and then the VMs via SSH.
+    Access to the Confidential Data Workspace VMs is only possible through the VDI or the project router.
+    You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the Confidential Data Workspace Router](./router-docs.md#ssh-access-to-the-confidential-data-workspace-router) for more information on how to access the router and then the VMs via SSH.
 
 ## Updating an Existing Machine
 
@@ -180,9 +180,9 @@ It is the responsibility of project PIs to keep the VMs in their projects up to 
 
 !!! important "Snap packages"
 
-    Snap packages are not supported by default on the Secure Virtual Desktop VMs. Snap requires data egress to install software packages. Allowing this could potentially be used to bypass the security of the Secure Virtual Desktop. If you require snap packages then the VM Admin can enable usage by following the instructions in the [FAQs](./faq.md#unable-to-download-packages-from-snap-on-the-secure-virtual-desktop-vms).
+    Snap packages are not supported by default on the Confidential Data Workspace VMs. Snap requires data egress to install software packages. Allowing this could potentially be used to bypass the security of the Confidential Data Workspace. If you require snap packages then the VM Admin can enable usage by following the instructions in the [FAQs](./faq.md#unable-to-download-packages-from-snap-on-the-confidential-data-workspace-vms).
 
-Since updates and patches require access to the internet, users should ensure that their Secure Virtual Desktop VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for Secure Virtual Desktop VMs](router-docs.md#updating-the-allowed-access-for-secure-virtual-desktop-vms).
+Since updates and patches require access to the internet, users should ensure that their Confidential Data Workspace VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for Confidential Data Workspace VMs](router-docs.md#updating-the-allowed-access-for-confidential-data-workspace-vms).
 
 #### Ubuntu
 
