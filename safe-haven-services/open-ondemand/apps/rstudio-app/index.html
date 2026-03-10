@@ -2797,9 +2797,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-packages-within-mntrstudio_host" class="md-nav__link">
+  <a href="#install-packages-within-mntshare" class="md-nav__link">
     <span class="md-ellipsis">
-      Install packages within /mnt/rstudio_host
+      Install packages within /mnt/share
     </span>
   </a>
   
@@ -2935,10 +2935,10 @@
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs">Sharing files between the back-end and RStudio Server and persisting state between app runs</h2>
 <p>The app mounts directories from the back-end into RStudio Server at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>The app also creates a <code>$HOME/.local/share/ondemand/apps/rstudio_app/</code> in your home directory on the back-end and mounts this into RStudio Server at <code>/mnt/rstudio_host</code>. If you install R packages into <code>/mnt/rstudio_host</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
+<p>The app also creates a <code>$HOME/ondemand/share/rstudio/</code> in your home directory on the back-end and mounts this into RStudio Server at <code>/mnt/share</code>. If you install R packages into <code>/mnt/share</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is recommended that <code>/mnt/rstudio_host</code> be used for configuration files, code, scripts and R packages only. It should <strong>not</strong> be used for data.</p>
+<p>It is recommended that <code>/mnt/share</code> be used for configuration files, code, scripts and R packages only. It should <strong>not</strong> be used for data.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2946,17 +2946,22 @@
 </div>
 <hr />
 <h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
-<p>A feature of RStudio Server is that it constrains your ability to browse files to your home directory (<code>/root</code> within the container) and subdirectories. This means that you <strong>cannot</strong> access the mounted <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/rstudio_host</code> directories via:</p>
+<p>A feature of RStudio Server is that it constrains your ability to browse files to your home directory (<code>/root</code> within the container) and subdirectories. This means that you <strong>cannot</strong> access the mounted <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/share</code> directories via:</p>
 <ul>
-<li><strong>Session</strong> menu, <strong>Set Working Directory</strong>, <strong>Choose Directory</strong> menu option.</li>
 <li><strong>Tools</strong> menu, <strong>Global Options</strong> tab.</li>
 </ul>
 <p>However, you <strong>can</strong> access these directories and files via:</p>
 <ul>
 <li>R code.</li>
-<li>RStudio Server Terminal.</li>
+<li>Terminal.</li>
+<li>R Console.</li>
 <li><strong>File</strong> menu, <strong>Open File</strong> menu option, by entering the directory into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
-<li><strong>Files</strong> pane, by clicking <strong>...</strong>, then entering the directory into the <strong>Go To Folder</strong> dialog box.</li>
+<li><strong>Files</strong> panel, by clicking <strong>...</strong>, then entering the directory into the <strong>Go To Folder</strong> dialog box.</li>
+<li>
+<p><strong>Session</strong> menu, <strong>Set Working Directory</strong>, <strong>Choose Directory</strong> menu option, but only if you first run, within an RStudio Server Console:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+</code></pre></div>
+</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2964,25 +2969,25 @@
 <div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
 ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
 ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
-ln<span class="w"> </span>-s<span class="w"> </span>/mnt/rstudio_host<span class="w"> </span>lib
+ln<span class="w"> </span>-s<span class="w"> </span>/mnt/share<span class="w"> </span>share
 </code></pre></div>
 </div>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
-<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/rstudio_host</code> so that you can reuse these the next time you run the app on the same back-end.</p>
+<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/share</code> so that you can reuse these the next time you run the app on the same back-end.</p>
 <p>There are a number of ways you can use such a directory within RStudio Server. One example is as follows. R and RStudio Server resources online may suggest others.</p>
-<h3 id="install-packages-within-mntrstudio_host">Install packages within <code>/mnt/rstudio_host</code></h3>
-<p>Install packages within <code>/mnt/rstudio_host</code>. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/mnt/rstudio_host/&#39;</span><span class="p">)</span>
+<h3 id="install-packages-within-mntshare">Install packages within <code>/mnt/share</code></h3>
+<p>Install packages within <code>/mnt/share</code>. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/mnt/share/&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>Any R code that needs the packages needs to include the path to the directory. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/mnt/rstudio_host&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/mnt/share&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">find.package</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/mnt/rstudio_host/PACKAGE_NAME&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/mnt/share/PACKAGE_NAME&quot;</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">PACKAGE_NAME</span><span class="p">)</span>
 </code></pre></div>
 <p>Any packages will be visible on the back-end upon which the app runs. For example:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/.local/share/ondemand/apps/rstudio_app/
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/ondemand/share/rstudio/
 PACKAGE_NAME
 </code></pre></div>
 <hr />

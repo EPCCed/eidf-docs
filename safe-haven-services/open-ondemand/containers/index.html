@@ -2888,9 +2888,9 @@
 <td>If <code>$HOME/safe_data</code> is found, then it is mounted into the container. <code>$HOME/safe_data</code> takes precedence over any <code>/safe_data/PROJECT_SUBDIRECTORY</code> directory when looking for the directory to mount into the container at <code>/safe_data</code>. Any files written into <code>/safe_data</code> in the container will be visible to you only within <code>$HOME/safe_data</code> on the back-end.</td>
 </tr>
 <tr>
-<td><code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code></td>
+<td><code>$HOME/safe_outputs</code></td>
 <td><code>/safe_outputs</code></td>
-<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab Container</a>). <code>SESSION_ID</code> is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
+<td>This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
 </tr>
 <tr>
 <td><code>$HOME/scratch/APP_SHORT_NAME/SESSION_ID</code></td>
@@ -2909,8 +2909,8 @@
 <p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
 <p>You can interact with your project's <code>/safe_data</code> subdirectory on the back-end, by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
-<p>When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both <code>safe_outputs/APP_SHORT_NAME/SESSION_ID</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> (and <code>$HOME/safe_data</code>, if applicable) via the <a href="../files/">File Manager</a> and/or by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
-<p>When using a back-end where your home directory is <strong>not</strong> common to both the Open OnDemand VM and the back-end, then you can interact with <code>/safe_data/PROJECT_SUBDIRECTORY</code> (or <code>$HOME/safe_data</code>, if applicable), <code>safe_outputs/APP_SHORT_NAME/SESSION_ID</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
+<p>When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both <code>safe_outputs</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> (and <code>$HOME/safe_data</code>, if applicable) via the <a href="../files/">File Manager</a> and/or by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
+<p>When using a back-end where your home directory is <strong>not</strong> common to both the Open OnDemand VM and the back-end, then you can interact with <code>/safe_data/PROJECT_SUBDIRECTORY</code> (or <code>$HOME/safe_data</code>, if applicable), <code>safe_outputs</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.</p>

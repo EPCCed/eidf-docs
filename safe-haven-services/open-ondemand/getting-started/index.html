@@ -3073,9 +3073,9 @@
 <td>If <code>$HOME/safe_data</code> is found, then it is mounted into the container. <code>$HOME/safe_data</code> takes precedence over any <code>/safe_data/PROJECT_SUBDIRECTORY</code> directory when looking for the directory to mount into the container at <code>/safe_data</code>. Any files written into <code>/safe_data</code> in the container will be visible to you only within <code>$HOME/safe_data</code> on the back-end.</td>
 </tr>
 <tr>
-<td><code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code></td>
+<td><code>$HOME/safe_outputs</code></td>
 <td><code>/safe_outputs</code></td>
-<td><code>APP_SHORT_NAME</code> is a short-name for an app (e.g., <code>jupyter</code> for <a href="../apps/jupyter-app/">Run JupyterLab Container</a>). <code>SESSION_ID</code> is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
+<td>This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends.</td>
 </tr>
 <tr>
 <td><code>$HOME/scratch/APP_SHORT_NAME/SESSION_ID</code></td>
@@ -3093,33 +3093,33 @@
 <p class="admonition-title">Warning</p>
 <p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
-<p>When the <code>epcc-ces-hello</code> container is run, it writes two files into <code>/safe_outputs</code> within the container, and so into a <code>$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID</code> directory on the back-end:</p>
+<p>When the <code>epcc-ces-hello</code> container is run, it writes two files into <code>/safe_outputs</code> within the container, and so into a <code>$HOME/safe_outputs</code> directory on the back-end:</p>
 <ul>
 <li><code>safe_data.txt</code>, which lists a selection of directories and files in the <code>/safe_data/PROJECT_SUBDIRECTORY</code> directory that was mounted into the container at <code>/safe_data</code>.</li>
 <li><code>safe_outputs.txt</code> which has a <code>This text is in safe_outputs.txt</code> message.</li>
 </ul>
 <h3 id="view-the-containers-output-files">View the container's output files</h3>
-<p>As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the <code>safe_outputs/APP_SHORT_NAME/SESSION_ID</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> directories. However, your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on the Open OnDemand VM.</p>
+<p>As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the <code>safe_outputs</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> directories. However, your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on the Open OnDemand VM.</p>
 <p>For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.</p>
-<p>View the <code>safe_outputs/batch_container/SESSION_ID</code> directory via the Open OnDemand File Manager:</p>
+<p>View the <code>safe_outputs</code> directory via the Open OnDemand File Manager:</p>
 <ol>
 <li>Select the <strong>Files</strong> menu, <strong>Home Directory</strong> option to open the File Manager.</li>
 <li>Click <strong>Home Directory</strong>, to go to your home directory.</li>
-<li>Click <code>safe_outputs/batch_container/SESSION_ID</code> view the directory</li>
+<li>Click <code>safe_outputs</code> to view the directory.</li>
 <li>Click on <code>safe_data.txt</code> and <code>safe_outputs.txt</code> to view their contents.</li>
 </ol>
 <p><img alt="File Manager showing outputs directory contents after Run Batch Container app completes" class="border-img center" src="../../../images/open-ondemand/getting-started-05-batch-container-app-outputs.png" />
 <em>File Manager showing outputs directory contents after Run Batch Container app completes</em></p>
 <p>An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.</p>
-<p>View the <code>safe_outputs/batch_container/SESSION_ID</code> directory within the back-end:</p>
+<p>View the <code>safe_outputs</code> directory within the back-end:</p>
 <ol>
 <li>Select <strong>Clusters</strong> menu, back-end <strong>Shell Access</strong> option, to log into the back-end.</li>
 <li>
 <p>Change into your home directory and view the directory and its files and their contents.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-ls<span class="w"> </span>safe_outputs/batch_container/SESSION_ID/
-cat<span class="w"> </span>safe_outputs/batch_container/SESSION_ID/safe_data.txt
-cat<span class="w"> </span>safe_outputs/batch_container/SESSION_ID/safe_outputs.txt
+ls<span class="w"> </span>safe_outputs/
+cat<span class="w"> </span>safe_outputs/safe_data.txt
+cat<span class="w"> </span>safe_outputs/safe_outputs.txt
 </code></pre></div>
 </li>
 </ol>
@@ -3193,7 +3193,7 @@ Arguments (one per line):
     -n
     Mike
 </code></pre></div>
-<p>For some containers run via Podman, including <code>epcc-ces-hello</code>, you are the 'root' user within the container but <strong>only</strong> within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from <strong>within</strong> the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within <code>safe_outputs/batch_container/SESSION_ID</code>.</p>
+<p>For some containers run via Podman, including <code>epcc-ces-hello</code>, you are the 'root' user within the container but <strong>only</strong> within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from <strong>within</strong> the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within <code>safe_outputs</code>.</p>
 <p>Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the <code>GREETING</code> environment variable and the <code>-n</code> container argument, messages indicating that the container is sleeping for the duration specified by the <code>-d</code> container argument, and a farewell message, again using the <code>-n</code> container argument. For example:</p>
 <div class="highlight"><pre><span></span><code>Hello there Mike!
 
@@ -3290,7 +3290,7 @@ touch<span class="w"> </span>/safe_outputs/hello-from-jupyterlab-to-outputs.txt
 </code></pre></div>
 <p>List the contents of the <code>scratch</code> and <code>safe_outputs</code> and directories:</p>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>scratch/jupyter/SESSION_ID
-ls<span class="w"> </span>-1<span class="w"> </span>safe_outputs/jupyter/SESSION_ID
+ls<span class="w"> </span>-1<span class="w"> </span>safe_outputs/
 </code></pre></div>
 <p>You should see the above files:</p>
 <div class="highlight"><pre><span></span><code>hello-from-jupyterlab-to-scratch.txt
@@ -3298,7 +3298,7 @@ hello-from-jupyterlab-to-outputs.txt
 </code></pre></div>
 <p>Now, within your Open OnDemand command-line session with the back-end, create files in these directories:</p>
 <div class="highlight"><pre><span></span><code>touch<span class="w"> </span>scratch/jupyter/SESSION_ID/hello-from-scratch-to-jupyterlab.txt
-touch<span class="w"> </span>safe_outputs/jupyter/SESSION_ID/hello-from-outputs-to-jupyterlab.txt
+touch<span class="w"> </span>safe_outputs/hello-from-outputs-to-jupyterlab.txt
 </code></pre></div>
 <p>Then, within the JupyterLab Terminal, list the contents of the corresponding <code>/scratch</code> directory and you should see the files you created on the back-end plus those you created within JupyterLab:</p>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>/scratch/
@@ -3313,7 +3313,7 @@ hello-from-scratch-to-jupyterlab.txt
 hello-from-outputs-to-jupyterlab.txt
 </code></pre></div>
 <p>Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which a container is running and the environment within the container itself.</p>
-<p>As a reminder, <code>safe_outputs/jupyter/SESSION_ID</code> will persist after the job which created the container ends but the <code>SESSION_ID</code> subdirectory in <code>scratch/jupyter</code> will be deleted.</p>
+<p>As a reminder, <code>safe_outputs</code> will persist after the job which created the container ends but the <code>SESSION_ID</code> subdirectory in <code>scratch/jupyter</code> will be deleted.</p>
 <h3 id="revisit-the-active-jobs-app">Revisit the Active Jobs app</h3>
 <p>Click the 'Active Jobs' app on the Open OnDemand home page.</p>
 <p>You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab Container app jobs have this name.</p>
