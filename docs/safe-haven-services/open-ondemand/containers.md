@@ -39,7 +39,7 @@ When a container is run via the Safe Haven Services Container Execution Service,
 | ------------------ | ------------------- | ----------- |
 | `/safe_data/PROJECT_SUBDIRECTORY` | `/safe_data` | `PROJECT_SUBDIRECTORY` is your project group, inferred from your user groups. If such a  project-specific subdirectory of `/safe_data` is found, then it is mounted into the container (but see below). Any files written into `/safe_data` in the container will be visible to you and and other project members within `/safe_data/PROJECT_SUBDIRECTORY` on the back-end. |
 | `$HOME/safe_data` | `/safe_data` | If `$HOME/safe_data` is found, then it is mounted into the container. `$HOME/safe_data` takes precedence over any `/safe_data/PROJECT_SUBDIRECTORY` directory when looking for the directory to mount into the container at `/safe_data`. Any files written into `/safe_data` in the container will be visible to you only within `$HOME/safe_data` on the back-end. |
-| `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab Container](apps/jupyter-app.md)). `SESSION_ID` is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/safe_outputs` | `/safe_outputs` | This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
 
 Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
@@ -54,9 +54,9 @@ Together, these mounts (and, additional, app-specific mounts) provide various me
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
 
 !!! Note
 
