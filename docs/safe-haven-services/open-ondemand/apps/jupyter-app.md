@@ -90,7 +90,7 @@ The app also creates a `$HOME/ondemand/share/jupyter/` in your home directory on
 
 ## Accessing files outside the scope of your home directory
 
-A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
+A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/home/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
 
 * File browser panel.
 * **File** menu, **Open from Path...** menu option.
