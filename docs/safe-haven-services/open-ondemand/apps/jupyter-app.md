@@ -76,11 +76,11 @@ Within JupyterLab you are the 'root' user.
 
 The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and mounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+The app also creates a `$HOME/ondemand/share/jupyter/` in your home directory on the back-end and mounts this into JupyterLab at `/mnt/share`. If you create virtual environments and/or install Python packages into `/mnt/share` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
 
 !!! Note
 
-    It is recommended that `/mnt/jupyter_host` be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
+    It is recommended that `/mnt/share` be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
 
 !!! Warning
 
@@ -90,7 +90,7 @@ The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your h
 
 ## Accessing files outside the scope of your home directory
 
-A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/jupyter_host` directories via:
+A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
 
 * File browser panel.
 * **File** menu, **Open from Path...** menu option.
@@ -109,63 +109,63 @@ However, you **can** access these directories and files via:
     ln -s /safe_data/
     ln -s /safe_outputs/
     ln -s /scratch/
-    ln -s /mnt/jupyter_host lib
+    ln -s /mnt/share lib
     ```
 
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/share` so that you can reuse these the next time you run the app on the same back-end.
 
 There are a number of ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online may suggest others.
 
-### Install packages within a `/mnt/jupyter_host` subdirectory
+### Install packages within a `/mnt/share` subdirectory
 
-Install packages within a `/mnt/jupyter_host` subdirectory. For example:
+Install packages within a `/mnt/share` subdirectory. For example:
 
 1. Select **Launcher**, **Terminal**.
 1. Create directory for packages:
 
     ```bash
-    mkdir -t /mnt/jupyter_host/mypips
+    mkdir -t /mnt/share/mypips
     ```
 
 1. Install package:
 
     ```bash
-    pip install -t /mnt/jupyter_host/mypips PACKAGE_NAME
+    pip install -t /mnt/share/mypips PACKAGE_NAME
     ```
 
 Any Python code that needs the packages needs to include the path to the subdirectory. For example:
 
 ```python
 import sys
-sys.path.append('/mnt/jupyter_host/mypips')
+sys.path.append('/mnt/share/mypips')
 import PACKAGE_NAME
 ```
 
 The subdirectory and packages will be persisted on the back-end upon which the app runs. For example:
 
 ```bash
-$ ls $HOME/.local/share/ondemand/apps/jupyter_app/
+$ ls $HOME/ondemand/share/jupyter/
 mypips
-$ ls $HOME/.local/share/ondemand/apps/jupyter_app/mypips/
+$ ls $HOME/ondemand/share/jupyter/mypips/
 ...
 PACKAGE_NAME
 ...
 ```
 
-### Create a virtual environment within `/mnt/jupyter_host`
+### Create a virtual environment within `/mnt/share`
 
-Create a virtual environment within `/mnt/jupyter_host` and install packages into that virtual environment. For example:
+Create a virtual environment within `/mnt/share` and install packages into that virtual environment. For example:
 
 1. Select **Launcher**, **Terminal**.
 1. Create and activate a Python virtual environment:
 
     ```bash
-    python -m venv /mnt/jupyter_host/my-venv
-    source /mnt/jupyter_host/my-venv/bin/activate
+    python -m venv /mnt/share/my-venv
+    source /mnt/share/my-venv/bin/activate
     ```
 
 1. Install package into virtual environment:
@@ -186,14 +186,14 @@ Create a virtual environment within `/mnt/jupyter_host` and install packages int
     The next time you run this app you will need to activate the virtual environment and recreate the kernels within a JupyterLab Terminal:
 
     ```bash
-    source /mnt/jupyter_host/my-venv/bin/activate
+    source /mnt/share/my-venv/bin/activate
     python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
     ```
 
 The virtual environment and its contents will be persisted on the back-end upon which the app runs. For example:
 
 ```bash
-$ ls .local/share/ondemand/apps/jupyter_app/
+$ ls ondemand/share/jupyter/
 my-venv/
 ```
 
