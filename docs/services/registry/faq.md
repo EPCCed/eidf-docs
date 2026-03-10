@@ -21,7 +21,7 @@ If you see an image you have uploaded to the registry have no attached SBOM afte
  ![NoSBOMOutputReport](../../images/registry/nosbom.png){: class="border-img"}
    *Missing SBOM Output Report*
 
-Then you will have to click the folder next to the artifact name.
+Then you will have to click the folder icon next to the artifact name.
 
 This will open the information up for that artifact, like this:
 

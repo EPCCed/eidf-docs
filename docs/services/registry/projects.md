@@ -75,7 +75,7 @@ Users can submit images to be added to the Library where they think these would 
 
 ### Public Caches
 
-Several main public registries are routed through proxy caches on ECIR. The proxy cache means that a user can pull a public image from a public registry and the ECIR will store a copy of that image. Images in the cache which are pulled in a 7 day period will be retained, otherwise images not pulled for 7 days will be removed from the cache.
+Several main public registries can be routed through cache project proxies on ECIR. The cache projects mean that users can pull a public image from a public registry and the ECIR will store a copy of that image automatically. Cached images which are pulled in the following 7 day period will be retained, otherwise images not pulled for 7 days will be removed from the cache project.
 
 This is to reduce pressure on public registries from EIDF systems and to reduce the chance of the public services rate limiting.
 
@@ -86,7 +86,7 @@ The services which have cache projects are:
 * Nvidia NGC Registry [https://nvcr.io](https://catalog.ngc.nvidia.com/) - Project nvidia-cache
 * Quay.io [https://quay.io](http://quay.io) - Project quay-cache
 
-To use a cache project, the ECIR address and the project name should be pre-pending the name of the image, for example to pull the image, `nvidia/pytorch:25.05-py3` from the Nvidia (NVCR.io) registry, you would use:
+To use a cache project, the ECIR address and the cache project name should be pre-pended to the name of the image, for example to pull the image, `nvidia/pytorch:25.05-py3` from the Nvidia (NVCR.io) registry, you would use:
 
 ```bash
 registry.eidf.ac.uk/nvidia-cache/nvidia/pytorch:25.05-py3
@@ -103,3 +103,10 @@ Or if they are part of an organisation public repository:
 ```bash
 registry.eidf.ac.uk/docker-cache/mcp/slack:latest
 ```
+
+What to add in front of your image name:
+
+* Dockerhub: registry.eidf.ac.uk/docker-cache/
+* GHCR: registry.eidf.ac.uk/ghcr-cache/
+* Nvidia NGC Registry: registry.eidf.ac.uk/nvidia-cache/
+* Quay.io: registry.eidf.ac.uk/quay-cache/
