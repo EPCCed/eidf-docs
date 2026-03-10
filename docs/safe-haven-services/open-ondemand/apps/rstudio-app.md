@@ -96,15 +96,20 @@ The app also creates a `$HOME/ondemand/share/rstudio/` in your home directory on
 
 A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
 
-* **Session** menu, **Set Working Directory**, **Choose Directory** menu option.
 * **Tools** menu, **Global Options** tab.
 
 However, you **can** access these directories and files via:
 
 * R code.
-* RStudio Server Terminal.
+* Terminal.
+* R Console.
 * **File** menu, **Open File** menu option, by entering the directory into the **Open File** dialog, **File name** field.
-* **Files** pane, by clicking **...**, then entering the directory into the **Go To Folder** dialog box.
+* **Files** panel, by clicking **...**, then entering the directory into the **Go To Folder** dialog box.
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option, but only if you first run, within an RStudio Server Console:
+
+    ```R
+    setwd('/')
+    ```
 
 !!! Tip
 
@@ -114,7 +119,7 @@ However, you **can** access these directories and files via:
     ln -s /safe_data/
     ln -s /safe_outputs/
     ln -s /scratch/
-    ln -s /mnt/share lib
+    ln -s /mnt/share share
     ```
 
 ---
