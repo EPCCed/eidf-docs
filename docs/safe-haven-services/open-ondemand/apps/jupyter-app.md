@@ -98,6 +98,8 @@ A feature of JupyterLab is that it constrains your ability to browse files to yo
 However, you **can** access these directories and files via:
 
 * Python code.
+* IPython Console.
+* IPython Notebook.
 * JupyterLab Terminal.
 * **File** menu, **Save Notebook As...** menu option.
 
@@ -109,7 +111,7 @@ However, you **can** access these directories and files via:
     ln -s /safe_data/
     ln -s /safe_outputs/
     ln -s /scratch/
-    ln -s /mnt/share lib
+    ln -s /mnt/share share
     ```
 
 ---
