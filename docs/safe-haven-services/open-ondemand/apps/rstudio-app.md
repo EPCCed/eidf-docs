@@ -94,33 +94,32 @@ The app also creates a `$HOME/ondemand/share/rstudio/` in your home directory on
 
 ## Accessing files outside the scope of your home directory
 
-A feature of RStudio Server is that it constrains your ability to browse files to your home directory (`/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
+A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (`/root` within the container) within some menu commands and panels. This includes the `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories. You can access these directories via the following menu commands and panels as follows:
 
-* **Tools** menu, **Global Options** tab.
+* **File** menu, **Open File** menu option:
+    - Enter the directory or file path into the **Open File** dialog, **File name** field.
+    - Click **Open**..
+* **Files** panel:
+    - Click the '**...**' (ellipsis)  button.
+    - Enter the directory into the **Go To Folder** dialog box.
+    - Click **OK**.
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option:
+    - First run, within an RStudio Server Console:
 
-However, you **can** access these directories and files via:
+      ```R
+      setwd('/')
+      ```
 
-* R code.
-* Terminal.
-* R Console.
-* **File** menu, **Open File** menu option, by entering the directory into the **Open File** dialog, **File name** field.
-* **Files** panel, by clicking **...**, then entering the directory into the **Go To Folder** dialog box.
-* **Session** menu, **Set Working Directory**, **Choose Directory** menu option, but only if you first run, within an RStudio Server Console:
+* **Tools** menu, **Global Options** tab, 'RSessions' **Default working directory** option.
 
-    ```R
-    setwd('/')
-    ```
+     - First, within an RStudio Server Terminal, create symbolic links from your home directory:
 
-!!! Tip
-
-    A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:
-
-    ```bash
-    ln -s /safe_data/
-    ln -s /safe_outputs/
-    ln -s /scratch/
-    ln -s /mnt/share share
-    ```
+      ```bash
+      ln -s /safe_data/
+      ln -s /safe_outputs/
+      ln -s /scratch/
+      ln -s /mnt/share share
+      ```
 
 ---
 
