@@ -88,34 +88,6 @@ The app also creates a `$HOME/ondemand/share/jupyter/` in your home directory on
 
 ---
 
-## Accessing files outside the scope of your home directory
-
-A feature of JupyterLab is that it constrains your ability to browse files to your home directory (`/home/root` within the container) and subdirectories. This means that you **cannot** access the mounted `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories via:
-
-* File browser panel.
-* **File** menu, **Open from Path...** menu option.
-
-However, you **can** access these directories and files via:
-
-* Python code.
-* IPython Console.
-* IPython Notebook.
-* JupyterLab Terminal.
-* **File** menu, **Save Notebook As...** menu option.
-
-!!! Tip
-
-    A workaround to make these directories visible via JupyterLab file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within a JupyterLab Terminal as follows:
-
-    ```bash
-    ln -s /safe_data/
-    ln -s /safe_outputs/
-    ln -s /scratch/
-    ln -s /mnt/share share
-    ```
-
----
-
 ## Installing Python packages
 
 JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/share` so that you can reuse these the next time you run the app on the same back-end.
