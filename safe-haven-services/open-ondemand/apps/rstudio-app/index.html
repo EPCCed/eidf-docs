@@ -2946,32 +2946,39 @@
 </div>
 <hr />
 <h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
-<p>A feature of RStudio Server is that it constrains your ability to browse files to your home directory (<code>/root</code> within the container) and subdirectories. This means that you <strong>cannot</strong> access the mounted <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/share</code> directories via:</p>
+<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (<code>/root</code> within the container) within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/share</code> directories. You can access these directories via the following menu commands and panels as follows:</p>
 <ul>
-<li><strong>Tools</strong> menu, <strong>Global Options</strong> tab.</li>
+<li><strong>File</strong> menu, <strong>Open File</strong> menu option:<ul>
+<li>Enter the directory or file path into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
+<li>Click <strong>Open</strong>.</li>
 </ul>
-<p>However, you <strong>can</strong> access these directories and files via:</p>
-<ul>
-<li>R code.</li>
-<li>Terminal.</li>
-<li>R Console.</li>
-<li><strong>File</strong> menu, <strong>Open File</strong> menu option, by entering the directory into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
-<li><strong>Files</strong> panel, by clicking <strong>...</strong>, then entering the directory into the <strong>Go To Folder</strong> dialog box.</li>
+</li>
+<li><strong>Files</strong> panel:<ul>
+<li>Click the '<strong>...</strong>' (ellipsis)  button.</li>
+<li>Enter the directory into the <strong>Go To Folder</strong> dialog box.</li>
+<li>Click <strong>OK</strong>.</li>
+</ul>
+</li>
 <li>
-<p><strong>Session</strong> menu, <strong>Set Working Directory</strong>, <strong>Choose Directory</strong> menu option, but only if you first run, within an RStudio Server Console:</p>
+<p><strong>Session</strong> menu, <strong>Set Working Directory</strong>, <strong>Choose Directory</strong> menu option:</p>
+<ul>
+<li>First run, within an RStudio Server Console:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
 </code></pre></div>
 </li>
+<li>
+<p><strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option.</p>
+<ul>
+<li>First, within an RStudio Server Terminal, create symbolic links from your home directory:</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>A workaround to make this directories visible via RStudio Server file browsers is to create symbolic links from your home directory, within the container, to these directories. This can be done within an RStudio Server Terminal as follows:</p>
 <div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
 ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
 ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
 ln<span class="w"> </span>-s<span class="w"> </span>/mnt/share<span class="w"> </span>share
 </code></pre></div>
-</div>
+</li>
+</ul>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
 <p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/share</code> so that you can reuse these the next time you run the app on the same back-end.</p>
