@@ -97,22 +97,21 @@ The app also creates a `$HOME/ondemand/share/rstudio/` in your home directory on
 A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (`/root` within the container) within some menu commands and panels. This includes the `/safe_data`, `/safe_outputs`, `/scratch` or `/mnt/share` directories. You can access these directories via the following menu commands and panels as follows:
 
 * **File** menu, **Open File** menu option:
-    - Enter the directory or file path into the **Open File** dialog, **File name** field.
-    - Click **Open**..
+    * Enter the directory or file path into the **Open File** dialog, **File name** field.
+    * Click **Open**.
 * **Files** panel:
-    - Click the '**...**' (ellipsis)  button.
-    - Enter the directory into the **Go To Folder** dialog box.
-    - Click **OK**.
+    * Click the '**...**' (ellipsis)  button.
+    * Enter the directory into the **Go To Folder** dialog box.
+    * Click **OK**.
 * **Session** menu, **Set Working Directory**, **Choose Directory** menu option:
-    - First run, within an RStudio Server Console:
+    * First run, within an RStudio Server Console:
 
       ```R
       setwd('/')
       ```
 
 * **Tools** menu, **Global Options** tab, 'RSessions' **Default working directory** option.
-
-     - First, within an RStudio Server Terminal, create symbolic links from your home directory:
+    * First, within an RStudio Server Terminal, create symbolic links from your home directory:
 
       ```bash
       ln -s /safe_data/
