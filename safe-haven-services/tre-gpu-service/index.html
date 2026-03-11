@@ -2787,9 +2787,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-service-policy-information" class="md-nav__link">
+  <a href="#additional-service-information" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Service Policy Information
+      Additional Service Information
     </span>
   </a>
   
@@ -2904,8 +2904,13 @@ Select auth provider:
 <p>As a general rule, the higher the GPU/CPU/Memory resource request of a single job, the longer the job will queue before enough resources are free on a single node for it to be allocated.</p>
 <p>Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.</p>
 </div>
-<h2 id="additional-service-policy-information">Additional Service Policy Information</h2>
-<p>Additional information on service policies can be found in our <a href="policies/">policies documentation</a>.</p>
+<h2 id="additional-service-information">Additional Service Information</h2>
+<p>Additional information on the service can be found in the following pages:</p>
+<ul>
+<li><a href="kueue/">Kueue</a></li>
+<li><a href="policies/">Policies</a></li>
+<li><a href="faq/">FAQ</a></li>
+</ul>
 <h2 id="shs-gpu-cluster-tutorial">SHS GPU Cluster Tutorial</h2>
 <p>This tutorial teaches users how to submit tasks to the SHS GPU Cluster. It assumes knowledge of Kubernetes (see below for further reading).</p>
 <table>
@@ -2921,16 +2926,24 @@ Select auth provider:
 <td>a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.</td>
 </tr>
 <tr>
-<td><a href="training/L4_requesting_persistent_volumes/">Requesting persistent volumes with Kubernetes</a></td>
-<td>a. What is a persistent volume? <br>b. How to request a PV resource.</td>
+<td><a href="training/L1.1_building-and-testing-containers/">Building and Testing Containers</a></td>
+<td>a. How to build container images.<br>b. How to test containers locally.<br>c. Best practices for container setup.</td>
 </tr>
 <tr>
-<td><a href="training/L5_running_a_pytorch_task/">Running a PyTorch task</a></td>
-<td>a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the GPU Cluster.<br>c. Inspecting the results.</td>
+<td><a href="training/L2_using-containers-in-the-tre/">Using Containers in the SHS</a></td>
+<td>a. How to run containers inside the SHS.<br>b. Security considerations for SHS containers.<br>c. How to manage container dependencies.</td>
 </tr>
 <tr>
-<td><a href="training/L6_template_workflow/">Template workflow</a></td>
-<td>a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job.</td>
+<td><a href="training/L2.1_creating-your-first-pod-template/">Creating Your First Pod Template</a></td>
+<td>a. What is a Kubernetes pod template.<br>b. How to define pod resources.<br>c. How to submit a pod to the GPU cluster.</td>
+</tr>
+<tr>
+<td><a href="training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE/">Accessing the BeeGFS Inside the SHS <em>GPU Cluster</em></a></td>
+<td>a. How to access BeeGFS from the SHS <em>GPU Cluster</em>.<br>b. How to read/write data efficiently.<br>c. Best practices for using shared storage.</td>
+</tr>
+<tr>
+<td><a href="training/L4_requesting_persistent_volumes/">Requesting Persistent Volumes</a></td>
+<td>a. How pods use persistent storage (Persistent Volumes and Persistent Volume Claims).<br>b. How SHS <em>GPU Cluster</em> users access pre-provisioned storage via Persistent Volume Claims.<br>c. How to attach Persistent Volume Claims to pods using volumeMounts and proper securityContext.</td>
 </tr>
 </tbody>
 </table>
