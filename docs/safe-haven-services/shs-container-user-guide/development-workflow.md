@@ -1,6 +1,6 @@
 # Development Workflow
 
-This document describes in detail the [four steps](./introduction.md#overview) recommended for the development of containers for SHS use.
+This document describes in detail the steps introduced in [The Safe Haven Container Execution Service - CES](./introduction.md) for the development of containers for SHS use.
 
 ## Step 1. Writing a `Dockerfile`
 

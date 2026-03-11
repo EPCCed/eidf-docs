@@ -40,7 +40,7 @@ Each project will be given a namespace within the SHS GPU Cluster to operate in.
 
 This project namespace will normally be formatted as the SHS Safe Heaven and Project code appended with "ns", e.g. `nsh-2024-0000-ns` for the `nsh` Safe Haven project with code `2024-0000`.
 
-Once access to the SHS GPU Cluster has been confirmed, SHS project VMs will be configured to use the SHS GPU cluster - information on access to VMs is available in our [virtual desktop connections documentation](../virtual-desktop-connections.md).
+Once access to the SHS GPU Cluster has been confirmed, SHS project VMs will be configured to use the SHS GPU cluster. How to access VMs is described in [Safe Haven Services Access](../safe-haven-access.md).
 
 Project users can access the GPU Cluster using their FreeIPA credentials. When executing a kubectl command, if no valid token is cached locally, you will be prompted to enter your FreeIPA username and password. Upon successful authentication, a token is generated and cached locally, remaining valid for 90 days or until it is deleted. Once the token expires, kubectl will prompt you again for your FreeIPA credentials in the same format.
 
