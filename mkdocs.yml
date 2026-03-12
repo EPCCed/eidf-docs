@@ -60,6 +60,14 @@ nav:
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
       - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
+    - "Confidential Data Workspace":
+      - "Overview": services/confidentialdataworkspace/index.md
+      - "QuickStart": services/confidentialdataworkspace/quickstart.md
+      - "Managing VMs": services/confidentialdataworkspace/docs.md
+      - "Router Configuration": services/confidentialdataworkspace/router-docs.md
+      - "Policies": services/confidentialdataworkspace/policies.md
+      - "Storage": services/confidentialdataworkspace/storage.md
+      - "FAQs": services/confidentialdataworkspace/faq.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
