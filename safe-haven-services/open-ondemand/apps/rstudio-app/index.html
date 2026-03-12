@@ -2797,9 +2797,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-packages-within-mntshare" class="md-nav__link">
+  <a href="#install-packages-within-a-rootwork-subdirectory" class="md-nav__link">
     <span class="md-ellipsis">
-      Install packages within /mnt/share
+      Install packages within a /root/work subdirectory
     </span>
   </a>
   
@@ -2935,19 +2935,18 @@
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs">Sharing files between the back-end and RStudio Server and persisting state between app runs</h2>
 <p>The app mounts directories from the back-end into RStudio Server at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>The app also creates a <code>$HOME/ondemand/share/rstudio/</code> in your home directory on the back-end and mounts this into RStudio Server at <code>/mnt/share</code>. If you install R packages into <code>/mnt/share</code> when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is recommended that <code>/mnt/share</code> be used for configuration files, code, scripts and R packages only. It should <strong>not</strong> be used for data.</p>
-</div>
+<p>This app also mounts your home directory on the back-end into RStudio Server at <code>/root/work</code>. Any directories and files you create within this mount will be available in your home directory on the back-end.</p>
+<p>You should create any R scripts and configuration files, or download any R packages into <code>/root/work</code> so that they will persist when the app stops and are available the next time you run it.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
 <hr />
 <h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
-<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (<code>/root</code> within the container) within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, <code>/scratch</code> or <code>/mnt/share</code> directories. You can access these directories via the following menu commands and panels as follows:</p>
+<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (<code>/root</code> within the container) within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, and <code>/scratch</code> directories.</p>
+<p>You can access these directories as follows:</p>
 <ul>
+<li><code>/safe_outputs</code> and <code>/scratch</code> can be accessed via <code>/root/work</code> in <code>safe_outputs</code> and <code>scratch/rstudio/SESSION_ID</code> respectively i.e., the directories mounted onto <code>/safe_outputs</code> and <code>/scratch</code>.</li>
 <li><strong>File</strong> menu, <strong>Open File</strong> menu option:<ul>
 <li>Enter the directory or file path into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
 <li>Click <strong>Open</strong>.</li>
@@ -2962,40 +2961,53 @@
 <li>
 <p><strong>Session</strong> menu, <strong>Set Working Directory</strong>, <strong>Choose Directory</strong> menu option:</p>
 <ul>
-<li>First run, within an RStudio Server Console:</li>
-</ul>
+<li>
+<p>Run, within an RStudio Server Console:</p>
 <div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
-<p><strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option.</p>
-<ul>
-<li>First, within an RStudio Server Terminal, create symbolic links from your home directory:</li>
+<p>The directories will now be available for the menu option.</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/safe_data/
-ln<span class="w"> </span>-s<span class="w"> </span>/safe_outputs/
-ln<span class="w"> </span>-s<span class="w"> </span>/scratch/
-ln<span class="w"> </span>-s<span class="w"> </span>/mnt/share<span class="w"> </span>share
-</code></pre></div>
+</li>
+<li>
+<p><strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option:</p>
+<ul>
+<li>Click <strong>Browse...</strong>.</li>
+<li><code>/safe_outputs</code> can be accessed via <code>/root/work</code> in <code>safe_outputs</code> i.e., the directory mounted onto <code>/safe_outputs</code>.</li>
+<li><code>/scratch</code> is deleted when the app completes so should not be selected for use as a default working directory.</li>
+<li><code>/safe_data</code> cannot be selected for use as a default working directory.</li>
+</ul>
 </li>
 </ul>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
-<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/mnt/share</code> so that you can reuse these the next time you run the app on the same back-end.</p>
-<p>There are a number of ways you can use such a directory within RStudio Server. One example is as follows. R and RStudio Server resources online may suggest others.</p>
-<h3 id="install-packages-within-mntshare">Install packages within <code>/mnt/share</code></h3>
-<p>Install packages within <code>/mnt/share</code>. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/mnt/share/&#39;</span><span class="p">)</span>
+<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/root/work</code> so that you can reuse these the next time you run the app on the same back-end.</p>
+<p>There many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.</p>
+<h3 id="install-packages-within-a-rootwork-subdirectory">Install packages within a <code>/root/work</code> subdirectory</h3>
+<p>Install packages within a <code>/root/work</code> subdirectory:</p>
+<ol>
+<li>
+<p>Create a subdirectory for the R packages via the RStudio Server Terminal:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/root/work/lib/rstudio
+</code></pre></div>
+</li>
+<li>
+<p>Install packages into this subdirectory:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/root/work/lib/rstudio&#39;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+<p>The subdirectory and packages will be persisted on the back-end upon which the app runs:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/lib/rstudio
+PACKAGE_NAME
 </code></pre></div>
 <p>Any R code that needs the packages needs to include the path to the directory. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/mnt/share&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/root/work/lib/rstudio&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">find.package</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/mnt/share/PACKAGE_NAME&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/root/work/lib/rstudio/PACKAGE_NAME&quot;</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">PACKAGE_NAME</span><span class="p">)</span>
-</code></pre></div>
-<p>Any packages will be visible on the back-end upon which the app runs. For example:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/ondemand/share/rstudio/
-PACKAGE_NAME
 </code></pre></div>
 <hr />
 <h2 id="view-job-files">View job files</h2>
