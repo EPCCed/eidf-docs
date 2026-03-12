@@ -76,11 +76,9 @@ Within JupyterLab you are the 'root' user.
 
 The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/ondemand/share/jupyter/` in your home directory on the back-end and mounts this into JupyterLab at `/mnt/share`. If you create virtual environments and/or install Python packages into `/mnt/share` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+This app also mounts your home directory on the back-end into JupyterLab at `/mnt/work`. Any directories and files you create within this mount will be available in your home directory on the back-end.
 
-!!! Note
-
-    It is recommended that `/mnt/share` be used for configuration files, code, scripts and Python packages only. It should **not** be used for data.
+You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into `/mnt/work` so that they will persist when the app stops and are available the next time you run it.
 
 !!! Warning
 
@@ -90,86 +88,85 @@ The app also creates a `$HOME/ondemand/share/jupyter/` in your home directory on
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/share` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/work` so that you can reuse these the next time you run the app on the same back-end.
 
-There are a number of ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online may suggest others.
+There many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
 
-### Install packages within a `/mnt/share` subdirectory
+### Install packages within a `/mnt/work` subdirectory
 
-Install packages within a `/mnt/share` subdirectory. For example:
+Install packages within a `/mnt/work` subdirectory:
 
 1. Select **Launcher**, **Terminal**.
-1. Create directory for packages:
+1. Create a subdirectory for the packages:
 
     ```bash
-    mkdir -t /mnt/share/mypips
+    mkdir -p /mnt/work/lib/jupyter/my-pips
     ```
 
-1. Install package:
+1. Install packages:
 
     ```bash
-    pip install -t /mnt/share/mypips PACKAGE_NAME
+    pip install -t /mnt/work/lib/jupyter/my-pips PACKAGE_NAME
     ```
 
-Any Python code that needs the packages needs to include the path to the subdirectory. For example:
-
-```python
-import sys
-sys.path.append('/mnt/share/mypips')
-import PACKAGE_NAME
-```
-
-The subdirectory and packages will be persisted on the back-end upon which the app runs. For example:
+The subdirectory and packages will be persisted on the back-end upon which the app runs:
 
 ```bash
-$ ls $HOME/ondemand/share/jupyter/
-mypips
-$ ls $HOME/ondemand/share/jupyter/mypips/
+$ ls $HOME/lib/jupyter/my-pips/
 ...
 PACKAGE_NAME
 ...
 ```
 
-### Create a virtual environment within `/mnt/share`
+### Create a virtual environment within `/mnt/work`
 
-Create a virtual environment within `/mnt/share` and install packages into that virtual environment. For example:
+Create a virtual environment within `/mnt/work` and install packages into that virtual environment:
 
 1. Select **Launcher**, **Terminal**.
-1. Create and activate a Python virtual environment:
+1. Create a subdirectory for the virtual environment:
 
     ```bash
-    python -m venv /mnt/share/my-venv
-    source /mnt/share/my-venv/bin/activate
+    mkdir -p /mnt/work/lib/jupyter
     ```
 
-1. Install package into virtual environment:
+1. Create and activate the virtual environment:
+
+    ```bash
+    python -m venv /mnt/work/lib/jupyter/my-venv
+    source /mnt/work/lib/jupyter/my-venv/bin/activate
+    ```
+
+1. Install packages into the virtual environment:
 
     ```bash
     python -m pip install PACKAGE_NAME
     ```
 
-1. Register the virtual environment with JupyterLab, to create new IPython kernels to provide access to the virtual environment within JupyterLab Notebook and Console sessions:
+To create a new IPython kernel to provide access to the virtual environment within a JupyterLab Notebook or Console, register the virtual environment with JupyterLab:
+
+1. Within a JupyterLab Terminal, add the 'ipykernel' package to the virtual environment:
 
     ```bash
     python -m pip install ipykernel
-    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
     ```
 
-!!! Note
-
-    The next time you run this app you will need to activate the virtual environment and recreate the kernels within a JupyterLab Terminal:
+1. Create a bash script to activate your virtual environment and create a new kernel. For example, `/mnt/work/register-my-venv-kernel.sh`:
 
     ```bash
-    source /mnt/share/my-venv/bin/activate
+    source /mnt/work/lib/jupyter/my-venv/bin/activate
     python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    jupyter kernelspec list
     ```
 
-The virtual environment and its contents will be persisted on the back-end upon which the app runs. For example:
+1. Within a JupyterLab Terminal, `source` the script to run it. For example:
 
-```bash
-$ ls ondemand/share/jupyter/
-my-venv/
-```
+    ```bash
+    source /mnt/work/register-my-venv-kernel.sh
+    ```
+
+1. New Console and Notebook buttons for your kernel will shortly appear in the Launcher panel.
+
+The next time you use the app, source the script as above, to recreate a kernel for your virtual environment.
 
 ---
 
