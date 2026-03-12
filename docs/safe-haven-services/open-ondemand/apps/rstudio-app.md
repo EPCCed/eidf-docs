@@ -105,16 +105,18 @@ You can access these directories as follows:
     * Enter the directory into the **Go To Folder** dialog box.
     * Click **OK**.
 * **Session** menu, **Set Working Directory**, **Choose Directory** menu option:
-    * First run, within an RStudio Server Console:
+    * Run, within an RStudio Server Console:
 
-      ```R
-      setwd('/')
-      ```
+        ```R
+        setwd('/')
+        ```
+
+    * The directories will now be available for the menu option.
 
 * **Tools** menu, **Global Options** tab, 'RSessions' **Default working directory** option:
     * Click **Browse...**.
-    * `/safe_outputs` and `/scratch` can be accessed via `/root/work` in `safe_outputs` and `scratch/rstudio/SESSION_ID` respectively i.e., the directories mounted onto `/safe_outputs` and `/scratch`.
-    * ``/scratch` is deleted when the app completes so should not be selected for use as a default working directory.
+    * `/safe_outputs` can be accessed via `/root/work` in `safe_outputs` i.e., the directory mounted onto `/safe_outputs`.
+    * `/scratch` is deleted when the app completes so should not be selected for use as a default working directory.
     * `/safe_data` cannot be selected for use as a default working directory.
 
 ---
@@ -125,9 +127,9 @@ RStudio Server is configured with your web proxy environment variables so you ca
 
 There many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.
 
-### Install packages within `/root/work`
+### Install packages within a `/root/work` subdirectory
 
-Install packages within `/root/work`:
+Install packages within a `/root/work` subdirectory:
 
 1. Create a subdirectory for the R packages via the RStudio Server Terminal:
 
@@ -135,7 +137,7 @@ Install packages within `/root/work`:
     $ mkdir -p /root/work/lib/rstudio
     ```
 
-1. Install packages within `/root/work`:
+1. Install packages into this subdirectory:
 
     ```R
     > install.packages('PACKAGE_NAME', lib='/root/work/lib/rstudio')

@@ -103,7 +103,7 @@ Install packages within a `/mnt/work` subdirectory:
     mkdir -p /mnt/work/lib/jupyter/my-pips
     ```
 
-1. Install packages:
+1. Install packages into this subdirectory:
 
     ```bash
     pip install -t /mnt/work/lib/jupyter/my-pips PACKAGE_NAME
@@ -120,7 +120,7 @@ PACKAGE_NAME
 
 ### Create a virtual environment within `/mnt/work`
 
-Create a virtual environment within `/mnt/work` and install packages into that virtual environment:
+Create a virtual environment within a `/mnt/work` subdirectory and install packages into that virtual environment:
 
 1. Select **Launcher**, **Terminal**.
 1. Create a subdirectory for the virtual environment:
@@ -129,7 +129,7 @@ Create a virtual environment within `/mnt/work` and install packages into that v
     mkdir -p /mnt/work/lib/jupyter
     ```
 
-1. Create and activate the virtual environment:
+1. Create and activate the virtual environment within this subdirectory:
 
     ```bash
     python -m venv /mnt/work/lib/jupyter/my-venv
@@ -150,7 +150,7 @@ To create a new IPython kernel to provide access to the virtual environment with
     python -m pip install ipykernel
     ```
 
-1. Create a bash script to activate your virtual environment and create a new kernel. For example, `/mnt/work/register-my-venv-kernel.sh`:
+1. Write a bash script to activate your virtual environment and create a new kernel. For example, `/mnt/work/register-my-venv-kernel.sh`:
 
     ```bash
     source /mnt/work/lib/jupyter/my-venv/bin/activate
