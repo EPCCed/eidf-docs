@@ -13,6 +13,8 @@ Examples of data used in the CDW include:
 - Consented personal identifiable data that is used for research purposes and is subject to controls on how the data is used and shared
 - Valuable data that should not exist in many, untrusted, non-audited or unauthorised locations
 
+This service provides a controlled, auditable environment for working with this type of data that can be setup quickly to allow focus on data processing rather than meeting data access requirements.
+
 ## Prerequisites to using the Confidential Data Workspace
 
 Projects using the CDW cloud service are accessed via the
@@ -67,7 +69,7 @@ To create and set up the private instance VMs for the CDW project you will need 
 
 ### Add additional users for the CDW project
 
-The VM Admin will need to setup the remaining users for the CDW project, these include data managers and data users. Data users are created following the same process as typical users in EIDF projects. They are given no other permissions than access to a private VM (not the router).
+The VM Admin will need to set up the remaining users for the CDW project, these include data managers and data users. Data users are created following the same process as typical users in EIDF projects. They are given no other permissions than access to a private VM (not the router).
 
 Data managers are created as typical EIDF project users but are added to the `eidfxxx-datamanager` group to give them permissions to disclose data from the CDW project. They also have access to the CDW project router VM which allows them to pass data through the router to the outside world. They do not have sudo access to the router as this would allow them to change its configuration and potentially enable unexpected data disclosure.
 
@@ -87,6 +89,10 @@ Data can be added to the CDW project by the VM Admin or data manager users in tw
 
 - Copying the data in from an external machine using scp via the CDW project router machine as described in the [Data Transfer Using SCP documentation](./storage.md#data-transfer-using-scp-with-and-without-ssh-config)
 - Adding data to an S3 bucket that is accessible inside and outside the CDW and copying the data from the bucket to the CDW project VMs via the CDW project router machine as given in the [S3 Storage documentation](./storage.md#s3-storage)
+
+### CDW project VM access logs and data transfer logs
+
+Details around the location and configuration of logs from the CDW project VMs can be found in the policies section of the documentation [Audit Policies](./policies.md#audit-policies).
 
 ## Accessing Your Projects as a Data User or Data Manager
 
