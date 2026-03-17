@@ -106,7 +106,7 @@ as this is in your home directory, and, again, you are `root` but **only** withi
 
 The other directories, mounted from directories in your home directory, likewise have user, and group, `root`.
 
-In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permissions logged are:
+In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permissions logged will differ. For example:
 
 ```text
 /safe_data: nobody (65534) your_project_group(4797) drwxrwx--- nfs
@@ -114,7 +114,7 @@ In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permis
 /safe_outputs: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
 ```
 
-Again `/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data` then the permissions logged would be:
+Again `/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data` then the permissions logged would be, for example:
 
 ```text
 /safe_data: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
