@@ -144,7 +144,6 @@ For most back-ends, your home directory is common to both the Open OnDemand VM a
 However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* All DataLoch VMs.
 
 To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. How to enable this is described in the following section on [Enable automated copy of job files to a back-end](#enable-automated-copy-of-job-files-to-a-back-end).
 
