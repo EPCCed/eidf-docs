@@ -23,11 +23,8 @@ For most back-ends, your home directory is common to both the Open OnDemand VM a
 However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* All DataLoch VMs.
 
-To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job.
-
-As Superdome Flex is not used in this walkthrough, this set up **only** needs to be done by users of the **DataLoch safe haven** who should now follow the instructions in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end) to enable this for the 'desktop' VM on which you are running the browser in which you are using Open OnDemand, before returning to this page.
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. For future reference, how to do this is describe4d in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end).
 
 ---
 
@@ -78,7 +75,7 @@ Read the form entries in conjunction with the explanations below and make the su
         ```
 
 * **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello` container supports two container-specific arguments:
-    * A `-d|--duration INTEGER` argument which causes the container to sleep (pause) for that number of seconds. If undefined, then the container does not sleep.
+    * A `-d|--doze INTEGER` argument which causes the container to doze (pause) for that number of seconds. If undefined, then the container does not doze.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
     * Enter the following to request a sleep of 10 seconds and a greeting with your name:
 
@@ -149,29 +146,61 @@ Together, these mounts (and additional, app-specific, mounts) provide various me
 
 !!! Note
 
+    Your project data files, in a project-specific directory under `/safe_data`, are **not** available on the Open OnDemand VM.
+
+!!! Note
+
     Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
 
 !!! Warning
 
     If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
-When the `epcc-ces-hello` container is run, it writes two files into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs` directory on the back-end:
+### View the container's output file
 
-* `safe_data.txt`, which lists a selection of directories and files in the `/safe_data/PROJECT_SUBDIRECTORY` directory that was mounted into the container at `/safe_data`.
-* `safe_outputs.txt` which has a `This text is in safe_outputs.txt` message.
+When the `epcc-ces-hello` container is run, it writes a file, `epcc-ces-hello.txt` into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs` directory on the back-end. This file includes a greeting, your user ID, group ID and groups within the container, and the contents of `/safe_data` as mounted within the container. An example of `safe_outputs/epcc-ces-hello.txt` is as follows:
 
-### View the container's output files
+```text
+Greetings someuser from the 'epcc-ces-hello' container!
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` directories. However, your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
+Your user ID within the container is: 0(root).
 
-For DataLoch users, your home directory is not common to both the Open OnDemand VM and the back-end, so you cannot use the File Manager to browse files created by the container. However, another way of viewing these files will be described shortly.
+Your group ID within the container is: 0(root).
+
+Your groups within the container are: 0(root).
+
+Your mounted /safe_data/ files include:
+
+...project-specific files...
+
+Dozing for 10 seconds...
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+...and awake!
+
+Goodbye someuser!
+```
+
+You may be wondering about why your user and group IDs cite 'root'. For some containers run via Podman, including `epcc-ces-hello`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end.
+
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` directories.
 
 View the `safe_outputs` directory via the Open OnDemand File Manager:
 
 1. Select the **Files** menu, **Home Directory** option to open the File Manager.
 1. Click **Home Directory**, to go to your home directory.
 1. Click `safe_outputs` to view the directory.
-1. Click on `safe_data.txt` and `safe_outputs.txt` to view their contents.
+1. Click on `epcc-ces-hello.txt` to view its contents.
 
 ![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-05-batch-container-app-outputs.png){: class="border-img center"}
 *File Manager showing outputs directory contents after Run Batch Container app completes*
@@ -181,24 +210,55 @@ An alternative to the File Manager is to log in to the back-end and view the fil
 View the `safe_outputs` directory within the back-end:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
-1. Change into your home directory and view the directory and its files and their contents.
+1. View `safe_outputs` and `epcc-ces-hello.txt`:
 
     ```bash
-    cd
     ls safe_outputs/
-    cat safe_outputs/safe_data.txt
-    cat safe_outputs/safe_outputs.txt
+    cat safe_outputs/epcc-ces-hello.txt
     ```
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
-### View the app log file within the job context directory
+### View the app's log file within the job context directory
 
-When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from the container as it runs. It can be useful to check the log file when debugging.
+When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
 
-For the `epcc-ces-hello` container, the logs includes information about the mounts and also a greeting and sleep (pause) information based on the environment variable and container arguments you defined in the app's form.
+For the `epcc-ces-hello` container, its log file, named `output.log`, includes information about the command used to run the container, the mounted directories, the environment variable and arguments provided to the container as well as the outputs that are written into `epcc-ces-hello.txt`.
 
-As for the output files, you can use either the File Manager (non-DataLoch safe haven users only) or log into the back-end (all users) to view the log file.
+```text
+Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
+
+...
+
+epcc-ces-hello container
+
+Directory users, groups and permissions:
+
+/safe_data: nobody (65534) root(0) drwxrws--- nfs
+/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
+/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
+
+...
+
+Found optional 'GREETING' environment variable
+GREETING: Greetings
+Number of arguments: 4
+Arguments: -d 10 -n someuser
+-d
+10
+-n
+someuser
+
+...
+
+Greetings someuser from the 'epcc-ces-hello' container!
+
+...
+
+Goodbye someuser!
+```
+
+As for the output files, you can use either the File Manager or log into the back-end (all users) to view the log file.
 
 View the log file via the Open OnDemand File Manager:
 
@@ -223,82 +283,6 @@ View the log file within the back-end:
     ```bash
     cat output.log
     ```
-
-For the `epcc-ces-hello` container, the log file includes four types of log information. There is information from the app itself and it sets itself up to run the container. For example:
-
-```text
-Mon Feb  9 14:41:19 UTC 2026 before.sh: Started before.sh
-Mon Feb  9 14:41:29 UTC 2026 before.sh: JOB_FOLDER: /home/eidf147/eidf147/mikej147/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/d49351c9-59a8-4a45-ac29-cc7b5ba16a8c
-...
-Mon Feb  9 14:41:30 UTC 2026 script.sh: Running ces-run podman ...
-Running: ...
-```
-
-This is followed by information from the container itself about your user name within the container and the directories mounted into the container. For example:
-
-```text
-Hello!
-
-Your container is now running.
-
-Your user 'id' within the container is: uid=0(root) gid=0(root) groups=0(root).
-
-Check mounted directories, ownership, permissions, file system type:
-/safe_data: nobody (65534) root(0) drwxrws--- ext2/ext3
-/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
-/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
-
-Check read/write access to mounted directories
-
-List /safe_data contents and write to /safe_outputs/safe_data_files.out
-Check write to /safe_outputs
-Contents of /safe_outputs/safe_outputs.txt:
-This text is in safe_outputs.txt
-Check write to /scratch
-Contents of /scratch/scratch.txt:
-This text is in scratch.txt
-
-Look for optional 'GREETING' environment variable
-Found optional 'GREETING' environment variable with value: Hello there
-
-Parse command-line arguments
-Number of arguments: 4
-Arguments (one per line):
-    -d
-    10
-    -n
-    Mike
-```
-
-For some containers run via Podman, including `epcc-ces-hello`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end. You can check this yourself by inspecting the file ownership of the files within `safe_outputs`.
-
-Returning to the log file, there is information from the container itself about your user name within the container and the directories mounted into the container, including a message created using the value of the `GREETING` environment variable and the `-n` container argument, messages indicating that the container is sleeping for the duration specified by the `-d` container argument, and a farewell message, again using the `-n` container argument. For example:
-
-```text
-Hello there Mike!
-
-Sleeping for 10 seconds...
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-...and awake!
-
-Goodbye Mike!
-```
-
-Finally, the log file includes information from the app itself as it completes. For example:
-
-```text
-Mon Feb  9 14:41:40 UTC 2026 script.sh: Finished script.sh
-Cleaning up...
-```
 
 ---
 
