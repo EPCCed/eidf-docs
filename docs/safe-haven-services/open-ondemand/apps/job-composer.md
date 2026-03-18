@@ -153,13 +153,13 @@ Create and submit job:
 
 The script creates two files:
 
-* `res.txt`, outputs captured by Slurm as the job runs. For example:
+* `res.txt` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
     Created output file with 'Hello World'
     ```
 
-* `output_file`, the file created within the job script. For example:
+* `output_file` which is the file created within the job script. For example:
 
     ```text
     Hello World to someuser from some-vm.nsh.loc
@@ -251,7 +251,7 @@ Submit job:
 
 The script creates two files:
 
-* `output.log`, outputs captured by Slurm as the job runs. For example:
+* `output.log` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
     Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
@@ -286,7 +286,7 @@ The script creates two files:
     Goodbye someuser!
     ```
 
-* `$HOME/safe_outputs/epcc-ces-hello.txt`, a file created by the container itself. For example:
+* `$HOME/safe_outputs/epcc-ces-hello.txt` which is a file created by the container itself, including a greeting, the user's user ID, group ID and groups within the container, and the contents of `/safe_data` within the container. For example:
 
     ```text
     Greetings someuser from the 'epcc-ces-hello' container!
@@ -334,7 +334,7 @@ View the output files:
     1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
 
         ```bash
-        cat $HOME/safe_outputs/epcc-ces-hello.txt 	
+        cat $HOME/safe_outputs/epcc-ces-hello.txt
         ```
 
 Create a new job from the current job to run the container using Apptainer:
