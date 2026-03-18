@@ -77,7 +77,7 @@ Read the form entries in conjunction with the explanations below and make the su
 * **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello` container supports two container-specific arguments:
     * A `-d|--doze INTEGER` argument which causes the container to doze (pause) for that number of seconds. If undefined, then the container does not doze.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
-    * Enter the following to request a sleep of 10 seconds and a greeting with your name:
+    * Enter the following to request a doze of 10 seconds and a greeting with your name:
 
         ```text
         -d 10
@@ -128,7 +128,7 @@ All going well, the container, and its job, should complete quickly.
 
 The Job status on the job card will update to 'Completed'.
 
-![Run Batch Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-04-batch-container-app-completed.png){: class="border-img center"}
+![Run Batch Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-05-batch-container-app-completed.png){: class="border-img center"}
 *Run Batch Container app job card showing job status as 'Completed'*
 
 ### How containers exchange files with back-ends
@@ -201,7 +201,7 @@ View the `safe_outputs` directory via the Open OnDemand File Manager:
 1. Click `safe_outputs` to view the directory.
 1. Click on `epcc-ces-hello.txt` to view its contents.
 
-![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-05-batch-container-app-outputs.png){: class="border-img center"}
+![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-06-batch-container-app-outputs.png){: class="border-img center"}
 *File Manager showing `safe_outputs` directory contents after Run Batch Container app completes*
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
@@ -263,7 +263,7 @@ View the log file via the Open OnDemand File Manager:
 
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
 
-    ![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-06-batch-container-app-logs.png){: class="border-img center"}
+    ![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-07-batch-container-app-logs.png){: class="border-img center"}
     *File Manager showing log files within Run Batch Container app's job context directory*
 
 1. Click on the log file, `output.log`.
@@ -299,12 +299,12 @@ Your job will have a status of 'Completed'.
 
 Each job has a unique **job ID** created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
 
-![Active Jobs app jobs list](../../images/open-ondemand/getting-started-07-active-jobs.png){: class="border-img center"}
+![Active Jobs app jobs list](../../images/open-ondemand/getting-started-08-active-jobs.png){: class="border-img center"}
 *Active Jobs app jobs list*
 
 To see more details about the job, click the **>** button, by the job.
 
-![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-08-active-jobs-details.png){: class="border-img center"}
+![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-09-active-jobs-details.png){: class="border-img center"}
 *Active Jobs app showing details of completed Run Batch Container app job*
 
 If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
@@ -319,7 +319,7 @@ Click the 'Run JupyterLab Container' app on the Open OnDemand home page.
 
 The Run JupyterLab Container app form will open.
 
-![Excerpt of Run JupyterLab Container app form](../../images/open-ondemand/getting-started-09-jupyter-app-form.png){: class="border-img center"}
+![Excerpt of Run JupyterLab Container app form](../../images/open-ondemand/getting-started-10-jupyter-app-form.png){: class="border-img center"}
 *Excerpt of Run JupyterLab Container app form*
 
 For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
@@ -343,12 +343,12 @@ Again, Open OnDemand will show an app job card with information about the app's 
     * 'CPUs/cores': The value you selected on the app form.
     * 'Memory (GiB)' The value you selected on the app form.
 
-![Run JupyterLab Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-10-jupyter-app-queued.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-11-jupyter-app-queued.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Queued'*
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-![Run JupyterLab Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-11-jupyter-app-starting.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-12-jupyter-app-starting.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Starting'*
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.
@@ -357,14 +357,14 @@ A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
 A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
 
-![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-12-jupyter-app-running.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-13-jupyter-app-running.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Running'*
 
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 You may wonder why you were not prompted for a username and password. JupyterLab runs within the container as a 'root' user. The 'root' user is within the context of the container **only**. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into JupyterLab using this password automatically.
 
-![JupyterLab](../../images/open-ondemand/getting-started-13-jupyter-app-jupyter-lab.png){: class="border-img center"}
+![JupyterLab](../../images/open-ondemand/getting-started-14-jupyter-app-jupyter-lab.png){: class="border-img center"}
 *JupyterLab*
 
 ### Use JupyterLab to explore how directories on a back-end are mounted into a container
@@ -383,7 +383,7 @@ ls /safe_data/
 
 You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY` on the back-end.
 
-![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-14-jupyter-app-mounts.png){: class="border-img center"}
+![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-15-jupyter-app-mounts.png){: class="border-img center"}
 *Viewing mounted directories within JupyterLab*
 
 Check this by running, in your Open OnDemand command-line session with the back-end:
@@ -458,12 +458,12 @@ You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 
-![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-15-active-jobs.png){: class="border-img center"}
+![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-16-active-jobs.png){: class="border-img center"}
 *Active Jobs app showing running Run JupyterLab Container app job*
 
 To see more details about the job, click the **>** button, by the job.
 
-![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-16-active-jobs-details.png){: class="border-img center"}
+![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-17-active-jobs-details.png){: class="border-img center"}
 *Active Jobs app showing details of running Run JupyterLab Container app job*
 
 ### Finish your Run JupyterLab Container app job
@@ -475,7 +475,7 @@ You can end your job by as follows:
 
 The Job status on the job card will update to 'Completed'.
 
-![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-17-jupyter-app-completed.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-18-jupyter-app-completed.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Completed'*
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
