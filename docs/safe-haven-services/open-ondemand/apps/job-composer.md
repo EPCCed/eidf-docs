@@ -226,7 +226,7 @@ Create a job to run the container using Podman:
     EOF
 
     cat << EOF > args.txt
-    -d 5
+    -d 10
     -n $USER
     EOF
 
@@ -271,9 +271,9 @@ The script creates two files:
     Found optional 'GREETING' environment variable
     GREETING: Greetings
     Number of arguments: 4
-    Arguments: -d 5 -n someuser
+    Arguments: -d 10 -n someuser
         -d
-        5
+        10
         -n
         someuser
 
@@ -301,13 +301,18 @@ The script creates two files:
 
     ...project-specific files...
 
-    Dozing for 5 seconds...
+    Dozing for 10 seconds...
 
     1
     2
     3
     4
     5
+    6
+    7
+    8
+    9
+    10
 
     ...and awake!
 
