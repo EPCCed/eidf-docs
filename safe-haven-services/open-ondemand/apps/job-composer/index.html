@@ -2998,9 +2998,9 @@
 <li>Enter Job Name: Hello World</li>
 <li>Select a Cluster, back-end.</li>
 <li>Click <strong>Create New Job</strong>.</li>
-<li>View the <code>main_job.sh</code> script contents.</li>
 <li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
 <li>A new browser tab will appear with an editor.</li>
+<li>Read the <code>main_job.sh</code> script contents.</li>
 <li>
 <p>Change the line:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
@@ -3021,57 +3021,46 @@
 <p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
 </li>
 </ol>
-<p>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:</p>
-<ol>
-<li>Click <code>res.txt</code> under <strong>Folder Contents</strong>.</li>
+<p>The script creates two files:</p>
+<ul>
 <li>
-<p>A new browser tab will appear with the contents of the file:</p>
+<p><code>res.txt</code> which has the outputs captured by Slurm as the job runs. For example:</p>
 <div class="highlight"><pre><span></span><code>Created output file with &#39;Hello World&#39;
 </code></pre></div>
 </li>
 <li>
-<p>Close the tab.</p>
-</li>
-<li>Switch to the Job Composer browser tab.</li>
-<li>Click <code>output_file</code> under <strong>Folder Contents</strong>.</li>
-<li>
-<p>A new browser tab will appear with the contents of the file. For example:</p>
+<p><code>output_file</code> which is the file created within the job script. For example:</p>
 <div class="highlight"><pre><span></span><code>Hello World to someuser from some-vm.nsh.loc
 </code></pre></div>
 </li>
-<li>
-<p>Close the tab.</p>
-</li>
+</ul>
+<p>View the output files:</p>
+<ul>
+<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:<ol>
+<li>Click <code>res.txt</code> under <strong>Folder Contents</strong>.</li>
+<li>A new browser tab will appear with the contents of the file.</li>
+<li>Switch to the Job Composer browser tab.</li>
+<li>Click <code>output_file</code> under <strong>Folder Contents</strong>.</li>
+<li>A new browser tab will appear with the contents of the file.</li>
 </ol>
+</li>
+<li>
 <p>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:</p>
 <ol>
 <li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
 <li>
-<p>View the job context directory and its contents:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">pwd</span>
-ls<span class="w"> </span>-1
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>/home/someuser/ondemand/data/sys/myjobs/projects/default/1
-main_job.sh
-output_file
-res.txt
-</code></pre></div>
-</li>
-<li>
 <p>View <code>res.txt</code>:</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>res.txt
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Created output file with &#39;Hello World&#39;
 </code></pre></div>
 </li>
 <li>
 <p>View <code>output_file</code>:</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output_file
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Hello World to someuser from some-vm.nsh.loc
-</code></pre></div>
 </li>
 </ol>
+</li>
+</ul>
 <hr />
 <h2 id="run-a-container-example">Run a container example</h2>
 <p>This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the <code>epcc-ces-hello</code> container which is used within the <a href="../../getting-started/">Getting started</a> and the <a href="../batch-container-app/">Run Batch Container</a> app. The container is run using the Safe Haven Services Container Execution Tools' commands <code>ces-pull</code>, to pull the container, and <code>ces-run</code> to run the container.</p>
@@ -3087,7 +3076,7 @@ res.txt
 <p>Update the script as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --job-name=hello-there</span>
-<span class="c1">#SBATCH --output=output.txt</span>
+<span class="c1">#SBATCH --output=output.log</span>
 <span class="c1">#SBATCH --ntasks=1</span>
 <span class="c1">#SBATCH --time=10:00</span>
 <span class="c1">#SBATCH --mem-per-cpu=100</span>
@@ -3097,27 +3086,27 @@ res.txt
 <span class="nv">CR_TOKEN</span><span class="o">=</span>...see<span class="w"> </span>below...
 ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SCRATCH</span><span class="o">=</span><span class="nv">$HOME</span>/scratch/hello-there
-<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SAFE_OUTPUTS</span><span class="o">=</span><span class="nv">$HOME</span>/safe_outputs/hello-there
+<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SCRATCH</span><span class="o">=</span><span class="nv">$HOME</span>/scratch/job_composer
+<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SAFE_OUTPUTS</span><span class="o">=</span><span class="nv">$HOME</span>/safe_outputs
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SCRATCH</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SAFE_OUTPUTS</span>
 
-cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; env_file.txt</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; envs.txt</span>
 <span class="s">GREETING=Greetings</span>
 <span class="s">EOF</span>
 
-cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; arg_file.txt</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; args.txt</span>
 <span class="s">-d 10</span>
 <span class="s">-n $USER</span>
 <span class="s">EOF</span>
 
-ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>env_file.txt<span class="w"> </span>--arg-file<span class="w"> </span>arg_file.txt<span class="w"> </span><span class="nv">$CR_URL</span>
+ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>envs.txt<span class="w"> </span>--arg-file<span class="w"> </span>args.txt<span class="w"> </span><span class="nv">$CR_URL</span>
 </code></pre></div>
 <ul>
 <li>For <code>CR_TOKEN</code>, copy in the <code>epcc-ces-hello</code> container's 'Container registry access token' from the <a href="../batch-container-app/">Run Batch Container</a> app's form.</li>
-<li>By default, <code>ces-run</code> creates directories with random names - <code>scratch-NNNN</code> and <code>outputs-NNNN</code> - and mounts these into a container at <code>/scratch</code> and <code>/safe_outputs</code>. However, <code>ces-run</code> supports <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of <code>$HOME</code> and define <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> to tell <code>ces-run</code> to mount these directories.</li>
-<li>The script creates a file, <code>env_file.txt</code>, with an environment variable to be passed to the <code>epcc-ces-hello</code> container. The container uses the environment variable <code>GREETING</code> to customise the greeting it prints.</li>
-<li>The script also creates a file, <code>arg_file.txt</code>, with container-specific arguments to be passed directly to the container when it is run. The <code>epcc-ces-hello</code> container will pause for <code>-d</code> seconds, then issue a greeting to the name cited in <code>-n</code> (here, the current user).</li>
+<li>By default, <code>ces-run</code> creates directories with random names - <code>scratch-NNNN</code> and <code>outputs-NNNN</code> - and mounts these into a container at <code>/scratch</code> and <code>/safe_outputs</code>. However, <code>ces-run</code> supports <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of <code>$HOME</code> and define <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> to tell <code>ces-run</code> to mount these directories into the container.</li>
+<li>The script creates a file, <code>envs.txt</code>, with an environment variable to be passed to the <code>epcc-ces-hello</code> container. The container uses the environment variable <code>GREETING</code> to customise the greeting it prints.</li>
+<li>The script also creates a file, <code>args.txt</code>, with container-specific arguments to be passed directly to the container when it is run. The container uses these arguments to issue a greeting to the name cited in <code>-n</code> (here, the current user) and doze for <code>-d</code> seconds.</li>
 </ul>
 </li>
 <li>
@@ -3135,17 +3124,58 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> 
 <p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
 </li>
 </ol>
-<p>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:</p>
-<ol>
-<li>Click <code>output.txt</code> under <strong>Folder Contents</strong>.</li>
+<p>The script creates two files:</p>
+<ul>
 <li>
-<p>A new browser tab will appear with the contents of the file:</p>
-<div class="highlight"><pre><span></span><code>...
-Hello!
-...
-Greetings USER!
+<p><code>output.log</code> which has the outputs captured by Slurm as the job runs. For example:</p>
+<div class="highlight"><pre><span></span><code>Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
 
-Sleeping for 10 seconds...
+...
+
+epcc-ces-hello container
+
+Directory users, groups and permissions:
+
+/safe_data: nobody (65534) root(0) drwxrws--- nfs
+/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
+/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
+
+...
+
+Found optional &#39;GREETING&#39; environment variable
+GREETING: Greetings
+Number of arguments: 4
+Arguments: -d 10 -n someuser
+    -d
+    10
+    -n
+    someuser
+
+...
+
+Greetings someuser from the &#39;epcc-ces-hello&#39; container!
+
+...
+
+Goodbye someuser!
+</code></pre></div>
+</li>
+<li>
+<p><code>$HOME/safe_outputs/epcc-ces-hello.txt</code> which is a file created by the container itself, including a greeting, the user's user ID, group ID and groups within the container, and the contents of <code>/safe_data</code> within the container. For example:</p>
+<div class="highlight"><pre><span></span><code>Greetings someuser from the &#39;epcc-ces-hello&#39; container!
+
+Your user ID within the container is: 0(root).
+
+Your group ID within the container is: 0(root).
+
+Your groups within the container are: 0(root).
+
+Your mounted /safe_data/ files include:
+
+...project-specific files...
+
+Dozing for 10 seconds...
+
 1
 2
 3
@@ -3156,54 +3186,41 @@ Sleeping for 10 seconds...
 8
 9
 10
+
 ...and awake!
 
-Goodbye USER!
+Goodbye someuser!
 </code></pre></div>
 </li>
-<li>
-<p>Close the tab.</p>
-</li>
+</ul>
+<p>View the output files:</p>
+<ul>
+<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:<ol>
+<li>Click <code>output.log</code> under <strong>Folder Contents</strong>.</li>
+<li>A new browser tab will appear with the contents of the file.</li>
+<li>Select <strong>Files</strong> menu, <strong>Home Directory</strong> option.</li>
+<li>Click <code>safe_outputs</code>.</li>
+<li>Click <code>epcc-ces-hello.txt</code>.</li>
+<li>A page with the contents of the file will appear.</li>
 </ol>
+</li>
+<li>
 <p>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:</p>
 <ol>
 <li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
 <li>
-<p>View the job context directory's contents:</p>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>arg_file.txt
-env_file.txt
-main_job.sh
-output.txt
+<p>View <code>output.log</code>:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output.log
 </code></pre></div>
 </li>
 <li>
-<p>View <code>output.txt</code>:</p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output.txt
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>...
-Hello!
-...
-Greetings USER!
-
-Sleeping for 10 seconds...
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-...and awake!
-
-Goodbye USER!
+<p>View <code>$HOME/safe_outputs/epcc-ces-hello.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="nv">$HOME</span>/safe_outputs/epcc-ces-hello.txt
 </code></pre></div>
 </li>
 </ol>
+</li>
+</ul>
 <p>Create a new job from the current job to run the container using Apptainer:</p>
 <ol>
 <li>Switch to the Job Composer browser tab.</li>
@@ -3213,19 +3230,17 @@ Goodbye USER!
 <p>Replace use of <code>podman</code> with <code>apptainer</code> as follows:</p>
 <ol>
 <li>
-<p>Replace the <code>ces-pull podman</code> line with:</p>
+<p>Replace the <code>ces-pull podman</code> line with the lines:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
 ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
 <span class="nv">SIF_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/epcc-ces-hello:1.0.sif
 <span class="nb">cd</span><span class="w"> </span><span class="nv">$SLURM_SUBMIT_DIR</span>
 </code></pre></div>
-<ul>
-<li><code>ces-pull apptainer</code> creates a SIF file in the current directory whose name is derived from the last part of the container URL. We change into <code>$HOME</code> so that the SIF file is created in <code>$HOME</code> before moving back to the directory with the job files, <code>$SLURM_SUBMIT_DIR</code>. This means we'll only ever have one copy of this SIF file in our <code>$HOME</code> directory, rather than one copy for each run of the job, which would quickly consume space!</li>
-</ul>
+<p><code>ces-pull apptainer</code> creates an Apptainer SIF file in the current directory whose name is derived from the last part of the container URL. We change into <code>$HOME</code> so that the SIF file is created in <code>$HOME</code> before moving back to the directory with the job files, <code>$SLURM_SUBMIT_DIR</code>. This means we will only ever have one copy of this SIF file in our <code>$HOME</code> directory, rather than one copy for each run of the job, which would quickly consume space!</p>
 </li>
 <li>
 <p>Replace the <code>ces-run podman</code> line with:</p>
-<div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>apptainer<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>env_file.txt<span class="w"> </span>--arg-file<span class="w"> </span>arg_file.txt<span class="w"> </span><span class="nv">$SIF_FILE</span>
+<div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>apptainer<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>envs.txt<span class="w"> </span>--arg-file<span class="w"> </span>args.txt<span class="w"> </span><span class="nv">$SIF_FILE</span>
 </code></pre></div>
 </li>
 </ol>
@@ -3242,7 +3257,13 @@ ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv
 <p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
 </li>
 </ol>
-<p>View <code>output.txt</code> as described previously.</p>
+<p>View the output files - <code>output.log</code> and <code>$HOME/safe_outputs/epcc-ces-hello.txt</code> - as described earlier. Note that your user ID, group ID and groups within the container will differ. <code>epcc-ces-hello.txt</code>'s contents will differ. In the Podman container you are 'root', within the Apptainer container you are 'you'. For example:</p>
+<div class="highlight"><pre><span></span><code>Your user ID within the container is: 36177(someuser).
+
+Your group ID within the container is: 4797(somegroup).
+
+Your groups within the container are: 4797(somegroup),65534(nogroup).
+</code></pre></div>
 
 
 
