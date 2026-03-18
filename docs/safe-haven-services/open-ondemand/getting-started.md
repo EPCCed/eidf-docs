@@ -198,12 +198,11 @@ As mentioned earlier, for most back-ends, your home directory is common to both 
 View the `safe_outputs` directory via the Open OnDemand File Manager:
 
 1. Select the **Files** menu, **Home Directory** option to open the File Manager.
-1. Click **Home Directory**, to go to your home directory.
 1. Click `safe_outputs` to view the directory.
 1. Click on `epcc-ces-hello.txt` to view its contents.
 
 ![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-05-batch-container-app-outputs.png){: class="border-img center"}
-*File Manager showing outputs directory contents after Run Batch Container app completes*
+*File Manager showing `safe_outputs` directory contents after Run Batch Container app completes*
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
 
