@@ -352,8 +352,7 @@ When the job starts, the Job status on the job card will update to 'Starting' an
 ![Run JupyterLab Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-11-jupyter-app-starting.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Starting'*
 
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the
-job, and so JupyterLab, is now running.
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.
 
 A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
@@ -483,39 +482,6 @@ The Job status on the job card will update to 'Completed'.
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
 Your job will now have a status of 'Completed'.
-
----
-
-## Use `$HOME/safe_data`
-
-As mentioned, if `$HOME/safe_data` exists in your home directory on the back-end, then that is mounted into a container. Otherwise, a subdirectory of `/safe_data` corresponding to your project (and inferred from your user group) is mounted, if such a subdirectory can be found.
-
-Using the File Manager, or via a session on the back-end accessed from within Open OnDemand, or on the 'desktop' VM from which you accessed Open OnDemand, create a `$HOME/safe_data` directory and then create some files in it. For example:
-
-```bash
-mkdir $HOME/safe_data/
-touch $HOME/safe_data/a.txt
-touch $HOME/safe_data/b.txt
-touch $HOME/safe_data/c.txt
-```
-
-Rerun the Run JupyterLab Container app and, again, once JupyterLab has started, click the **Terminal** icon within the 'Launcher' tab.
-
-List the contents of `/safe_data`:
-
-```bash
-ls -1 /safe_data/
-```
-
-and you should see the files you created:
-
-```bash
-a.txt
-b.txt
-c.txt
-```
-
-Remember to delete `$HOME/safe_data` when you are done.
 
 ---
 
