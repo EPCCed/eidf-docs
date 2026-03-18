@@ -32,7 +32,7 @@ on how to register and receive your password.
 Configuration of a CDW project is the exclusive responsibility of the Project Virtual Machine Administrator (VM Admin) which is typically the Principal Investigator (PI) but can be delegated to a person of your choice. This section details the steps required to set up a project as a VM admin.
 
 !!! Note
-   The below requires that a CDW project has already been created for you by the EIDF team. If you do not have a CDW project or would like one created for you please contact the EIDF team to request this.
+    The below requires that a CDW project has already been created for you by the EIDF team. If you do not have a CDW project or would like one created for you please contact the EIDF team to request this.
 
 ### Set up the Virtual Machine Admin (VM Admin) for the project
 
@@ -50,9 +50,9 @@ We also configure a list of buckets within the EIDF S3 repo that data managers c
 To connect and configure the CDW project router you will need to:
 
 - Set up VM Admin accounts for the CDW Project router (eidfxxx-router):
-  - [Add the VM Admin user account to the project router virtual machine eidfxxx-router](docs.md#adding-access-to-the-vm-for-a-user),
-  - Add [sudo permissions to the user account](./docs.md#sudo-permissions) for the project router.
-- [Connect to the project router virtual machine eidfxxx-router](docs.md#connecting-to-the-project-router-virtual-machine-eidfxxx-router)
+    - [Add the VM Admin user account to the project router virtual machine eidfxxx-router](docs.md#adding-access-to-the-vm-for-a-user),
+    - Add [sudo permissions to the user account](./docs.md#sudo-permissions) for the project router.
+- [Connect to the project router virtual machine eidfxxx-router](router-docs.md#ssh-access-to-the-confidential-data-workspace-router)
 - Configure websites and domains that users will be able to get data from via list of domains in specific syntax, more details can be found in the [Updating allowed access for Confidential Data Workspace VMs documentation](./router-docs.md#updating-the-allowed-access-for-confidential-data-workspace-vms) section of the Service documentation.
 - Configure allowed data disclosure out of the project via S3 buckets if this is desired by editing the list of allowed buckets that can be pulled and pushed to, this is documented in [Updating allowed access for Confidential Data Workspace VMs](./router-docs.md#updating-the-allowed-access-for-confidential-data-workspace-vms) section of the Service documentation.
 
@@ -62,10 +62,11 @@ VM Admins will need to set up the actual VMs that users within the project will 
 
 To create and set up the private instance VMs for the CDW project you will need to:
 
-- Create a new private VM for the project following the [Creating a new VM section of the Service documentation](./docs.md#creating-a-new-vm-for-the-project).
-- Add the VM admin account to the new VM following the [Adding user accounts to a project section of the Service documentation](./docs.md#adding-user-accounts-to-a-project) and [Adding access to the VM for a user section of the Service documentation](./docs.md#adding-access-to-the-vm-for-a-user).
+- Create a new private VM for the project following the [Creating a new VM section of the Service documentation](./docs.md#create-a-vm).
+- Add the VM admin account to the new VM following the [Adding user accounts to a project section of the Service documentation](./docs.md#add-a-user-account) and [Adding access to the VM for a user section of the Service documentation](./docs.md#adding-access-to-the-vm-for-a-user).
 - Trial connecting to the VM via the VDI following the [Accessing a VM section of the Service documentation](./docs.md#first-login) to ensure it is working correctly.
-- Apply additional configuration of the VM such as installing software or configuring access to data sources following the [Managing VMs section of the Service documentation](./docs.md#managing-vms) and the [Details of the Confidential Data Workspace Router section of the Service documentation](./router-docs.md#details-of-the-confidential-data-workspace-router) for any network access configuration. It is also worth noting the [FAQs](./faq.md) for common questions around software and network configuration for the VMs.
+- Apply additional configuration of the VM such as installing software or configuring access to data sources following the [Managing VMs section of the Service documentation](./docs.md#updating-an-existing-machine) and the [Details of the Confidential Data Workspace Router section of the Service documentation](./router-docs.md#details-of-the-confidential-data-workspace-router) for any network access configuration. It is also worth noting the [FAQs](./faq.md) for common questions around software
+  and network configuration for the VMs.
 
 ### Add additional users for the CDW project
 

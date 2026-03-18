@@ -4,7 +4,8 @@ The EIDF Confidential Data Workspace Service provides options for privileged use
 
 ## Roles and Their Access to Storage Locations
 
-We define three roles in the Confidential Data Workspace service as described in the [Service Documentation](./docs.md#user-roles-and-their-permissions). These roles are in place to limit who can initiate data transfers to and from the Confidential Data Workspace VMs. Typically we recommend that only VM Admin users and Data Manager users have access to transfer data to and from the Confidential Data Workspace VMs. As such the below options for storage and data transfer are recommended as only available to these roles.
+We define three roles in the Confidential Data Workspace service as described in the [Service Documentation](./docs.md#user-roles-and-their-permissions). These roles are in place to limit who can initiate data transfers to and from the Confidential Data Workspace VMs. Typically we recommend that only VM Admin users and Data Manager users have access to transfer data to and from the Confidential Data Workspace VMs. As such the below options for storage and data transfer are recommended as
+only available to these roles.
 
 ## Data Manager Group Directory
 
@@ -20,26 +21,27 @@ For each S3 bucket you want to use, you must decide whether it should be read-on
 
 - To only allow pulling data into the VM from a bucket, add the bucket to the `/etc/squid/allowlist_domains.txt` file on the Confidential Data Workspace project's router (`<project_code>-router`), as with access for any read only site. Buckets on this allowlist can be accessed with read permissions only.
 - To allow both pulling data into the VM and pushing data from the VM to a bucket, add the bucket to the `/etc/squid/allowlist_buckets.txt` file on the Confidential Data Workspace project's router (`<project_code>-router`). Buckets on this allowlist can be accessed with both read and write permissions.
+
 To use S3 storage with Confidential Data Workspace VMs, an S3 repository must exist or be created in the EIDF Portal. Project leads can request an object store allocation through a request to the EIDF helpdesk.
 
 Once the S3 repository is created, a bucket must be created within this repository that will be accessible from the Confidential Data Workspace VMs.
 This bucket must then be added by the VM Admin to the allowed S3 buckets list on the Confidential Data Workspace project's router, `<project_code>-router`. The file to edit is located at `/etc/squid/allowlist_buckets.txt`. It contains entries where the allowed buckets name should be added using the regex pattern as shown in the form below.
 
-    ```txt
-    ^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
-    ```
+```txt
+^https:\/\/s3\.eidf\.ac\.uk\/<ok-bucket-name>
+```
 
 For the example of a bucket named `eidf-xxx-bucket` we would add the bucket id to the end of the url pattern like so:
 
-    ```txt
-    ^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
-    ```
+```txt
+^https:\/\/s3\.eidf\.ac\.uk\/eidf-xxx-bucket
+```
 
 After editing the allowlist Squid must be reconfigured using the command:
 
-    ```bash
-    sudo squid -k reconfigure
-    ```
+```bash
+sudo squid -k reconfigure
+```
 
 ## Data Transfer Using SCP (With and Without SSH Config)
 
@@ -58,11 +60,12 @@ Because all traffic to EIDF services must first go through the gateway, the belo
 
 ### Where Users Have Set Up an SSH Config File With Configuration for the Router and VM (Recommended)
 
-Users should first set up an SSH config file with configuration for the router and VM, as described in the documentation section [SSH Access to the Confidential Data Workspace Router](./router-docs.md#ssh-access-to-the-confidential-data-workspace-router) and [SSH Access to Confidential Data Workspace VMs via the Router](./router-docs.md#ssh-access-to-confidential-data-workspace-vms-via-the-router). After this is configured, they can use a simplified `scp` command. In this case, the `scp` command is:
+Users should first set up an SSH config file with configuration for the router and VM, as described in the documentation section [SSH Access to the Confidential Data Workspace Router](./router-docs.md#ssh-access-to-the-confidential-data-workspace-router) and [SSH Access to Confidential Data Workspace VMs via the Router](./router-docs.md#ssh-access-to-confidential-data-workspace-vms-via-the-router). After this is configured, they can use a simplified `scp` command.
+In this case, the `scp` command is:
 
-    ```bash
-    scp <local-file-path> eidfxxx-VM:/data/datamanager/
-    ```
+```bash
+scp <local-file-path> eidfxxx-VM:/data/datamanager/
+```
 
 Where:
 
@@ -74,9 +77,13 @@ Where:
 
 To transfer data **to** the Confidential Data Workspace VMs from a local machine using `scp`, the following command format should be used:
 
-    ```bash
-    scp -i <path-to-private-key> -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project-router-ip> <local-file-path> <username>@<confidential-data-workspace-vm-ip>:/data/datamanager/
-    ```
+```bash
+scp \
+  -i <path-to-private-key> \
+  -o ProxyJump=<username>@eidf-gateway.epcc.ed.ac.uk,<username>@<project-router-ip> \
+  <local-file-path> \
+  <username>@<confidential-data-workspace-vm-ip>:/data/datamanager/
+```
 
 Where:
 

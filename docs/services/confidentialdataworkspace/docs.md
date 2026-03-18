@@ -36,7 +36,7 @@ There are a few different roles associated with Confidential Data Workspace proj
 
 ### Updating the Allowed Access Configuration for Confidential Data Workspace VMs
 
-See [router-docs.md](router-docs.md) for documentation on updating the allowed access configuration for Confidential Data Workspace VMs.
+See [Router Configuration](router-docs.md) for documentation on updating the allowed access configuration for Confidential Data Workspace VMs.
 
 ### Create a VM
 
