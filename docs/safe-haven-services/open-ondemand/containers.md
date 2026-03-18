@@ -86,7 +86,7 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user within the container.
 
-As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the container (as described above).
 
 If `epcc-ces-hello` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 
