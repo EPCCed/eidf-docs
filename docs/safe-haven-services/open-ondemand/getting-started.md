@@ -12,19 +12,18 @@ This walkthrough is centred around three apps:
 
 ---
 
-## Where Open OnDemand stores your information - your `ondemand` directory
+## Your Open OnDemand VM home directory and back-ends
 
-Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
+For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and
+files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
 
-Every time a job is created by an app, Open OnDemand creates the job files the app needs for it to run, and log files when it is running, within a job-specific **job context directory** in an app-specific directory.
-
-For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
-
-However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
+You may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
 
-To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. For future reference, how to do this is describe4d in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end).
+To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job. For future reference, how to do this is described in [Enable automated copy of job files to a back-end](jobs.md#enable-automated-copy-of-job-files-to-a-back-end).
+
+Your project data files, in a project-specific directory under `/safe_data`, are **not** available on the Open OnDemand VM.
 
 ---
 
@@ -88,8 +87,6 @@ Read the form entries in conjunction with the explanations below and make the su
 
 Click **Launch**.
 
-Open OnDemand will create job files for the app's job in a job-specific job context directory in an app-specific directory under your `ondemand` directory.
-
 Open OnDemand submits the job for the app to a **job scheduler** which schedules the job onto the back-end based upon the resources - the number of CPUs/cores and amount of memory - requested for your job in the app form. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
 
 * Resources available on your selected back-end.
@@ -99,12 +96,14 @@ Open OnDemand submits the job for the app to a **job scheduler** which schedules
 
 When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled. The default runtime is 6 hours.
 
+### View the job card and job status
+
 Open OnDemand will show an app **job card** with information about the app's job including:
 
 * Job status (on the top right of the job card): initially 'Queued'.
 * 'Created at': The time the job was submitted.
 * 'Time Requested': The runtime requested for the job.
-* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
+* 'Session ID': An auto-generated value which is used as the name of a job-specific directory with files created by Open OnDemand to run the app's job plus any log files created when the job runs. This **job context directory** is described shortly. On the job card, the session ID is a link to open a File Manager pointing at this job context directory.
 * App-specific information, which includes values from the app form:
     * 'Container/image URL in container registry': The value you selected on the app form.
     * 'Container runner': The value you selected on the app form.
@@ -144,17 +143,9 @@ When a container is run, the following directories on the back-end are always mo
 
 Together, these mounts (and additional, app-specific, mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-!!! Note
+If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted. App-specific documentation explains what mounts are available, what is persisted when the container is deleted, and what is deleted.
 
-    Your project data files, in a project-specific directory under `/safe_data`, are **not** available on the Open OnDemand VM.
-
-!!! Note
-
-    Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
-
-!!! Warning
-
-    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
+Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
 
 ### View the container's output file
 
@@ -201,7 +192,7 @@ View the `safe_outputs` directory via the Open OnDemand File Manager:
 1. Click `safe_outputs` to view the directory.
 1. Click on `epcc-ces-hello.txt` to view its contents.
 
-![File Manager showing outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-06-batch-container-app-outputs.png){: class="border-img center"}
+![File Manager showing safe_outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-06-batch-container-app-outputs.png){: class="border-img center"}
 *File Manager showing `safe_outputs` directory contents after Run Batch Container app completes*
 
 An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
@@ -218,9 +209,13 @@ View the `safe_outputs` directory within the back-end:
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
-### View the app's log file within the job context directory
+### View the app's job context directory and its log file
 
-When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
+Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
+
+Every time a job is created by an app, Open OnDemand creates the job files that the app needs for it to run within a job-specific **job context directory** in an app-specific directory under your `ondemand` directory.
+
+When the app's job runs, it creates a log file in the job context directory. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
 
 For the `epcc-ces-hello` container, its log file, named `output.log`, includes information about the command used to run the container, the mounted directories, the environment variable and arguments provided to the container as well as the outputs that are written into `epcc-ces-hello.txt`.
 
@@ -330,14 +325,14 @@ Leave the other settings as-is.
 
 Click **Launch**.
 
-Again, Open OnDemand will create job files for the app in a job-specific job context directory in an app-specific directory under your `ondemand` directory and then submits the job for the app to the job scheduler.
+Again, Open OnDemand submits the job for the app to the job scheduler.
 
-Again, Open OnDemand will show an app job card with information about the app's job including:
+And, again, Open OnDemand will show an app job card with information about the app's job including:
 
 * Job status (on the top right of the job card): initially 'Queued'.
 * 'Created at': The time the job was submitted.
 * 'Time Requested': The runtime requested for the job which defaults to 6 hours.
-* 'Session ID': An auto-generated value which is used as the name of the job-specific job context directory. This is a link to open a File Manager pointing at the job context directory.
+* 'Session ID': An auto-generated value which is used as the name of the job context directory with files created by Open OnDemand to run the app's job plus any log files created when the job runs. On the job card, the session ID is a link to open a File Manager pointing at this job context directory.
 * App-specific information, which includes values from the app form:
     * 'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.
     * 'CPUs/cores': The value you selected on the app form.
@@ -367,86 +362,59 @@ You may wonder why you were not prompted for a username and password. JupyterLab
 ![JupyterLab](../../images/open-ondemand/getting-started-14-jupyter-app-jupyter-lab.png){: class="border-img center"}
 *JupyterLab*
 
-### Use JupyterLab to explore how directories on a back-end are mounted into a container
+### Create and run a Jupyter Notebook
 
-We can use JupyterLab to further explore how directories on a back-end are mounted into a container.
+Create a Jupyter Notebook:
 
-Click the **Host** link to log into the back-end on which the job, and JupyterLab container, is running.
+1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
+1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
 
-Now, within JupyterLab, click the **Terminal** icon within the 'Launcher' tab. This opens up a command-line session within JupyterLab.
+This app mounts your home directory into `/mnt/work` within the JupyterLab container. The app also configures JupyterLab to use `/mnt/work` as the default directory for creating new notebooks. If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
 
-Now run the following:
+Rename the notebook:
 
-```bash
-ls /safe_data/
+1. Right-click the notebook title, 'Untitled.ipynb'.
+1. Select **Rename Notebook...**.
+1. Enter **New Name**: `sine-wave.ipynb`.
+1. Click **Rename**.
+
+If you look at your home directory you should now see the `sine-wave.ipynb` notebook there.
+
+You can save changes to your notebook at any time via CTRL+S or the 'disk' icon at the top of the notebook.
+
+Within the first notebook cell, enter the following Python code, which creates data for a sine wave, plots the sine wave and saves both the data and the plot:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# 360 degrees is 2*PI radians so define 4*360 degrees
+# i.e. 4*2*PI radians for four sine waves.
+x = np.arange(0, 4 * (2 * np.pi), 0.1)
+y = np.sin(x)
+
+dataset = pd.DataFrame({'time': x, 'amplitude': y},
+                       columns=['time', 'amplitude'])
+dataset.to_csv('/safe_outputs/sine-wave.csv', index=False)
+dataset.plot(title='Sine wave',
+             x='time',
+             y='amplitude',
+             grid=True)
+plt.savefig('/safe_outputs/sine-wave.png')
 ```
 
-You will see the contents of your `/safe_data/PROJECT_SUBDIRECTORY` on the back-end.
+Click Shift + Enter to run the code. A plot should appear.
 
-![Viewing mounted directories within JupyterLab, listing /safe_data/, /scratch/ and /safe_outputs/](../../images/open-ondemand/getting-started-15-jupyter-app-mounts.png){: class="border-img center"}
-*Viewing mounted directories within JupyterLab*
+![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
+*Jupyter Notebook with Python code and a sine wave*
 
-Check this by running, in your Open OnDemand command-line session with the back-end:
+The Python code saves the data file and plot to the container's `/safe_outputs` directory, which, as described earlier, is a mount of `safe_outputs` in your home directory. If you look at `safe_outputs` in your home directory you should now have the files `sine-wave.csv` and `sine-wave.png`.
 
-```bash
-ls /safe_data/PROJECT_SUBDIRECTORY/
-```
+![File Manager showing safe_outputs directory contents after Python code is run in Run JupyterLab Container app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
+*File Manager showing `safe_outputs` directory contents after Python code is run in Run JupyterLab Container app*
 
-The same files and subdirectories should be listed.
-
-Now, within the JupyterLab Terminal, create a file in each directory (`touch` creates an empty file):
-
-```bash
-touch /scratch/hello-from-jupyterlab-to-scratch.txt
-touch /safe_outputs/hello-from-jupyterlab-to-outputs.txt
-```
-
-List the contents of the `scratch` and `safe_outputs` and directories:
-
-```bash
-ls -1 scratch/jupyter/SESSION_ID
-ls -1 safe_outputs/
-```
-
-You should see the above files:
-
-```bash
-hello-from-jupyterlab-to-scratch.txt
-hello-from-jupyterlab-to-outputs.txt
-```
-
-Now, within your Open OnDemand command-line session with the back-end, create files in these directories:
-
-```bash
-touch scratch/jupyter/SESSION_ID/hello-from-scratch-to-jupyterlab.txt
-touch safe_outputs/hello-from-outputs-to-jupyterlab.txt
-```
-
-Then, within the JupyterLab Terminal, list the contents of the corresponding `/scratch` directory and you should see the files you created on the back-end plus those you created within JupyterLab:
-
-```bash
-ls -1 /scratch/
-```
-
-```bash
-hello-from-jupyterlab-to-scratch.txt
-hello-from-scratch-to-jupyterlab.txt
-```
-
-And similarly for `/safe_outputs`:
-
-```bash
-ls -1 /safe_outputs/
-```
-
-```bash
-hello-from-jupyterlab-to-outputs.txt
-hello-from-outputs-to-jupyterlab.txt
-```
-
-Hopefully, this demonstrates how the mounted directories provides a means for data, configuration files, scripts and code to be shared between the back-end on which a container is running and the environment within the container itself.
-
-As a reminder, `safe_outputs` will persist after the job which created the container ends but the `SESSION_ID` subdirectory in `scratch/jupyter` will be deleted.
+As a reminder, `safe_outputs` and its contents will persist after the job which created the container ends.
 
 ### Revisit the Active Jobs app
 
@@ -458,12 +426,12 @@ You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 
-![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-16-active-jobs.png){: class="border-img center"}
+![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-17-active-jobs.png){: class="border-img center"}
 *Active Jobs app showing running Run JupyterLab Container app job*
 
 To see more details about the job, click the **>** button, by the job.
 
-![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-17-active-jobs-details.png){: class="border-img center"}
+![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-18-active-jobs-details.png){: class="border-img center"}
 *Active Jobs app showing details of running Run JupyterLab Container app job*
 
 ### Finish your Run JupyterLab Container app job
@@ -475,7 +443,7 @@ You can end your job by as follows:
 
 The Job status on the job card will update to 'Completed'.
 
-![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-18-jupyter-app-completed.png){: class="border-img center"}
+![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-19-jupyter-app-completed.png){: class="border-img center"}
 *Run JupyterLab Container app job card showing job status as 'Completed'*
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
