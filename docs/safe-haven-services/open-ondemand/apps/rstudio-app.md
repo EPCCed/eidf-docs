@@ -68,7 +68,7 @@ You will not be prompted for a username and password. RStudio Server is protecte
 
 The app mounts directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-Your home directory is mounted within RStudio Server at the same location. Any directories and files you create within your home directory within RStudio Server will be available in your home directory on the back-end, and vice-versa.
+Your home directory is mounted within RStudio Server at the same path as your home directory on the back-end. Any directories and files you create within your home directory within RStudio Server will be available in your home directory on the back-end, and vice-versa.
 
 You should create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.
 

@@ -68,7 +68,7 @@ You will not be prompted for a username and password. JupyterLab is protected wi
 
 The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-Your home directory is mounted within JupyterLab at the same location. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
+Your home directory is mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
 
 You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
 
