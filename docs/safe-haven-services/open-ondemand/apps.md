@@ -10,8 +10,8 @@ The following apps are available:
 | --- | ---- | ----------- |
 | [Active Jobs](apps/active-jobs.md) | System Installed App | Browse and manage jobs created via both apps and the Job Composer app |
 | [Run Batch Container](apps/batch-container-app.md) | SHS App | Run a batch container on a back-end |
-| [Run JupyterLab Container](apps/jupyter-app.md) | SHS App | Run a JupyterLab container on a back-end |
-| [Run RStudio Server Container](apps/rstudio-app.md) | SHS App | Run an RStudio Server container on a back-end |
+| [Run JupyterLab](apps/jupyter-app.md) | SHS App | Run JupyterLab on a back-end |
+| [Run RStudio Server](apps/rstudio-app.md) | SHS App | Run RStudio Server on a back-end |
 | [Job Composer](apps/job-composer.md) | System Installed App | Write and submit a Slurm batch job to a back-end |
 
 The app types are:
