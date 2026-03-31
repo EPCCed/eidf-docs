@@ -2,7 +2,7 @@
 
 ## Accessing
 
-Access the EIDF gitlab in your browser by opening [https://gitlab.eidf.ac.uk/](https://gitlab.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF gitlab Service.
+Access the EIDF GitLab in your browser by opening [https://gitlab.eidf.ac.uk/](https://gitlab.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF GitLab Service.
 
 ![GitLab Login Page](../../images/access/gitlab-login.png)
 
@@ -34,15 +34,15 @@ From the command line, you can clone this repository by adding your username and
 
 To clone a repository using git over SSH, click on the "Code" button to get the git+ssh URL. You will need to have added an SSH key to your account for this method to work.
 
-For a more complete set of documentation relating to adding and using SSH keys with Gitlab, see the upstream [Gitlab Documentation](https://docs.gitlab.com/user/ssh/)
+For a more complete set of documentation relating to adding and using SSH keys with GitLab, see the upstream [GitLab Documentation](https://docs.gitlab.com/user/ssh/)
 
 ## CI/CD Examples
 
-A repository containing some common Gitlab CI/CD configurations and relevant examples is maintained at [Gitlab CI/Cd Examples](https://gitlab.eidf.ac.uk/Liz/cicd-examples)
+A repository containing some common GitLab CI/CD configurations and relevant examples is maintained at [GitLab CI/CD Examples](https://gitlab.eidf.ac.uk/Liz/cicd-examples)
 
-## Building a Container Image with Gitlab CI/CD
+## Building a Container Image with GitLab CI/CD
 
-Automation of building of container images is possible using Gitlab CI/CD in the default Gitlab Instance runner
+Automation of building of container images is possible using GitLab CI/CD in the default GitLab Instance runner
 
 Images can be built from a docker file using [BuildKit](https://docs.docker.com/build/buildkit/). This requires users do the following:
 
