@@ -140,8 +140,8 @@ nav:
      #  - "Access": safe-haven-services/open-ondemand/access.md
      #  - "Getting started": safe-haven-services/open-ondemand/getting-started.md
      #  - "Home page": safe-haven-services/open-ondemand/home-page.md
-     #  - "Run jobs": safe-haven-services/open-ondemand/jobs.md
-     #  - "Run containers": safe-haven-services/open-ondemand/containers.md
+     #  - "About jobs": safe-haven-services/open-ondemand/jobs.md
+     #  - "About containers": safe-haven-services/open-ondemand/containers.md
      #  - "View and run apps": safe-haven-services/open-ondemand/apps.md
      #  - "Browse and manage files": safe-haven-services/open-ondemand/files.md
      #  - "Log into back-ends": safe-haven-services/open-ondemand/ssh.md

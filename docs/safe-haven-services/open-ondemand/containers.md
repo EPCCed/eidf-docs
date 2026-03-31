@@ -1,4 +1,4 @@
-# Run containers
+# About containers
 
 ## Introduction
 
@@ -6,7 +6,7 @@ Some Open OnDemand apps allow you to run containers, which package up software, 
 
 Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
 
-[Run jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.
+[About jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.
 
 ---
 

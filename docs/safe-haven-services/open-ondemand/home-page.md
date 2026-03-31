@@ -10,8 +10,8 @@ The home page provides menus and buttons to allow you to access Open OnDemand's 
 
 Open OnDemand's key concepts and its apps are described on the following pages:
 
-* [Run jobs](jobs.md)
-* [Run containers](containers.md)
+* [About jobs](jobs.md)
+* [About containers](containers.md)
 * [View and access apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)

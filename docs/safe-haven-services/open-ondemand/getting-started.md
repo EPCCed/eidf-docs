@@ -456,8 +456,8 @@ Your job will now have a status of 'Completed'.
 
 The following pages provide detailed information about all aspects of Open OnDemand introduced in this walkthrough:
 
-* [Run jobs](jobs.md)
-* [Run containers](containers.md)
+* [About jobs](jobs.md)
+* [About containers](containers.md)
 * [View and run apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
