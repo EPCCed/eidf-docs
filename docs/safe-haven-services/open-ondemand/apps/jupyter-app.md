@@ -52,7 +52,7 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 
@@ -74,15 +74,99 @@ Within JupyterLab you are the 'root' user.
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts three directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and nounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+This app also mounts your home directory on the back-end into JupyterLab at `/mnt/work`. Any directories and files you create within this mount will be available in your home directory on the back-end.
+
+You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into `/mnt/work` so that they will persist when the app stops and are available the next time you run it.
+
+!!! Warning
+
+    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/work` so that you can reuse these the next time you run the app on the same back-end.
+
+There many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
+
+### Install packages within a `/mnt/work` subdirectory
+
+Install packages within a `/mnt/work` subdirectory:
+
+1. Select **Launcher**, **Terminal**.
+1. Create a subdirectory for the packages:
+
+    ```bash
+    mkdir -p /mnt/work/lib/jupyter/my-pips
+    ```
+
+1. Install packages into this subdirectory:
+
+    ```bash
+    pip install -t /mnt/work/lib/jupyter/my-pips PACKAGE_NAME
+    ```
+
+The subdirectory and packages will be persisted on the back-end upon which the app runs:
+
+```bash
+$ ls $HOME/lib/jupyter/my-pips/
+...
+PACKAGE_NAME
+...
+```
+
+### Create a virtual environment within `/mnt/work`
+
+Create a virtual environment within a `/mnt/work` subdirectory and install packages into that virtual environment:
+
+1. Select **Launcher**, **Terminal**.
+1. Create a subdirectory for the virtual environment:
+
+    ```bash
+    mkdir -p /mnt/work/lib/jupyter
+    ```
+
+1. Create and activate the virtual environment within this subdirectory:
+
+    ```bash
+    python -m venv /mnt/work/lib/jupyter/my-venv
+    source /mnt/work/lib/jupyter/my-venv/bin/activate
+    ```
+
+1. Install packages into the virtual environment:
+
+    ```bash
+    python -m pip install PACKAGE_NAME
+    ```
+
+To create a new IPython kernel to provide access to the virtual environment within a JupyterLab Notebook or Console, register the virtual environment with JupyterLab:
+
+1. Within a JupyterLab Terminal, add the 'ipykernel' package to the virtual environment:
+
+    ```bash
+    python -m pip install ipykernel
+    ```
+
+1. Write a bash script to activate your virtual environment and create a new kernel. For example, `/mnt/work/register-my-venv-kernel.sh`:
+
+    ```bash
+    source /mnt/work/lib/jupyter/my-venv/bin/activate
+    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    jupyter kernelspec list
+    ```
+
+1. Within a JupyterLab Terminal, `source` the script to run it. For example:
+
+    ```bash
+    source /mnt/work/register-my-venv-kernel.sh
+    ```
+
+1. New Console and Notebook buttons for your kernel will shortly appear in the Launcher panel.
+
+The next time you use the app, source the script as above, to recreate a kernel for your virtual environment.
 
 ---
 

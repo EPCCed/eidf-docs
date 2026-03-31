@@ -53,7 +53,7 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 
@@ -78,15 +78,86 @@ Click **Sign in**.
 
 ## Sharing files between the back-end and RStudio Server and persisting state between app runs
 
-The app mounts three directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your home directory on the back-end and nounts this into RStudio Server at `/mnt/rstudio_host`. If you install R packages into `/mnt/rstudio_host` when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+This app also mounts your home directory on the back-end into RStudio Server at `/root/work`. Any directories and files you create within this mount will be available in your home directory on the back-end.
+
+You should create any R scripts and configuration files, or download any R packages into `/root/work` so that they will persist when the app stops and are available the next time you run it.
+
+!!! Warning
+
+    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
+
+---
+
+## Accessing files outside the scope of your home directory
+
+A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (`/root` within the container) within some menu commands and panels. This includes the `/safe_data`, `/safe_outputs`, and `/scratch` directories.
+
+You can access these directories as follows:
+
+* `/safe_outputs` and `/scratch` can be accessed via `/root/work` in `safe_outputs` and `scratch/rstudio/SESSION_ID` respectively i.e., the directories mounted onto `/safe_outputs` and `/scratch`.
+* **File** menu, **Open File** menu option:
+    * Enter the directory or file path into the **Open File** dialog, **File name** field.
+    * Click **Open**.
+* **Files** panel:
+    * Click the '**...**' (ellipsis)  button.
+    * Enter the directory into the **Go To Folder** dialog box.
+    * Click **OK**.
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option:
+    * Run, within an RStudio Server Console:
+
+        ```R
+        setwd('/')
+        ```
+
+    * The directories will now be available for the menu option.
+
+* **Tools** menu, **Global Options** tab, 'RSessions' **Default working directory** option:
+    * Click **Browse...**.
+    * `/safe_outputs` can be accessed via `/root/work` in `safe_outputs` i.e., the directory mounted onto `/safe_outputs`.
+    * `/scratch` is deleted when the app completes so should not be selected for use as a default working directory.
+    * `/safe_data` cannot be selected for use as a default working directory.
 
 ---
 
 ## Installing R packages
 
-RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/mnt/rstudio_host` so that you can reuse these the next time you run the app on the same back-end.
+RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/root/work` so that you can reuse these the next time you run the app on the same back-end.
+
+There many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.
+
+### Install packages within a `/root/work` subdirectory
+
+Install packages within a `/root/work` subdirectory:
+
+1. Create a subdirectory for the R packages via the RStudio Server Terminal:
+
+    ```bash
+    $ mkdir -p /root/work/lib/rstudio
+    ```
+
+1. Install packages into this subdirectory:
+
+    ```R
+    > install.packages('PACKAGE_NAME', lib='/root/work/lib/rstudio')
+    ```
+
+The subdirectory and packages will be persisted on the back-end upon which the app runs:
+
+```bash
+$ ls $HOME/lib/rstudio
+PACKAGE_NAME
+```
+
+Any R code that needs the packages needs to include the path to the directory. For example:
+
+```R
+> .libPaths('/root/work/lib/rstudio')
+> find.package('PACKAGE_NAME')
+[1] "/root/work/lib/rstudio/PACKAGE_NAME"
+> library(PACKAGE_NAME)
+```
 
 ---
 
