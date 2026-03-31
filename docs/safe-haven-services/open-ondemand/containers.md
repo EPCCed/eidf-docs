@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Some Open OnDemand apps allow you to run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.
+Some Open OnDemand apps run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers that have been pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.
 
-Container are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.
+Containers are typically run using Podman or Apptainer, depending on the nature of the app and which of these is available on a back-end. Some Open OnDemand apps will have been written to use one or other of Podman or Apptainer, others will allow you to choose which to use.
 
-[About jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.
+[About jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. This page focuses on concepts related to containers.
 
 ---
 
@@ -27,7 +27,7 @@ The container registries supported by the Safe Haven Services Container Executio
 
 !!! Note
 
-    For ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
+    If you are using an app that requires you to specify a container registry URL, then, for ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
 
 ---
 
@@ -46,11 +46,11 @@ Together, these mounts (and, additional, app-specific mounts) provide various me
 
 !!! Note
 
-    If a container is run using Apptainer, then any files on the back-end are available within the container.
+    If a container is run using **Apptainer**, then your home directory is also mounted within the container at the same path as your home directory on the back-end. Any directories and files you create within your home directory within the container will be available in your home directory on the back-end, and vice-versa.
 
 !!! Warning
 
-    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
+    If a container is run using Podman, then **only** files within any mounted directories are available within the container, **only** files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
@@ -84,7 +84,7 @@ For some containers run using Podman that you will find that you the 'root' user
 
 Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
 
-For containers run using Apptainer, you will be your own user within the container.
+For containers run using Apptainer, you will typically be your own user within the container.
 
 As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the container (as described above).
 
