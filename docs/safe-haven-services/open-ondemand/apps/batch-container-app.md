@@ -82,21 +82,21 @@ The app mounts directories from the back-end into the container at `/safe_data`,
 
 !!! Note
 
-    If a container is run using Apptainer, then any files on the back-end are available within the container.
+    If a container is run using **Apptainer**, then your home directory is also mounted within the container at the same path as your home directory on the back-end. Any directories and files you create within your home directory within the container will be available in your home directory on the back-end, and vice-versa.
 
 !!! Warning
 
-    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
+    If a container is run using Podman, then **only** files within any mounted directories are available within the container, **only** files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 If required, you can mount additional directories into your container:
 
-* If using Apptainer, your container already has access to your home directory environment, so there is nothing that need be done. However, if you need to mount these at specific points in the container then this can be done by adding Apptainer-specific parameters into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+* If using Apptainer, then you can add Apptainer-specific parameters into the **Command-line options to pass to container runner** field, one parameter per line. For example:
 
     ```text
     --bind ${HOME}/my_content:/mnt/my_content
     ```
 
-* If using Podman, then this can be done by adding the Podman-specific syntax to mount the directories into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+* If using Podman, then you can add Podman-specific parameters to mount the directories into the **Command-line options to pass to container runner** field, one parameter per line. For example:
 
     ```text
     -v ${HOME}/my_content:/mnt/my_content
