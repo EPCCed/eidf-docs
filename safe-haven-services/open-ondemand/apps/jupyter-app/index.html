@@ -18,7 +18,7 @@
     
     
       
-        <title>Run JupyterLab Container - EIDF User Documentation</title>
+        <title>Run JupyterLab - EIDF User Documentation</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-jupyterlab-container" class="md-skip">
+        <a href="#run-jupyterlab" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Run JupyterLab Container
+              Run JupyterLab
             
           </span>
         </div>
@@ -2558,18 +2558,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-packages-within-a-mntwork-subdirectory" class="md-nav__link">
+  <a href="#install-packages-within-locallibpythonmnsite-packages" class="md-nav__link">
     <span class="md-ellipsis">
-      Install packages within a /mnt/work subdirectory
+      Install packages within .local/lib/pythonM.N/site-packages/
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-a-virtual-environment-within-mntwork" class="md-nav__link">
+  <a href="#create-a-virtual-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a virtual environment within /mnt/work
+      Create a virtual environment
     </span>
   </a>
   
@@ -2635,8 +2635,8 @@
   
 
 
-<h1 id="run-jupyterlab-container">Run JupyterLab Container</h1>
-<p>Run JupyterLab Container is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Podman.</p>
+<h1 id="run-jupyterlab">Run JupyterLab</h1>
+<p>Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Apptainer.</p>
 <hr />
 <h2 id="run-app">Run app</h2>
 <p>Complete the following information the app form:</p>
@@ -2671,7 +2671,6 @@
 <p>When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.</p>
 <p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.</p>
 <p>A <strong>Connect to JupyterLab</strong> button will appear. JupyterLab is now ready for use.</p>
-<p>A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.</p>
 <p>Click <strong>Connect to JupyterLab</strong>. A new browser tab will open with JupyterLab.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2691,59 +2690,45 @@
 </div>
 <hr />
 <h2 id="log-in-to-jupyterlab">Log in to JupyterLab</h2>
-<p>You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and <strong>Connect to JupyterLab</strong> button is configured to log you in automatically using this password.</p>
-<p>Within JupyterLab you are the 'root' user.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You are the 'root' user <strong>only</strong> within the context of the JupyterLab container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
-</div>
+<p>You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and the <strong>Connect to JupyterLab</strong> button is configured to log you in automatically using this password.</p>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-jupyterlab-and-persisting-state-between-app-runs">Sharing files between the back-end and JupyterLab and persisting state between app runs</h2>
 <p>The app mounts directories from the back-end into JupyterLab at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>This app also mounts your home directory on the back-end into JupyterLab at <code>/mnt/work</code>. Any directories and files you create within this mount will be available in your home directory on the back-end.</p>
-<p>You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into <code>/mnt/work</code> so that they will persist when the app stops and are available the next time you run it.</p>
+<p>Your home directory is mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.</p>
+<p>You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
+<p>Any files created outside of these directories will be <strong>deleted</strong> when the app stops.</p>
 </div>
 <hr />
 <h2 id="installing-python-packages">Installing Python packages</h2>
-<p>JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within <code>/mnt/work</code> so that you can reuse these the next time you run the app on the same back-end.</p>
-<p>There many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.</p>
-<h3 id="install-packages-within-a-mntwork-subdirectory">Install packages within a <code>/mnt/work</code> subdirectory</h3>
-<p>Install packages within a <code>/mnt/work</code> subdirectory:</p>
+<p>JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within a directory within your home directory in JupyterLab so that you can reuse these the next time you run the app on the same back-end.</p>
+<p>There are many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.</p>
+<h3 id="install-packages-within-locallibpythonmnsite-packages">Install packages within <code>.local/lib/pythonM.N/site-packages/</code></h3>
+<p>By default, <code>pip</code> will install packages within a <code>.local/lib/pythonM.N/site-packages/</code> subdirectory in your home directory, where <code>M.N</code> is a Python version, for example <code>.local/lib/python3.11/site-packages/</code>.</p>
+<p>Install a package within <code>.local/lib/pythonM.N/site-packages/</code>:</p>
 <ol>
 <li>Select <strong>Launcher</strong>, <strong>Terminal</strong>.</li>
 <li>
-<p>Create a subdirectory for the packages:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/work/lib/jupyter/my-pips
-</code></pre></div>
-</li>
-<li>
-<p>Install packages into this subdirectory:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-t<span class="w"> </span>/mnt/work/lib/jupyter/my-pips<span class="w"> </span>PACKAGE_NAME
+<p>Install package:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>PACKAGE_NAME
 </code></pre></div>
 </li>
 </ol>
-<p>The subdirectory and packages will be persisted on the back-end upon which the app runs:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/lib/jupyter/my-pips/
-...
-PACKAGE_NAME
-...
-</code></pre></div>
-<h3 id="create-a-virtual-environment-within-mntwork">Create a virtual environment within <code>/mnt/work</code></h3>
-<p>Create a virtual environment within a <code>/mnt/work</code> subdirectory and install packages into that virtual environment:</p>
+<p>As the subdirectory is in your home directory, the package will be available the next time that you run the app on the back-end.</p>
+<h3 id="create-a-virtual-environment">Create a virtual environment</h3>
+<p>Create a virtual environment and install a package into that virtual environment:</p>
 <ol>
 <li>Select <strong>Launcher</strong>, <strong>Terminal</strong>.</li>
 <li>
 <p>Create a subdirectory for the virtual environment:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/work/lib/jupyter
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>my-venv
 </code></pre></div>
 </li>
 <li>
 <p>Create and activate the virtual environment within this subdirectory:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/mnt/work/lib/jupyter/my-venv
-<span class="nb">source</span><span class="w"> </span>/mnt/work/lib/jupyter/my-venv/bin/activate
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>my-venv
+<span class="nb">source</span><span class="w"> </span>my-venv/bin/activate
 </code></pre></div>
 </li>
 <li>
@@ -2760,22 +2745,23 @@ PACKAGE_NAME
 </code></pre></div>
 </li>
 <li>
-<p>Write a bash script to activate your virtual environment and create a new kernel. For example, <code>/mnt/work/register-my-venv-kernel.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/mnt/work/lib/jupyter/my-venv/bin/activate
-python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py3-ipykernel-my-venv<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python3 (ipykernel my-venv)&#39;</span>
+<p>Create a new kernel for your virtual environment:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py3-ipykernel-my-venv<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python3 (ipykernel my-venv)&#39;</span>
 jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </code></pre></div>
 </li>
 <li>
-<p>Within a JupyterLab Terminal, <code>source</code> the script to run it. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/mnt/work/register-my-venv-kernel.sh
+<p>You should see your kernel listed. For example:</p>
+<div class="highlight"><pre><span></span><code>Available kernels:
+  py3-ipykernel-my-venv    $HOME/.local/share/jupyter/kernels/py3-ipykernel-my-venv
+  python3                  $HOME/.local/share/jupyter/kernels/python3
 </code></pre></div>
 </li>
 <li>
 <p>New Console and Notebook buttons for your kernel will shortly appear in the Launcher panel.</p>
 </li>
 </ol>
-<p>The next time you use the app, source the script as above, to recreate a kernel for your virtual environment.</p>
+<p>As the virtual environment and kernel subdirectories are in your home directory, the package and kernel configuration will be available the next time that you run the app on the back-end.</p>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>

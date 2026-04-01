@@ -18,7 +18,7 @@
     
     
       
-        <title>Run containers - EIDF User Documentation</title>
+        <title>About containers - EIDF User Documentation</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-containers" class="md-skip">
+        <a href="#about-containers" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Run containers
+              About containers
             
           </span>
         </div>
@@ -2599,11 +2599,11 @@
   
 
 
-<h1 id="run-containers">Run containers</h1>
+<h1 id="about-containers">About containers</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Some Open OnDemand apps allow you to run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.</p>
-<p>Containers are typically run using Podman or Apptainer, depending on which of these is available on a back-end. Some Open OnDemand apps will select which to use, others allow you to choose.</p>
-<p><a href="../jobs/">Run jobs</a> described concepts you need to know about how Open OnDemand runs tasks and apps. The page focuses on concepts related to running containers.</p>
+<p>Some Open OnDemand apps run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers that have been pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.</p>
+<p>Containers are typically run using Podman or Apptainer, depending on the nature of an app. Some Open OnDemand apps will have been written to use one or other of Podman or Apptainer, others will allow you to choose which to use.</p>
+<p><a href="../jobs/">About jobs</a> described concepts you need to know about how Open OnDemand runs tasks and apps. This page focuses on concepts related to containers.</p>
 <hr />
 <h2 id="container-requirements">Container requirements</h2>
 <p>Open OnDemand uses the Safe Haven Services Container Execution Service tools to run containers. Consequently, containers run via Open OnDemand <strong>must</strong> conform to the requirements of the Safe Haven Services Container Execution Service. See the <a href="../../shs-container-user-guide/introduction/">Container User Guide</a> for details of these requirements.</p>
@@ -2633,7 +2633,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.</p>
+<p>If you are using an app that requires you to specify a container registry URL, then, for ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.</p>
 </div>
 <hr />
 <h2 id="sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</h2>
@@ -2672,11 +2672,11 @@
 <p>Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If a container is run using Apptainer, then any files on the back-end are available within the container.</p>
+<p>If a container is run using <strong>Apptainer</strong>, then your home directory is also mounted within the container at the same path as your home directory on the back-end. Any directories and files you create within your home directory within the container will be available in your home directory on the back-end, and vice-versa.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If a container is run using Podman, then <strong>only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
+<p>If a container is run using <strong>Podman</strong>, then <strong>only</strong> files within any mounted directories are available within the container, <strong>only</strong> files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
 </div>
 <p>You can interact with your project's <code>/safe_data</code> subdirectory on the back-end, by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
 <p>When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both <code>safe_outputs</code> and <code>scratch/APP_SHORT_NAME/SESSION_ID</code> (and <code>$HOME/safe_data</code>, if applicable) via the <a href="../files/">File Manager</a> and/or by logging into the back-end, see <a href="../ssh/">Log into back-ends</a>.</p>
@@ -2696,7 +2696,7 @@
 <h2 id="containers-and-root-users">Containers and 'root' users</h2>
 <p>For some containers run using Podman that you will find that you the 'root' user within the container but <strong>only</strong> within the container. You do <strong>not</strong> have 'root' access to the back-end on which the container is running!</p>
 <p>Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
-<p>For containers run using Apptainer, you will be your own user within the container.</p>
+<p>For containers run using Apptainer, you will typically be your own user within the container.</p>
 <p>As a concrete example, consider the <code>epcc-ces-hello</code> example container (described in <a href="../getting-started/">Getting started</a>) which outputs in a log file the permissions of the directories mounted into the container (as described above).</p>
 <p>If <code>epcc-ces-hello</code> is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:</p>
 <div class="highlight"><pre><span></span><code>/safe_data: nobody (65534) root(0) drwxrwx--- nfs

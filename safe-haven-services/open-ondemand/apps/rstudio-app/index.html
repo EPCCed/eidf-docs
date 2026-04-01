@@ -18,7 +18,7 @@
     
     
       
-        <title>Run RStudio Server Container - EIDF User Documentation</title>
+        <title>Run RStudio Server - EIDF User Documentation</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-rstudio-server-container" class="md-skip">
+        <a href="#run-rstudio-server" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Run RStudio Server Container
+              Run RStudio Server
             
           </span>
         </div>
@@ -2567,9 +2567,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-packages-within-a-rootwork-subdirectory" class="md-nav__link">
+  <a href="#install-packages-within-rx86_64-pc-linux-gnu-librarymn" class="md-nav__link">
     <span class="md-ellipsis">
-      Install packages within a /root/work subdirectory
+      Install packages within R/x86_64-pc-linux-gnu-library/M.N
     </span>
   </a>
   
@@ -2635,8 +2635,8 @@
   
 
 
-<h1 id="run-rstudio-server-container">Run RStudio Server Container</h1>
-<p>Run RStudio Server Container is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Podman.</p>
+<h1 id="run-rstudio-server">Run RStudio Server</h1>
+<p>Run RStudio Server is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Apptainer.</p>
 <hr />
 <h2 id="run-app">Run app</h2>
 <p>Complete the following information the app form:</p>
@@ -2649,9 +2649,8 @@
 </div>
 </li>
 <li>
-<p><strong>RStudio Server password</strong>: A password is required to secure RStudio Server. Provide a password to use.</p>
+<p><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job.</p>
 </li>
-<li><strong>CPUs/cores</strong>: CPUs/cores requested for the app's job.</li>
 <li><strong>Memory (GiB)</strong>: Memory requested for the app's job.</li>
 </ul>
 <p>Click <strong>Launch</strong>.</p>
@@ -2672,7 +2671,6 @@
 <p>When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.</p>
 <p>When the Job status updates to 'Running', a <strong>Host</strong> link will appear on the job card, which allows you to log in to the back-end on which the job, and so RStudio Server, is now running.</p>
 <p>A <strong>Connect to RStudio Server</strong> button will appear. RStudio Server is now ready for use.</p>
-<p>A 'RStudio Server is running in Podman container epcc-ces-rstudio-SESSION_ID' message will also appear.</p>
 <p>Click <strong>Connect to RStudio Server</strong>. A new browser tab will open with RStudio Server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2692,31 +2690,22 @@
 </div>
 <hr />
 <h2 id="log-in-to-rstudio-server">Log in to RStudio Server</h2>
-<p>A Sign in to RStudio page will appear. Enter:</p>
-<ul>
-<li><strong>Username</strong>: root</li>
-<li><strong>Password</strong>: password you selected when completing the app form.</li>
-</ul>
-<p>Click <strong>Sign in</strong>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You are the 'root' user <strong>only</strong> within the context of the RStudio Server container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.</p>
-</div>
+<p>You will not be prompted for a username and password. RStudio Server is protected with an auto-generated password and the <strong>Connect to RStudio Server</strong> button is configured to log you in automatically using this password.</p>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs">Sharing files between the back-end and RStudio Server and persisting state between app runs</h2>
 <p>The app mounts directories from the back-end into RStudio Server at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>This app also mounts your home directory on the back-end into RStudio Server at <code>/root/work</code>. Any directories and files you create within this mount will be available in your home directory on the back-end.</p>
-<p>You should create any R scripts and configuration files, or download any R packages into <code>/root/work</code> so that they will persist when the app stops and are available the next time you run it.</p>
+<p>Your home directory is mounted within RStudio Server at the same path as your home directory on the back-end. Any directories and files you create within your home directory within RStudio Server will be available in your home directory on the back-end, and vice-versa.</p>
+<p>You should create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Only</strong> files within these mounted directories are available within the container, <strong>only</strong> files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be <strong>deleted</strong> when the container is deleted.</p>
+<p>Any files created outside of these directories will be <strong>deleted</strong> when the app stops.</p>
 </div>
 <hr />
 <h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
-<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory (<code>/root</code> within the container) within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, and <code>/scratch</code> directories.</p>
+<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, and <code>/scratch</code> directories.</p>
 <p>You can access these directories as follows:</p>
 <ul>
-<li><code>/safe_outputs</code> and <code>/scratch</code> can be accessed via <code>/root/work</code> in <code>safe_outputs</code> and <code>scratch/rstudio/SESSION_ID</code> respectively i.e., the directories mounted onto <code>/safe_outputs</code> and <code>/scratch</code>.</li>
+<li><code>/safe_outputs</code> and <code>/scratch</code> can be accessed via your home directory in <code>safe_outputs</code> and <code>scratch/rstudio/SESSION_ID</code> respectively i.e., the directories mounted onto <code>/safe_outputs</code> and <code>/scratch</code>.</li>
 <li><strong>File</strong> menu, <strong>Open File</strong> menu option:<ul>
 <li>Enter the directory or file path into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
 <li>Click <strong>Open</strong>.</li>
@@ -2745,7 +2734,7 @@
 <p><strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option:</p>
 <ul>
 <li>Click <strong>Browse...</strong>.</li>
-<li><code>/safe_outputs</code> can be accessed via <code>/root/work</code> in <code>safe_outputs</code> i.e., the directory mounted onto <code>/safe_outputs</code>.</li>
+<li><code>/safe_outputs</code> can be accessed via your home directory in <code>safe_outputs</code> i.e., the directory mounted onto <code>/safe_outputs</code>.</li>
 <li><code>/scratch</code> is deleted when the app completes so should not be selected for use as a default working directory.</li>
 <li><code>/safe_data</code> cannot be selected for use as a default working directory.</li>
 </ul>
@@ -2753,32 +2742,19 @@
 </ul>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
-<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into <code>/root/work</code> so that you can reuse these the next time you run the app on the same back-end.</p>
-<p>There many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.</p>
-<h3 id="install-packages-within-a-rootwork-subdirectory">Install packages within a <code>/root/work</code> subdirectory</h3>
-<p>Install packages within a <code>/root/work</code> subdirectory:</p>
+<p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages within a directory within your home directory in RStudio Server so that you can reuse these the next time you run the app on the same back-end.</p>
+<p>There are many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.</p>
+<h3 id="install-packages-within-rx86_64-pc-linux-gnu-librarymn">Install packages within <code>R/x86_64-pc-linux-gnu-library/M.N</code></h3>
+<p>By default, R will install packages within a <code>R/x86_64-pc-linux-gnu-library/M.N</code> subdirectory of your home directory where <code>M.N</code> is an R version, for example <code>R/x86_64-pc-linux-gnu-library/4.4</code>.</p>
+<p>Install a package within <code>R/x86_64-pc-linux-gnu-library/M.N</code>:</p>
 <ol>
 <li>
-<p>Create a subdirectory for the R packages via the RStudio Server Terminal:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/root/work/lib/rstudio
-</code></pre></div>
-</li>
-<li>
-<p>Install packages into this subdirectory:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">=</span><span class="s">&#39;/root/work/lib/rstudio&#39;</span><span class="p">)</span>
+<p>Install package:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
 </code></pre></div>
 </li>
 </ol>
-<p>The subdirectory and packages will be persisted on the back-end upon which the app runs:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="nv">$HOME</span>/lib/rstudio
-PACKAGE_NAME
-</code></pre></div>
-<p>Any R code that needs the packages needs to include the path to the directory. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&#39;/root/work/lib/rstudio&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">find.package</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/root/work/lib/rstudio/PACKAGE_NAME&quot;</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">PACKAGE_NAME</span><span class="p">)</span>
-</code></pre></div>
+<p>As the subdirectory is in your home directory, the package will be available the next time that you run the app on the back-end.</p>
 <hr />
 <h2 id="view-job-files">View job files</h2>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the <a href="../../files/">File Manager</a>, pointing at the job context directory for the job on the Open OnDemand VM.</p>
