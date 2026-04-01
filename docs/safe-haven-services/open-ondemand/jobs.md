@@ -144,7 +144,6 @@ For most back-ends, your home directory is common to both the Open OnDemand VM a
 However, you may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
 * Superdome Flex, shs-sdf01.nsh.loc.
-* All DataLoch VMs.
 
 To use such back-ends, you need to do some set up to allow Open OnDemand to automatically copy job files from within your `ondemand` directory to your chosen back-end when you submit a job. How to enable this is described in the following section on [Enable automated copy of job files to a back-end](#enable-automated-copy-of-job-files-to-a-back-end).
 
@@ -161,7 +160,7 @@ To enable Open OnDemand to automatically copy job files from within your `ondema
 Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-1. A new browser tab with an SSH session to the back-end will appear.
+1. A new browser tab with an SSH session to the Open OnDemand host will appear.
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
@@ -172,41 +171,51 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 1. Copy public key to back-end:
 
     ```bash
-    ssh-copy-id BACK-END-HOSTNAME.nsh.loc
-    ```
-
-    Information on the copy will be output:
-
-    ```bash
-    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
-    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-    (user@BACK-END-HOSTNAME.nsh.loc) Password:
-    ```
-
-1. When prompted, enter your project username and password. The key will then be added to the back-end:
-
-    ```bash
-    Number of key(s) added: 1
-
-    Now try logging into the machine, with:   "ssh 'BACK-END-HOSTNAME.nsh.loc'"
-
-    and check to make sure that only the key(s) you wanted were added.
-    ```
-
-1. Check passphrase-less access to back-end:
-
-    ```bash
-    ssh BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id BACK-END-HOST
     ```
 
     For example:
 
     ```bash
-    BACK-END-HOSTNAME.nsh.loc hostname
+    ssh-copy-id shs-sdf01.nsh.loc
     ```
 
-1. You should not be prompted for a passphrase or password.
+    Information on the copy will be output. For example:
+
+    ```bash
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/user/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    ```
+
+1. When prompted, enter your project username and password. For example:
+
+    ```bash
+    (user@shs-sdf01.nsh.loc) Password:
+    ```
+
+1. The key will then be added to the back-end. For example:
+
+    ```bash
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'shs-sdf01.nsh.loc'"
+
+    and check to make sure that only the key(s) you wanted were added.
+    ```
+
+1. Check passphrase-less access to back-end.
+
+    ```bash
+    ssh BACK-END-HOST hostname
+    ```
+
+    You should not be prompted for a passphrase or password and the host name should be displayed. For example:
+
+    ```bash
+    $ ssh shs-sdf01.nsh.loc hostname
+    shs-sdf01.nsh.loc
+    ```
 
 ---
 
@@ -277,7 +286,7 @@ When an interactive app's job is submitted, a **job card** is created and shown 
 
 ![Example job card for Run Batch Container app](../../images/open-ondemand/job-card-batch-container-app.png){: class="border-img center"} *Example job card for the Run Batch Container app*
 
-![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab app*
+![Example job card for JupyterLab app](../../images/open-ondemand/job-card-jupyter-app.png){: class="border-img center"} *Example job card for the Run JupyterLab Container app*
 
 !!! Note
 

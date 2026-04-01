@@ -79,14 +79,6 @@ nav:
          - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
          - "Template K8s Workflow": services/gpuservice/training/L4_template_workflow.md
       - "GPU Service FAQ": services/gpuservice/faq.md
-    - "Graphcore Bow Pod64":
-      - "Overview": services/graphcore/index.md
-      - "Tutorial":
-         - "Getting Started": services/graphcore/training/L1_getting_started.md
-         - "Multi-IPU Jobs": services/graphcore/training/L2_multiple_IPU.md
-         - "Profiling": services/graphcore/training/L3_profiling.md
-         - "Other Frameworks": services/graphcore/training/L4_other_frameworks.md
-      - "Graphcore FAQ": services/graphcore/faq.md
     - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
@@ -106,6 +98,10 @@ nav:
     - "Code Collaboration":
       - "Gitlab Overview": services/gitlab/index.md
       - "Gitlab Quickstart": services/gitlab/quickstart.md
+      - "Container Image Registry Overview": services/registry/index.md
+      - "Container Image Registry Projects and Caches": services/registry/projects.md
+      - "Container Image Registry Use": services/registry/working-with.md
+      - "Container Image Registry FAQ": services/registry/faq.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Access": safe-haven-services/safe-haven-access.md
@@ -152,7 +148,6 @@ nav:
      #  - "Apps":
      #     - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
      #     - "Run Batch Container": safe-haven-services/open-ondemand/apps/batch-container-app.md
-     #     - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-os-app.md
      #     - "Run JupyterLab Container": safe-haven-services/open-ondemand/apps/jupyter-app.md
      #     - "Run RStudio Server Container": safe-haven-services/open-ondemand/apps/rstudio-app.md
      #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md

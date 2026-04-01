@@ -33,30 +33,30 @@ The container registries supported by the Safe Haven Services Container Executio
 
 ## Sharing files between a back-end and a container
 
-When a container is run via the Safe Haven Services Container Execution Service, three directories on the back-end are always mounted into the container:
+When a container is run via the Safe Haven Services Container Execution Service, the following directories on the back-end are always mounted into the container:
 
 | Back-end directory | Container directory | Description |
 | ------------------ | ------------------- | ----------- |
 | `/safe_data/PROJECT_SUBDIRECTORY` | `/safe_data` | `PROJECT_SUBDIRECTORY` is your project group, inferred from your user groups. If such a  project-specific subdirectory of `/safe_data` is found, then it is mounted into the container (but see below). Any files written into `/safe_data` in the container will be visible to you and and other project members within `/safe_data/PROJECT_SUBDIRECTORY` on the back-end. |
 | `$HOME/safe_data` | `/safe_data` | If `$HOME/safe_data` is found, then it is mounted into the container. `$HOME/safe_data` takes precedence over any `/safe_data/PROJECT_SUBDIRECTORY` directory when looking for the directory to mount into the container at `/safe_data`. Any files written into `/safe_data` in the container will be visible to you only within `$HOME/safe_data` on the back-end. |
-| `$HOME/safe_outputs/APP_SHORT_NAME/SESSION_ID` | `/safe_outputs` | `APP_SHORT_NAME` is a short-name for an app (e.g., `jupyter` for [Run JupyterLab Container](apps/jupyter-app.md)). `SESSION_ID` is a unique session identifier created when an app is run. This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
+| `$HOME/safe_outputs` | `/safe_outputs` | This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
 
-Together, these mounts (and other app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
 !!! Note
 
-    Some apps may mount additional app-specific directories into a container and/or allow you to do so yourself.
+    If a container is run using Apptainer, then any files on the back-end are available within the container.
+
+!!! Warning
+
+    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 You can interact with your project's `/safe_data` subdirectory on the back-end, by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
+When using a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then you can interact with both `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` (and `$HOME/safe_data`, if applicable) via the [File Manager](files.md) and/or by logging into the back-end, see [Log into back-ends](ssh.md).
 
-When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs/APP_SHORT_NAME/SESSION_ID` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
-
-!!! Note
-
-    Your project data files, in a project-specific directory under `/safe_data` are **not** available on the Open OnDemand VM.
+When using a back-end where your home directory is **not** common to both the Open OnDemand VM and the back-end, then you can interact with `/safe_data/PROJECT_SUBDIRECTORY` (or `$HOME/safe_data`, if applicable), `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` by logging into the back-end, see [Log into back-ends](ssh.md).
 
 !!! Note
 
@@ -86,7 +86,7 @@ Any files you create in the directories mounted into the container will be owned
 
 For containers run using Apptainer, you will be your own user within the container.
 
-As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the a container (as described above).
+As a concrete example, consider the `epcc-ces-hello` example container (described in [Getting started](getting-started.md)) which outputs in a log file the permissions of the directories mounted into the container (as described above).
 
 If `epcc-ces-hello` is run via Podman, then you will be the 'root' user within the container and the directory permissions logged will be:
 
@@ -106,7 +106,7 @@ as this is in your home directory, and, again, you are `root` but **only** withi
 
 The other directories, mounted from directories in your home directory, likewise have user, and group, `root`.
 
-In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permissions logged are:
+In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permissions logged will differ. For example:
 
 ```text
 /safe_data: nobody (65534) your_project_group(4797) drwxrwx--- nfs
@@ -114,7 +114,7 @@ In contrast, if `epcc-ces-hello` is run via Apptainer, then the directory permis
 /safe_outputs: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3
 ```
 
-Again `/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data` then the permissions logged would be:
+Again `/safe_data` has user `nobody` as typically the user that owns `/safe_data` on the back-end won't be known within the container. However, its group will be your user group. If using `$HOME/safe_data` then the permissions logged would be, for example:
 
 ```text
 /safe_data: you (36177) your_project_group(4797) drwxr-xr-x ext2/ext3

@@ -78,7 +78,15 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 ## Sharing files between the back-end and the container and persisting state between app runs
 
-The app mounts three directories from the back-end into the container at `/safe_data`, `/safe_outputs` and `.scratch`. For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into the container at `/safe_data`, `/safe_outputs` and `/scratch`. For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+
+!!! Note
+
+    If a container is run using Apptainer, then any files on the back-end are available within the container.
+
+!!! Warning
+
+    If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted.
 
 If required, you can mount additional directories into your container:
 

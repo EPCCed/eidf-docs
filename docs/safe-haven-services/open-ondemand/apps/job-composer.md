@@ -128,9 +128,9 @@ Create and submit job:
 1. Enter Job Name: Hello World
 1. Select a Cluster, back-end.
 1. Click **Create New Job**.
-1. View the `main_job.sh` script contents.
 1. Under 'main_job.sh', click **Open Editor**.
 1. A new browser tab will appear with an editor.
+1. Read the `main_job.sh` script contents.
 1. Change the line:
 
     ```bash
@@ -151,62 +151,41 @@ Create and submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
+The script creates two files:
 
-1. Click `res.txt` under **Folder Contents**.
-1. A new browser tab will appear with the contents of the file:
+* `res.txt` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
     Created output file with 'Hello World'
     ```
 
-1. Close the tab.
-1. Switch to the Job Composer browser tab.
-1. Click `output_file` under **Folder Contents**.
-1. A new browser tab will appear with the contents of the file. For example:
+* `output_file` which is the file created within the job script. For example:
 
     ```text
     Hello World to someuser from some-vm.nsh.loc
     ```
 
-* Close the tab.
+View the output files:
 
-If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
+* If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
+    1. Click `res.txt` under **Folder Contents**.
+    1. A new browser tab will appear with the contents of the file.
+    1. Switch to the Job Composer browser tab.
+    1. Click `output_file` under **Folder Contents**.
+    1. A new browser tab will appear with the contents of the file.
+* If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
+    1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
+    1. View `res.txt`:
 
-1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View the job context directory and its contents:
+        ```bash
+        cat res.txt
+        ```
 
-    ```bash
-    pwd
-    ls -1
-    ```
+    1. View `output_file`:
 
-    ```
-    /home/someuser/ondemand/data/sys/myjobs/projects/default/1
-    main_job.sh
-    output_file
-    res.txt
-    ```
-
-1. View `res.txt`:
-
-    ```bash
-    cat res.txt
-    ```
-
-    ```
-    Created output file with 'Hello World'
-    ```
-
-1. View `output_file`:
-
-    ```bash
-    cat output_file
-    ```
-
-    ```
-    Hello World to someuser from some-vm.nsh.loc
-    ```
+        ```bash
+        cat output_file
+        ```
 
 ---
 
@@ -227,7 +206,7 @@ Create a job to run the container using Podman:
     ```bash
     #!/bin/bash
     #SBATCH --job-name=hello-there
-    #SBATCH --output=output.txt
+    #SBATCH --output=output.log
     #SBATCH --ntasks=1
     #SBATCH --time=10:00
     #SBATCH --mem-per-cpu=100
@@ -237,27 +216,27 @@ Create a job to run the container using Podman:
     CR_TOKEN=...see below...
     ces-pull podman $CR_USER $CR_TOKEN $CR_URL
 
-    export CES_SCRATCH=$HOME/scratch/hello-there
-    export CES_SAFE_OUTPUTS=$HOME/safe_outputs/hello-there
+    export CES_SCRATCH=$HOME/scratch/job_composer
+    export CES_SAFE_OUTPUTS=$HOME/safe_outputs
     mkdir -p $CES_SCRATCH
     mkdir -p $CES_SAFE_OUTPUTS
 
-    cat << EOF > env_file.txt
+    cat << EOF > envs.txt
     GREETING=Greetings
     EOF
 
-    cat << EOF > arg_file.txt
+    cat << EOF > args.txt
     -d 10
     -n $USER
     EOF
 
-    ces-run podman -n epcc-ces-hello --env-file env_file.txt --arg-file arg_file.txt $CR_URL
+    ces-run podman -n epcc-ces-hello --env-file envs.txt --arg-file args.txt $CR_URL
     ```
 
     * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
-    * By default, `ces-run` creates directories with random names - `scratch-NNNN` and `outputs-NNNN` - and mounts these into a container at `/scratch` and `/safe_outputs`. However, `ces-run` supports `CES_SCRATCH` and `CES_SAFE_OUTPUTS` environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of `$HOME` and define `CES_SCRATCH` and `CES_SAFE_OUTPUTS` to tell `ces-run` to mount these directories.
-    * The script creates a file, `env_file.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
-    * The script also creates a file, `arg_file.txt`, with container-specific arguments to be passed directly to the container when it is run. The `epcc-ces-hello` container will pause for `-d` seconds, then issue a greeting to the name cited in `-n` (here, the current user).
+    * By default, `ces-run` creates directories with random names - `scratch-NNNN` and `outputs-NNNN` - and mounts these into a container at `/scratch` and `/safe_outputs`. However, `ces-run` supports `CES_SCRATCH` and `CES_SAFE_OUTPUTS` environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of `$HOME` and define `CES_SCRATCH` and `CES_SAFE_OUTPUTS` to tell `ces-run` to mount these directories into the container.
+    * The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
+    * The script also creates a file, `args.txt`, with container-specific arguments to be passed directly to the container when it is run. The container uses these arguments to issue a greeting to the name cited in `-n` (here, the current user) and doze for `-d` seconds.
 
 1. Click **Save**.
 
@@ -270,18 +249,60 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
+The script creates two files:
 
-1. Click `output.txt` under **Folder Contents**.
-1. A new browser tab will appear with the contents of the file:
+* `output.log` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
-    ...
-    Hello!
-    ...
-    Greetings USER!
+    Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
 
-    Sleeping for 10 seconds...
+    ...
+
+    epcc-ces-hello container
+
+    Directory users, groups and permissions:
+
+    /safe_data: nobody (65534) root(0) drwxrws--- nfs
+    /scratch: root (0) root(0) drwxr-xr-x ext2/ext3
+    /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
+
+    ...
+
+    Found optional 'GREETING' environment variable
+    GREETING: Greetings
+    Number of arguments: 4
+    Arguments: -d 10 -n someuser
+        -d
+        10
+        -n
+        someuser
+
+    ...
+
+    Greetings someuser from the 'epcc-ces-hello' container!
+
+    ...
+
+    Goodbye someuser!
+    ```
+
+* `$HOME/safe_outputs/epcc-ces-hello.txt` which is a file created by the container itself, including a greeting, the user's user ID, group ID and groups within the container, and the contents of `/safe_data` within the container. For example:
+
+    ```text
+    Greetings someuser from the 'epcc-ces-hello' container!
+
+    Your user ID within the container is: 0(root).
+
+    Your group ID within the container is: 0(root).
+
+    Your groups within the container are: 0(root).
+
+    Your mounted /safe_data/ files include:
+
+    ...project-specific files...
+
+    Dozing for 10 seconds...
+
     1
     2
     3
@@ -292,56 +313,34 @@ If you selected a back-end where your home directory is common to both the Open 
     8
     9
     10
+
     ...and awake!
 
-    Goodbye USER!
+    Goodbye someuser!
     ```
 
-1. Close the tab.
+View the output files:
 
-If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
+* If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
+    1. Click `output.log` under **Folder Contents**.
+    1. A new browser tab will appear with the contents of the file.
+    1. Select **Files** menu, **Home Directory** option.
+    1. Click `safe_outputs`.
+    1. Click `epcc-ces-hello.txt`.
+    1. A page with the contents of the file will appear.
+* If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
+    1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
+    1. View `output.log`:
 
-1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View the job context directory's contents:
+        ```bash
+        cat output.log
+        ```
 
-    ```bash
-    ls -1
-    ```
+    1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
 
-    ```text
-    arg_file.txt
-    env_file.txt
-    main_job.sh
-    output.txt
-    ```
-
-1. View `output.txt`:
-
-    ```bash
-    cat output.txt
-    ```
-
-    ```text
-    ...
-    Hello!
-    ...
-    Greetings USER!
-
-    Sleeping for 10 seconds...
-    1
-    2
-    3
-    4
-    5
-    6
-    7
-    8
-    9
-    10
-    ...and awake!
-
-    Goodbye USER!
-    ```
+        ```bash
+        cat $HOME/safe_outputs/epcc-ces-hello.txt
+        ```
 
 Create a new job from the current job to run the container using Apptainer:
 
@@ -350,7 +349,7 @@ Create a new job from the current job to run the container using Apptainer:
 1. Under 'main_job.sh', click **Open Editor**.
 1. Replace use of `podman` with `apptainer` as follows:
 
-    1. Replace the `ces-pull podman` line with:
+    1. Replace the `ces-pull podman` line with the lines:
 
         ```bash
         cd $HOME
@@ -359,12 +358,12 @@ Create a new job from the current job to run the container using Apptainer:
         cd $SLURM_SUBMIT_DIR
         ```
 
-        * `ces-pull apptainer` creates a SIF file in the current directory whose name is derived from the last part of the container URL. We change into `$HOME` so that the SIF file is created in `$HOME` before moving back to the directory with the job files, `$SLURM_SUBMIT_DIR`. This means we'll only ever have one copy of this SIF file in our `$HOME` directory, rather than one copy for each run of the job, which would quickly consume space!
+        `ces-pull apptainer` creates an Apptainer SIF file in the current directory whose name is derived from the last part of the container URL. We change into `$HOME` so that the SIF file is created in `$HOME` before moving back to the directory with the job files, `$SLURM_SUBMIT_DIR`. This means we will only ever have one copy of this SIF file in our `$HOME` directory, rather than one copy for each run of the job, which would quickly consume space!
 
     1. Replace the `ces-run podman` line with:
 
         ```bash
-        ces-run apptainer -n epcc-ces-hello --env-file env_file.txt --arg-file arg_file.txt $SIF_FILE
+        ces-run apptainer -n epcc-ces-hello --env-file envs.txt --arg-file args.txt $SIF_FILE
         ```
 
 Submit job:
@@ -376,4 +375,12 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-View `output.txt` as described previously.
+View the output files - `output.log` and `$HOME/safe_outputs/epcc-ces-hello.txt` - as described earlier. Note that your user ID, group ID and groups within the container will differ. `epcc-ces-hello.txt`'s contents will differ. In the Podman container you are 'root', within the Apptainer container you are 'you'. For example:
+
+```text
+Your user ID within the container is: 36177(someuser).
+
+Your group ID within the container is: 4797(somegroup).
+
+Your groups within the container are: 4797(somegroup),65534(nogroup).
+```

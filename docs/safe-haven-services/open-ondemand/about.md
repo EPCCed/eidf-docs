@@ -24,7 +24,6 @@ Then, explore the other pages about the service:
 * Apps:
     * [Active Jobs](apps/active-jobs.md)
     * [Run Batch Container](apps/batch-container-app.md)
-    * [Run JupyterLab](apps/jupyter-os-app.md)
     * [Run JupyterLab Container](apps/jupyter-app.md)
     * [Run RStudio Server Container](apps/rstudio-app.md)
     * [Job Composer](apps/job-composer.md)
