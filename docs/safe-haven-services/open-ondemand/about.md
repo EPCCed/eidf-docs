@@ -13,8 +13,6 @@ To quickly get started with the service:
 
 Then, explore the other pages about the service:
 
-* [Access Open OnDemand](access.md)
-* [Getting started](getting-started.md)
 * [Open OnDemand home page](home-page.md)
 * [About jobs](jobs.md)
 * [About containers](containers.md)
