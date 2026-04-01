@@ -7,15 +7,14 @@ First, some Open OnDemand terminology. A compute resource upon which tasks can b
 This walkthrough is centred around three apps:
 
 * [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
-* [Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
+* [Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 ---
 
 ## Your Open OnDemand VM home directory and back-ends
 
-For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and
-files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
+For most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so your directories and files on the Open OnDemand VM, and changes to these, are reflected on the back-ends and vice-versa.
 
 You may have access to back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM. Currently, the back-ends where home directories are not common to both the Open OnDemand VM and the back-ends are as follows:
 
@@ -141,9 +140,9 @@ When a container is run, the following directories on the back-end are always mo
 | `$HOME/safe_outputs` | `/safe_outputs` | This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
 | `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
 
-Together, these mounts (and additional, app-specific, mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
+Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
 
-If a container is run using Podman, then **only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and, any files created outside of these directories within the container will be **deleted** when the container is deleted. App-specific documentation explains what mounts are available, what is persisted when the container is deleted, and what is deleted.
+If a container is run using Podman, as we are doing here, then **only** files within any mounted directories are available within the container, **only** files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be **deleted** when the container is deleted. For apps that run containers, their app-specific documentation explains what mounts are available.
 
 Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
 
@@ -306,22 +305,22 @@ If any app does not run promptly, but is in a 'Queued' state, then the Active Jo
 
 ---
 
-## Run the Run JupyterLab Container app
+## Run the Run JupyterLab app
 
-[Run JupyterLab Container](apps/jupyter-app.md) runs an interactive JupyterLab service, within a container, on a back-end.
+[Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. The service is run in a container using Apptainer.
 
-Click the 'Run JupyterLab Container' app on the Open OnDemand home page.
+Click the 'Run JupyterLab' app on the Open OnDemand home page.
 
-The Run JupyterLab Container app form will open.
+The Run JupyterLab app form will open.
 
-![Excerpt of Run JupyterLab Container app form](../../images/open-ondemand/getting-started-10-jupyter-app-form.png){: class="border-img center"}
-*Excerpt of Run JupyterLab Container app form*
+![Excerpt of Run JupyterLab app form](../../images/open-ondemand/getting-started-10-jupyter-app-form.png){: class="border-img center"}
+*Excerpt of Run JupyterLab app form*
 
 For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
 
 Leave the other settings as-is.
 
-### Launch the Run JupyterLab Container app job
+### Launch the Run JupyterLab app job
 
 Click **Launch**.
 
@@ -338,26 +337,24 @@ And, again, Open OnDemand will show an app job card with information about the a
     * 'CPUs/cores': The value you selected on the app form.
     * 'Memory (GiB)' The value you selected on the app form.
 
-![Run JupyterLab Container app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-11-jupyter-app-queued.png){: class="border-img center"}
-*Run JupyterLab Container app job card showing job status as 'Queued'*
+![Run JupyterLab app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-11-jupyter-app-queued.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Queued'*
 
 When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
 
-![Run JupyterLab Container app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-12-jupyter-app-starting.png){: class="border-img center"}
-*Run JupyterLab Container app job card showing job status as 'Starting'*
+![Run JupyterLab app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-12-jupyter-app-starting.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Starting'*
 
 When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.
 
 A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
-A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
-
-![Run JupyterLab Container app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-13-jupyter-app-running.png){: class="border-img center"}
-*Run JupyterLab Container app job card showing job status as 'Running'*
+![Run JupyterLab app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-13-jupyter-app-running.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Running'*
 
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
-You may wonder why you were not prompted for a username and password. JupyterLab runs within the container as a 'root' user. The 'root' user is within the context of the container **only**. JupyterLab is protected with an auto-generated password. The **Connect to JupyterLab** button is configured to log you into JupyterLab using this password automatically.
+You may wonder why you were not prompted for a username and password. JupyterLab is protected with an auto-generated password and the **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
 ![JupyterLab](../../images/open-ondemand/getting-started-14-jupyter-app-jupyter-lab.png){: class="border-img center"}
 *JupyterLab*
@@ -369,7 +366,9 @@ Create a Jupyter Notebook:
 1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
 1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
 
-This app mounts your home directory into `/mnt/work` within the JupyterLab container. The app also configures JupyterLab to use `/mnt/work` as the default directory for creating new notebooks. If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
+In common with the Run Batch Container app, this app also mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` as described earlier. Your home directory is also mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
+
+If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
 
 Rename the notebook:
 
@@ -409,32 +408,32 @@ Click Shift + Enter to run the code. A plot should appear.
 ![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
 *Jupyter Notebook with Python code and a sine wave*
 
-The Python code saves the data file and plot to the container's `/safe_outputs` directory, which, as described earlier, is a mount of `safe_outputs` in your home directory. If you look at `safe_outputs` in your home directory you should now have the files `sine-wave.csv` and `sine-wave.png`.
+The Python code saves the data file and plot to the `/safe_outputs` directory, which, as described earlier, is a mount of `safe_outputs` in your home directory. If you look at `safe_outputs` in your home directory you should now have the files `sine-wave.csv` and `sine-wave.png`.
 
-![File Manager showing safe_outputs directory contents after Python code is run in Run JupyterLab Container app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
-*File Manager showing `safe_outputs` directory contents after Python code is run in Run JupyterLab Container app*
+![File Manager showing safe_outputs directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
+*File Manager showing `safe_outputs` directory contents after Python code is run in Run JupyterLab app*
 
-As a reminder, `safe_outputs` and its contents will persist after the job which created the container ends.
+As a reminder, `safe_outputs` and its contents will persist after the job which started JupyterLab ends.
 
 ### Revisit the Active Jobs app
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
-You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab Container app jobs have this name.
+You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab app jobs have this name.
 
 You will also see a unique job ID for this job.
 
 Your job will have a status of 'Running'.
 
-![Active Jobs app showing running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-17-active-jobs.png){: class="border-img center"}
-*Active Jobs app showing running Run JupyterLab Container app job*
+![Active Jobs app showing running Run JupyterLab app job](../../images/open-ondemand/getting-started-17-active-jobs.png){: class="border-img center"}
+*Active Jobs app showing running Run JupyterLab app job*
 
 To see more details about the job, click the **>** button, by the job.
 
-![Active Jobs app showing details of running Run JupyterLab Container app job](../../images/open-ondemand/getting-started-18-active-jobs-details.png){: class="border-img center"}
-*Active Jobs app showing details of running Run JupyterLab Container app job*
+![Active Jobs app showing details of running Run JupyterLab app job](../../images/open-ondemand/getting-started-18-active-jobs-details.png){: class="border-img center"}
+*Active Jobs app showing details of running Run JupyterLab app job*
 
-### Finish your Run JupyterLab Container app job
+### Finish your Run JupyterLab app job
 
 You can end your job by as follows:
 
@@ -443,8 +442,8 @@ You can end your job by as follows:
 
 The Job status on the job card will update to 'Completed'.
 
-![Run JupyterLab Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-19-jupyter-app-completed.png){: class="border-img center"}
-*Run JupyterLab Container app job card showing job status as 'Completed'*
+![Run JupyterLab app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-19-jupyter-app-completed.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Completed'*
 
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
