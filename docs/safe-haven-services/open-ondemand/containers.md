@@ -4,7 +4,7 @@
 
 Some Open OnDemand apps run containers, which package up software, services and their dependencies. Some of the apps provided by Open OnDemand run containers that have been pre-built by EPCC (e.g., JupyterLab and RStudio Server). Other apps allow you to run your own project-specific containers that you have been authorised to run within your safe haven.
 
-Containers are typically run using Podman or Apptainer, depending on the nature of the app and which of these is available on a back-end. Some Open OnDemand apps will have been written to use one or other of Podman or Apptainer, others will allow you to choose which to use.
+Containers are typically run using Podman or Apptainer, depending on the nature of an app. Some Open OnDemand apps will have been written to use one or other of Podman or Apptainer, others will allow you to choose which to use.
 
 [About jobs](jobs.md) described concepts you need to know about how Open OnDemand runs tasks and apps. This page focuses on concepts related to containers.
 
