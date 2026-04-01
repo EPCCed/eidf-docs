@@ -258,7 +258,7 @@ View the log file via the Open OnDemand File Manager:
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
 
     ![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-07-batch-container-app-logs.png){: class="border-img center"}
-    *File Manager showing log files within Run Batch Container app's job context directory*
+    *File Manager showing the log file within Run Batch Container app's job context directory*
 
 1. Click on the log file, `output.log`.
 

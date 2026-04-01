@@ -113,11 +113,11 @@ You can access these directories as follows:
 
 RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages within a directory within your home directory in RStudio Server so that you can reuse these the next time you run the app on the same back-end.
 
-There many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.
+There are many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.
 
 ### Install packages within `R/x86_64-pc-linux-gnu-library/M.N`
 
-By default R will install packages within a `R/x86_64-pc-linux-gnu-library/M.N` subdirectory of your home directory where `M.N` is an R version, for example `R/x86_64-pc-linux-gnu-library/4.4`.
+By default, R will install packages within a `R/x86_64-pc-linux-gnu-library/M.N` subdirectory of your home directory where `M.N` is an R version, for example `R/x86_64-pc-linux-gnu-library/4.4`.
 
 Install a package within `R/x86_64-pc-linux-gnu-library/M.N`:
 

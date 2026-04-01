@@ -82,11 +82,11 @@ You should create any Python scripts, notebooks, configuration files, virtual en
 
 JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within a directory within your home directory in JupyterLab so that you can reuse these the next time you run the app on the same back-end.
 
-There many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
+There are many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
 
 ### Install packages within `.local/lib/pythonM.N/site-packages/`
 
-By default `pip` will install packages within a `.local/lib/pythonM.N/site-packages/` subdirectory in your home directory, where `M.N` is a Python version, for example `.local/lib/python3.11/site-packages/`.
+By default, `pip` will install packages within a `.local/lib/pythonM.N/site-packages/` subdirectory in your home directory, where `M.N` is a Python version, for example `.local/lib/python3.11/site-packages/`.
 
 Install a package within `.local/lib/pythonM.N/site-packages/`:
 
