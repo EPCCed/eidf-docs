@@ -17,15 +17,7 @@ See the FAQ section ['Unauthorised' error when logging into the registry from Do
 
 Each EIDF project can have a private space on the registry, this is called an Edinburgh Container Image Registry (ECIR) project. An ECIR project can be used to store images and artifacts that are private to the project.
 
-To create an ECIR project:
-
-1. Navigate to your EIDF project in the EIDF portal.
-2. Find the **Container Registry Project** section.
-3. Click the **Create Project** button.
-
-This will generate the ECIR project, which will be accessible from the registry interface within a few minutes. The project will be named with the same name as your EIDF project.
-![CreateECIRProject](../../images/registry/CreateECIRProject.png){: class="border-img"}
-   *Example Create ECIR Project*
+By default new EIDF projects will have an ECIR project created with the same name. If you have an existing project without a registry project, you can request one by contacting the EIDF Service Desk.
 
 ## Push Commands
 
@@ -49,8 +41,8 @@ If you also need to publish images (for example, as part of an automated build o
 Robot accounts can be added by a project administrator as follows:
 
 1. In the ECIR project, click the **+ pull robot** or **+ push robot** button within the project.
-2. Wait a few minutes for the robot account to be created.
-3. Go to the **Robot Account** section of the project to access the credentials, which include a username and a CLI Secret for logging into the registry from Docker and other container services.
+1. Wait a few minutes for the robot account to be created.
+1. Go to the **Robot Account** section of the project to access the credentials, which include a username and a CLI Secret for logging into the registry from Docker and other container services.
 
 Robot accounts with pull and push permissions have a default validity period of 30 days, after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained.
 
@@ -89,6 +81,7 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 ```
+
 To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and therefore, robot accounts are recommended for long-term use. See the section on [Creating a Robot Account](#creating-robot-accounts-for-the-registry) for more details.
 From your command line, you can now push and pull images to the registry.
 
