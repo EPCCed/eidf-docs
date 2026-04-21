@@ -1,52 +1,114 @@
-# Service Documentation
+# Confidential Data Workspace - VM & User Management
 
-## Project Management Guide
+## Quota and Usage
 
-### User Roles and Their Permissions
+Quotas and Usage are the same as those for the [standard EIDF VM service](../virtualmachines/docs.md#quota-and-usage).
 
-!!! info
-    All names are separate from those in SAFE and are for the purpose of the EIDF Confidential Data Workspace service only
+Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
+You will not be able to create a VM if it exceeds the quota.
 
-**Data Users** - _Typical users - have access to read only on some data directories_
+You can view and refresh the project usage compared to the quota in a table near the bottom of the project page.
+This table will be updated automatically when VMs are created or removed, and
+you can refresh it manually by pressing the "Refresh" button at the top of the table.
 
-**Data managers** - _Have read and write access to some data directories_
+Please submit a [support request](https://portal.eidf.ac.uk/queries/submit) if your quota requirements have changed.
 
-**VM Admin** - _Access to the data manager group (project wide) and sudo access (per VM)_
+## User Management
 
-#### Detailed Roles, Groups and Their File Permissions
+We suggest adopting the following three user roles when managing users in the CDW service:
 
-A description of the roles defined within the EIDF Confidential Data Workspace service and some access they have is given in the below table.
-For those familiar with Trusted Research Environments (TREs) the following table includes a mapping of roles in the EIDF Confidential Data Workspace service which are conceptually similar to the roles in a TRE.
+**Data User** - Unprivileged user who, by default, may only access permitted data via the VDI
 
-| Role         | TRE Equivalent User  | Router Access | Should be given sudo permissions on VMs & router |
-| ------------ | -------------------- | ------------- | ------------------------------------------------ |
-| Data User    | Researcher           | No            | No                                               |
-| Data Manager | Research Coordinator | No            | No                                               |
-| VM Admin     | N/A                  | Yes           | Yes                                              |
+**Data Manager** - Includes all privileges of the Data User. Can import and export data, and directly access the service via SSH
 
-There are a few different roles associated with Confidential Data Workspace projects that determine what actions a user can perform in the EIDF Portal.
+**VM Admin** - Has sudo (super-user or unrestricted) access to manage VMs
 
-| Group                           | Files                                       | Permission | Note                                                                                                                                                     |
-| ------------------------------- | ------------------------------------------- | ---------- | ----------------------------------------------------------------------                                                                                   |
-| `sudo` group on router machine  | `/etc/squid/allowlist_buckets.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
-|                                 | `/etc/squid/allowlist_domains.txt`          | Owner W+R  | (implicit via machine access)                                                                                                                            |
-|                                 | `/etc/squid/squid.conf`                     | Owner W+R  | (implicit via machine access; Squid proxy configuration)                                                                                                 |
-| `sudo` group on a CDW VM        | Permissions of `<project-name>-datamanager` | Owner W+R  |                                                                                                                                                          |
-| `<project-name>-datamanager`    | `/data/datamanager`                         | W+R        | Project shared area for data managers to stage and manage data for import into and export from Confidential Data Workspace VMs via approved transfer methods. |
+!!! note
+    These roles are separate from those in [SAFE](../../access/index.md) and are for the purpose of the CDW only
 
-### Updating the Allowed Access Configuration for Confidential Data Workspace VMs
+For those familiar with Safe Haven Services (SHS), the following table includes a mapping of roles in the CDW service which are conceptually similar to the roles in the SHS:
 
-See [Router Configuration](router-docs.md) for documentation on updating the allowed access configuration for Confidential Data Workspace VMs.
+| CDW Role     | SHS Equivalent       |
+| ------------ | -------------------- |
+| Data User    | Researcher           |
+| Data Manager | Research Coordinator |
+| VM Admin     | EPCC SHS Staff |
 
-### Create a VM
+### Creating a User Account
 
-To create a new Confidential Data Workspace VM:
+User accounts allow project members to log in to the VMs in a project.
+The Project PI and Project Managers manage user accounts for each member of the project.
+Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
+however a user may have multiple accounts in a project, for example for different roles.
+
+1. From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom
+1. Complete the 'Create User Account' form as follows:
+
+    1. Choose 'Account user name': this could be something sensible like the first and last names
+    concatenated (or initials) together with the project name.
+    The username is unique across all EPCC systems so the user will not be able to reuse this name
+    in another project once it has been assigned.
+    1. Select the project member from the 'Account owner' drop-down field
+    1. Click 'Create'
+
+The user can now set the password for their new account on the account details page.
+
+### Setting Groups and Permissions
+
+Management of VMs and user accounts in the portal can only be done by the PI or delegated Project Managers. Please see [Required Member Permissions](../virtualmachines/docs.md#required-member-permissions) for more information.
+
+When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must also be added to the `<project-name>-datamanager` group in SAFE:
+
+1. Click "Manage Project in SAFE" at the bottom of the project page (opens a new tab)
+1. On the project management page in SAFE, click the arrow next to "Project Groups" and click on the `eidfxxx-datamanager` group
+1. Click "Add accounts" and enter the requried Data Manager accounts on the next page
+
+### Adding a User to a VM
+
+User accounts can be granted or denied access to existing VMs.
+
+1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page, or click on the account name and then 'Manage' on the account details page
+1. Select the checkboxes in the column "Access" for the VMs to which this account should have access or uncheck the ones without access
+1. Click the 'Update' button
+1. After a few minutes, the job to give them access to the selected VMs will complete and the account status will show as "Active".
+
+If a user is logged in already to the VDI at [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi)
+newly added connections may not appear in their connections list immediately.
+They must log out and log in again to refresh the connection information, or wait until the login token expires and is refreshed automatically - this might take a while.
+
+If a user only has one connection available in the VDI they will be automatically directed to the VM with the default connection.
+
+#### Sudo Permissions
+
+VM Admins must be given sudo permissions on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike addition to the `datamanager` group, sudo permissions are set on a per-VM basis via the Portal.
+
+!!! Warning
+    Sudo permissions should only be granted to VM Admins.
+
+### First Login
+
+Each new VM account must have its password reset before it can log-in for the first time.
+To do this:
+
+1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop-down.
+1. From the project page, they can select their account from the 'Your Accounts' table
+1. Finally, click the 'Set Password' button from the 'User Account Info' table.
+
+Users will then be able to log in using the VDI as described in the [VDI documentation](../../access/virtualmachines-vdi.md).
+
+!!! Warning
+    Access to the CDW VMs is only possible through the VDI or the project router (for Data Managers).
+    You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the CDW Router](./router-docs.md#ssh-access-to-the-cdw-router) for more information on how to access the router and then the VMs via SSH.
+
+## Creating a VM
+
+To create a new VM:
 
 1. Select the project from the list of your projects, e.g. `eidfxxx`
 1. Click on the 'New Private Machine' button
 1. Complete the 'Create Machine' form as follows:
 
-    1. Select the 'Confidential Data Workspace' router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
+    1. Select the 'CDW' router to use, typically this will be the default router for your project e.g. `eidfxxx-router`
     1. Provide an appropriate name, e.g. `dev-01`. The project code will be prepended automatically to your VM name, in this case your VM would be named `eidfxxx-dev-01`.
     1. Select a suitable operating system
     1. Select a machine specification that is suitable
@@ -64,92 +126,11 @@ To create a new Confidential Data Workspace VM:
 You may wish to ensure that the machine size selected (number of CPUs and RAM) does not
 exceed your remaining quota before you press Create, otherwise the request will fail.
 
-In the list of 'Machines' in the project page in the portal,
-click on the name of new VM to see the configuration and properties,
-including the machine specification, its `10.24.*.*` IP address and any configured VDI connections.
+In the list of 'Machines' in the project page in the portal, click on the name of new VM to see the configuration and properties, including the machine specification, its IP address and any configured VDI connections.
 
-### Quota and Usage
+## Updating a VM
 
-Quotas and Usage are the same as those for the [standard EIDF VM service](../virtualmachines/docs.md#quota-and-usage).
-
-Each project has a quota for the number of instances, total number of vCPUs, total RAM and storage.
-You will not be able to create a VM if it exceeds the quota.
-
-You can view and refresh the project usage compared to the quota in a table near the bottom of the project page.
-This table will be updated automatically when VMs are created or removed, and
-you can refresh it manually by pressing the "Refresh" button at the top of the table.
-
-Please contact the helpdesk if your quota requirements have changed.
-
-### Add a User Account
-
-User accounts allow project members to log in to the VMs in a project.
-The Project PI and project managers manage user accounts for each member of the project.
-Users usually use one account (username and password) to log in to all the VMs in the same project that they can access,
-however a user may have multiple accounts in a project, for example for different roles.
-
-1. From the project page in the portal click on the 'Create account' button under the 'Project Accounts' table at the bottom
-1. Complete the 'Create User Account' form as follows:
-
-    1. Choose 'Account user name': this could be something sensible like the first and last names
-    concatenated (or initials) together with the project name.
-    The username is unique across all EPCC systems so the user will not be able to reuse this name
-    in another project once it has been assigned.
-    1. Select the project member from the 'Account owner' drop-down field
-    1. Click 'Create'
-
-The user can now set the password for their new account on the account details page.
-
-### Setting Up the Correct Groups and Permissions for User Accounts
-
-Portal management of VMs and user accounts can only be done by project members with **Cloud Admin** permissions. This includes the principal investigator (PI) of the project and all project managers (PM). The PI and PMs can grant a project member the **Cloud Admin** role through the SAFE. There is more information in the virtual machine documentation under the section [Required Member Permissions](../virtualmachines/docs.md#required-member-permissions).
-
-User accounts should be placed in the correct groups on the VM to ensure they have the correct file permissions and data access. When a user account is created in the portal it will be added to the default group `<project-name>`. If the user account requires Data Manager access they must be added to the `<project-name>-datamanager` group. The VM Admin must be added to this group also.
-
-The VM Admin must be given sudo permissions on each VM to have the necessary permissions for managing restricted VMs and router configuration. Unlike addition to the `datamanager` group, sudo permissions are set on a per-VM basis via the portal.
-
-The following sections give instructions for setting up the required groups for the different roles in a Confidential Data Workspace project:
-
-- For creating and adding users to the `datamanager` group under the SAFE see [Creating a group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-set-up-project-groups-within-my-project) and then [adding users to the group](https://epcced.github.io/safe-docs/safe-for-managers/#how-can-i-add-users-to-an-existing-project-group)
-- See the Virtual Desktop Interface documentation for [Sudo Permissions](../virtualmachines/docs.md#sudo-permissions) for guidance on giving sudo permissions to the VM Admin role for each VM.
-
-## Adding Access to the VM for a User
-
-User accounts can be granted or denied access to existing VMs.
-
-1. Click 'Manage' next to an existing user account in the 'Project Accounts' table on the project page, or click on the account name and then 'Manage' on the account details page
-1. Select the checkboxes in the column "Access" for the VMs to which this account should have access or uncheck the ones without access
-1. Click the 'Update' button
-1. After a few minutes, the job to give them access to the selected VMs will complete and the account status will show as "Active".
-
-If a user is logged in already to the VDI at [https://eidf-vdi.epcc.ed.ac.uk/vdi](https://eidf-vdi.epcc.ed.ac.uk/vdi)
-newly added connections may not appear in their connections list immediately.
-They must log out and log in again to refresh the connection information, or wait until the login token expires and is refreshed automatically - this might take a while.
-
-If a user only has one connection available in the VDI they will be automatically directed to the VM with the default connection.
-
-### Sudo Permissions
-
-Sudo permissions should only be granted to users in the VM Admin role to restrict as much as possible the data management capabilities of users in the Confidential Data Workspace environment and remove the opportunity for data ingress/egress outwith the proper channels.
-
-## First Login
-
-A new user account must reset the password before they can log in for the first time.
-To do this:
-
-1. The user can log into the [Portal](https://portal.eidf.ac.uk) and select their project from the 'Projects' drop-down.
-1. From the project page, they can select their account from the 'Your Accounts' table
-1. Finally, click the 'Set Password' button from the 'User Account Info' table.
-
-Users will then be able to log in using the VDI as described in the [VDI documentation](../../access/virtualmachines-vdi.md).
-
-!!! Warning
-    Access to the Confidential Data Workspace VMs is only possible through the VDI or the project router.
-    You cannot directly SSH onto the VMs, and you cannot access the VMs through the router until you have access to the router itself. Please see the documentation section on [SSH Access to the Confidential Data Workspace Router](./router-docs.md#ssh-access-to-the-confidential-data-workspace-router) for more information on how to access the router and then the VMs via SSH.
-
-## Updating an Existing Machine
-
-### Adding RDP Access
+### Adding RDP Access to a VM
 
 The instructions in this section match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#adding-rdp-access).
 
@@ -164,15 +145,7 @@ will also be permitted to use the RDP connection.
 
 ### Software Catalogue
 
-The instructions in this section match the instructions given in the [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#software-catalogue).
-
-You can install packages from the software catalogue at a later time,
-even if you didn't select a package when first creating the machine.
-
-1. Open the VM details page by selecting the name on the project page
-1. Click on 'Software Catalogue'
-1. Select the configuration you wish to install and press 'Submit'
-1. The configuration job runs for a few minutes.
+See [EIDF Virtual Machine Service Documentation](../virtualmachines/docs.md#software-catalogue).
 
 ### Patching and Updating
 
@@ -180,9 +153,9 @@ It is the responsibility of project PIs to keep the VMs in their projects up to 
 
 !!! important "Snap packages"
 
-    Snap packages are not supported by default on the Confidential Data Workspace VMs. Snap requires data egress to install software packages. Allowing this could potentially be used to bypass the security of the Confidential Data Workspace. If you require snap packages then the VM Admin can enable usage by following the instructions in the [FAQs](./faq.md#unable-to-download-packages-from-snap-on-the-confidential-data-workspace-vms).
+    Snap packages are not supported by default on the CDW VMs. Snap requires data egress to install software packages. Allowing this could potentially be used to bypass the security of the CDW. If you require snap packages then the VM Admin can enable usage by following the instructions in the [FAQs](./faq.md#unable-to-download-packages-from-snap-on-the-cdw-vms).
 
-Since updates and patches require access to the internet, users should ensure that their Confidential Data Workspace VMs have access to the sources that the operating system gets updates from. This will usually be done out of the box, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for Confidential Data Workspace VMs](router-docs.md#updating-the-allowed-access-for-confidential-data-workspace-vms).
+Since updates and patches require access to the internet, users should ensure that their CDW VMs have access to the sources that the operating system gets updates from. These will have been configured by default, but repository sources can change and may need to be updated in the squid proxy configuration. Updating of allowed sources is detailed in the documentation section [Updating the allowed access for CDW VMs](router-docs.md#updating-the-list-of-allowed-domains-and-buckets).
 
 #### Ubuntu
 
@@ -205,7 +178,7 @@ sudo dnf update
 
 Your system might require a restart after installing updates.
 
-### Reboot
+### Rebooting
 
 When logged in you can reboot a VM with this command (requires sudo permissions):
 
@@ -214,3 +187,7 @@ sudo reboot now
 ```
 
 or use the reboot button in the EIDF Portal (requires project manager permissions).
+
+### Managing Access to External Content
+
+See [Router Configuration](router-docs.md) for documentation on updating the allowed access configuration for CDW VMs.

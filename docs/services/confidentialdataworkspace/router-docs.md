@@ -1,32 +1,29 @@
-# Confidential Data Workspace Router Documentation
+# Confidential Data Workspace - Router Configuration
 
-## Details of the Confidential Data Workspace Router
+The Confidential Data Workspace (CDW) Router is a special Virtual Machine that acts as a gateway for the CDW VMs. It is used to manage network access to the CDW VMs and to provide a secure connection point for users to access the VMs via SSH.
 
-The Confidential Data Workspace Router is a virtual machine that acts as a gateway for the Confidential Data Workspace VMs. It is used to manage network access to the Confidential Data Workspace VMs and to provide a secure connection point for users to access the VMs via SSH.
+VMs use the CDW Router as a proxy for network traffic, and customer-installed applications on VMs may need some extra options around network access for software that is not installed by default. Many of these are set up on deployment of the service for a project or documented in the [FAQs](./faq.md). For software that is not installed by default the following details may be useful for users to know when setting up software on the VMs.
 
-Confidential Data Workspace VMs use the Confidential Data Workspace Router as a proxy for network traffic, as such Confidential Data Workspace VMs may need some extra options around network access for software that is not installed by default. Many of these are set up on deployment of the service for a project or documented in the [FAQs](./faq.md). For software that is not installed by default the following details may be useful for users to know when setting up software on the VMs.
+## Proxy Router Address
 
-### Proxy Router Address
-
-When configuring software on the Confidential Data Workspace VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the **"Confidential Data Workspace (CDW)"** Proxy address section.
+When configuring software on the CDW VMs that requires network access, the proxy address to use is given in the EIDF portal for your project under the **Proxy address** section.
 
 ### Proxy Ports
 
-HTTP and HTTPS traffic from the Confidential Data Workspace VMs is proxied through the Squid proxy server on the Confidential Data Workspace Router. The proxy server listens on the following ports:
+HTTP and HTTPS traffic from the CDW VMs is proxied through the Squid service on the project's router. The service listens on the following ports:
 
-- HTTP: port 3128
-- HTTPS: port 3129
+- HTTP: 3128
+- HTTPS: 3129
 
-### Certificate When Using the Proxy for HTTPS Traffic
+## Certificate When Using the Proxy for HTTPS Traffic
 
-Because the Squid proxy server on the Confidential Data Workspace Router is intercepting and filtering network traffic from the Confidential Data Workspace VMs, it uses a self-signed certificate to decrypt and inspect HTTPS traffic. This means that when users are accessing websites over HTTPS from the Confidential Data Workspace VMs, they may encounter security warnings in their web browsers due to the self-signed certificate used by the Squid proxy.
-This proxy certificate is stored at `/usr/local/share/ca-certificates/extra/` and must be imported into the browser.
+For applications that require it, the self-signed certificate used by the Squid service is available on every VM at `/usr/local/share/ca-certificates/extra/squid_proxyCA.crt`.
 
-## SSH Access to the Confidential Data Workspace Router
+## SSH Access to the CDW Router
 
-VM Admins can access the Confidential Data Workspace Router `<project_code>-router` machine via SSH using the VM Admin user for the project. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.
+Data Managers and VM Admins can access the CDW Router `<project_code>-router` machine via SSH. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.
 
-This requires users have set up the EIDF Gateway for their user as this must be jumped through to access the router. An example SSH config file entry for the router is shown below:
+This requires users have set up the EIDF Gateway for their user, as this must be jumped through to access the router. An example SSH config file entry for the router is shown below:
 
 ```txt
 Host eidf-gateway
@@ -39,7 +36,7 @@ Host eidfxxx-router
     IdentityFile <SSH credential for user>
 ```
 
-Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the Confidential Data Workspace Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, `eidfxxx-router` is the correct address to use for ssh access to the router.
+Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the CDW Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, `eidfxxx-router` is the correct address to use for ssh access to the router.
 
 SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
 
@@ -51,12 +48,12 @@ ssh eidfxxx-router
 
 Where `eidfxxx-router` is the name of the host entry in the SSH config file for the router.
 
-## SSH Access to Confidential Data Workspace VMs via the Router
+## SSH Access to CDW VMs via the Router
 
-VM Admins can access the Confidential Data Workspace VMs via SSH by first connecting to the project router `<project_code>-router` and then jumping from there to the target VM. This is the only way to access the VMs via SSH as direct SSH access to the VMs is disabled for security of the service. This is easiest done using a SSH config file with the appropriate ProxyJump configuration, adding to the existing `~/.ssh/config` entry described above for the router.
+Data Managers and VM Admins can access the CDW VMs via SSH by first connecting to the project router `<project_code>-router` and then jumping from there to the target VM. This is the only way to access the VMs via SSH as direct SSH access to the VMs is disabled. This is most easily achieved by using an SSH config file with the appropriate `ProxyJump` configuration, adding to the existing `~/.ssh/config` entry described above for the router.
 
 ```txt
-Host eidfxxx-VM
+Host eidfxxx-<vm-name>
     HostName <VM IP Address>
     User <VM Admin Username>
     ProxyJump %r@eidfxxx-router
@@ -70,31 +67,28 @@ SSH credentials for the router can be added in the EIDF Portal under the project
 You can then connect to the VM using the command:
 
 ```bash
-ssh eidfxxx-VM
+ssh eidfxxx-<vm-name>
 ```
 
-## Updating the Allowed Access for Confidential Data Workspace VMs
+## Updating the list of allowed domains and buckets
 
-By default the allowed list of domains allows Confidential Data Workspace VMs to:
+The list of domains allows CDW VMs to:
 
-- Access common package repositories for operating system updates and software installation
+- Access package repositories for operating system updates and software installation
 - Access popular container registries for downloading (but not uploading) container images
     - Docker Hub
     - GitHub Container Registry
     - EIDF Container Registry
-- Access common software packages:
+- Access to common data science software packages:
     - CRAN
     - PyPI
     - Bioconductor
-- Specific EIDF S3 buckets for data transfer
 
-Configuring the allowed list of domains for specific projects can be done only by the VM Admin through access to the Squid Router machine.
+A VM Admin with access to the project router, `<project_code>-router`, can edit the squid access control list. The access control list is available through the `/etc/squid/allowlist_domains.txt` file.
 
-The VM Admin with access to the Squid Router `<project_code>-router` machine can edit the squid access control list. The access control list is available through the `/etc/squid/allowlist_domains.txt` file.
+This file contains a detailed list of allowed domains. Entries can be added or removed by opening the file in a text editor and following the syntax of [access control lists defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl), making special note of the section '[Squid Does Not Match My Subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains)'.
 
-This file contains a detailed list of allowed domains. The VM Admin can add or remove domain names following the syntax of [access control lists defined by Squid](https://wiki.squid-cache.org/SquidFaq/SquidAcl) making special note of the section '[Squid Does Not Match My Subdomains](https://wiki.squid-cache.org/SquidFaq/SquidAcl#squid-doesnt-match-my-subdomains)'.
-
-S3 bucket access is handled in a different location due to some technical details of allowing EIDF S3 bucket access. The list of allowed S3 buckets is available through the `/etc/squid/allowlist_buckets.txt` file.
+Read-write access to EIDF S3 buckets is managed separately, via the `/etc/squid/allowlist_buckets.txt` file.
 
 After editing allowlists Squid must be reconfigured using the command:
 
