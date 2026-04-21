@@ -40,6 +40,9 @@ export AWS_SECRET_ACCESS_KEY=<secret>
 export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
 ```
 
+!!! Important
+    Confidential Data Workspace users should see the [Confidential Data Workspace FAQs](../confidentialdataworkspace/faq.md#aws-cli) for additional steps on how to set up AWS CLI in the Confidential Data Workspace environment.
+
 ### Commands
 
 List the buckets in your account:
