@@ -40,7 +40,7 @@ Each project will be given a namespace within the SHS GPU Cluster to operate in.
 
 This project namespace will normally be formatted as the SHS Safe Heaven and Project code appended with "ns", e.g. `nsh-2024-0000-ns` for the `nsh` Safe Haven project with code `2024-0000`.
 
-Once access to the SHS GPU Cluster has been confirmed, SHS project VMs will be configured to use the SHS GPU cluster - information on access to VMs is available in our [virtual desktop connections documentation](../virtual-desktop-connections.md).
+Once access to the SHS GPU Cluster has been confirmed, SHS project VMs will be configured to use the SHS GPU cluster. How to access VMs is described in [Safe Haven Services Access](../safe-haven-access.md).
 
 Project users can access the GPU Cluster using their FreeIPA credentials. When executing a kubectl command, if no valid token is cached locally, you will be prompted to enter your FreeIPA username and password. Upon successful authentication, a token is generated and cached locally, remaining valid for 90 days or until it is deleted. Once the token expires, kubectl will prompt you again for your FreeIPA credentials in the same format.
 
@@ -94,9 +94,13 @@ The SHS GPU Cluster has been using the Kueue system since May 2025. The use of t
 
     Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
 
-## Additional Service Policy Information
+## Additional Service Information
 
-Additional information on service policies can be found in our [policies documentation](policies.md).
+Additional information on the service can be found in the following pages:
+
+- [Kueue](kueue.md)
+- [Policies](policies.md)
+- [FAQ](faq.md)
 
 ## SHS GPU Cluster Tutorial
 
@@ -105,9 +109,11 @@ This tutorial teaches users how to submit tasks to the SHS GPU Cluster. It assum
 | Lesson                                                                                                   | Objective                                                                                                      |
 |-----------------------------------|-------------------------------------|
 | [Getting started with Kubernetes](training/L1_getting_started.md)                             | a. What is Kubernetes?<br>b. How to send a task to a GPU node.<br>c. How to define the GPU resources needed.  |
-| [Requesting persistent volumes with Kubernetes](training/L4_requesting_persistent_volumes.md) | a. What is a persistent volume? <br>b. How to request a PV resource.                                          |
-| [Running a PyTorch task](training/L5_running_a_pytorch_task.md)                               | a. Accessing a Pytorch container.<br>b. Submitting a PyTorch task to the GPU Cluster.<br>c. Inspecting the results. |
-| [Template workflow](training/L6_template_workflow.md)                               | a. Loading large data sets asynchronously.<br>b. Manually or automatically building Docker images.<br>c. Iteratively changing and testing code in a job. |
+| [Building and Testing Containers](training/L1.1_building-and-testing-containers.md)           | a. How to build container images.<br>b. How to test containers locally.<br>c. Best practices for container setup. |
+| [Using Containers in the SHS](training/L2_using-containers-in-the-tre.md)                     | a. How to run containers inside the SHS.<br>b. Security considerations for SHS containers.<br>c. How to manage container dependencies. |
+| [Creating Your First Pod Template](training/L2.1_creating-your-first-pod-template.md)         | a. What is a Kubernetes pod template.<br>b. How to define pod resources.<br>c. How to submit a pod to the GPU cluster. |
+| [Accessing the BeeGFS Inside the SHS _GPU Cluster_](training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md)         | a. How to access BeeGFS from the SHS _GPU Cluster_.<br>b. How to read/write data efficiently.<br>c. Best practices for using shared storage. |
+| [Requesting Persistent Volumes](training/L4_requesting_persistent_volumes.md)         | a. How pods use persistent storage (Persistent Volumes and Persistent Volume Claims).<br>b. How SHS _GPU Cluster_ users access pre-provisioned storage via Persistent Volume Claims.<br>c. How to attach Persistent Volume Claims to pods using volumeMounts and proper securityContext. | 
 
 ## Further Reading and Help
 

@@ -39,8 +39,8 @@ Please visit the [our web pages](https://edinburgh-international-data-facility.e
 
 Please note, costs are correct at the time of publication, but will change.
 
-To get a detailed, full cost to include in a any grant application or for an estimate, you can
-begin a new project application which gives you access to pricing calculator.
+To get a detailed, full cost to include in a grant application or for an estimate, you can
+begin a new project application which gives you access to the EIDF pricing calculator.
 
 ### Create a new project application
 

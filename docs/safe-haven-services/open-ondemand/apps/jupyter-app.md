@@ -1,6 +1,6 @@
-# Run JupyterLab Container
+# Run JupyterLab
 
-Run JupyterLab Container is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Podman.
+Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Apptainer.
 
 ---
 
@@ -38,8 +38,6 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
-A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
-
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
@@ -52,7 +50,7 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 
@@ -62,27 +60,95 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 ## Log in to JupyterLab
 
-You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and **Connect to JupyterLab** button is configured to log you in automatically using this password.
-
-Within JupyterLab you are the 'root' user.
-
-!!! Note
-
-    You are the 'root' user **only** within the context of the JupyterLab container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
+You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and the **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
 ---
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts three directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/jupyter_app/` in your home directory on the back-end and nounts this into JupyterLab at `/mnt/jupyter_host`. If you create virtual environments and/or install Python packages into `/mnt/jupyter_host` when using JupyterLab, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+Your home directory is mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
+
+You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
+
+!!! Warning
+
+    Any files created outside of these directories will be **deleted** when the app stops.
 
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you create virtual environments and/or install Python packages into `/mnt/jupyter_host` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within a directory within your home directory in JupyterLab so that you can reuse these the next time you run the app on the same back-end.
+
+There are many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
+
+### Install packages within `.local/lib/pythonM.N/site-packages/`
+
+By default, `pip` will install packages within a `.local/lib/pythonM.N/site-packages/` subdirectory in your home directory, where `M.N` is a Python version, for example `.local/lib/python3.11/site-packages/`.
+
+Install a package within `.local/lib/pythonM.N/site-packages/`:
+
+1. Select **Launcher**, **Terminal**.
+1. Install package:
+
+    ```bash
+    pip install PACKAGE_NAME
+    ```
+
+As the subdirectory is in your home directory, the package will be available the next time that you run the app on the back-end.
+
+### Create a virtual environment
+
+Create a virtual environment and install a package into that virtual environment:
+
+1. Select **Launcher**, **Terminal**.
+1. Create a subdirectory for the virtual environment:
+
+    ```bash
+    mkdir -p my-venv
+    ```
+
+1. Create and activate the virtual environment within this subdirectory:
+
+    ```bash
+    python -m venv my-venv
+    source my-venv/bin/activate
+    ```
+
+1. Install packages into the virtual environment:
+
+    ```bash
+    python -m pip install PACKAGE_NAME
+    ```
+
+To create a new IPython kernel to provide access to the virtual environment within a JupyterLab Notebook or Console, register the virtual environment with JupyterLab:
+
+1. Within a JupyterLab Terminal, add the 'ipykernel' package to the virtual environment:
+
+    ```bash
+    python -m pip install ipykernel
+    ```
+
+1. Create a new kernel for your virtual environment:
+
+    ```bash
+    python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
+    jupyter kernelspec list
+    ```
+
+1. You should see your kernel listed. For example:
+
+    ```text
+    Available kernels:
+      py3-ipykernel-my-venv    $HOME/.local/share/jupyter/kernels/py3-ipykernel-my-venv
+      python3                  $HOME/.local/share/jupyter/kernels/python3
+    ```
+
+1. New Console and Notebook buttons for your kernel will shortly appear in the Launcher panel.
+
+As the virtual environment and kernel subdirectories are in your home directory, the package and kernel configuration will be available the next time that you run the app on the back-end.
 
 ---
 

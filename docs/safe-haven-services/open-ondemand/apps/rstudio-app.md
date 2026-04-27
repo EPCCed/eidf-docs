@@ -1,6 +1,6 @@
-# Run RStudio Server Container
+# Run RStudio Server
 
-Run RStudio Server Container is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Podman.
+Run RStudio Server is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Apptainer.
 
 ---
 
@@ -14,7 +14,6 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **RStudio Server password**: A password is required to secure RStudio Server. Provide a password to use.
 * **CPUs/cores**: CPUs/cores requested for the app's job.
 * **Memory (GiB)**: Memory requested for the app's job.
 
@@ -39,8 +38,6 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 A **Connect to RStudio Server** button will appear. RStudio Server is now ready for use.
 
-A 'RStudio Server is running in Podman container epcc-ces-rstudio-SESSION_ID' message will also appear.
-
 Click **Connect to RStudio Server**. A new browser tab will open with RStudio Server.
 
 !!! Warning
@@ -53,7 +50,7 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
 !!! Warning
 
-    Any running jobs are cancelled during the monthly TRE maintenance period.
+    Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
 !!! Note
 
@@ -63,30 +60,74 @@ Click **Connect to RStudio Server**. A new browser tab will open with RStudio Se
 
 ## Log in to RStudio Server
 
-A Sign in to RStudio page will appear. Enter:
-
-* **Username**: root
-* **Password**: password you selected when completing the app form.
-
-Click **Sign in**.
-
-!!! Note
-
-    You are the 'root' user **only** within the context of the RStudio Server container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
+You will not be prompted for a username and password. RStudio Server is protected with an auto-generated password and the **Connect to RStudio Server** button is configured to log you in automatically using this password.
 
 ---
 
 ## Sharing files between the back-end and RStudio Server and persisting state between app runs
 
-The app mounts three directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `.scratch` . For information on what these directories can be used for, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+The app mounts directories from the back-end into RStudio Server at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
 
-The app also creates a `$HOME/.local/share/ondemand/apps/rstudio_app/` in your home directory on the back-end and nounts this into RStudio Server at `/mnt/rstudio_host`. If you install R packages into `/mnt/rstudio_host` when using RStudio Server, then these will be available to you when you run the app in future (each run of the app creates a new container, and this mount allows for state to be persisted between runs).
+Your home directory is mounted within RStudio Server at the same path as your home directory on the back-end. Any directories and files you create within your home directory within RStudio Server will be available in your home directory on the back-end, and vice-versa.
+
+You should create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.
+
+!!! Warning
+
+    Any files created outside of these directories will be **deleted** when the app stops.
+
+---
+
+## Accessing files outside the scope of your home directory
+
+A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory within some menu commands and panels. This includes the `/safe_data`, `/safe_outputs`, and `/scratch` directories.
+
+You can access these directories as follows:
+
+* `/safe_outputs` and `/scratch` can be accessed via your home directory in `safe_outputs` and `scratch/rstudio/SESSION_ID` respectively i.e., the directories mounted onto `/safe_outputs` and `/scratch`.
+* **File** menu, **Open File** menu option:
+    * Enter the directory or file path into the **Open File** dialog, **File name** field.
+    * Click **Open**.
+* **Files** panel:
+    * Click the '**...**' (ellipsis)  button.
+    * Enter the directory into the **Go To Folder** dialog box.
+    * Click **OK**.
+* **Session** menu, **Set Working Directory**, **Choose Directory** menu option:
+    * Run, within an RStudio Server Console:
+
+        ```R
+        setwd('/')
+        ```
+
+    * The directories will now be available for the menu option.
+
+* **Tools** menu, **Global Options** tab, 'RSessions' **Default working directory** option:
+    * Click **Browse...**.
+    * `/safe_outputs` can be accessed via your home directory in `safe_outputs` i.e., the directory mounted onto `/safe_outputs`.
+    * `/scratch` is deleted when the app completes so should not be selected for use as a default working directory.
+    * `/safe_data` cannot be selected for use as a default working directory.
 
 ---
 
 ## Installing R packages
 
-RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages into `/mnt/rstudio_host` so that you can reuse these the next time you run the app on the same back-end.
+RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages within a directory within your home directory in RStudio Server so that you can reuse these the next time you run the app on the same back-end.
+
+There are many ways you can use such a directory within RStudio Server. Two examples are as follows. R and RStudio Server resources online will suggest many others.
+
+### Install packages within `R/x86_64-pc-linux-gnu-library/M.N`
+
+By default, R will install packages within a `R/x86_64-pc-linux-gnu-library/M.N` subdirectory of your home directory where `M.N` is an R version, for example `R/x86_64-pc-linux-gnu-library/4.4`.
+
+Install a package within `R/x86_64-pc-linux-gnu-library/M.N`:
+
+1. Install package:
+
+    ```R
+    > install.packages('PACKAGE_NAME')
+    ```
+
+As the subdirectory is in your home directory, the package will be available the next time that you run the app on the back-end.
 
 ---
 
