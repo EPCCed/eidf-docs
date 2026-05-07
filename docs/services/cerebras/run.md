@@ -6,7 +6,7 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.9.0/getting-started/setup-and-installation) which should be followed.
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.10.0/getting-started/setup-and-installation) which should be followed.
 
 We also that suggest:
 
@@ -16,7 +16,7 @@ We also that suggest:
 For completness both the modelzoo clone and virtual environmment setup are included below:
 
 ```bash
-git clone -b Release_2.9.0 https://github.com/Cerebras/modelzoo.git ./modelzoo
+git clone -b Release_2.10.0 https://github.com/Cerebras/modelzoo.git ./modelzoo
 python3.11 -m venv modelzoo_venv
 source modelzoo_venv/bin/activate
 pip install --upgrade pip
