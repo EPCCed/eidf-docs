@@ -90,6 +90,8 @@ nav:
     - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
+    - "Cirrus HPC System":
+      - "Overview": services/cirrus/index.md
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md
