@@ -58,14 +58,12 @@ As mentioned in our guidelines, it is good practice to check the Dockerfile with
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3013 - < Dockerfile
 ```
 
-We can then define our GHCR variables:
+We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
 ```sh
 export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
-
-Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
 
 We can now build our container:
 
@@ -88,26 +86,18 @@ docker push "ghcr.io/$GHCR_NAMESPACE/pytorch-test:latest"
 docker logout
 ```
 
-### E1 - Step 3. Test in CES test environment
+### E1 - Step 3. Pull and run in the SHS
 
-Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
-
-Then, pull and run the container using the commands:
+Pull and run the container inside the SHS using the following commands, where the namespace and token arguments to `ces-pull` are mandatory.
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
 ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
 ```
 
-Note: The namespace and token arguments to `ces-pull` are mandatory.
+!!! tip
 
-Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
-
-### E1 - Step 4. Pull and run in the SHS
-
-The container can be pulled and run inside the SHS using the same commands as the [previous step](#e1-step-3-test-in-ces-test-environment).
-
-Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 2 - Python ML
 
@@ -228,16 +218,14 @@ As mentioned in our guidelines, before building our container we first want to c
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3013 --ignore DL3042 --ignore DL3045 - < Dockerfile
 ```
 
-Note that we can deliberately ignore hadolint flags if the selected features are required by the container to run successfully.
+Here we deliberately ignore hadolint flags if the selected features are required by the container to run successfully.
 
-We then define our GHCR variables:
+We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
 ```sh
 export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
-
-Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
 
 We can now build our container:
 
@@ -271,24 +259,18 @@ docker push "ghcr.io/$GHCR_NAMESPACE/python-ml-test:latest"
 docker logout
 ```
 
-### E2 - Step 3. Test in CES test environment
+### E2 - Step 3. Pull and run in the SHS
 
-As with the previous example, we now want to test our container in the designated test environment for the CES. Log into the 'ces-dev02' VM of the project EIDF147, then pull and run the container using the commands:
+Pull and run the container inside the SHS using the commands, where the namespace and token arguments to `ces-pull` are mandatory:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 ```
 
-Note: The namespace and token arguments to `ces-pull` are mandatory.
+!!! tip
 
-Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
-
-### E2 - Step 4. Pull and run in the SHS
-
-We can import and run the container in the SHS using the commands from the [earlier step](#e2-step-3-test-in-ces-test-environment).
-
-Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ## Example 3 - Interactive RStudio Rocker container
 
@@ -400,14 +382,12 @@ Before building our container, we want to check the Dockerfile with a linting to
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3008 - < Dockerfile
 ```
 
-We can then define our GHCR variables:
+We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
 ```sh
 export GHCR_NAMESPACE=mynamespace
 export GHCR_TOKEN=mytoken
 ```
-
-Note: `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
 
 We can now build our container:
 
@@ -432,19 +412,17 @@ docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:latest"
 docker logout
 ```
 
-### E3 - Step 3. Test in CES test environment
+### E3 - Step 4. Pull and run in the SHS
 
-Log into the 'ces-dev02' VM of the project EIDF147, which is the designated test environment for the CES.
-
-Rocker is one of those containers that requires to be started by the 'root' user. As such, it should be run inside the SHS - and our test environment - using podman. To pull the container using podman as our container engine, we use the command:
+Rocker is a container that requires to be started by the 'root' user. As such, it should be pulled intn the SHS and run using podman. To pull the container using podman as our container engine, we use the following command, where the namespace and token arguments are mandatory:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-Note: The namespace and token arguments to `ces-pull` are mandatory.
+!!! tip
 
-Note: When pulling containers into the test environment, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 The Rocker container was designed to be run using docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
 
@@ -453,7 +431,7 @@ The Rocker container was designed to be run using docker. In order for it to run
 '--mount type=tmpfs,destination=/run'
 ```
 
-Our full `opt-file.txt` then looks like this:
+A `ces-run` `opt-file.txt` can include these and the other options required:
 
 ```text
 -p 8787:8787
@@ -462,7 +440,7 @@ Our full `opt-file.txt` then looks like this:
 --mount type=tmpfs,destination=/run
 ```
 
-If we want to set our password, we can add it to the `env-file.txt` as follows:
+If we want to set our password, we can add it to a `ces-run` `env-file.txt` as follows:
 
 ```text
 PASSWORD=test
@@ -474,7 +452,7 @@ We can then run our container:
 ces-run podman --opt-file opt-file.txt --env-file env-file.txt ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-To streamline the process, we can place all the necessary commands into an executable script `run.sh` as follows:
+To streamline the process, we can place all the necessary commands into an executable script, `run.sh`, as follows:
 
 ```sh
 opt_file="./opt-file.txt"
@@ -497,16 +475,10 @@ echo -e "PASSWORD=test" >> ${env_file}
 ces-run podman --opt-file $opt_file --env-file $env_file ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-After executing the `run.sh` script, we can open a browser tab and access RStudio at `localhost:8787`. As done previously during the local test, we can log in using the credentials `root` and `test` for username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
+After executing the `run.sh` script, we can open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` and `test` for username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
 
 The container is running successfully if:
 
 - The log-in is successful.
 - The rstudio user has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
 - The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user.
-
-### E3 - Step 4. Pull and run in the SHS
-
-The container can then be imported inside the SHS using the same commands as [Step 3](#e3-step-3-test-in-ces-test-environment).
-
-Note: When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.

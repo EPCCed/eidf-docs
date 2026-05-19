@@ -3,8 +3,10 @@
 ## What is the CES?
 
 The Container Execution Service (CES) has been introduced to allow project code developed and tested by researchers outside the Safe Haven Services (SHS) in personal development environments to be imported and run on the project data inside the SHS using a well-documented, transparent, secure workflow.
+
 The primary role of the SHS is to store and share data securely; it is not intended to be a software development and testing environment. The CES helps researchers perform software development tasks in their chosen environment, rather than the restricted one offered in the SHS.
-This guide describes the process of building and testing SHS-ready containers outside the SHS, specifically within a test environment created in the EIDF, so that they are ready to be pulled and used inside the SHS.
+
+This guide describes the process of building and testing SHS-ready containers outside the SHS, so that they are ready to be pulled and used inside the SHS.
 
 ## Accessing the CES
 
@@ -23,8 +25,7 @@ It is also assumed that software development best practices are followed, such a
 The development process includes the following steps:
 
 1. Create a Dockerfile following [general recommendations](./development-workflow.md#12-general-recommendations) and [SHS-specific advice](./development-workflow.md#11-shs-specific-advice).
-1. Build the image and upload to the GitHub Container Registry (GHCR), either locally or using a CI/CD pipeline.
-1. Test the container in the [CES test environment](./development-workflow.md#31-accessing-test-environment) to ensure it functions correctly and has no external runtime dependencies.
+1. Build and test the image and upload to the GitHub Container Registry (GHCR), either locally or using a CI/CD pipeline.
 1. Login to a SHS desktop enabled for container execution to pull and run the container.
 
 This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist users in building SHS-ready containers. Other [container examples](./container-examples.md) are also available in our [SHS Container Samples](https://github.com/EPCCed/shs-container-samples/) repository.
@@ -32,7 +33,9 @@ This guide contains a number of [workflow examples](./workflow-examples.md) desi
 ## SHS directories
 
 Before continuing with this guide, it is important that the users are aware of the SHS file system directories so that they can be used correctly within their containers. Project data inside the SHS can be found in the `/safe_data/<project-id>` directory.
+
 The CES tools automatically map this to a directory called `/safe_data` inside the container. Additionally, two directories are created and mapped to the user's home directory. The first one is `/scratch`, a temporary directory that is removed after container termination on the host system.
+
 The second one is a unique container job output directory mapped to the `/safe_outputs` directory in the container, where output files that the users wishes to preserve should be placed. Note that containers that have been pulled into the SHS are destroyed after they have been run. Only the files written to the container outputs directory are guaranteed to be retained.
 
 | Directory on host system | Directory in container | Intended use
