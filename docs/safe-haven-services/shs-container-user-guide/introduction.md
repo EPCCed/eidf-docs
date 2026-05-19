@@ -28,7 +28,7 @@ The development process includes the following steps:
 1. Build and test the image and upload to the GitHub Container Registry (GHCR), either locally or using a CI/CD pipeline.
 1. Login to a SHS desktop enabled for container execution to pull and run the container.
 
-This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist users in building SHS-ready containers. Other [container examples](./container-examples.md) are also available in our [SHS Container Samples](https://github.com/EPCCed/shs-container-samples/) repository.
+This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist users in building SHS-ready containers. Other [container examples](./container-examples.md) are also available in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
 
 ## SHS directories
 
