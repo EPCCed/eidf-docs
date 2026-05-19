@@ -412,7 +412,7 @@ docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:latest"
 docker logout
 ```
 
-### E3 - Step 4. Pull and run in the SHS
+### E3 - Step 3. Pull and run in the SHS
 
 Rocker is a container that requires to be started by the 'root' user. As such, it should be pulled intn the SHS and run using podman. To pull the container using podman as our container engine, we use the following command, where the namespace and token arguments are mandatory:
 
