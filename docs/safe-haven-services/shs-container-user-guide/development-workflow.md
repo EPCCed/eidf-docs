@@ -2,15 +2,15 @@
 
 This document describes in detail the steps introduced in [The Safe Haven Container Execution Service - CES](./introduction.md) for the development of containers for use within Safe Havens.
 
-## Step 1. Writing a `Dockerfile`
+## Step 1. Writing a Dockerfile
 
 ### 1.1 SHS-specific advice
 
-**Declare SHS specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your `Dockerfile`**. While the CES tools automatically generate these directories within the container, explicitly creating them enhances transparency and helps others more easily understand the container’s structure and operation.
+**Declare SHS-specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your Dockerfile**. While the CES tools automatically generate these directories within the container, explicitly creating them enhances transparency and helps others more easily understand the container’s structure and operation.
 
 !!! note
 
-    Files should not be added to these directories through the `Dockerfile` prior to mounting, as they would be overwritten during the mounting process. The directories will be fully accessible within the container during run time.
+    Files should not be added to these directories through the Dockerfile prior to mounting, as they would be overwritten during the mounting process. The directories will be fully accessible within the container during run time.
 
 **Start with a well-known application base container on a public registry**. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose. Avoid patching and preserve the original container setup wherever possible.
 
@@ -20,7 +20,7 @@ This document describes in detail the steps introduced in [The Safe Haven Contai
 
 **Do not copy data files into the image**. As a general rule, images should only contain software and configuration files. Any data files required will be presented to the container at runtime (e.g. via the `/safe_data` mount) and should not be copied into the container during the build.
 
-**Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your `Dockerfile`**. Since Safe Haven VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
+**Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your Dockerfile**. Since Safe Haven VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
 **Apply the principle of least privilege**, that is select a non-privileged user inside the container whenever possible.
 
@@ -30,7 +30,7 @@ Some containers are meant to be started by the root user, for example Rocker. In
 
 ### 1.2 General recommendations
 
-It is highly recommended that you follow these `Dockerfile` best practice guidelines.
+It is highly recommended that you follow these Dockerfile best practice guidelines.
 
 **Use fully-qualified and pinned images in all `FROM` statements**. Images can be hosted on multiple repositories, and image tags are mutable. The only way to ensure reproducible builds is by pinning images by their full signature, and, where possible, citing a repository such as `docker.io` or `ghcr.io`.
 
@@ -132,7 +132,7 @@ FROM gcr.io/distroless/base-debian12
 # ...
 ```
 
-**Use a linter to verify the content of the `Dockerfile`**. An example is [Hadolint](https://github.com/hadolint/hadolint). Automated code linting tools can be very useful in detecting common mistakes and pitfalls when developing software. Some configuration tweaks may be required however, as shown in the example below.
+**Use a linter to verify the content of the Dockerfile**. An example is [Hadolint](https://github.com/hadolint/hadolint). Automated code linting tools can be very useful in detecting common mistakes and pitfalls when developing software. Some configuration tweaks may be required however, as shown in the example below.
 
 Example:
 
@@ -153,7 +153,7 @@ See the following resources for additional recommendations:
 
 ### 2.1 Build and test the container locally
 
-Docker, Podman, Kubernetes, and Apptainer container images can be created from a single `Dockerfile`, as all of them support the OCI container image format either natively or indirectly.
+Docker, Podman, Kubernetes, and Apptainer container images can be created from a single Dockerfile, as all of them support the OCI container image format either natively or indirectly.
 
 Containers can be built using the following command:
 
@@ -171,7 +171,7 @@ We recommend that you test containers without a network connection to best mimic
 
 ### Example
 
-A container with the following `Dockerfile`:
+A container with the following Dockerfile:
 
 ```dockerfile
 FROM python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
@@ -207,7 +207,7 @@ docker build -t myapp:v1.1 . --platform linux/amd64
 
 where `--platform linux/amd64` is added to ensure image compatibility with the SHS environment in case the image is being built on a different platform.
 
-The container can then be tested with:
+The container can then be tested by running:
 
 ```console
 docker run --rm myapp:v1.1
@@ -215,7 +215,7 @@ docker run --rm myapp:v1.1
 
 Podman can be used equivalently to Docker in the commands above.
 
-### 2.2 Automating `Dockerfile` validation
+### 2.2 Automating Dockerfile validation
 
 During development, we recommend that tools like GitHub or GitLab are used for version control and recording of the image content. Using the [`pre-commit`](https://pre-commit.com/) tool, it is possible to configure your local repository so that Hadolint (and similar tools) are run automatically each time `git commit` is run. This is recommended to ensure linting and auto-formatting tools are always run before code is pushed to GitHub.
 
@@ -260,8 +260,8 @@ Below is a sample GitHub Actions configuration which runs Hadolint, builds a con
 
 This assumes:
 
-- The repository contains a `Dockerfile` in the top-level directory,
-- The `Dockerfile` contains an `ARG` or `ENV` variable which defines the version of the packaged software.
+- The repository contains a Dockerfile in the top-level directory,
+- The Dockerfile contains an `ARG` or `ENV` variable which defines the version of the packaged software.
 
 ```yaml
 # File .github/workflows/main.yaml
