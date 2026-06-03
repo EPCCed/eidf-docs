@@ -274,7 +274,7 @@ ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 
 ## Example 3 - Interactive RStudio Rocker container
 
-This section guides you through the process of creating a Rocker RStudio container that can be imported into the SHS and used for data analysis. In the example, a script is copied into the container, and the necessary packages are installed to ensure it runs correctly. Finally, RStudio is accessed from the host, allowing users to interact with the application as if it were running natively.
+This section guides you through the process of creating a Rocker RStudio container that can be imported into the SHS and used for data analysis. In the example, a script is copied into the container, and the necessary packages are installed to ensure it runs correctly. Finally, RStudio is accessed from the host, allowing you to interact with the application as if it were running natively.
 
 We will assume that this is the directory structure of our files:
 
