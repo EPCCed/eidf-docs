@@ -1,6 +1,6 @@
 # Container Examples
 
-To help with writing your own Dockerfiles to run within the SHS via the CES, a set of examples for commonly used software stacks can be found in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
+To help with writing your own Dockerfiles to run within your Safe Haven via the CES, a set of examples for commonly used software stacks can be found in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
 
 Please contact your Service Manager if you need further support with the use of containers.
 
