@@ -152,7 +152,7 @@ See the following resources for additional recommendations:
 - <https://sysdig.com/blog/dockerfile-best-practices/>
 * <https://docs.github.com/en/packages/quickstart>
 
-## Step 2. Build, test locally and push to registry
+## Step 2. Build, test locally and push to container registry
 
 ### 2.1 Build and test the container locally
 

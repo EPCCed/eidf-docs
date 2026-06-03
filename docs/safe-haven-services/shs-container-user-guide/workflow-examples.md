@@ -49,7 +49,7 @@ COPY torch_gpu_test.py .
 CMD ["python", "./torch_gpu_test.py"]
 ```
 
-### Example 1 - Step 2. Build, test locally and push to registry
+### Example 1 - Step 2. Build, test locally and push to container registry
 
 As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
@@ -224,7 +224,7 @@ COPY test_easyocr.py doc1.png /src/
 ENTRYPOINT [ "python3", "/src/test_easyocr.py", "/src/doc1.png"]
 ```
 
-### Example 2 - Step 2. Build, test locally and push to registry
+### Example 2 - Step 2. Build, test locally and push to container registry
 
 As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
@@ -399,7 +399,7 @@ WORKDIR /src
 RUN r install_packages.R
 ```
 
-### Example 3 - Step 2. Build, test locally and push to registry
+### Example 3 - Step 2. Build, test locally and push to container registry
 
 As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
