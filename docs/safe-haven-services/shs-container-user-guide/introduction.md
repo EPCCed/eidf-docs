@@ -10,11 +10,11 @@ This guide describes the process of building and testing SHS-ready containers ou
 
 ## Accessing the CES
 
-In order for a researcher user account to get access to CES, Research Coordinators from the corresponding Safe Haven need to submit a query to CES-enable the VM of interest (in not already enabled), then, per project-account, submit a query to configure the account.
+In order for you to get access to CES, a Research Coordinator from your Safe Haven need to submit a query to CES-enable the VM of interest (in not already enabled), then, per project-account, submit a query to configure your account.
 
 ## Getting started
 
-We assume that users are already familiar with container concepts and have some experience in building their own images. If a user is new to container tools, the following resources would be a good starting point:
+We assume that you are already familiar with container concepts and have some experience in building their own images. If you are new to container tools, the following resources would be a good starting point:
 
 - <https://carpentries-incubator.github.io/docker-introduction/>
 - <https://docs.docker.com/get-started/overview/>
@@ -28,11 +28,11 @@ The development process includes the following steps:
 1. Build and test the image and upload to the GitHub Container Registry (GHCR), either locally or using a CI/CD pipeline.
 1. Login to a SHS desktop enabled for container execution to pull and run the container.
 
-This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist users in building SHS-ready containers. Other [container examples](./container-examples.md) are also available in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
+This guide contains a number of [workflow examples](./workflow-examples.md) designed to assist you in building SHS-ready containers. Other [container examples](./container-examples.md) are also available in our [SHS Container Samples](https://github.com/EPCCed/tre-container-samples/) repository.
 
 ## SHS directories
 
-Before continuing with this guide, it is important that the users are aware of the SHS file system directories so that they can be used correctly within their containers. Project data inside the SHS can be found in the `/safe_data/<project-id>` directory.
+Before continuing with this guide, it is important that you are aware of the SHS file system directories so that they can be used correctly within their containers. Project data inside the SHS can be found in the `/safe_data/<project-id>` directory.
 
 The CES tools automatically map this to a directory called `/safe_data` inside the container. Additionally, two directories are created and mapped to the user's home directory. The first one is `/scratch`, a temporary directory that is removed after container termination on the host system.
 
