@@ -6,11 +6,25 @@ The Container Execution Service (CES) has been introduced to allow project code 
 
 The primary role of the SHS is to store and share data securely; it is not intended to be a software development and testing environment. The CES helps researchers perform software development tasks in their chosen environment, rather than the restricted one offered in the SHS.
 
-This guide describes the process of building and testing SHS-ready containers outside the SHS, so that they are ready to be pulled and used inside the SHS, within their Safe Haven.
+This guide describes the process of building and testing SHS-ready containers outside the SHS, and testing them within an EIDF CES test VM, so that they are ready to be pulled and used inside the SHS.
 
 ## Accessing the CES
 
-In order for you to get access to CES, a Research Coordinator from your Safe Haven need to submit a query to CES-enable the VM of interest (in not already enabled), then, per project-account, submit a query to configure your account.
+In order for you to get access to CES, ask your Research Coordinator for your Safe Haven to submit a query to CES-enable the VM of interest (if not already enabled), then, per project-account, to submit a query to configure your account(s) to use the CES.
+
+## Accessing the EIDF CES test VM
+
+A CES test VM is available within EIDF that allows for containers to be tested in an SHS-like environment without having to be logged into the SHS itself. Containers that run successfully within this VM can then be expected to run in the same way in the SHS.
+
+To get access to this EIDF CES test VM, ask your Research Coordinator for your Safe Haven to submit a query that states that you wish access to the EIDF CES test VM.
+
+Then, if you do not already have an EPCC SAFE account, apply for an EPCC SAFE account following the instructions in [SAFE for users](https://epcced.github.io/safe-docs/safe-for-users/).
+
+Once you have a safe account, follow [How to request to join a project](../../access/project.md#how-to-request-to-join-a-project), and request to join the EIDF project 'eidf147: CES Development'.
+
+The EPCC CES team will check that your request from your Research Coordinator has been received. Once checked, an account on the CES test VM will be created and you will be notified of both your username and the CES test VM host name.
+
+You can then log into the CES test VM following [Accessing EIDF](../../../access).
 
 ## Getting started
 
@@ -20,7 +34,7 @@ We assume that you are already familiar with container concepts and have some ex
 - <https://docs.docker.com/get-started/overview/>
 - <https://docker-curriculum.com/>
 
-It is also assumed that software development best practices are followed, such as version control using Git and GitHub or GitLab, and, ideally, Continuous Integration (CI). This can help create container build audit trails to satisfy any IG (Information Governance) concerns about the provenance of the project code.
+It is also assumed that software development best practices are followed, such as version control using Git and GitHub or GitLab, and, ideally, Continuous Integration (CI). This can help create container build audit trails to satisfy any Information Governance (IG) concerns about the provenance of the container's content.
 
 The [development workflow](./development-workflow.md) includes the following steps:
 
@@ -39,12 +53,12 @@ Project data inside the SHS can be found in your `/safe_data/<project-id>/` dire
 
 Additionally, two directories are created and mapped to directories in your home directory. The first is a temporary directory that is mapped to the `/scratch/` directory within the container and which is removed after the container stops running on the host.
 
-The second is a unique container job output directory mapped to the `/safe_outputs/` directory in the container, where output files that you wish to preserve can be placed. You are also free to write output files to `/safe_data/` within the container if you have been granted read-write acess to your `/safe_data/<project-id>/` directory.
+The second is a unique container job output directory mapped to the `/safe_outputs/` directory in the container, where output files that you wish to preserve can be placed. You are also free to write output files to `/safe_data/` within the container if you have been granted read-write access to your `/safe_data/<project-id>/` directory.
 
 | Directory on host system | Directory in container | Intended use |
 | ------------------------ | ---------------------- | ------------ |
-| `/safe_data/<project-id>/` | `/safe_data/`| Read-only access if required by IG, or read-write access, to data and other project files. Cam be used for outputs, depending on your Safe Haven's IG and usage conventions. |
-| `~/outputs_<unique_id>/`  | `/safe_outputs/` | Crreated at container startup as an empty directory. Can be used for any outputs e.g., logs, data, models, depending on your Safe Haven IG and usage conventions. Content saved in this directory will be retained after the container exits. |
+| `/safe_data/<project-id>/` | `/safe_data/`| Read-only access if required by IG, or read-write access, to data and other project files. Can be used for outputs, depending on your Safe Haven's IG and usage conventions. |
+| `~/outputs_<unique_id>/`  | `/safe_outputs/` | Created at container startup as an empty directory. Can be used for any outputs e.g., logs, data, models, depending on your Safe Haven's IG and usage conventions. Content saved in this directory will be retained after the container exits. |
 | `~/scratch_<unique_id>/` | `/scratch/`| Temporary directory that is removed when the container exits. Any temporary files should be placed here. |
 
 !!! warning
