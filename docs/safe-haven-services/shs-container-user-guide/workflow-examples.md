@@ -1,6 +1,6 @@
 # Workflow Examples
 
-The following sections will guide you in the process of creating different types of containers.
+These examples will help guide you in the process of creating different types of containers.
 
 For a complete list of examples, please see our SHS Container Samples repository, at [EPCCed/shs-container-samples](https://github.com/EPCCed/tre-container-samples).
 
@@ -23,11 +23,11 @@ torch
 
 and `torch_gpy_test.py` is any script that performs a test task using PyTorch.
 
-### E1 - Step 1. Writing the Dockerfile
+### Example 1 - Step 1. Writing a Dockerfile
 
 In our Dockerfile, we want to start by using an officially supported image that already contains as much of the software required to run the script as possible.
 
-In our case, we want a ready-made python 3 image to start with, which we can find in [DockerHub](https://hub.docker.com/search?q=python). The latest stable version at the time of writing is [3.13.3](https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1), so we will use this and include the digest in our Dockerfile.
+In our case, we want a ready-made Python 3 image to start with, which we can find in [DockerHub](https://hub.docker.com/search?q=python). The latest stable version at the time of writing is [3.13.3](https://hub.docker.com/layers/library/python/3.13.3/images/sha256-981c77781aa563fc22ee5936fdd37e16679e3b28d32351430a6aede491f6e8b1), so we will use this and include the digest in our Dockerfile.
 
 Next, we need to set up the SHS directories, copy our files into the container, install the necessary packages and finally execute the script. This process can be accomplished with the following Dockerfile:
 
@@ -49,14 +49,16 @@ COPY torch_gpu_test.py .
 CMD ["python", "./torch_gpu_test.py"]
 ```
 
-### E1 - Step 2. Build and push to GHCR
+### Example 1 - Step 2. Build, test locally and push to registry
 
-As mentioned in our guidelines, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
+As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
 ```sh
 # Ignore DL3013 to allow --upgrade
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3013 - < Dockerfile
 ```
+
+Here we deliberately ignore hadolint flags if the selected features are required by the container to run successfully.
 
 We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
@@ -86,18 +88,29 @@ docker push "ghcr.io/$GHCR_NAMESPACE/pytorch-test:latest"
 docker logout
 ```
 
-### E1 - Step 3. Pull and run in the SHS
+### Example 1 - Step 3. Pull and run container inside the CES test VM
 
-Pull and run the container inside the SHS using the following commands, where the namespace and token arguments to `ces-pull` are mandatory.
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+
+Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
-ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
 ```
 
 !!! tip
 
     When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+
+Now run the container using the following command:
+
+```sh
+ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/pytorch-test:v1.1
+```
+
+### Example 1 - Step 4. Pull and run container inside your Safe Haven
+
+The container can be pulled and run inside the SHS using the same commands as in the [previous step](#example-1-step-3-pull-and-run-container-inside-the-ces-test-vm).
 
 ## Example 2 - Python ML
 
@@ -156,15 +169,15 @@ for filename in sys.argv[1:]:
 
 and `doc1.png` is an image that contains text.
 
-### E2 - Step 1. Writing the Dockerfile
+### Example 2 - Step 1. Writing a Dockerfile
 
-Similarly to the PyTorch example, we will start our Dockerfile using the `python:3` image:
+As for the PyTorch example, we will start our Dockerfile using the `python:3` image:
 
 ```dockerfile
 FROM python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
 ```
 
-We then install easyocr and download the HuggingFace ML models:
+We then install easyocr and download the HuggingFace machine learning (ML) models:
 
 ```dockerfile
 RUN pip install easyocr
@@ -172,7 +185,7 @@ COPY cache_easyocr.py .
 RUN python ./cache_easyocr.py
 ```
 
-As there is no internet in the SHS, we need to make sure that HuggingFace does not attempt hub access:
+As there is no internet access from within the SHS, we need to make sure that HuggingFace does not attempt to access its hub:
 
 ```dockerfile
 ENV HF_HUB_OFFLINE=1
@@ -209,9 +222,9 @@ COPY test_easyocr.py doc1.png /src/
 ENTRYPOINT [ "python3", "/src/test_easyocr.py", "/src/doc1.png"]
 ```
 
-### E2 - Step 2. Build and push to GHCR
+### Example 2 - Step 2. Build, test locally and push to registry
 
-As mentioned in our guidelines, before building our container we first want to check the Dockerfile with a linting tool to detect common mistakes:
+As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
 ```sh
 # Ignore DL3013, DL3042 and DL3045
@@ -259,18 +272,29 @@ docker push "ghcr.io/$GHCR_NAMESPACE/python-ml-test:latest"
 docker logout
 ```
 
-### E2 - Step 3. Pull and run in the SHS
+### Example 2 - Step 3. Pull and run container inside the CES test VM
 
-Pull and run the container inside the SHS using the commands, where the namespace and token arguments to `ces-pull` are mandatory:
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+
+Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
-ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
 ```
 
 !!! tip
 
     When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+
+Now run the container using the following command:
+
+```sh
+ces-run podman --gpu ghcr.io/$GHCR_NAMESPACE/python-ml-test:v1.1
+```
+
+### Example 2 - Step 4. Pull and run container inside your Safe Haven
+
+The container can be pulled and run inside the SHS using the same commands as in the [previous step](#example-2-step-3-pull-and-run-container-inside-the-ces-test-vm).
 
 ## Example 3 - Interactive RStudio Rocker container
 
@@ -317,9 +341,9 @@ p + geom_text(data=annotation, aes( x=x, y=y, label=label),                 ,
 ggsave("test_figure.png")
 ```
 
-### E3 - Step 1. Writing the Dockerfile
+### Example 3 - Step 1. Writing a Dockerfile
 
-We start the process by selecting the parent image. Searching for Rocker in [DockerHub](https://hub.docker.com/search?q=rocker), we are presented with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the [Rocker Project](https://rocker-project.org/).
+Again, we start by selecting a base image. Searching for Rocker in [DockerHub](https://hub.docker.com/search?q=rocker), presents us with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the [Rocker Project](https://rocker-project.org/).
 
 For this example, we choose the latest version of Rocker RStudio, [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio) from [Docker Hub](https://hub.docker.com/).
 
@@ -373,14 +397,16 @@ WORKDIR /src
 RUN r install_packages.R
 ```
 
-### E3 - Step 2. Build and push to GHCR
+### Example 3 - Step 2. Build, test locally and push to registry
 
-Before building our container, we want to check the Dockerfile with a linting tool to detect common mistakes:
+As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:
 
 ```sh
 # Ignore DL3008 (Pin versions in apt get install)
 docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --ignore DL3008 - < Dockerfile
 ```
+
+Here we deliberately ignore hadolint flags if the selected features are required by the container to run successfully.
 
 We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
@@ -403,7 +429,7 @@ docker run --rm -e "PASSWORD=test" -p 8787:8787 ghcr.io/$GHCR_NAMESPACE/rocker-t
 
 We can then access RStudio by navigating to 'localhost:8787' in a browser. At the login page, type 'root' and 'test' for username and password respectively. Note that you will only be 'root' within the context of the container and not outside of it. The same applies in the test environment and SHS.
 
-Once we made sure the container runs, we can push our image to GHCR using our namespace and token:
+If the container runs without errors, we can push our image to GHCR using our namespace and token:
 
 ```sh
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
@@ -412,9 +438,11 @@ docker push "ghcr.io/$GHCR_NAMESPACE/rocker-test:latest"
 docker logout
 ```
 
-### E3 - Step 3. Pull and run in the SHS
+### Example 3 - Step 3. Pull and run container inside the CES test VM
 
-Rocker is a container that requires to be started by the 'root' user. As such, it should be pulled intn the SHS and run using podman. To pull the container using podman as our container engine, we use the following command, where the namespace and token arguments are mandatory:
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+
+Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 
 ```sh
 ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
@@ -424,14 +452,14 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:
 
     When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
-The Rocker container was designed to be run using docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
+The Rocker container was designed to be run using Docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
 
 ```sh
 '--mount type=tmpfs,destination=/var/lib/rstudio-server'
 '--mount type=tmpfs,destination=/run'
 ```
 
-A `ces-run` `opt-file.txt` can include these and the other options required:
+A `ces-run` `opt-file.txt` can include these and other options required:
 
 ```text
 -p 8787:8787
@@ -446,7 +474,11 @@ If we want to set our password, we can add it to a `ces-run` `env-file.txt` as f
 PASSWORD=test
 ```
 
-We can then run our container:
+!!! Warning "Choose a strong password"
+
+    Please do **not** use this default of 'test'!
+
+Now run the container using the following command:
 
 ```sh
 ces-run podman --opt-file opt-file.txt --env-file env-file.txt ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
@@ -475,10 +507,20 @@ echo -e "PASSWORD=test" >> ${env_file}
 ces-run podman --opt-file $opt_file --env-file $env_file ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-After executing the `run.sh` script, we can open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` and `test` for username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
+The script can be run as follows:
+
+```sh
+bash run.sh
+```
+
+After starting the container, either via `ces-run podman` or `bash run.sh`, we can open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` and `test` for a username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
 
 The container is running successfully if:
 
-- The log-in is successful.
-- The rstudio user has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
-- The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is they belong to the logged-in user.
+- Your log-in is successful.
+- The `rstudio` user - your username within the container - has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
+- The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is, you.
+
+### Example 3 - Step 4. Pull and run container inside your Safe Haven
+
+The container can be pulled and run inside the SHS using the same commands as in the [previous step](#example-3-step-3-pull-and-run-container-inside-the-ces-test-vm).
