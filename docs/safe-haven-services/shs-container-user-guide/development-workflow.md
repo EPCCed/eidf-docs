@@ -30,7 +30,7 @@ Some containers are meant to be started by the root user, for example Rocker. In
 
 ### 1.2 General recommendations
 
-It is highly recommended that users follow these `Dockerfile` best practice guidelines.
+It is highly recommended that you follow these `Dockerfile` best practice guidelines.
 
 **Use fully-qualified and pinned images in all `FROM` statements**. Images can be hosted on multiple repositories, and image tags are mutable. The only way to ensure reproducible builds is by pinning images by their full signature, and, where possible, citing a repository such as `docker.io` or `ghcr.io`.
 
@@ -349,7 +349,7 @@ Containers can only be used on the SHS desktop hosts using shell commands. Conta
 
 !!! note
 
-    Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the SHS. However, users within the SHS need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into the SHS.
+    Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the SHS. However, within the SHS you will need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into the SHS.
 
 You can pull a container from your GHCR repository using the `ces-pull` command:
 
