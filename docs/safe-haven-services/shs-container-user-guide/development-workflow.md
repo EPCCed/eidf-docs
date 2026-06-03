@@ -150,7 +150,7 @@ See the following resources for additional recommendations:
 - <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316>
 - <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>
 - <https://sysdig.com/blog/dockerfile-best-practices/>
-* <https://docs.github.com/en/packages/quickstart>
+- <https://docs.github.com/en/packages/quickstart>
 
 ## Step 2. Build, test locally and push to container registry
 
