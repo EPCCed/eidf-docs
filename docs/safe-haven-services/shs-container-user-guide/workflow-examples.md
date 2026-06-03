@@ -21,7 +21,7 @@ numpy
 torch
 ```
 
-and `torch_gpy_test.py` is any script that performs a test task using PyTorch.
+and `torch_gpy_test.py` is any script that performs a simple task using PyTorch.
 
 ### Example 1 - Step 1. Writing a Dockerfile
 
@@ -60,7 +60,7 @@ docker run --pull always --rm -i docker.io/hadolint/hadolint:latest hadolint --i
 
 Here we deliberately ignore hadolint flags if the selected features are required by the container to run successfully.
 
-We can then define our GHCR variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
+We can then define our GitLab Container Registry (GHCR) variables, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
 ```sh
 export GHCR_NAMESPACE=mynamespace
@@ -114,7 +114,9 @@ The container can be pulled and run inside the SHS using the same commands as in
 
 ## Example 2 - Python ML
 
-This example demonstrates how to build a container which requires a ML model that would normally be downloaded from the internet when first run. Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it.
+This example demonstrates how to build a container which requires a machine learning (ML) model that would normally be downloaded from the internet when first run.
+
+Such models are typically cached in a hidden directory so it can be difficult to understand how to manually download the model, where to put it, and how to load it.
 
 The approach we take is to run a sample piece of code during the container build phase, which downloads the model to the hidden cache directory. This then becomes part of the container.
 
@@ -136,7 +138,7 @@ import easyocr
 reader = easyocr.Reader(['en'])
 ```
 
-`test_easyocr.py`:
+`test_easyocr.py` is defined as:
 
 ```py
 #!/usr/bin/env python3
@@ -171,13 +173,13 @@ and `doc1.png` is an image that contains text.
 
 ### Example 2 - Step 1. Writing a Dockerfile
 
-As for the PyTorch example, we will start our Dockerfile using the `python:3` image:
+As for the PyTorch example, we will base our Dockerfile on the `python:3` image:
 
 ```dockerfile
 FROM python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377
 ```
 
-We then install easyocr and download the HuggingFace machine learning (ML) models:
+We then install easyocr and download the HuggingFace ML models:
 
 ```dockerfile
 RUN pip install easyocr
@@ -359,7 +361,7 @@ The next step is to include the SHS directories:
 RUN mkdir /safe_data /safe_outputs /scratch
 ```
 
-We then want to copy our script inside the container. As we do not mean to preserve the script, only its output, we will copy it in a new `/src` directory. Note that we cannot save the files to `/scratch` as they would otherwise be overwritten during the mounting process to the SHS directories. To avoid repeating the `RUN` command, we will simply add our new directory to it:
+We then want to copy our script inside the container. As we do not mean to preserve the script, only its output, we will copy it in a new `/src` directory. Note that we cannot save the files to `/scratch` as they would otherwise be overwritten when running the container using the CES tools. To avoid repeating the `RUN` command, we will add our new directory to it:
 
 ```dockerfile
 RUN mkdir /safe_data /safe_outputs /scratch /src
@@ -427,7 +429,11 @@ and run it locally:
 docker run --rm -e "PASSWORD=test" -p 8787:8787 ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-We can then access RStudio by navigating to 'localhost:8787' in a browser. At the login page, type 'root' and 'test' for username and password respectively. Note that you will only be 'root' within the context of the container and not outside of it. The same applies in the test environment and SHS.
+We can now open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` for the username and `test` for the password.
+
+!!! note
+
+    You are only 'root' within the context of the container, not outside of it.
 
 If the container runs without errors, we can push our image to GHCR using our namespace and token:
 
@@ -468,15 +474,11 @@ A `ces-run` `opt-file.txt` can include these and other options required:
 --mount type=tmpfs,destination=/run
 ```
 
-If we want to set our password, we can add it to a `ces-run` `env-file.txt` as follows:
+If we want to set our password, we can add it to a `ces-run` `env-file.txt` as follows, replacing `<password>` with a strong password:
 
 ```text
-PASSWORD=test
+PASSWORD=<password>
 ```
-
-!!! Warning "Choose a strong password"
-
-    Please do **not** use this default of 'test'!
 
 Now run the container using the following command:
 
@@ -484,7 +486,7 @@ Now run the container using the following command:
 ces-run podman --opt-file opt-file.txt --env-file env-file.txt ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
 
-To streamline the process, we can place all the necessary commands into an executable script, `run.sh`, as follows:
+To streamline the process, we can place all the necessary commands into an executable script, `run.sh`, as follows, replacing `<password>` with a strong password:
 
 ```sh
 opt_file="./opt-file.txt"
@@ -502,7 +504,7 @@ env_file="./env-file.txt"
 if [ -f "$env_file" ] ; then
         rm "$env_file"
 fi
-echo -e "PASSWORD=test" >> ${env_file}
+echo -e "PASSWORD=<password>" >> ${env_file}
 
 ces-run podman --opt-file $opt_file --env-file $env_file ghcr.io/$GHCR_NAMESPACE/rocker-test:v1.1
 ```
@@ -513,13 +515,17 @@ The script can be run as follows:
 bash run.sh
 ```
 
-After starting the container, either via `ces-run podman` or `bash run.sh`, we can open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` and `test` for a username and password respectively. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
+After starting the container, either via `ces-run podman` or `bash run.sh`, we can open a browser tab and access RStudio at `localhost:8787`. We can log in using the credentials `root` for the username and our password selected above. From within RStudio, we can then run our script, which can be found in `/src`, and then copy our output to `/safe_output` so that it can be preserved after we exit the container.
 
 The container is running successfully if:
 
 - Your log-in is successful.
-- The `rstudio` user - your username within the container - has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
+- The 'root' user - your user within the container - has full access to SHS directories `/safe_data`, `/safe_outputs` and `/scratch`.
 - The files saved in `/safe_outputs` and `/safe_data` (when writing permission is granted by IG) have correct permission on the host, that is, you.
+
+!!! note
+
+    You are only 'root' within the context of the container, not outside of it.
 
 ### Example 3 - Step 4. Pull and run container inside your Safe Haven
 
