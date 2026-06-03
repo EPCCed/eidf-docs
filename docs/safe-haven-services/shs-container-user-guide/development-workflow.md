@@ -333,23 +333,13 @@ After the image has been built and scanned, the image can be pushed as follows:
     docker push "${image}"
 ```
 
-## Step 3. Pull and run container inside the SHS
+## Step 3. Pull and run container inside the CES test VM
 
-To use the containers inside the SHS, log into the desired VM following [Safe Haven Services Access](..//safe-haven-access.md).
-
-!!! warning "Do not use container commands directly"
-
-    The CES tools **must** be used to pull and run containers within the SHS. This is to ensure that the correct data directories are automatically made available.
-
-    You **must not** use commands such as `podman run ...` or `docker run ...` directly.
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
 
 ### 3.1 Pull container
 
-Containers can only be used on the SHS desktop hosts using shell commands. Containers can only be pulled from the GHCR into the SHS using the CES tools `ces-pull` command. Hence containers must be pushed to GHCR for them to be used in the SHS.
-
-!!! note
-
-    Both public and private containers can be pulled from GitHub Container Registry (GHCR) into the SHS. However, within the SHS you will need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into the SHS.
+Containers can only be used using shell commands. Containers can only be pulled from the GHCR into the SHS using the CES tools `ces-pull` command so this command should be used within the CES test VM too. The `ces-pull` command accesses a SHS container pull proxy service through which containers are pulled. The container pull proxy service only allows containers to be pulled from authorised container registries - this is why your containers must be pushed to GHCR, as described above.
 
 You can pull a container from your GHCR repository using the `ces-pull` command:
 
@@ -359,9 +349,17 @@ ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_n
 
 `<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io/<namespace>/<container_name>:<container_tag>'. Both these arguments are mandatory.
 
+!!! warning "Do not use container pull commands directly"
+
+    You **must not** use commands such as `podman pull` or `apptainer pull`. Using these commands within the SHS will fail as these cannot use the SHS container pull proxy service through which containers are pulled. The EIDF CES test VM has access to a local deployment of the container pull proxy service. Using `ces-pull` within the CES test VM will give you confidence that you will be able to pull your container into the SHS.
+
+!!! note
+
+    Both public and private containers can be pulled from GitHub Container Registry (GHCR). However, you will need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into the SHS.
+
 !!! tip
 
-    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 If a runtime is not specified then podman is used as the default.
 
@@ -380,3 +378,13 @@ ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 - Use `--env-file=<file>` to specify a file containing environment variables which will be set inside the container
 
 Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run [<runtime>] --help` for all available options.
+
+!!! warning "Do not use container run commands directly"
+
+    You **must not** use commands such as `podman run` or `apptainer run` directly as these will not mount your data directories.
+
+## Step 4. Pull and run container inside the SHS
+
+To use the containers inside the SHS, log into your SHS VM following [Safe Haven Services Access](..//safe-haven-access.md).
+
+Now, follow the steps of [Step 3. Pull and run container inside the CES test VM](#step-3-pull-and-run-container-inside-the-ces-test-vm).
