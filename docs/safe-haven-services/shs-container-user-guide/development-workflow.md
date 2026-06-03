@@ -1,6 +1,6 @@
 # Development Workflow
 
-This document describes in detail the steps introduced in [The Safe Haven Container Execution Service - CES](./introduction.md) for the development of containers for SHS use.
+This document describes in detail the steps introduced in [The Safe Haven Container Execution Service - CES](./introduction.md) for the development of containers for use within Safe Havens.
 
 ## Step 1. Writing a `Dockerfile`
 
@@ -20,7 +20,7 @@ This document describes in detail the steps introduced in [The Safe Haven Contai
 
 **Do not copy data files into the image**. As a general rule, images should only contain software and configuration files. Any data files required will be presented to the container at runtime (e.g. via the `/safe_data` mount) and should not be copied into the container during the build.
 
-**Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your `Dockerfile`**. Since the SHS VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
+**Add all the additional content (code files, libraries, packages, data, and licences) needed for your analysis work to your `Dockerfile`**. Since Safe Haven VMs do not have internet access, all necessary code, dependencies, and resources must be pre-packaged within the container to ensure it runs successfully.
 
 **Apply the principle of least privilege**, that is select a non-privileged user inside the container whenever possible.
 
@@ -167,7 +167,7 @@ Run your image locally, so that minor errors can be immediately fixed before pro
 docker run <options> <image>:<tag>
 ```
 
-We recommend that you test containers without a network connection to best mimick their functionality inside the SHS, where the container will not be able to access the internet. With Docker and Podman, this can be achieved using the `--network none` command-line parameter.
+We recommend that you test containers without a network connection to best mimick their functionality inside your Safe Haven, where the container will not be able to access the internet. With Docker and Podman, this can be achieved using the `--network none` command-line parameter.
 
 ### Example
 
@@ -337,9 +337,13 @@ After the image has been built and scanned, the image can be pushed as follows:
 
 To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
 
+!!! note
+
+    While use of the CES test VM is optional, it is strongly recommended, to give you confidence that your container will successfully run within your Safe Haven.
+
 ### 3.1 Pull container
 
-Containers can only be used using shell commands. Containers can only be pulled from the GHCR into the SHS using the CES tools `ces-pull` command so this command should be used within the CES test VM too. The `ces-pull` command accesses a SHS container pull proxy service through which containers are pulled. The container pull proxy service only allows containers to be pulled from authorised container registries - this is why your containers must be pushed to GHCR, as described above.
+Containers can only be used using shell commands. Containers can only be pulled from the GHCR into your Safe Haven using the CES tools `ces-pull` command so this command should be used within the CES test VM too. The `ces-pull` command accesses a SHS container pull proxy service through which containers are pulled. The container pull proxy service only allows containers to be pulled from authorised container registries - this is why your containers must be pushed to GHCR, as described above.
 
 You can pull a container from your GHCR repository using the `ces-pull` command:
 
@@ -351,11 +355,11 @@ ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_n
 
 !!! warning "Do not use container pull commands directly"
 
-    You **must not** use commands such as `podman pull` or `apptainer pull`. Using these commands within the SHS will fail as these cannot use the SHS container pull proxy service through which containers are pulled. The EIDF CES test VM has access to a local deployment of the container pull proxy service. Using `ces-pull` within the CES test VM will give you confidence that you will be able to pull your container into the SHS.
+    You **must not** use commands such as `podman pull` or `apptainer pull`. Using these commands within your Safe Haven will fail as these cannot use the SHS container pull proxy service through which containers are pulled. The EIDF CES test VM has access to a local deployment of the container pull proxy service. Using `ces-pull` within the CES test VM will give you confidence that you will be able to pull your container into your Safe Haven.
 
 !!! note
 
-    Both public and private containers can be pulled from GitHub Container Registry (GHCR). However, you will need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into the SHS.
+    Both public and private containers can be pulled from GitHub Container Registry (GHCR). However, you will need to provide both a username and an access token to do so. This is a requirement of the CES tools used to pull containers into your Safe Haven.
 
 !!! tip
 
@@ -383,8 +387,8 @@ Containers that require a GPU can be run by adding the `--gpu` option. See `ces-
 
     You **must not** use commands such as `podman run` or `apptainer run` directly as these will not mount your data directories.
 
-## Step 4. Pull and run container inside the SHS
+## Step 4. Pull and run container inside your Safe Haven
 
-To use the containers inside the SHS, log into your SHS VM following [Safe Haven Services Access](..//safe-haven-access.md).
+To use the containers inside the Safe Haven, log into your Safe Haven VM following [Safe Haven Services Access](..//safe-haven-access.md).
 
 Now, follow the steps of [Step 3. Pull and run container inside the CES test VM](#step-3-pull-and-run-container-inside-the-ces-test-vm).
