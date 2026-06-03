@@ -6,6 +6,8 @@ This document describes in detail the steps introduced in [The Safe Haven Contai
 
 ### 1.1 SHS-specific advice
 
+**Use GitHub or GitLab** for version control and recording of the container image files.
+
 **Declare SHS-specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your Dockerfile**. While the CES tools automatically generate these directories within the container, explicitly creating them enhances transparency and helps others more easily understand the container’s structure and operation.
 
 !!! note
@@ -148,6 +150,7 @@ See the following resources for additional recommendations:
 - <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316>
 - <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>
 - <https://sysdig.com/blog/dockerfile-best-practices/>
+* <https://docs.github.com/en/packages/quickstart>
 
 ## Step 2. Build, test locally and push to registry
 
@@ -169,7 +172,7 @@ docker run <options> <image>:<tag>
 
 We recommend that you test containers without a network connection to best mimick their functionality inside your Safe Haven, where the container will not be able to access the internet. With Docker and Podman, this can be achieved using the `--network none` command-line parameter.
 
-### Example
+#### Example
 
 A container with the following Dockerfile:
 
@@ -215,11 +218,11 @@ docker run --rm myapp:v1.1
 
 Podman can be used equivalently to Docker in the commands above.
 
-### 2.2 Automating Dockerfile validation
+### 2.2 Automate Dockerfile validation (optional)
 
-During development, we recommend that tools like GitHub or GitLab are used for version control and recording of the image content. Using the [`pre-commit`](https://pre-commit.com/) tool, it is possible to configure your local repository so that Hadolint (and similar tools) are run automatically each time `git commit` is run. This is recommended to ensure linting and auto-formatting tools are always run before code is pushed to GitHub.
+Using the [`pre-commit`](https://pre-commit.com/) tool, it is possible to configure your local repository so that Hadolint (and similar tools) are run automatically each time `git commit` is run. This is recommended to ensure linting and auto-formatting tools are always run before code is pushed to GitHub.
 
-To run Hadolint, include the hook in your `.pre-commit-config.yaml` file:
+To run Hadolint, include the hook in a `.pre-commit-config.yaml` file:
 
 ```yaml
 repos:
@@ -229,9 +232,9 @@ repos:
       - id: hadolint-docker
 ```
 
-### 2.3 Push to GHCR
+### 2.3 Push to GitHub Container Registry
 
-To prepare the image before pushing to GHCR, we recommend to save the image with a unique, descriptive tag. While it is useful to define a `latest` tag, each production image should also be tagged with a label such as the version or build date. For non-local images, the registry and repository should also be included. Images can also be tagged multiple times.
+To prepare the image before pushing to the GitHub Container Registry (GHCR), we recommend saving the image with a unique, descriptive tag. While it is useful to define a `latest` tag, each production image should also be tagged with a label such as the version or build date. For non-local images, the registry and repository should also be included. Images can also be tagged multiple times.
 
 For example:
 
@@ -252,19 +255,19 @@ docker push "ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG"
 docker logout
 ```
 
-### 2.5 Optional - Build and upload automation using GitHub Actions
+### 2.5 Automate build and upload using GitHub Actions (optional)
 
-#### Building in CI
+#### Build container
 
-Below is a sample GitHub Actions configuration which runs Hadolint, builds a container named `ghcr.io/my/repo`, then runs the [Trivy](https://aquasecurity.github.io/trivy) container scanning tool. The Trivy [SBOM](https://www.cisa.gov/sbom) report is then uploaded as a job artifact.
+Below is a sample [GitHub Actions](https://github.com/features/actions) configuration, `.github/workflows/main.yaml`, which runs Hadolint, builds a container named `ghcr.io/my/repo`, then runs the [Trivy](https://aquasecurity.github.io/trivy) container scanning tool. The Trivy [SBOM](https://www.cisa.gov/sbom) report is then uploaded as a job artifact.
 
-This assumes:
+This configuration assumes that:
 
 - The repository contains a Dockerfile in the top-level directory,
 - The Dockerfile contains an `ARG` or `ENV` variable which defines the version of the packaged software.
+- `secrets.GITHUB_TOKEN` is a GitHub access token with 'repo' and 'write:packages' scope.
 
 ```yaml
-# File .github/workflows/main.yaml
 name: main
 on:
   push:
@@ -309,19 +312,17 @@ jobs:
           path: 'dependency-results.sbom.json'
 ```
 
-where `secrets.GITHUB_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
-
 !!! note
 
     Manually running Hadolint via pre-commit can be skipped if you are using pre-commit and the [pre-commit.ci](https://pre-commit.ci/) service.
 
-#### Publishing in CI
+#### Publish container
 
 !!! note
 
     Images can also be built and pushed from your local environment as normal.
 
-Once the stage has been reached where your software package is ready for distribution, the GHA example above can be extended to automatically publish new image versions to the GHCR. An introduction to GHCR can be found in the GitHub documentation, [Quickstart for GitHub Packages](https://docs.github.com/en/packages/quickstart).
+Once the stage has been reached where your software package is ready for distribution, the GitHub Actions example above can be extended to automatically publish new image versions to the GHCR.
 
 After the image has been built and scanned, the image can be pushed as follows:
 
@@ -351,7 +352,9 @@ You can pull a container from your GHCR repository using the `ces-pull` command:
 ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
-`<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image 'ghcr.io/<namespace>/<container_name>:<container_tag>'. Both these arguments are mandatory.
+`<runtime>` can be one of `podman`, `apptainer`, or `k8s`, depending on what container runners are available in your Safe Haven. If a runtime is not specified, then `podman` is used as the default.
+
+`<gitlab_user>` is a GitHub user name, `<ghcr_token>` is a GitHub access token with 'read:packages' scope that allows access to the image `ghcr.io/<namespace>/<container_name>:<container_tag>`. Both these arguments are mandatory.
 
 !!! warning "Do not use container pull commands directly"
 
@@ -365,30 +368,34 @@ ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_n
 
     When pulling containers, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
-If a runtime is not specified then podman is used as the default.
-
 ### 3.2 Run container
 
-The container can then be run with `ces-run`:
+Once pulled, the container can be run with `ces-run`:
 
 ```sh
 ces-run [<runtime>] ghcr.io/<namespace>/<container_name>:<container_tag>
 ```
 
+`<runtime>` should match that you provided to `ces-pull` i.e., one of `podman`, `apptainer`, or `k8s`, depending on what container runners are available in your Safe Haven. If a runtime is not specified, then `podman` is used as the default.
+
 `ces-run` supports the following optional arguments under most runtimes:
 
-- Use `--opt-file=<file>` to specify a file containing additional options to be passed to the runtime
-- Use `--arg-file=<file>` to specify a file containing arguments to pass to the container command or entrypoint
-- Use `--env-file=<file>` to specify a file containing environment variables which will be set inside the container
+- `--opt-file=<file>` specifies a file containing additional options to be passed to the runtime.
+- `--arg-file=<file>` specifies a file containing arguments to pass to the container command or entrypoint.
+- `--env-file=<file>` specifies a file containing environment variables which will be set inside the container.
 
-Containers that require a GPU can be run by adding the `--gpu` option. See `ces-run [<runtime>] --help` for all available options.
+Containers that require a GPU can be run by adding the `--gpu` option.
 
 !!! warning "Do not use container run commands directly"
 
     You **must not** use commands such as `podman run` or `apptainer run` directly as these will not mount your data directories.
 
+!!! tip
+
+    See `ces-run [<runtime>] --help` for all available options.
+
 ## Step 4. Pull and run container inside your Safe Haven
 
 To use the containers inside the Safe Haven, log into your Safe Haven VM following [Safe Haven Services Access](..//safe-haven-access.md).
 
-Now, follow the steps of [Step 3. Pull and run container inside the CES test VM](#step-3-pull-and-run-container-inside-the-ces-test-vm).
+Now, follow the steps of [Step 3. Pull and run container inside the CES test VM](#step-3-pull-and-run-container-inside-the-ces-test-vm) to pull and run your container.
