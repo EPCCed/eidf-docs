@@ -6,7 +6,7 @@ This document describes in detail the steps introduced in [The Safe Haven Contai
 
 ### 1.1 SHS-specific advice
 
-**Use GitHub or GitLab** for version control and recording of the container image files.
+**Use GitHub or GitLab** for version control and recording of the container definition files.
 
 **Declare SHS-specific directories using the line `RUN mkdir /safe_data /safe_outputs /scratch` in your Dockerfile**. While the CES tools automatically generate these directories within the container, explicitly creating them enhances transparency and helps others more easily understand the container’s structure and operation.
 
