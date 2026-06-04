@@ -24,7 +24,7 @@ Once you have a safe account, follow [How to request to join a project](../../ac
 
 The EPCC CES team will check that your request from your Research Coordinator has been received. Once checked, an account on the CES test VM will be created and you will be notified of both your username and the CES test VM host name.
 
-You can then log into the CES test VM following [Accessing EIDF](../../../access).
+You can then log into the CES test VM following [Accessing EIDF](../../access/index.md).
 
 ## Getting started
 

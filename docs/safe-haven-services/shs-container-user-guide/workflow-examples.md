@@ -90,7 +90,7 @@ docker logout
 
 ### Example 1 - Step 3. Pull and run container inside the CES test VM
 
-To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../access/index.md).
 
 Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 
@@ -276,7 +276,7 @@ docker logout
 
 ### Example 2 - Step 3. Pull and run container inside the CES test VM
 
-To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../access/index.md).
 
 Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 
@@ -446,7 +446,7 @@ docker logout
 
 ### Example 3 - Step 3. Pull and run container inside the CES test VM
 
-To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../access/index.md).
 
 Pull the container using the following command, where both the `$GHCR_NAMESPACE` and `$GHCR_TOKEN` arguments to `ces-pull` are mandatory:
 

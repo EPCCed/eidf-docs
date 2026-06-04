@@ -336,7 +336,7 @@ After the image has been built and scanned, the image can be pushed as follows:
 
 ## Step 3. Pull and run container inside the CES test VM
 
-To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../../access).
+To test the container inside the CES test VM, first log into the CES test VM following [Accessing EIDF](../../access/index.md).
 
 !!! note
 
