@@ -1,6 +1,6 @@
 # Workflow Examples
 
-These examples will help guide you in the process of creating different types of containers.
+The following sections will help guide you in the process of creating different types of containers.
 
 For a complete list of examples, please see our SHS Container Samples repository, at [EPCCed/shs-container-samples](https://github.com/EPCCed/tre-container-samples).
 
@@ -100,7 +100,7 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/pytorch-test
 
 !!! tip
 
-    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 Now run the container using the following command:
 
@@ -286,7 +286,7 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/python-ml-te
 
 !!! tip
 
-    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 Now run the container using the following command:
 
@@ -456,7 +456,7 @@ ces-pull podman $GHCR_NAMESPACE $GHCR_TOKEN ghcr.io/$GHCR_NAMESPACE/rocker-test:
 
 !!! tip
 
-    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 The Rocker container was designed to be run using Docker. In order for it to run successfully with podman, the container directories `/var/lib/rstudio-server` and `/run` need to be mounted to a tmpfs. As such, the following options are required:
 
@@ -465,7 +465,7 @@ The Rocker container was designed to be run using Docker. In order for it to run
 '--mount type=tmpfs,destination=/run'
 ```
 
-A `ces-run` `opt-file.txt` can include these and other options required:
+A `ces-run` `opt-file.txt` can include these and other options required, as follows:
 
 ```text
 -p 8787:8787
