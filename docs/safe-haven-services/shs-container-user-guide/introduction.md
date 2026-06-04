@@ -14,7 +14,7 @@ In order for you to get access to CES, ask your Research Coordinator for your Sa
 
 ## Accessing the EIDF CES test VM
 
-A CES test VM is available within EIDF that allows for containers to be tested in an SHS-like environment without having to be logged into the SHS itself. Containers that run successfully within this VM can then be expected to run in the same way in the SHS.
+A CES test VM is available within EIDF that allows for containers to be tested in an SHS-like environment without having to be logged into the SHS itself. Containers that run successfully within this VM can then be expected to run in the same way in the SHS. Use of this environment is optional.
 
 To get access to this EIDF CES test VM, ask your Research Coordinator for your Safe Haven to submit a query that states that you wish access to the EIDF CES test VM.
 
