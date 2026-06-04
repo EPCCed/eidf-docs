@@ -210,7 +210,7 @@ docker build -t myapp:v1.1 . --platform linux/amd64
 
 where `--platform linux/amd64` is added to ensure image compatibility with the SHS environment in case the image is being built on a different platform.
 
-The container can then be tested by running:
+The container can then be tested by running the following command:
 
 ```console
 docker run --rm myapp:v1.1
@@ -245,7 +245,7 @@ docker build \
    ...
 ```
 
-The following commands can be used to upload the image to a GHCR repository, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope.
+The following commands can be used to upload the image to a GHCR repository, where `GHCR_TOKEN` needs to be a GitHub access token with 'repo' and 'write:packages' scope:
 
 ```console
 echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin
@@ -261,7 +261,7 @@ docker logout
 
 Below is a sample [GitHub Actions](https://github.com/features/actions) configuration, `.github/workflows/main.yaml`, which runs Hadolint, builds a container named `ghcr.io/my/repo`, then runs the [Trivy](https://aquasecurity.github.io/trivy) container scanning tool. The Trivy [SBOM](https://www.cisa.gov/sbom) report is then uploaded as a job artifact.
 
-This configuration assumes that:
+This configuration assumes the following:
 
 - The repository contains a Dockerfile in the top-level directory,
 - The Dockerfile contains an `ARG` or `ENV` variable which defines the version of the packaged software.
@@ -346,7 +346,7 @@ To test the container inside the CES test VM, first log into the CES test VM fol
 
 Containers can only be used using shell commands. Containers can only be pulled from the GHCR into your Safe Haven using the CES tools `ces-pull` command so this command should be used within the CES test VM too. The `ces-pull` command accesses a SHS container pull proxy service through which containers are pulled. The container pull proxy service only allows containers to be pulled from authorised container registries - this is why your containers must be pushed to GHCR, as described above.
 
-You can pull a container from your GHCR repository using the `ces-pull` command:
+You can pull a container from your GHCR repository using the `ces-pull` command as follows:
 
 ```sh
 ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_name>:<container_tag>
