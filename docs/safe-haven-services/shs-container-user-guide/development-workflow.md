@@ -366,7 +366,7 @@ ces-pull [<runtime>] <github_user> <ghcr_token> ghcr.io/<namespace>/<container_n
 
 !!! tip
 
-    When pulling containers, instead of using the GitHub access token you used to push the container, it is **recommended** you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
+    When pulling containers, instead of using the GitHub access token you used to push the container, it is **recommended** that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.
 
 ### 3.2 Run container
 
