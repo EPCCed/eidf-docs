@@ -8,10 +8,8 @@ The home page provides menus and buttons to allow you to access Open OnDemand's 
 
 ![Open OnDemand home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Open OnDemand home page*
 
-Open OnDemand's key concepts and its apps are described on the following pages:
+The features that can be accessed via the home page are described on the following pages:
 
-* [About jobs](jobs.md)
-* [About containers](containers.md)
 * [View and access apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
