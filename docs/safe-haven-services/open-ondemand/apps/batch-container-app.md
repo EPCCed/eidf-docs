@@ -16,7 +16,7 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0`. See [Container registries](../containers.md#container-registries) for supported container registries.
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0`. See [Container registries](#container-registries) below for supported container registries.
 * **Container registry username**: A container registry username is required.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
@@ -72,6 +72,21 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 ---
 
+## Container registries
+
+The container registries supported by the Safe Haven Services Container Execution Service, and so supported by this app, are as follows:
+
+| Container Registry | URL prefix | Example  |
+| ------------------ | ---------- | ------- |
+| GitHub    | `ghcr.io` | `ghcr.io/epcc/epcc-ces-hello:1.0` |
+| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0` |
+
+!!! Note
+
+    For ECDF GitLab, do not put the port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
+
+---
+
 ## Sharing files between the back-end and the container and persisting state between app runs
 
 When the app runs, your 'safe data' directory will be mounted into the container at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
@@ -104,6 +119,10 @@ Any files you create within `/safe_data` or other mounted directories within the
 !!! Warning
 
     Any files created outside of `/safe_data` or other mounted directories are **deleted** when the app stops.
+
+!!! WArning
+
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.
 
 ### Troubleshooting: Errors in inferring or accessing 'safe data'
 
