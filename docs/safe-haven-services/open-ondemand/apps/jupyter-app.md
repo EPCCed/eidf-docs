@@ -1,6 +1,6 @@
 # Run JupyterLab
 
-Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Apptainer.
+Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a software container, using Apptainer.
 
 ---
 
@@ -53,9 +53,9 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
     Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
-!!! Note
+### Troubleshooting: App starts then stops
 
-    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'jupyter_app'.
+If the app starts then stops, then one cause may be due to [Errors in inferring or accessing your 'safe data' directory](#troubleshooting-errors-in-inferring-or-accessing-safe-data).
 
 ---
 
@@ -67,15 +67,38 @@ You will not be prompted for a username and password. JupyterLab is protected wi
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+JupyterLab runs within an isolated environment (within a software container) on a back-end. Within JupyterLab you will have access to your home directory on the back-end.
 
-Your home directory is mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
+Your 'safe data' directory will also available within JupyterLab, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is available at`/safe_data` within JupyterLab.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available at `/safe_data` within JupyterLab.
+
+Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
+
+You can create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
 
 !!! Warning
 
-    Any files created outside of these directories will be **deleted** when the app stops.
+    Any files created outside of your home directory or `/safe_data` are **deleted** when the app stops.
+
+### Troubleshooting: Errors in inferring or accessing 'safe data'
+
+As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+
+In cases where there are errors in inferring or accessing your 'safe data' directory, then the log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/jupyter_app/output/SESSION_ID`, will include a message like one of the following:
+
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
+```
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/1234-5678
+```
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/1234-5678
+```
+
+If this problem occurs, then please contact your Research Coordinator (or equivalent).
 
 ---
 
@@ -183,6 +206,12 @@ JupyterLab will continue to run even if you do the following:
 You can re-access your running JupyterLab via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
+---
+
+## App job name
+
+Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'jupyter_app'.
 
 ---
 
