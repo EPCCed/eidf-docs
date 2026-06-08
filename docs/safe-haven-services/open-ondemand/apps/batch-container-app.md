@@ -70,41 +70,58 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
     Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
-!!! Note
-
-    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello:1.0'.
-
 ---
 
 ## Sharing files between the back-end and the container and persisting state between app runs
 
-The app mounts directories from the back-end into the container at `/safe_data`, `/safe_outputs` and `/scratch`. For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+When the app runs, your 'safe data' directory will be mounted into the container at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-!!! Note
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within JupyterLab.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the
+back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available at `/safe_data` within JupyterLab.
 
-    If a container is run using **Apptainer**, then your home directory is also mounted within the container at the same path as your home directory on the back-end. Any directories and files you create within your home directory within the container will be available in your home directory on the back-end, and vice-versa.
+You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files. An example, mounting `${HOME}/my_content` into as container at `/mnt/my_content`, is as follows:
 
-!!! Warning
-
-    If a container is run using Podman, then **only** files within any mounted directories are available within the container, **only** files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be **deleted** when the container is deleted.
-
-If required, you can mount additional directories into your container:
-
-* If using Apptainer, then you can add Apptainer-specific parameters into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+* Apptainer,
 
     ```text
     --bind ${HOME}/my_content:/mnt/my_content
     ```
 
-* If using Podman, then you can add Podman-specific parameters to mount the directories into the **Command-line options to pass to container runner** field, one parameter per line. For example:
+* Podman,
 
     ```text
     -v ${HOME}/my_content:/mnt/my_content
     ```
 
-!!! Note
+For more information see:
 
-    Any mounted directories must exist on the back-end on which the app runs.
+* Apptainer, [apptainer run](https://apptainer.org/docs/user/main/cli/apptainer_run.html) (`-B|--bind` and `--mount` options) and [Bind Paths and Mounts](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html).
+* Podman, [podman run](https://docs.podman.io/en/latest/markdown/podman-run.1.html) (`--volume|-v` and `--mount` options).
+
+Any files you create within `/safe_data` or other mounted directories within the container will be available in `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) and the other mounted directories on the back-end, and vice-versa.
+
+!!! Warning
+
+    Any files created outside of `/safe_data` or other mounted directories are **deleted** when the app stops.
+
+### Troubleshooting: Errors in inferring or accessing 'safe data'
+
+As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](apps/active-jobs.md) app.
+
+In cases where there are errors in inferring or accessing your 'safe data' directory, then the log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/SESSION_ID`, will include a message like one of the following:
+
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
+```
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/1234-5678
+```
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/1234-5678
+```
+
+If this problem occurs, then please contact your Research Coordinator (or equivalent).
 
 ---
 
@@ -191,6 +208,12 @@ Your container will continue to run even if you do the following:
 * Close the browser tab.
 * Log out of Open OnDemand.
 * Log out of the VM from which you accessed Open OnDemand.
+
+---
+
+## App job name
+
+Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello:1.0'.
 
 ---
 
