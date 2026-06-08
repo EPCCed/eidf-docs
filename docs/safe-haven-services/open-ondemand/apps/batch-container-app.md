@@ -27,6 +27,7 @@ Complete the following information the app form:
 * **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
 * **Container runner command-line arguments**: Command-line arguments to pass to the chosen container runner to control its behaviour.
 * **Environment variables**: Environment variables to be set within the container when it runs.
+
     * Each line should define one environment variable and value, each in the form, `ENVIRONMENT_VARIABLE=value`. For example:
 
         ```text
@@ -34,6 +35,7 @@ Complete the following information the app form:
         ```
 
     * If a value has spaces then, if using Apptainer, enclose the value in double-quotes. If using Podman, do not enclose the value in double-quotes.
+    * Environment variable values can be references to environment variables (e.g., `${...}`) and will be evaluated on the back-end (whether defined as-is or in single or double quotes.) prior to being passed into the container.
 
 * **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. For example:
 
