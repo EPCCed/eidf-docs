@@ -16,6 +16,7 @@ Complete the following information the app form:
 
 * **CPUs/cores**: CPUs/cores requested for the app's job.
 * **Memory (GiB)**: Memory requested for the app's job.
+* **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
 
 Click **Launch**.
 
