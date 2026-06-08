@@ -83,7 +83,7 @@ You can create any R scripts and configuration files, or download any R packages
 
 ### Troubleshooting: Errors in inferring or accessing 'safe data'
 
-As described in [Job cards](jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
+As described in [Job cards](../jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
 
 In cases where there are errors in inferring or accessing your 'safe data' directory, then the log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/rstudio_app/output/SESSION_ID`, will include a message like one of the following:
 
