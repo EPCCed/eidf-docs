@@ -191,7 +191,9 @@ View the output files:
 
 ## Run a container example
 
-This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the Safe Haven Services Container Execution Tools' commands `ces-pull`, to pull the container, and `ces-run` to run the container.
+This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is used within the [Getting started](../getting-started.md) and the [Run Batch Container](./batch-container-app.md) app. The container is run using the Safe Haven Services Container Execution Tools' command `ces-pull`, to pull the container, and then `podman` or `apptainer` to run the container.
+
+### Run container using Podman
 
 Create a job to run the container using Podman:
 
@@ -204,39 +206,35 @@ Create a job to run the container using Podman:
 1. Update the script as follows:
 
     ```bash
-    #!/bin/bash
+    #!bin/bash
     #SBATCH --job-name=hello-there
     #SBATCH --output=output.log
     #SBATCH --ntasks=1
     #SBATCH --time=10:00
     #SBATCH --mem-per-cpu=100
 
-    CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
+    CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
     CR_USER=anonymous
-    CR_TOKEN=...see below...
+    CR_TOKEN=... # See below...
     ces-pull podman $CR_USER $CR_TOKEN $CR_URL
 
-    export CES_SCRATCH=$HOME/scratch/job_composer
-    export CES_SAFE_OUTPUTS=$HOME/safe_outputs
-    mkdir -p $CES_SCRATCH
-    mkdir -p $CES_SAFE_OUTPUTS
+    SAFE_DATA=/safe_data/PROJECT_DIRECTORY # See below...
 
     cat << EOF > envs.txt
     GREETING=Greetings
     EOF
 
-    cat << EOF > args.txt
-    -d 10
-    -n $USER
-    EOF
-
-    ces-run podman -n epcc-ces-hello --env-file envs.txt --arg-file args.txt $CR_URL
+    podman run --name epcc-ces-hello --pull=never --rm=true --rmi=false \
+        --env-file envs.txt \
+        --mount type=bind,source=${SAFE_DATA},destination=/safe_data \
+        $CR_URL \
+        -d 10 -n ${USER}
     ```
 
     * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
-    * By default, `ces-run` creates directories with random names - `scratch-NNNN` and `outputs-NNNN` - and mounts these into a container at `/scratch` and `/safe_outputs`. However, `ces-run` supports `CES_SCRATCH` and `CES_SAFE_OUTPUTS` environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of `$HOME` and define `CES_SCRATCH` and `CES_SAFE_OUTPUTS` to tell `ces-run` to mount these directories into the container.
+    * For `SAFE_DATA`, replace `PROJECT_DIRECTORY` with the name of your project directory in `/safe_data`.
     * The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
-    * The script also creates a file, `args.txt`, with container-specific arguments to be passed directly to the container when it is run. The container uses these arguments to issue a greeting to the name cited in `-n` (here, the current user) and doze for `-d` seconds.
+    * `-n` (name, here, the current user) and `-d` (doze for 10 seconds) are arguments for the `epcc-ces-hello` container.
 
 1. Click **Save**.
 
@@ -254,55 +252,23 @@ The script creates two files:
 * `output.log` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
-    Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
-
+    Running: /usr/local/bin/ces-pm-pull anonymous token git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
+    Trying pull proxy host tre-ghcr-proxy.nsh.loc
+    Using CES CR Proxy API: addproxy
+    Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
     ...
-
-    epcc-ces-hello container
-
-    Directory users, groups and permissions:
-
+    Entered epcc-ces-hello container
+    /safe_data users, groups and permissions:
     /safe_data: nobody (65534) root(0) drwxrws--- nfs
-    /scratch: root (0) root(0) drwxr-xr-x ext2/ext3
-    /safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
-
-    ...
-
-    Found optional 'GREETING' environment variable
-    GREETING: Greetings
-    Number of arguments: 4
-    Arguments: -d 10 -n someuser
-        -d
-        10
-        -n
-        someuser
-
-    ...
-
-    Greetings someuser from the 'epcc-ces-hello' container!
-
-    ...
-
-    Goodbye someuser!
-    ```
-
-* `$HOME/safe_outputs/epcc-ces-hello.txt` which is a file created by the container itself, including a greeting, the user's user ID, group ID and groups within the container, and the contents of `/safe_data` within the container. For example:
-
-    ```text
-    Greetings someuser from the 'epcc-ces-hello' container!
-
-    Your user ID within the container is: 0(root).
-
-    Your group ID within the container is: 0(root).
-
-    Your groups within the container are: 0(root).
-
-    Your mounted /safe_data/ files include:
-
-    ...project-specific files...
-
+    Container user ID: 0(root)
+    Container group ID: 0(root)
+    Container user groups: 0(root)
+    Found optional 'GREETING' environment variable: Greetings
+    Script arguments: -d 10 -n mikej147
+    name: mikej147
+    doze: 10
+    Writing /safe_data/20260608-161042-mikej147-epcc-ces-hello.txt
     Dozing for 10 seconds...
-
     1
     2
     3
@@ -313,21 +279,41 @@ The script creates two files:
     8
     9
     10
-
     ...and awake!
-
-    Goodbye someuser!
+    Exiting epcc-ces-hello container
     ```
 
-View the output files:
+* `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`which is a file created by the container itself, including a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/<PROJECT_DIRECTORY>`) on the back-end. For example:
+
+    ```text
+    Greetings!
+
+    Greetings to <USER>
+    from
+    epcc-ces-hello
+    at
+    2026-06-08 16:10:42
+
+    Your '/safe_data' directory includes the following files:
+
+    README
+    analyse_ae.R
+    analyse_ae.Rmd
+    analyse_ae.ipynb
+    analyse_ae.py
+    config
+    deepfake
+    eidf147
+    postgres_data_test
+    tmp
+    weekly_ae_activity_20260201.csv
+    ```
+
+View the log file, `output.log`:
 
 * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
     1. Click `output.log` under **Folder Contents**.
     1. A new browser tab will appear with the contents of the file.
-    1. Select **Files** menu, **Home Directory** option.
-    1. Click `safe_outputs`.
-    1. Click `epcc-ces-hello.txt`.
-    1. A page with the contents of the file will appear.
 * If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
     1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
     1. View `output.log`:
@@ -336,11 +322,17 @@ View the output files:
         cat output.log
         ```
 
-    1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
+View the output file, `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`. `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
 
-        ```bash
-        cat $HOME/safe_outputs/epcc-ces-hello.txt
-        ```
+1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
+1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
+
+     ```bash
+     ls /safe_data/<PROJECT_DIRECTORY>/
+     cat /safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt
+     ```
+
+### Run container using Apptainer
 
 Create a new job from the current job to run the container using Apptainer:
 
