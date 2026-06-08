@@ -15,7 +15,6 @@ Then, explore the other pages about the service:
 
 * [Open OnDemand home page](home-page.md)
 * [About jobs](jobs.md)
-* [About containers](containers.md)
 * [View and run apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
