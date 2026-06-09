@@ -6,6 +6,10 @@ Job Composer is an app that allows you to write and submit a Slurm batch job to 
 
     To use the Job Composer requires you to have some familiarity with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager. In particular, how to write Slurm job submission files.
 
+!!! Warning
+
+    Your project data files, in a project-specific directory under `/safe_data` are **not** available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.
+
 ---
 
 ## Create Slurm job
