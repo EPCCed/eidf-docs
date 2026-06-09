@@ -2929,6 +2929,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Run a container example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-container-using-podman" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run container using Podman
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-container-using-apptainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run container using Apptainer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2955,6 +2979,10 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To use the Job Composer requires you to have some familiarity with the <a href="https://slurm.schedmd.com">Slurm</a> open source job scheduler and workload manager. In particular, how to write Slurm job submission files.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.</p>
 </div>
 <hr />
 <h2 id="create-slurm-job">Create Slurm job</h2>
@@ -3052,7 +3080,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
 </code></pre></div>
 <p>to:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World to </span><span class="nv">$USER</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World to </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
 </code></pre></div>
 </li>
 <li>
@@ -3076,7 +3104,7 @@
 </li>
 <li>
 <p><code>output_file</code> which is the file created within the job script. For example:</p>
-<div class="highlight"><pre><span></span><code>Hello World to someuser from some-vm.nsh.loc
+<div class="highlight"><pre><span></span><code>Hello World to youruser from some-vm.nsh.loc
 </code></pre></div>
 </li>
 </ul>
@@ -3109,7 +3137,9 @@
 </ul>
 <hr />
 <h2 id="run-a-container-example">Run a container example</h2>
-<p>This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the <code>epcc-ces-hello</code> container which is used within the <a href="../../getting-started/">Getting started</a> and the <a href="../batch-container-app/">Run Batch Container</a> app. The container is run using the Safe Haven Services Container Execution Tools' commands <code>ces-pull</code>, to pull the container, and <code>ces-run</code> to run the container.</p>
+<p>This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the <code>epcc-ces-hello</code> container which is the default container offered by the <a href="../batch-container-app/">Run Batch Container</a> app.</p>
+<p>The example uses the <a href="../../../shs-container-user-guide/introduction/">Safe Haven Container Execution Service - CES</a> to pull containers onto the back-end, via the <code>ces-pull</code> command, and then uses <code>podman</code> and <code>apptainer</code> in turn to run the container.</p>
+<h3 id="run-container-using-podman">Run container using Podman</h3>
 <p>Create a job to run the container using Podman:</p>
 <ol>
 <li>Select <strong>New Job</strong> menu, <strong>From Template</strong> option.</li>
@@ -3121,38 +3151,37 @@
 <li>
 <p>Update the script as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=hello-there</span>
+<span class="c1">#SBATCH --job-name=hello-world</span>
 <span class="c1">#SBATCH --output=output.log</span>
 <span class="c1">#SBATCH --ntasks=1</span>
 <span class="c1">#SBATCH --time=10:00</span>
 <span class="c1">#SBATCH --mem-per-cpu=100</span>
 
-<span class="nv">CR_URL</span><span class="o">=</span>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
+<span class="nv">CR_URL</span><span class="o">=</span>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 <span class="nv">CR_USER</span><span class="o">=</span>anonymous
-<span class="nv">CR_TOKEN</span><span class="o">=</span>...see<span class="w"> </span>below...
+<span class="nv">CR_TOKEN</span><span class="o">=</span>...<span class="w"> </span><span class="c1"># See below...</span>
 ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SCRATCH</span><span class="o">=</span><span class="nv">$HOME</span>/scratch/job_composer
-<span class="nb">export</span><span class="w"> </span><span class="nv">CES_SAFE_OUTPUTS</span><span class="o">=</span><span class="nv">$HOME</span>/safe_outputs
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SCRATCH</span>
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$CES_SAFE_OUTPUTS</span>
+<span class="nv">SAFE_DATA</span><span class="o">=</span>/safe_data/PROJECT<span class="w"> </span><span class="c1"># See below...</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; envs.txt</span>
 <span class="s">GREETING=Greetings</span>
 <span class="s">EOF</span>
 
-cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; args.txt</span>
-<span class="s">-d 10</span>
-<span class="s">-n $USER</span>
-<span class="s">EOF</span>
-
-ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>envs.txt<span class="w"> </span>--arg-file<span class="w"> </span>args.txt<span class="w"> </span><span class="nv">$CR_URL</span>
+podman<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>epcc-ces-hello<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="si">${</span><span class="nv">SAFE_DATA</span><span class="si">}</span>,destination<span class="o">=</span>/safe_data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pull<span class="o">=</span>never<span class="w"> </span>--rm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--rmi<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--env-file<span class="o">=</span>envs.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">CR_URL</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="m">5</span><span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </code></pre></div>
 <ul>
+<li>For <code>CR_URL</code>, there is no need to cite port 5050 in the GitLab container registry URL. The <code>ces-pull</code> command adds this when it pulls the container.</li>
+<li>For <code>CR_URL</code>, see <a href="../batch-container-app/#container-registries">Container registries</a> for supported container registries.</li>
 <li>For <code>CR_TOKEN</code>, copy in the <code>epcc-ces-hello</code> container's 'Container registry access token' from the <a href="../batch-container-app/">Run Batch Container</a> app's form.</li>
-<li>By default, <code>ces-run</code> creates directories with random names - <code>scratch-NNNN</code> and <code>outputs-NNNN</code> - and mounts these into a container at <code>/scratch</code> and <code>/safe_outputs</code>. However, <code>ces-run</code> supports <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> environment variables, which allow for existing directories to be used. In the script above, we create subdirectories of <code>$HOME</code> and define <code>CES_SCRATCH</code> and <code>CES_SAFE_OUTPUTS</code> to tell <code>ces-run</code> to mount these directories into the container.</li>
+<li>For <code>SAFE_DATA</code>, replace <code>PROJECT</code> with the name of your 'safe data' project directory in <code>/safe_data</code>. When Podman is run, your 'safe data' project directory is mounted into the container at <code>/safe_data</code> via Podman's <code>--mount</code> option.</li>
 <li>The script creates a file, <code>envs.txt</code>, with an environment variable to be passed to the <code>epcc-ces-hello</code> container. The container uses the environment variable <code>GREETING</code> to customise the greeting it prints.</li>
-<li>The script also creates a file, <code>args.txt</code>, with container-specific arguments to be passed directly to the container when it is run. The container uses these arguments to issue a greeting to the name cited in <code>-n</code> (here, the current user) and doze for <code>-d</code> seconds.</li>
+<li><code>-n</code> (name, here, the current user) and <code>-d</code> (doze for 10 seconds) are arguments for the <code>epcc-ces-hello</code> container itself.</li>
 </ul>
 </li>
 <li>
@@ -3170,103 +3199,64 @@ ces-run<span class="w"> </span>podman<span class="w"> </span>-n<span class="w"> 
 <p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
 </li>
 </ol>
-<p>The script creates two files:</p>
-<ul>
+<p>When the <code>epcc-ces-hello</code> container is run, it writes a file <code>YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt</code> into <code>/safe_data</code> within the container, and so into <code>/safe_data/PROJECT</code> on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of <code>/safe_data</code> within the container i.e., <code>/safe_data/PROJECT</code> on the back-end. For example, a file <code>20260609-070028-youruser-epcc-ces-hello.txt</code> could contain:</p>
+<div class="highlight"><pre><span></span><code>Greetings!
+
+Greetings to youruser
+from
+epcc-ces-hello
+at
+2026-06-09 07:00:28
+
+Your &#39;/safe_data&#39; directory includes the following files:
+
+20260609-070028-youruser-epcc-ces-hello.txt
+README
+analyse_ae.R
+analyse_ae.Rmd
+analyse_ae.ipynb
+analyse_ae.py
+weekly_ae_activity_20260201.csv
+</code></pre></div>
+<p>View the file created by the container. <code>/safe_data</code> is not available on the Open OnDemand host so to view this file you will need to:</p>
+<ol>
+<li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
 <li>
-<p><code>output.log</code> which has the outputs captured by Slurm as the job runs. For example:</p>
-<div class="highlight"><pre><span></span><code>Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
-
-...
-
-epcc-ces-hello container
-
-Directory users, groups and permissions:
-
-/safe_data: nobody (65534) root(0) drwxrws--- nfs
-/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
-/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
-
-...
-
-Found optional &#39;GREETING&#39; environment variable
-GREETING: Greetings
-Number of arguments: 4
-Arguments: -d 10 -n someuser
-    -d
-    10
-    -n
-    someuser
-
-...
-
-Greetings someuser from the &#39;epcc-ces-hello&#39; container!
-
-...
-
-Goodbye someuser!
+<p>View the file created by the container:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/safe_data/PROJECT/
+cat<span class="w"> </span>/safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/safe_data/yourproject
+cat<span class="w"> </span>/safe_data/20260609-070028-youruser-epcc-ces-hello.txt
 </code></pre></div>
 </li>
-<li>
-<p><code>$HOME/safe_outputs/epcc-ces-hello.txt</code> which is a file created by the container itself, including a greeting, the user's user ID, group ID and groups within the container, and the contents of <code>/safe_data</code> within the container. For example:</p>
-<div class="highlight"><pre><span></span><code>Greetings someuser from the &#39;epcc-ces-hello&#39; container!
-
-Your user ID within the container is: 0(root).
-
-Your group ID within the container is: 0(root).
-
-Your groups within the container are: 0(root).
-
-Your mounted /safe_data/ files include:
-
-...project-specific files...
-
-Dozing for 10 seconds...
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-
-...and awake!
-
-Goodbye someuser!
-</code></pre></div>
-</li>
-</ul>
-<p>View the output files:</p>
+</ol>
+<p>When the job script runs, an <code>output.log</code> file logs the outputs captured by Slurm as the job runs.</p>
+<p>View the log file, <code>output.log</code>:</p>
 <ul>
 <li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:<ol>
 <li>Click <code>output.log</code> under <strong>Folder Contents</strong>.</li>
 <li>A new browser tab will appear with the contents of the file.</li>
-<li>Select <strong>Files</strong> menu, <strong>Home Directory</strong> option.</li>
-<li>Click <code>safe_outputs</code>.</li>
-<li>Click <code>epcc-ces-hello.txt</code>.</li>
-<li>A page with the contents of the file will appear.</li>
 </ol>
 </li>
-<li>
-<p>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:</p>
-<ol>
+<li>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:<ol>
 <li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
 <li>
 <p>View <code>output.log</code>:</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output.log
 </code></pre></div>
 </li>
-<li>
-<p>View <code>$HOME/safe_outputs/epcc-ces-hello.txt</code>:</p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="nv">$HOME</span>/safe_outputs/epcc-ces-hello.txt
-</code></pre></div>
-</li>
 </ol>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For some containers run via Podman, including <code>epcc-ces-hello</code>, by default, your user name and user group on the back-end will be automatically mapped to the 'root' user name and user group in the container. This is so that scripts running within the container can read from and write to the mounted 'safe data' directory, and any other mounted directories.</p>
+<p>However, you are 'root' <strong>only</strong> within the container. Any files created in the mounted directories will be owned by 'root' within the container but by your own user, and user group, on the back-end.</p>
+<p>You do <strong>not</strong> have 'root' access on the back-end on which the container is running!</p>
+</div>
+<h3 id="run-container-using-apptainer">Run container using Apptainer</h3>
 <p>Create a new job from the current job to run the container using Apptainer:</p>
 <ol>
 <li>Switch to the Job Composer browser tab.</li>
@@ -3277,17 +3267,22 @@ Goodbye someuser!
 <ol>
 <li>
 <p>Replace the <code>ces-pull podman</code> line with the lines:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>
 ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
-<span class="nv">SIF_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/epcc-ces-hello:1.0.sif
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$SLURM_SUBMIT_DIR</span>
+<span class="nv">SIF_FILE</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/epcc-ces-hello:2.1.sif
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_SUBMIT_DIR</span><span class="si">}</span>
 </code></pre></div>
 <p><code>ces-pull apptainer</code> creates an Apptainer SIF file in the current directory whose name is derived from the last part of the container URL. We change into <code>$HOME</code> so that the SIF file is created in <code>$HOME</code> before moving back to the directory with the job files, <code>$SLURM_SUBMIT_DIR</code>. This means we will only ever have one copy of this SIF file in our <code>$HOME</code> directory, rather than one copy for each run of the job, which would quickly consume space!</p>
 </li>
 <li>
-<p>Replace the <code>ces-run podman</code> line with:</p>
-<div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>apptainer<span class="w"> </span>-n<span class="w"> </span>epcc-ces-hello<span class="w"> </span>--env-file<span class="w"> </span>envs.txt<span class="w"> </span>--arg-file<span class="w"> </span>args.txt<span class="w"> </span><span class="nv">$SIF_FILE</span>
+<p>Replace the <code>podman run</code> line with:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span><span class="si">${</span><span class="nv">SAFE_DATA</span><span class="si">}</span>:/safe_data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-https<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--env-file<span class="o">=</span>envs.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/epcc-ces-hello:2.1.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="m">5</span><span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </code></pre></div>
+<p>When Apptainer is run, your 'safe data' project directory is mounted into the container at <code>/safe_data</code> via Apptainer's <code>--bind</code> option.</p>
 </li>
 </ol>
 </li>
@@ -3303,13 +3298,12 @@ ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv
 <p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
 </li>
 </ol>
-<p>View the output files - <code>output.log</code> and <code>$HOME/safe_outputs/epcc-ces-hello.txt</code> - as described earlier. Note that your user ID, group ID and groups within the container will differ. <code>epcc-ces-hello.txt</code>'s contents will differ. In the Podman container you are 'root', within the Apptainer container you are 'you'. For example:</p>
-<div class="highlight"><pre><span></span><code>Your user ID within the container is: 36177(someuser).
-
-Your group ID within the container is: 4797(somegroup).
-
-Your groups within the container are: 4797(somegroup),65534(nogroup).
-</code></pre></div>
+<p>The file created by the container and the <code>output.log</code> file can view viewed using the steps described above in the Podman example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In contrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.</p>
+</div>
+<p>These files can be viewed using the steps described earlier.</p>
 
 
 

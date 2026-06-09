@@ -2803,6 +2803,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Run app">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-app-starts-then-stops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: App starts then stops
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2820,6 +2835,21 @@
       Sharing files between the back-end and RStudio Server and persisting state between app runs
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Sharing files between the back-end and RStudio Server and persisting state between app runs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-errors-in-inferring-or-accessing-safe-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: Errors in inferring or accessing 'safe data'
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2884,6 +2914,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#app-job-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      App job name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#end-your-job" class="md-nav__link">
     <span class="md-ellipsis">
       End your job
@@ -2912,7 +2951,7 @@
 
 
 <h1 id="run-rstudio-server">Run RStudio Server</h1>
-<p>Run RStudio Server is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a container, using Apptainer.</p>
+<p>Run RStudio Server is an app that runs RStudio Server on a back-end within your safe haven. RStudio Server is run as a software container, using Apptainer.</p>
 <hr />
 <h2 id="run-app">Run app</h2>
 <p>Complete the following information the app form:</p>
@@ -2960,28 +2999,44 @@
 <p class="admonition-title">Warning</p>
 <p>Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Within the job scheduler, and the <a href="../active-jobs/">Active Jobs</a> app, this app's jobs are named 'rstudio_app'.</p>
-</div>
+<h3 id="troubleshooting-app-starts-then-stops">Troubleshooting: App starts then stops</h3>
+<p>If the app starts then stops, then one cause may be due to <a href="#troubleshooting-errors-in-inferring-or-accessing-safe-data">Errors in inferring or accessing your 'safe data' directory</a>.</p>
 <hr />
 <h2 id="log-in-to-rstudio-server">Log in to RStudio Server</h2>
 <p>You will not be prompted for a username and password. RStudio Server is protected with an auto-generated password and the <strong>Connect to RStudio Server</strong> button is configured to log you in automatically using this password.</p>
 <hr />
 <h2 id="sharing-files-between-the-back-end-and-rstudio-server-and-persisting-state-between-app-runs">Sharing files between the back-end and RStudio Server and persisting state between app runs</h2>
-<p>The app mounts directories from the back-end into RStudio Server at <code>/safe_data</code>, <code>/safe_outputs</code> and <code>/scratch</code> . For more information on these directories, see <a href="../../containers/#sharing-files-between-a-back-end-and-a-container">Sharing files between a back-end and a container</a>.</p>
-<p>Your home directory is mounted within RStudio Server at the same path as your home directory on the back-end. Any directories and files you create within your home directory within RStudio Server will be available in your home directory on the back-end, and vice-versa.</p>
-<p>You should create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.</p>
+<p>RStudio Server runs within an isolated environment (within a software container) on a back-end. Within RStudio Server you will have access to your home directory on the back-end.</p>
+<p>Your 'safe data' directory will also be mounted within RStudio Server, at the path <code>/safe_data</code>. Your 'safe data' directory is inferred as follows:</p>
+<ul>
+<li>Your 'safe data' directory is chosen to be the first <code>/safe_data/PROJECT</code> subdirectory found where you are a member of a either user group called <code>PROJECT</code> or called <code>PREFIX-PROJECT</code>. For example, if there is a <code>/safe_data/yourproject</code> directory and you are a member of a <code>yourproject</code> or <code>someprefix-yourproject</code> user group, then <code>/safe_data/yourproject</code> is your 'safe data' directory that is mounted at <code>/safe_data</code> within RStudio Server. If no such directory can be found, then the app will fail.</li>
+<li>However, if there is a <code>safe_data</code> directory in the your home directory (i.e., <code>$HOME/safe_data</code>) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at <code>/safe_data</code> within RStudio Server.</li>
+</ul>
+<p>Any files you create within your home directory or <code>/safe_data</code> in RStudio Server will be available in your home directory or <code>/safe_data/PROJECT</code> (or <code>$HOME/safe_data</code>, if applicable) on the back-end, and vice-versa.</p>
+<p>You can create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.</p>
+<p>When the app runs, the following additional directories are created within your home directory and are mounted at the corresponding locations (shown after the colons) within RStudio Server. These contain RStudio Server-specific configuration required for the app to run RStudio Server. They will be reused the next time you run the app but if you delete them, then they will be recreated afresh.</p>
+<div class="highlight"><pre><span></span><code>$HOME/rstudio-tmp/var/lib:/var/lib/rstudio-server
+$HOME/rstudio-tmp/var/run:/var/run/rstudio-server
+$HOME/rstudio-tmp/tmp:/tmp
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Any files created outside of these directories will be <strong>deleted</strong> when the app stops.</p>
+<p>Any files created outside of your home directory or <code>/safe_data</code> are <strong>deleted</strong> when the app stops.</p>
 </div>
+<h3 id="troubleshooting-errors-in-inferring-or-accessing-safe-data">Troubleshooting: Errors in inferring or accessing 'safe data'</h3>
+<p>As described in <a href="../../jobs/#job-cards">Job cards</a>, app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
+<p>In cases where there are errors in inferring or accessing your 'safe data' directory, then the <code>output.log</code> log file for the app's job, in the job context directory, <code>ondemand/data/sys/dashboard/batch_connect/sys/rstudio_app/output/SESSION_ID</code>, will include a message like one of the following:</p>
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user&#39;s groups
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/yourproject
+</code></pre></div>
+<p>If this problem occurs, then please contact your Research Coordinator (or equivalent).</p>
 <hr />
 <h2 id="accessing-files-outside-the-scope-of-your-home-directory">Accessing files outside the scope of your home directory</h2>
-<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory within some menu commands and panels. This includes the <code>/safe_data</code>, <code>/safe_outputs</code>, and <code>/scratch</code> directories.</p>
-<p>You can access these directories as follows:</p>
+<p>A feature of RStudio Server is that it constrains your ability to browse directories and files above your home directory within some menu commands and panels. This includes the <code>/safe_data</code> directory. However, you can access the <code>/safe_data</code> directory as follows:</p>
 <ul>
-<li><code>/safe_outputs</code> and <code>/scratch</code> can be accessed via your home directory in <code>safe_outputs</code> and <code>scratch/rstudio/SESSION_ID</code> respectively i.e., the directories mounted onto <code>/safe_outputs</code> and <code>/scratch</code>.</li>
 <li><strong>File</strong> menu, <strong>Open File</strong> menu option:<ul>
 <li>Enter the directory or file path into the <strong>Open File</strong> dialog, <strong>File name</strong> field.</li>
 <li>Click <strong>Open</strong>.</li>
@@ -3006,16 +3061,13 @@
 </li>
 </ul>
 </li>
-<li>
-<p><strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option:</p>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li>Click <strong>Browse...</strong>.</li>
-<li><code>/safe_outputs</code> can be accessed via your home directory in <code>safe_outputs</code> i.e., the directory mounted onto <code>/safe_outputs</code>.</li>
-<li><code>/scratch</code> is deleted when the app completes so should not be selected for use as a default working directory.</li>
-<li><code>/safe_data</code> cannot be selected for use as a default working directory.</li>
+<li><code>/safe_data</code> cannot be selected for use as a default working directory via the <strong>Tools</strong> menu, <strong>Global Options</strong> tab, 'RSessions' <strong>Default working directory</strong> option.</li>
 </ul>
-</li>
-</ul>
+</div>
 <hr />
 <h2 id="installing-r-packages">Installing R packages</h2>
 <p>RStudio Server is configured with your web proxy environment variables so you can install packages from CRAN when using RStudio Server. It is recommended that you install R packages within a directory within your home directory in RStudio Server so that you can reuse these the next time you run the app on the same back-end.</p>
@@ -3054,6 +3106,9 @@
 </ul>
 <p>You can re-access your running RStudio Server via the <strong>Connect to RStudio Server</strong> on your session's <a href="../../jobs/#job-cards">job card</a> on the <a href="../../jobs/#my-interactive-sessions-page">My Interactive Sessions</a> page accessed via <strong>My Interactive Sessions</strong> (overlaid squares icon) on the menu bar.</p>
 <p><img alt="My Interactive Sessions menu button, an overlaid squares icon" class="border-img center" src="../../../../images/open-ondemand/my-interactive-sessions-button.png" /> <em><strong>My Interactive Sessions</strong> menu button</em></p>
+<hr />
+<h2 id="app-job-name">App job name</h2>
+<p>Within the job scheduler, and the <a href="../active-jobs/">Active Jobs</a> app, this app's jobs are named 'rstudio_app'.</p>
 <hr />
 <h2 id="end-your-job">End your job</h2>
 <p>You can end your job as follows:</p>
