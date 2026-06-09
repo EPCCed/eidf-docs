@@ -109,7 +109,7 @@ As described in [Job cards](../jobs.md#job-cards), app job cards will only show 
 
 However, this app is simple enough to allow for this error message to be displayed on the job card.
 
-In cases where there are errors in inferring or accessing your 'safe data' directory, then the `output.log` log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/SESSION_ID`, will include a message like one of the following:
+In cases where there are errors in inferring or accessing your 'safe data' directory, then the `output.log` log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/greetings_app/output/SESSION_ID`, will include a message like one of the following:
 
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
