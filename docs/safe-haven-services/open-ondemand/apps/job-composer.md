@@ -258,7 +258,7 @@ Submit job:
 When the job script runs, two files are created. One file, `output.log`, has the outputs captured by Slurm as the job runs. For example:
 
 ```text
-Running: /usr/local/bin/ces-pm-pull anonymous <CR_TOKEN> git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
+Running: /usr/local/bin/ces-pm-pull anonymous CR_TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Trying pull proxy host tre-ghcr-proxy.nsh.loc
 Using CES CR Proxy API: addproxy
 Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
@@ -292,7 +292,7 @@ Exiting epcc-ces-hello container
 
     You do **not** have 'root' access on the back-end on which the container is running!
 
-The other file created when the job script runs is `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt` which is a file created by the container itself. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/<PROJECT_DIRECTORY>`) on the back-end. For example, `/safe_data/some-project/20260609-070028-some-user-epcc-ces-hello.txt`:
+The other file created when the job script runs is `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` which is a file created by the container itself. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-070028-some-user-epcc-ces-hello.txt`:
 
 ```text
 Greetings!
@@ -327,14 +327,14 @@ View the log file, `output.log`:
         cat output.log
         ```
 
-View the file created by the container, `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`. As `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
+View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. As `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
 
 1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
 1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
 
      ```bash
-     ls /safe_data/<PROJECT_DIRECTORY>/
-     cat /safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt
+     ls /safe_data/PROJECT_DIRECTORY/
+     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
      ```
 
      For example:
@@ -385,12 +385,12 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-View the log file, `output.log`, and the file created by the container, `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`, using the steps described earlier.
+View the log file, `output.log`, and the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`, using the steps described earlier.
 
 An example of `output.log` produced by this example is as follows:
 
 ```text
-Running: /usr/local/bin/ces-app-pull anonymous <CR_TOKEN> git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
+Running: /usr/local/bin/ces-app-pull anonymous CR_TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Trying pull proxy host tre-ghcr-proxy.nsh.loc
 Using CES CR Proxy API: addproxy
 Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
