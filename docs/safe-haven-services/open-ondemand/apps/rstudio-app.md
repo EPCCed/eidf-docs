@@ -70,7 +70,7 @@ RStudio Server runs within an isolated environment (within a software container)
 
 Your 'safe data' directory will also be mounted within RStudio Server, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `project-1234-5678` and there is a `/safe_data/project-1234-5678` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `some-project` and there is a `/safe_data/some-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
 * However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available mounted at `/safe_data` within RStudio Server.
 
 Any files you create within your home directory or `/safe_data` in RStudio Server will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
@@ -99,10 +99,10 @@ In cases where there are errors in inferring or accessing your 'safe data' direc
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 ```
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/project-1234-5678
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/some-project
 ```
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/project-1234-5678
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/some-project
 ```
 
 If this problem occurs, then please contact your Research Coordinator (or equivalent).
