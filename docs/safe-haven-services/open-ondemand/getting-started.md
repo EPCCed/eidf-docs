@@ -6,13 +6,14 @@ First, some Open OnDemand terminology. A compute resource upon which tasks can b
 
 This walkthrough is centred around three apps:
 
+* [Greetings](apps/greetings-app.md) is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
 * [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
 * [Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
 !!! Note
 
-    Images on this page have yet to be updated to match the text and updates made to apps.
+    TODO Update images on this page to match the text and apps.
 
 ---
 
@@ -30,6 +31,368 @@ Your project data files, in a project-specific directory under `/safe_data`, are
 
 ---
 
+## Run the Greetings app
+
+The [Greetings](apps/greetings-app.md) is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
+
+Click the 'Greetings' app on the Open OnDemand home page.
+
+The 'Greetings' app form will open.
+
+### Review the Greetings app form
+
+Read the form entries in conjunction with the explanations below and make the suggested changes:
+
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
+    * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
+* **Greetings file destination**: Where to write the greetings file to. Select one of:
+
+    * '/safe_data/PROJECT_DIRECTORY/': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your 'safe data' directory on the back-end.
+
+        Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is the directory into which the file is written.
+
+    * '$HOME': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your home directory on the back-end.
+    * Leave this value as-is.
+
+### Launch the Greetings app job
+
+Click **Launch**.
+
+Open OnDemand submits the job for the app to a **job scheduler** which schedules the job onto the back-end based upon the resources - the number of CPUs/cores and amount of memory - requested for your job in the app form. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
+
+* Resources available on your selected back-end.
+* Extent to which jobs currently running on the back-end are using the back-end's resources.
+* Resources requested by your job.
+* Jobs from yourself and others already in the queue for the back-end.
+
+When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled. The default runtime is 6 hours.
+
+For this app, the number of CPUs/cores is set to 1 and the amount of memory to 1K. Other apps will require you to select the number of CPUs/cores and memory for the app.
+
+### View the job card and job status
+
+Open OnDemand will show an app **job card** with information about the app's job including:
+
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job.
+* 'Session ID': An auto-generated value which is used as the name of a job-specific directory with files created by Open OnDemand to run the app's job plus any log files created when the job runs. This **job context directory** is described shortly. On the job card, the session ID is a link to open a File Manager pointing at this job context directory.
+* App-specific information, which includes values from the app form. This app has none.
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
+
+When the Job status updates to 'Running', a **Host** link will appear on the job card. This is the back-end on which the job is now running. A message of form 'Writing file FILE on HOST' will also appear on the job card.
+
+All going well, the job should complete quickly.
+
+When the job completes, the Job status on the job card will update to 'Completed'. A message of form 'Wrote file FILE on HOST' will also appear on the job card.
+
+### View the greetings file
+
+The greetings file includes your user name, the back-end host name and a date and time. For example:
+
+```text
+Greetings!
+
+Greetings to your-user
+from
+some-vm.nsh.loc
+at
+2026-06-09 10:09:10
+```
+
+When you ran the app, you requested that a **Greetings file destination** of '/safe_data/PROJECT_DIRECTORY/' be used. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
+
+1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
+1. View the greetings file:
+
+     ```bash
+     ls /safe_data/PROJECT_DIRECTORY/
+     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-greetings.txt
+     ```
+
+     For example:
+
+     ```bash
+     ls /safe_data/your-project
+     cat /safe_data/your-project/20260609-100910-your-user-greetings.txt
+     ```
+
+As you have accessed Open OnDemand from your 'desktop' VM, you could also access the file directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
+
+### View the app's job context directory and its log file
+
+Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
+
+Every time a job is created by an app, Open OnDemand creates the job files that the app needs for it to run within a job-specific **job context directory** in an app-specific directory under your `ondemand` directory.
+
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends. But, for back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, Open OnDemand will automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job.
+
+When the app's job runs, it creates a log file in the job context directory on the back-end. This log file includes information from the app itself plus any outputs from any commands run by the app. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong. For this app, its log file is named `output.log`.
+
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa.
+
+View the log file via the Open OnDemand File Manager:
+
+1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
+1. Click on the log file, `output.log`.
+
+For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, the File Manager cannot be used. An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
+
+View the log file within the back-end:
+
+1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+1. Change into the job context directory for the job on the back-end and show the log file where `SESSION_ID` can be seen on the **Session ID** link on the job card:
+
+    ```bash
+    cd ondemand/data/sys/dashboard/batch_connect/sys/greetings<_app/output/SESSION_ID/
+    ```
+
+    For example:
+
+    ```bash
+    cd  ondemand/data/sys/dashboard/batch_connect/sys/greetings_app/output/07224a60-266b-4c04-8293-6a10411cf8cb/
+    ```
+
+1. View the log file:
+
+    ```bash
+    cat output.log
+    ```
+
+### Clean up after running the Greetings app
+
+Please remove the file produced by the app from your 'safe data' directory. You can do this as follows:
+
+1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+1. Delete the file. For example:
+
+    ```console
+    rm /safe_data/your-project/20260609-100910-your-user-greetings.txt
+   ```
+
+---
+
+## Run the Active Jobs app
+
+[Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
+
+Click the 'Active Jobs' app on the Open OnDemand home page.
+
+The Active Jobs app will open to show a table of running and recently completed jobs.
+
+You will see a 'greetings_app' entry for your app's job.
+
+Your job will have a status of 'Completed'.
+
+Each job has a unique **job ID** created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
+
+![Active Jobs app jobs list](../../images/open-ondemand/getting-started-08-active-jobs.png){: class="border-img center"}
+*Active Jobs app jobs list*
+
+To see more details about the job, click the **>** button, by the job.
+
+![Active Jobs app showing details of completed Greetings app job](../../images/open-ondemand/getting-started-09-active-jobs-details.png){: class="border-img center"}
+*Active Jobs app showing details of completed Greetings app job*
+
+If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
+
+---
+
+## Run the Run JupyterLab app
+
+[Run JupyterLab](apps/jupyter-app.md) is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab runs within an isolated environment (within a software container).
+
+Click the 'Run JupyterLab' app on the Open OnDemand home page.
+
+The Run JupyterLab app form will open.
+
+![Excerpt of Run JupyterLab app form](../../images/open-ondemand/getting-started-10-jupyter-app-form.png){: class="border-img center"}
+*Excerpt of Run JupyterLab app form*
+
+For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
+
+Leave the other settings as-is.
+
+### Launch the Run JupyterLab app job
+
+Click **Launch**.
+
+Open OnDemand submits the job for the app to the job scheduler.
+
+Open OnDemand will show an app job card with information about the app's job including:
+
+* Job status (on the top right of the job card): initially 'Queued'.
+* 'Created at': The time the job was submitted.
+* 'Time Requested': The runtime requested for the job which defaults to 6 hours.
+* 'Session ID': An auto-generated value which is used as the name of the job context directory with files created by Open OnDemand to run the app's job plus any log files created when the job runs. On the job card, the session ID is a link to open a File Manager pointing at this job context directory.
+* App-specific information, which includes values from the app form:
+    * 'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.
+    * 'CPUs/cores': The value you selected on the app form.
+    * 'Memory (GiB)' The value you selected on the app form.
+
+![Run JupyterLab app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-11-jupyter-app-queued.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Queued'*
+
+When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
+
+![Run JupyterLab app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-12-jupyter-app-starting.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Starting'*
+
+When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.
+
+A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
+
+![Run JupyterLab app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-13-jupyter-app-running.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Running'*
+
+Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
+
+You may wonder why you were not prompted for a username and password. JupyterLab is protected with an auto-generated password and the **Connect to JupyterLab** button is configured to log you in automatically using this password.
+
+![JupyterLab](../../images/open-ondemand/getting-started-14-jupyter-app-jupyter-lab.png){: class="border-img center"}
+*JupyterLab*
+
+### Sharing files between the back-end and JupyterLab and persisting state between app runs
+
+JupyterLab runs within an isolated environment (within a software container) on a back-end. Within JupyterLab you will have access to your home directory on the back-end.
+
+Your 'safe data' directory will also mounted within JupyterLab, at the path `/safe_data`. Your 'safe data'
+directory is inferred as follows:
+
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within JupyterLab.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within JupyterLab.
+
+Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
+
+You can create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
+
+!!! Warning
+
+    Any files created outside of your home directory or `/safe_data` are **deleted** when the app stops.
+
+### Create and run a Jupyter Notebook
+
+Create a Jupyter Notebook:
+
+1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
+1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
+
+As this has been saved in your home directory within JupyterLab, it will be available in your home directory on the back-end. If you look at your home directory you should now see the `sine-wave.ipynb` notebook there.
+
+Rename the notebook:
+
+1. Right-click the notebook title, 'Untitled.ipynb'.
+1. Select **Rename Notebook...**.
+1. Enter **New Name**: `sine-wave.ipynb`.
+1. Click **Rename**.
+
+You can save changes to your notebook at any time via CTRL+S or the 'disk' icon at the top of the notebook.
+
+Within the first notebook cell, enter the following Python code, which creates data for a sine wave, plots the sine wave and saves both the data and the plot:
+
+```python
+import os
+import pwd
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# 360 degrees is 2*PI radians so define 4*360 degrees
+# i.e. 4*2*PI radians for four sine waves.
+x = np.arange(0, 4 * (2 * np.pi), 0.1)
+y = np.sin(x)
+
+dataset = pd.DataFrame({'time': x, 'amplitude': y},
+                       columns=['time', 'amplitude'])
+dataset.plot(title='Sine wave',
+             x='time',
+             y='amplitude',
+             grid=True)
+```
+
+Click Shift + Enter to run the code. A plot should appear.
+
+![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
+*Jupyter Notebook with Python code and a sine wave*
+
+In the field under the plot, enter:
+
+```python
+user = pwd.getpwuid(os.getuid()).pw_name
+dataset.to_csv(f'/safe_data/{user}-sine-wave.csv', index=False)
+plt.savefig(f'/safe_data/{user}-sine-wave.png')
+```
+
+Click Shift + Enter to run the code.
+
+The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/your-project`.. If you look at your 'safe data' directory you should now see the files:
+
+```text
+your-user-sine-wave.csv
+your-user-sine-wave.png
+```
+
+![File Manager showing safe_data directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
+*File Manager showing `safe_data` directory contents after Python code is run in Run JupyterLab app*
+
+### Look at the Run JupyterLab app job in the Active Jobs app
+
+Click the 'Active Jobs' app on the Open OnDemand home page.
+
+You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab app jobs have this name.
+
+You will also see a unique job ID for this job.
+
+Your job will have a status of 'Running'.
+
+![Active Jobs app showing running Run JupyterLab app job](../../images/open-ondemand/getting-started-17-active-jobs.png){: class="border-img center"}
+*Active Jobs app showing running Run JupyterLab app job*
+
+To see more details about the job, click the **>** button, by the job.
+
+![Active Jobs app showing details of running Run JupyterLab app job](../../images/open-ondemand/getting-started-18-active-jobs-details.png){: class="border-img center"}
+*Active Jobs app showing details of running Run JupyterLab app job*
+
+### Finish your Run JupyterLab app job
+
+You can end your job by as follows:
+
+* Either, shut down JupyterLab via the **File** menu, **Shut Down** option.
+* Or, click **Cancel** on the app's job card.
+
+The Job status on the job card will update to 'Completed'.
+
+![Run JupyterLab app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-19-jupyter-app-completed.png){: class="border-img center"}
+*Run JupyterLab app job card showing job status as 'Completed'*
+
+Click the 'Active Jobs' app on the Open OnDemand home page.
+
+Your job will now have a status of 'Completed'.
+
+### Clean up after running Run JupyterLab app
+
+Please remove the sine wave files from your 'safe data' directory. You can do this in one of two ways.
+
+1. From within a JupyterLab 'Terminal' window. For example:
+
+    ```console
+    rm /safe_data/your-user-sine-wave.csv
+    rm /safe_data/your-user-sine-wave.png
+    ```
+
+1. From within Open OnDemand:
+
+    1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+    1. Delete the files. For example:
+
+        ```console
+        rm /safe_data/your-project/your-user-sine-wave.csv
+        rm /safe_data/your-project/your-user-sine-wave.png
+        ```
+
+---
+
 ## Run the Run Batch Container app
 
 [Run Batch Container](apps/batch-container-app.md) runs a batch container on a back-end. By **batch container** we mean a container that performs some computational or data-related task without human interaction when it is running.
@@ -41,7 +404,7 @@ The 'Run Batch Container' app form will open.
 ![Excerpt of Run Batch Container app form](../../images/open-ondemand/getting-started-01-batch-container-app-form.png){: class="border-img center"}
 *Excerpt of Run Batch Container app form*
 
-### Review and complete the Run Batch Container app form
+### Review the Run Batch Container app form
 
 The app form is prepopulated with the configuration to pull and run a 'hello' container. When run, the container prints a greeting and a listing of the contents of your 'safe data' directory.
 
@@ -90,17 +453,6 @@ Read the form entries in conjunction with the explanations below and make the su
 
 Click **Launch**.
 
-Open OnDemand submits the job for the app to a **job scheduler** which schedules the job onto the back-end based upon the resources - the number of CPUs/cores and amount of memory - requested for your job in the app form. Your job is then queued until sufficient resources are available on the selected back-end to run your job. This will depend upon:
-
-* Resources available on your selected back-end.
-* Extent to which jobs currently running on the back-end are using the back-end's resources.
-* Resources requested by your job.
-* Jobs from yourself and others already in the queue for the back-end.
-
-When a job is submitted, a runtime is also requested. If a job takes longer than this runtime, then it is cancelled. The default runtime is 6 hours.
-
-### View the job card and job status
-
 Open OnDemand will show an app **job card** with information about the app's job including:
 
 * Job status (on the top right of the job card): initially 'Queued'.
@@ -133,7 +485,7 @@ The Job status on the job card will update to 'Completed'.
 ![Run Batch Container app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-05-batch-container-app-completed.png){: class="border-img center"}
 *Run Batch Container app job card showing job status as 'Completed'*
 
-### How containers exchange files with back-ends
+### Sharing files between the back-end and the container
 
 When the app runs, your 'safe data' directory is mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
@@ -193,87 +545,20 @@ View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-H
      cat /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
      ```
 
-As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
+As you have accessed Open OnDemand from your 'desktop' VM, you could also access the file directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
-### View the app's job context directory and its log file
+### Look at the Run Batch Container app job in the Active Jobs app
 
-Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
+Click the 'Active Jobs' app on the Open OnDemand home page.
 
-Every time a job is created by an app, Open OnDemand creates the job files that the app needs for it to run within a job-specific **job context directory** in an app-specific directory under your `ondemand` directory.
+You will see an 'epcc-ces-hello:2.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends. But, for back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, Open OnDemand will automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job.
+Your job will have a status of 'Completed'.
 
-When the app's job runs, it creates a log file in the job context directory on the back-end. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
+To see more details about the job, click the **>** button, by the job.
 
-For this app, its log file, named `output.log`, includes information about the command used to run the container, the mounted directories, the environment variable and arguments provided to the container as well as the outputs that are written into `epcc-ces-hello.txt`.
-
-```text
-Tue Jun  9 08:56:44 UTC 2026 before.sh: Started before.sh
-Tue Jun  9 08:56:44 UTC 2026 before.sh: JOB_FOLDER: /home/your-project/your-project/your-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357
-Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: some-vm.nsh.loc
-Tue Jun  9 08:56:44 UTC 2026 before.sh: Running ces-pull podman 'anonymous' 'TOKEN' git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
-Running: /usr/local/bin/ces-pm-pull anonymous TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
-Trying pull proxy host tre-ghcr-proxy.nsh.loc
-Using CES CR Proxy API: addproxy
-Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
-...
-Tue Jun  9 08:56:46 UTC 2026 script.sh: Running podman run ...
-Entered epcc-ces-hello container
-/safe_data users, groups and permissions:
-/safe_data: nobody (65534) root(0) drwxrws--- nfs
-Container user ID: 0(root)
-Container group ID: 0(root)
-Container user groups: 0(root)
-Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n your-user
-name: your-user
-doze: 5
-Writing /safe_data/20260609-085646-your-user-epcc-ces-hello.txt
-Dozing for 5 seconds...
-1
-2
-3
-4
-5
-...and awake!
-Exiting epcc-ces-hello container
-Tue Jun  9 08:56:51 UTC 2026 script.sh: Finished script.sh
-Cleaning up...
-```
-
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa.
-
-View the log file via the Open OnDemand File Manager:
-
-1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
-
-    ![File Manager showing log file highlighted within Run Batch Container app's job context directory](../../images/open-ondemand/getting-started-07-batch-container-app-logs.png){: class="border-img center"}
-    *File Manager showing the log file within Run Batch Container app's job context directory*
-
-1. Click on the log file, `output.log`.
-
-For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, the File Manager cannot be used. An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
-
-View the log file within the back-end:
-
-1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
-1. Change into the job context directory for the job on the back-end and show the log file where `SESSION_ID` can be seen on the **Session ID** link on the job card:
-
-    ```bash
-    cd ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/SESSION_ID/
-    ```
-
-    For example:
-
-    ```bash
-    cd ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357/
-    ```
-
-1. View the log file:
-
-    ```bash
-    cat output.log
-    ```
+![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-09-active-jobs-details.png){: class="border-img center"}
+*Active Jobs app showing details of completed Run Batch Container app job*
 
 ### Clean up after running Run Batch Container app
 
@@ -285,214 +570,6 @@ Please remove the file produced by the container from your 'safe data' directory
     ```console
     rm /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
     ```
-
----
-
-## Run the Active Jobs app
-
-[Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
-
-Click the 'Active Jobs' app on the Open OnDemand home page.
-
-The Active Jobs app will open to show a table of running and recently completed jobs.
-
-You will see an 'epcc-ces-hello:2.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
-
-Your job will have a status of 'Completed'.
-
-Each job has a unique **job ID** created by the job scheduler when you submitted the job. Unfortunately, the job ID is not the same as the session ID for an app created by Open OnDemand. Rather, the job ID is created by the job scheduler. Each job created by an app has both an Open OnDemand session ID and a job scheduler job ID.
-
-![Active Jobs app jobs list](../../images/open-ondemand/getting-started-08-active-jobs.png){: class="border-img center"}
-*Active Jobs app jobs list*
-
-To see more details about the job, click the **>** button, by the job.
-
-![Active Jobs app showing details of completed Run Batch Container app job](../../images/open-ondemand/getting-started-09-active-jobs-details.png){: class="border-img center"}
-*Active Jobs app showing details of completed Run Batch Container app job*
-
-If any app does not run promptly, but is in a 'Queued' state, then the Active Jobs app can provide you with information on other jobs that are running and for which you may have to wait until one or more have completed before your app's job runs.
-
----
-
-## Run the Run JupyterLab app
-
-[Run JupyterLab](apps/jupyter-app.md) is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab runs within an isolated environment (within a software container).
-
-Click the 'Run JupyterLab' app on the Open OnDemand home page.
-
-The Run JupyterLab app form will open.
-
-![Excerpt of Run JupyterLab app form](../../images/open-ondemand/getting-started-10-jupyter-app-form.png){: class="border-img center"}
-*Excerpt of Run JupyterLab app form*
-
-For **Cluster**, select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand. If there is only one back-end available to you then this form field won't be shown.
-
-Leave the other settings as-is.
-
-### Launch the Run JupyterLab app job
-
-Click **Launch**.
-
-Again, Open OnDemand submits the job for the app to the job scheduler.
-
-And, again, Open OnDemand will show an app job card with information about the app's job including:
-
-* Job status (on the top right of the job card): initially 'Queued'.
-* 'Created at': The time the job was submitted.
-* 'Time Requested': The runtime requested for the job which defaults to 6 hours.
-* 'Session ID': An auto-generated value which is used as the name of the job context directory with files created by Open OnDemand to run the app's job plus any log files created when the job runs. On the job card, the session ID is a link to open a File Manager pointing at this job context directory.
-* App-specific information, which includes values from the app form:
-    * 'Connection timeout (s)': when the app's job starts running, the app will then wait for JupyterLab to become available. If this does not occur within this app-specific period, then the app's job will cancel itself.
-    * 'CPUs/cores': The value you selected on the app form.
-    * 'Memory (GiB)' The value you selected on the app form.
-
-![Run JupyterLab app job card showing job status as 'Queued'](../../images/open-ondemand/getting-started-11-jupyter-app-queued.png){: class="border-img center"}
-*Run JupyterLab app job card showing job status as 'Queued'*
-
-When the job starts, the Job status on the job card will update to 'Starting' and 'Time Requested' will switch to 'Time Remaining', the time your job has left to run before it is cancelled by the job scheduler.
-
-![Run JupyterLab app job card showing job status as 'Starting'](../../images/open-ondemand/getting-started-12-jupyter-app-starting.png){: class="border-img center"}
-*Run JupyterLab app job card showing job status as 'Starting'*
-
-When the Job status updates to 'Running', a **Host** link will appear on the job card, which allows you to log in to the back-end on which the job, and so JupyterLab, is now running.
-
-A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
-
-![Run JupyterLab app job card showing job status as 'Running'](../../images/open-ondemand/getting-started-13-jupyter-app-running.png){: class="border-img center"}
-*Run JupyterLab app job card showing job status as 'Running'*
-
-Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
-
-You may wonder why you were not prompted for a username and password. JupyterLab is protected with an auto-generated password and the **Connect to JupyterLab** button is configured to log you in automatically using this password.
-
-![JupyterLab](../../images/open-ondemand/getting-started-14-jupyter-app-jupyter-lab.png){: class="border-img center"}
-*JupyterLab*
-
-### Create and run a Jupyter Notebook
-
-Create a Jupyter Notebook:
-
-1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
-1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
-
-JupyterLab runs within an isolated environment (within a software container) on a back-end. Within JupyterLab you will have access to your home directory on the back-end.
-
-As for the Run Batch Container App, your 'safe data' directory will also mounted within JupyterLab, at the path `/safe_data`.
-
-If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
-
-Rename the notebook:
-
-1. Right-click the notebook title, 'Untitled.ipynb'.
-1. Select **Rename Notebook...**.
-1. Enter **New Name**: `sine-wave.ipynb`.
-1. Click **Rename**.
-
-If you look at your home directory you should now see the `sine-wave.ipynb` notebook there.
-
-You can save changes to your notebook at any time via CTRL+S or the 'disk' icon at the top of the notebook.
-
-Within the first notebook cell, enter the following Python code, which creates data for a sine wave, plots the sine wave and saves both the data and the plot:
-
-```python
-import os
-import pwd
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-# 360 degrees is 2*PI radians so define 4*360 degrees
-# i.e. 4*2*PI radians for four sine waves.
-x = np.arange(0, 4 * (2 * np.pi), 0.1)
-y = np.sin(x)
-
-dataset = pd.DataFrame({'time': x, 'amplitude': y},
-                       columns=['time', 'amplitude'])
-dataset.plot(title='Sine wave',
-             x='time',
-             y='amplitude',
-             grid=True)
-```
-
-Click Shift + Enter to run the code. A plot should appear.
-
-![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
-*Jupyter Notebook with Python code and a sine wave*
-
-In the field under the plot, enter:
-
-```python
-user = pwd.getpwuid(os.getuid()).pw_name
-dataset.to_csv(f'/safe_data/{user}-sine-wave.csv', index=False)
-plt.savefig(f'/safe_data/{user}-sine-wave.png')
-```
-
-Click Shift + Enter to run the code.
-
-The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/your-project`.. If you look at your 'safe data' directory you should now see the files:
-
-```text
-your-user-sine-wave.csv
-your-user-sine-wave.png
-```
-
-![File Manager showing safe_data directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
-*File Manager showing `safe_data` directory contents after Python code is run in Run JupyterLab app*
-
-### Revisit the Active Jobs app
-
-Click the 'Active Jobs' app on the Open OnDemand home page.
-
-You will see a 'jupyter_app' entry for your app's job. All Run JupyterLab app jobs have this name.
-
-You will also see a unique job ID for this job.
-
-Your job will have a status of 'Running'.
-
-![Active Jobs app showing running Run JupyterLab app job](../../images/open-ondemand/getting-started-17-active-jobs.png){: class="border-img center"}
-*Active Jobs app showing running Run JupyterLab app job*
-
-To see more details about the job, click the **>** button, by the job.
-
-![Active Jobs app showing details of running Run JupyterLab app job](../../images/open-ondemand/getting-started-18-active-jobs-details.png){: class="border-img center"}
-*Active Jobs app showing details of running Run JupyterLab app job*
-
-### Finish your Run JupyterLab app job
-
-You can end your job by as follows:
-
-* Either, shut down JupyterLab via the **File** menu, **Shut Down** option.
-* Or, click **Cancel** on the app's job card.
-
-The Job status on the job card will update to 'Completed'.
-
-![Run JupyterLab app job card showing job status as 'Completed'](../../images/open-ondemand/getting-started-19-jupyter-app-completed.png){: class="border-img center"}
-*Run JupyterLab app job card showing job status as 'Completed'*
-
-Click the 'Active Jobs' app on the Open OnDemand home page.
-
-Your job will now have a status of 'Completed'.
-
-### Clean up after running Run JupyterLab app
-
-Please remove the sine wave files from your 'safe data' directory. You can do this in one of two ways.
-
-1. From within a JupyterLab 'Terminal' window. For example:
-
-    ```console
-    rm /safe_data/your-user-sine-wave.csv
-    rm /safe_data/your-user-sine-wave.png
-    ```
-
-1. From within Open OnDemand:
-
-    1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
-    1. Delete the files. For example:
-
-        ```console
-        rm /safe_data/your-project/your-user-sine-wave.csv
-        rm /safe_data/your-project/your-user-sine-wave.png
-        ```
 
 ---
 
