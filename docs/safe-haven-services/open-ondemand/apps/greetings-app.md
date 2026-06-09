@@ -1,6 +1,6 @@
 # Greetings
 
-Greetings is a 'getting started' app for new users of Open OnDemand that writes a greeting file on a back-end.
+Greetings is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
 
 ---
 

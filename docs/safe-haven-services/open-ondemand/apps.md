@@ -9,7 +9,7 @@ The following apps are available:
 | App | Type | Description |
 | --- | ---- | ----------- |
 | [Active Jobs](apps/active-jobs.md) | System Installed App | Browse and manage jobs created via both apps and the Job Composer app |
-| [Greetings](apps/greetings-app.md) | SHS App | A 'getting started' app that writes a greeting file on a back-end |
+| [Greetings](apps/greetings-app.md) | SHS App | A 'getting started' app that writes a greetings file on a back-end |
 | [Run Batch Container](apps/batch-container-app.md) | SHS App | Run a batch container on a back-end |
 | [Run JupyterLab](apps/jupyter-app.md) | SHS App | Run JupyterLab on a back-end |
 | [Run RStudio Server](apps/rstudio-app.md) | SHS App | Run RStudio Server on a back-end |
