@@ -121,7 +121,7 @@ Any files you create within `/safe_data` or other mounted directories within the
 
     Any files created outside of `/safe_data` or other mounted directories are **deleted** when the app stops.
 
-!!! WArning
+!!! Warning
 
     Your project data files, in a project-specific directory under `/safe_data` are **not** available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.
 
