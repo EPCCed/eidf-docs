@@ -255,7 +255,54 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-When the job script runs, two files are created. One file, `output.log`, has the outputs captured by Slurm as the job runs. For example:
+When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-070028-some-user-epcc-ces-hello.txt`:
+
+```text
+Greetings!
+
+Greetings to some-user
+from
+epcc-ces-hello
+at
+2026-06-09 07:00:28
+
+Your '/safe_data' directory includes the following files:
+
+20260609-070028-some-user-epcc-ces-hello.txt
+README
+analyse_ae.R
+analyse_ae.Rmd
+analyse_ae.ipynb
+analyse_ae.py
+weekly_ae_activity_20260201.csv
+```
+
+!!! Note
+
+    For some containers run via Podman, including `epcc-ces-hello`, by default, your user name and user group on the back-end will be automatically mapped to the 'root' user name and user group in the container. This is so that scripts running within the container can read from and write to the mounted 'safe data' directory, and any other mounted directories.
+
+    However, you are 'root' **only** within the container. Any files created in the mounted directories will be owned by 'root' within the container but by your own user, and user group, on the back-end.
+
+    You do **not** have 'root' access on the back-end on which the container is running!
+
+View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. `/safe_data` is not available on the Open OnDemand host so to view this file you will need to:
+
+1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
+1. View `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`:
+
+     ```bash
+     ls /safe_data/PROJECT_DIRECTORY/
+     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
+     ```
+
+     For example:
+
+     ```bash
+     ls /safe_data/some-project
+     cat /safe_data/20260609-070028-some-user-epcc-ces-hello.txt
+     ```
+
+When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs. For example:
 
 ```text
 Running: /usr/local/bin/ces-pm-pull anonymous CR_TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
@@ -284,36 +331,6 @@ Dozing for 5 seconds...
 Exiting epcc-ces-hello container
 ```
 
-!!! Note
-
-    For some containers run via Podman, including `epcc-ces-hello`, by default, your user name and user group on the back-end will be automatically mapped to the 'root' user name and user group in the container. This is so that scripts running within the container can read from and write to the mounted 'safe data' directory, and any other mounted directories.
-
-    However, you are 'root' **only** within the container. Any files created in the mounted directories will be owned by 'root' within the container but by your own user, and user group, on the back-end.
-
-    You do **not** have 'root' access on the back-end on which the container is running!
-
-The other file created when the job script runs is `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` which is a file created by the container itself. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-070028-some-user-epcc-ces-hello.txt`:
-
-```text
-Greetings!
-
-Greetings to some-user
-from
-epcc-ces-hello
-at
-2026-06-09 07:00:28
-
-Your '/safe_data' directory includes the following files:
-
-20260609-070028-some-user-epcc-ces-hello.txt
-README
-analyse_ae.R
-analyse_ae.Rmd
-analyse_ae.ipynb
-analyse_ae.py
-weekly_ae_activity_20260201.csv
-```
-
 View the log file, `output.log`:
 
 * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:
@@ -326,23 +343,6 @@ View the log file, `output.log`:
         ```bash
         cat output.log
         ```
-
-View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. As `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
-
-1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
-
-     ```bash
-     ls /safe_data/PROJECT_DIRECTORY/
-     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
-     ```
-
-     For example:
-
-     ```bash
-     ls /safe_data/some-project
-     cat /safe_data/20260609-070028-some-user-epcc-ces-hello.txt
-     ```
 
 ### Run container using Apptainer
 
@@ -385,7 +385,28 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-View the log file, `output.log`, and the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`, using the steps described earlier.
+An example of the file created by the container, here `/safe_data/some-project/20260609-075213-some-user-epcc-ces-hello.txt` is:
+
+```text
+Greetings!
+
+Greetings to some-user
+from
+epcc-ces-hello
+at
+2026-06-09 07:52:13
+
+Your '/safe_data' directory includes the following files:
+
+20260609-070028-some-user-epcc-ces-hello.txt
+20260609-075213-some-user-epcc-ces-hello.txt
+README
+analyse_ae.R
+analyse_ae.Rmd
+analyse_ae.ipynb
+analyse_ae.py
+weekly_ae_activity_20260201.csv
+```
 
 An example of `output.log` produced by this example is as follows:
 
@@ -422,25 +443,4 @@ Exiting epcc-ces-hello container
 
     In constrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.
 
-An example of the file created by the container, here `/safe_data/some-project/20260609-075213-some-user-epcc-ces-hello.txt` is:
-
-```text
-Greetings!
-
-Greetings to some-user
-from
-epcc-ces-hello
-at
-2026-06-09 07:52:13
-
-Your '/safe_data' directory includes the following files:
-
-20260609-070028-some-user-epcc-ces-hello.txt
-20260609-075213-some-user-epcc-ces-hello.txt
-README
-analyse_ae.R
-analyse_ae.Rmd
-analyse_ae.ipynb
-analyse_ae.py
-weekly_ae_activity_20260201.csv
-```
+These files can be viewed using the steps described earlier.
