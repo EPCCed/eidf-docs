@@ -241,6 +241,6 @@ Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app'
 
 ## End your job
 
-You can end your job by as follows:
+You can end your job early as follows:
 
 * Cancel or delete the job via Open OnDemand. See [Browse and manage jobs](../jobs.md#browse-and-manage-jobs).
