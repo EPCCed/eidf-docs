@@ -318,7 +318,6 @@ View the log file, `output.log`:
 
     You do **not** have 'root' access on the back-end on which the container is running!
 
-
 ### Run container using Apptainer
 
 Create a new job from the current job to run the container using Apptainer:
