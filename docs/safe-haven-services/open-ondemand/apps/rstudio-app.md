@@ -68,14 +68,22 @@ You will not be prompted for a username and password. RStudio Server is protecte
 
 RStudio Server runs within an isolated environment (within a software container) on a back-end. Within RStudio Server you will have access to your home directory on the back-end.
 
-Your 'safe data' directory will also available within RStudio Server, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
+Your 'safe data' directory will also be mounted within RStudio Server, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is available at `/safe_data` within RStudio Server.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available at `/safe_data` within RStudio Server.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available mounted at `/safe_data` within RStudio Server.
 
 Any files you create within your home directory or `/safe_data` in RStudio Server will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
 
 You can create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.
+
+When the app runs, the following additional directories are created within your home directory and are mounted at the corresponding locations (shown after the colons) within RStudio Server. These contain RStudio Server-specific configuration required for the app to run RStudio Server. They will be reused the next time you run the app but if you delete them, then they will be recreated afresh.
+
+```text
+$HOME/rstudio-tmp/var/lib:/var/lib/rstudio-server
+$HOME/rstudio-tmp/var/run:/var/run/rstudio-server
+$HOME/rstudio-tmp/tmp:/tmp
+```
 
 !!! Warning
 
