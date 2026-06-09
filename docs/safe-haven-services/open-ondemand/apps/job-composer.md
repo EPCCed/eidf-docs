@@ -191,7 +191,9 @@ View the output files:
 
 ## Run a container example
 
-This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is the default container offered by the [Run Batch Container](./batch-container-app.md) app. The container is run using the Safe Haven Services Container Execution Tools' command `ces-pull`, to pull the container, and then `podman` or `apptainer` to run the container.
+This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is the default container offered by the [Run Batch Container](./batch-container-app.md) app.
+
+The example uses the [Safe Haven Container Execution Service - CES](../../shs-container-user-guide/introduction.md) to pull containers onto the back-end, via`ces-pull`, to pull the container, and then uses `podman` or `apptainer` to run the container.
 
 ### Run container using Podman
 
@@ -232,6 +234,7 @@ Create a job to run the container using Podman:
         -d 5 -n ${USER}
     ```
 
+    * For `CR_URL`, there is no need to cite port 5050 in the GitLab container registry URL. The `ces-pull` command adds this when it pulls the container.
     * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
     * For `SAFE_DATA`, replace `PROJECT_DIRECTORY` with the name of your 'safe data' project directory in `/safe_data`. When Podman is run, your 'safe data' project directory is mounted into the container at `/safe_data` via Podman's `--mount` option.
     * The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
