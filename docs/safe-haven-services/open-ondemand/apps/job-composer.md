@@ -166,7 +166,7 @@ The script creates two files:
 * `output_file` which is the file created within the job script. For example:
 
     ```text
-    Hello World to some-user from some-vm.nsh.loc
+    Hello World to your-user from some-vm.nsh.loc
     ```
 
 View the output files:
@@ -255,12 +255,12 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-070028-some-user-epcc-ces-hello.txt`:
+When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/your-project/20260609-070028-your-user-epcc-ces-hello.txt`:
 
 ```text
 Greetings!
 
-Greetings to some-user
+Greetings to your-user
 from
 epcc-ces-hello
 at
@@ -268,7 +268,7 @@ at
 
 Your '/safe_data' directory includes the following files:
 
-20260609-070028-some-user-epcc-ces-hello.txt
+20260609-070028-your-user-epcc-ces-hello.txt
 README
 analyse_ae.R
 analyse_ae.Rmd
@@ -298,8 +298,8 @@ View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-H
      For example:
 
      ```bash
-     ls /safe_data/some-project
-     cat /safe_data/20260609-070028-some-user-epcc-ces-hello.txt
+     ls /safe_data/your-project
+     cat /safe_data/20260609-070028-your-user-epcc-ces-hello.txt
      ```
 
 When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs. For example:
@@ -317,10 +317,10 @@ Container user ID: 0(root)
 Container group ID: 0(root)
 Container user groups: 0(root)
 Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n some-user
-name: some-user
+Script arguments: -d 5 -n your-user
+name: your-user
 doze: 5
-Writing /safe_data/20260609-070028-some-user-epcc-ces-hello.txt
+Writing /safe_data/20260609-070028-your-user-epcc-ces-hello.txt
 Dozing for 5 seconds...
 1
 2
@@ -385,12 +385,12 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-An example of the file created by the container, here `/safe_data/some-project/20260609-075213-some-user-epcc-ces-hello.txt` is:
+An example of the file created by the container, here `/safe_data/your-project/20260609-075213-your-user-epcc-ces-hello.txt` is:
 
 ```text
 Greetings!
 
-Greetings to some-user
+Greetings to your-user
 from
 epcc-ces-hello
 at
@@ -398,8 +398,8 @@ at
 
 Your '/safe_data' directory includes the following files:
 
-20260609-070028-some-user-epcc-ces-hello.txt
-20260609-075213-some-user-epcc-ces-hello.txt
+20260609-070028-your-user-epcc-ces-hello.txt
+20260609-075213-your-user-epcc-ces-hello.txt
 README
 analyse_ae.R
 analyse_ae.Rmd
@@ -420,15 +420,15 @@ INFO:Creating SIF file...
 INFO:Build complete: epcc-ces-hello:2.1.sif
 Entered epcc-ces-hello container
 /safe_data users, groups and permissions:
-/safe_data: nobody (65534) some-project(4797) drwxrws--- nfs
-Container user ID: 36177(some-user)
-Container group ID: 4797(some-project)
-Container user groups: 4797(some-project),65534(nogroup)
+/safe_data: nobody (65534) your-project(4797) drwxrws--- nfs
+Container user ID: 36177(your-user)
+Container group ID: 4797(your-project)
+Container user groups: 4797(your-project),65534(nogroup)
 Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n some-user
-name: some-user
+Script arguments: -d 5 -n your-user
+name: your-user
 doze: 5
-Writing /safe_data/20260609-075213-some-user-epcc-ces-hello.txt
+Writing /safe_data/20260609-075213-your-user-epcc-ces-hello.txt
 Dozing for 5 seconds...
 1
 2

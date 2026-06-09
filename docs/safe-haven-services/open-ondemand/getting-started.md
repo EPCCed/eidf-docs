@@ -137,7 +137,7 @@ The Job status on the job card will update to 'Completed'.
 
 When the app runs, your 'safe data' directory is mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `some-project` and there is a `/safe_data/some-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within the container.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within the container.
 * However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within the container.
 
 You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files.
@@ -148,13 +148,13 @@ Apps that do not run containers will typically be able to access to any files av
 
 ### View the container's output file
 
-When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt`:
+When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt`:
 
 ```text
-/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
+/safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
 Greetings!
 
-Greetings to some-user
+Greetings to your-user
 from
 epcc-ces-hello
 at
@@ -162,7 +162,7 @@ at
 
 Your '/safe_data' directory includes the following files:
 
-20260609-085646-some-user-epcc-ces-hello.txt
+20260609-085646-your-user-epcc-ces-hello.txt
 README
 analyse_ae.R
 analyse_ae.Rmd
@@ -170,7 +170,7 @@ analyse_ae.ipynb
 analyse_ae.py
 config
 deepfake
-some-project
+your-project
 postgres_data_test
 tmp
 weekly_ae_activity_20260201.csv
@@ -189,8 +189,8 @@ View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-H
      For example:
 
      ```bash
-     ls /safe_data/some-project
-     cat /safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
+     ls /safe_data/your-project
+     cat /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
      ```
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
@@ -209,8 +209,8 @@ For this app, its log file, named `output.log`, includes information about the c
 
 ```text
 Tue Jun  9 08:56:44 UTC 2026 before.sh: Started before.sh
-Tue Jun  9 08:56:44 UTC 2026 before.sh: JOB_FOLDER: /home/some-project/some-project/some-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357
-Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: some-project-runner-vm.vms.os.eidf.epcc.ed.ac.uk
+Tue Jun  9 08:56:44 UTC 2026 before.sh: JOB_FOLDER: /home/your-project/your-project/your-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357
+Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: your-project-runner-vm.vms.os.eidf.epcc.ed.ac.uk
 Tue Jun  9 08:56:44 UTC 2026 before.sh: Running ces-pull podman 'anonymous' 'TOKEN' git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Running: /usr/local/bin/ces-pm-pull anonymous TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Trying pull proxy host tre-ghcr-proxy.nsh.loc
@@ -225,10 +225,10 @@ Container user ID: 0(root)
 Container group ID: 0(root)
 Container user groups: 0(root)
 Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n some-user
-name: some-user
+Script arguments: -d 5 -n your-user
+name: your-user
 doze: 5
-Writing /safe_data/20260609-085646-some-user-epcc-ces-hello.txt
+Writing /safe_data/20260609-085646-your-user-epcc-ces-hello.txt
 Dozing for 5 seconds...
 1
 2
@@ -283,7 +283,7 @@ Please remove the file produced by the container from your 'safe data' directory
 1. Delete the file. For example:
 
     ```console
-    rm /safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
+    rm /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
     ```
 
 ---
@@ -429,11 +429,11 @@ plt.savefig(f'/safe_data/{user}-sine-wave.png')
 
 Click Shift + Enter to run the code.
 
-The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/some-project`.. If you look at your 'safe data' directory you should now see the files:
+The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/your-project`.. If you look at your 'safe data' directory you should now see the files:
 
 ```text
-some-user-sine-wave.csv
-some-user-sine-wave.png
+your-user-sine-wave.csv
+your-user-sine-wave.png
 ```
 
 ![File Manager showing safe_data directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
@@ -480,8 +480,8 @@ Please remove the sine wave files from your 'safe data' directory. You can do th
 1. From within a JupyterLab 'Terminal' window. For example:
 
     ```console
-    rm /safe_data/some-user-sine-wave.csv
-    rm /safe_data/some-user-sine-wave.png
+    rm /safe_data/your-user-sine-wave.csv
+    rm /safe_data/your-user-sine-wave.png
     ```
 
 1. From within Open OnDemand:
@@ -490,8 +490,8 @@ Please remove the sine wave files from your 'safe data' directory. You can do th
     1. Delete the files. For example:
 
         ```console
-        rm /safe_data/some-project/some-user-sine-wave.csv
-        rm /safe_data/some-project/some-user-sine-wave.png
+        rm /safe_data/your-project/your-user-sine-wave.csv
+        rm /safe_data/your-project/your-user-sine-wave.png
         ```
 
 ---

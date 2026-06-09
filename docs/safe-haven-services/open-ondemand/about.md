@@ -20,6 +20,7 @@ Then, explore the other pages about the service:
 * [Log into back-ends](ssh.md)
 * Apps:
     * [Active Jobs](apps/active-jobs.md)
+    * [Greetings](apps/greetings-app.md)
     * [Run Batch Container](apps/batch-container-app.md)
     * [Run JupyterLab](apps/jupyter-app.md)
     * [Run RStudio Server](apps/rstudio-app.md)

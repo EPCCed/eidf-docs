@@ -70,7 +70,7 @@ RStudio Server runs within an isolated environment (within a software container)
 
 Your 'safe data' directory will also be mounted within RStudio Server, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `some-project` and there is a `/safe_data/some-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
 * However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available mounted at `/safe_data` within RStudio Server.
 
 Any files you create within your home directory or `/safe_data` in RStudio Server will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
@@ -93,18 +93,18 @@ $HOME/rstudio-tmp/tmp:/tmp
 
 As described in [Job cards](../jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
 
-In cases where there are errors in inferring or accessing your 'safe data' directory, then the log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/rstudio_app/output/SESSION_ID`, will include a message like one of the following:
+In cases where there are errors in inferring or accessing your 'safe data' directory, then the `output.log` log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/rstudio_app/output/SESSION_ID`, will include a message like one of the following:
 
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/some-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/your-project
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/some-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/your-project
 ```
 
 If this problem occurs, then please contact your Research Coordinator (or equivalent).
