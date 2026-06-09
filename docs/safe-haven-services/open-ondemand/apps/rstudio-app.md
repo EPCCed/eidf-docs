@@ -70,10 +70,10 @@ RStudio Server runs within an isolated environment (within a software container)
 
 Your 'safe data' directory will also be mounted within RStudio Server, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available mounted at `/safe_data` within RStudio Server.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory that is mounted at `/safe_data` within RStudio Server. If no such directory can be found, then the app will fail.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at `/safe_data` within RStudio Server.
 
-Any files you create within your home directory or `/safe_data` in RStudio Server will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
+Any files you create within your home directory or `/safe_data` in RStudio Server will be available in your home directory or `/safe_data/PROJECT` (or `$HOME/safe_data`, if applicable) on the back-end, and vice-versa.
 
 You can create any R scripts and configuration files, or download any R packages into directories within your home directory so that they are available the next time you run the app.
 
@@ -100,11 +100,11 @@ Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory co
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/yourproject
 ```
 
 If this problem occurs, then please contact your Research Coordinator (or equivalent).

@@ -6,11 +6,11 @@ The app uses the [Safe Haven Container Execution Service - CES](../../shs-contai
 
 ---
 
-## Run a container
+## Run app
 
 Complete the following information the app form:
 
-* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information). If there is only one back-end available to you then this form field won't be shown.
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the app. Back-end-specific short-names are used in the drop-down list (see [Back-end (cluster) names](../jobs.md#back-end-cluster-names) for more information). If there is only one back-end available to you then this form field won't be shown.
 
     !!! Note
 
@@ -41,7 +41,7 @@ Complete the following information the app form:
 
     ```text
     -d 5
-    -n batch-container-app-user
+    -n ${USER}
     ```
 
 Click **Launch**.
@@ -93,8 +93,8 @@ The container registries supported by the Safe Haven Services Container Executio
 
 When the app runs, your 'safe data' directory will be mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within the container.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within the container.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory that is mounted at `/safe_data` within the container. If no such directory can be found, then the app will fail.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at `/safe_data` within the container.
 
 You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files. An example, mounting `${HOME}/my_content` into as container at `/mnt/my_content`, is as follows:
 
@@ -115,7 +115,7 @@ For more information see:
 * Apptainer, [apptainer run](https://apptainer.org/docs/user/main/cli/apptainer_run.html) (`-B|--bind` and `--mount` options) and [Bind Paths and Mounts](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html).
 * Podman, [podman run](https://docs.podman.io/en/latest/markdown/podman-run.1.html) (`--volume|-v` and `--mount` options).
 
-Any files you create within `/safe_data` or other mounted directories within the container will be available in `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) and the other mounted directories on the back-end, and vice-versa.
+Any files you create within `/safe_data` or other mounted directories within the container will be available in `/safe_data/PROJECT` (or `$HOME/safe_data`, if applicable) and the other mounted directories on the back-end, and vice-versa.
 
 !!! Warning
 
@@ -136,11 +136,11 @@ Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory co
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/yourproject
 ```
 
 If this problem occurs, then please contact your Research Coordinator (or equivalent).

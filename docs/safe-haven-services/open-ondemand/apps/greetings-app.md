@@ -1,10 +1,10 @@
 # Greetings
 
-Greetings is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
+Greetings is a 'getting started' app that writes a greetings file on a back-end.
 
 ---
 
-## Run the app
+## Run app
 
 Complete the following information the app form:
 
@@ -16,9 +16,9 @@ Complete the following information the app form:
 
 * **Greetings file destination**: Where to write the greetings file to. Select one of:
 
-    * '/safe_data/PROJECT_DIRECTORY/': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your 'safe data' directory on the back-end.
+    * '/safe_data/PROJECT/': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your 'safe data' directory on the back-end.
 
-        Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is the directory into which the file is written.
+        Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory into which the greetings file is written. If no such directory can be found, then the app will fail.
 
     * '$HOME': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your home directory on the back-end.
 
@@ -43,19 +43,19 @@ When the job completes, the Job status on the job card will update to 'Completed
 
 ## View the greetings file
 
-The greetings file includes your user name, the back-end host name and a date and time. For example:
+The greetings file includes your user name, the back-end host name and the date and time. For example:
 
 ```text
 Greetings!
 
-Greetings to your-user
+Greetings to youruser
 from
 some-vm.nsh.loc
 at
 2026-06-09 10:09:10
 ```
 
-### 'Greetings file destination': '/safe_data/PROJECT_DIRECTORY/'
+### 'Greetings file destination': '/safe_data/PROJECT/'
 
 `/safe_data` is not available on Open OnDemand host. To view the greetings file:
 
@@ -63,15 +63,15 @@ at
 1. View the greetings file:
 
      ```bash
-     ls /safe_data/PROJECT_DIRECTORY/
-     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-greetings.txt
+     ls /safe_data/PROJECT/
+     cat /safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-greetings.txt
      ```
 
      For example:
 
      ```bash
-     ls /safe_data/your-project
-     cat /safe_data/your-project/20260609-100910-your-user-greetings.txt
+     ls /safe_data/yourproject
+     cat /safe_data/yourproject/20260609-100910-youruser-greetings.txt
      ```
 
 ### 'Greetings file destination': '$HOME'
@@ -82,7 +82,7 @@ View the greetings file via the Open OnDemand File Manager:
 
 1. Click the **Session ID** link in the job card to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.
 1. Click **Home Directory**.
-1. Click on the greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` e.g., `20260609-100910-your-user-greetings.txt`.
+1. Click on the greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` e.g., `20260609-100910-youruser-greetings.txt`.
 
 For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, the File Manager cannot be used. An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
 
@@ -98,7 +98,7 @@ View the greetings file within the back-end:
      For example:
 
      ```bash
-     cat 20260609-100910-your-user-greetings.txt
+     cat 20260609-100910-youruser-greetings.txt
      ```
 
 ---
@@ -116,11 +116,11 @@ Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory co
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 ```
 
 ```text
-Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/your-project
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/yourproject
 ```
 
 If this problem occurs, then please contact your Research Coordinator (or equivalent).

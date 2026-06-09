@@ -6,10 +6,10 @@ First, some Open OnDemand terminology. A compute resource upon which tasks can b
 
 This walkthrough is centred around three apps:
 
-* [Greetings](apps/greetings-app.md) is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
-* [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
-* [Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
+* [Greetings](apps/greetings-app.md) is a 'getting started' app that writes a greetings file on a back-end.
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
+* [Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
+* [Run Batch Container](apps/batch-container-app.md) runs a software container on a back-end. This app is designed to run batch containers, those that perform some computational or data-related task without human interaction when they are running.
 
 !!! Note
 
@@ -33,7 +33,7 @@ Your project data files, in a project-specific directory under `/safe_data`, are
 
 ## Run the Greetings app
 
-The [Greetings](apps/greetings-app.md) is a 'getting started' app for new users of Open OnDemand that writes a greetings file on a back-end.
+The [Greetings](apps/greetings-app.md) app is a 'getting started' app that writes a greetings file on a back-end.
 
 Click the 'Greetings' app on the Open OnDemand home page.
 
@@ -43,13 +43,13 @@ The 'Greetings' app form will open.
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
-* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the app. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Greetings file destination**: Where to write the greetings file to. Select one of:
 
-    * '/safe_data/PROJECT_DIRECTORY/': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your 'safe data' directory on the back-end.
+    * '/safe_data/PROJECT/': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your 'safe data' directory on the back-end.
 
-        Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is the directory into which the file is written.
+        Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory into which the greetings file is written. If no such directory can be found, then the app will fail.
 
     * '$HOME': If selected, then the app will write a greetings file, `YYYYMMDD-HHMMSS-USER-greetings.txt` into your home directory on the back-end.
     * Leave this value as-is.
@@ -89,33 +89,33 @@ When the job completes, the Job status on the job card will update to 'Completed
 
 ### View the greetings file
 
-The greetings file includes your user name, the back-end host name and a date and time. For example:
+The greetings file includes your user name, the back-end host name and the date and time. For example:
 
 ```text
 Greetings!
 
-Greetings to your-user
+Greetings to youruser
 from
 some-vm.nsh.loc
 at
 2026-06-09 10:09:10
 ```
 
-When you ran the app, you requested that a **Greetings file destination** of '/safe_data/PROJECT_DIRECTORY/' be used. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
+When you ran the app, you requested that a **Greetings file destination** of '/safe_data/PROJECT/' be used. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
 1. View the greetings file:
 
      ```bash
-     ls /safe_data/PROJECT_DIRECTORY/
-     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-greetings.txt
+     ls /safe_data/PROJECT/
+     cat /safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-greetings.txt
      ```
 
      For example:
 
      ```bash
-     ls /safe_data/your-project
-     cat /safe_data/your-project/20260609-100910-your-user-greetings.txt
+     ls /safe_data/yourproject
+     cat /safe_data/yourproject/20260609-100910-youruser-greetings.txt
      ```
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the file directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
@@ -145,7 +145,7 @@ View the log file within the back-end:
 1. Change into the job context directory for the job on the back-end and show the log file where `SESSION_ID` can be seen on the **Session ID** link on the job card:
 
     ```bash
-    cd ondemand/data/sys/dashboard/batch_connect/sys/greetings<_app/output/SESSION_ID/
+    cd ondemand/data/sys/dashboard/batch_connect/sys/greetings_app/output/SESSION_ID/
     ```
 
     For example:
@@ -168,8 +168,8 @@ Please remove the file produced by the app from your 'safe data' directory. You 
 1. Delete the file. For example:
 
     ```console
-    rm /safe_data/your-project/20260609-100910-your-user-greetings.txt
-   ```
+    rm /safe_data/yourproject/20260609-100910-youruser-greetings.txt
+    ```
 
 ---
 
@@ -260,10 +260,10 @@ JupyterLab runs within an isolated environment (within a software container) on 
 Your 'safe data' directory will also mounted within JupyterLab, at the path `/safe_data`. Your 'safe data'
 directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within JupyterLab.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within JupyterLab.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory that is mounted at `/safe_data` within JupyterLab. If no such directory can be found, then the app will fail.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at `/safe_data` within JupyterLab.
 
-Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
+Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT` (or `$HOME/safe_data`, if applicable) on the back-end, and vice-versa.
 
 You can create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
 
@@ -278,7 +278,7 @@ Create a Jupyter Notebook:
 1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
 1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
 
-As this has been saved in your home directory within JupyterLab, it will be available in your home directory on the back-end. If you look at your home directory you should now see the `sine-wave.ipynb` notebook there.
+As this has been saved in your home directory within JupyterLab, it will be available in your home directory on the back-end. If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
 
 Rename the notebook:
 
@@ -289,7 +289,7 @@ Rename the notebook:
 
 You can save changes to your notebook at any time via CTRL+S or the 'disk' icon at the top of the notebook.
 
-Within the first notebook cell, enter the following Python code, which creates data for a sine wave, plots the sine wave and saves both the data and the plot:
+Within the first notebook cell, enter the following Python code, which creates data for a sine wave and plots the sine wave:
 
 ```python
 import os
@@ -316,7 +316,7 @@ Click Shift + Enter to run the code. A plot should appear.
 ![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
 *Jupyter Notebook with Python code and a sine wave*
 
-In the field under the plot, enter:
+In the field under the plot, add the following code to save the sine wave data and the plot:
 
 ```python
 user = pwd.getpwuid(os.getuid()).pw_name
@@ -326,11 +326,11 @@ plt.savefig(f'/safe_data/{user}-sine-wave.png')
 
 Click Shift + Enter to run the code.
 
-The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/your-project`.. If you look at your 'safe data' directory you should now see the files:
+The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory i.e., `/safe_data/PROJECT`. If you look at your 'safe data' directory you should now see the files:
 
 ```text
-your-user-sine-wave.csv
-your-user-sine-wave.png
+youruser-sine-wave.csv
+youruser-sine-wave.png
 ```
 
 ![File Manager showing safe_data directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
@@ -377,8 +377,8 @@ Please remove the sine wave files from your 'safe data' directory. You can do th
 1. From within a JupyterLab 'Terminal' window. For example:
 
     ```console
-    rm /safe_data/your-user-sine-wave.csv
-    rm /safe_data/your-user-sine-wave.png
+    rm /safe_data/youruser-sine-wave.csv
+    rm /safe_data/youruser-sine-wave.png
     ```
 
 1. From within Open OnDemand:
@@ -387,8 +387,8 @@ Please remove the sine wave files from your 'safe data' directory. You can do th
     1. Delete the files. For example:
 
         ```console
-        rm /safe_data/your-project/your-user-sine-wave.csv
-        rm /safe_data/your-project/your-user-sine-wave.png
+        rm /safe_data/yourproject/youruser-sine-wave.csv
+        rm /safe_data/yourproject/youruser-sine-wave.png
         ```
 
 ---
@@ -410,7 +410,7 @@ The app form is prepopulated with the configuration to pull and run a 'hello' co
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
-* **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
+* **Cluster**: A back-end (cluster) within your safe haven on which to run the app. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled.
     * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1` container, hereon termed `epcc-ces-hello`.
@@ -489,8 +489,8 @@ The Job status on the job card will update to 'Completed'.
 
 When the app runs, your 'safe data' directory is mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within the container.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within the container.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory that is mounted at `/safe_data` within the container. If no such directory can be found, then the app will fail.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at `/safe_data` within the container.
 
 You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files.
 
@@ -498,15 +498,14 @@ Together, these mounts (and, additional, app-specific mounts) provide various me
 
 Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
 
-### View the container's output file
+### View the file created by the container
 
-When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt`:
+When the `epcc-ces-hello` container is run, it writes a file `YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container i.e., `/safe_data/PROJECT` on the back-end. For example, a file `20260609-085646-youruser-epcc-ces-hello.txt` could contain:
 
 ```text
-/safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
 Greetings!
 
-Greetings to your-user
+Greetings to youruser
 from
 epcc-ces-hello
 at
@@ -514,7 +513,7 @@ at
 
 Your '/safe_data' directory includes the following files:
 
-20260609-085646-your-user-epcc-ces-hello.txt
+20260609-085646-youruser-epcc-ces-hello.txt
 README
 analyse_ae.R
 analyse_ae.Rmd
@@ -522,30 +521,28 @@ analyse_ae.ipynb
 analyse_ae.py
 config
 deepfake
-your-project
+yourproject
 postgres_data_test
 tmp
 weekly_ae_activity_20260201.csv
 ```
 
-View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
+View the file created by the container. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
-1. View `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`:
+1. View the file created by the container:
 
      ```bash
-     ls /safe_data/PROJECT_DIRECTORY/
-     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
+     ls /safe_data/PROJECT/
+     cat /safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
      ```
 
      For example:
 
      ```bash
-     ls /safe_data/your-project
-     cat /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
+     ls /safe_data/yourproject
+     cat /safe_data/yourproject/20260609-085646-youruser-epcc-ces-hello.txt
      ```
-
-As you have accessed Open OnDemand from your 'desktop' VM, you could also access the file directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
 ### Look at the Run Batch Container app job in the Active Jobs app
 
@@ -568,7 +565,7 @@ Please remove the file produced by the container from your 'safe data' directory
 1. Delete the file. For example:
 
     ```console
-    rm /safe_data/your-project/20260609-085646-your-user-epcc-ces-hello.txt
+    rm /safe_data/yourproject/20260609-085646-youruser-epcc-ces-hello.txt
     ```
 
 ---

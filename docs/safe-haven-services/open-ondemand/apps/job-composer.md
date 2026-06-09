@@ -166,7 +166,7 @@ The script creates two files:
 * `output_file` which is the file created within the job script. For example:
 
     ```text
-    Hello World to your-user from some-vm.nsh.loc
+    Hello World to youruser from some-vm.nsh.loc
     ```
 
 View the output files:
@@ -197,7 +197,7 @@ View the output files:
 
 This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the `epcc-ces-hello` container which is the default container offered by the [Run Batch Container](./batch-container-app.md) app.
 
-The example uses the [Safe Haven Container Execution Service - CES](../../shs-container-user-guide/introduction.md) to pull containers onto the back-end, via`ces-pull`, to pull the container, and then uses `podman` or `apptainer` to run the container.
+The example uses the [Safe Haven Container Execution Service - CES](../../shs-container-user-guide/introduction.md) to pull containers onto the back-end, via the `ces-pull` command, and then uses `podman` and `apptainer` in turn to run the container.
 
 ### Run container using Podman
 
@@ -224,7 +224,7 @@ Create a job to run the container using Podman:
     CR_TOKEN=... # See below...
     ces-pull podman $CR_USER $CR_TOKEN $CR_URL
 
-    SAFE_DATA=/safe_data/PROJECT_DIRECTORY # See below...
+    SAFE_DATA=/safe_data/PROJECT # See below...
 
     cat << EOF > envs.txt
     GREETING=Greetings
@@ -239,8 +239,9 @@ Create a job to run the container using Podman:
     ```
 
     * For `CR_URL`, there is no need to cite port 5050 in the GitLab container registry URL. The `ces-pull` command adds this when it pulls the container.
+    * For `CR_URL`, see [Container registries](./batch-container-app.md#container-registries) for supported container registries.
     * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
-    * For `SAFE_DATA`, replace `PROJECT_DIRECTORY` with the name of your 'safe data' project directory in `/safe_data`. When Podman is run, your 'safe data' project directory is mounted into the container at `/safe_data` via Podman's `--mount` option.
+    * For `SAFE_DATA`, replace `PROJECT` with the name of your 'safe data' project directory in `/safe_data`. When Podman is run, your 'safe data' project directory is mounted into the container at `/safe_data` via Podman's `--mount` option.
     * The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
     * `-n` (name, here, the current user) and `-d` (doze for 10 seconds) are arguments for the `epcc-ces-hello` container itself.
 
@@ -255,12 +256,12 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/your-project/20260609-070028-your-user-epcc-ces-hello.txt`:
+When the `epcc-ces-hello` container is run, it writes a file `YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container i.e., `/safe_data/PROJECT` on the back-end. For example, a file `20260609-070028-youruser-epcc-ces-hello.txt` could contain:
 
 ```text
 Greetings!
 
-Greetings to your-user
+Greetings to youruser
 from
 epcc-ces-hello
 at
@@ -268,7 +269,7 @@ at
 
 Your '/safe_data' directory includes the following files:
 
-20260609-070028-your-user-epcc-ces-hello.txt
+20260609-070028-youruser-epcc-ces-hello.txt
 README
 analyse_ae.R
 analyse_ae.Rmd
@@ -277,29 +278,21 @@ analyse_ae.py
 weekly_ae_activity_20260201.csv
 ```
 
-!!! Note
-
-    For some containers run via Podman, including `epcc-ces-hello`, by default, your user name and user group on the back-end will be automatically mapped to the 'root' user name and user group in the container. This is so that scripts running within the container can read from and write to the mounted 'safe data' directory, and any other mounted directories.
-
-    However, you are 'root' **only** within the container. Any files created in the mounted directories will be owned by 'root' within the container but by your own user, and user group, on the back-end.
-
-    You do **not** have 'root' access on the back-end on which the container is running!
-
-View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. `/safe_data` is not available on the Open OnDemand host so to view this file you will need to:
+View the file created by the container. `/safe_data` is not available on the Open OnDemand host so to view this file you will need to:
 
 1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`:
+1. View the file created by the container:
 
      ```bash
-     ls /safe_data/PROJECT_DIRECTORY/
-     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
+     ls /safe_data/PROJECT/
+     cat /safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
      ```
 
      For example:
 
      ```bash
-     ls /safe_data/your-project
-     cat /safe_data/20260609-070028-your-user-epcc-ces-hello.txt
+     ls /safe_data/yourproject
+     cat /safe_data/20260609-070028-youruser-epcc-ces-hello.txt
      ```
 
 When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs.
@@ -316,6 +309,15 @@ View the log file, `output.log`:
         ```bash
         cat output.log
         ```
+
+!!! Note
+
+    For some containers run via Podman, including `epcc-ces-hello`, by default, your user name and user group on the back-end will be automatically mapped to the 'root' user name and user group in the container. This is so that scripts running within the container can read from and write to the mounted 'safe data' directory, and any other mounted directories.
+
+    However, you are 'root' **only** within the container. Any files created in the mounted directories will be owned by 'root' within the container but by your own user, and user group, on the back-end.
+
+    You do **not** have 'root' access on the back-end on which the container is running!
+
 
 ### Run container using Apptainer
 
@@ -358,28 +360,7 @@ Submit job:
 
 1. The job 'Status' should go from 'Queued' to 'Completed'.
 
-An example of the file created by the container, here `/safe_data/your-project/20260609-075213-your-user-epcc-ces-hello.txt` is:
-
-```text
-Greetings!
-
-Greetings to your-user
-from
-epcc-ces-hello
-at
-2026-06-09 07:52:13
-
-Your '/safe_data' directory includes the following files:
-
-20260609-070028-your-user-epcc-ces-hello.txt
-20260609-075213-your-user-epcc-ces-hello.txt
-README
-analyse_ae.R
-analyse_ae.Rmd
-analyse_ae.ipynb
-analyse_ae.py
-weekly_ae_activity_20260201.csv
-```
+The file created by the container and the `output.log` file can view viewed using the steps described above in the Podman example.
 
 !!! Note
 
