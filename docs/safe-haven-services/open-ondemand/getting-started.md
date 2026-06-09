@@ -137,7 +137,7 @@ The Job status on the job card will update to 'Completed'.
 
 When the app runs, your 'safe data' directory is mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within the container.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `your-project` and there is a `/safe_data/your-project` directory, then that is your 'safe data' directory that is mounted at `/safe_data` within the container.
 * However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within the container.
 
 You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files.
@@ -473,7 +473,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 Your job will now have a status of 'Completed'.
 
-### Clean up after running Run JupyerLab app
+### Clean up after running Run JupyterLab app
 
 Please remove the sine wave files from your 'safe data' directory. You can do this in one of two ways.
 
