@@ -10,6 +10,10 @@ This walkthrough is centred around three apps:
 * [Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. Please be reassured that for this 'getting started' guide no Python knowledge is assumed or required!
 * [Active Jobs](apps/active-jobs.md) allows you to see which of your jobs have been submitted, are running, or have completed.
 
+!!! Note
+
+    Images on this page have yet to be updated to match the text and updates made to apps.
+
 ---
 
 ## Your Open OnDemand VM home directory and back-ends
@@ -39,21 +43,21 @@ The 'Run Batch Container' app form will open.
 
 ### Review and complete the Run Batch Container app form
 
-The app form is prepopulated with the configuration to pull and run a 'hello world' container. When run, the container logs a greeting and information about directories mounted into the container.
+The app form is prepopulated with the configuration to pull and run a 'hello' container. When run, the container prints a greeting and a listing of the contents of your 'safe data' directory.
 
 Read the form entries in conjunction with the explanations below and make the suggested changes:
 
 * **Cluster**: A back-end (cluster) within your safe haven on which to run the container. Back-end-specific short-names are used in the drop-down list. If there is only one back-end available to you then this form field won't be shown.
     * Select the 'desktop' VM on which you are running the browser in which you are using Open OnDemand.
 * **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled.
-    * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0` container, hereon termed `epcc-ces-hello`.
+    * Leave this value as-is to use the `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1` container, hereon termed `epcc-ces-hello`.
 * **Container registry username**: A container registry username is required.
     * Leave this value as-is.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
     * Leave this value as-is, the access token provides read-only access to pull the container.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
     * Leave this value as-is i.e., 'podman', as this is available on all back-ends.
-* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
+* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:2.1` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
     * Leave this value as-is.
 * **CPUs/cores**: CPUs/cores requested for the app's job. To run jobs via Open OnDemand requires you to select the resources you think your job will need, including the number of CPUs/cores.
     * Leave this value as-is as the all back-ends can provide the default number of cores, and the `epcc-ces-hello` container does not need any more.
@@ -73,13 +77,13 @@ Read the form entries in conjunction with the explanations below and make the su
         ```
 
 * **Container-specific command-line arguments**: Container-specific command-line arguments to be passed to the container when it is run. The `epcc-ces-hello` container supports two container-specific arguments:
-    * A `-d|--doze INTEGER` argument which causes the container to doze (pause) for that number of seconds. If undefined, then the container does not doze.
+    * A `-d|--doze INTEGER` argument which causes the container to doze (pause or sleep) for that number of seconds. If undefined, then the container does not doze. If undefined, then the default is 0 seconds.
     * A `-n|--name STRING` argument which causes the container to print a greeting with that name. If undefined, then the name is `user`.
-    * Enter the following to request a doze of 10 seconds and a greeting with your name:
+    * The app provides values for these that override the container's defaults, requesting a doze of 5 seconds and providing your username as a name:
 
         ```text
-        -d 10
-        -n YOUR_FIRST_NAME
+        -d 5
+        -n ${USER}
         ```
 
 ### Launch the Run Batch Container app job
@@ -131,80 +135,63 @@ The Job status on the job card will update to 'Completed'.
 
 ### How containers exchange files with back-ends
 
-When a container is run, the following directories on the back-end are always mounted into the container:
+When the app runs, your 'safe data' directory is mounted within the container, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-| Back-end directory | Container directory | Description |
-| ------------------ | ------------------- | ----------- |
-| `/safe_data/PROJECT_SUBDIRECTORY` | `/safe_data` | `PROJECT_SUBDIRECTORY` is your project group, inferred from your user groups. If such a  project-specific subdirectory of `/safe_data` is found, then it is mounted into the container (but see below). Any files written into `/safe_data` in the container will be visible to you and and other project members within `/safe_data/PROJECT_SUBDIRECTORY` on the back-end. |
-| `$HOME/safe_data` | `/safe_data` | If `$HOME/safe_data` is found, then it is mounted into the container. `$HOME/safe_data` takes precedence over any `/safe_data/PROJECT_SUBDIRECTORY` directory when looking for the directory to mount into the container at `/safe_data`. Any files written into `/safe_data` in the container will be visible to you only within `$HOME/safe_data` on the back-end. |
-| `$HOME/safe_outputs` | `/safe_outputs` | This directory is created in your home directory on the back-end when your container runs. The directory persists after the job which created the container ends. |
-| `$HOME/scratch/APP_SHORT_NAME/SESSION_ID` | `/scratch` | `APP_SHORT_NAME` and `SESSION_ID` are as above. This directory is also created in your home directory on the back-end when your container runs. This directory exists for the duration of the job which created the container. The `SESSION_ID` sub-directory is **deleted** when the job which created the container ends. It is recommended that this directory be used for temporary files only. |
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a memberof a user group `some-project` and there is a `/safe_data/some-project` directory, then that is your 'safedata' directory that is mounted at `/safe_data` within the container.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on theback-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is mounted at `/safe_data` within the container.
+
+You can mount additional existing directories or files within the container via the **Container runner command-line arguments** field in the form by using Apptainer or Podman-specific command-line arguments to mount the directories or files.
 
 Together, these mounts (and, additional, app-specific mounts) provide various means by which data, configuration files, scripts and code can be shared between the back-end on which the container is running and the environment within the container itself. Creating or editing a file within any of these directories on the back-end means that the changes will be available within the container, and vice-versa.
-
-If a container is run using Podman, as we are doing here, then **only** files within any mounted directories are available within the container, **only** files created within these directories will available in the directories corresponding to the mounted directories on the back-end, and any files created outside of these directories within the container will be **deleted** when the container is deleted. For apps that run containers, their app-specific documentation explains what mounts are available.
 
 Apps that do not run containers will typically be able to access to any files available to you on a back-end regardless of their location.
 
 ### View the container's output file
 
-When the `epcc-ces-hello` container is run, it writes a file, `epcc-ces-hello.txt` into `/safe_outputs` within the container, and so into a `$HOME/safe_outputs` directory on the back-end. This file includes a greeting, your user ID, group ID and groups within the container, and the contents of `/safe_data` as mounted within the container. An example of `safe_outputs/epcc-ces-hello.txt` is as follows:
+When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt`:
 
 ```text
-Greetings someuser from the 'epcc-ces-hello' container!
+/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt 
+Greetings!
 
-Your user ID within the container is: 0(root).
+Greetings to some-user
+from
+epcc-ces-hello
+at
+2026-06-09 08:56:46
 
-Your group ID within the container is: 0(root).
+Your '/safe_data' directory includes the following files:
 
-Your groups within the container are: 0(root).
-
-Your mounted /safe_data/ files include:
-
-...project-specific files...
-
-Dozing for 10 seconds...
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-
-...and awake!
-
-Goodbye someuser!
+20260609-085646-some-user-epcc-ces-hello.txt
+README
+analyse_ae.R
+analyse_ae.Rmd
+analyse_ae.ipynb
+analyse_ae.py
+config
+deepfake
+some-project
+postgres_data_test
+tmp
+weekly_ae_activity_20260201.csv
 ```
 
-You may be wondering about why your user and group IDs cite 'root'. For some containers run via Podman, including `epcc-ces-hello`, you are the 'root' user within the container but **only** within the container. This is why the files in the mounts belong to a 'root' or 'nobody' user and 'root' group when accessed from **within** the container. Any files you create in the mounted directories will be owned by your own user, and user group, on the back-end.
-
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. This includes the contents of the `safe_outputs` and `scratch/APP_SHORT_NAME/SESSION_ID` directories.
-
-View the `safe_outputs` directory via the Open OnDemand File Manager:
-
-1. Select the **Files** menu, **Home Directory** option to open the File Manager.
-1. Click `safe_outputs` to view the directory.
-1. Click on `epcc-ces-hello.txt` to view its contents.
-
-![File Manager showing safe_outputs directory contents after Run Batch Container app completes](../../images/open-ondemand/getting-started-06-batch-container-app-outputs.png){: class="border-img center"}
-*File Manager showing `safe_outputs` directory contents after Run Batch Container app completes*
-
-An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
-
-View the `safe_outputs` directory within the back-end:
+View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
-1. View `safe_outputs` and `epcc-ces-hello.txt`:
+1. View `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt`:
 
-    ```bash
-    ls safe_outputs/
-    cat safe_outputs/epcc-ces-hello.txt
-    ```
+     ```bash
+     ls /safe_data/PROJECT_DIRECTORY/
+     cat /safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
+     ```
+
+     For example:
+
+     ```bash
+     ls /safe_data/some-project
+     cat /safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
+     ```
 
 As you have accessed Open OnDemand from your 'desktop' VM, you could also access the files directly on your 'desktop' VM, but we used the back-end **Shell Access** option to introduce this feature of Open OnDemand.
 
@@ -214,44 +201,47 @@ Within your home directory on the Open OnDemand VM, Open OnDemand creates an `on
 
 Every time a job is created by an app, Open OnDemand creates the job files that the app needs for it to run within a job-specific **job context directory** in an app-specific directory under your `ondemand` directory.
 
-When the app's job runs, it creates a log file in the job context directory. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM, Open OnDemand will automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job.
 
-For the `epcc-ces-hello` container, its log file, named `output.log`, includes information about the command used to run the container, the mounted directories, the environment variable and arguments provided to the container as well as the outputs that are written into `epcc-ces-hello.txt`.
+When the app's job runs, it creates a log file in the job context directory on the back-end. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
+
+For this app, its log file, named `output.log`, includes information about the command used to run the container, the mounted directories, the environment variable and arguments provided to the container as well as the outputs that are written into `epcc-ces-hello.txt`.
 
 ```text
-Running: /usr/local/bin/ces-pm-pull anonymous ... git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0
-
+Tue Jun  9 08:56:44 UTC 2026 before.sh: Started before.sh
+Tue Jun  9 08:56:44 UTC 2026 before.sh: JOB_FOLDER: /home/some-project/some-project/some-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357
+Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: some-project-runner-vm.vms.os.eidf.epcc.ed.ac.uk
+Tue Jun  9 08:56:44 UTC 2026 before.sh: Running ces-pull podman 'anonymous' 'TOKEN' git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
+Running: /usr/local/bin/ces-pm-pull anonymous TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
+Trying pull proxy host tre-ghcr-proxy.nsh.loc
+Using CES CR Proxy API: addproxy
+Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
 ...
-
-epcc-ces-hello container
-
-Directory users, groups and permissions:
-
+Tue Jun  9 08:56:46 UTC 2026 script.sh: Running podman run --cpus=1 --memory=1g --name epcc-ces-hello-83dae647-6966-4f87-9b31-54749412a357  --mount type=bind,source=/safe_data/some-project,destination=/safe_data  --pull=never --rm=true --rmi=false --env-file=/home/some-project/some-project/some-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357/envs.txt git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1 -d 5 -n some-user 
+Entered epcc-ces-hello container
+/safe_data users, groups and permissions:
 /safe_data: nobody (65534) root(0) drwxrws--- nfs
-/scratch: root (0) root(0) drwxr-xr-x ext2/ext3
-/safe_outputs: root (0) root(0) drwxr-xr-x ext2/ext3
-
-...
-
-Found optional 'GREETING' environment variable
-GREETING: Greetings
-Number of arguments: 4
-Arguments: -d 10 -n someuser
--d
-10
--n
-someuser
-
-...
-
-Greetings someuser from the 'epcc-ces-hello' container!
-
-...
-
-Goodbye someuser!
+Container user ID: 0(root)
+Container group ID: 0(root)
+Container user groups: 0(root)
+Found optional 'GREETING' environment variable: Greetings
+Script arguments: -d 5 -n some-user
+name: some-user
+doze: 5
+Writing /safe_data/20260609-085646-some-user-epcc-ces-hello.txt
+Dozing for 5 seconds...
+1
+2
+3
+4
+5
+...and awake!
+Exiting epcc-ces-hello container
+Tue Jun  9 08:56:51 UTC 2026 script.sh: Finished script.sh
+Cleaning up...
 ```
 
-As for the output files, you can use either the File Manager or log into the back-end (all users) to view the log file.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa.
 
 View the log file via the Open OnDemand File Manager:
 
@@ -262,6 +252,8 @@ View the log file via the Open OnDemand File Manager:
 
 1. Click on the log file, `output.log`.
 
+For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, the File Manager cannot be used. An alternative to the File Manager is to log in to the back-end and view the files there, which can be done for any back-end.
+
 View the log file within the back-end:
 
 1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
@@ -271,10 +263,27 @@ View the log file within the back-end:
     cd ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/SESSION_ID/
     ```
 
+    For example:
+
+    ```bash
+    cd ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357/
+    ```
+
 1. View the log file:
 
     ```bash
     cat output.log
+    ```
+
+### Clean up
+
+Please remove the file produced by the container from your 'safe data' directory. You can do this as follows:
+
+1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+1. Delete the file. For example:
+
+    ```console
+    rm /safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
     ```
 
 ---
@@ -287,7 +296,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 The Active Jobs app will open to show a table of running and recently completed jobs.
 
-You will see an 'epcc-ces-hello:1.0' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
+You will see an 'epcc-ces-hello:2.1' entry for your app's job. Run Batch Container app jobs are named using the container/image name cited in the container/image URL.
 
 Your job will have a status of 'Completed'.
 
@@ -307,7 +316,7 @@ If any app does not run promptly, but is in a 'Queued' state, then the Active Jo
 
 ## Run the Run JupyterLab app
 
-[Run JupyterLab](apps/jupyter-app.md) runs an interactive JupyterLab service on a back-end. The service is run in a container using Apptainer.
+[Run JupyterLab](apps/jupyter-app.md) is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab runs within an isolated environment (within a software container).
 
 Click the 'Run JupyterLab' app on the Open OnDemand home page.
 
@@ -366,7 +375,9 @@ Create a Jupyter Notebook:
 1. Within JupyterLab, click the **Python 3** icon within the 'Notebook' section of the 'Launcher' tab.
 1. A Jupyter Notebook, named 'Untitled.ipynb', will appear.
 
-In common with the Run Batch Container app, this app also mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` as described earlier. Your home directory is also mounted within JupyterLab at the same path as your home directory on the back-end. Any directories and files you create within your home directory within JupyterLab will be available in your home directory on the back-end, and vice-versa.
+JupyterLab runs within an isolated environment (within a software container) on a back-end. Within JupyterLab you will have access to your home directory on the back-end.
+
+As for the Run Batch Container App, your 'safe data' directory will also mounted within JupyterLab, at the path `/safe_data`.
 
 If you look at your home directory you should now see the `Untitled.ipynb` notebook there.
 
@@ -384,6 +395,8 @@ You can save changes to your notebook at any time via CTRL+S or the 'disk' icon 
 Within the first notebook cell, enter the following Python code, which creates data for a sine wave, plots the sine wave and saves both the data and the plot:
 
 ```python
+import os
+import pwd
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -395,12 +408,10 @@ y = np.sin(x)
 
 dataset = pd.DataFrame({'time': x, 'amplitude': y},
                        columns=['time', 'amplitude'])
-dataset.to_csv('/safe_outputs/sine-wave.csv', index=False)
 dataset.plot(title='Sine wave',
              x='time',
              y='amplitude',
              grid=True)
-plt.savefig('/safe_outputs/sine-wave.png')
 ```
 
 Click Shift + Enter to run the code. A plot should appear.
@@ -408,12 +419,25 @@ Click Shift + Enter to run the code. A plot should appear.
 ![Jupyter Notebook with a sine wave](../../images/open-ondemand/getting-started-15-jupyter-app-notebook.png){: class="border-img center"}
 *Jupyter Notebook with Python code and a sine wave*
 
-The Python code saves the data file and plot to the `/safe_outputs` directory, which, as described earlier, is a mount of `safe_outputs` in your home directory. If you look at `safe_outputs` in your home directory you should now have the files `sine-wave.csv` and `sine-wave.png`.
+In the field under the plot, enter:
 
-![File Manager showing safe_outputs directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
-*File Manager showing `safe_outputs` directory contents after Python code is run in Run JupyterLab app*
+```python
+user = pwd.getpwuid(os.getuid()).pw_name
+dataset.to_csv(f'/safe_data/{user}-sine-wave.csv', index=False)
+plt.savefig(f'/safe_data/{user}-sine-wave.png')
+```
 
-As a reminder, `safe_outputs` and its contents will persist after the job which started JupyterLab ends.
+Click Shift + Enter to run the code.
+
+The Python code saves the data file and plot to the `/safe_data` directory, which, as described earlier, is a mount of your 'safe data' directory e.g., `/safe_data/some-project`.. If you look at your 'safe data' directory you should now see the files:
+
+```text
+some-user-sine-wave.csv
+some-user-sine-wave.png
+```
+
+![File Manager showing safe_data directory contents after Python code is run in Run JupyterLab app](../../images/open-ondemand/getting-started-16-jupyter-app-outputs.png){: class="border-img center"}
+*File Manager showing `safe_data` directory contents after Python code is run in Run JupyterLab app*
 
 ### Revisit the Active Jobs app
 
@@ -448,6 +472,27 @@ The Job status on the job card will update to 'Completed'.
 Click the 'Active Jobs' app on the Open OnDemand home page.
 
 Your job will now have a status of 'Completed'.
+
+### Clean up
+
+Please remove the sine wave files from your 'safe data' directory. You can do this in one of two ways.
+
+1. From within a JupyterLab 'Terminal' window. For example:
+
+    ```console
+    rm /safe_data/some-user-sine-wave.csv
+    rm /safe_data/some-user-sine-wave.png
+    ```
+
+1. From within Open OnDemand:
+
+    1. Select **Clusters** menu, back-end **Shell Access** option to log into the back-end.
+    1. Delete the files. For example:
+
+        ```console
+        rm /safe_data/some-project/some-user-sine-wave.csv
+        rm /safe_data/some-project/some-user-sine-wave.png
+        ```
 
 ---
 
