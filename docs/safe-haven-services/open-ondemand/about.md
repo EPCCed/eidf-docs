@@ -15,12 +15,12 @@ Then, explore the other pages about the service:
 
 * [Open OnDemand home page](home-page.md)
 * [About jobs](jobs.md)
-* [About containers](containers.md)
 * [View and run apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
 * Apps:
     * [Active Jobs](apps/active-jobs.md)
+    * [Greetings](apps/greetings-app.md)
     * [Run Batch Container](apps/batch-container-app.md)
     * [Run JupyterLab](apps/jupyter-app.md)
     * [Run RStudio Server](apps/rstudio-app.md)
