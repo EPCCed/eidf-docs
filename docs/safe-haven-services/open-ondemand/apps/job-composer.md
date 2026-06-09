@@ -124,12 +124,12 @@ The job context directory for the job will also be deleted.
 
 ---
 
-## Run a 'hello there' example
+## Run a 'hello world' example
 
 Create and submit job:
 
 1. Select **New Job** menu, **From Template** option.
-1. Enter Job Name: Hello There
+1. Enter Job Name: Hello World
 1. Select a Cluster, back-end.
 1. Click **Create New Job**.
 1. Under 'main_job.sh', click **Open Editor**.
@@ -138,13 +138,13 @@ Create and submit job:
 1. Change the line:
 
     ```bash
-    echo "Hello There" > output_file
+    echo "Hello World" > output_file
     ```
 
     to:
 
     ```bash
-    echo "Hello There to ${USER} from $(hostname)" > output_file
+    echo "Hello World to ${USER} from $(hostname)" > output_file
     ```
 
 1. Click **Save**.
@@ -160,13 +160,13 @@ The script creates two files:
 * `res.txt` which has the outputs captured by Slurm as the job runs. For example:
 
     ```text
-    Created output file with 'Hello There'
+    Created output file with 'Hello World'
     ```
 
 * `output_file` which is the file created within the job script. For example:
 
     ```text
-    Hello There to some-user from some-vm.nsh.loc
+    Hello World to some-user from some-vm.nsh.loc
     ```
 
 View the output files:
@@ -213,7 +213,7 @@ Create a job to run the container using Podman:
 
     ```bash
     #!/bin/bash
-    #SBATCH --job-name=hello-there
+    #SBATCH --job-name=hello-world
     #SBATCH --output=output.log
     #SBATCH --ntasks=1
     #SBATCH --time=10:00
