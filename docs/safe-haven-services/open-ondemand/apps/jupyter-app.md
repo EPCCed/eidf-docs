@@ -71,8 +71,8 @@ JupyterLab runs within an isolated environment (within a software container) on 
 
 Your 'safe data' directory will also available within JupyterLab, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is available at `/safe_data` within JupyterLab.
-* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available at `/safe_data` within JupyterLab.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT_DIRECTORY` subdirectory found where `PROJECT_DIRECTORY` shares its name with one of the your user groups. For example, if you are a member of a user group `1234-5678` and there is a `/safe_data/1234-5678` directory, then that is your 'safe data' directory that is available ('mounted') at `/safe_data` within JupyterLab.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen in preference to any `/safe_data/PROJECT_DIRECTORY` as your 'safe data' directory that is available ('mounted') at `/safe_data` within JupyterLab.
 
 Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT_DIRECTORY` (or `$HOME/safe_data`) on the back-end, and vice-versa.
 
