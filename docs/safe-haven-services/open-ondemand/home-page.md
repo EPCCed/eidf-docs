@@ -34,7 +34,7 @@ Select the **Help (?)** menu, **Restart Web Server** option to restart your sess
 
 ## Display your log in name
 
-Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as your-user'.
+Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as youruser'.
 
 ![Avatar menu button, a head and shoulders icon](../../images/open-ondemand/avatar-button.png){: class="border-img center"} ***Avatar** menu button*
 
