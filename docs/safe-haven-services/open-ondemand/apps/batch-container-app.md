@@ -16,12 +16,12 @@ Complete the following information the app form:
 
         **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0`. See [Container registries](#container-registries) below for supported container registries.
+* **Container/image URL in container registry**: URL specifying both the container to run and the container registry from which it is to be pulled. For example, `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1`. See [Container registries](#container-registries) below for supported container registries.
 * **Container registry username**: A container registry username is required.
 * **Container registry access token**: An access token associated with the username is required. Using an access token that grants **read-only** access to the container registry is **strongly recommended**.
 * **Container runner**: Container runner - 'podman' or 'apptainer' - with which to run the container.
-* **Reuse Apptainer SIF file** (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, `epcc-ces-hello:1.0.sif`.
-* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:1.0` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
+* **Reuse Apptainer SIF file** (Apptainer only): When Apptainer is used, the container is pulled and an Apptainer SIF file created. The SIF file is created for the container every time. If this option is selected, then, if the SIF file can be found in your home directory, it will be reused, not recreated. SIF files are named after image names. For example, `epcc-ces-hello:2.1.sif`.
+* **Container name** (Podman only): Name to be given to the container when it is run. Your job will fail if there is already a running container with that name. If omitted, then the default container name is `CONTAINER_NAME-SESSION_ID`, where `CONTAINER_NAME` is derived from the image name (if the image name is `my-container:2.1` then `CONTAINER_NAME` is `my-container`) and `SESSION_ID` is a unique session identifier for the app's job.
 * **CPUs/cores**: CPUs/cores requested for the app's job.
 * **Memory (GiB)**: Memory requested for the app's job.
 * **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
@@ -80,8 +80,8 @@ The container registries supported by the Safe Haven Services Container Executio
 
 | Container Registry | URL prefix | Example  |
 | ------------------ | ---------- | ------- |
-| GitHub    | `ghcr.io` | `ghcr.io/epcc/epcc-ces-hello:1.0` |
-| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:1.0` |
+| GitHub    | `ghcr.io` | `ghcr.io/epcc/epcc-ces-hello:2.1` |
+| University of Edinburgh ECDF GitLab | `git.ecdf.ed.ac.uk` | `git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1` |
 
 !!! Note
 
@@ -233,7 +233,7 @@ Your container will continue to run even if you do the following:
 
 ## App job name
 
-Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello:1.0'.
+Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named using the container/image name cited in the container/image URL e.g., 'epcc-ces-hello:2.1'.
 
 ---
 
