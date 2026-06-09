@@ -302,34 +302,7 @@ View the file created by the container, `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-H
      cat /safe_data/20260609-070028-your-user-epcc-ces-hello.txt
      ```
 
-When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs. For example:
-
-```text
-Running: /usr/local/bin/ces-pm-pull anonymous CR_TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
-Trying pull proxy host tre-ghcr-proxy.nsh.loc
-Using CES CR Proxy API: addproxy
-Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
-...
-Entered epcc-ces-hello container
-/safe_data users, groups and permissions:
-/safe_data: nobody (65534) root(0) drwxrws--- nfs
-Container user ID: 0(root)
-Container group ID: 0(root)
-Container user groups: 0(root)
-Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n your-user
-name: your-user
-doze: 5
-Writing /safe_data/20260609-070028-your-user-epcc-ces-hello.txt
-Dozing for 5 seconds...
-1
-2
-3
-4
-5
-...and awake!
-Exiting epcc-ces-hello container
-```
+When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs.
 
 View the log file, `output.log`:
 
@@ -406,37 +379,6 @@ analyse_ae.Rmd
 analyse_ae.ipynb
 analyse_ae.py
 weekly_ae_activity_20260201.csv
-```
-
-An example of `output.log` produced by this example is as follows:
-
-```text
-Running: /usr/local/bin/ces-app-pull anonymous CR_TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
-Trying pull proxy host tre-ghcr-proxy.nsh.loc
-Using CES CR Proxy API: addproxy
-Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
-...
-INFO:Creating SIF file...
-INFO:Build complete: epcc-ces-hello:2.1.sif
-Entered epcc-ces-hello container
-/safe_data users, groups and permissions:
-/safe_data: nobody (65534) your-project(4797) drwxrws--- nfs
-Container user ID: 36177(your-user)
-Container group ID: 4797(your-project)
-Container user groups: 4797(your-project),65534(nogroup)
-Found optional 'GREETING' environment variable: Greetings
-Script arguments: -d 5 -n your-user
-name: your-user
-doze: 5
-Writing /safe_data/20260609-075213-your-user-epcc-ces-hello.txt
-Dozing for 5 seconds...
-1
-2
-3
-4
-5
-...and awake!
-Exiting epcc-ces-hello container
 ```
 
 !!! Note
