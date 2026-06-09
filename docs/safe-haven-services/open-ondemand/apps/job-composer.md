@@ -323,7 +323,7 @@ View the log file, `output.log`:
         cat output.log
         ```
 
-View the file created by the container, `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`. `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
+View the file created by the container, `/safe_data/<PROJECT_DIRECTORY>/<YYYYMMDD-HHMMSS-<USER>-epcc-ces-hello.txt`. As `/safe_data` is not mounted into the Open OnDemand host so to view this file you will need to:
 
 1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
 1. View `$HOME/safe_outputs/epcc-ces-hello.txt`:
