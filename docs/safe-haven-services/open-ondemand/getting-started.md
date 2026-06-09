@@ -210,7 +210,7 @@ For this app, its log file, named `output.log`, includes information about the c
 ```text
 Tue Jun  9 08:56:44 UTC 2026 before.sh: Started before.sh
 Tue Jun  9 08:56:44 UTC 2026 before.sh: JOB_FOLDER: /home/your-project/your-project/your-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357
-Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: your-project-runner-vm.vms.os.eidf.epcc.ed.ac.uk
+Tue Jun  9 08:56:44 UTC 2026 before.sh: Host: some-vm.nsh.loc
 Tue Jun  9 08:56:44 UTC 2026 before.sh: Running ces-pull podman 'anonymous' 'TOKEN' git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Running: /usr/local/bin/ces-pm-pull anonymous TOKEN git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 Trying pull proxy host tre-ghcr-proxy.nsh.loc
