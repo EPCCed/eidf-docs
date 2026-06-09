@@ -151,7 +151,7 @@ Apps that do not run containers will typically be able to access to any files av
 When the `epcc-ces-hello` container is run, it writes a file `/safe_data/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT_DIRECTORY/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container (i.e., your `/safe_data/PROJECT_DIRECTORY`) on the back-end. For example, `/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt`:
 
 ```text
-/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt 
+/safe_data/some-project/20260609-085646-some-user-epcc-ces-hello.txt
 Greetings!
 
 Greetings to some-user
@@ -201,7 +201,7 @@ Within your home directory on the Open OnDemand VM, Open OnDemand creates an `on
 
 Every time a job is created by an app, Open OnDemand creates the job files that the app needs for it to run within a job-specific **job context directory** in an app-specific directory under your `ondemand` directory.
 
-As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends so any files created within your home directory on a back-end will be available on the Open OnDemand VM, and vice-versa. For back-ends where your home directory is not common to both the Open OnDemand VM and the back-end i.e., you have unsynched, separate, home directories on each VM, Open OnDemand will automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job.
+As mentioned earlier, for most back-ends, your home directory is common to both the Open OnDemand VM and the back-ends. But, for back-ends where your home directory is not common to both the Open OnDemand VM and the back-end, Open OnDemand will automatically copy job files from the Open OnDemand VM to your chosen back-end when you submit a job.
 
 When the app's job runs, it creates a log file in the job context directory on the back-end. This log file includes information from the app itself plus any outputs from any commands run by the app. For apps that run containers, the log file also includes outputs from the containers as they run. If an app does not run as expected, or does not run at all, it can be useful to check the log file for hints as to what may have went wrong.
 
@@ -217,7 +217,7 @@ Trying pull proxy host tre-ghcr-proxy.nsh.loc
 Using CES CR Proxy API: addproxy
 Pulling container: tre-ghcr-proxy.nsh.loc:5001/tre-container-execution-service/containers/epcc-ces-hello:2.1
 ...
-Tue Jun  9 08:56:46 UTC 2026 script.sh: Running podman run --cpus=1 --memory=1g --name epcc-ces-hello-83dae647-6966-4f87-9b31-54749412a357  --mount type=bind,source=/safe_data/some-project,destination=/safe_data  --pull=never --rm=true --rmi=false --env-file=/home/some-project/some-project/some-user/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/83dae647-6966-4f87-9b31-54749412a357/envs.txt git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1 -d 5 -n some-user 
+Tue Jun  9 08:56:46 UTC 2026 script.sh: Running podman run ...
 Entered epcc-ces-hello container
 /safe_data users, groups and permissions:
 /safe_data: nobody (65534) root(0) drwxrws--- nfs
@@ -275,7 +275,7 @@ View the log file within the back-end:
     cat output.log
     ```
 
-### Clean up
+### Clean up after running Run Batch Container app
 
 Please remove the file produced by the container from your 'safe data' directory. You can do this as follows:
 
@@ -473,7 +473,7 @@ Click the 'Active Jobs' app on the Open OnDemand home page.
 
 Your job will now have a status of 'Completed'.
 
-### Clean up
+### Clean up after running Run JupyerLab app
 
 Please remove the sine wave files from your 'safe data' directory. You can do this in one of two ways.
 

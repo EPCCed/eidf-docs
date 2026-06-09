@@ -134,9 +134,11 @@ In cases where there are errors in inferring or accessing your 'safe data' direc
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 ```
+
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/some-project
 ```
+
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/some-project
 ```

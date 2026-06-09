@@ -98,9 +98,11 @@ In cases where there are errors in inferring or accessing your 'safe data' direc
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 ```
+
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/some-project
 ```
+
 ```text
 Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/some-project
 ```
@@ -188,7 +190,6 @@ RStudio Server will continue to run even if you do the following:
 You can re-access your running RStudio Server via the **Connect to RStudio Server** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
-
 
 ---
 
