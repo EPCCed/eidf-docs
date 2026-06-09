@@ -441,6 +441,6 @@ Exiting epcc-ces-hello container
 
 !!! Note
 
-    In constrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.
+    In contrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.
 
 These files can be viewed using the steps described earlier.
