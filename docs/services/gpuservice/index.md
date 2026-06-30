@@ -1,6 +1,6 @@
 # Overview
 
-The EIDF GPU Service (EIDF GPU Service) provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
+The EIDF GPU Service provides access to a range of Nvidia GPUs, in both full GPU and MIG variants. The EIDF GPU Service is built upon [Kubernetes](https://kubernetes.io).
 
 MIG (Multi-instance GPU) allow a single GPU to be split into multiple isolated smaller GPUs. This means that multiple users can access a portion of the GPU without being able to access what others are running on their portion. The EIDF GPU Service hosts 3G.20GB and 1G.5GB MIG variants which are approximately 1/2 and 1/7 of a full Nvidia A100 40 GB GPU respectively.
 
