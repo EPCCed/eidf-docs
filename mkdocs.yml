@@ -68,6 +68,7 @@ nav:
       - "Policies": services/confidentialdataworkspace/policies.md
       - "Storage": services/confidentialdataworkspace/storage.md
       - "FAQs": services/confidentialdataworkspace/faq.md
+      # - "GPU Service Access": services/confidentialdataworkspace/gpu.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
