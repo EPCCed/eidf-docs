@@ -6,16 +6,21 @@ The user-nodes are equipped with a normal developer packages. If you feel that s
 
 ## Virtual Environment Setup
 
-In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.5.0/getting-started/setup-and-installation) which should be followed.
-In this early phase, a few small tweaks are required:
+In general, our system is compatible with the documentation from [Cerebras](https://training-docs.cerebras.ai/rel-2.10.0/getting-started/setup-and-installation) which should be followed.
 
-Use Cerebras [ModelZoo 2.5.0](https://github.com/Cerebras/modelzoo/) for compatibility to the Cerebras machine's installed software-sdk version
-For completness both the clone and checkout are included below:
+We also that suggest:
+
+- you make all paths in configuration files absolute
+- you use the `--mount_dirs` and `--python_paths` options with all `cszoo` commands, see the training example below for a full command invocation.
+
+For completness both the modelzoo clone and virtual environmment setup are included below:
 
 ```bash
-git clone https://github.com/Cerebras/modelzoo.git ./modelzoo
-cd modelzoo
-git checkout Release_2.5.0
+git clone -b Release_2.10.0 https://github.com/Cerebras/modelzoo.git ./modelzoo
+python3.11 -m venv modelzoo_venv
+source modelzoo_venv/bin/activate
+pip install --upgrade pip
+pip install --editable ./modelzoo
 ```
 
 ## Running codes

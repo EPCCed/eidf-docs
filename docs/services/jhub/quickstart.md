@@ -50,12 +50,11 @@ pip install <package> --user
 
 ## Data
 
-There is a project space mounted in `/project_data`. Only project accounts have permissions to view and write to their project folder in this space.
-Here you can share data with other notebook users in your project.
-Data placed in `/project_data/shared` is shared with other notebook users outside your project.
+If your project has a [CephFS](../../storage/overview.md#shared-filesystem-cephfs) allocation the project folder can be mounted to the Notebook Service. Here you can share data with other notebook users in your project, or to other EIDF services such as Virtual Desktops, GPU service, Cirrus and Cerebras.
 
-You can also share data with DSC VMs in your project.
-Please contact the helpdesk if you would like to mount this project space to one of your VMs.
+In the notebook service, users only have access to their project's own CephFS directory. The read and write permissions in the CephFS project folder are those of the user that you selected when logging in to the Notebook service.
+
+Once mounted, the project space is available at the path `/sharedfs` in your notebooks. Please contact the helpdesk if you would like your project space to be mounted.
 
 ## Limits
 

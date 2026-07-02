@@ -10,7 +10,7 @@
 
 [Ultra2](./ultra2/index.md)
 
-[Graphcore Bow Pod64](./graphcore/index.md)
+[GitLab Code Storage](./gitlab/index.md)
 
 ## Data Services
 

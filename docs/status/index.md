@@ -14,42 +14,17 @@ The table below represents the broad status of each EIDF service.
 | Virtual Desktops | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/virtualmachines.json) |
 | Ultra2 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/superdome.json) |
 
-## Advanced Computing Facility (ACF) Power Outage: Friday 29th August - Monday 15th September
+## EIDF Regular Maintenance Sessions
 
-Due to a significant Health and Safety risk, associated with our power supply to the site, that requires action at the ACF, there will be a full power outage to the site from Friday 29th August - Monday 15th September.  Specialised external contractors will be working on a 24/7 basis for the outage period replacing switchgear. The EIDF Services are hosted at the ACF.
+Maintenance sessions are used to ensure that:
 
-### EIDF User Impact
+- Essential security patches are applied
+- Software versions are kept up to date
+- Firmware levels on peripheral equipment are kept up to date
+- Failed/suspect hardware can be replaced
+- New software can be installed
+- Essential maintenance on electrical and mechanical support equipment (cooling systems and power distribution units) can be undertaken safely
 
-The EIDF Services will be completely powered off for the duration of this period.
+We aim to minimize maintenance downtime on the service, but occasionally need to perform essential work on the system.
 
-The EIDF Services impacted are:
-
-* EIDF Cerebras Service
-* EIDF Data Catalogue
-* EIDF Data Publishing Service
-* EIDF GPU Service
-* EIDF Jupyter Notebook
-* EIDF Portal
-* EIDF S3 Service
-* EIDF Ultra2 Service
-* EIDF Virtual Desktops
-
-Users will not be able to connect to any of the EIDF Services. Data will be stored safely but users will not be able to access data during the work.  Where appropriate, services will be drained of jobs ahead of the power outage and jobs will not run during this period. Any queued jobs will remain in the queue during the outage and jobs will start once the service is returned.
-
-The EIDF website will be available during the outage period and updates will be provided during the outage at [https://docs.eidf.ac.uk/status/](https://docs.eidf.ac.uk/status/).
-
-The site will be handed back to EPCC on Monday 15th September and we will work to return services thereafter. We will notify users once services are available.
-
-We apologise for the inconvenience of this essential outage. Please contact [eidf@epcc.ed.ac.uk](mailto:eidf@epcc.ed.ac.uk) if you have any questions.
-
-## Maintenance Sessions
-
-There will be a service outage on the 3rd Thursday of every month from 9am to 5pm. We keep maintenance downtime to a minimum on the service but do occasionally need to perform essential work on the system. Maintenance sessions are used to ensure that:
-
-* software versions are kept up to date;
-* firmware levels on the underlying hardware are kept up to date;
-* essential security patches are applied;
-* failed/suspect hardware can be replaced;
-* new software can be installed; periodic essential maintenance on electrical and mechanical support equipment (cooling systems and power distribution units) can be undertaken safely.
-
-The service will be returned to service ahead of 5pm if all the work is completed early.
+There is currently no common maintenance window that covers all services. Each service is maintained according to its needs. We will email users one week ahead of maintenance outages to notify them that the service will be unavailable.
