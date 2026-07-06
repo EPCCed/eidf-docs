@@ -20,8 +20,8 @@ To access files you need to know:
 * A "private key" (similar to a password)
 
 All of the above will be supplied to you by your Research Coordinator.
-It should go without saying that the access key details are confidential and must never be shared or allowed to be seen by others.
-Note that all file accesses are logged.
+S3 access and secret key details are confidential and must never be shared or allowed to be seen by others.
+All file accesses are logged.
 
 ## How to use the service
 
@@ -49,8 +49,8 @@ Many S3 tools will read environment variables so this can be a convenient way to
 ## Performance tips
 
 * consume the file directly in memory if possible. Saving to disk is not recommended; it wastes disk space and will take 3 times longer to do your processing. See the example code below.
-* If you need to save into a file temporarily (e.g. whilst converting to NIFTI) then save into a RAM disk in `/run/user/$(id -u)/` but delete it straight after use to recover then memory.
-* If it's too large for RAM then save into a file on the system disk, not in your home directory, in `/tmp/$(id)/` but check the disk has space first (using `df -h /tmp/`) and delete it straight after use to recover the disk space.
+* If you need to save into a file temporarily (e.g. whilst converting to NIFTI) then save into a RAM disk in `/run/user/$(id -u)/` but delete it straight after use to recover the memory.
+* If it's too large for RAM then save into a file on the system disk, not in your home directory, for example in `/tmp/$(id -un)/` but check the disk has space first (using `df -h /tmp/`) and delete it straight after use to recover the disk space.
 
 ## Example using the command-line in the Terminal window
 
@@ -211,7 +211,7 @@ Examples of such functions are `oro.dicom::parseDICOMHeader()` and `espadon::dic
 ## Example GUI to view DICOM files
 
 This example uses a customised program that can view and download DICOM files from the S3 service.
-It is not installed in the National Safe Haven but you can import it as a container image.
+It is not installed in the Safe Haven but you can import it as a container image.
 
 You will need these provided by your Research Coordinator:
 * a CSV file which contains a list of StudyInstanceUID and SeriesInstanceUID
@@ -228,7 +228,7 @@ podman images
 REPOSITORY                TAG    IMAGE ID      CREATED       SIZE
 ghcr.io/howff/dcmaudit    cpu    4f994194efa8  11 days ago   2.67 GB
 ```
-Now you will need a 's3' directory in your home directory so create that, or run:
+Now you will need a 's3' directory in your home directory so create that first, for example:
 ```
 mkdir ~/s3
 ```
@@ -237,7 +237,7 @@ To run the container use:
 ```
 ces-pm-run --opt-file <(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu
 ```
-That is difficult to type every time you need it, so we will create a script:
+That is difficult to type every time you need it, so you can create a script:
 ```
 echo '#!/bin/bash' > ~/dcmaudit.sh
 echo 'ces-pm-run --opt-file <(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu' >> ~/dcmaudit.sh
