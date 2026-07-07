@@ -50,7 +50,6 @@ Many S3 tools will read environment variables so this can be a convenient way to
 
 * consume the file directly in memory if possible. Saving to disk is not recommended; it wastes disk space and will take 3 times longer to do your processing. See the example code below.
 * If you need to save into a file temporarily (e.g. whilst converting to NIFTI) then save into a RAM disk in `/run/user/$(id -u)/` but delete it straight after use to recover the memory.
-* If it's too large for RAM then save into a file on the system disk, not in your home directory, for example in `/tmp/$(id -un)/` but check the disk has space first (using `df -h /tmp/`) and delete it straight after use to recover the disk space.
 
 ## Example using the command-line in the Terminal window
 
