@@ -160,7 +160,7 @@ To enable Open OnDemand to automatically copy job files from within your `ondema
 Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-1. A new browser tab with an SSH session to the Open OnDemand host will appear.
+1. A new browser tab with an SSH session to the Open OnDemand VM will appear.
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
