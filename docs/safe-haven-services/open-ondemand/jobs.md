@@ -223,7 +223,7 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 Briefly, when a job is submitted, the following occurs:
 
-1. For interative apps only, Open OnDemand creates a job context directory under your `ondemand` directory with the files to run the job:
+1. For interactive apps only, Open OnDemand creates a job context directory under your `ondemand` directory with the files to run the job:
 
     ```bash
     ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
