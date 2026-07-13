@@ -2,13 +2,11 @@
 
 Project Manager is an app that allows you to write a job for a specific job scheduler (for example, Slurm) and submit these jobs to a back-end that supports that job scheduler.
 
-!!! Note
-
-    To use the Project Manager requires you to have some familiarity job scheduling and job submission concepts. It will help if you are familiar with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager and have a familiarity with how to write Slurm job submission files.
+This page walks through a couple of simple examples of using the Project Manager. For more information on the Project Manager, see Open OnDemand's [Tutorials: Project Manager](https://osc.github.io/ood-documentation/latest/tutorials/tutorials-project-manager.html).
 
 !!! Note
 
-    This page is intended to provide a couple of simple examples of using the Project Manager. For more information on the Project Manager, see Open OnDemand's [Tutorials: Project Manager](https://osc.github.io/ood-documentation/latest/tutorials/tutorials-project-manager.html).
+    To use the Project Manager requires you to have at least a basic familiarity with job scheduling and job submission concepts. It may help if you are familiar with the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager and, optionally, have a familiarity with how to write Slurm job submission files.
 
 !!! Warning
 
@@ -24,18 +22,16 @@ Project Manager is an app that allows you to write a job for a specific job sche
 
 Create a project:
 
-1. Click **Project Manager**.
-1. The Project Manager will appear.
 1. Click **Create a new project**.
 1. Enter:
-    * **Name**: Hello World
+    * **Name**: Example
     * **Directory**: Leave as the default of '$HOME/ondemand/data/sys/dashboard/projects'.
     * **Group**: Leave as the default of your default user group.
 1. Select **Icon** e.g., 'smile'.
 1. Click **Save**.
-1. The Project Manager will reappear with the new Hello World project.
-1. Click **Hello World**.
-1. The Hello World project dashboard will appear.
+1. The Project Manager will reappear with the new Example project and its icon.
+1. Click **Example**.
+1. The Example project dashboard will appear.
 
 When a new project is created, the project files are created in a project directory:
 
@@ -51,13 +47,13 @@ $HOME/ondemand/data/sys/dashboard/projects/default/kp0lvool/
 
 Create the job file(s):
 
-1. The Project Directory section shows the project directory on the Open OnDemand host where you can create job files.
-1. Within Project Directory, click **Open in files app**.
-1. The File Manager will open.
+1. The Project Directory panel in the project dashboard shows the project directory on the Open OnDemand VM where you can create job files.
+1. Within the Project Directory panel, click **Open in files app**.
+1. The [File Manager](../files.md#file-manager) will open pointing at the project's directory on the Open OnDemand VM.
 1. Click **New File**.
 1. Enter **Filename**: 'hello-world.sh'.
 1. Click **OK**.
-1. Click **...** drop-down menu by `hello-world.sh`, select **Edit**.
+1. Click the **...** drop-down menu by `hello-world.sh`, select **Edit**.
 1. A file editor browser tab will open.
 1. Add the following bash script:
 
@@ -71,56 +67,63 @@ Create the job file(s):
 
 1. Click **Save**.
 1. Return to the File Manager browser tab.
-1. Click the browser back button to return to the Hello World dashboard.
-1. Refresh the page to see `hello-world.sh` in the Project Directory.
+1. Click the browser back button to return to the Example dashboard.
+1. Refresh the page to see `hello-world.sh` listed in the Project Directory panel.
 
 Create a job launcher:
 
-1. Within Launchers, click **New Launcher**.
-1. Enter **Launcher Name**: Hello World Launcher.
+1. Within the Launchers panel, click **New Launcher**.
+1. Enter **Launcher Name**: Example Launcher.
 1. Click **Save**.
-1. The Hello World dashboard will reappear with Hello World Launcher under Launchers.
-1. Within Launchers, Hello World, click **Edit**.
+1. The Example project dashboard will reappear with Example Launcher listed in the Launchers panel.
+1. Within the Launchers panel for Example Launcher, click **Edit**.
 1. A page will appear which allows you to edit the launcher configuration.
 1. Select a back-end, **Cluster**.
 
     **National Safe Haven users**: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.
 
-1. Select **Script**: hello-world.sh, leave as-is.
+1. Select **Script**. By default this will be `hello-world.sh`, so leave as-is.
 1. Click **Add new option** to add job submission options:
     * For each option, a drop-down menu allows you to select a field, one of Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores.
     * Once selected, click **Add** to add that field to the form.
     * Once added, enter the value for the field.
     * Add the following options and values:
-        * **Job Name**: hello-world-job
+        * **Job Name**: example-job
         * **Log Location** output.log
         * **Nodes**: 1
         * **Cores**: 1
         * **Hours**: 1
 1. Click **Save**.
 
+!!! Note
+
+    For Slurm, the job name as submitted to Slurm via a launcher is the job name specified in the launcher with a `sys/dashboard/project-manager/` prefix, for example `sys/dashboard/project-manager/example-job`.
+
 !!! Tip
 
-    For Slurm, launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionaly or alternatively be provided in the bash script you select as your script (e.g., `hello-world.sh` above). For example
+    For Slurm, the launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionaly or alternatively be provided as Slurm directives in the bash script you select as your script (e.g., `hello-world.sh` above). For example
 
         ```bash
-        #SBATCH --job-name=hello-world
+        #SBATCH --job-name=example-job
         #SBATCH --output=output.log
         #SBATCH --ntasks=1
         #SBATCH --time=01:10:00
         #SBATCH --mem-per-cpu=100
         ```
 
+    Values provided in the launcher ovveride those provided as directives.
+
 Launch the job:
 
-1. Within Launchers, Hello World, click **Launch** to run the job.
-1. Under Active Jobs, a 'NNN Queued' tag will appear, where 'NNN' is the job ID, e.g., 225', created by the job scheduler e.g., Slurm.
+1. Within the Launchers panel for Example Launcher, click **Launch**.
+1. Within the Active Jobs panel, a 'NNN Queued' button will appear, where 'NNN' is the job ID, e.g., 225', created by the job scheduler e.g., Slurm.
 1. 'NNN Queued' will change to 'NNN Running' once the job starts running.
 1. 'NNN Running' will change to 'NNN Completed' once the job completes.
 
 !!! Tip
 
-    Click on a status tag to see information about the job.
+    Click on a status button to see information about the job.
+
 
     Click on the **Stop** button to stop a queued or running job.
 
@@ -138,7 +141,7 @@ View the output files:
 
 * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then click the file links within Project Directory to view the file contents.
 * If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
-    1. Within Project Directory, click **Open in files app**.
+    1. Within the Project Directory panel, click **Open in files app**.
     1. The File Manager will appear.
     1. Within the File Manager, click the **Open in Terminal** button's **>** side-button and select the back-end on which the job was run. Once logged in, your current directory will be changed to match the project directory.
     1. View the files:
@@ -148,7 +151,7 @@ View the output files:
         cat output.log
         ```
 
-* Example contents of each file are:
+* Example contents of each file are as follows:
 
     * `hello-world.txt`:
 
@@ -156,7 +159,7 @@ View the output files:
         Hello World to youruser from some-vm.nsh.loc
         ```
 
-    * `output.log`
+    * `output.log`:
 
         ```text
         Created 'hello-world.txt'
@@ -174,13 +177,13 @@ The example uses the [Safe Haven Container Execution Service - CES](../../shs-co
 
 Create the job file(s):
 
-1. Within Project Directory, click **Open in files app**.
-1. The File Manager opens.
+1. Within the Project Directory panel, click **Open in files app**.
+1. The File Manager will open.
 1. Click **New File**.
 1. Enter **Filename**: 'run-epcc-ces-hello.sh'.
 1. Click **OK**.
 1. Click the `run-epcc-ces-hello.sh` **...** side-button, select **Edit**.
-1. A new browser tab opens with a file editor.
+1. A file editor browser tab will open.
 1. Add the following bash script:
 
     ```bash
@@ -188,11 +191,11 @@ Create the job file(s):
 
     CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
     CR_USER=anonymous
-    CR_TOKEN=... # See below...
+    CR_TOKEN=TOKEN-SEE-BELOW
 
     ces-pull podman $CR_USER $CR_TOKEN $CR_URL
 
-    SAFE_DATA=/safe_data/PROJECT # See below...
+    SAFE_DATA=/safe_data/PROJECT-SEE-BELOW
 
     cat << EOF > envs.txt
     GREETING=Greetings
@@ -206,21 +209,33 @@ Create the job file(s):
         -d 5 -n ${USER}
     ```
 
-    * For `CR_URL`, there is no need to cite port 5050 in the GitLab container registry URL. The `ces-pull` command adds this when it pulls the container.
-    * For `CR_URL`, see [Container registries](./batch-container-app.md#container-registries) for supported container registries.
-    * For `CR_TOKEN`, copy in the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
-    * For `SAFE_DATA`, replace `PROJECT` with the name of your 'safe data' project directory in `/safe_data`. When Podman is run, your 'safe data' project directory is mounted into the container at `/safe_data` via Podman's `--mount` option.
-    * The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
-    * `-n` (name, here, the current user) and `-d` (doze for 10 seconds) are arguments for the `epcc-ces-hello` container itself.
+    Make the following changes:
+
+    * For `CR_URL`, leave-as-is.
+
+        !!! Note
+
+            For ECDF GitLab, there is no need put the registry port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.
+
+            See [Container registries](./batch-container-app.md#container-registries) for supported container registries.
+
+    * For `CR_TOKEN`, replace `TOKEN-SEE-BELOW` with a copy of the `epcc-ces-hello` container's 'Container registry access token' from the [Run Batch Container](./batch-container-app.md) app's form.
+    * For `SAFE_DATA`, replace `PROJECT-SEE-BELOW` with the name of your 'safe data' project directory in `/safe_data`.
+
+    The script creates a file, `envs.txt`, with an environment variable to be passed to the `epcc-ces-hello` container. The container uses the environment variable `GREETING` to customise the greeting it prints.
+
+    When Podman is run your 'safe data' project directory is mounted into the container at `/safe_data` via Podman's `--mount` option.
+
+    `-n` (name, here, the current user) and `-d` (doze for 10 seconds) are arguments for the `epcc-ces-hello` container itself.
 
 1. Click **Save**.
 
 Launch the job:
 
-1. Within Launchers, Hello World, click **Show**.
+1. Within the Launchers panel for Example Launcher, click **Show**.
 1. Select **Script**: run-epcc-ces-hello.sh.
 1. Scroll down to the end of the page.
-1. Click **Launch**.
+1. Within the Launchers panel for Example Launcher, click **Launch**.
 
 When the `epcc-ces-hello` container is run, it writes a file `YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt` into `/safe_data` within the container, and so into `/safe_data/PROJECT` on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of `/safe_data` within the container i.e., `/safe_data/PROJECT` on the back-end. For example, a file `20260609-070028-youruser-epcc-ces-hello.txt` could contain:
 
@@ -244,10 +259,10 @@ analyse_ae.py
 weekly_ae_activity_20260201.csv
 ```
 
-View the file created by the container. `/safe_data` is not available on the Open OnDemand host so to view this file you will need to:
+View the file created by the container. `/safe_data` is not available on the Open OnDemand VM so to view this file you will need to:
 
-1. Click **Open Terminal** to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.
-1. View the file created by the container:
+1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
+1. View the greetings file:
 
      ```bash
      ls /safe_data/PROJECT/
@@ -259,15 +274,16 @@ View the file created by the container. `/safe_data` is not available on the Ope
      ```bash
      ls /safe_data/yourproject
      cat /safe_data/20260609-070028-youruser-epcc-ces-hello.txt
+     cat /safe_data/yourproject/20260609-100910-youruser-greetings.txt
      ```
 
-When the job script runs, an `output.log` file logs the outputs captured by Slurm as the job runs.
+When the job script runs, the `output.log` file logs the outputs captured by Slurm as the job runs.
 
 View the log file, `output.log`:
 
 * If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then click the file links within Project Directory to view the file contents.
 * If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:
-    1. Within Project Directory, click **Open in files app**.
+    1. Within the Project Directory panel, click **Open in files app**.
     1. The File Manager will appear.
     1. Within the File Manager, click the **Open in Terminal** button's **>** side-button and select the back-end on which the job was run. Once logged in, your current directory will be changed to match the project directory.
     1. View the file:
@@ -316,20 +332,10 @@ Edit the job to use Apptainer instead of Podman:
          When Apptainer is run, your 'safe data' project directory is mounted into the container at `/safe_data` via Apptainer's `--bind` option.
 
 1. Click **Save**.
-1. Within Launchers, Hello World, click **Show**.
-1. Select **Script**: run-epcc-ces-hello.sh.
-1. Click **Launch**.
+1. Within the Launchers panel for Example Launcher, click **Launch**.
 
 The file created by the container and the `output.log` file can view viewed using the steps described above in the Podman example.
 
 !!! Note
 
     In contrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.
-
-These files can be viewed using the steps described earlier.
-
----
-
-## Troubleshooting: 'cd ... No such file or directory'
-
-If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the project directory is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, and you have not yet submitted your job.
