@@ -58,4 +58,4 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in Terminal** to log into the back-end on which the job is running. Once logged in, your current directory will be changed to match the project directory (for jobs created by the [Project Manager](apps/project-manager.md) or the job context directory for the job (for jobs created by interactive apps).
+Click **Open in Terminal** to log into the back-end on which the job is running. Once logged in, your current directory will be changed to match the project directory (for jobs created by the [Project Manager](apps/project-manager.md)) or the job context directory for the job (for jobs created by interactive apps).
