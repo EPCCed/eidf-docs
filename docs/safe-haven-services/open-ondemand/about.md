@@ -24,5 +24,5 @@ Then, explore the other pages about the service:
     * [Run Batch Container](apps/batch-container-app.md)
     * [Run JupyterLab](apps/jupyter-app.md)
     * [Run RStudio Server](apps/rstudio-app.md)
-    * [Job Composer](apps/job-composer.md)
+    * [Project Manager](apps/project-manager.md)
 * [Tips](tips.md)

@@ -58,14 +58,4 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in Terminal** to log into the back-end on which the job is running. Once logged in, your current directory will be changed to match the job context directory.
-
----
-
-## Job Composer app and back-ends on which jobs will be run, are running, or ran
-
-Open the [Job Composer](apps/job-composer.md) app.
-
-Select a job.
-
-Click **Open Terminal** (either button) to log into the back-end on which the currently selected job will be run, is running or was run. Once logged in, your current directory will be changed to match the job context directory.
+Click **Open in Terminal** to log into the back-end on which the job is running. Once logged in, your current directory will be changed to match the project directory (for jobs created by the [Project Manager](apps/project-manager.md) or the job context directory for the job (for jobs created by interactive apps).

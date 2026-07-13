@@ -39,7 +39,7 @@ Click **Open in Terminal** to log into a specific VM:
 
 ![Open in Terminal button and menu](../../images/open-ondemand/open-in-terminal-button.png){: class="border-img center"} ***Open in Terminal** button and menu*
 
-Once logged in, your current directory will be changed to match the job context directory.
+Once logged in, your current directory will be changed to match the currently-selected directory.
 
 #### Troubleshooting: 'cd ... No such file or directory'
 
@@ -65,23 +65,25 @@ On a job's job card, click the **Session ID** link to open the File Manager, poi
 
 ---
 
-## Active Jobs app and job context directory
+## Active Jobs app and project and job context directories
 
 Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in File Manager** to open the File Manager pointing at the job context directory for the job on the Open OnDemand VM.
+Click **Open in File Manager** to open the File Manager pointing at the project directory (for jobs created by the [Project Manager](apps/project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ---
 
-## Job Composer app and job context directory
+## Project Manager app and project directory
 
-Open the [Job Composer](apps/job-composer.md) app.
+Open the [Project Manager](apps/project-manager.md) app.
 
-Select a job.
+Click on a project.
 
-Click **Open Dir** or click **Edit Files** to open the File Manager pointing at the job context directory for the currently selected job.
+The 'Project Directory' section shows the project directory.
+
+Within Project Directory, click **Open in files app** to open the File Manager pointing at the project's directory on the Open OnDemand VM.
 
 ---
 

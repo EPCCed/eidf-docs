@@ -16,11 +16,11 @@ The job ID is a unique job ID created by the job scheduler, when you submitted t
 
 !!! Note
 
-    The job name is an app-specific job scheduler-specific job name. For the Job Composer and Slurm, the job name is the value of the Slurm `--job-name` parameter (set by `#SBATCH --job-name=...` in the job file). This job name is not the same as the job name shown in the Jobs table is used by the Job Composer. That job name is one entered in the **Job Name** field when completing the Job Composer's job submission forms.
+    The job name is an app-specific job scheduler-specific job name. For the Project Manager and Slurm, the job name is the value of the launcher 'Job Name' parameter, or, if using Slurm directives, the Slurm `--job-name` parameter (as set by `#SBATCH --job-name=...` in the job file).
 
 !!! Note
 
-    The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
+    The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the Project Manager. Rather, the job ID is created by the job scheduler.
 
     Each job created by an app has both an app ID and a job scheduler job ID
 
@@ -36,7 +36,7 @@ The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed
 
 To see details about a job, click the **>** button, by the job of interest.
 
-The 'Output Location' is the location of the job context directory for the job on the Open OnDemand VM.
+The 'Output Location' is the location of the project directory (for jobs created by the [Project Manager](project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ![Active Jobs app job details](../../../images/open-ondemand/active-jobs-job-details.png){: class="border-img center"} *Job details within the Active Jobs app*
 
@@ -44,13 +44,13 @@ The 'Output Location' is the location of the job context directory for the job o
 
 ## Open File Manager to job context directory
 
-Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the job context directory for the job on the Open OnDemand VM.
+Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the project directory (for jobs created by the [Project Manager](project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ---
 
 ## Log into to back-end on which job is running
 
-Click **Open in Terminal** to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.
+Click **Open in Terminal** to log into the back-end on which the currently selected job was run. Once logged in, your current directory will be changed to match the project directory (for jobs created by the [Project Manager](project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ---
 
