@@ -81,9 +81,9 @@ Open the [Project Manager](apps/project-manager.md) app.
 
 Click on a project.
 
-The 'Project Directory' section shows the project directory.
+The Project Directory panel within a project dashboard shows the project directory.
 
-Within Project Directory, click **Open in files app** to open the File Manager pointing at the project's directory on the Open OnDemand VM.
+Within the Project Directory panel, click **Open in files app** to open the File Manager pointing at the project's directory on the Open OnDemand VM.
 
 ---
 
