@@ -165,7 +165,6 @@ nav:
 
      # WIP: TRE Code Management docs
      # - "[Beta] Code Management and Mirroring Service": safe-haven-services/code-management-mirroring-service.md
-  - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md
 
