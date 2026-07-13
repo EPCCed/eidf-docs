@@ -57,7 +57,7 @@ at
 
 ### 'Greetings file destination': '/safe_data/PROJECT/'
 
-`/safe_data` is not available on Open OnDemand host. To view the greetings file:
+`/safe_data` is not available on the Open OnDemand VM. To view the greetings file:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
 1. View the greetings file:

@@ -67,7 +67,7 @@ Open OnDemand then submits the job to a **job scheduler** which schedules the jo
 
     Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
-    Unless you are using the [Job Composer](apps/job-composer.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    Unless you are using the [Project Manager](apps/project-manager.md) with Slurm directives, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
 !!! Tip
 
@@ -99,31 +99,31 @@ For interactive apps, Open OnDemand uses the job scheduler to determine when the
 
 Within your home directory on the Open OnDemand VM, Open OnDemand creates an `ondemand` directory. This is where Open OnDemand stores information about your current session and previous sessions.
 
-Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific **job context directory** in an app-specific directory.
+Every time a job is created by an app, Open OnDemand creates the job files for the app in one of two types of directory, depending on the app:
 
-[Job Composer](apps/job-composer.md) app job files are created in a directory:
+* [Project Manager](apps/project-manager.md) job files are created in a **project directory**:
 
-```bash
-$HOME/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
-```
+    ```bash
+    $HOME/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
+    ```
 
-where `JOB_COMPOSER_ID` is a unique job ID created by the app. For example:
+    where `PROJECT_ID` is a unique job ID created by the app. For example:
 
-```bash
-$HOME/ondemand/data/sys/myjobs/projects/default/1/
-```
+    ```bash
+    $HOME/ondemand/data/sys/dashboard/projects/default/kp0lvool/
+    ```
 
-An interactive app's job files are created in a directory:
+* Interactive app job files are created in a job-specific **job context directory** in an app-specific directory:
 
-```bash
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
-```
+    ```bash
+    $HOME/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
+    ```
 
-where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
+    where `APP_NAME` is the app name and `SESSION_ID` a unique session identifier. For example,
 
-```bash
-$HOME/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
-```
+    ```bash
+    $HOME/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
+    ```
 
 Open OnDemand caches information within this `ondemand` directory including information on previous jobs and information you last entered within app forms.
 
@@ -133,7 +133,7 @@ Open OnDemand caches information within this `ondemand` directory including info
 
 !!! Tip
 
-    You may find it useful to delete specific job context subdirectories from the `ondemand` directory if the `ondemand` directory grows to large.
+    You may find it useful to delete specific interactive app job context subdirectories from the `ondemand` directory if the `ondemand` directory grows to large.
 
 ---
 
@@ -160,7 +160,7 @@ To enable Open OnDemand to automatically copy job files from within your `ondema
 Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 1. Select **Clusters** menu, **Open OnDemand host Shell Access** option.
-1. A new browser tab with an SSH session to the Open OnDemand host will appear.
+1. A new browser tab with an SSH session to the Open OnDemand VM will appear.
 1. When prompted, enter your project username and password.
 1. Create a passphrase-less SSH key:
 
@@ -223,25 +223,26 @@ Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:
 
 Briefly, when a job is submitted, the following occurs:
 
-1. Open OnDemand creates a job context directory under your `ondemand` directory.
-    * For the [Job Composer](apps/job-composer.md) app:
-
-    ```bash
-    ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
-    ```
-
-    * For interactive apps:
+1. For interactive apps only, Open OnDemand creates a job context directory under your `ondemand` directory with the files to run the job:
 
     ```bash
     ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
     ```
+
+    !!! Note
+
+        For the [Project Manager](apps/project-manager.md), the project's directory under your `ondemand` directory holds the files required to run the job:
+
+        ```bash
+        $HOME/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
+        ```
 
 1. Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.
     * A job scheduler preprocessing step is used to create a log file in an `ondemand/logs/slurm` directory.
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your job files from within your `ondemand` directory to the back-end. The relative directory structure from the `ondemand` directory to the job files directory is preserved by the copy.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
-    * For jobs created via the [Job Composer](apps/job-composer.md) app, the job status will be 'Running'.
+    * For jobs created via the [Project Manager](apps/project-manager.md), the job status will be 'Running'.
     * For jobs created via interactive apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
@@ -269,7 +270,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 !!! Note
 
-    Only information for jobs for interactive apps is shown. Information on jobs submitted via the [Job Composer](apps/job-composer.md) app are shown on that app's own page.
+    Only information for jobs for interactive apps is shown. Information on jobs submitted via the [Project Manager](apps/project-manager.md) are shown on that app's own page.
 
 ### Job cards
 
@@ -354,7 +355,7 @@ An example of the contents of a log file is as follows:
 
 ### App log files
 
-When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your `ondemand` directory. This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.
+When an app job runs, a log file is created within the project directory (for jobs created by the [Project Manager](apps/project-manager.md)) or job context directory for the job (for jobs created by interactive apps). This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.
 
 It can be useful to check the log file when debugging.
 
@@ -362,6 +363,6 @@ Depending on the app implementation, the log file may include a job ID, a unique
 
 !!! Note
 
-    The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.
+    The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the [Project Manager](apps/project-manager.md). Rather, the job ID is created by the job scheduler.
 
     Each job created by an app has both an app ID and a job scheduler job ID.

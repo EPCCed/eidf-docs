@@ -73,7 +73,7 @@ A job may stay in a 'Queued' state for the following reasons:
 If you delete your `ondemand` directory on the Open OnDemand VM, you may see an error like the following:
 
 ```text
-rm: cannot remove 'ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002': Device or resource busy
+rm: cannot remove 'ondemand/data/sys/APP/.nfs0000000601ac7ca000000002': Device or resource busy
 ```
 
 The file is a system file held by a lingering process created during your session.

@@ -160,7 +160,7 @@ nav:
      #     - "Run Batch Container": safe-haven-services/open-ondemand/apps/batch-container-app.md
      #     - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-app.md
      #     - "Run RStudio Server": safe-haven-services/open-ondemand/apps/rstudio-app.md
-     #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
+     #     - "Project Manager": safe-haven-services/open-ondemand/apps/project-manager.md
      #  - "Tips": safe-haven-services/open-ondemand/tips.md
 
      # WIP: TRE Code Management docs
