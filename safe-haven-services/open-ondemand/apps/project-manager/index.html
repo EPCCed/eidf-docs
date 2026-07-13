@@ -2969,14 +2969,12 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For Slurm, the launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionally or alternatively be provided as Slurm directives in the bash script you select as your script (e.g., <code>hello-world.sh</code> above). For example</p>
-<pre><code>```bash
-#SBATCH --job-name=example-job
-#SBATCH --output=output.log
-#SBATCH --ntasks=1
-#SBATCH --time=01:10:00
-#SBATCH --mem-per-cpu=100
-```
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">#SBATCH --job-name=example-job</span>
+<span class="c1">#SBATCH --output=output.log</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --time=01:10:00</span>
+<span class="c1">#SBATCH --mem-per-cpu=100</span>
+</code></pre></div>
 <p>Values provided in the launcher override those provided as directives.</p>
 </div>
 <div class="admonition warning">
