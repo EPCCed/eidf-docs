@@ -101,7 +101,7 @@ at
 2026-06-09 10:09:10
 ```
 
-When you ran the app, you requested that a **Greetings file destination** of '/safe_data/PROJECT/' be used. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
+When you ran the app, you requested that a **Greetings file destination** of '/safe_data/PROJECT/' be used. As mentioned earlier, `/safe_data` is not available on the Open OnDemand VM so to view this file you will need to:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
 1. View the greetings file:
@@ -527,7 +527,7 @@ tmp
 weekly_ae_activity_20260201.csv
 ```
 
-View the file created by the container. As mentioned earlier, `/safe_data` is not available on Open OnDemand host so to view this file you will need to:
+View the file created by the container. As mentioned earlier, `/safe_data` is not available on the Open OnDemand VM so to view this file you will need to:
 
 1. Select **Clusters** menu, back-end **Shell Access** option, to log into the back-end.
 1. View the file created by the container:
