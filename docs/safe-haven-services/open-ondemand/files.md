@@ -71,7 +71,7 @@ Open the [Active Jobs](apps/active-jobs.md) app.
 
 Click the **>** button, by the job of interest, to open the job details.
 
-Click **Open in File Manager** to open the File Manager pointing at the project directory (for jobs created by the [Project Manager](apps/project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
+Click **Open in File Manager** to open the File Manager pointing at the project directory (for jobs created by the [Project Manager](apps/project-manager.md)) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ---
 
