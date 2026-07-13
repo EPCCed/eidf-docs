@@ -67,7 +67,7 @@ Open OnDemand then submits the job to a **job scheduler** which schedules the jo
 
     Open OnDemand and the back-ends use the [Slurm](https://slurm.schedmd.com) open source job scheduler and workload manager to schedule and run jobs on back-ends.
 
-    Unless you are using the [Project Manager](apps/project-manager.md) app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
+    Unless you are using the [Project Manager](apps/project-manager.md) with Slurm directives, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.
 
 !!! Tip
 
@@ -101,7 +101,7 @@ Within your home directory on the Open OnDemand VM, Open OnDemand creates an `on
 
 Every time a job is created by an app, Open OnDemand creates the job files for the app in one of two types of directory, depending on the app:
 
-* [Project Manager](apps/project-manager.md) app job files are created in a **project directory**:
+* [Project Manager](apps/project-manager.md) job files are created in a **project directory**:
 
     ```bash
     $HOME/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
@@ -231,7 +231,7 @@ Briefly, when a job is submitted, the following occurs:
 
     !!! Note
 
-        For the [Project Manager](apps/project-manager.md) app, the project's directory under your `ondemand` directory holds the files required to run the job:
+        For the [Project Manager](apps/project-manager.md), the project's directory under your `ondemand` directory holds the files required to run the job:
 
         ```bash
         $HOME/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
@@ -242,7 +242,7 @@ Briefly, when a job is submitted, the following occurs:
     * For back-ends where your home directory is not common to both both the Open OnDemand VM and the back-end, a job scheduler preprocessing step automatically copies your job files from within your `ondemand` directory to the back-end. The relative directory structure from the `ondemand` directory to the job files directory is preserved by the copy.
 1. The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.
 1. When resources become available on the back-end, your job runs:
-    * For jobs created via the [Project Manager](apps/project-manager.md) app, the job status will be 'Running'.
+    * For jobs created via the [Project Manager](apps/project-manager.md), the job status will be 'Running'.
     * For jobs created via interactive apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.
 1. Your job will complete. The job status will be 'Completed'.
 
@@ -270,7 +270,7 @@ The My Interactive Sessions page shows app-specific jobs that have been submitte
 
 !!! Note
 
-    Only information for jobs for interactive apps is shown. Information on jobs submitted via the [Project Manager](apps/project-manager.md) app are shown on that app's own page.
+    Only information for jobs for interactive apps is shown. Information on jobs submitted via the [Project Manager](apps/project-manager.md) are shown on that app's own page.
 
 ### Job cards
 
@@ -355,7 +355,7 @@ An example of the contents of a log file is as follows:
 
 ### App log files
 
-When an app job runs, a log file is created within the project directory (for jobs created by the [Project Manager](apps/project-manager.md) or job context directory for the job (for jobs created by interactive apps). This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.
+When an app job runs, a log file is created within the project directory (for jobs created by the [Project Manager](apps/project-manager.md)) or job context directory for the job (for jobs created by interactive apps). This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.
 
 It can be useful to check the log file when debugging.
 
@@ -363,6 +363,6 @@ Depending on the app implementation, the log file may include a job ID, a unique
 
 !!! Note
 
-    The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the Project Manager. Rather, the job ID is created by the job scheduler.
+    The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the [Project Manager](apps/project-manager.md). Rather, the job ID is created by the job scheduler.
 
     Each job created by an app has both an app ID and a job scheduler job ID.
