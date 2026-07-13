@@ -16,7 +16,7 @@ The job ID is a unique job ID created by the job scheduler, when you submitted t
 
 !!! Note
 
-    The job name is an app-specific job scheduler-specific job name. For the Project Manager and Slurm, the job name is the value of the launcher 'Job Name' parameter, or, if using Slurm directives, the Slurm `--job-name` parameter (as set by `#SBATCH --job-name=...` in the job file).
+    The job name is an app-specific job scheduler-specific job name. For jobs created using the [Project Manager](project-manager.md) and run via Slurm, the job name is the value of the job launcher's 'Job Name' parameter, or, if using Slurm directives, the Slurm `--job-name` parameter (as set by `#SBATCH --job-name=...` in the job file).
 
 !!! Note
 
@@ -36,15 +36,15 @@ The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed
 
 To see details about a job, click the **>** button, by the job of interest.
 
-The 'Output Location' is the location of the project directory (for jobs created by the [Project Manager](project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
+The 'Output Location' is the location of the project directory (for jobs created by the [Project Manager](project-manager.md)) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ![Active Jobs app job details](../../../images/open-ondemand/active-jobs-job-details.png){: class="border-img center"} *Job details within the Active Jobs app*
 
 ---
 
-## Open File Manager to job context directory
+## Open File Manager to project or job context directory
 
-Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the project directory (for jobs created by the [Project Manager](project-manager.md) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
+Click **Open in File Manager** to open the [File Manager](../files.md) pointing at the project directory (for jobs created by the [Project Manager](project-manager.md)) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.
 
 ---
 
