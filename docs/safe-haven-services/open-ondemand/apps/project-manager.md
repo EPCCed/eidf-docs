@@ -101,7 +101,7 @@ Create a job launcher:
 
 !!! Tip
 
-    For Slurm, the launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionaly or alternatively be provided as Slurm directives in the bash script you select as your script (e.g., `hello-world.sh` above). For example
+    For Slurm, the launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionally or alternatively be provided as Slurm directives in the bash script you select as your script (e.g., `hello-world.sh` above). For example
 
         ```bash
         #SBATCH --job-name=example-job
@@ -111,7 +111,7 @@ Create a job launcher:
         #SBATCH --mem-per-cpu=100
         ```
 
-    Values provided in the launcher ovveride those provided as directives.
+    Values provided in the launcher override those provided as directives.
 
 Launch the job:
 
