@@ -59,6 +59,7 @@ Create the job file(s):
 
     ```bash
     #!/usr/bin/env bash
+    #SBATCH --mem-per-cpu=100
 
     echo "Hello World to ${USER} from $(hostname)" > hello-world.txt
 
@@ -113,6 +114,14 @@ Create a job launcher:
 
     Values provided in the launcher override those provided as directives.
 
+!!! Warning
+
+    The Project Manager does not allow specification of memory requirements for a job.
+
+    If a Slurm node has not configured the default memory per node (`DefMemPerNode`) for a job, then the default memory per node is 0 (unlimited). This, then, can result in jobs that don't specify any memory requirements sitting in the job queue if any other jobs are running.
+
+    This is why the Slurm directive `#SBATCH --mem-per-cpu=100` is included in the example job scripts above, to specify the memory requirements for this job.
+
 Launch the job:
 
 1. Within the Launchers panel for Example Launcher, click **Launch**.
@@ -123,7 +132,6 @@ Launch the job:
 !!! Tip
 
     Click on a status button to see information about the job.
-
 
     Click on the **Stop** button to stop a queued or running job.
 
@@ -188,6 +196,7 @@ Create the job file(s):
 
     ```bash
     #!/usr/bin/env bash
+    #SBATCH --mem-per-cpu=100
 
     CR_URL=git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
     CR_USER=anonymous
@@ -339,3 +348,13 @@ The file created by the container and the `output.log` file can view viewed usin
 !!! Note
 
     In contrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.
+
+---
+
+## Using Slurm `squeue` to see requested resources
+
+`squeue` can be run on the back-end to see what the requested resources are, as set up by the Project Manager, when a job is run. For example:
+
+```bash
+squeue -u $USER -o "%.18i %.9P %.40j %.8u %.2t %.10M %.4C %.5m %.4D %R"
+```
