@@ -2907,7 +2907,7 @@ sbatch: error: Batch job submission failed: Requested node configuration is not 
 <hr />
 <h2 id="troubleshooting-cannot-remove-ondemanddatasysappnfs">Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'</h2>
 <p>If you delete your <code>ondemand</code> directory on the Open OnDemand VM, you may see an error like the following:</p>
-<div class="highlight"><pre><span></span><code>rm: cannot remove &#39;ondemand/data/sys/myjobs/.nfs0000000601ac7ca000000002&#39;: Device or resource busy
+<div class="highlight"><pre><span></span><code>rm: cannot remove &#39;ondemand/data/sys/APP/.nfs0000000601ac7ca000000002&#39;: Device or resource busy
 </code></pre></div>
 <p>The file is a system file held by a lingering process created during your session.</p>
 <p>Log into Open OnDemand (if you are not already logged in) and, within Open OnDemand, select the <strong>Help (?)</strong> menu, <strong>Restart Web Server</strong> option to restart your session. This will end the lingering process and allow you to remove the file, and directory.</p>

@@ -3059,7 +3059,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Open OnDemand and the back-ends use the <a href="https://slurm.schedmd.com">Slurm</a> open source job scheduler and workload manager to schedule and run jobs on back-ends.</p>
-<p>Unless you are using the <a href="../apps/job-composer/">Job Composer</a> app, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.</p>
+<p>Unless you are using the <a href="../apps/project-manager/">Project Manager</a> with Slurm directives, you should not have to worry about the details of how Slurm works. Open OnDemand's user interface and apps are designed to hide its details from users.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -3086,19 +3086,25 @@
 <hr />
 <h2 id="your-ondemand-directory">Your <code>ondemand</code> directory</h2>
 <p>Within your home directory on the Open OnDemand VM, Open OnDemand creates an <code>ondemand</code> directory. This is where Open OnDemand stores information about your current session and previous sessions.</p>
-<p>Every time a job is created by an app, Open OnDemand creates the job files for the app in a job-specific <strong>job context directory</strong> in an app-specific directory.</p>
-<p><a href="../apps/job-composer/">Job Composer</a> app job files are created in a directory:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
+<p>Every time a job is created by an app, Open OnDemand creates the job files for the app in one of two types of directory, depending on the app:</p>
+<ul>
+<li>
+<p><a href="../apps/project-manager/">Project Manager</a> job files are created in a <strong>project directory</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
 </code></pre></div>
-<p>where <code>JOB_COMPOSER_ID</code> is a unique job ID created by the app. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/1/
+<p>where <code>PROJECT_ID</code> is a unique job ID created by the app. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/projects/default/kp0lvool/
 </code></pre></div>
-<p>An interactive app's job files are created in a directory:</p>
+</li>
+<li>
+<p>Interactive app job files are created in a job-specific <strong>job context directory</strong> in an app-specific directory:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 </code></pre></div>
 <p>where <code>APP_NAME</code> is the app name and <code>SESSION_ID</code> a unique session identifier. For example,</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/e0b9deeb-4b9c-43f8-ad3f-1c85074a1485/
 </code></pre></div>
+</li>
+</ul>
 <p>Open OnDemand caches information within this <code>ondemand</code> directory including information on previous jobs and information you last entered within app forms.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3106,7 +3112,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You may find it useful to delete specific job context subdirectories from the <code>ondemand</code> directory if the <code>ondemand</code> directory grows to large.</p>
+<p>You may find it useful to delete specific interactive app job context subdirectories from the <code>ondemand</code> directory if the <code>ondemand</code> directory grows to large.</p>
 </div>
 <hr />
 <h2 id="unsynched-home-directories">Unsynched home directories</h2>
@@ -3126,7 +3132,7 @@
 <p>Set up a passphrase-less SSH key between the Open OnDemand VM and the back-end:</p>
 <ol>
 <li>Select <strong>Clusters</strong> menu, <strong>Open OnDemand host Shell Access</strong> option.</li>
-<li>A new browser tab with an SSH session to the Open OnDemand host will appear.</li>
+<li>A new browser tab with an SSH session to the Open OnDemand VM will appear.</li>
 <li>When prompted, enter your project username and password.</li>
 <li>
 <p>Create a passphrase-less SSH key:</p>
@@ -3175,17 +3181,15 @@ shs-sdf01.nsh.loc
 <p>Briefly, when a job is submitted, the following occurs:</p>
 <ol>
 <li>
-<p>Open OnDemand creates a job context directory under your <code>ondemand</code> directory.</p>
-<ul>
-<li>For the <a href="../apps/job-composer/">Job Composer</a> app:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
-</code></pre></div>
-<ul>
-<li>For interactive apps:</li>
-</ul>
+<p>For interactive apps only, Open OnDemand creates a job context directory under your <code>ondemand</code> directory with the files to run the job:</p>
 <div class="highlight"><pre><span></span><code>ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME/output/SESSION_ID/
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <a href="../apps/project-manager/">Project Manager</a>, the project's directory under your <code>ondemand</code> directory holds the files required to run the job:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Open OnDemand submits the job to the job scheduler to run the job on your chosen back-end.</p>
@@ -3196,7 +3200,7 @@ shs-sdf01.nsh.loc
 </li>
 <li>The job scheduler queues your job, pending processing and memory resources on the back-end becoming available. The job status will be 'Queued'.</li>
 <li>When resources become available on the back-end, your job runs:<ul>
-<li>For jobs created via the <a href="../apps/job-composer/">Job Composer</a> app, the job status will be 'Running'.</li>
+<li>For jobs created via the <a href="../apps/project-manager/">Project Manager</a>, the job status will be 'Running'.</li>
 <li>For jobs created via interactive apps, the job status will be 'Starting' and, when a notification is received from the running app by Open OnDemand, the job status will switch to 'Running'.</li>
 </ul>
 </li>
@@ -3217,7 +3221,7 @@ shs-sdf01.nsh.loc
 <p>The My Interactive Sessions page shows app-specific jobs that have been submitted, are running, or have completed. Each job has a job card.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Only information for jobs for interactive apps is shown. Information on jobs submitted via the <a href="../apps/job-composer/">Job Composer</a> app are shown on that app's own page.</p>
+<p>Only information for jobs for interactive apps is shown. Information on jobs submitted via the <a href="../apps/project-manager/">Project Manager</a> are shown on that app's own page.</p>
 </div>
 <h3 id="job-cards">Job cards</h3>
 <p>When an interactive app's job is submitted, a <strong>job card</strong> is created and shown with information about the app's job including:</p>
@@ -3281,12 +3285,12 @@ shs-sdf01.nsh.loc
 <p>You can safely delete these log files, if they're taking up too much space.</p>
 </div>
 <h3 id="app-log-files">App log files</h3>
-<p>When an app job runs, a log file is created within the job-specific job context directory in an app-specific directory under your <code>ondemand</code> directory. This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.</p>
+<p>When an app job runs, a log file is created within the project directory (for jobs created by the <a href="../apps/project-manager/">Project Manager</a>) or job context directory for the job (for jobs created by interactive apps). This log file includes information from the app itself plus logs captured from any scripts, services, containers, or other processes spawned by the app as these run.</p>
 <p>It can be useful to check the log file when debugging.</p>
 <p>Depending on the app implementation, the log file may include a job ID, a unique job ID created by the job scheduler, when you submitted the job.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.</p>
+<p>The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the <a href="../apps/project-manager/">Project Manager</a>. Rather, the job ID is created by the job scheduler.</p>
 <p>Each job created by an app has both an app ID and a job scheduler job ID.</p>
 </div>
 

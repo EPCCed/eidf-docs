@@ -2854,18 +2854,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#active-jobs-app-and-job-context-directory" class="md-nav__link">
+  <a href="#active-jobs-app-and-project-and-job-context-directories" class="md-nav__link">
     <span class="md-ellipsis">
-      Active Jobs app and job context directory
+      Active Jobs app and project and job context directories
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#job-composer-app-and-job-context-directory" class="md-nav__link">
+  <a href="#project-manager-app-and-project-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      Job Composer app and job context directory
+      Project Manager app and project directory
     </span>
   </a>
   
@@ -2943,7 +2943,7 @@
 <li>To select a specific back-end, click the <strong>Open in Terminal</strong> button's <strong>&gt;</strong> side-button to open a drop down-menu to allow you to choose a specific VM.</li>
 </ul>
 <p><img alt="Open in Terminal button and menu" class="border-img center" src="../../../images/open-ondemand/open-in-terminal-button.png" /> <em><strong>Open in Terminal</strong> button and menu</em></p>
-<p>Once logged in, your current directory will be changed to match the job context directory.</p>
+<p>Once logged in, your current directory will be changed to match the currently-selected directory.</p>
 <h4 id="troubleshooting-cd-no-such-file-or-directory">Troubleshooting: 'cd ... No such file or directory'</h4>
 <p>If, after you have logged into the back-end, you see an error like:</p>
 <div class="highlight"><pre><span></span><code>bash:<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>cd:<span class="w"> </span>/home/user/ondemand:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
@@ -2956,15 +2956,16 @@
 <p><img alt="My Interactive Sessions menu button, an overlaid squares icon" class="border-img center" src="../../../images/open-ondemand/my-interactive-sessions-button.png" /> <em><strong>My Interactive Sessions</strong> menu button</em></p>
 <p>On a job's job card, click the <strong>Session ID</strong> link to open the File Manager, pointing at the job context directory for the job on the Open OnDemand VM.</p>
 <hr />
-<h2 id="active-jobs-app-and-job-context-directory">Active Jobs app and job context directory</h2>
+<h2 id="active-jobs-app-and-project-and-job-context-directories">Active Jobs app and project and job context directories</h2>
 <p>Open the <a href="../apps/active-jobs/">Active Jobs</a> app.</p>
 <p>Click the <strong>&gt;</strong> button, by the job of interest, to open the job details.</p>
-<p>Click <strong>Open in File Manager</strong> to open the File Manager pointing at the job context directory for the job on the Open OnDemand VM.</p>
+<p>Click <strong>Open in File Manager</strong> to open the File Manager pointing at the project directory (for jobs created by the <a href="../apps/project-manager/">Project Manager</a>) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.</p>
 <hr />
-<h2 id="job-composer-app-and-job-context-directory">Job Composer app and job context directory</h2>
-<p>Open the <a href="../apps/job-composer/">Job Composer</a> app.</p>
-<p>Select a job.</p>
-<p>Click <strong>Open Dir</strong> or click <strong>Edit Files</strong> to open the File Manager pointing at the job context directory for the currently selected job.</p>
+<h2 id="project-manager-app-and-project-directory">Project Manager app and project directory</h2>
+<p>Open the <a href="../apps/project-manager/">Project Manager</a> app.</p>
+<p>Click on a project.</p>
+<p>The Project Directory panel within a project dashboard shows the project directory.</p>
+<p>Within the Project Directory panel, click <strong>Open in files app</strong> to open the File Manager pointing at the project's directory on the Open OnDemand VM.</p>
 <hr />
 <h2 id="app-data-root-directory">App <strong>data root directory</strong></h2>
 <p>Within an app's form, click the <strong>data root directory</strong> link to open the File Manager pointing at the app directory, <code>ondemand/data/sys/dashboard/batch_connect/sys/APP_NAME</code>, under which the job's files will be created.</p>

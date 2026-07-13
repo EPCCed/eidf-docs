@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/job-composer/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/open-ondemand/apps/project-manager/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Job Composer - EIDF User Documentation</title>
+        <title>Project Manager - EIDF User Documentation</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#job-composer" class="md-skip">
+        <a href="#project-manager" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Job Composer
+              Project Manager
             
           </span>
         </div>
@@ -2797,139 +2797,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-slurm-job" class="md-nav__link">
+  <a href="#create-and-run-a-hello-world-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Slurm job
+      Create and run a 'hello world' job
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#edit-job-files" class="md-nav__link">
+  <a href="#create-and-run-a-job-to-run-a-container" class="md-nav__link">
     <span class="md-ellipsis">
-      Edit job files
+      Create and run a job to run a container
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Edit job files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-edit-job-files-cd-no-such-file-or-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting: Edit job files 'cd ... No such file or directory'
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-slurm-job" class="md-nav__link">
-    <span class="md-ellipsis">
-      Submit Slurm job
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#browse-and-manage-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Browse and manage jobs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Browse and manage jobs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#jobs-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jobs table
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#open-file-manager-to-job-context-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      Open File Manager to job context directory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log-into-to-back-end" class="md-nav__link">
-    <span class="md-ellipsis">
-      Log into to back-end
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log into to back-end">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-log-into-back-end-cd-no-such-file-or-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting: Log into back-end 'cd ... No such file or directory'
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stop-a-job" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stop a job
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-a-job" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete a job
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-a-hello-world-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run a 'hello world' example
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-a-container-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run a container example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Run a container example">
+    <nav class="md-nav" aria-label="Create and run a job to run a container">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2955,6 +2838,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-slurm-squeue-to-see-requested-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Slurm squeue to see requested resources
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2974,195 +2866,205 @@
   
 
 
-<h1 id="job-composer">Job Composer</h1>
-<p>Job Composer is an app that allows you to write and submit a Slurm batch job to a back-end.</p>
+<h1 id="project-manager">Project Manager</h1>
+<p>Project Manager is an app that allows you to write a job for a specific job scheduler (for example, Slurm) and submit these jobs to a back-end that supports that job scheduler.</p>
+<p>This page walks through a couple of simple examples of using the Project Manager. For more information on the Project Manager, see Open OnDemand's <a href="https://osc.github.io/ood-documentation/latest/tutorials/tutorials-project-manager.html">Tutorials: Project Manager</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To use the Job Composer requires you to have some familiarity with the <a href="https://slurm.schedmd.com">Slurm</a> open source job scheduler and workload manager. In particular, how to write Slurm job submission files.</p>
+<p>To use the Project Manager requires you to have at least a basic familiarity with job scheduling and job submission concepts. It may help if you are familiar with the <a href="https://slurm.schedmd.com">Slurm</a> open source job scheduler and workload manager and, optionally, have a familiarity with how to write Slurm job submission files.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Your project data files, in a project-specific directory under <code>/safe_data</code> are <strong>not</strong> available on back-ends outwith your safe haven (e.g., the Superdome Flex). For these, you will need to stage your data to the back-end following your project- and safe haven-specific processes for the use of such services outwith your safe haven.</p>
 </div>
-<hr />
-<h2 id="create-slurm-job">Create Slurm job</h2>
-<p>To create a Slurm job, select the <strong>New Job</strong> menu, then select:</p>
-<ul>
-<li><strong>From Default Template</strong> option to create a 'hello world' job from a template, with a default job name to be submitted to the default back-end, which is the first back-end you have access to in alphabetical order. If you select this option, the job files are created.</li>
-<li>
-<p><strong>From Template</strong> option to creates a 'hello world' job from a template, to be submitted to a back-end that you select. If you select this option, you can:</p>
-<ol>
-<li>Enter a <strong>Job Name</strong>.</li>
-<li>
-<p>Select a back-end, <strong>Cluster</strong>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>National Safe Haven users</strong>: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.</p>
-</div>
-</li>
-<li>
-<p>Click <strong>Open Dir</strong> to view the template job files.</p>
-</li>
-<li>Click <strong>Create New Job</strong> to create the job files.</li>
-</ol>
-</li>
-<li>
-<p><strong>From Specified Path</strong> option creates a new job from the contents of an existing directory. This directory can have the job submission script and any other files within it. If not, you can create/edit these before submission.</p>
-</li>
-<li><strong>From Selected job</strong> option to create a new job from the contents of the job context directory for the currently selected job on the page. If you select this option, the job files are created.</li>
-</ul>
-<p>When a new job is created, the job files are created in a directory:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/JOB_COMPOSER_ID/
-</code></pre></div>
-<p>where <code>JOB_COMPOSER_ID</code> is a unique job ID created by the app. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/myjobs/projects/default/1/
-</code></pre></div>
-<hr />
-<h2 id="edit-job-files">Edit job files</h2>
-<p>Click <strong>Open Editor</strong> to open an editor to edit the Slurm job submission script (default name <code>main_job.sh</code>).</p>
-<p>Click on a file name under <strong>Folder contents</strong> to open an editor to edit that file in the job context directory.</p>
-<p>Click <strong>Open Dir</strong> or click <strong>Edit Files</strong> to open the <a href="../../files/">File Manager</a> pointing at the job context directory.</p>
-<p>Click <strong>Open Terminal</strong> (either button) to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.</p>
-<h3 id="troubleshooting-edit-job-files-cd-no-such-file-or-directory">Troubleshooting: Edit job files 'cd ... No such file or directory'</h3>
-<p>If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, and you have not yet submitted your job.</p>
-<hr />
-<h2 id="submit-slurm-job">Submit Slurm job</h2>
-<p>Click <strong>Submit job</strong> (green play icon) to submit your job.</p>
-<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.</p>
 </div>
 <hr />
-<h2 id="browse-and-manage-jobs">Browse and manage jobs</h2>
-<h3 id="jobs-table">Jobs table</h3>
-<p>The job name is the name of the job you specified when completing the <a href="#create-slurm-job">Create Slurm job</a> form.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The job name shown in the Jobs table is one entered in the <strong>Job Name</strong> when completing the Job Composer's job submission forms. This job name is not the same as the job name shown in the <a href="../active-jobs/">Active Jobs</a> app. That job name is an app-specific job scheduler-specific job name. For the Job Composer and Slurm, the Active Jobs job name is the value of the Slurm <code>--job-name</code> parameter (set by <code>#SBATCH --job-name=...</code> in the job file).</p>
-</div>
-<p>The job ID is a unique job ID created by the Slurm job scheduler, when you submitted the job.</p>
-<p>The job status can be one of: 'Not Submitted', 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The job status does <strong>not</strong> display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
-</div>
-<h3 id="open-file-manager-to-job-context-directory">Open File Manager to job context directory</h3>
-<p>Click <strong>Open Dir</strong> or click <strong>Edit Files</strong> to open the <a href="../../files/">File Manager</a> pointing at the job context directory for the currently selected job.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When using a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then, if your job creates files on the back-end, you will have to log into the back-end to view your files - see <a href="../../ssh/">Log into back-ends</a>.</p>
-</div>
-<h3 id="log-into-to-back-end">Log into to back-end</h3>
-<p>Click <strong>Open Terminal</strong> (either button) to log into the back-end on which the currently selected job will be run, is running or was run. Once logged in, your current directory will be changed to match the job context directory.</p>
-<h4 id="troubleshooting-log-into-back-end-cd-no-such-file-or-directory">Troubleshooting: Log into back-end 'cd ... No such file or directory'</h4>
-<p>If you see 'cd ... No such file or directory' error after you have logged into the back-end, then this means that the job context is not in your home directory in the back-end. This can happen if you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, and you have not yet submitted your job.</p>
-<h3 id="stop-a-job">Stop a job</h3>
-<p>Click <strong>Stop Job</strong> (amber stop icon) to stop the currently selected job.</p>
-<p><img alt="Stop Job button, an amber stop icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-stop-button.png" /> <em><strong>Stop Job</strong> button</em></p>
-<h3 id="delete-a-job">Delete a job</h3>
-<p>Click <strong>Delete Job</strong> (red trashcan icon) to stop and delete the currently selected job.</p>
-<p><img alt="Delete Job button, a red trashcan icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-delete-button.png" /> <em><strong>Delete Job</strong> button</em></p>
-<p>The job context directory for the job will also be deleted.</p>
-<hr />
-<h2 id="run-a-hello-world-example">Run a 'hello world' example</h2>
-<p>Create and submit job:</p>
+<h2 id="create-and-run-a-hello-world-job">Create and run a 'hello world' job</h2>
+<p>Create a project:</p>
 <ol>
-<li>Select <strong>New Job</strong> menu, <strong>From Template</strong> option.</li>
-<li>Enter Job Name: Hello World</li>
-<li>Select a Cluster, back-end.</li>
-<li>Click <strong>Create New Job</strong>.</li>
-<li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
-<li>A new browser tab will appear with an editor.</li>
-<li>Read the <code>main_job.sh</code> script contents.</li>
-<li>
-<p>Change the line:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
+<li>Click <strong>Create a new project</strong>.</li>
+<li>Enter:<ul>
+<li><strong>Name</strong>: Example</li>
+<li><strong>Directory</strong>: Leave as the default of '$HOME/ondemand/data/sys/dashboard/projects'.</li>
+<li><strong>Group</strong>: Leave as the default of your default user group.</li>
+</ul>
+</li>
+<li>Select <strong>Icon</strong> e.g., 'smile'.</li>
+<li>Click <strong>Save</strong>.</li>
+<li>The Project Manager will reappear with the new Example project and its icon.</li>
+<li>Click <strong>Example</strong>.</li>
+<li>The Example project dashboard will appear.</li>
+</ol>
+<p>When a new project is created, the project files are created in a project directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/projects/default/PROJECT_ID/
 </code></pre></div>
-<p>to:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World to </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>output_file
+<p>where <code>PROJECT_ID</code> is a unique job ID created by the app. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$HOME</span>/ondemand/data/sys/dashboard/projects/default/kp0lvool/
+</code></pre></div>
+<p>Create the job file(s):</p>
+<ol>
+<li>The Project Directory panel in the project dashboard shows the project directory on the Open OnDemand VM where you can create job files.</li>
+<li>Within the Project Directory panel, click <strong>Open in files app</strong>.</li>
+<li>The <a href="../../files/#file-manager">File Manager</a> will open pointing at the project's directory on the Open OnDemand VM.</li>
+<li>Click <strong>New File</strong>.</li>
+<li>Enter <strong>Filename</strong>: 'hello-world.sh'.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>Click the <strong>...</strong> drop-down menu by <code>hello-world.sh</code>, select <strong>Edit</strong>.</li>
+<li>A file editor browser tab will open.</li>
+<li>
+<p>Add the following bash script:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">#SBATCH --mem-per-cpu=100</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World to </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello-world.txt
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Created &#39;hello-world.txt&#39;&quot;</span>
 </code></pre></div>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
 </li>
-<li>Switch to the Job Composer browser tab.</li>
-<li>
-<p>Click <strong>Submit job</strong> (green play icon).</p>
-<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
-</li>
-<li>
-<p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
-</li>
+<li>Return to the File Manager browser tab.</li>
+<li>Click the browser back button to return to the Example dashboard.</li>
+<li>Refresh the page to see <code>hello-world.sh</code> listed in the Project Directory panel.</li>
 </ol>
-<p>The script creates two files:</p>
-<ul>
+<p>Create a job launcher:</p>
+<ol>
+<li>Within the Launchers panel, click <strong>New Launcher</strong>.</li>
+<li>Enter <strong>Launcher Name</strong>: Example Launcher.</li>
+<li>Click <strong>Save</strong>.</li>
+<li>The Example project dashboard will reappear with Example Launcher listed in the Launchers panel.</li>
+<li>Within the Launchers panel for Example Launcher, click <strong>Edit</strong>.</li>
+<li>A page will appear which allows you to edit the launcher configuration.</li>
 <li>
-<p><code>res.txt</code> which has the outputs captured by Slurm as the job runs. For example:</p>
-<div class="highlight"><pre><span></span><code>Created output file with &#39;Hello World&#39;
-</code></pre></div>
+<p>Select a back-end, <strong>Cluster</strong>.</p>
+<p><strong>National Safe Haven users</strong>: If using a 'desktop' back-end, then you must select the 'desktop' you have been granted access to.</p>
 </li>
 <li>
-<p><code>output_file</code> which is the file created within the job script. For example:</p>
-<div class="highlight"><pre><span></span><code>Hello World to youruser from some-vm.nsh.loc
-</code></pre></div>
+<p>Select <strong>Script</strong>. By default this will be <code>hello-world.sh</code>, so leave as-is.</p>
+</li>
+<li>Click <strong>Add new option</strong> to add job submission options:<ul>
+<li>For each option, a drop-down menu allows you to select a field, one of Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores.</li>
+<li>Once selected, click <strong>Add</strong> to add that field to the form.</li>
+<li>Once added, enter the value for the field.</li>
+<li>Add the following options and values:<ul>
+<li><strong>Job Name</strong>: example-job</li>
+<li><strong>Log Location</strong> output.log</li>
+<li><strong>Nodes</strong>: 1</li>
+<li><strong>Cores</strong>: 1</li>
+<li><strong>Hours</strong>: 1</li>
+</ul>
 </li>
 </ul>
+</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Slurm, the job name as submitted to Slurm via a launcher is the job name specified in the launcher with a <code>sys/dashboard/project-manager/</code> prefix, for example <code>sys/dashboard/project-manager/example-job</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For Slurm, the launcher options (e.g., Hours, Queues, Account, Job Name, Log Location, Nodes, Environment Variable, Cores) can additionally or alternatively be provided as Slurm directives in the bash script you select as your script (e.g., <code>hello-world.sh</code> above). For example</p>
+<pre><code>```bash
+#SBATCH --job-name=example-job
+#SBATCH --output=output.log
+#SBATCH --ntasks=1
+#SBATCH --time=01:10:00
+#SBATCH --mem-per-cpu=100
+```
+</code></pre>
+<p>Values provided in the launcher override those provided as directives.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Project Manager does not allow specification of memory requirements for a job.</p>
+<p>If a Slurm node has not configured the default memory per node (<code>DefMemPerNode</code>) for a job, then the default memory per node is 0 (unlimited). This, then, can result in jobs that don't specify any memory requirements sitting in the job queue if any other jobs are running.</p>
+<p>This is why the Slurm directive <code>#SBATCH --mem-per-cpu=100</code> is included in the example job scripts above, to specify the memory requirements for this job.</p>
+</div>
+<p>Launch the job:</p>
+<ol>
+<li>Within the Launchers panel for Example Launcher, click <strong>Launch</strong>.</li>
+<li>Within the Active Jobs panel, a 'NNN Queued' button will appear, where 'NNN' is the job ID, e.g., 225', created by the job scheduler e.g., Slurm.</li>
+<li>'NNN Queued' will change to 'NNN Running' once the job starts running.</li>
+<li>'NNN Running' will change to 'NNN Completed' once the job completes.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on a status button to see information about the job.</p>
+<p>Click on the <strong>Stop</strong> button to stop a queued or running job.</p>
+<p>Click on the <strong>Delete</strong> button to delete the status of a stopped or completed job.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The job status can be one of: 'Not Submitted', 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The job status does <strong>not</strong> display whether a job that is 'Completed' did so with success or failure. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
+</div>
 <p>View the output files:</p>
 <ul>
-<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:<ol>
-<li>Click <code>res.txt</code> under <strong>Folder Contents</strong>.</li>
-<li>A new browser tab will appear with the contents of the file.</li>
-<li>Switch to the Job Composer browser tab.</li>
-<li>Click <code>output_file</code> under <strong>Folder Contents</strong>.</li>
-<li>A new browser tab will appear with the contents of the file.</li>
-</ol>
-</li>
+<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then click the file links within Project Directory to view the file contents.</li>
 <li>
 <p>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:</p>
 <ol>
-<li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
+<li>Within the Project Directory panel, click <strong>Open in files app</strong>.</li>
+<li>The File Manager will appear.</li>
+<li>Within the File Manager, click the <strong>Open in Terminal</strong> button's <strong>&gt;</strong> side-button and select the back-end on which the job was run. Once logged in, your current directory will be changed to match the project directory.</li>
 <li>
-<p>View <code>res.txt</code>:</p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>res.txt
-</code></pre></div>
-</li>
-<li>
-<p>View <code>output_file</code>:</p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output_file
+<p>View the files:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>hello-world.txt
+cat<span class="w"> </span>output.log
 </code></pre></div>
 </li>
 </ol>
 </li>
+<li>
+<p>Example contents of each file are as follows:</p>
+<ul>
+<li>
+<p><code>hello-world.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>Hello World to youruser from some-vm.nsh.loc
+</code></pre></div>
+</li>
+<li>
+<p><code>output.log</code>:</p>
+<div class="highlight"><pre><span></span><code>Created &#39;hello-world.txt&#39;
+</code></pre></div>
+</li>
+</ul>
+</li>
 </ul>
 <hr />
-<h2 id="run-a-container-example">Run a container example</h2>
-<p>This example demonstrates how to create and submit a Slurm job that runs a bash script that runs the <code>epcc-ces-hello</code> container which is the default container offered by the <a href="../batch-container-app/">Run Batch Container</a> app.</p>
+<h2 id="create-and-run-a-job-to-run-a-container">Create and run a job to run a container</h2>
+<p>This example continues to use the project created above, and demonstrates how to create and submit a Slurm job that runs a bash script that runs the <code>epcc-ces-hello</code> container which is the default container offered by the <a href="../batch-container-app/">Run Batch Container</a> app.</p>
 <p>The example uses the <a href="../../../shs-container-user-guide/introduction/">Safe Haven Container Execution Service - CES</a> to pull containers onto the back-end, via the <code>ces-pull</code> command, and then uses <code>podman</code> and <code>apptainer</code> in turn to run the container.</p>
 <h3 id="run-container-using-podman">Run container using Podman</h3>
-<p>Create a job to run the container using Podman:</p>
+<p>Create the job file(s):</p>
 <ol>
-<li>Select <strong>New Job</strong> menu, <strong>From Template</strong> option.</li>
-<li>Enter Job Name: Run Container</li>
-<li>Select a Cluster, back-end.</li>
-<li>Click <strong>Create New Job</strong>.</li>
-<li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
-<li>A new browser tab will appear with an editor.</li>
+<li>Within the Project Directory panel, click <strong>Open in files app</strong>.</li>
+<li>The File Manager will open.</li>
+<li>Click <strong>New File</strong>.</li>
+<li>Enter <strong>Filename</strong>: 'run-epcc-ces-hello.sh'.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>Click the <code>run-epcc-ces-hello.sh</code> <strong>...</strong> side-button, select <strong>Edit</strong>.</li>
+<li>A file editor browser tab will open.</li>
 <li>
-<p>Update the script as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=hello-world</span>
-<span class="c1">#SBATCH --output=output.log</span>
-<span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --time=10:00</span>
+<p>Add the following bash script:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 <span class="c1">#SBATCH --mem-per-cpu=100</span>
 
 <span class="nv">CR_URL</span><span class="o">=</span>git.ecdf.ed.ac.uk/tre-container-execution-service/containers/epcc-ces-hello:2.1
 <span class="nv">CR_USER</span><span class="o">=</span>anonymous
-<span class="nv">CR_TOKEN</span><span class="o">=</span>...<span class="w"> </span><span class="c1"># See below...</span>
+<span class="nv">CR_TOKEN</span><span class="o">=</span>TOKEN-SEE-BELOW
+
 ces-pull<span class="w"> </span>podman<span class="w"> </span><span class="nv">$CR_USER</span><span class="w"> </span><span class="nv">$CR_TOKEN</span><span class="w"> </span><span class="nv">$CR_URL</span>
 
-<span class="nv">SAFE_DATA</span><span class="o">=</span>/safe_data/PROJECT<span class="w"> </span><span class="c1"># See below...</span>
+<span class="nv">SAFE_DATA</span><span class="o">=</span>/safe_data/PROJECT-SEE-BELOW
 
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; envs.txt</span>
 <span class="s">GREETING=Greetings</span>
@@ -3175,29 +3077,35 @@ podman<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> 
 <span class="w">    </span><span class="si">${</span><span class="nv">CR_URL</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="m">5</span><span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </code></pre></div>
+<p>Make the following changes:</p>
 <ul>
-<li>For <code>CR_URL</code>, there is no need to cite port 5050 in the GitLab container registry URL. The <code>ces-pull</code> command adds this when it pulls the container.</li>
-<li>For <code>CR_URL</code>, see <a href="../batch-container-app/#container-registries">Container registries</a> for supported container registries.</li>
-<li>For <code>CR_TOKEN</code>, copy in the <code>epcc-ces-hello</code> container's 'Container registry access token' from the <a href="../batch-container-app/">Run Batch Container</a> app's form.</li>
-<li>For <code>SAFE_DATA</code>, replace <code>PROJECT</code> with the name of your 'safe data' project directory in <code>/safe_data</code>. When Podman is run, your 'safe data' project directory is mounted into the container at <code>/safe_data</code> via Podman's <code>--mount</code> option.</li>
-<li>The script creates a file, <code>envs.txt</code>, with an environment variable to be passed to the <code>epcc-ces-hello</code> container. The container uses the environment variable <code>GREETING</code> to customise the greeting it prints.</li>
-<li><code>-n</code> (name, here, the current user) and <code>-d</code> (doze for 10 seconds) are arguments for the <code>epcc-ces-hello</code> container itself.</li>
+<li>
+<p>For <code>CR_URL</code>, leave-as-is.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For ECDF GitLab, there is no need put the registry port number, 5050, into the URL. The Safe Haven Services Container Execution Service tools will automatically insert this into ECDF GitLab URLs.</p>
+<p>See <a href="../batch-container-app/#container-registries">Container registries</a> for supported container registries.</p>
+</div>
+</li>
+<li>
+<p>For <code>CR_TOKEN</code>, replace <code>TOKEN-SEE-BELOW</code> with a copy of the <code>epcc-ces-hello</code> container's 'Container registry access token' from the <a href="../batch-container-app/">Run Batch Container</a> app's form.</p>
+</li>
+<li>For <code>SAFE_DATA</code>, replace <code>PROJECT-SEE-BELOW</code> with the name of your 'safe data' project directory in <code>/safe_data</code>.</li>
 </ul>
+<p>The script creates a file, <code>envs.txt</code>, with an environment variable to be passed to the <code>epcc-ces-hello</code> container. The container uses the environment variable <code>GREETING</code> to customise the greeting it prints.</p>
+<p>When Podman is run your 'safe data' project directory is mounted into the container at <code>/safe_data</code> via Podman's <code>--mount</code> option.</p>
+<p><code>-n</code> (name, here, the current user) and <code>-d</code> (doze for 10 seconds) are arguments for the <code>epcc-ces-hello</code> container itself.</p>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
 </li>
 </ol>
-<p>Submit job:</p>
+<p>Launch the job:</p>
 <ol>
-<li>Switch to the Job Composer browser tab.</li>
-<li>
-<p>Click <strong>Submit job</strong> (green play icon).</p>
-<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
-</li>
-<li>
-<p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
-</li>
+<li>Within the Launchers panel for Example Launcher, click <strong>Show</strong>.</li>
+<li>Select <strong>Script</strong>: run-epcc-ces-hello.sh.</li>
+<li>Scroll down to the end of the page.</li>
+<li>Within the Launchers panel for Example Launcher, click <strong>Launch</strong>.</li>
 </ol>
 <p>When the <code>epcc-ces-hello</code> container is run, it writes a file <code>YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt</code> into <code>/safe_data</code> within the container, and so into <code>/safe_data/PROJECT</code> on the back-end. This file includes a greeting, your user name, the container name, the date and time and a listing of the contents of <code>/safe_data</code> within the container i.e., <code>/safe_data/PROJECT</code> on the back-end. For example, a file <code>20260609-070028-youruser-epcc-ces-hello.txt</code> could contain:</p>
 <div class="highlight"><pre><span></span><code>Greetings!
@@ -3218,32 +3126,31 @@ analyse_ae.ipynb
 analyse_ae.py
 weekly_ae_activity_20260201.csv
 </code></pre></div>
-<p>View the file created by the container. <code>/safe_data</code> is not available on the Open OnDemand host so to view this file you will need to:</p>
+<p>View the file created by the container. <code>/safe_data</code> is not available on the Open OnDemand VM so to view this file you will need to:</p>
 <ol>
-<li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
+<li>Select <strong>Clusters</strong> menu, back-end <strong>Shell Access</strong> option, to log into the back-end.</li>
 <li>
-<p>View the file created by the container:</p>
+<p>View the greetings file:</p>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/safe_data/PROJECT/
 cat<span class="w"> </span>/safe_data/PROJECT/YYYYMMDD-HHMMSS-USER-epcc-ces-hello.txt
 </code></pre></div>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/safe_data/yourproject
 cat<span class="w"> </span>/safe_data/20260609-070028-youruser-epcc-ces-hello.txt
+cat<span class="w"> </span>/safe_data/yourproject/20260609-100910-youruser-greetings.txt
 </code></pre></div>
 </li>
 </ol>
-<p>When the job script runs, an <code>output.log</code> file logs the outputs captured by Slurm as the job runs.</p>
+<p>When the job script runs, the <code>output.log</code> file logs the outputs captured by Slurm as the job runs.</p>
 <p>View the log file, <code>output.log</code>:</p>
 <ul>
-<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then:<ol>
-<li>Click <code>output.log</code> under <strong>Folder Contents</strong>.</li>
-<li>A new browser tab will appear with the contents of the file.</li>
-</ol>
-</li>
+<li>If you selected a back-end where your home directory is common to both the Open OnDemand VM and the back-end, then click the file links within Project Directory to view the file contents.</li>
 <li>If you selected a back-end where your home directory is not common to both the Open OnDemand VM and the back-end, then:<ol>
-<li>Click <strong>Open Terminal</strong> to log into the back-end on which the job was run. Once logged in, your current directory will be changed to match the job context directory.</li>
+<li>Within the Project Directory panel, click <strong>Open in files app</strong>.</li>
+<li>The File Manager will appear.</li>
+<li>Within the File Manager, click the <strong>Open in Terminal</strong> button's <strong>&gt;</strong> side-button and select the back-end on which the job was run. Once logged in, your current directory will be changed to match the project directory.</li>
 <li>
-<p>View <code>output.log</code>:</p>
+<p>View the file:</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>output.log
 </code></pre></div>
 </li>
@@ -3257,11 +3164,10 @@ cat<span class="w"> </span>/safe_data/20260609-070028-youruser-epcc-ces-hello.tx
 <p>You do <strong>not</strong> have 'root' access on the back-end on which the container is running!</p>
 </div>
 <h3 id="run-container-using-apptainer">Run container using Apptainer</h3>
-<p>Create a new job from the current job to run the container using Apptainer:</p>
+<p>Edit the job to use Apptainer instead of Podman:</p>
 <ol>
-<li>Switch to the Job Composer browser tab.</li>
-<li>Select <strong>New Job</strong> menu, <strong>From Selected Job</strong> option.</li>
-<li>Under 'main_job.sh', click <strong>Open Editor</strong>.</li>
+<li>Click the <code>run-epcc-ces-hello.sh</code> <strong>...</strong> side-button, select <strong>Edit</strong>.</li>
+<li>A new browser tab opens with a file editor.</li>
 <li>
 <p>Replace use of <code>podman</code> with <code>apptainer</code> as follows:</p>
 <ol>
@@ -3286,24 +3192,21 @@ ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv
 </li>
 </ol>
 </li>
-</ol>
-<p>Submit job:</p>
-<ol>
-<li>Switch to the Job Composer browser tab.</li>
 <li>
-<p>Click <strong>Submit job</strong> (green play icon).</p>
-<p><img alt="Submit Job button, a green play icon" class="border-img center" src="../../../../images/open-ondemand/job-composer-play-button.png" /> <em><strong>Submit Job</strong> button</em></p>
+<p>Click <strong>Save</strong>.</p>
 </li>
-<li>
-<p>The job 'Status' should go from 'Queued' to 'Completed'.</p>
-</li>
+<li>Within the Launchers panel for Example Launcher, click <strong>Launch</strong>.</li>
 </ol>
 <p>The file created by the container and the <code>output.log</code> file can view viewed using the steps described above in the Podman example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In contrast to Podman, where your user name and user group on the back-end were automatically mapped to the 'root' user name and user group in the container, for Apptainer your user name and user group are 'yours' i.e., as they are on the back-end.</p>
 </div>
-<p>These files can be viewed using the steps described earlier.</p>
+<hr />
+<h2 id="using-slurm-squeue-to-see-requested-resources">Using Slurm <code>squeue</code> to see requested resources</h2>
+<p><code>squeue</code> can be run on the back-end to see what the requested resources are, as set up by the Project Manager, when a job is run. For example:</p>
+<div class="highlight"><pre><span></span><code>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.18i %.9P %.40j %.8u %.2t %.10M %.4C %.5m %.4D %R&quot;</span>
+</code></pre></div>
 
 
 

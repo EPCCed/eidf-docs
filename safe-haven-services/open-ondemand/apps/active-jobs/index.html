@@ -2815,9 +2815,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#open-file-manager-to-job-context-directory" class="md-nav__link">
+  <a href="#open-file-manager-to-project-or-job-context-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      Open File Manager to job context directory
+      Open File Manager to project or job context directory
     </span>
   </a>
   
@@ -2870,11 +2870,11 @@
 <p><img alt="Active Jobs app jobs table" class="border-img center" src="../../../../images/open-ondemand/active-jobs.png" /> <em>The Active Jobs app job table</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The job name is an app-specific job scheduler-specific job name. For the Job Composer and Slurm, the job name is the value of the Slurm <code>--job-name</code> parameter (set by <code>#SBATCH --job-name=...</code> in the job file). This job name is not the same as the job name shown in the Jobs table is used by the Job Composer. That job name is one entered in the <strong>Job Name</strong> field when completing the Job Composer's job submission forms.</p>
+<p>The job name is an app-specific job scheduler-specific job name. For jobs created using the <a href="../project-manager/">Project Manager</a> and run via Slurm, the job name is the value of the job launcher's 'Job Name' parameter, or, if using Slurm directives, the Slurm <code>--job-name</code> parameter (as set by <code>#SBATCH --job-name=...</code> in the job file).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The job ID is not the same as the session ID used for interactive apps or the job composer ID used by the Job Composer. Rather, the job ID is created by the job scheduler.</p>
+<p>The job ID is not the same as the session ID used for interactive apps or the project manager ID used by the Project Manager. Rather, the job ID is created by the job scheduler.</p>
 <p>Each job created by an app has both an app ID and a job scheduler job ID</p>
 </div>
 <p>The job status can be one of: 'Queued', 'Running', 'Hold', 'Suspend', 'Completed', 'Undetermined'.</p>
@@ -2885,14 +2885,14 @@
 <hr />
 <h2 id="job-details">Job details</h2>
 <p>To see details about a job, click the <strong>&gt;</strong> button, by the job of interest.</p>
-<p>The 'Output Location' is the location of the job context directory for the job on the Open OnDemand VM.</p>
+<p>The 'Output Location' is the location of the project directory (for jobs created by the <a href="../project-manager/">Project Manager</a>) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.</p>
 <p><img alt="Active Jobs app job details" class="border-img center" src="../../../../images/open-ondemand/active-jobs-job-details.png" /> <em>Job details within the Active Jobs app</em></p>
 <hr />
-<h2 id="open-file-manager-to-job-context-directory">Open File Manager to job context directory</h2>
-<p>Click <strong>Open in File Manager</strong> to open the <a href="../../files/">File Manager</a> pointing at the job context directory for the job on the Open OnDemand VM.</p>
+<h2 id="open-file-manager-to-project-or-job-context-directory">Open File Manager to project or job context directory</h2>
+<p>Click <strong>Open in File Manager</strong> to open the <a href="../../files/">File Manager</a> pointing at the project directory (for jobs created by the <a href="../project-manager/">Project Manager</a>) or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.</p>
 <hr />
 <h2 id="log-into-to-back-end-on-which-job-is-running">Log into to back-end on which job is running</h2>
-<p>Click <strong>Open in Terminal</strong> to log into the back-end on which the currently selected job will be run. Once logged in, your current directory will be changed to match the job context directory.</p>
+<p>Click <strong>Open in Terminal</strong> to log into the back-end on which the currently selected job was run. Once logged in, your current directory will be changed to match the project directory (for jobs created by the <a href="../project-manager/">Project Manager</a> or the job context directory for the job (for jobs created by interactive apps) on the Open OnDemand VM.</p>
 <hr />
 <h2 id="cancel-a-job">Cancel a job</h2>
 <p>Click the <strong>Delete Job</strong> (red trashcan icon) by the job in the job table or click <strong>Delete</strong> in the job details to cancel (delete) a running job.</p>
