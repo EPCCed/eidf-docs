@@ -12,8 +12,6 @@ The table below represents the broad status of each EIDF service.
 * Planned: Maintenance sessions or scheduled downtime.
 * On-going: Issues we are working on or that we are aware of but are accepted.
 * Resolved: Issue was fixed/maintenance ended.
-
-For ACF-level work check https://www.wiki.ed.ac.uk/spaces/EHST/pages/467759085/Core+Services+Requests+for+Change+Log.
 <-->
 
 | Status | Start | End | Scope | Impact | Reason |
