@@ -287,6 +287,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#service-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Alerts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eidf-regular-maintenance-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       EIDF Regular Maintenance Sessions
@@ -2764,28 +2773,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../known-issues/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    EIDF Known Issues
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../faq/" class="md-nav__link">
         
   
@@ -2850,6 +2837,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#service-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Alerts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eidf-regular-maintenance-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       EIDF Regular Maintenance Sessions
@@ -2883,33 +2879,48 @@
 <iframe src="https://status.eidf.ac.uk/d-solo/a4819422-0c95-4d9c-a5a4-7f1c2dcfd817/eidf-status-public?orgId=5&panelId=1" width="100%" height="270" frameborder="0"></iframe>
 </div>
 
+<h2 id="service-alerts">Service Alerts</h2>
+<!-- Statuses --/>
+* Planned: Maintenance sessions or scheduled downtime.
+* On-going: Issues we are working on or that we are aware of but are accepted.
+* Resolved: Issue was fixed/maintenance ended.
+<-->
+
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Service</th>
-<th style="text-align: left;">Status</th>
+<th>Status</th>
+<th>Start</th>
+<th>End</th>
+<th>Scope</th>
+<th>Impact</th>
+<th>Reason</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">EIDF Portal</td>
-<td style="text-align: left;"><img alt="Custom badge" src="https://img.shields.io/endpoint?style=plastic&amp;url=https://epcced.github.io/eidf-status/Data/portal.json" /></td>
+<td>Planned</td>
+<td>2026-07-14 07:00</td>
+<td>2026-07-14 08:00</td>
+<td>All services</td>
+<td>Unable to remotely access any services for ~1hr. Scheduled work will continue to run throughout, though there may be issues with workflows that require access external to the service.</td>
+<td>Essential upgrade work to main router at the ACF.</td>
 </tr>
 <tr>
-<td style="text-align: left;">VM SSH Gateway</td>
-<td style="text-align: left;"><img alt="Custom badge" src="https://img.shields.io/endpoint?style=plastic&amp;url=https://epcced.github.io/eidf-status/Data/sshgateway.json" /></td>
+<td>Planned</td>
+<td>2026-07-16 08:00</td>
+<td>2026-07-16 17:00</td>
+<td>EIDF services</td>
+<td>Short outages expected to affect the SSH Gateway, VDI service, EIDF Portal, Windows Analytical Workbench, GPU service, and Notebook service.</td>
+<td>Maintenance</td>
 </tr>
 <tr>
-<td style="text-align: left;">VM VDI Gateway</td>
-<td style="text-align: left;"><img alt="Custom badge" src="https://img.shields.io/endpoint?style=plastic&amp;url=https://epcced.github.io/eidf-status/Data/vdigateway.json" /></td>
-</tr>
-<tr>
-<td style="text-align: left;">Virtual Desktops</td>
-<td style="text-align: left;"><img alt="Custom badge" src="https://img.shields.io/endpoint?style=plastic&amp;url=https://epcced.github.io/eidf-status/Data/virtualmachines.json" /></td>
-</tr>
-<tr>
-<td style="text-align: left;">Ultra2</td>
-<td style="text-align: left;"><img alt="Custom badge" src="https://img.shields.io/endpoint?style=plastic&amp;url=https://epcced.github.io/eidf-status/Data/superdome.json" /></td>
+<td>Planned</td>
+<td>2026-07-20 08:30</td>
+<td>2026-07-21 18:00</td>
+<td>All services</td>
+<td>Unable to remotely access any services for ~0.5 days with risk of issues or interruptions for up to two days. Scheduled work will continue to run throughout, though there may be issues with workflows that require access external to the service.</td>
+<td>Upgrade of ACF firewalls and core network.</td>
 </tr>
 </tbody>
 </table>
