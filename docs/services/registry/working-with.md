@@ -1,4 +1,4 @@
-# Working with ECIR
+# Working with the EIDF Container Image Registry (ECIR)
 
 ## The Registry Interface and Accounts
 
@@ -13,19 +13,9 @@ User tokens can be accessed from the User Profile from the dropdown under your U
 
 See the FAQ section ['Unauthorised' error when logging into the registry from Docker](./faq.md#unauthorised-error-when-logging-into-the-registry-from-docker) for help with token expiry and authorisation issues.
 
-## Creating a Project Repository
+## ECIR Project
 
-Each EIDF project can have a private space on the registry, this is called an Edinburgh Container Image Registry (ECIR) project. An ECIR project can be used to store images and artifacts that are private to the project.
-
-To create an ECIR project:
-
-1. Navigate to your EIDF project in the EIDF portal.
-2. Find the **Container Registry Project** section.
-3. Click the **Create Project** button.
-
-This will generate the ECIR project, which will be accessible from the registry interface within a few minutes. The project will be named with the same name as your EIDF project.
-![CreateECIRProject](../../images/registry/CreateECIRProject.png){: class="border-img"}
-   *Example Create ECIR Project*
+Each EIDF project can have a private space on the registry, this is called an ECIR project. An ECIR project can be used to store images and artifacts that are private to the project. All projects should, by default, have an ECIR project created for them but if your project does not have one, you can request one by contacting the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
 ## Push Commands
 
@@ -39,20 +29,6 @@ In your project, there is a PUSH Command option which will give you the command 
 Each repository in a project has a COPY PULL button option once an image/artifact has been selected for Docker and Podman.
 
 Clicking on a tag in a repository will open up the information on the artifact, this can include an overview of the image, vulnerability summary, SBOM and build history.
-
-## Creating Robot Accounts for the Registry
-
-If you are regularly using a repository from a project where you are sharing resources and need automated, read-only access (for example, pulling images into compute jobs), it is recommended to create a robot account with limited pull-only privileges.
-
-If you also need to publish images (for example, as part of an automated build or CI/CD pipeline), you should instead create a robot account with pull and push (read and write) permissions for the project.
-
-Robot accounts can be added by a project administrator as follows:
-
-1. In the ECIR project, click the **+ pull robot** or **+ push robot** button within the project.
-2. Wait a few minutes for the robot account to be created.
-3. Go to the **Robot Account** section of the project to access the credentials, which include a username and a CLI Secret for logging into the registry from Docker and other container services.
-
-Robot accounts with pull and push permissions have a default validity period of 30 days, after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained.
 
 ## Using from the Command Line with Docker
 
@@ -89,12 +65,14 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 ```
-To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and therefore, robot accounts are recommended for long-term use. See the section on [Creating a Robot Account](#creating-robot-accounts-for-the-registry) for more details.
-From your command line, you can now push and pull images to the registry.
+
+Note that user tokens have a limited validity period and therefore, robot accounts are recommended for long-term use. Contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) to create a robot account for your project.
+
+From your command line, you may now push and pull images to the registry using docker commands as described in the [docker documentation](https://docs.docker.com/reference/cli/docker/).
 
 ## Kubernetes/GPU Service Access
 
-To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and hence robots are recommended for long term use. See the section on [Creating a Robot Account](#creating-robot-accounts-for-the-registry) for more details.
+To pull images from the registry, including from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and hence ECIR robot accounts are recommended for long-term use. Contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) to create a robot account for your project.
 
 Secrets can be created in one of two ways, as detailed below, either directly via kubectl from your Docker config.json file, or by creating a YAML file.
 

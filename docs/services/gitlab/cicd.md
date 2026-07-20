@@ -1,12 +1,12 @@
 # Continuous Integration and Continuous Deployment (CI/CD) with EIDF GitLab
 
-A repository containing some common GitLab CI/CD configurations and relevant examples is maintained at [GitLab CI/CD Examples](https://gitlab.eidf.ac.uk/Liz/cicd-examples)
+## GitLab Harbor Integration and the ECIR
 
-## Harbor Integration and the ECIR
+We recommend that users set up Harbor Integration to automate the use of the EIDF Container Image Registry (ECIR) as the pull and push location for container images.
+The ECIR is recommended as it is part of EIDF infrastructure and hence provides speed over external registries as well as a number of built-in security features such as software bills of materials (SBOMs) and security scanning via Trivy.
+More documentation around the ECIR can be found in the [ECIR documentation](../registry/index.md) and the [ECIR working with documentation](../registry/working-with.md).
 
-We recommend that users setup Harbor Integration to automate the use of the EIDF Container Image Registry (ECIR) as the pull and push location for container images. The ECIR is recommended as it is part of EIDF infrastructure and hence provides speed over external registries as well as a number of built in Security features such as SBOM and security scanning via Trivy. More documentation around the ECIR can be found in the [ECIR documentation](../registry/overview.md) and the [ECIR working with documentation](../registry/working-with.md).
-
-We assume users have setup an ECIR project and Push Robot which are detailed in ECIR Working with sections [Creating a Project Repository](../registry/working-with.md#creating-a-project-repository) and [Creating Robot Accounts for the Registry](../registry/working-with.md#creating-robot-accounts-for-the-registry) respectively.
+We assume users have set up an ECIR project and ECIR push robot account for the project which can be done by contacting the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
 Users should follow the [GitLab documentation on Harbor Integration](https://docs.gitlab.com/user/project/integrations/harbor/), making note of the following values to be input:
 
@@ -17,7 +17,7 @@ Users should follow the [GitLab documentation on Harbor Integration](https://doc
 
 ## Using an ECIR image in GitLab CI/CD
 
-The ECIR is a private registry and so the use of images stored in the ECIR requires authentication. A number of methods for this are documented in the [GitLab documentation](https://docs.gitlab.com/ci/docker/using_docker_images/#access-an-image-from-a-private-container-registry). We recommend setting up a variable defining the DOCKER_AUTH_CONFIG as described in the GitLab documentation above. When making use of the Harbor Integration this variable should be set as follows:
+The ECIR is a private registry and so the use of images stored in the ECIR requires authentication. A number of methods for this are documented in the [GitLab documentation](https://docs.gitlab.com/ci/docker/using_docker_images/#access-an-image-from-a-private-container-registry). We recommend setting up a variable defining the `DOCKER_AUTH_CONFIG` as described in the GitLab documentation above. When making use of the Harbor Integration this variable should be set as follows:
 
 ```.gitlab-ci.yml
 variables:
