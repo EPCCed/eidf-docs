@@ -8,10 +8,8 @@ The home page provides menus and buttons to allow you to access Open OnDemand's 
 
 ![Open OnDemand home page](../../images/open-ondemand/home-page.png){: class="border-img center"} *Open OnDemand home page*
 
-Open OnDemand's key concepts and its apps are described on the following pages:
+The features that can be accessed via the home page are described on the following pages:
 
-* [Run jobs](jobs.md)
-* [Run containers](containers.md)
 * [View and access apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
@@ -36,7 +34,7 @@ Select the **Help (?)** menu, **Restart Web Server** option to restart your sess
 
 ## Display your log in name
 
-Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as some-user'.
+Click the **Avatar** (head and shoulders icon) on the menu bar to display your log in name e.g., 'Logged in as youruser'.
 
 ![Avatar menu button, a head and shoulders icon](../../images/open-ondemand/avatar-button.png){: class="border-img center"} ***Avatar** menu button*
 

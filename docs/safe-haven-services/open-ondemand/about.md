@@ -13,18 +13,16 @@ To quickly get started with the service:
 
 Then, explore the other pages about the service:
 
-* [Access Open OnDemand](access.md)
-* [Getting started](getting-started.md)
 * [Open OnDemand home page](home-page.md)
-* [Run jobs](jobs.md)
-* [Run containers](containers.md)
+* [About jobs](jobs.md)
 * [View and run apps](apps.md)
 * [Browse and manage files](files.md)
 * [Log into back-ends](ssh.md)
 * Apps:
     * [Active Jobs](apps/active-jobs.md)
+    * [Greetings](apps/greetings-app.md)
     * [Run Batch Container](apps/batch-container-app.md)
-    * [Run JupyterLab Container](apps/jupyter-app.md)
-    * [Run RStudio Server Container](apps/rstudio-app.md)
-    * [Job Composer](apps/job-composer.md)
+    * [Run JupyterLab](apps/jupyter-app.md)
+    * [Run RStudio Server](apps/rstudio-app.md)
+    * [Project Manager](apps/project-manager.md)
 * [Tips](tips.md)

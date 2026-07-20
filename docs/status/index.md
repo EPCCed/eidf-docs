@@ -6,13 +6,28 @@ The table below represents the broad status of each EIDF service.
 <iframe src="https://status.eidf.ac.uk/d-solo/a4819422-0c95-4d9c-a5a4-7f1c2dcfd817/eidf-status-public?orgId=5&panelId=1" width="100%" height="270" frameborder="0"></iframe>
 </div>
 
-| Service | Status |
-|:--------|:------|
-| EIDF Portal  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/portal.json) |
-| VM SSH Gateway  | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/sshgateway.json) |
-| VM VDI Gateway | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/vdigateway.json) |
-| Virtual Desktops | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/virtualmachines.json) |
-| Ultra2 | ![Custom badge](https://img.shields.io/endpoint?style=plastic&url=https://epcced.github.io/eidf-status/Data/superdome.json) |
+## Service Alerts
+
+<!-- Statuses --/>
+
+* Planned: Maintenance sessions or scheduled downtime.
+* On-going: Issues we are working on or that we are aware of but are accepted.
+* Resolved: Issue was fixed/maintenance ended.
+
+<-->
+
+| Status | Start | End | Scope | Impact | Reason |
+| - | - | - | - | - | - |
+| Planned | 2026-07-20 08:30 | 2026-07-21 18:00 | All services | Unable to remotely access any services for ~0.5 days with risk of issues or interruptions for up to two days. Scheduled work will continue to run throughout, though there may be issues with workflows that require access external to the service. | Upgrade of ACF firewalls and core network. |
+
+### Recently Resolved Service Alerts
+
+This table lists the last five resolved service alerts. [A full list of historical resolved service alerts is available](history.md).
+
+| Status | Start | End | Scope | Impact | Reason |
+| - | - | - | - | - | - |
+| Resolved | 2026-07-16 08:00 | 2026-07-16 17:00 | EIDF services | Short outages expected to affect the SSH Gateway, VDI service, EIDF Portal, Windows Analytical Workbench, GPU service, and Notebook service. | Maintenance |
+| Resolved | 2026-07-14 07:00 | 2026-07-14 08:00 | All services | Unable to remotely access any services for ~1hr. Scheduled work will continue to run throughout, though there may be issues with workflows that require access external to the service. | Essential upgrade work to main router at the ACF. |
 
 ## EIDF Regular Maintenance Sessions
 

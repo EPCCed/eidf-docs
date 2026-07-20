@@ -34,7 +34,8 @@ img + em {
 }
 
 .announce {
-  padding: 1em;
-  background: rgb(255, 255, 205);
-  color: black;
+/*  background: #d4edda;*/
+/*  color: black;*/
+/*  border-radius: 6px;*/
+/*  padding: 0.5em;*/
 }

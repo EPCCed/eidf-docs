@@ -60,6 +60,14 @@ nav:
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
       - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
+    - "Confidential Data Workspace":
+      - "Overview": services/confidentialdataworkspace/index.md
+      - "Admin Quickstart": services/confidentialdataworkspace/quickstart.md
+      - "VM & User Management": services/confidentialdataworkspace/docs.md
+      - "Router Configuration": services/confidentialdataworkspace/router-docs.md
+      - "Policies": services/confidentialdataworkspace/policies.md
+      - "Storage": services/confidentialdataworkspace/storage.md
+      - "FAQs": services/confidentialdataworkspace/faq.md
     - "Ultra2":
       - "Overview": services/ultra2/access.md
       - "Connect": services/ultra2/connect.md
@@ -82,6 +90,8 @@ nav:
     - "Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
+    - "Cirrus HPC System":
+      - "Overview": services/cirrus/index.md
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md
@@ -140,22 +150,21 @@ nav:
      #  - "Access": safe-haven-services/open-ondemand/access.md
      #  - "Getting started": safe-haven-services/open-ondemand/getting-started.md
      #  - "Home page": safe-haven-services/open-ondemand/home-page.md
-     #  - "Run jobs": safe-haven-services/open-ondemand/jobs.md
-     #  - "Run containers": safe-haven-services/open-ondemand/containers.md
+     #  - "About jobs": safe-haven-services/open-ondemand/jobs.md
      #  - "View and run apps": safe-haven-services/open-ondemand/apps.md
      #  - "Browse and manage files": safe-haven-services/open-ondemand/files.md
      #  - "Log into back-ends": safe-haven-services/open-ondemand/ssh.md
      #  - "Apps":
      #     - "Active Jobs": safe-haven-services/open-ondemand/apps/active-jobs.md
+     #     - "Greetings": safe-haven-services/open-ondemand/apps/greetings-app.md
      #     - "Run Batch Container": safe-haven-services/open-ondemand/apps/batch-container-app.md
-     #     - "Run JupyterLab Container": safe-haven-services/open-ondemand/apps/jupyter-app.md
-     #     - "Run RStudio Server Container": safe-haven-services/open-ondemand/apps/rstudio-app.md
-     #     - "Job Composer": safe-haven-services/open-ondemand/apps/job-composer.md
+     #     - "Run JupyterLab": safe-haven-services/open-ondemand/apps/jupyter-app.md
+     #     - "Run RStudio Server": safe-haven-services/open-ondemand/apps/rstudio-app.md
+     #     - "Project Manager": safe-haven-services/open-ondemand/apps/project-manager.md
      #  - "Tips": safe-haven-services/open-ondemand/tips.md
 
      # WIP: TRE Code Management docs
      # - "[Beta] Code Management and Mirroring Service": safe-haven-services/code-management-mirroring-service.md
-  - "EIDF Known Issues": known-issues/index.md
   - "EIDF Frequently Asked Questions": faq/index.md
   - "EIDF Tutorial Videos": tutorial-videos/index.md
 

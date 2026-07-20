@@ -1,6 +1,6 @@
-# Run JupyterLab Container
+# Run JupyterLab
 
-Run JupyterLab Container is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a container, using Podman.
+Run JupyterLab is an app that runs JupyterLab on a back-end within your safe haven. JupyterLab is run as a software container, using Apptainer.
 
 ---
 
@@ -16,6 +16,7 @@ Complete the following information the app form:
 
 * **CPUs/cores**: CPUs/cores requested for the app's job.
 * **Memory (GiB)**: Memory requested for the app's job.
+* **Use GPU?**: Request that the container use a GPU. This option is only shown for back-ends that have a GPU.
 
 Click **Launch**.
 
@@ -38,8 +39,6 @@ When the Job status updates to 'Running', a **Host** link will appear on the job
 
 A **Connect to JupyterLab** button will appear. JupyterLab is now ready for use.
 
-A 'JupyterLab is running in Podman container epcc-ces-jupyter-SESSION_ID' message will also appear.
-
 Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
 !!! Warning
@@ -54,86 +53,94 @@ Click **Connect to JupyterLab**. A new browser tab will open with JupyterLab.
 
     Any running jobs are cancelled during the monthly Safe Haven Services maintenance period.
 
-!!! Note
+### Troubleshooting: App starts then stops
 
-    Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'jupyter_app'.
+If the app starts then stops, then one cause may be due to [Errors in inferring or accessing your 'safe data' directory](#troubleshooting-errors-in-inferring-or-accessing-safe-data).
 
 ---
 
 ## Log in to JupyterLab
 
-You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and **Connect to JupyterLab** button is configured to log you in automatically using this password.
-
-Within JupyterLab you are the 'root' user.
-
-!!! Note
-
-    You are the 'root' user **only** within the context of the JupyterLab container. You will not have 'root' access to the back-end on which the container is running! Any files you create in the directories mounted into the container will be owned by your own user, and user group, on the back-end.
+You will not be prompted for a username and password. JupyterLab is protected with an auto-generated password and the **Connect to JupyterLab** button is configured to log you in automatically using this password.
 
 ---
 
 ## Sharing files between the back-end and JupyterLab and persisting state between app runs
 
-The app mounts directories from the back-end into JupyterLab at `/safe_data`, `/safe_outputs` and `/scratch` . For more information on these directories, see [Sharing files between a back-end and a container](../containers.md#sharing-files-between-a-back-end-and-a-container).
+JupyterLab runs within an isolated environment (within a software container) on a back-end. Within JupyterLab you will have access to your home directory on the back-end.
 
-This app also mounts your home directory on the back-end into JupyterLab at `/mnt/work`. Any directories and files you create within this mount will be available in your home directory on the back-end.
+Your 'safe data' directory will also mounted within JupyterLab, at the path `/safe_data`. Your 'safe data' directory is inferred as follows:
 
-You should create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into `/mnt/work` so that they will persist when the app stops and are available the next time you run it.
+* Your 'safe data' directory is chosen to be the first `/safe_data/PROJECT` subdirectory found where you are a member of a either user group called `PROJECT` or called `PREFIX-PROJECT`. For example, if there is a `/safe_data/yourproject` directory and you are a member of a `yourproject` or `someprefix-yourproject` user group, then `/safe_data/yourproject` is your 'safe data' directory that is mounted at `/safe_data` within JupyterLab. If no such directory can be found, then the app will fail.
+* However, if there is a `safe_data` directory in the your home directory (i.e., `$HOME/safe_data`) on the back-end, then that is chosen as your 'safe data' directory that is available mounted at `/safe_data` within JupyterLab.
+
+Any files you create within your home directory or `/safe_data` in JupyterLab will be available in your home directory or `/safe_data/PROJECT` (or `$HOME/safe_data`, if applicable) on the back-end, and vice-versa.
+
+You can create any Python scripts, notebooks, configuration files, virtual environments or download any Python packages into directories within your home directory so that they are available the next time you run the app.
 
 !!! Warning
 
-    **Only** files within these mounted directories are available within the container, **only** files created within these directories will be persisted when the container is deleted, and. any files created outside of these directories within the container will be **deleted** when the container is deleted.
+    Any files created outside of your home directory or `/safe_data` are **deleted** when the app stops.
+
+### Troubleshooting: Errors in inferring or accessing 'safe data'
+
+As described in [Job cards](../jobs.md#job-cards), app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the [Active Jobs](./active-jobs.md) app.
+
+In cases where there are errors in inferring or accessing your 'safe data' directory, then the `output.log` log file for the app's job, in the job context directory, `ondemand/data/sys/dashboard/batch_connect/sys/jupyter_app/output/SESSION_ID`, will include a message like one of the following:
+
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
+```
+
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
+```
+
+```text
+Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot write to /safe_data/yourproject
+```
+
+If this problem occurs, then please contact your Research Coordinator (or equivalent).
 
 ---
 
 ## Installing Python packages
 
-JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within `/mnt/work` so that you can reuse these the next time you run the app on the same back-end.
+JupyterLab is configured with your web proxy environment variables so you can install packages from PyPI when using JupyterLab. It is recommended that you install Python packages and/or create virtual environments within a directory within your home directory in JupyterLab so that you can reuse these the next time you run the app on the same back-end.
 
-There many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
+There are many ways you can use such a directory within JupyterLab. Two examples are as follows. Python and JupyterLab resources online will suggest many others.
 
-### Install packages within a `/mnt/work` subdirectory
+### Install packages within `.local/lib/pythonM.N/site-packages/`
 
-Install packages within a `/mnt/work` subdirectory:
+By default, `pip` will install packages within a `.local/lib/pythonM.N/site-packages/` subdirectory in your home directory, where `M.N` is a Python version, for example `.local/lib/python3.11/site-packages/`.
+
+Install a package within `.local/lib/pythonM.N/site-packages/`:
 
 1. Select **Launcher**, **Terminal**.
-1. Create a subdirectory for the packages:
+1. Install package:
 
     ```bash
-    mkdir -p /mnt/work/lib/jupyter/my-pips
+    pip install PACKAGE_NAME
     ```
 
-1. Install packages into this subdirectory:
+As the subdirectory is in your home directory, the package will be available the next time that you run the app on the back-end.
 
-    ```bash
-    pip install -t /mnt/work/lib/jupyter/my-pips PACKAGE_NAME
-    ```
+### Create a virtual environment
 
-The subdirectory and packages will be persisted on the back-end upon which the app runs:
-
-```bash
-$ ls $HOME/lib/jupyter/my-pips/
-...
-PACKAGE_NAME
-...
-```
-
-### Create a virtual environment within `/mnt/work`
-
-Create a virtual environment within a `/mnt/work` subdirectory and install packages into that virtual environment:
+Create a virtual environment and install a package into that virtual environment:
 
 1. Select **Launcher**, **Terminal**.
 1. Create a subdirectory for the virtual environment:
 
     ```bash
-    mkdir -p /mnt/work/lib/jupyter
+    mkdir -p my-venv
     ```
 
 1. Create and activate the virtual environment within this subdirectory:
 
     ```bash
-    python -m venv /mnt/work/lib/jupyter/my-venv
-    source /mnt/work/lib/jupyter/my-venv/bin/activate
+    python -m venv my-venv
+    source my-venv/bin/activate
     ```
 
 1. Install packages into the virtual environment:
@@ -150,23 +157,24 @@ To create a new IPython kernel to provide access to the virtual environment with
     python -m pip install ipykernel
     ```
 
-1. Write a bash script to activate your virtual environment and create a new kernel. For example, `/mnt/work/register-my-venv-kernel.sh`:
+1. Create a new kernel for your virtual environment:
 
     ```bash
-    source /mnt/work/lib/jupyter/my-venv/bin/activate
     python -m ipykernel install --user --name py3-ipykernel-my-venv --display-name 'Python3 (ipykernel my-venv)'
     jupyter kernelspec list
     ```
 
-1. Within a JupyterLab Terminal, `source` the script to run it. For example:
+1. You should see your kernel listed. For example:
 
-    ```bash
-    source /mnt/work/register-my-venv-kernel.sh
+    ```text
+    Available kernels:
+      py3-ipykernel-my-venv    $HOME/.local/share/jupyter/kernels/py3-ipykernel-my-venv
+      python3                  $HOME/.local/share/jupyter/kernels/python3
     ```
 
 1. New Console and Notebook buttons for your kernel will shortly appear in the Launcher panel.
 
-The next time you use the app, source the script as above, to recreate a kernel for your virtual environment.
+As the virtual environment and kernel subdirectories are in your home directory, the package and kernel configuration will be available the next time that you run the app on the back-end.
 
 ---
 
@@ -200,6 +208,12 @@ JupyterLab will continue to run even if you do the following:
 You can re-access your running JupyterLab via the **Connect to JupyterLab** on your session's [job card](../jobs.md#job-cards) on the [My Interactive Sessions](../jobs.md#my-interactive-sessions-page) page accessed via **My Interactive Sessions** (overlaid squares icon) on the menu bar.
 
 ![My Interactive Sessions menu button, an overlaid squares icon](../../../images/open-ondemand/my-interactive-sessions-button.png){: class="border-img center"} ***My Interactive Sessions** menu button*
+
+---
+
+## App job name
+
+Within the job scheduler, and the [Active Jobs](./active-jobs.md) app, this app's jobs are named 'jupyter_app'.
 
 ---
 
