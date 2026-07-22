@@ -13,6 +13,12 @@ User tokens can be accessed from the User Profile from the dropdown under your U
 
 See the FAQ section ['Unauthorised' error when logging into the registry from Docker](./faq.md#unauthorised-error-when-logging-into-the-registry-from-docker) for help with token expiry and authorisation issues.
 
+## Creating a Project Repository
+
+Each EIDF project can have a private space on the registry, this is called an Edinburgh Container Image Registry (ECIR) project. An ECIR project can be used to store images and artifacts that are private to the project.
+
+By default new EIDF projects will have an ECIR project created with the same name. If you have an existing project without a registry project, you can request one by contacting the EIDF Service Desk.
+
 ## Push Commands
 
 In your project, there is a PUSH Command option which will give you the command templates for pushing to the Project repositories from different clients.
@@ -25,6 +31,20 @@ In your project, there is a PUSH Command option which will give you the command 
 Each repository in a project has a COPY PULL button option once an image/artifact has been selected for Docker and Podman.
 
 Clicking on a tag in a repository will open up the information on the artifact, this can include an overview of the image, vulnerability summary, SBOM and build history.
+
+## Creating Robot Accounts for the Registry
+
+If you are regularly using a repository from a project where you are sharing resources and need automated, read-only access (for example, pulling images into compute jobs), it is recommended to create a robot account with limited pull-only privileges.
+
+If you also need to publish images (for example, as part of an automated build or CI/CD pipeline), you should instead create a robot account with pull and push (read and write) permissions for the project.
+
+Robot accounts can be added by a project administrator as follows:
+
+1. In the ECIR project, click the **+ pull robot** or **+ push robot** button within the project.
+1. Wait a few minutes for the robot account to be created.
+1. Go to the **Robot Account** section of the project to access the credentials, which include a username and a CLI Secret for logging into the registry from Docker and other container services.
+
+Robot accounts with pull and push permissions have a default validity period of 30 days, after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained.
 
 ## Using from the Command Line with Docker
 
@@ -62,19 +82,12 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ```
 
+To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and therefore, robot accounts are recommended for long-term use. See the section on [Creating a Robot Account](#creating-robot-accounts-for-the-registry) for more details.
 From your command line, you can now push and pull images to the registry.
 
 ## Kubernetes/GPU Service Access
 
-To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period.
-
-If you are regularly using a repository from a project where you are sharing resources, it is recommended to create a robot account with limited read only privileges, this can be requested via a Helpdesk Request for your project.
-
-!!! important "Portal Management"
-
-    There will be new functionality soon added to the EIDF Portal to allow for project users to create read only robot accounts and for PI/Managers to create read/write robot accounts for use in CI/CD pipelines for image building.
-
-This is then treated like a normal user secret when you have the robot credentials.
+To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and hence robots are recommended for long term use. See the section on [Creating a Robot Account](#creating-robot-accounts-for-the-registry) for more details.
 
 Secrets can be created in one of two ways, as detailed below, either directly via kubectl from your Docker config.json file, or by creating a YAML file.
 
