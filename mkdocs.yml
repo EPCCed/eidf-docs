@@ -106,8 +106,8 @@ nav:
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
     - "Code Collaboration":
-      - "Gitlab Overview": services/gitlab/index.md
-      - "Gitlab Quickstart": services/gitlab/quickstart.md
+      - "GitLab Overview": services/gitlab/index.md
+      - "GitLab Quickstart": services/gitlab/quickstart.md
       - "Container Image Registry Overview": services/registry/index.md
       - "Container Image Registry Projects and Caches": services/registry/projects.md
       - "Container Image Registry Use": services/registry/working-with.md
