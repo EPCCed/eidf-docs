@@ -12,12 +12,12 @@ These storage options are backed by the hardware described on this [page](https:
 
 ## Summary of Storage Options and Access
 
-|         Service         | VM Local | GPU Local | Ultra2 Local | S3  | Shared Filesystem (CephFS) | Data Publishing Service |
-| :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
-|           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
-|       GPU Service       |    No    |    Yes    |      No      | Yes |          Yes          |           Yes           |
-|        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
-|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes           |
+|         Service         | VM Local | GPU Local |  S3  | Shared Filesystem (CephFS) | Data Publishing Service |
+| :---------------------: | :------: | :-------: |  :-: | :-------------------: | :---------------------: |
+|           VMs           |    Yes   |    No     |  Yes |          Yes          |           Yes           |
+|       GPU Service       |    No    |    Yes    |  Yes |          Yes          |           Yes           |
+|        Cerebras         |    No    |    No     |  No  |          Yes          |           No            |
+|        Notebooks        |    No    |    No     |  Yes |          Yes          |           Yes           |
 
 ## Persistent Volumes attached to specific services
 
@@ -70,7 +70,4 @@ See more information about the [Data Publishing service](../services/datapublish
 
 ## Disaster Recovery
 
-The Ultra2-local storage is replicated onto tape for recovery from disaster. Disaster recovery is triggered by disk hardware failure, not user error. Restoring data due to user actions, such as accidental file deletion, is **not** supported or planned as a service.
-
-There is no user interface for the Disaster Recovery and any action will be taken by the EIDF team in response to issues. If you suspect disk failures on Ultra2, please raise a ticket through the EIDF Portal facility.
-The EIDF Disaster Recovery is implemented through the [HPE Data Management Framework](https://www.hpe.com/us/en/collaterals/collateral.a00022795enw.html).
+There is no Disaster Recovery available for EIDF services. You are strongly encouraged to keep sufficient copies of data elsewhere.

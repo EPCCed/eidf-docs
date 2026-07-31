@@ -2,11 +2,7 @@
 
 ## I have deleted my important file, what can I do?
 
-The EIDF does not offer a backup service and only replicates Ultra2-local storage.
-
-Whilst EIDF Ultra2 storage is replicated to tape in case of system failure or data loss related to the running of the service, we do **not** offer or plan to offer the ability to restore files from this medium in the case of user error.
-
-Users are responsible for backing up their data against user error.
+The EIDF does not offer a backup service. Users are responsible for backing up their data against user error.
 
 ## I want to access storage from across all EIDF services
 
