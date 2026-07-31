@@ -4,7 +4,6 @@ The EIDF offers the following storage options:
 
 - [Virtual Machine (VM) local storage](#virtual-machine-vm-local)
 - [GPU local storage](#gpu-service-local)
-- [Ultra2 local storage](#ultra2-local)
 - [S3](#s3)
 - [Shared Filesystem (CephFS)](#shared-filesystem-cephfs)
 - [Data Publishing Service](#data-publishing-service)
@@ -17,7 +16,6 @@ These storage options are backed by the hardware described on this [page](https:
 | :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
 |           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
 |       GPU Service       |    No    |    Yes    |      No      | Yes |          Yes          |           Yes           |
-|         Ultra2          |    No    |    No     |     Yes      | Yes |          No           |           Yes           |
 |        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
 |        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes           |
 
@@ -39,12 +37,6 @@ The EIDF GPU service uses persistent volumes provisioned with [CephFS](https://d
 Currently GPU Service persistent volumes are included in the GPU Service costs.
 
 See more details about the [GPU service](../services/gpuservice/index.md).
-
-### Ultra2 local
-
-Ultra2 uses our e1000 Lustre parallel filesystem; this storage is not accessible from anywhere else on the EIDF.
-
-See more general details about [Ultra2](../services/ultra2/access.md).
 
 ## Storage available for use on multiple EIDF Services
 
