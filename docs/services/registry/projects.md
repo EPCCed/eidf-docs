@@ -51,6 +51,10 @@ ECIR Project maintainers **do not** have the permissions to:
 * Edit project configuration
 * Delete projects.
 
+If you are intending to use the ECIR in an automation you should make use of a robot account for your project. Robot accounts are service accounts that can be used to access the registry without needing to use your personal credentials. They are configured with specific permissions (e.g., read-only or read-write) and have a limited validity period for security purposes. To read more see [Working with the Registry](working-with.md#robot-accounts-for-automations-in-the-ecir) documentation.
+
+If you require a robot account with specific permissions you should submit a request via the [EIDF Portal](https://portal.eidf.ac.uk/queries/submit).
+
 ## The Library and Public Caches
 
 ECIR provides a common library of standard images. ECIR provides cache projects for four major registries which allow images to be stored for 7 days after use in ECIR for convenient access.

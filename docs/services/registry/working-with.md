@@ -32,19 +32,50 @@ Each repository in a project has a COPY PULL button option once an image/artifac
 
 Clicking on a tag in a repository will open up the information on the artifact, this can include an overview of the image, vulnerability summary, SBOM and build history.
 
-## Creating Robot Accounts for the Registry
+## Robot Accounts for Automations in the ECIR
 
 If you are regularly using a repository from a project where you are sharing resources and need automated, read-only access (for example, pulling images into compute jobs), it is recommended to create a robot account with limited pull-only privileges.
 
 If you also need to publish images (for example, as part of an automated build or CI/CD pipeline), you should instead create a robot account with pull and push (read and write) permissions for the project.
 
+!!! Note
+
+    Project Robot account management is only available to PIs and project administrators. If you are not a PI or project administrator, please contact your PI to request a robot account.
+
+### Creating Robot Accounts for the Registry
+
 Robot accounts can be added by a project administrator as follows:
 
-1. In the ECIR project, click the **+ pull robot** or **+ push robot** button within the project.
-1. Wait a few minutes for the robot account to be created.
-1. Go to the **Robot Account** section of the project to access the credentials, which include a username and a CLI Secret for logging into the registry from Docker and other container services.
+!!! Note
+  
+    Only available in the new project interface. If you are using the old project interface, please select "Try new view" in the top right corner of the project page.
 
-Robot accounts with pull and push permissions have a default validity period of 30 days, after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained.
+1. Navigate to the Image Registry section of your project
+1. Select "Add Pull Only Token" or "Add Pull and Push Token" depending on your needs as described above
+1. A form will appear which allows you to trigger creation of the robot account, progress of which will be shown in the Image Registry section of your project. You will not be able to add, delete or refresh robot secrets whilst this action is in progress.
+1. Once the robot account has been created, you will be able to view the robot account and its secret in the Image Registry section of your project. The secret will be visible whenever you return to this page.
+
+### Refreshing the Token of Robot Accounts
+
+!!! Note
+  
+    Only available in the new project interface. If you are using the old project interface, please select "Try new view" in the top right corner of the project page.
+
+Robot accounts with pull and push permissions have a default validity period of 30 days after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained. Should the robot account's credentials be compromised the secret can be refreshed to invalidate the compromised secret preventing its use.
+
+When a robot push pull account is created, it will have a default validity period of 30 days. The expiry date of the robot account is shown in the Image Registry section of a project. When the robot account expires the date will be displayed in red. On expiry the existing robot account's secret will be invalidated and the robot account will need to be refreshed to continue use.
+
+The robot account can be refreshed by a project PI or manager by selecting the "Refresh" button next to the robot account. When the robot account is refreshed a job will run to create a new secret for the robot account. If the robot account is refreshed before the expiry date, the existing secret will be invalidated and only the new secret will be usable to authenticate the robot account to the registry. After the job has completed the new secret will be displayed and the expiry date will be updated. The new secret will need to be used in any jobs or scripts that use the robot account to access the registry.
+
+### Deleting a Robot Account
+
+If a robot account is no longer required it should be deleted to reduce the risk of unauthorised access to your Harbor project.
+
+!!! Note
+  
+    Only available in the new project interface. If you are using the old project interface, please select "Try new view" in the top right corner of the project page.
+
+ A robot account can be deleted by a project PI or manager by selecting the "Delete" button next to the robot account. When a robot account is deleted, it will no longer be able to access the registry and any existing secrets will be invalidated. If a robot account is deleted in error, a new robot account can be created to replace it.
 
 ## Using from the Command Line with Docker
 
