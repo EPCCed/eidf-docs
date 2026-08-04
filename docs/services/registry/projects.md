@@ -1,8 +1,8 @@
-# Projects
+# EIDF Container Image Registry Projects and Caches
 
 ## Projects within EIDF
 
-Every EIDF project can request that a ECIR project is created for them. An ECIR project is a namespace within the registry which contains repositories for container images private to users of that EIDF project.
+Every EIDF project can request that an EIDF Container Image Registry (ECIR) project is created for them. An ECIR project is a namespace within the registry which contains repositories for container images private to users of that EIDF project.
 
 !!! important "ECIR Projects"
 
@@ -51,7 +51,7 @@ ECIR Project maintainers **do not** have the permissions to:
 * Edit project configuration
 * Delete projects.
 
-If you are intending to use the ECIR in an automation you should make use of a robot account for your project. Robot accounts are service accounts that can be used to access the registry without needing to use your personal credentials. They are configured with specific permissions (e.g., read-only or read-write) and have a limited validity period for security purposes. To read more see [Working with the Registry](working-with.md#robot-accounts-for-automations-in-the-ecir) documentation.
+If you are intending to use the ECIR in an automation you should make use of a robot account for your project. Robot accounts are service accounts that can be used to access the registry without needing to use your personal credentials. They are configured with specific permissions (e.g., pull-only or push-pull) and have a limited validity period for security purposes. To read more see [Working with the EIDF Container Image Registry](working-with.md#robot-accounts-for-automations-in-the-ecir) documentation.
 
 If you require a robot account with specific permissions you should submit a request via the [EIDF Portal](https://portal.eidf.ac.uk/queries/submit).
 

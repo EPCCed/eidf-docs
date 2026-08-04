@@ -1,6 +1,6 @@
-# Working with ECIR
+# Working with EIDF Container Image Registry (ECIR)
 
-## The Registry Interface and Accounts
+## The ECIR Interface and Accounts
 
 EIDF Users can access the registry through their SAFE account.
 
@@ -36,7 +36,7 @@ Clicking on a tag in a repository will open up the information on the artifact, 
 
 If you are regularly using a repository from a project where you are sharing resources and need automated, read-only access (for example, pulling images into compute jobs), it is recommended to create a robot account with limited pull-only privileges.
 
-If you also need to publish images (for example, as part of an automated build or CI/CD pipeline), you should instead create a robot account with pull and push (read and write) permissions for the project.
+If you also need to publish images (for example, as part of an automated build or CI/CD pipeline), you should instead create a robot account with push-pull permissions for the project.
 
 !!! Note
 
@@ -61,9 +61,9 @@ Robot accounts can be added by a project administrator as follows:
   
     Only available in the new project interface. If you are using the old project interface, please select "Try new view" in the top right corner of the project page.
 
-Robot accounts with pull and push permissions have a default validity period of 30 days after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained. Should the robot account's credentials be compromised the secret can be refreshed to invalidate the compromised secret preventing its use.
+Robot accounts with push-pull permissions have a default validity period of 30 days after which they will expire and need to be renewed. This is to ensure that access is regularly reviewed and maintained. Should the robot account's credentials be compromised the secret can be refreshed to invalidate the compromised secret preventing its use.
 
-When a robot push pull account is created, it will have a default validity period of 30 days. The expiry date of the robot account is shown in the Image Registry section of a project. When the robot account expires the date will be displayed in red. On expiry the existing robot account's secret will be invalidated and the robot account will need to be refreshed to continue use.
+When a robot push-pull account is created, it will have a default validity period of 30 days. The expiry date of the robot account is shown in the Image Registry section of a project. When the robot account expires the date will be displayed in red. On expiry the existing robot account's secret will be invalidated and the robot account will need to be refreshed to continue use.
 
 The robot account can be refreshed by a project PI or manager by selecting the "Refresh" button next to the robot account. When the robot account is refreshed a job will run to create a new secret for the robot account. If the robot account is refreshed before the expiry date, the existing secret will be invalidated and only the new secret will be usable to authenticate the robot account to the registry. After the job has completed the new secret will be displayed and the expiry date will be updated. The new secret will need to be used in any jobs or scripts that use the robot account to access the registry.
 
