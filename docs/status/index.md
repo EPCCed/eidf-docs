@@ -11,13 +11,14 @@ The table below represents the broad status of each EIDF service.
 <!-- Statuses --/>
 
 * Planned: Maintenance sessions or scheduled downtime.
-* On-going: Issues we are working on or that we are aware of but are accepted.
+* Ongoing: Issues we are working on or that we are aware of but are accepted.
 * Resolved: Issue was fixed/maintenance ended.
 
 <-->
 
 | Status | Start | End | Scope | Impact | Reason |
 | - | - | - | - | - | - |
+| Planned | 2026-08-20 08:00 | 2026-08-20 17:00 | EIDF services | The SSH gateway, VDI service and EIDF portal will experience brief outages as we patch and update these systems and the underlying infrastructure they depend on. Existing SSH connections via the gateway, or VDI connections, may fail as the updates happen | Monthly maintenance |
 
 ### Recently Resolved Service Alerts
 
