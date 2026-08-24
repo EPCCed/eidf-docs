@@ -3181,7 +3181,7 @@
 
 <span class="k">COPY</span><span class="w"> </span>torch_gpu_test.py<span class="w"> </span>.
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;./torch_gpu_test.py&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"./torch_gpu_test.py"</span><span class="p">]</span>
 </code></pre></div>
 <h3 id="example-1-step-2-build-test-locally-and-push-to-container-registry">Example 1 - Step 2. Build, test locally and push to container registry</h3>
 <p>As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:</p>
@@ -3200,9 +3200,9 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/pytorch-test:v1.1
 </code></pre></div>
 <p>If the container runs without errors, we can push our image to GHCR using our namespace and token:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:v1.1&quot;</span>
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:latest&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:v1.1"</span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/pytorch-test:latest"</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <h3 id="example-1-step-3-pull-and-run-container-inside-the-ces-test-vm">Example 1 - Step 3. Pull and run container inside the CES test VM</h3>
@@ -3233,7 +3233,7 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">easyocr</span>
-<span class="n">reader</span> <span class="o">=</span> <span class="n">easyocr</span><span class="o">.</span><span class="n">Reader</span><span class="p">([</span><span class="s1">&#39;en&#39;</span><span class="p">])</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">easyocr</span><span class="o">.</span><span class="n">Reader</span><span class="p">([</span><span class="s1">'en'</span><span class="p">])</span>
 </code></pre></div>
 <p><code>test_easyocr.py</code> is defined as:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
@@ -3243,25 +3243,25 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 
-<span class="n">src</span><span class="o">=</span><span class="s2">&quot;/src/&quot;</span>
-<span class="n">dst</span><span class="o">=</span><span class="s2">&quot;/safe_outputs/&quot;</span>
-<span class="n">reader</span> <span class="o">=</span> <span class="n">easyocr</span><span class="o">.</span><span class="n">Reader</span><span class="p">([</span><span class="s1">&#39;en&#39;</span><span class="p">])</span>
+<span class="n">src</span><span class="o">=</span><span class="s2">"/src/"</span>
+<span class="n">dst</span><span class="o">=</span><span class="s2">"/safe_outputs/"</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">easyocr</span><span class="o">.</span><span class="n">Reader</span><span class="p">([</span><span class="s1">'en'</span><span class="p">])</span>
 
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing file: &quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Processing file: "</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
     <span class="n">text_list</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
     <span class="n">entities</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">bbox_list</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">confidence</span><span class="p">)</span> <span class="ow">in</span> <span class="n">text_list</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found text &quot;</span><span class="si">%s</span><span class="s1">&quot; with confidence </span><span class="si">%f</span><span class="s1"> at </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">bbox_list</span><span class="p">))</span>
-        <span class="n">entities</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-            <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="n">confidence</span><span class="p">,</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Found text "</span><span class="si">%s</span><span class="s1">" with confidence </span><span class="si">%f</span><span class="s1"> at </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">bbox_list</span><span class="p">))</span>
+        <span class="n">entities</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'text'</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s1">'confidence'</span><span class="p">:</span> <span class="n">confidence</span><span class="p">,</span>
             <span class="p">})</span>
-    <span class="n">out_file</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s1">'.json'</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">entities</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">entities</span><span class="p">)</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">out_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">out_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
 <p>and <code>doc1.png</code> is an image that contains text.</p>
 <h3 id="example-2-step-1-writing-a-dockerfile">Example 2 - Step 1. Writing a Dockerfile</h3>
@@ -3279,7 +3279,7 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <p>We can then create the SHS directories, copy the files inside the container and execute the script:</p>
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/safe_data<span class="w"> </span>/safe_outputs<span class="w"> </span>/scratch<span class="w"> </span>/src
 <span class="k">COPY</span><span class="w"> </span>test_easyocr.py<span class="w"> </span>doc1.png<span class="w"> </span>/src/
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/src/test_easyocr.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/src/doc1.png&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"python3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/src/test_easyocr.py"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/src/doc1.png"</span><span class="p">]</span>
 </code></pre></div>
 <p>The final Dockerfile is:</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.13.3@sha256:a4b2b11a9faf847c52ad07f5e0d4f34da59bad9d8589b8f2c476165d94c6b377</span>
@@ -3299,7 +3299,7 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <span class="c"># Copy files inside the container</span>
 <span class="k">COPY</span><span class="w"> </span>test_easyocr.py<span class="w"> </span>doc1.png<span class="w"> </span>/src/
 <span class="c"># Run the script with the desired parameters</span>
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/src/test_easyocr.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/src/doc1.png&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"python3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/src/test_easyocr.py"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/src/doc1.png"</span><span class="p">]</span>
 </code></pre></div>
 <h3 id="example-2-step-2-build-test-locally-and-push-to-container-registry">Example 2 - Step 2. Build, test locally and push to container registry</h3>
 <p>As mentioned in our container development workflow, it is good practice to check the Dockerfile with a linting tool to detect common mistakes before building our container:</p>
@@ -3319,16 +3319,16 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 </code></pre></div>
 <p>If successful, we should see an output of this type:</p>
 <div class="highlight"><pre><span></span><code><span class="go">Processing file:  /src/doc1.png</span>
-<span class="go">Found text &quot;Apple is looking at buying U.K.&quot; with confidence 0.771268 at [[np.int32(1), np.int32(4)], [np.int32(221), np.int32(4)], [np.int32(221), np.int32(25)], [np.int32(1), np.int32(25)]]</span>
-<span class="go">Found text &quot;startup&quot; with confidence 0.994821 at [[np.int32(225), np.int32(9)], [np.int32(279), np.int32(9)], [np.int32(279), np.int32(23)], [np.int32(225), np.int32(23)]]</span>
-<span class="go">Found text &quot;for&quot; with confidence 0.999294 at [[np.int32(283), np.int32(7)], [np.int32(307), np.int32(7)], [np.int32(307), np.int32(21)], [np.int32(283), np.int32(21)]]</span>
-<span class="go">Found text &quot;billion&quot; with confidence 0.999928 at [[np.int32(331), np.int32(7)], [382, np.int32(7)], [382, np.int32(21)], [np.int32(331), np.int32(21)]]</span>
-<span class="go">[{&#39;text&#39;: &#39;Apple is looking at buying U.K.&#39;, &#39;confidence&#39;: np.float64(0.7712680738082065)}, {&#39;text&#39;: &#39;startup&#39;, &#39;confidence&#39;: np.float64(0.9948211556483356)}, {&#39;text&#39;: &#39;for&#39;, &#39;confidence&#39;: np.float64(0.9992943653537125)}, {&#39;text&#39;: &#39;billion&#39;, &#39;confidence&#39;: np.float64(0.9999277279271659)}]</span>
+<span class="go">Found text "Apple is looking at buying U.K." with confidence 0.771268 at [[np.int32(1), np.int32(4)], [np.int32(221), np.int32(4)], [np.int32(221), np.int32(25)], [np.int32(1), np.int32(25)]]</span>
+<span class="go">Found text "startup" with confidence 0.994821 at [[np.int32(225), np.int32(9)], [np.int32(279), np.int32(9)], [np.int32(279), np.int32(23)], [np.int32(225), np.int32(23)]]</span>
+<span class="go">Found text "for" with confidence 0.999294 at [[np.int32(283), np.int32(7)], [np.int32(307), np.int32(7)], [np.int32(307), np.int32(21)], [np.int32(283), np.int32(21)]]</span>
+<span class="go">Found text "billion" with confidence 0.999928 at [[np.int32(331), np.int32(7)], [382, np.int32(7)], [382, np.int32(21)], [np.int32(331), np.int32(21)]]</span>
+<span class="go">[{'text': 'Apple is looking at buying U.K.', 'confidence': np.float64(0.7712680738082065)}, {'text': 'startup', 'confidence': np.float64(0.9948211556483356)}, {'text': 'for', 'confidence': np.float64(0.9992943653537125)}, {'text': 'billion', 'confidence': np.float64(0.9999277279271659)}]</span>
 </code></pre></div>
 <p>If the container runs without errors, we can push our image to GHCR using our namespace and token:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:v1.1&quot;</span>
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:latest&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:v1.1"</span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/python-ml-test:latest"</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <h3 id="example-2-step-3-pull-and-run-container-inside-the-ces-test-vm">Example 2 - Step 3. Pull and run container inside the CES test VM</h3>
@@ -3355,7 +3355,7 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <span class="go">  ├── Dockerfile</span>
 </code></pre></div>
 <p>Where <code>install_packages.R</code> contains the following:</p>
-<div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">"ggplot2"</span><span class="p">)</span>
 </code></pre></div>
 <p>and <code>plot_example.R</code> is a simple script that generates a graph:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># library</span>
@@ -3369,15 +3369,15 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <span class="n">annotation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
 <span class="w">   </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">4.5</span><span class="p">),</span>
 <span class="w">   </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="m">25</span><span class="p">),</span>
-<span class="w">   </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;label 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;label 2&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"label 1"</span><span class="p">,</span><span class="w"> </span><span class="s">"label 2"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Add text</span>
 <span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">annotation</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span><span class="w">                 </span><span class="p">,</span>
-<span class="w">           </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span>
-<span class="w">           </span><span class="n">size</span><span class="o">=</span><span class="m">7</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">angle</span><span class="o">=</span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">fontface</span><span class="o">=</span><span class="s">&quot;bold&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">           </span><span class="n">color</span><span class="o">=</span><span class="s">"orange"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">size</span><span class="o">=</span><span class="m">7</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">angle</span><span class="o">=</span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">fontface</span><span class="o">=</span><span class="s">"bold"</span><span class="w"> </span><span class="p">)</span>
 
-<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;test_figure.png&quot;</span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">"test_figure.png"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="example-3-step-1-writing-a-dockerfile">Example 3 - Step 1. Writing a Dockerfile</h3>
 <p>Again, we start by selecting a base image. Searching for Rocker in <a href="https://hub.docker.com/search?q=rocker">DockerHub</a>, presents us with a number of options. Only some of these originate from official sources. We want to select the most appropriate image published from a reputable source, in our case the <a href="https://rocker-project.org/">Rocker Project</a>.</p>
@@ -3425,7 +3425,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>--tag<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1<span class="w"> </span>--tag<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:latest<span class="w"> </span>--platform<span class="w"> </span>linux/amd64
 </code></pre></div>
 <p>and run it locally:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;PASSWORD=test&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="m">8787</span>:8787<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-e<span class="w"> </span><span class="s2">"PASSWORD=test"</span><span class="w"> </span>-p<span class="w"> </span><span class="m">8787</span>:8787<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
 </code></pre></div>
 <p>We can now open a browser tab and access RStudio at <code>localhost:8787</code>. We can log in using the credentials <code>root</code> for the username and <code>test</code> for the password.</p>
 <div class="admonition note">
@@ -3433,9 +3433,9 @@ docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="w"> 
 <p>You are only 'root' within the context of the container, not outside of it.</p>
 </div>
 <p>If the container runs without errors, we can push our image to GHCR using our namespace and token:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:v1.1&quot;</span>
-docker<span class="w"> </span>push<span class="w"> </span><span class="s2">&quot;ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:latest&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">GHCR_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span><span class="nv">$GHCR_NAMESPACE</span><span class="w"> </span>--password-stdin
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:v1.1"</span>
+docker<span class="w"> </span>push<span class="w"> </span><span class="s2">"ghcr.io/</span><span class="nv">$GHCR_NAMESPACE</span><span class="s2">/rocker-test:latest"</span>
 docker<span class="w"> </span><span class="nb">logout</span>
 </code></pre></div>
 <h3 id="example-3-step-3-pull-and-run-container-inside-the-ces-test-vm">Example 3 - Step 3. Pull and run container inside the CES test VM</h3>
@@ -3448,8 +3448,8 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <p>When pulling containers into the SHS, instead of using the GitHub access token you used to push the container, it is <strong>recommended</strong> that you use a GitHub access token with 'read:packages' scope only. Restricting where you use your read-write token can keep your GHCR secure.</p>
 </div>
 <p>The Rocker container was designed to be run using Docker. In order for it to run successfully with podman, the container directories <code>/var/lib/rstudio-server</code> and <code>/run</code> need to be mounted to a tmpfs. As such, the following options are required:</p>
-<div class="highlight"><pre><span></span><code><span class="s1">&#39;--mount type=tmpfs,destination=/var/lib/rstudio-server&#39;</span>
-<span class="s1">&#39;--mount type=tmpfs,destination=/run&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="s1">'--mount type=tmpfs,destination=/var/lib/rstudio-server'</span>
+<span class="s1">'--mount type=tmpfs,destination=/run'</span>
 </code></pre></div>
 <p>A <code>ces-run</code> <code>opt-file.txt</code> can include these and other options required, as follows:</p>
 <div class="highlight"><pre><span></span><code>-p 8787:8787
@@ -3464,22 +3464,22 @@ docker<span class="w"> </span><span class="nb">logout</span>
 <div class="highlight"><pre><span></span><code>ces-run<span class="w"> </span>podman<span class="w"> </span>--opt-file<span class="w"> </span>opt-file.txt<span class="w"> </span>--env-file<span class="w"> </span>env-file.txt<span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
 </code></pre></div>
 <p>To streamline the process, we can place all the necessary commands into an executable script, <code>run.sh</code>, as follows, replacing <code>&lt;password&gt;</code> with a strong password:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">opt_file</span><span class="o">=</span><span class="s2">&quot;./opt-file.txt&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">opt_file</span><span class="o">=</span><span class="s2">"./opt-file.txt"</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$opt_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span>rm<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$opt_file</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$opt_file</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$opt_file</span><span class="s2">"</span>
 <span class="k">fi</span>
-<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;-p 8787:8787&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
-<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;-it&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
-<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;--mount type=tmpfs,destination=/var/lib/rstudio-server&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
-<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;--mount type=tmpfs,destination=/run&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'-p 8787:8787'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'-it'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'--mount type=tmpfs,destination=/var/lib/rstudio-server'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'--mount type=tmpfs,destination=/run'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">opt_file</span><span class="si">}</span>
 
-<span class="nv">env_file</span><span class="o">=</span><span class="s2">&quot;./env-file.txt&quot;</span>
+<span class="nv">env_file</span><span class="o">=</span><span class="s2">"./env-file.txt"</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span>rm<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env_file</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$env_file</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$env_file</span><span class="s2">"</span>
 <span class="k">fi</span>
-<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;PASSWORD=&lt;password&gt;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"PASSWORD=&lt;password&gt;"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span>
 
 ces-run<span class="w"> </span>podman<span class="w"> </span>--opt-file<span class="w"> </span><span class="nv">$opt_file</span><span class="w"> </span>--env-file<span class="w"> </span><span class="nv">$env_file</span><span class="w"> </span>ghcr.io/<span class="nv">$GHCR_NAMESPACE</span>/rocker-test:v1.1
 </code></pre></div>

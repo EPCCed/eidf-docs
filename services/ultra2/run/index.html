@@ -2980,14 +2980,14 @@ This may be enforced via SLURM in the future.</p>
 <span class="c1">##SBATCH --exclusive</span>
 
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running on host </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Using </span><span class="si">${</span><span class="nv">SLURM_NTASKS_PER_NODE</span><span class="si">}</span><span class="s2"> tasks per node&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Using </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="s2"> cpus per task&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Running on host </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Using </span><span class="si">${</span><span class="nv">SLURM_NTASKS_PER_NODE</span><span class="si">}</span><span class="s2"> tasks per node"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Using </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="s2"> cpus per task"</span>
 <span class="nb">let</span><span class="w"> </span><span class="nv">mpi_threads</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_NTASKS_PER_NODE</span><span class="si">}</span>*<span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Using </span><span class="si">${</span><span class="nv">mpi_threads</span><span class="si">}</span><span class="s2"> MPI threads&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Using </span><span class="si">${</span><span class="nv">mpi_threads</span><span class="si">}</span><span class="s2"> MPI threads"</span>
 
 <span class="c1"># Source oneAPI to ensure mpirun available</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SETVARS_COMPLETED</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">SETVARS_COMPLETED</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="nb">source</span><span class="w"> </span>/opt/intel/oneapi/setvars.sh
 <span class="k">fi</span>
 

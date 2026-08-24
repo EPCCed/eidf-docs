@@ -2843,7 +2843,7 @@
 <h2 id="find-number-of-cpus-and-cores-available-on-a-back-end">Find number of CPUs and cores available on a back-end</h2>
 <p>You can find the number of CPUs available on a back-end by logging into the back-end and running one of the following commands which count the number of occurrences of the terms in the <code>/proc/cpuinfo</code> file which gives the number of CPUs and cores available.</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>processor<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
-cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;core id&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'core id'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>8
@@ -2885,7 +2885,7 @@ sbatch: error: Batch job submission failed: Requested node configuration is not 
 <hr />
 <h2 id="troubleshooting-cannot-remove-ondemanddatasysappnfs">Troubleshooting: 'Cannot remove 'ondemand/data/sys/APP/.nfs'</h2>
 <p>If you delete your <code>ondemand</code> directory on the Open OnDemand VM, you may see an error like the following:</p>
-<div class="highlight"><pre><span></span><code>rm: cannot remove &#39;ondemand/data/sys/APP/.nfs0000000601ac7ca000000002&#39;: Device or resource busy
+<div class="highlight"><pre><span></span><code>rm: cannot remove 'ondemand/data/sys/APP/.nfs0000000601ac7ca000000002': Device or resource busy
 </code></pre></div>
 <p>The file is a system file held by a lingering process created during your session.</p>
 <p>Log into Open OnDemand (if you are not already logged in) and, within Open OnDemand, select the <strong>Help (?)</strong> menu, <strong>Restart Web Server</strong> option to restart your session. This will end the lingering process and allow you to remove the file, and directory.</p>

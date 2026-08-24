@@ -3070,7 +3070,7 @@ Login<span class="w"> </span>Succeeded
 <p>Encode your authorisation information into base64 for inclusion in the Kubernetes secret. The CLI Secret value is taken from your User profile in the registry web interface.</p>
 <p><img alt="UserProfile" class="border-img" src="../../../images/registry/userprofile.png" />
    <em>User Profile</em></p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;auths&quot;:{&quot;https://registry.eidf.ac.uk&quot;:{&quot;username&quot;:&quot;&lt;your username&gt;&quot;,&quot;password&quot;:&quot;&lt;your CLI Secret&gt;&quot;}}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'{"auths":{"https://registry.eidf.ac.uk":{"username":"&lt;your username&gt;","password":"&lt;your CLI Secret&gt;"}}}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
 </code></pre></div>
 <p>This will generate a string of characters, it may have line breaks on output, and for the next part, you can remove the line breaks and make it a single line.</p>
 <div class="highlight"><pre><span></span><code>eyJhdXRocyI6eyJodHRwczovL3JlZ2lzdHJ5LmVpZGYuYWMudWsiOnsidXNlcm5hbWUiOiJyb2Jv
@@ -3122,10 +3122,10 @@ data:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.eidf.ac.uk/nvidia-cache/nvidia/k8s/cuda-sample:nbody</span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;-benchmark&#39;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;-numbodies=512000&#39;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;-fp64&#39;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;-fullscreen&#39;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'-benchmark'</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'-numbodies=512000'</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'-fp64'</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'-fullscreen'</span>
 <span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>

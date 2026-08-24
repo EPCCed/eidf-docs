@@ -3004,7 +3004,7 @@ $HOME/rstudio-tmp/tmp:/tmp
 <h3 id="troubleshooting-errors-in-inferring-or-accessing-safe-data">Troubleshooting: Errors in inferring or accessing 'safe data'</h3>
 <p>As described in <a href="../../jobs/#job-cards">Job cards</a>, app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
 <p>In cases where there are errors in inferring or accessing your 'safe data' directory, then the <code>output.log</code> log file for the app's job, in the job context directory, <code>ondemand/data/sys/dashboard/batch_connect/sys/rstudio_app/output/SESSION_ID</code>, will include a message like one of the following:</p>
-<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user&#39;s groups
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 </code></pre></div>
@@ -3031,7 +3031,7 @@ $HOME/rstudio-tmp/tmp:/tmp
 <ul>
 <li>
 <p>Run, within an RStudio Server Console:</p>
-<div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
@@ -3056,7 +3056,7 @@ $HOME/rstudio-tmp/tmp:/tmp
 <ol>
 <li>
 <p>Install package:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;PACKAGE_NAME&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">'PACKAGE_NAME'</span><span class="p">)</span>
 </code></pre></div>
 </li>
 </ol>

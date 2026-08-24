@@ -3117,14 +3117,14 @@
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-loader</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/curl:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/mnt/ceph;</span><span class="nv"> </span><span class="s">curl</span><span class="nv"> </span><span class="s">https://archive.ics.uci.edu/static/public/53/iris.zip</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">iris.zip&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sh'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'-c'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cd</span><span class="nv"> </span><span class="s">/mnt/ceph;</span><span class="nv"> </span><span class="s">curl</span><span class="nv"> </span><span class="s">https://archive.ics.uci.edu/static/public/53/iris.zip</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">iris.zip"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
@@ -3183,14 +3183,14 @@
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-loader</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/curl:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sleep&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;infinity&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sleep'</span><span class="p p-Indicator">,</span><span class="s">'infinity'</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
@@ -3285,14 +3285,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"infinity"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"8Gi"</span>
 </code></pre></div>
 </li>
 </ol>
@@ -3316,7 +3316,7 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;code/docker/**&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'code/docker/**'</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">docker</span><span class="p">:</span>
@@ -3338,7 +3338,7 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and push</span>
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v5</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{defaultContext}}:code/docker&quot;</span>
+<span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">"{{defaultContext}}:code/docker"</span>
 <span class="w">          </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;target-dockerhub-image-name&gt;</span>
 </code></pre></div>
@@ -3375,14 +3375,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"infinity"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"8Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
@@ -3409,14 +3409,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;infinity&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"infinity"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"8Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
@@ -3425,14 +3425,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">initContainers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-git-container</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cicirello/alpine-plus-plus</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sh'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'-c'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"8Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>
@@ -3462,14 +3462,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-docker-image</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-hub-username&gt;/template-docker-image:latest</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;python3</span><span class="nv"> </span><span class="s">/code/&lt;python-script&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sh'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'-c'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"python3</span><span class="nv"> </span><span class="s">/code/&lt;python-script&gt;"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;40Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"40Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;80Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"80Gi"</span>
 <span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
@@ -3479,14 +3479,14 @@ docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </s
 <span class="w">   </span><span class="nt">initContainers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-git-container</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cicirello/alpine-plus-plus</span>
-<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'sh'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'-c'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cd</span><span class="nv"> </span><span class="s">/code;</span><span class="nv"> </span><span class="s">git</span><span class="nv"> </span><span class="s">clone</span><span class="nv"> </span><span class="s">&lt;target-repo&gt;"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"8Gi"</span>
 <span class="w">     </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/code</span>
 <span class="w">       </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-code</span>

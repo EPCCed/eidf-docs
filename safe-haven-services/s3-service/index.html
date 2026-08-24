@@ -3027,14 +3027,14 @@ above) or in your script using <code>os.environ</code>.</p>
 <h3 id="download-an-object-using-boto3">Download an object using boto3</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;http_proxy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<span class="n">resource</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">,</span>
-    <span class="n">region_name</span> <span class="o">=</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
-    <span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">&quot;http://nsh-fs02:7070&quot;</span><span class="p">,</span>
-    <span class="n">aws_access_key_id</span> <span class="o">=</span> <span class="s2">&quot;dummydata&quot;</span><span class="p">,</span>
-    <span class="n">aws_secret_access_key</span> <span class="o">=</span> <span class="s2">&quot;put_your_secret_here&quot;</span><span class="p">)</span>
-<span class="n">bucket</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s2">&quot;dummydata&quot;</span><span class="p">)</span>
-<span class="n">bucket</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">&quot;326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm&quot;</span><span class="p">,</span> <span class="s2">&quot;downloaded.dcm&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"http_proxy"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">"s3"</span><span class="p">,</span>
+    <span class="n">region_name</span> <span class="o">=</span> <span class="s2">"us-east-1"</span><span class="p">,</span>
+    <span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">"http://nsh-fs02:7070"</span><span class="p">,</span>
+    <span class="n">aws_access_key_id</span> <span class="o">=</span> <span class="s2">"dummydata"</span><span class="p">,</span>
+    <span class="n">aws_secret_access_key</span> <span class="o">=</span> <span class="s2">"put_your_secret_here"</span><span class="p">)</span>
+<span class="n">bucket</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s2">"dummydata"</span><span class="p">)</span>
+<span class="n">bucket</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s2">"326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm"</span><span class="p">,</span> <span class="s2">"downloaded.dcm"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="load-object-into-pydicom-dataset">Load object into pydicom dataset</h3>
 <div class="highlight"><pre><span></span><code><span class="go">pip install pydicom</span>
@@ -3044,17 +3044,17 @@ above) or in your script using <code>os.environ</code>.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pydicom</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;http_proxy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<span class="n">resource</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">,</span>
-    <span class="n">region_name</span> <span class="o">=</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
-    <span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">&quot;http://nsh-fs02:7070&quot;</span><span class="p">,</span>
-    <span class="n">aws_access_key_id</span> <span class="o">=</span> <span class="s2">&quot;dummydata&quot;</span><span class="p">,</span>
-    <span class="n">aws_secret_access_key</span> <span class="o">=</span> <span class="s2">&quot;put_your_secret_here&quot;</span><span class="p">)</span>
-<span class="n">bucket</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s2">&quot;dummydata&quot;</span><span class="p">)</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="s2">&quot;326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm&quot;</span><span class="p">)</span>
-<span class="n">dcm_bytes</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="s2">&quot;Body&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"http_proxy"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">"s3"</span><span class="p">,</span>
+    <span class="n">region_name</span> <span class="o">=</span> <span class="s2">"us-east-1"</span><span class="p">,</span>
+    <span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">"http://nsh-fs02:7070"</span><span class="p">,</span>
+    <span class="n">aws_access_key_id</span> <span class="o">=</span> <span class="s2">"dummydata"</span><span class="p">,</span>
+    <span class="n">aws_secret_access_key</span> <span class="o">=</span> <span class="s2">"put_your_secret_here"</span><span class="p">)</span>
+<span class="n">bucket</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s2">"dummydata"</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="s2">"326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm"</span><span class="p">)</span>
+<span class="n">dcm_bytes</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="s2">"Body"</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">dcm_bytes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;StudyInstanceUID&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">"StudyInstanceUID"</span><span class="p">])</span>
 <span class="c1"># (0020,000D) Study Instance UID                  UI: 1.2.840.113619.2.411.3.4077533701.216.1476084945.95</span>
 </code></pre></div></p>
 <h2 id="example-using-r">Example using R</h2>
@@ -3068,18 +3068,18 @@ Only <em>after</em> you have installed packages with <code>install.packages()</c
 </blockquote>
 <p>An example R script to download a file from S3:
 <div class="highlight"><pre><span></span><code>library(aws.s3)
-my_bucket &lt;- &quot;dummydata&quot;
-my_access_key &lt;- &quot;dummydata&quot;
-my_secret_key &lt;- &quot;abigsecretkey&quot;
-my_region &lt;- &quot;us-east-1&quot;
-my_endpoint &lt;- &quot;http://nsh-fs02:7070&quot;
-my_endpoint_host &lt;- &quot;nsh-fs02:7070&quot;
-my_object_path &lt;- &quot;326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm&quot;
-Sys.setenv( AWS_ENDPOINT_URL=&quot;http://nsh-fs02:7070&quot; )
-Sys.setenv( AWS_S3_ENDPOINT=&quot;http://nsh-fs02:7070&quot; )
-Sys.setenv( AWS_DEFAULT_REGION=&quot;us-east-1&quot; )
-Sys.setenv( http_proxy=&quot;&quot; )
-save_object( my_object_path, file = &quot;downloaded.dcm&quot;, bucket = my_bucket, base_url=my_endpoint_host, region=&quot;&quot;, use_https=FALSE, key = my_access_key, secret = my_secret_key )
+my_bucket &lt;- "dummydata"
+my_access_key &lt;- "dummydata"
+my_secret_key &lt;- "abigsecretkey"
+my_region &lt;- "us-east-1"
+my_endpoint &lt;- "http://nsh-fs02:7070"
+my_endpoint_host &lt;- "nsh-fs02:7070"
+my_object_path &lt;- "326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm"
+Sys.setenv( AWS_ENDPOINT_URL="http://nsh-fs02:7070" )
+Sys.setenv( AWS_S3_ENDPOINT="http://nsh-fs02:7070" )
+Sys.setenv( AWS_DEFAULT_REGION="us-east-1" )
+Sys.setenv( http_proxy="" )
+save_object( my_object_path, file = "downloaded.dcm", bucket = my_bucket, base_url=my_endpoint_host, region="", use_https=FALSE, key = my_access_key, secret = my_secret_key )
 </code></pre></div></p>
 <blockquote>
 <p>[!NOTE]
@@ -3090,8 +3090,8 @@ The <code>base_url</code> is just the host and port, no <code>http://</code> pre
 <h3 id="advanced-r-usage">Advanced R usage</h3>
 <p>To consume data via a temporary file see the function <a href="https://rdrr.io/cran/aws.s3/man/s3read_using.html">s3read_using</a>.</p>
 <p>To consume data without using any files, use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/rawConnection">rawConnection</a> with the data from <a href="https://www.rdocumentation.org/packages/aws.s3/versions/0.3.21/topics/get_object">get_object</a>.
-<div class="highlight"><pre><span></span><code>obj = get_object( my_object_path, bucket = my_bucket, base_url=my_endpoint_host, region=&quot;&quot;, use_https=FALSE, key = my_access_key, secret = my_secret_key )
-con = rawConnection(obj, &quot;r&quot;)
+<div class="highlight"><pre><span></span><code>obj = get_object( my_object_path, bucket = my_bucket, base_url=my_endpoint_host, region="", use_https=FALSE, key = my_access_key, secret = my_secret_key )
+con = rawConnection(obj, "r")
 dicom_processing_function(con)
 </code></pre></div></p>
 <p>Examples of such functions are <code>oro.dicom::parseDICOMHeader()</code> and <code>espadon::dicom.browser()</code></p>
@@ -3117,8 +3117,8 @@ Now you will need a 's3' directory in your home directory so create that first, 
 <div class="highlight"><pre><span></span><code>ces-pm-run --opt-file &lt;(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu
 </code></pre></div>
 That is difficult to type every time you need it, so you can create a script:
-<div class="highlight"><pre><span></span><code>echo &#39;#!/bin/bash&#39; &gt; ~/dcmaudit.sh
-echo &#39;ces-pm-run --opt-file &lt;(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu&#39; &gt;&gt; ~/dcmaudit.sh
+<div class="highlight"><pre><span></span><code>echo '#!/bin/bash' &gt; ~/dcmaudit.sh
+echo 'ces-pm-run --opt-file &lt;(echo -v $HOME/.dcmaudit:/root/.dcmaudit -v $HOME/s3:/root/s3 --http-proxy=false) ghcr.io/howff/dcmaudit:cpu' &gt;&gt; ~/dcmaudit.sh
 chmod +x ~/dcmaudit.sh
 </code></pre></div>
 Now to run the viewer you can run <code>~/dcmaudit.sh</code> from a terminal window or double-click on it in a file browser.</p>

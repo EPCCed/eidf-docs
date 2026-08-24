@@ -2972,7 +2972,7 @@
 <h3 id="non-default-ssh-keys">Non-default SSH Keys</h3>
 <p>I have different SSH keys for the SSH gateway and my VM, or I use a key which does not have the default name (~/.ssh/id_rsa) and I cannot login.</p>
 <p>The command syntax shown in our SSH documentation (using the <code>-J &lt;username&gt;@eidf-gateway</code> stanza) makes assumptions about SSH keys and their naming. You should try the full version of the command:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">&quot;ssh -i ~/.ssh/&lt;gateway_private_key&gt; -W %h:%p &lt;gateway_username&gt;@eidf-gateway.epcc.ed.ac.uk&quot;</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/&lt;vm_private_key&gt;<span class="w"> </span>&lt;vm_username&gt;@&lt;vm_ip&gt;
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i ~/.ssh/&lt;gateway_private_key&gt; -W %h:%p &lt;gateway_username&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/&lt;vm_private_key&gt;<span class="w"> </span>&lt;vm_username&gt;@&lt;vm_ip&gt;
 </code></pre></div>
 <p>Note that for the majority of users, gateway_username and vm_username are the same, as are gateway_private_key and vm_private_key</p>
 <h3 id="username-policy">Username Policy</h3>

@@ -3269,11 +3269,11 @@ cat<span class="w"> </span>/safe_data/yourproject/20260609-100910-youruser-greet
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span>
-                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">])</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Sine wave&#39;</span><span class="p">,</span>
-             <span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
-             <span class="n">y</span><span class="o">=</span><span class="s1">&#39;amplitude&#39;</span><span class="p">,</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'time'</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">'amplitude'</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span>
+                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'amplitude'</span><span class="p">])</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Sine wave'</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="s1">'amplitude'</span><span class="p">,</span>
              <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Click Shift + Enter to run the code. A plot should appear.</p>
@@ -3281,8 +3281,8 @@ cat<span class="w"> </span>/safe_data/yourproject/20260609-100910-youruser-greet
 <em>Jupyter Notebook with Python code and a sine wave</em></p>
 <p>In the field under the plot, add the following code to save the sine wave data and the plot:</p>
 <div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">pwd</span><span class="o">.</span><span class="n">getpwuid</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getuid</span><span class="p">())</span><span class="o">.</span><span class="n">pw_name</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/safe_data/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s1">-sine-wave.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/safe_data/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s1">-sine-wave.png&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">'/safe_data/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s1">-sine-wave.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">'/safe_data/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s1">-sine-wave.png'</span><span class="p">)</span>
 </code></pre></div>
 <p>Click Shift + Enter to run the code.</p>
 <p>The Python code saves the data file and plot to the <code>/safe_data</code> directory, which, as described earlier, is a mount of your 'safe data' directory i.e., <code>/safe_data/PROJECT</code>.</p>
@@ -3437,7 +3437,7 @@ epcc-ces-hello
 at
 2026-06-09 08:56:46
 
-Your &#39;/safe_data&#39; directory includes the following files:
+Your '/safe_data' directory includes the following files:
 
 20260609-085646-youruser-epcc-ces-hello.txt
 README

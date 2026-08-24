@@ -3003,8 +3003,8 @@ Spec:
 <span class="w">        </span>Containers:
 <span class="w">          </span>Args:
 <span class="w">            </span><span class="c1"># Extract job ID from pod name by removing trailing -xxxxx</span>
-<span class="nv">JOB_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/-[a-z0-9]\{5\}$//&#39;</span><span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resolved JOB_ID: </span><span class="nv">$JOB_ID</span><span class="s2">&quot;</span>
+<span class="nv">JOB_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/-[a-z0-9]\{5\}$//'</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Resolved JOB_ID: </span><span class="nv">$JOB_ID</span><span class="s2">"</span>
 sleep<span class="w"> </span><span class="m">60</span>
 <span class="c1"># Make job output directory</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span>/safe_outputs/<span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>
@@ -3012,13 +3012,13 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>/safe_outputs/<span class
 <span class="c1"># Copy test file if it exists</span>
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/safe_data/test<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">  </span>cat<span class="w"> </span>/safe_data/test<span class="w"> </span>&gt;<span class="w"> </span>/safe_outputs/<span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>/test_output
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Copied /safe_data/test to /safe_outputs/</span><span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span><span class="s2">/test_output&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Copied /safe_data/test to /safe_outputs/</span><span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span><span class="s2">/test_output"</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File /safe_data/test not found!&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"File /safe_data/test not found!"</span>
 <span class="k">fi</span>
 
 <span class="c1"># Run CUDA sample with required arguments</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting CUDA sample...&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Starting CUDA sample..."</span>
 <span class="nb">exec</span><span class="w"> </span>/app/nbody<span class="w"> </span>-benchmark<span class="w"> </span>-numbodies<span class="o">=</span><span class="m">512000</span><span class="w"> </span>-fp64<span class="w"> </span>-fullscreen
 
 <span class="w">          </span>Command:

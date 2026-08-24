@@ -3027,7 +3027,7 @@
 <h3 id="troubleshooting-errors-in-inferring-or-accessing-safe-data">Troubleshooting: Errors in inferring or accessing 'safe data'</h3>
 <p>As described in <a href="../../jobs/#job-cards">Job cards</a>, app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
 <p>In cases where there are errors in inferring or accessing your 'safe data' directory, then the <code>output.log</code> log file for the app's job, in the job context directory, <code>ondemand/data/sys/dashboard/batch_connect/sys/batch_container_app/output/SESSION_ID</code>, will include a message like one of the following:</p>
-<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user&#39;s groups
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 </code></pre></div>
@@ -3072,7 +3072,7 @@ no_proxy=...
 <li>Select <strong>Clusters</strong> menu, back-end <strong>Shell Access</strong> option to log into the back-end.</li>
 <li>
 <p>Extract your web proxy variables and values into a bash script and add an <code>export</code> to each to give a bash script which defines your variables:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="nv">proxy</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^/export &#39;</span>/<span class="w"> </span>&gt;<span class="w"> </span>set-proxy-env.sh
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="nv">proxy</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/^/export '</span>/<span class="w"> </span>&gt;<span class="w"> </span>set-proxy-env.sh
 $<span class="w"> </span>cat<span class="w"> </span>set-proxy-env.sh
 <span class="nb">export</span><span class="w"> </span><span class="nv">CURLHTTPS_PROXY</span><span class="o">=</span>...
 <span class="nb">export</span><span class="w"> </span><span class="nv">CURLHTTP_PROXY</span><span class="o">=</span>...

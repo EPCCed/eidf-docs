@@ -3105,14 +3105,14 @@
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
 <span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 </code></pre></div>
@@ -3215,7 +3215,7 @@ Also, each pod within a job is given another unique 5 character code appended to
 </li>
 <li>
 <p>This will output something like:</p>
-<div class="highlight"><pre><span></span><code>Run<span class="w"> </span><span class="s2">&quot;nbody -benchmark [-numbodies=&lt;numBodies&gt;]&quot;</span><span class="w"> </span>to<span class="w"> </span>measure<span class="w"> </span>performance.
+<div class="highlight"><pre><span></span><code>Run<span class="w"> </span><span class="s2">"nbody -benchmark [-numbodies=&lt;numBodies&gt;]"</span><span class="w"> </span>to<span class="w"> </span>measure<span class="w"> </span>performance.
 <span class="w">    </span>-fullscreen<span class="w">       </span><span class="o">(</span>run<span class="w"> </span>n-body<span class="w"> </span>simulation<span class="w"> </span><span class="k">in</span><span class="w"> </span>fullscreen<span class="w"> </span>mode<span class="o">)</span>
 <span class="w">    </span>-fp64<span class="w">             </span><span class="o">(</span>use<span class="w"> </span>double<span class="w"> </span>precision<span class="w"> </span>floating<span class="w"> </span>point<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation<span class="o">)</span>
 <span class="w">    </span>-hostmem<span class="w">          </span><span class="o">(</span>stores<span class="w"> </span>simulation<span class="w"> </span>data<span class="w"> </span><span class="k">in</span><span class="w"> </span>host<span class="w"> </span>memory<span class="o">)</span>
@@ -3233,7 +3233,7 @@ NOTE:<span class="w"> </span>The<span class="w"> </span>CUDA<span class="w"> </s
 &gt;<span class="w"> </span>Simulation<span class="w"> </span>data<span class="w"> </span>stored<span class="w"> </span><span class="k">in</span><span class="w"> </span>video<span class="w"> </span>memory
 &gt;<span class="w"> </span>Double<span class="w"> </span>precision<span class="w"> </span>floating<span class="w"> </span>point<span class="w"> </span>simulation
 &gt;<span class="w"> </span><span class="m">1</span><span class="w"> </span>Devices<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation
-GPU<span class="w"> </span>Device<span class="w"> </span><span class="m">0</span>:<span class="w"> </span><span class="s2">&quot;Ampere&quot;</span><span class="w"> </span>with<span class="w"> </span>compute<span class="w"> </span>capability<span class="w"> </span><span class="m">8</span>.0
+GPU<span class="w"> </span>Device<span class="w"> </span><span class="m">0</span>:<span class="w"> </span><span class="s2">"Ampere"</span><span class="w"> </span>with<span class="w"> </span>compute<span class="w"> </span>capability<span class="w"> </span><span class="m">8</span>.0
 
 &gt;<span class="w"> </span>Compute<span class="w"> </span><span class="m">8</span>.0<span class="w"> </span>CUDA<span class="w"> </span>device:<span class="w"> </span><span class="o">[</span>NVIDIA<span class="w"> </span>A100-SXM4-40GB<span class="o">]</span>
 number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512000</span>
@@ -3282,14 +3282,14 @@ number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies<
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
 <span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
 <span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
 <span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
 <span class="w">            </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 <span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
@@ -3318,14 +3318,14 @@ number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies<
 <span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
 <span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-benchmark&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-numbodies=512000&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fp64&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-fullscreen&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
 <span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1Gi&#39;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
 <span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
 <span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 </code></pre></div>
@@ -3347,11 +3347,11 @@ number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies<
 <div class="highlight"><pre><span></span><code>*** MORE CONFIG ***
 
 contexts:
-- name: &quot;eidf-general-prod&quot;
+- name: "eidf-general-prod"
   context:
-    user: &quot;eidf-general-prod&quot;
-    namespace: &quot;&lt;project-namespace&gt;&quot; # INSERT LINE
-    cluster: &quot;eidf-general-prod&quot;
+    user: "eidf-general-prod"
+    namespace: "&lt;project-namespace&gt;" # INSERT LINE
+    cluster: "eidf-general-prod"
 
 *** MORE CONFIG ***
 </code></pre></div>

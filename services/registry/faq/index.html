@@ -2913,7 +2913,7 @@
 <h2 id="known-issues">Known Issues</h2>
 <h3 id="unauthorised-error-when-logging-into-the-registry-from-docker">Unauthorised error when logging into the registry from Docker</h3>
 <p>If you have been logged in to the ECIR web UI for a long time (&gt; 5 hours) and you attempt to login to the registry from Docker you may get an error of the form:</p>
-<div class="highlight"><pre><span></span><code>Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>Get<span class="w"> </span><span class="s2">&quot;https://registry.eidf.ac.uk/v2/&quot;</span>:<span class="w"> </span>unauthorized:
+<div class="highlight"><pre><span></span><code>Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>Get<span class="w"> </span><span class="s2">"https://registry.eidf.ac.uk/v2/"</span>:<span class="w"> </span>unauthorized:
 </code></pre></div>
 <p>This means the OAUTH token given to your account by the SAFE has expired, to rectify this you should logout from the ECIR web UI and then login again via the SAFE.</p>
 <p>You can check the status of your SAFE OAUTH token by visiting <a href="https://safe.epcc.ed.ac.uk/TransitionServlet/Tokens/">safe.epcc.ed.ac.uk/TransitionServlet/Tokens/</a>.</p>

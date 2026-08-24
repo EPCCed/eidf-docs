@@ -3219,7 +3219,7 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The signature of an image can be viewed with the command:</p>
-<div class="highlight"><pre><span></span><code><span class="go">docker inspect --format=&#39;{{index .RepoDigests 0}}&#39; &lt;image&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="go">docker inspect --format='{{index .RepoDigests 0}}' &lt;image&gt;</span>
 </code></pre></div>
 </div>
 <p>Incorrect examples:</p>
@@ -3254,13 +3254,13 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
 <span class="c"># Unpack a tar archive</span>
 <span class="k">ADD</span><span class="w"> </span>my_project.tar.gz<span class="w"> </span>/target-dir/
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/target-dir/main.py&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/target-dir/main.py"</span><span class="p">]</span>
 </code></pre></div>
 <p>Correct example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
 <span class="c"># Unpack my_project.tar.gz locally first, then copy</span>
 <span class="k">COPY</span><span class="w"> </span>my_project/<span class="w"> </span>/target-dir/
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/target-dir/main.py&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/target-dir/main.py"</span><span class="p">]</span>
 </code></pre></div>
 <p><strong>Use multi-stage builds where appropriate</strong>. Separating build/compilation steps into a separate stage helps to minimise the content of the final image and reduce the overall size.</p>
 <p>Example:</p>
@@ -3318,7 +3318,7 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 
 <span class="c"># Default command</span>
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"app.py"</span><span class="p">]</span>
 </code></pre></div>
 <p>where this is the app structure:</p>
 <div class="highlight"><pre><span></span><code>.
@@ -3352,10 +3352,10 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <span class="go">   ...</span>
 </code></pre></div>
 <p>The following commands can be used to upload the image to a GHCR repository, where <code>GHCR_TOKEN</code> needs to be a GitHub access token with 'repo' and 'write:packages' scope:</p>
-<div class="highlight"><pre><span></span><code><span class="go">echo &quot;${GHCR_TOKEN}&quot; | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin</span>
-<span class="go">docker build . --tag &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG&quot; --tag &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest&quot;</span>
-<span class="go">docker push &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest&quot;</span>
-<span class="go">docker push &quot;ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="go">echo "${GHCR_TOKEN}" | docker login ghcr.io -u $GHCR_NAMESPACE --password-stdin</span>
+<span class="go">docker build . --tag "ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG" --tag "ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest"</span>
+<span class="go">docker push "ghcr.io/$GHCR_NAMESPACE/$IMAGE:latest"</span>
+<span class="go">docker push "ghcr.io/$GHCR_NAMESPACE/$IMAGE:$TAG"</span>
 <span class="go">docker logout</span>
 </code></pre></div>
 <h3 id="25-automate-build-and-upload-using-github-actions-optional">2.5 Automate build and upload using GitHub Actions (optional)</h3>
@@ -3384,31 +3384,31 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build image</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">set -euxo pipefail</span>
-<span class="w">          </span><span class="no">repository=&quot;ghcr.io/myrepo&quot;</span>
-<span class="w">          </span><span class="no">version=&quot;myversion&quot;</span>
-<span class="w">          </span><span class="no">image=&quot;${repository}:${version}&quot;</span>
-<span class="w">          </span><span class="no">docker build . --tag &quot;${image}&quot;</span>
-<span class="w">          </span><span class="no">echo &quot;image=${image}&quot; &gt;&gt; &quot;$GITHUB_ENV&quot;</span>
-<span class="w">          </span><span class="no">echo &quot;Built ${image}&quot;</span>
+<span class="w">          </span><span class="no">repository="ghcr.io/myrepo"</span>
+<span class="w">          </span><span class="no">version="myversion"</span>
+<span class="w">          </span><span class="no">image="${repository}:${version}"</span>
+<span class="w">          </span><span class="no">docker build . --tag "${image}"</span>
+<span class="w">          </span><span class="no">echo "image=${image}" &gt;&gt; "$GITHUB_ENV"</span>
+<span class="w">          </span><span class="no">echo "Built ${image}"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push image</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">set -euxo pipefail</span>
-<span class="w">          </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | docker login ghcr.io -u $ --password-stdin</span>
-<span class="w">          </span><span class="no">docker push &quot;${image}&quot;</span>
+<span class="w">          </span><span class="no">echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin</span>
+<span class="w">          </span><span class="no">docker push "${image}"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run trivy</span>
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aquasecurity/trivy-action@master</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">image-ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">env.image</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;github&#39;</span>
-<span class="w">          </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dependency-results.sbom.json&#39;</span>
-<span class="w">          </span><span class="nt">github-pat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">secrets.GITHUB_TOKEN</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;MEDIUM,CRITICAL,HIGH&#39;</span>
-<span class="w">          </span><span class="nt">scanners</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vuln&quot;</span>
+<span class="w">          </span><span class="nt">image-ref</span><span class="p">:</span><span class="w"> </span><span class="s">"${{</span><span class="nv"> </span><span class="s">env.image</span><span class="nv"> </span><span class="s">}}"</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">'github'</span>
+<span class="w">          </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">'dependency-results.sbom.json'</span>
+<span class="w">          </span><span class="nt">github-pat</span><span class="p">:</span><span class="w"> </span><span class="s">"${{</span><span class="nv"> </span><span class="s">secrets.GITHUB_TOKEN</span><span class="nv"> </span><span class="s">}}"</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s">'MEDIUM,CRITICAL,HIGH'</span>
+<span class="w">          </span><span class="nt">scanners</span><span class="p">:</span><span class="w"> </span><span class="s">"vuln"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upload trivy report</span>
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;trivy-sbom-report&#39;</span>
-<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;dependency-results.sbom.json&#39;</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'trivy-sbom-report'</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">'dependency-results.sbom.json'</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3424,8 +3424,8 @@ Some containers are meant to be started by the root user, for example Rocker. In
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push image</span>
 <span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">set -euxo pipefail</span>
-<span class="w">    </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | docker login ghcr.io -u $ --password-stdin</span>
-<span class="w">    </span><span class="no">docker push &quot;${image}&quot;</span>
+<span class="w">    </span><span class="no">echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin</span>
+<span class="w">    </span><span class="no">docker push "${image}"</span>
 </code></pre></div>
 <h2 id="step-3-pull-and-run-container-inside-the-ces-test-vm">Step 3. Pull and run container inside the CES test VM</h2>
 <p>To test the container inside the CES test VM, first log into the CES test VM following <a href="../../../access/">Accessing EIDF</a>.</p>

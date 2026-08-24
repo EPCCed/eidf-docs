@@ -2897,9 +2897,9 @@
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 <span class="c1">#SBATCH --mem-per-cpu=100</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World to </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello-world.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello World to </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> from </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>hello-world.txt
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Created &#39;hello-world.txt&#39;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Created 'hello-world.txt'"</span>
 </code></pre></div>
 </li>
 <li>
@@ -3009,7 +3009,7 @@ cat<span class="w"> </span>output.log
 </li>
 <li>
 <p><code>output.log</code>:</p>
-<div class="highlight"><pre><span></span><code>Created &#39;hello-world.txt&#39;
+<div class="highlight"><pre><span></span><code>Created 'hello-world.txt'
 </code></pre></div>
 </li>
 </ul>
@@ -3092,7 +3092,7 @@ epcc-ces-hello
 at
 2026-06-09 07:00:28
 
-Your &#39;/safe_data&#39; directory includes the following files:
+Your '/safe_data' directory includes the following files:
 
 20260609-070028-youruser-epcc-ces-hello.txt
 README
@@ -3181,7 +3181,7 @@ ces-pull<span class="w"> </span>apptainer<span class="w"> </span><span class="nv
 <hr />
 <h2 id="using-slurm-squeue-to-see-requested-resources">Using Slurm <code>squeue</code> to see requested resources</h2>
 <p><code>squeue</code> can be run on the back-end to see what the requested resources are, as set up by the Project Manager, when a job is run. For example:</p>
-<div class="highlight"><pre><span></span><code>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.18i %.9P %.40j %.8u %.2t %.10M %.4C %.5m %.4D %R&quot;</span>
+<div class="highlight"><pre><span></span><code>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">"%.18i %.9P %.40j %.8u %.2t %.10M %.4C %.5m %.4D %R"</span>
 </code></pre></div>
 
 

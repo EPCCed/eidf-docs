@@ -3004,8 +3004,8 @@ SSL<span class="w"> </span>validation<span class="w"> </span>failed<span class="
 </code></pre></div>
 <p>Then add to the newly created directory a file called <code>http-proxy.conf</code>, with content:</p>
 <div class="highlight"><pre><span></span><code><span class="s">[Service]</span>
-Environment<span class="s">=&quot;HTTP_PROXY=http</span><span class="p">:</span><span class="s">//&lt;proxy address&gt;</span><span class="p">:</span><span class="m">3128</span><span class="s">&quot;</span>
-Environment<span class="s">=&quot;HTTPS_PROXY=http</span><span class="p">:</span><span class="s">//&lt;proxy address&gt;</span><span class="p">:</span><span class="m">3129</span><span class="s">&quot;</span>
+Environment<span class="s">="HTTP_PROXY=http</span><span class="p">:</span><span class="s">//&lt;proxy address&gt;</span><span class="p">:</span><span class="m">3128</span><span class="s">"</span>
+Environment<span class="s">="HTTPS_PROXY=http</span><span class="p">:</span><span class="s">//&lt;proxy address&gt;</span><span class="p">:</span><span class="m">3129</span><span class="s">"</span>
 </code></pre></div>
 <p>Finally, reload Docker:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload

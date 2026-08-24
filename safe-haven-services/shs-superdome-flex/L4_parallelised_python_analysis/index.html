@@ -3050,7 +3050,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>dask-env
 <p>You can also try out dask DataFrames, using the following code:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">dask.dataframe</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;surveys.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'surveys.csv'</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -3059,7 +3059,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>dask-env
 </code></pre></div>
 <p>You can try using different blocksizes when reading in the csv file, and then undertaking an operation on the data, as follows:
 Experiment with varying blocksizes, although you should be aware that making your block size too small is likely to cause poor performance (the blocksize affects the number of bytes read in at each operation).</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;surveys.csv&#39;</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="s2">&quot;10000&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'surveys.csv'</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="s2">"10000"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </code></pre></div>
 <p>You can also experiment with Dask Bags to see how that functionality works:</p>
@@ -3102,7 +3102,7 @@ Try parallelising the code below using the .delayed function or the @delayed dec
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">mandelbrot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns an image of the Mandelbrot fractal of size (h,w).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Returns an image of the Mandelbrot fractal of size (h,w)."""</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -3161,7 +3161,7 @@ If you are struggling with this parallelisation exercise, there is a solution av
 
 <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">10000000</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculating PI using:</span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; slices&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Calculating PI using:</span><span class="se">\n</span><span class="s2"> "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" slices"</span><span class="p">)</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -3171,9 +3171,9 @@ If you are struggling with this parallelisation exercise, there is a solution av
 
 <span class="n">stop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obtained value of Pi: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Obtained value of Pi: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time taken: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Time taken: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" seconds"</span><span class="p">)</span>
 </code></pre></div>
 <p>For this exercise, your task is to implemented the above code on the SDFlex, and then parallelise using Dask. There are a number of different ways you could parallelise this using Dask, but we suggest using the Futures map functionality to run the pi_chunk function on a range of different inputs. Futures map has the following definition:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">iterables</span><span class="p">[,</span> <span class="n">key</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
@@ -3184,7 +3184,7 @@ If you are struggling with this parallelisation exercise, there is a solution av
     <span class="n">This</span> <span class="n">probably</span> <span class="n">means</span> <span class="n">that</span> <span class="n">you</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">using</span> <span class="n">fork</span> <span class="n">to</span> <span class="n">start</span> <span class="n">your</span> <span class="n">child</span> <span class="n">processes</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">have</span> <span class="n">forgotten</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">proper</span> <span class="n">idiom</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">main</span> <span class="n">module</span><span class="p">:</span>
 </code></pre></div>
 <p>In that case you need to encapsulate your code within a main function, using something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 </code></pre></div>
 <p>If you are struggling with this exercise then there is a solution available for you <a href="https://github.com/EPCCed/archer2-data-science/blob/master/exercises/dask/dask-pi.py">here</a>.</p>
 <h2 id="signposting">Signposting</h2>

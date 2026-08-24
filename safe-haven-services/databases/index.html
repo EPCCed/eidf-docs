@@ -2821,11 +2821,11 @@
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">RPostgres</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dbConnect</span><span class="p">(</span>
 <span class="w">    </span><span class="n">RPostgres</span><span class="o">::</span><span class="nf">Postgres</span><span class="p">(),</span>
-<span class="w">    </span><span class="n">dbname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;database-name&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">host</span><span class="o">=</span><span class="s">&quot;&lt;host-name&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">port</span><span class="o">=</span><span class="s">&quot;&lt;port-number&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">&quot;Enter Username:&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">&quot;Enter Password:&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">dbname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"&lt;database-name&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">host</span><span class="o">=</span><span class="s">"&lt;host-name&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">port</span><span class="o">=</span><span class="s">"&lt;port-number&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">"Enter Username:"</span><span class="p">),</span>
+<span class="w">    </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">"Enter Password:"</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Alternatively, you may wish to use RStudio's <a href="https://solutions.posit.co/connections/db/tooling/connections/">new Connections interface</a>. First, check that the PostgreSQL driver is installed using <code>odbc::odbcListDrivers()</code>:</p>
@@ -2849,12 +2849,12 @@
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">DBI</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dbConnect</span><span class="p">(</span>
 <span class="w">  </span><span class="n">odbc</span><span class="o">::</span><span class="nf">odbc</span><span class="p">(),</span>
-<span class="w">  </span><span class="n">driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PostgreSQL Unicode&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;host-name&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"PostgreSQL Unicode"</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"&lt;host-name&gt;"</span><span class="p">,</span>
 <span class="w">  </span><span class="n">Port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5432</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;database-name&gt;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">UID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">&quot;Enter Username:&quot;</span><span class="p">),</span>
-<span class="w">  </span><span class="n">PWD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">&quot;Enter Password:&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="n">Database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"&lt;database-name&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="n">UID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">"Enter Username:"</span><span class="p">),</span>
+<span class="w">  </span><span class="n">PWD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">.rs.askForPassword</span><span class="p">(</span><span class="s">"Enter Password:"</span><span class="p">),</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>If successful, the connection should now be shown in the Connections pane.</p>
@@ -2872,11 +2872,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
 
 <span class="n">con</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-    <span class="n">database</span> <span class="o">=</span> <span class="s2">&quot;&lt;database-name&gt;&quot;</span><span class="p">,</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;&lt;host-name&gt;&quot;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">=</span><span class="s2">&quot;&lt;port-number&gt;&quot;</span><span class="p">,</span>
-    <span class="n">user</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter Username:&quot;</span><span class="p">),</span>
-    <span class="n">password</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter Password:&quot;</span><span class="p">)</span>
+    <span class="n">database</span> <span class="o">=</span> <span class="s2">"&lt;database-name&gt;"</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">"&lt;host-name&gt;"</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s2">"&lt;port-number&gt;"</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Enter Username:"</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Enter Password:"</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </li>

@@ -3000,7 +3000,7 @@
 <h3 id="troubleshooting-errors-in-inferring-or-accessing-safe-data">Troubleshooting: Errors in inferring or accessing 'safe data'</h3>
 <p>As described in <a href="../../jobs/#job-cards">Job cards</a>, app job cards will only show such jobs as having 'Completed'. Whether a job succeeded or failed can be seen in the job details for the job which can be seen via the <a href="../active-jobs/">Active Jobs</a> app.</p>
 <p>In cases where there are errors in inferring or accessing your 'safe data' directory, then the <code>output.log</code> log file for the app's job, in the job context directory, <code>ondemand/data/sys/dashboard/batch_connect/sys/jupyter_app/output/SESSION_ID</code>, will include a message like one of the following:</p>
-<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user&#39;s groups
+<div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot find a project directory corresponding to any of the user's groups
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Mon Jun  8 12:55:44 UTC 2026 before.sh ERROR: Cannot read from /safe_data/yourproject
 </code></pre></div>
@@ -3053,7 +3053,7 @@
 </li>
 <li>
 <p>Create a new kernel for your virtual environment:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py3-ipykernel-my-venv<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python3 (ipykernel my-venv)&#39;</span>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py3-ipykernel-my-venv<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">'Python3 (ipykernel my-venv)'</span>
 jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </code></pre></div>
 </li>

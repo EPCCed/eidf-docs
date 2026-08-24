@@ -3066,7 +3066,7 @@
 <p>Applying a shorter maximum execution time can ensure you do not consume more resources than was intended, to do this you can apply the label 'kueue.x-k8s.io/max-exec-time-seconds' to your workload:</p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
-<span class="w">      </span><span class="nt">kueue.x-k8s.io/max-exec-time-seconds</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">seconds&#39;</span>
+<span class="w">      </span><span class="nt">kueue.x-k8s.io/max-exec-time-seconds</span><span class="p">:</span><span class="w"> </span><span class="s">'number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">seconds'</span>
 </code></pre></div>
 <p>If your value is at or below the default value, the system will not change it. If it is larger, it will reset it to the default.</p>
 <p>If you want to continue using activeDeadlineSeconds, you can but the maximum-exec-time-seconds value will take priority if it is smaller than activeDeadlineSeconds.</p>

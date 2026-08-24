@@ -2983,23 +2983,23 @@ Mounted read-write at /safe_outputs. Dedicated to the individual user identified
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tre-ghcr-proxy.nsh.loc:5003/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/bin/sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">              </span><span class="no"># Extract job ID from pod name by removing trailing -xxxxx</span>
-<span class="w">              </span><span class="no">JOB_ID=$(echo ${HOSTNAME} | sed &#39;s/-[a-z0-9]\{5\}$//&#39;)</span>
-<span class="w">              </span><span class="no">echo &quot;Resolved JOB_ID: $JOB_ID&quot;</span>
+<span class="w">              </span><span class="no">JOB_ID=$(echo ${HOSTNAME} | sed 's/-[a-z0-9]\{5\}$//')</span>
+<span class="w">              </span><span class="no">echo "Resolved JOB_ID: $JOB_ID"</span>
 <span class="w">              </span><span class="no"># Make job output directory</span>
 <span class="w">              </span><span class="no">mkdir -p /safe_outputs/${JOB_ID}</span>
 <span class="w">              </span><span class="no"># Run CUDA sample with required arguments</span>
-<span class="w">              </span><span class="no">echo &quot;Starting CUDA sample...&quot;</span>
+<span class="w">              </span><span class="no">echo "Starting CUDA sample..."</span>
 <span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
 <span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
 <span class="w">              </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/safe_data</span>
@@ -3016,7 +3016,7 @@ Mounted read-write at /safe_outputs. Dedicated to the individual user identified
 <span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-shared</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user-output</span>
 <span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;first part of tre_username before &#39;_&#39; &gt;</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;first part of tre_username before '_' &gt;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scratch</span>
 <span class="w">          </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>

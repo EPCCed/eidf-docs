@@ -3234,7 +3234,7 @@
 <p>If you want to use another programming language have a look at the <a href="https://docs.ceph.com/en/latest/radosgw/s3/">Ceph S3 API</a> interfaces (Ceph is the underlying platform used).</p>
 <h3 id="examples">Examples</h3>
 <p>You want to upload all the files in a subdirectory to your S3 bucket</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.dat&quot;</span>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">"*.dat"</span>
 </code></pre></div>
 <p>Here all <code>*.dat</code>  files only in <code>mydir</code> will be uploaded to <code>s3://mybucket</code>.</p>
 <p>You can check your upload using:</p>
@@ -3261,21 +3261,21 @@
 <h4 id="connect">Connect</h4>
 <p>Create an S3 client resource:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="list-buckets">List buckets</h4>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">s3</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="list-objects-in-a-bucket">List objects in a bucket</h4>
-<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">&#39;somebucket&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
 <span class="n">bucket</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="uploading-files-to-a-bucket">Uploading files to a bucket</h4>
 <div class="highlight"><pre><span></span><code><span class="n">bucket</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">)</span>
-<span class="n">bucket</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s1">&#39;./somedata.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;somedata.csv&#39;</span><span class="p">)</span>
+<span class="n">bucket</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s1">'./somedata.csv'</span><span class="p">,</span> <span class="s1">'somedata.csv'</span><span class="p">)</span>
 </code></pre></div>
 <p>In boto3 version 1.36, a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3
 (see <a href="https://github.com/boto/boto3/issues/4392">https://github.com/boto/boto3/issues/4392</a>). If you see this error</p>
@@ -3284,10 +3284,10 @@
 <p>use the following configuration for your client:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
-    <span class="n">request_checksum_calculation</span><span class="o">=</span><span class="s2">&quot;when_required&quot;</span><span class="p">,</span>
-    <span class="n">response_checksum_validation</span><span class="o">=</span><span class="s2">&quot;when_required&quot;</span><span class="p">,</span>
+    <span class="n">request_checksum_calculation</span><span class="o">=</span><span class="s2">"when_required"</span><span class="p">,</span>
+    <span class="n">response_checksum_validation</span><span class="o">=</span><span class="s2">"when_required"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </code></pre></div>
 <p>Then upload your files as shown above.</p>
 <h3 id="accessing-buckets-in-other-projects">Accessing buckets in other projects</h3>
@@ -3299,8 +3299,8 @@ The project code is a prefix on the bucket name, separated by a colon (<code>:</
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">botocore.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_bucket_name</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">&#39;https://s3.eidf.ac.uk&#39;</span><span class="p">)</span>
-<span class="n">s3</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">&#39;before-parameter-build.s3&#39;</span><span class="p">,</span> <span class="n">validate_bucket_name</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">'before-parameter-build.s3'</span><span class="p">,</span> <span class="n">validate_bucket_name</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="access-policies">Access policies</h2>
 <p>Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
@@ -3309,25 +3309,25 @@ Note that some S3 client libraries do not accept bucket names in this format.</p
 <p>Bucket permissions use IAM (Identity Access Management) policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.</p>
 <p>For example to grant permissions to put, get, delete and list objects in bucket <code>eidfXX1:somebucket</code> to the account <code>account2</code> in project <code>eidfXX2</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AllowAccessToBucket&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;AWS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;arn:aws:iam::eidfXX2:user/account2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllowAccessToBucket"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">"arn:aws:iam::eidfXX2:user/account2"</span><span class="p">,</span>
 <span class="w">              </span><span class="p">]</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"s3:DeleteObject"</span><span class="p">,</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;arn:aws:s3:::/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;arn:aws:s3::eidfXX1:somebucket&quot;</span>
+<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">"arn:aws:s3:::/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"arn:aws:s3::eidfXX1:somebucket"</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -3335,41 +3335,41 @@ Note that some S3 client libraries do not accept bucket names in this format.</p
 </code></pre></div>
 <p>You can chain multiple policies in the statement array:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Give public read access to a bucket (listing and downloading files):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w"> </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w"> </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="kc">f</span><span class="s2">&quot;arn:aws:s3::eidfXX1:somebucket&quot;</span>
+<span class="w">    </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"s3:ListBucket"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="kc">f</span><span class="s2">"arn:aws:s3::eidfXX1:somebucket"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="kc">f</span><span class="s2">&quot;arn:aws:s3::eidfXX1:somebucket/*&quot;</span>
+<span class="w">    </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"s3:GetObject"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="kc">f</span><span class="s2">"arn:aws:s3::eidfXX1:somebucket/*"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="w"> </span><span class="p">]</span>
@@ -3377,30 +3377,30 @@ Note that some S3 client libraries do not accept bucket names in this format.</p
 </code></pre></div>
 <h3 id="set-policy-using-aws-cli">Set policy using AWS CLI</h3>
 <p>Grant permissions stored in an IAM policy file:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucketname&gt;<span class="w"> </span>--policy<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>bucket-policy.json<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucketname&gt;<span class="w"> </span>--policy<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>bucket-policy.json<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="set-policy-using-python-boto3">Set policy using Python <code>boto3</code></h3>
 <p>Grant permissions to another account: In this example we grant <code>ListBucket</code> and <code>GetObject</code> permissions to account <code>account1</code> in project <code>eidfXX1</code> and <code>account2</code> in project <code>eidfXX2</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
- <span class="s2">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+ <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
+ <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
   <span class="p">{</span>
-    <span class="s2">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Principal&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;AWS&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;arn:aws:iam::eidfXX1:user/account1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;arn:aws:iam::eidfXX2:user/account2&quot;</span><span class="p">,</span>
+    <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
+    <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"arn:aws:iam::eidfXX1:user/account1"</span><span class="p">,</span>
+        <span class="s2">"arn:aws:iam::eidfXX2:user/account2"</span><span class="p">,</span>
       <span class="p">]</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;s3:GetObject&quot;</span>
+    <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+        <span class="s2">"s3:GetObject"</span>
     <span class="p">],</span>
-    <span class="s2">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="sa">f</span><span class="s2">&quot;arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">&quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*&quot;</span>
+    <span class="s2">"Resource"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="sa">f</span><span class="s2">"arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span>
+      <span class="sa">f</span><span class="s2">"arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
     <span class="p">]</span>
   <span class="p">}</span>
  <span class="p">]</span>
