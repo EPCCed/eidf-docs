@@ -127,21 +127,18 @@ nav:
        - "Development Workflow": safe-haven-services/shs-container-user-guide/development-workflow.md
        - "Workflow Examples": safe-haven-services/shs-container-user-guide/workflow-examples.md
        - "Container Examples": safe-haven-services/shs-container-user-guide/container-examples.md
-     # TRE GPU service docs can be uncommented and added to
-     # the navigation menu when the TRE GPU service is made
-     # available to TRE tenants. See Umair Ayub and Kostas for details.
-     # - "TRE GPU Service":
-     #   - "Overview": safe-haven-services/tre-gpu-service/index.md
-     #   - "Policies": safe-haven-services/tre-gpu-service/policies.md
-     #   - "Kueue": safe-haven-services/tre-gpu-service/kueue.md
-     #   - "Tutorials":
-     #      - "Getting Started": safe-haven-services/tre-gpu-service/training/L1_getting_started.md
-     #      - "Building and Pushing Containers to GHCR": safe-haven-services/tre-gpu-service/training/L1.1_building-and-testing-containers.md
-     #      - "Downloading Containers in the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L2_using-containers-in-the-tre.md
-     #      - "Creating your first pod template within a job yaml file": safe-haven-services/tre-gpu-service/training/L2.1_creating-your-first-pod-template.md
-     #      - "Transfer Data Inside the TRE GPU Cluster": safe-haven-services/tre-gpu-service/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
-     #      - "Persistent Volumes": safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes.md
-     #   - "GPU Service FAQ": safe-haven-services/tre-gpu-service/faq.md
+     - "SHS GPU Cluster":
+       - "Overview": safe-haven-services/shs-gpu-cluster/index.md
+       - "Policies": safe-haven-services/shs-gpu-cluster/policies.md
+       - "Kueue": safe-haven-services/shs-gpu-cluster/kueue.md
+       - "Tutorials":
+          - "Getting Started": safe-haven-services/shs-gpu-cluster/training/L1_getting_started.md
+          - "Building and Pushing Containers to GHCR": safe-haven-services/shs-gpu-cluster/training/L1.1_building-and-testing-containers.md
+          - "Downloading Containers in the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L2_using-containers-in-the-tre.md
+          - "Creating your first pod template within a job yaml file": safe-haven-services/shs-gpu-cluster/training/L2.1_creating-your-first-pod-template.md
+          - "Transfer Data Inside the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
+          - "Persistent Volumes": safe-haven-services/shs-gpu-cluster/training/L4_requesting_persistent_volumes.md
+       - "SHS GPU Cluster FAQ": safe-haven-services/shs-gpu-cluster/faq.md
      # Application Services (Open OnDemand) docs can be uncommented
      # and added to the navigation menu when the service is made
      # available to safe haven users. See MikeJ for details.

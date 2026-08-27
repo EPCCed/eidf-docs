@@ -1,6 +1,6 @@
 # Overview
 
-The Cirrus service provides access to CPU-based high-performance computing resources. As well as being part of the 
+The Cirrus service provides access to CPU-based high-performance computing resources. As well as being part of the
 EIDF, Cirrus is one of the UKRI National Compute Resources (NCRs).
 
 Cirrus is a HPE EX4000 supercomputing system which has a total of 256 compute nodes. Each compute node has 288 cores (dual AMD EPYC 9825 144-core 2.2 GHz processors) giving a total of 73,228 cores. 192 are standard memory compute nodes with 768 GB DDR5 RAM and 64 are high memory compute nodes with 1536 GB DDR5 RAM. Compute nodes are connected together by a HPE Slingshot 11 interconnect.
