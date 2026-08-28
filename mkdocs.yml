@@ -133,11 +133,11 @@ nav:
        - "Kueue": safe-haven-services/shs-gpu-cluster/kueue.md
        - "Tutorials":
           - "Getting Started": safe-haven-services/shs-gpu-cluster/training/L1_getting_started.md
-          - "Building and Pushing Containers to GHCR": safe-haven-services/shs-gpu-cluster/training/L1.1_building-and-testing-containers.md
-          - "Downloading Containers in the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L2_using-containers-in-the-tre.md
-          - "Creating your first pod template within a job yaml file": safe-haven-services/shs-gpu-cluster/training/L2.1_creating-your-first-pod-template.md
-          - "Transfer Data Inside the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L3_Accessing_the_BeeGFS_Inside_the_EPCC_TRE.md
-          - "Persistent Volumes": safe-haven-services/shs-gpu-cluster/training/L4_requesting_persistent_volumes.md
+          - "Building and Pushing Containers to GHCR": safe-haven-services/shs-gpu-cluster/training/L2_building_and_testing_containers.md
+          - "Downloading Containers in the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L3_using_containers_in_the_shs.md
+          - "Creating your first pod template within a job yaml file": safe-haven-services/shs-gpu-cluster/training/L4_creating_your_first_pod_template.md
+          - "Transfer Data Inside the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L5_accessing_the_beegfs_inside_the_epcc_shs.md
+          - "Persistent Volumes": safe-haven-services/shs-gpu-cluster/training/L6_requesting_persistent_volumes.md
        - "SHS GPU Cluster FAQ": safe-haven-services/shs-gpu-cluster/faq.md
      # Application Services (Open OnDemand) docs can be uncommented
      # and added to the navigation menu when the service is made

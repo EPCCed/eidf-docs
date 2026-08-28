@@ -2,7 +2,7 @@
 
 ## Requirements
 
-It is recommended that users complete [Getting started with Kubernetes](./L1_getting_started.md) and [Requesting persistent volumes With Kubernetes](./L4_requesting_persistent_volumes.md) before proceeding with this tutorial.
+It is recommended that users complete [Getting started with Kubernetes](./L1_getting_started.md) and [Requesting persistent volumes With Kubernetes](./L6_requesting_persistent_volumes.md) before proceeding with this tutorial.
 
 ## Overview
 
@@ -32,7 +32,7 @@ The SHS GPU Cluster contains GPUs with 40Gb/80Gb of on board memory and it is ex
 
 Persistent volume claims need to be of sufficient size to hold the input data, any expected output data and a small amount of additional empty space to facilitate IO.
 
-Read the [requesting persistent volumes with Kubernetes](L4_requesting_persistent_volumes.md) lesson to learn how to request and mount persistent volumes to pods.
+Read the [requesting persistent volumes with Kubernetes](L6_requesting_persistent_volumes.md) lesson to learn how to request and mount persistent volumes to pods.
 
 It often takes several hours or days to download data sets of 1/2 TB or more to a persistent volume.
 
