@@ -115,6 +115,7 @@ nav:
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Access": safe-haven-services/safe-haven-access.md
+     - "Transition to the Clusters": safe-haven-services/transition-to-clusters.md
      - "HPC Service":
        - "Accessing HPC in Safe Havens": safe-haven-services/shs-superdome-flex/L1_Accessing_the_SDF_Inside_the_EPCC_SHS.md
        - "Running R/Python Scripts": safe-haven-services/shs-superdome-flex/L2_running_R_Python_analysis_scripts.md
@@ -122,7 +123,6 @@ nav:
        - "Parallelised Python Analysis": safe-haven-services/shs-superdome-flex/L4_parallelised_python_analysis.md
        - "Parallelised R Analysis": safe-haven-services/shs-superdome-flex/L5_parallelised_r_analysis.md
      - "SHS GPU Cluster":
-       - "When do I transition to the HPC Cluster or the GPU Cluster?": safe-haven-services/shs-gpu-cluster/transition-to-clusters.md
        - "Overview": safe-haven-services/shs-gpu-cluster/index.md
        - "Policies": safe-haven-services/shs-gpu-cluster/policies.md
        - "Kueue": safe-haven-services/shs-gpu-cluster/kueue.md

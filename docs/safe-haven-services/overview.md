@@ -28,7 +28,7 @@ Users of Safe Haven services must be researchers approved by the Safe Haven cont
 
 Users have a responsibility to use the service within the technical and IG constraints and regulations as defined by a user agreement between them and the Safe Haven controller.
 
-## Pay-per-use costs on the EPCC Safe Haven Services
+## Additional costs
 
 The partnership documentation between EPCC and the Safe Haven Controller lists some computational resources that are included with the annual fee. For reasons of consistency, we refrain from providing the standard list here, but the documentation covers dedicated computing resource for a number of VMs, dedicated storage and perhaps access to some shared resources.
 
