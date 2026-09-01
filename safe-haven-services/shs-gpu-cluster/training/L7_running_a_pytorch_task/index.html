@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L1.1_building-and-testing-containers/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/shs-gpu-cluster/training/L7_running_a_pytorch_task/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Building and Testing Containers - EIDF User Documentation</title>
+        <title>Running a PyTorch task - EIDF User Documentation</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-and-testing-containers" class="md-skip">
+        <a href="#running-a-pytorch-task" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Building and Testing Containers
+              Running a PyTorch task
             
           </span>
         </div>
@@ -2697,6 +2697,328 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            SHS GPU Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kueue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kueue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6_4" id="__nav_8_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2_building_and_testing_containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Pushing Containers to GHCR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3_using_containers_in_the_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Downloading Containers in the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L4_creating_your_first_pod_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating your first pod template within a job yaml file
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L5_accessing_the_beegfs_inside_the_epcc_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transfer Data Inside the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L6_requesting_persistent_volumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent Volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2775,55 +3097,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choose-a-container-base-from-dockerhub" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Choose a container base from DockerHub
+      Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-shs-file-system-directories" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Add SHS file system directories
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-and-copy-project-code-into-container" class="md-nav__link">
+  <a href="#load-training-data-and-ml-code-into-a-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      Install and copy project code into container
+      Load training data and ML code into a persistent volume
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-the-container-for-shs-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test the container for SHS use
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Test the container for SHS use">
+    <nav class="md-nav" aria-label="Load training data and ML code into a persistent volume">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-scanning-the-container-dockerfile" class="md-nav__link">
+  <a href="#create-a-persistent-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Scanning the container Dockerfile
+      Create a persistent volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-scanning-the-container-image-using-trivy-ci" class="md-nav__link">
+  <a href="#example-pytorch-persistentvolumeclaim" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Scanning the container image using Trivy CI
+      Example PyTorch PersistentVolumeClaim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-codedata-to-persistent-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer code/data to persistent volume
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-lightweight-job-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example lightweight job specification
     </span>
   </a>
   
@@ -2831,6 +3162,57 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-job-with-a-pytorch-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Job with a PyTorch container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Job with a PyTorch container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-pytorch-job-specification-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example PyTorch Job Specification File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewing-the-results-of-the-pytorch-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviewing the results of the PyTorch model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-kubernetes-job-to-train-the-pytorch-model-multiple-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Kubernetes job to train the pytorch model multiple times
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean up
+    </span>
+  </a>
   
 </li>
       
@@ -2853,78 +3235,216 @@
   
 
 
-<h1 id="building-and-testing-containers">Building and Testing Containers</h1>
-<h2 id="choose-a-container-base-from-dockerhub">Choose a container base from DockerHub</h2>
-<p>Projects should build containers by starting with a well-known application base container on a public registry. Projects should add a minimum of additional project software and packages so that the container is clearly built for a specific purpose.
-Containers built for one specific batch job, either a data transformation or analysis, are examples of this approach.
-Container builds that assemble groups of tools and then used to run a variety of tasks should be avoided.
-Additionally, container builds that start from generic distributions such as Debian or Ubuntu should also be avoided as leaner and more focussed application and language containers are already available.</p>
-<p>Examples of batch job container bases are Python and PyTorch, and other language specific and ML software stacks.</p>
-<h2 id="add-shs-file-system-directories">Add SHS file system directories</h2>
-<p>Container images built to run in the SHS GPU Cluster must implement the following line in the Dockerfile to interface with the project data and the SHS file system:</p>
-<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/safe_data<span class="w"> </span>/safe_outputs<span class="w"> </span>/scratch
+<h1 id="running-a-pytorch-task">Running a PyTorch task</h1>
+<h2 id="requirements">Requirements</h2>
+<p>It is recommended that users complete <a href="../L1_getting_started/">Getting started with Kubernetes</a> and <a href="../L6_requesting_persistent_volumes/">Requesting persistent volumes With Kubernetes</a> before proceeding with this tutorial.</p>
+<h2 id="overview">Overview</h2>
+<p>In this tutorial, we will build a Convolutional Neural Network (CNN) and train it using the SHS GPU Cluster.</p>
+<p>The model was taken from the <a href="https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html">PyTorch Tutorials</a>.</p>
+<p>The tutorial will be split into three parts:</p>
+<ul>
+<li>Requesting a persistent volume and transferring code/data to it</li>
+<li>Creating a pod with a PyTorch container downloaded from DockerHub</li>
+<li>Submitting a job to the SHS GPU Cluster and retrieving the results</li>
+</ul>
+<h2 id="load-training-data-and-ml-code-into-a-persistent-volume">Load training data and ML code into a persistent volume</h2>
+<h3 id="create-a-persistent-volume">Create a persistent volume</h3>
+<p>Request memory from the Ceph server by submitting a PVC to K8s (example pvc spec yaml below).</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pvc-spec-yaml&gt;
 </code></pre></div>
-<p>The project’s private <code>/safe_data/&lt;project id&gt;</code> directory is mapped to the container’s <code>/safe_data</code> directory using BeeGFS. A unique container job output directory is created for the user and mapped to <code>/safe_outputs</code> in the container. And <code>/scratch</code> is a temporary workspace that is deleted when the container exits. If the container processing uses the <code>TMP</code> environment variable, it should be set to the <code>/scratch</code> volume mount.
-Hence, containers have access to three directories located on the host system as detailed in the following table:</p>
-<table>
-<thead>
-<tr>
-<th>Directory on BeeGFS</th>
-<th>Directory in container</th>
-<th>Intended use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/mnt/beegfs/&lt;safe_heaven&gt;/&lt;project_id&gt;/shared</code></td>
-<td>/<code>safe_data</code></td>
-<td>Read-only access if required by IG, or read-write access, to data and other project files.</td>
-</tr>
-<tr>
-<td><code>/mnt/beegfs/&lt;safe_heaven&gt;/&lt;project_id&gt;/users/&lt;username&gt;</code></td>
-<td><code>/safe_outputs</code></td>
-<td>Will be created as an empty directory. Intended for any outputs: logs, data, models.</td>
-</tr>
-<tr>
-<td><code>~/scratch</code></td>
-<td><code>/scratch</code></td>
-<td>Temporary directory that is removed after container termination on the host system. Any temporary files should be placed here.</td>
-</tr>
-</tbody>
-</table>
-<p>Currently, temporary files can also be written into any directory in the container’s internal file system. This is allowed to prevent container software failure when it is dependent on the container file system being writable. However, the use of <code>/scratch</code> is encouraged for two reasons:</p>
-<ol>
-<li>In the future, write access to the container file system might be prevented for security reasons. Further, the space available on the container’s internal file system is limited compared to the space available on <code>/scratch</code>. Writing only to <code>/scratch</code> at runtime is therefore future-proof.</li>
-<li>Use of <code>/scratch</code> can be more efficient if the service is able to mount it on high-performing storage devices.</li>
-</ol>
-<h2 id="install-and-copy-project-code-into-container">Install and copy project code into container</h2>
-<p>Research software stacks are complex and dependent on many package sets and libraries, and sometimes on specific-version combinations of these. The container build process presents the project team with the opportunity to manage and resolve these dependencies before contact with the project data in the restricted SHS setting.</p>
-<p>Unlike the SHS desktop servers, containers do not have access to external network repositories, and do not have access to external licence servers. Any required licence must be copied into the container at build-time and imported with the container. EPCC are not responsible for verifying that the appropriate licences are installed or that licence terms are being met.</p>
-<p>Projects using configuration files for multiple containers, for example ML models, can also import these to the SHS directly by copying them to the project <code>/safe_data</code> file system.</p>
-<p>Batch jobs built to run as containers should start directly from the <code>ENTRYPOINT</code> or <code>CMD</code> section of the Dockerfile. Batch jobs should run without any user interaction after start, should read input from the <code>/safe_data</code> directory and write outputs to the <code>/scratch</code> and <code>/safe_outputs</code> directories.</p>
-<h2 id="test-the-container-for-shs-use">Test the container for SHS use</h2>
-<p>When the container is running in the SHS GPU Cluster it will not have any external network or internet access. If the code, or any of its dependencies, rely on data files downloaded at runtime (for example machine learning models) this will fail in the SHS. Code must be modified to load these files explicitly from a file path which is accessible from inside the container.</p>
-<p>An example of SHS network isolation significance and the considerations arising from this is provided by Hugging Face, where models are cached in the user local <code>~/.cache/huggingface/hub/</code> directory in the container. The environment variable <code>HF_HOME</code> must be set to a directory in a <code>/safe_data</code> project folder and the <code>cache_dir</code> option of the <code>from_pretrained()</code> call used at runtime.</p>
-<p>If a model is downloaded from Hugging Face, the advice is to set the environment variable <code>HF_HUB_OFFLINE=1</code> to prevent attempts to contact the Hugging Face Hub. Any connection attempts in the SHS will take a significant time to elapse and then fail.</p>
-<p>It is recommended that the checklist for Dockerfile composition be followed: <a href="https://github.com/EPCCed/tre-container-samples/blob/main/docs/container-build-guide.md">Container Build Guide</a></p>
-<p>Before using a specific container in the TRE, it may be necessary to test the security risk and gain Information Governance approval. Information Governance may require a security scan of both following artefacts:</p>
+<h3 id="example-pytorch-persistentvolumeclaim">Example PyTorch PersistentVolumeClaim</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span>
+<span class="w"> </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w"> </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-cephfs-sc</span>
+</code></pre></div>
+<h3 id="transfer-codedata-to-persistent-volume">Transfer code/data to persistent volume</h3>
 <ol>
 <li>
-<p>The Dockerfile used to build the container image</p>
+<p>Check PVC has been created</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>&lt;pv-name&gt;
+</code></pre></div>
 </li>
 <li>
-<p>The container image itself, once it is built.</p>
+<p>Create a lightweight job with pod with PV mounted (example job below)</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Download the PyTorch code</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://github.com/EPCCed/eidf-docs/raw/main/docs/services/gpuservice/training/resources/example_pytorch_code.py
+</code></pre></div>
+</li>
+<li>
+<p>Copy the Python script into the PV</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>cp<span class="w"> </span>example_pytorch_code.py<span class="w"> </span>lightweight-job-&lt;identifier&gt;:/mnt/ceph_rbd/
+</code></pre></div>
+</li>
+<li>
+<p>Check whether the files were transferred successfully</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>lightweight-job-&lt;identifier&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/mnt/ceph
+</code></pre></div>
+</li>
+<li>
+<p>Delete the lightweight job</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>lightweight-job-&lt;identifier&gt;
+</code></pre></div>
 </li>
 </ol>
-<p><a href="https://trivy.dev/">Trivy</a> is a tool that can help with these tasks. Trivy inspects container images to find items which have known vulnerabilities and produces a report that may be used to help assess the risk.</p>
-<h3 id="1-scanning-the-container-dockerfile">1. Scanning the container Dockerfile</h3>
-<p>The Trivy misconfiguration tool on Dockerfiles can scan the container Dockerfile. This tool option will highlight many common security issues in the Dockerfile. Example execution is as follows:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/repo<span class="w"> </span>ghcr.io/aquasecurity/trivy:latest<span class="w"> </span>config<span class="w"> </span><span class="s2">"/repo/Dockerfile"</span>
+<h3 id="example-lightweight-job-specification">Example lightweight job specification</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-job-</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lightweight-pod</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-loader</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"infinity"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
 </code></pre></div>
-<p>The security posture of containers and the build process may be of interest to Information Governance teams, however it is not expected that security issues indicated by the tool need to be addressed before the container is run in the SHS unless the Information Governance team issues specific guidance on vulnerability and configuration remediation and mitigation.</p>
-<h3 id="2-scanning-the-container-image-using-trivy-ci">2. Scanning the container image using Trivy CI</h3>
-<p>Trivy can be run manually on the built image but it is easier to have it run automatically whenever you update your container image. An example GitHub Actions workflow to run Trivy and publish the outputs can be found <a href="https://github.com/EPCCed/tre-container-samples/blob/main/.github/workflows/main.yaml">in our documentation</a>.</p>
-<p>The Trivy report can be downloaded as an artefact from the job summary page.</p>
+<h2 id="creating-a-job-with-a-pytorch-container">Creating a Job with a PyTorch container</h2>
+<p>We will use the pre-made PyTorch Docker image available on Docker Hub to run the PyTorch ML model.</p>
+<p>The PyTorch container will be held within a pod that has the persistent volume mounted and access a MIG GPU.</p>
+<p>Submit the specification file below to K8s to create the job, replacing the queue name with your project namespace queue name.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>&lt;pytorch-job-yaml&gt;
+</code></pre></div>
+<h3 id="example-pytorch-job-specification-file">Example PyTorch Job Specification File</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-job-</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pod</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-con</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"python3"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/mnt/ceph/example_pytorch_code.py"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
+<span class="w">            </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB-MIG-1g.5gb</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
+</code></pre></div>
+<h2 id="reviewing-the-results-of-the-pytorch-model">Reviewing the results of the PyTorch model</h2>
+<p>This is not intended to be an introduction to PyTorch, please see the <a href="https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html">online tutorial</a> for details about the model.</p>
+<ol>
+<li>
+<p>Check that the model ran to completion</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>logs<span class="w"> </span>&lt;pytorch-pod-name&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Spin up a lightweight pod to retrieve results</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>lightweight-pod-job.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Copy the trained model back to your access VM</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>cp<span class="w"> </span>lightweight-job-&lt;identifier&gt;:mnt/ceph_rbd/model.pth<span class="w"> </span>model.pth
+</code></pre></div>
+</li>
+</ol>
+<h2 id="using-a-kubernetes-job-to-train-the-pytorch-model-multiple-times">Using a Kubernetes job to train the pytorch model multiple times</h2>
+<p>A common ML training workflow may consist of training multiple iterations of a model, such as models with different hyperparameters or models trained on multiple different data sets.</p>
+<p>A Kubernetes job can create and manage multiple pods with identical or different initial parameters.</p>
+<p>Nvidia provide a detailed tutorial on how to conduct a ML hyperparameter search with a <a href="https://developer.nvidia.com/blog/kubernetes-ai-hyperparameter-search-experiments/">Kubernetes job</a>.</p>
+<p>Below is an example job yaml for running the pytorch model which will continue to create pods until three have successfully completed the task of training the model.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-job-</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
+<span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pod</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-con</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"python3"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/mnt/ceph/example_pytorch_code.py"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/ceph</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
+<span class="w">            </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB-MIG-1g.5gb</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">            </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch-pvc</span>
+</code></pre></div>
+<h2 id="clean-up">Clean up</h2>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>pytorch-job
+
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;project-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>pytorch-pvc
+</code></pre></div>
 
 
 

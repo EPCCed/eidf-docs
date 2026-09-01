@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/tre-gpu-service/training/L4_requesting_persistent_volumes/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/safe-haven-services/shs-gpu-cluster/training/L4_creating_your_first_pod_template/">
       
       
+        <link rel="prev" href="../L3_using_containers_in_the_shs/">
+      
+      
+        <link rel="next" href="../L5_accessing_the_beegfs_inside_the_epcc_shs/">
       
       
       <link rel="icon" href="../../../../images/favicon.ico">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Requesting persistent volumes With Kubernetes - EIDF User Documentation</title>
+        <title>Creating your first pod template within a job yaml file - EIDF User Documentation</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requesting-persistent-volumes-with-kubernetes" class="md-skip">
+        <a href="#getting-started-with-kubernetes" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Requesting persistent volumes With Kubernetes
+              Creating your first pod template within a job yaml file
             
           </span>
         </div>
@@ -2295,18 +2299,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -2322,7 +2328,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Safe Haven Services
@@ -2697,6 +2703,434 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            SHS GPU Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kueue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kueue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_6_4" id="__nav_8_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L2_building_and_testing_containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Pushing Containers to GHCR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L3_using_containers_in_the_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Downloading Containers in the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Creating your first pod template within a job yaml file
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating your first pod template within a job yaml file
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-first-pod-template-within-a-job-yaml-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating your first pod template within a job yaml file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-your-first-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submitting your first job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-gpu-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifying GPU requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying GPU requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-yaml-file-with-gpu-type-specified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example yaml file with GPU type specified
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-multiple-pods-with-k8s-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running multiple pods with K8s jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-the-default-kubectl-namespace-in-the-project-kubeconfig-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change the default kubectl namespace in the project kubeconfig file
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L5_accessing_the_beegfs_inside_the_epcc_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transfer Data Inside the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L6_requesting_persistent_volumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent Volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2775,73 +3209,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#creating-your-first-pod-template-within-a-job-yaml-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Requirements
+      Creating your first pod template within a job yaml file
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#submitting-your-first-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Submitting your first job
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#predefined-beegfs-persistent-volume-claims-pvcs" class="md-nav__link">
+  <a href="#specifying-gpu-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Predefined BeeGFS Persistent Volume Claims (PVCs)
+      Specifying GPU requirements
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mounting-beegfs-volumes-to-a-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mounting BeeGFS Volumes to a Pod
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mounting BeeGFS Volumes to a Pod">
+    <nav class="md-nav" aria-label="Specifying GPU requirements">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#security-context-explained" class="md-nav__link">
+  <a href="#example-yaml-file-with-gpu-type-specified" class="md-nav__link">
     <span class="md-ellipsis">
-      Security Context Explained
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-find-your-uid-and-gid-on-the-shs-desktop-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Find Your UID and GID on the SHS Desktop VM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#understanding-persistent-volume-claims-pvcs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Understanding Persistent Volume Claims (PVCs)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-pod-specification-yaml-with-mounted-persistent-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example pod specification yaml with mounted persistent volume
+      Example yaml file with GPU type specified
     </span>
   </a>
   
@@ -2849,6 +3247,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-multiple-pods-with-k8s-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running multiple pods with K8s jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-the-default-kubectl-namespace-in-the-project-kubeconfig-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change the default kubectl namespace in the project kubeconfig file
+    </span>
+  </a>
   
 </li>
       
@@ -2871,156 +3287,278 @@
   
 
 
-<h1 id="requesting-persistent-volumes-with-kubernetes">Requesting persistent volumes With Kubernetes</h1>
-<h2 id="requirements">Requirements</h2>
-<p>It is recommended that users complete <a href="../L1_getting_started/">Getting started with Kubernetes</a> before proceeding with this tutorial.</p>
-<h2 id="overview">Overview</h2>
-<div class="admonition important">
-<p class="admonition-title">BeeGFS - ReadWriteMany Volume Recommendation*</p>
-<p>As of May 2025, the SHS GPU Cluster has migrated to <strong>BeeGFS</strong> storage. The new default, <strong>BeeGFS</strong>, supports <code>ReadWriteMany</code>, enabling multiple pods to mount and use the same volume concurrently.</p>
-</div>
-<p>Pods in the K8s SHS GPU Cluster are intentionally ephemeral—they exist only for the duration of the tasks they run. However, unlike default ephemeral storage, all project and user data is stored on Persistent Volume Claims (PVCs) that are pre-created and assigned to projects.</p>
-<p>Persistent storage via PVCs allows multiple pods in the same project for same user to access the same data without repeating computationally costly file transfers.</p>
-<p>For security reasons, <strong>users cannot create their own Persistent Volume Claims (PVCs)</strong>. Instead, PVCs are pre-created and assigned to projects by the SHS platform team. These assigned PVCs allow data to be shared across multiple pods or retained even if the pods they are mounted to are deleted, updated, or crash.</p>
-<h2 id="predefined-beegfs-persistent-volume-claims-pvcs">Predefined BeeGFS Persistent Volume Claims (PVCs)</h2>
-<p>The following <strong>predefined PVCs</strong> are available in every project namespace:</p>
-<table>
-<thead>
-<tr>
-<th>BeeGFS Path</th>
-<th>PVC Name</th>
-<th>Mount in Container</th>
-<th>Use Case</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/mnt/beegfs/&lt;safe_heaven&gt;/&lt;project_id&gt;/shared</code></td>
-<td><code>pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-shared</code></td>
-<td><code>/safe_data</code></td>
-<td>Shared project data (read-only or read-write)</td>
-</tr>
-<tr>
-<td><code>/mnt/beegfs/&lt;safe_heaven&gt;/&lt;project_id&gt;/users/&lt;username&gt;</code></td>
-<td><code>pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;first part of username&gt;</code></td>
-<td><code>/safe_outputs</code></td>
-<td>User output files (read-write)</td>
-</tr>
-<tr>
-<td><code>~/scratch</code></td>
-<td><em>(not a PVC; uses emptyDir)</em></td>
-<td><code>/scratch</code></td>
-<td>Temporary scratch space (deleted after job)</td>
-</tr>
-</tbody>
-</table>
-<p>These PVCs are automatically provisioned and do not require user creation.</p>
-<h2 id="mounting-beegfs-volumes-to-a-pod">Mounting BeeGFS Volumes to a Pod</h2>
-<p>To use BeeGFS-based shared and output directories in a container, add <code>volumeMounts</code> and <code>volumes</code> entries to your pod/job YAML.
-You also need to ensure the container runs with the correct user and group IDs matching your SHS user identity. This is critical for BeeGFS storage permissions and volume mounts to work properly.</p>
-<h3 id="security-context-explained">Security Context Explained</h3>
-<p><strong>runAsUser:</strong> The numeric user ID (UID) inside the container. This should match your SHS user UID.</p>
-<p><strong>runAsGroup:</strong> The <strong>project Group ID (GID)</strong> inside the container. This must match the group ID associated with your project, not your own GID. Using your GID here will cause <code>permission denied</code> errors when accessing BeeGFS.</p>
-<p><strong>fsGroup:</strong> The filesystem group ID to give permissions for mounted volumes, enabling proper group access inside the container.</p>
-<div class="admonition important">
-<p class="admonition-title">Why is this important?</p>
-<p>BeeGFS uses POSIX file permissions for access control. Setting these IDs ensures the container’s processes can access mounted BeeGFS directories with the correct permissions. Without this, the volumes may fail to mount or be inaccessible.</p>
-</div>
-<h3 id="how-to-find-your-uid-and-gid-on-the-shs-desktop-vm">How to Find Your UID and GID on the SHS Desktop VM</h3>
-<p>Open a terminal on the SHS Desktop VM and type:</p>
-<div class="highlight"><pre><span></span><code>id
-</code></pre></div>
-<p>You will see output like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">uid</span><span class="o">=</span><span class="m">0001</span><span class="o">(</span>&lt;tre_username&gt;<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">0001</span><span class="o">(</span>&lt;tre_username&gt;<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">0001</span><span class="o">(</span>&lt;tre_username&gt;<span class="o">)</span>,0002<span class="o">(</span>&lt;project_id&gt;<span class="o">)</span>,…
-</code></pre></div>
-<p>In this example:</p>
-<ul>
-<li><strong>runAsUser</strong> → <code>0001</code> (your UID).</li>
-<li><strong>runAsGroup</strong> → the GID associated with your <code>&lt;project_id&gt;</code> (e.g. <code>0002</code>).</li>
-<li><strong>fsGroup</strong> → should also be set to the same <code>&lt;project_id&gt;</code> GID.</li>
-</ul>
-<h3 id="understanding-persistent-volume-claims-pvcs">Understanding Persistent Volume Claims (PVCs)</h3>
-<p><strong>Shared Data PVC:</strong>
-<code>claimName: "pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-shared"</code>
-Mounted read-only at /safe_data. Shared by all project members.</p>
-<p><strong>User Output PVC:</strong>
-<code>claimName: "pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;first part of tre_username before _ &gt;"</code>
-Mounted read-write at /safe_outputs. Dedicated to the individual user identified by their FreeIPA username <code>&lt;tre_username&gt;</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Example mapping for clarity</p>
-<p>For this example:</p>
-<ul>
-<li><code>&lt;safe_heaven&gt;</code> = <code>nsh</code></li>
-<li><code>&lt;project_id&gt;</code> = <code>2024-0000</code></li>
-<li><code>&lt;tre_username&gt;</code> = <code>test_nsh-2024-0000</code></li>
-</ul>
-<p>The first part of the username before <code>_</code> is <code>test</code>, so the resulting PVC names are:</p>
-<ul>
-<li>Shared data PVC: <code>pvc-nsh-2024-0000-shared</code></li>
-<li>User output PVC: <code>pvc-nsh-2024-0000-users-test</code></li>
-</ul>
-</div>
-<p>Your FreeIPA username <code>&lt;tre_username&gt;</code> corresponds to the user you log in as on the Desktop VM.</p>
-<h3 id="example-pod-specification-yaml-with-mounted-persistent-volume">Example pod specification yaml with mounted persistent volume</h3>
+<h1 id="getting-started-with-kubernetes">Getting started with Kubernetes</h1>
+<h2 id="creating-your-first-pod-template-within-a-job-yaml-file">Creating your first pod template within a job yaml file</h2>
+<p>To access the GPUs on the service, it is recommended to start with one of the prebuilt container images provided by Nvidia, these images are intended to perform different tasks using Nvidia GPUs.</p>
+<p>The list of Nvidia images is available on their <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/cuda-sample/tags">website</a>.</p>
+<p>The following example uses their CUDA sample code simulating nbody interactions.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;safe_heaven&gt;-&lt;project_id&gt;-job-</span>
+<span class="w"> </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobtest-</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre-project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-test</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tre-ghcr-proxy.nsh.loc:5000/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
+<span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+</code></pre></div>
+<p>The pod resources are defined under the <code>resources</code> tags using the <code>requests</code> and <code>limits</code> tags.</p>
+<p>Resources defined under the <code>requests</code> tags are the reserved resources required for the pod to be scheduled.</p>
+<p>If a pod is assigned to a node with unused resources then it may spontaneously burst up to use resources beyond those requested, and up to the <code>limits</code>. This may allow the task within the pod to run faster, but it will also throttle back down when further pods are scheduled to the node.</p>
+<p>The SHS GPU Cluster requires that all pods have <code>requests</code> and <code>limits</code> tags for CPU and memory defined in order to be accepted.</p>
+<p>GPU resources requests are optional and only an entry under the <code>limits</code> tag is needed to specify the use of a GPU, <code>nvidia.com/gpu: 1</code>. Without this no GPU will be available to the pod.</p>
+<p>The label <code>kueue.x-k8s.io/queue-name</code> specifies the queue you are submitting your job to. This is part of the Kueue system in operation on the Cluster, to allow for improved resource management for users.</p>
+<h2 id="submitting-your-first-job">Submitting your first job</h2>
+<ol>
+<li>Open an editor of your choice and create the file test_NBody.yml</li>
+<li>Copy the above job yaml in to the file, filling in <code>&lt;tre-project-namespace&gt;-user-queue</code>, e.g. nsh-2024-0000-ns-user-queue:</li>
+<li>Save the file and exit the editor</li>
+<li>Run <code>kubectl -n &lt;tre-project-namespace&gt; create -f test_NBody.yml</code></li>
+<li>
+<p>This will output something like the following:</p>
+<div class="highlight"><pre><span></span><code>job.batch/jobtest-b92qg<span class="w"> </span>created
+</code></pre></div>
+<p>The five character code appended to the job name, i.e. <code>b92qg</code> above, is randomly generated and will differ from your run.</p>
+</li>
+<li>
+<p>Run <code>kubectl -n &lt;tre-project-namespace&gt; get jobs</code></p>
+</li>
+<li>
+<p>This will output something like the following:</p>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">            </span>COMPLETIONS<span class="w">   </span>DURATION<span class="w">   </span>AGE
+jobtest-b92qg<span class="w">   </span><span class="m">1</span>/1<span class="w">           </span>48s<span class="w">        </span>29m
+</code></pre></div>
+<p>There may be more than one entry, as this displays all the jobs in the current namespace, listing their name, number of completions against required completions, duration and age.</p>
+</li>
+<li>
+<p>Inspect your job further using the command <code>kubectl -n &lt;tre-project-namespace&gt; describe job jobtest-b92qg</code>, updating the job name with your five character code.</p>
+</li>
+<li>
+<p>This will output something like the following:</p>
+<div class="highlight"><pre><span></span><code>Name:<span class="w">             </span>jobtest-b92qg
+Namespace:<span class="w">        </span>t4
+Selector:<span class="w">         </span>controller-uid<span class="o">=</span>d3233fee-794e-466f-9655-1fe32d1f06d3
+Labels:<span class="w">           </span>kueue.x-k8s.io/queue-name<span class="o">=</span>t4-user-queue
+Annotations:<span class="w">      </span>batch.kubernetes.io/job-tracking:
+Parallelism:<span class="w">      </span><span class="m">1</span>
+Completions:<span class="w">      </span><span class="m">3</span>
+Completion<span class="w"> </span>Mode:<span class="w">  </span>NonIndexed
+Start<span class="w"> </span>Time:<span class="w">       </span>Wed,<span class="w"> </span><span class="m">14</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="m">14</span>:07:44<span class="w"> </span>+0000
+Completed<span class="w"> </span>At:<span class="w">     </span>Wed,<span class="w"> </span><span class="m">14</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="m">14</span>:08:32<span class="w"> </span>+0000
+Duration:<span class="w">         </span>48s
+Pods<span class="w"> </span>Statuses:<span class="w">    </span><span class="m">0</span><span class="w"> </span>Active<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>Ready<span class="o">)</span><span class="w"> </span>/<span class="w"> </span><span class="m">3</span><span class="w"> </span>Succeeded<span class="w"> </span>/<span class="w"> </span><span class="m">0</span><span class="w"> </span>Failed
+Pod<span class="w"> </span>Template:
+<span class="w">    </span>Labels:<span class="w">  </span>controller-uid<span class="o">=</span>d3233fee-794e-466f-9655-1fe32d1f06d3
+<span class="w">            </span>job-name<span class="o">=</span>jobtest-b92qg
+<span class="w">    </span>Containers:
+<span class="w">        </span>cudasample:
+<span class="w">            </span>Image:<span class="w">      </span>tre-ghcr-proxy.nsh.loc:5000/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1
+<span class="w">            </span>Port:<span class="w">       </span>&lt;none&gt;
+<span class="w">            </span>Host<span class="w"> </span>Port:<span class="w">  </span>&lt;none&gt;
+<span class="w">            </span>Args:
+<span class="w">                </span>-benchmark
+<span class="w">                </span>-numbodies<span class="o">=</span><span class="m">512000</span>
+<span class="w">                </span>-fp64
+<span class="w">                </span>-fullscreen
+<span class="w">            </span>Limits:
+<span class="w">                </span>cpu:<span class="w">             </span><span class="m">2</span>
+<span class="w">                </span>memory:<span class="w">          </span>4Gi
+<span class="w">                </span>nvidia.com/gpu:<span class="w">  </span><span class="m">1</span>
+<span class="w">            </span>Requests:
+<span class="w">                </span>cpu:<span class="w">        </span><span class="m">2</span>
+<span class="w">                </span>memory:<span class="w">     </span>1Gi
+<span class="w">            </span>Environment:<span class="w">  </span>&lt;none&gt;
+<span class="w">            </span>Mounts:<span class="w">       </span>&lt;none&gt;
+<span class="w">    </span>Volumes:<span class="w">        </span>&lt;none&gt;
+Events:
+Type<span class="w">    </span>Reason<span class="w">            </span>Age<span class="w">    </span>From<span class="w">                        </span>Message
+----<span class="w">    </span>------<span class="w">            </span>----<span class="w">   </span>----<span class="w">                        </span>-------
+Normal<span class="w">  </span>Suspended<span class="w">         </span>8m1s<span class="w">   </span>job-controller<span class="w">              </span>Job<span class="w"> </span>suspended
+Normal<span class="w">  </span>CreatedWorkload<span class="w">   </span>8m1s<span class="w">   </span>batch/job-kueue-controller<span class="w">  </span>Created<span class="w"> </span>Workload:<span class="w"> </span>t4/job-jobtest-b92qg-3b890
+Normal<span class="w">  </span>Started<span class="w">           </span>8m1s<span class="w">   </span>batch/job-kueue-controller<span class="w">  </span>Admitted<span class="w"> </span>by<span class="w"> </span>clusterQueue<span class="w"> </span>project-cq
+Normal<span class="w">  </span>SuccessfulCreate<span class="w">  </span>8m<span class="w">     </span>job-controller<span class="w">              </span>Created<span class="w"> </span>pod:<span class="w"> </span>jobtest-b92qg-lh64s
+Normal<span class="w">  </span>Resumed<span class="w">           </span>8m<span class="w">     </span>job-controller<span class="w">              </span>Job<span class="w"> </span>resumed
+Normal<span class="w">  </span>SuccessfulCreate<span class="w">  </span>7m44s<span class="w">  </span>job-controller<span class="w">              </span>Created<span class="w"> </span>pod:<span class="w"> </span>jobtest-b92qg-xhvdm
+Normal<span class="w">  </span>SuccessfulCreate<span class="w">  </span>7m28s<span class="w">  </span>job-controller<span class="w">              </span>Created<span class="w"> </span>pod:<span class="w"> </span>jobtest-b92qg-lvmrf
+Normal<span class="w">  </span>Completed<span class="w">         </span>7m12s<span class="w">  </span>job-controller<span class="w">              </span>Job<span class="w"> </span>completed
+</code></pre></div>
+</li>
+<li>
+<p>Run <code>kubectl -n &lt;tre-project-namespace&gt; get pods</code></p>
+</li>
+<li>
+<p>This will output something like the following:</p>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>READY<span class="w">   </span>STATUS<span class="w">      </span>RESTARTS<span class="w">   </span>AGE
+jobtest-b92qg-lh64s<span class="w">   </span><span class="m">0</span>/1<span class="w">     </span>Completed<span class="w">   </span><span class="m">0</span><span class="w">          </span>11m
+</code></pre></div>
+<p>Again, there may be more than one entry as this displays all the jobs in the current namespace.
+Also, each pod within a job is given another unique five-character code appended to the job name.</p>
+</li>
+<li>
+<p>View the logs of a pod from the job you ran <code>kubectl -n &lt;tre-project-namespace&gt; logs jobtest-b92qg-lh64s</code> - again update with you run's pod and job five-letter code.</p>
+</li>
+<li>
+<p>This will output something like the following:</p>
+<div class="highlight"><pre><span></span><code>Run<span class="w"> </span><span class="s2">"nbody -benchmark [-numbodies=&lt;numBodies&gt;]"</span><span class="w"> </span>to<span class="w"> </span>measure<span class="w"> </span>performance.
+<span class="w">    </span>-fullscreen<span class="w">       </span><span class="o">(</span>run<span class="w"> </span>n-body<span class="w"> </span>simulation<span class="w"> </span><span class="k">in</span><span class="w"> </span>fullscreen<span class="w"> </span>mode<span class="o">)</span>
+<span class="w">    </span>-fp64<span class="w">             </span><span class="o">(</span>use<span class="w"> </span>double<span class="w"> </span>precision<span class="w"> </span>floating<span class="w"> </span>point<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation<span class="o">)</span>
+<span class="w">    </span>-hostmem<span class="w">          </span><span class="o">(</span>stores<span class="w"> </span>simulation<span class="w"> </span>data<span class="w"> </span><span class="k">in</span><span class="w"> </span>host<span class="w"> </span>memory<span class="o">)</span>
+<span class="w">    </span>-benchmark<span class="w">        </span><span class="o">(</span>run<span class="w"> </span>benchmark<span class="w"> </span>to<span class="w"> </span>measure<span class="w"> </span>performance<span class="o">)</span>
+<span class="w">    </span>-numbodies<span class="o">=</span>&lt;N&gt;<span class="w">    </span><span class="o">(</span>number<span class="w"> </span>of<span class="w"> </span>bodies<span class="w"> </span><span class="o">(</span>&gt;<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span><span class="k">in</span><span class="w"> </span>simulation<span class="o">)</span>
+<span class="w">    </span>-device<span class="o">=</span>&lt;d&gt;<span class="w">       </span><span class="o">(</span>where<span class="w"> </span><span class="nv">d</span><span class="o">=</span><span class="m">0</span>,1,2....<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>CUDA<span class="w"> </span>device<span class="w"> </span>to<span class="w"> </span>use<span class="o">)</span>
+<span class="w">    </span>-numdevices<span class="o">=</span>&lt;i&gt;<span class="w">   </span><span class="o">(</span>where<span class="w"> </span><span class="nv">i</span><span class="o">=(</span>number<span class="w"> </span>of<span class="w"> </span>CUDA<span class="w"> </span>devices<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation<span class="o">)</span>
+<span class="w">    </span>-compare<span class="w">          </span><span class="o">(</span>compares<span class="w"> </span>simulation<span class="w"> </span>results<span class="w"> </span>running<span class="w"> </span>once<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>GPU<span class="w"> </span>and<span class="w"> </span>once<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>CPU<span class="o">)</span>
+<span class="w">    </span>-cpu<span class="w">              </span><span class="o">(</span>run<span class="w"> </span>n-body<span class="w"> </span>simulation<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>CPU<span class="o">)</span>
+<span class="w">    </span>-tipsy<span class="o">=</span>&lt;file.bin&gt;<span class="w"> </span><span class="o">(</span>load<span class="w"> </span>a<span class="w"> </span>tipsy<span class="w"> </span>model<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation<span class="o">)</span>
+
+NOTE:<span class="w"> </span>The<span class="w"> </span>CUDA<span class="w"> </span>Samples<span class="w"> </span>are<span class="w"> </span>not<span class="w"> </span>meant<span class="w"> </span><span class="k">for</span><span class="w"> </span>performance<span class="w"> </span>measurements.<span class="w"> </span>Results<span class="w"> </span>may<span class="w"> </span>vary<span class="w"> </span>when<span class="w"> </span>GPU<span class="w"> </span>Boost<span class="w"> </span>is<span class="w"> </span>enabled.
+
+&gt;<span class="w"> </span>Fullscreen<span class="w"> </span>mode
+&gt;<span class="w"> </span>Simulation<span class="w"> </span>data<span class="w"> </span>stored<span class="w"> </span><span class="k">in</span><span class="w"> </span>video<span class="w"> </span>memory
+&gt;<span class="w"> </span>Double<span class="w"> </span>precision<span class="w"> </span>floating<span class="w"> </span>point<span class="w"> </span>simulation
+&gt;<span class="w"> </span><span class="m">1</span><span class="w"> </span>Devices<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>simulation
+GPU<span class="w"> </span>Device<span class="w"> </span><span class="m">0</span>:<span class="w"> </span><span class="s2">"Ampere"</span><span class="w"> </span>with<span class="w"> </span>compute<span class="w"> </span>capability<span class="w"> </span><span class="m">8</span>.0
+
+&gt;<span class="w"> </span>Compute<span class="w"> </span><span class="m">8</span>.0<span class="w"> </span>CUDA<span class="w"> </span>device:<span class="w"> </span><span class="o">[</span>NVIDIA<span class="w"> </span>A100-SXM4-40GB<span class="o">]</span>
+number<span class="w"> </span>of<span class="w"> </span><span class="nv">bodies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512000</span>
+<span class="m">512000</span><span class="w"> </span>bodies,<span class="w"> </span>total<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>iterations:<span class="w"> </span><span class="m">10570</span>.778<span class="w"> </span><span class="nv">ms</span>
+<span class="o">=</span><span class="w"> </span><span class="m">247</span>.989<span class="w"> </span>billion<span class="w"> </span>interactions<span class="w"> </span>per<span class="w"> </span><span class="nv">second</span>
+<span class="o">=</span><span class="w"> </span><span class="m">7439</span>.679<span class="w"> </span>double-precision<span class="w"> </span>GFLOP/s<span class="w"> </span>at<span class="w"> </span><span class="m">30</span><span class="w"> </span>flops<span class="w"> </span>per<span class="w"> </span>interaction
+</code></pre></div>
+</li>
+<li>
+<p>Delete your job with <code>kubectl -n &lt;tre-project-namespace&gt; delete job jobtest-b92qg</code> - this will delete the associated pods as well.</p>
+</li>
+</ol>
+<h2 id="specifying-gpu-requirements">Specifying GPU requirements</h2>
+<p>At present, the SHS GPU Cluster only provides one type of GPU:<code>[NVIDIA A100-SXM4-40GB]</code>.</p>
+<p>If you create multiple jobs with the same definition file and compare their log files you may notice the CUDA device may differ from <code>Compute 8.0 CUDA device: [NVIDIA A100-SXM4-40GB]</code>.</p>
+<p>The GPU Operator on K8s is allocating the pod to the first node with a GPU free that matches the other resource specifications irrespective of the type of GPU present on the node.</p>
+<p>For future reference (if additional GPU-types become available), you can make the GPU resource request more specific by adding a node selector to your pod template, as per the following example:</p>
+<ul>
+<li><code>nvidia.com/gpu.product: 'NVIDIA-A100-SXM4-40GB'</code></li>
+</ul>
+<h3 id="example-yaml-file-with-gpu-type-specified">Example yaml file with GPU type specified</h3>
+<p>The <code>nodeSelector:</code> key at the bottom of the pod template states the pod should be ran on a node with a NVIDIA-A100-SXM4-40GB GPU.</p>
+<div class="admonition important">
+<p class="admonition-title">Exact GPU product names only</p>
+<p>K8s will fail to assign the pod if you misspell the GPU type.</p>
+<p>Be especially careful with memory allocation, as attempting to load GPUs with more data than its memory can handle can have unexpected consequences.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobtest-</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;project namespace&gt;-user-queue</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre-project-namespace&gt;-user-queue</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;safe_heaven&gt;-&lt;project_id&gt;-job-</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-test</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre_user_id&gt;</span>
-<span class="w">        </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre_usergroup_id&gt;</span>
-<span class="w">        </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre_usergroup_id&gt;</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tre-ghcr-proxy.nsh.loc:5003/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1</span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/bin/sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">]</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">              </span><span class="no"># Extract job ID from pod name by removing trailing -xxxxx</span>
-<span class="w">              </span><span class="no">JOB_ID=$(echo ${HOSTNAME} | sed 's/-[a-z0-9]\{5\}$//')</span>
-<span class="w">              </span><span class="no">echo "Resolved JOB_ID: $JOB_ID"</span>
-<span class="w">              </span><span class="no"># Make job output directory</span>
-<span class="w">              </span><span class="no">mkdir -p /safe_outputs/${JOB_ID}</span>
-<span class="w">              </span><span class="no"># Run CUDA sample with required arguments</span>
-<span class="w">              </span><span class="no">echo "Starting CUDA sample..."</span>
-<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
-<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"4Gi"</span>
-<span class="w">              </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/safe_data</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-data</span>
-<span class="w">              </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/safe_outputs</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user-output</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scratch</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scratch</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tre-ghcr-proxy.nsh.loc:5000/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
+<span class="w">            </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-data</span>
-<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-shared</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user-output</span>
-<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;first part of tre_username before '_' &gt;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scratch</span>
-<span class="w">          </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">nvidia.com/gpu.product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA-A100-SXM4-40GB</span>
 </code></pre></div>
-<p>✅ <strong>You do not need to create</strong> the PVCs <code>pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-shared</code> and <code>pvc-&lt;safe_heaven&gt;-&lt;project_id&gt;-users-&lt;username&gt;</code>. These are already available for you in your namespace.</p>
+<h2 id="running-multiple-pods-with-k8s-jobs">Running multiple pods with K8s jobs</h2>
+<p>Wrapping a pod within a job provides additional functionality on top of accessing the queuing system.</p>
+<p>Firstly, the restartPolicy within a job enables the self-healing mechanism within K8s so that if a node dies with the job's pod on it, then the job will find a new node to automatically restart the pod.</p>
+<p>Jobs also allow users to define multiple pods that can run in parallel or series, and will continue to spawn pods until a specific number of pods successfully terminate.</p>
+<p>See below for an example K8s job that requires three pods to successfully complete the example CUDA code before the job itself ends.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jobtest-</span>
+<span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kueue.x-k8s.io/queue-name</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;tre-project-namespace&gt;-user-queue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">completions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">ttlSecondsAfterFinished</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<span class="w"> </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-test</span>
+<span class="w">  </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cudasample</span>
+<span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tre-ghcr-proxy.nsh.loc:5000/&lt;github_user&gt;/cuda-sample:nbody-cuda11.7.1</span>
+<span class="w">     </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"-benchmark"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-numbodies=512000"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fp64"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-fullscreen"</span><span class="p p-Indicator">]</span>
+<span class="w">     </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'1Gi'</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">       </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">       </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
+<span class="w">       </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+</code></pre></div>
+<h2 id="change-the-default-kubectl-namespace-in-the-project-kubeconfig-file">Change the default kubectl namespace in the project kubeconfig file</h2>
+<p>Passing the <code>-n &lt;tre-project-namespace&gt;</code> flag every time you want to interact with the cluster can be cumbersome.</p>
+<p>You can alter the kubeconfig on your VM to send commands to your project namespace by default. Pleaase follow the below instructions to achieve that:</p>
+<ol>
+<li>
+<p>Open the command line on your SHS VM with access to the SHS GPU Cluster.</p>
+</li>
+<li>
+<p>Open the kubeconfig file.</p>
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>~/.kube/config
+</code></pre></div>
+</li>
+<li>
+<p>Add the namespace line with your project's kubernetes namespace to the "shs-gpu-cluster" context entry in your copy of the config file.</p>
+<div class="highlight"><pre><span></span><code>*** MORE CONFIG ***
+
+contexts:
+- name: "shs-gpu-cluster"
+  context:
+    user: "shs-gpu-cluster"
+    namespace: "&lt;tre-project-namespace&gt;" # INSERT LINE
+    cluster: "shs-gpu-cluster"
+
+*** MORE CONFIG ***
+</code></pre></div>
+</li>
+<li>
+<p>Check kubectl connects to the Cluster. If this does not work contact your dedicated helpdesk.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+</code></pre></div>
+</li>
+</ol>
 
 
 
