@@ -17,7 +17,10 @@ HTTP and HTTPS traffic from the CDW VMs is proxied through the Squid service on 
 
 ## Certificate When Using the Proxy for HTTPS Traffic
 
-For applications that require it, the self-signed certificate used by the Squid service is available on every VM at `/usr/local/share/ca-certificates/extra/squid_proxyCA.crt`.
+For applications that require it, the self-signed certificate used by the Squid service is available on every VM at:
+
+- `/usr/local/share/ca-certificates/extra/squid_proxyCA.crt` for Ubuntu
+- `/etc/pki/ca-trust/source/anchors/squid_proxyCA.crt` for Rocky
 
 ## SSH Access to the CDW Router
 
