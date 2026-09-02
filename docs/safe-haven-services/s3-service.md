@@ -4,7 +4,7 @@ Some *Safe Havens* provide access to large collections of files via a S3 service
 If this applies to your project, your Research Coordinator will provide you with an access key.
 This document will guide you through getting access to the data from a terminal as well as programmatically via R and Python.
 
-Unlike the [EIDF S3 service](../services/s3/) this is not a storage solution for users wanting to create their own files;
+Unlike the [EIDF S3 service](../services/s3/index.md) this is not a storage solution for users wanting to create their own files;
 all files are read-only.
 
 !!! Note
