@@ -119,7 +119,7 @@ You now need to configure `aws` with information about the S3 endpoint, access k
     Set the endpoint URL. For example:
 
     ```console
-    aws configure set endpoint-url http://nsh-fs02:7070
+    aws configure set endpoint_url https://s3.eidf.ac.uk
     ```
 
     For more information, see the AWS documentation about [configuration variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html).
