@@ -13,10 +13,6 @@ Content is based on that from:
 * Update tutorial.md [EPCCed/eidf-docs#279](https://github.com/EPCCed/eidf-docs/pull/279) (Julien)
 * My pull request, [EPCCed/eidf-docs#345](https://github.com/EPCCed/eidf-docs/pull/345), for `docs/safe-haven-services/s3-service.md`.
 
-Rerun all commands and sort timestamps.
-
-Migrate to branch of [EPCCed/eidf-docs#345](https://github.com/EPCCed/eidf-docs/) in due course.
-
 Notes:
 
 The EIDF tutorial online uses Python package 'awscli' (GitHub, [aws/aws-cli](https://github.com/aws/aws-cli)). The [awscli](https://pypi.org/project/awscli/) Pypi page comments that AWS CLI v1 entered maintenance mode on 5 August 2026 and end-of-support is on 15 July 2027.
