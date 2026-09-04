@@ -24,7 +24,7 @@ The workflow describes different strategies to tackle the three common stages in
 
 The three stages are interchangeable and may not be relevant to every project.
 
-Some strategies in the workflow require a [GitHub](https://github.com) account and [Docker Hub](https://hub.docker.com/) account for automatic building (this can be adapted for other platforms such as GitLab).
+Some strategies in the workflow require an [EIDF GitLab](https://gitlab.eidf.ac.uk/) account and [ECIR (EIDF Container Image Registry)](https://registry.eidf.ac.uk/) for automatic building. Alternative platforms such as GitHub and Docker Hub can also be used.
 
 ## Data loading
 
@@ -192,13 +192,13 @@ Using screen rather than a single download job can be helpful if downloading mul
 
 ## Preparing a custom Docker image
 
-Kubernetes requires Docker images to be pre-built and available for download from a container repository such as Docker Hub.
+Kubernetes requires Docker images to be pre-built and available for download from a container repository such as [EIDF Container Image Registry (ECIR)](https://registry.eidf.ac.uk/).
 
 It does not provide functionality to build images and create pods from docker files.
 
 However, use cases may require some custom modifications of a base image, such as adding a python library.
 
-These custom images need to be built locally (using docker) or online (using a GitHub/GitLab worker) and pushed to a repository such as Docker Hub.
+These custom images need to be built locally (using docker) or online (using GitLab CI/CD) and pushed to a registry such as ECIR.
 
 This is not an introduction to building docker images, please see the [Docker tutorial](https://docs.docker.com/get-started/)  for a general overview.
 
@@ -219,7 +219,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     ```bash
     cd <dockerfile-folder>
 
-    docker build . -t <docker-hub-username>/template-docker-image:latest
+    docker build . -t registry.eidf.ac.uk/<project-name>/template-docker-image:latest
     ```
 
 !!! important "Building images for different CPU architectures"
@@ -227,12 +227,16 @@ This is not an introduction to building docker images, please see the [Docker tu
 
     If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function.
 
-1. Create a repository to hold the image on [Docker Hub](https://hub.docker.com) (You will need to create and setup an account).
-
-1. Push the Docker image to the repository.
+1. Login to ECIR using your ECIR credentials. See the [ECIR documentation](../../registry/working-with.md) for details on authentication.
 
     ```bash
-    docker push <docker-hub-username>/template-docker-image:latest
+    docker login registry.eidf.ac.uk
+    ```
+
+1. Push the Docker image to ECIR.
+
+    ```bash
+    docker push registry.eidf.ac.uk/<project-name>/template-docker-image:latest
     ```
 
 1. Finally, specify your Docker image in the `image:` tag of the job specification yaml file.
@@ -252,7 +256,7 @@ This is not an introduction to building docker images, please see the [Docker tu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <docker-hub-username>/template-docker-image:latest
+         image: registry.eidf.ac.uk/<project-name>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -263,55 +267,69 @@ This is not an introduction to building docker images, please see the [Docker tu
            memory: "8Gi"
     ```
 
-### Automatically building docker images using GitHub Actions
+### Automatically building container images using GitLab CI/CD
 
-In cases where the Docker image needs to be built and tested iteratively (i.e. to check for comparability issues), git version control and [GitHub Actions](https://github.com/features/actions) can simplify the build process.
+In cases where the Docker image needs to be built and tested iteratively (i.e. to check for compatibility issues), git version control and [GitLab CI/CD](https://docs.gitlab.com/ce/ci/) can simplify and standardise the build process.
 
-A GitHub action can build and push a Docker image to Docker Hub whenever it detects a git push that changes the docker file in a git repo.
+GitLab CI/CD can build and push a container image to ECIR whenever it detects a git push that changes the docker file in a git repo.
 
-This process requires you to already have a [GitHub](https://github.com) and [Docker Hub](https://hub.docker.com) account.
+This process requires you to already have an [EIDF GitLab](https://gitlab.eidf.ac.uk/) account and access to [ECIR](https://registry.eidf.ac.uk/).
 
-1. Create an [access token](https://docs.docker.com/security/for-developers/access-tokens/) on your Docker Hub account to allow GitHub to push changes to the Docker Hub image repo.
+#### Prerequisites
 
-1. Create two [GitHub secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) to securely provide your Docker Hub username and access token.
+1. **Set up ECIR project and robot account**: using the [EIDF GitLab](../../gitlab/quickstart.md) and [ECIR documentation](../../registry/working-with.md) create a project and robot account for your EIDF project. 
 
-1. Add the dockerfile to a code/docker folder within an active GitHub repo.
+1. **Configure GitLab Harbor Integration**: Follow the [GitLab Harbor Integration documentation](https://docs.gitlab.com/user/project/integrations/harbor/) with the following values:
+   - Harbor URL: `https://registry.eidf.ac.uk`
+   - Harbor Project Name: Your EIDF project name (e.g., `eidf123`)
+   - Username: The ECIR push robot username (e.g., `robot$eidf123+pull_robot`)
+   - Password: The ECIR push robot secret key
 
-1. Add the GitHub action yaml file below to the .github/workflow folder to automatically push a new image to Docker Hub if any changes to files in the code/docker folder is detected.
+1. **Add the Dockerfile** to your GitLab repository (e.g., in a `code/docker/` folder).
+
+1. **Add the GitLab CI/CD configuration** file (`.gitlab-ci.yml`) to your repository root to automatically build and push images when changes are detected:
 
     ```yaml
-    name: ci
-    on:
-      push:
-        paths:
-          - 'code/docker/**'
-
-    jobs:
-      docker:
-        runs-on: ubuntu-latest
-        steps:
-          -
-            name: Set up QEMU
-            uses: docker/setup-qemu-action@v3
-          -
-            name: Set up Docker Buildx
-            uses: docker/setup-buildx-action@v3
-          -
-            name: Login to Docker Hub
-            uses: docker/login-action@v3
-            with:
-              username: ${{ secrets.DOCKERHUB_USERNAME }}
-              password: ${{ secrets.DOCKERHUB_TOKEN }}
-          -
-            name: Build and push
-            uses: docker/build-push-action@v5
-            with:
-              context: "{{defaultContext}}:code/docker"
-              push: true
-              tags: <target-dockerhub-image-name>
+    # .gitlab-ci.yml - Build and push Docker image to ECIR
+    build-rootless:
+      image:
+        name: moby/buildkit:rootless
+      stage: build
+      variables:
+        BUILDKITD_FLAGS: --oci-worker-no-process-sandbox
+        REG_IMAGE: "$HARBOR_HOST/$HARBOR_PROJECT/template-docker-image:$CI_COMMIT_SHA"
+      before_script:
+        - mkdir -p ~/.docker
+        - echo "{\"auths\":{\"$HARBOR_HOST\":{\"username\":\"$HARBOR_USERNAME\",\"password\":\"$HARBOR_PASSWORD\"}}}" > ~/.docker/config.json
+      script:
+        - |
+          buildctl-daemonless.sh build \
+            --frontend dockerfile.v0 \
+            --local context=. \
+            --local dockerfile=. \
+            --output type=image,name=$REG_IMAGE,push=true
+      rules:
+        - changes:
+            - code/docker/**
     ```
 
-1. Push a change to the dockerfile and check the Docker Hub image is updated.
+    This configuration:
+    - Uses rootless BuildKit for efficient image building without requiring root privileges on the GitLab runner to prevent containers being built being able to interact with others
+    - Tags images with the commit SHA for versioning
+    - Only runs when files in `code/docker/` are changed
+    - Pushes to your ECIR project repository
+
+1. **Push a change** to the Dockerfile and verify the image is built and available in ECIR.
+
+!!! tip "Alternative: DOCKER_AUTH_CONFIG variable"
+    You can also set up a `DOCKER_AUTH_CONFIG` CI/CD variable for authentication:
+    ```yaml
+    variables:
+      DOCKER_AUTH_CONFIG: "{\"auths\":{\"$HARBOR_HOST\":{\"username\":\"$HARBOR_USERNAME\",\"password\":\"$HARBOR_PASSWORD\"}}}"
+    ```
+    This approach is documented in the [GitLab CI/CD Docker documentation](https://docs.gitlab.com/ci/docker/using_docker_images/#access-an-image-from-a-private-container-registry).
+
+For more examples and advanced configurations, see the [GitLab CI/CD Examples repository](https://gitlab.eidf.ac.uk/Liz/cicd-examples) and the [ECIR documentation](../../registry/working-with.md).
 
 ## Code development with K8s
 
@@ -325,11 +343,9 @@ A pod yaml file can be defined to automatically pull the latest code version bef
 
 Reducing the download time to fractions of a second allows rapid testing to be completed on the cluster with just the `kubectl create` command.
 
-You must already have a [GitHub](https://github.com) account to follow this process.
+You must already have a [GitLab](https://gitlab.eidf.ac.uk/) account to follow this process.
 
-This process allows code development to be conducted on any device/VM with access to the repo (GitHub/GitLab).
-
-A template GitHub repo with sample code, k8s yaml files and a Docker build Github Action is available [here](https://github.com/EPCCed/template-EIDFGPU-workflow).
+This process allows code development to be conducted on any device/VM with access to the repo.
 
 ### Create a job that downloads and runs the latest code version at runtime
 
@@ -350,7 +366,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <docker-hub-username>/template-docker-image:latest
+         image: registry.eidf.ac.uk/<project-name>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -385,7 +401,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <docker-hub-username>/template-docker-image:latest
+         image: registry.eidf.ac.uk/<project-name>/template-docker-image:latest
          command: ["sleep", "infinity"]
          resources:
           requests:
@@ -398,11 +414,11 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
          - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
-           name: github-code
+           name: gitlab-code
        initContainers:
        - name: lightweight-git-container
          image: cicirello/alpine-plus-plus
-         command: ['sh', '-c', "cd /code; git clone <target-repo>"]
+         command: ['sh', '-c', "cd /code; git clone https://gitlab.eidf.ac.uk/<group>/<project>.git"]
          resources:
           requests:
            cpu: 1
@@ -412,17 +428,17 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            memory: "8Gi"
          volumeMounts:
          - mountPath: /code
-           name: github-code
+           name: gitlab-code
        volumes:
        - name: volume
          persistentVolumeClaim:
           claimName: template-workflow-pvc
-       - name: github-code
+       - name: gitlab-code
          emptyDir:
           sizeLimit: 1Gi
     ```
 
-1. Change the command argument in the main container to run the code once started. Add the URL of the GitHub repo of interest to the `initContainers: command:` tag.
+1. Change the command argument in the main container to run the code once started. Add the URL of the GitLab repo of interest to the `initContainers: command:` tag.
 
     ```yaml
     apiVersion: batch/v1
@@ -439,7 +455,7 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
        restartPolicy: Never
        containers:
        - name: template-docker-image
-         image: <docker-hub-username>/template-docker-image:latest
+         image: registry.eidf.ac.uk/<project-name>/template-docker-image:latest
          command: ['sh', '-c', "python3 /code/<python-script>"]
          resources:
           requests:
@@ -453,11 +469,11 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
          - mountPath: /mnt/ceph
            name: volume
          - mountPath: /code
-           name: github-code
+           name: gitlab-code
        initContainers:
        - name: lightweight-git-container
          image: cicirello/alpine-plus-plus
-         command: ['sh', '-c', "cd /code; git clone <target-repo>"]
+         command: ['sh', '-c', "cd /code; git clone https://gitlab.eidf.ac.uk/<group>/<project>.git"]
          resources:
           requests:
            cpu: 1
@@ -467,12 +483,12 @@ A template GitHub repo with sample code, k8s yaml files and a Docker build Githu
            memory: "8Gi"
          volumeMounts:
          - mountPath: /code
-           name: github-code
+           name: gitlab-code
        volumes:
        - name: volume
          persistentVolumeClaim:
           claimName: template-workflow-pvc
-       - name: github-code
+       - name: gitlab-code
          emptyDir:
           sizeLimit: 1Gi
     ```
