@@ -84,7 +84,7 @@ Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) 
 
 !!! Note "S3 service region"
 
-    In the following, you will see references to a region, `us-east-1`. This is adefault, it does **not** mean that the EIDF S3 service is hosted in the US, it is not!
+    In the following, there are references to a region, `us-east-1`. This is adefault, it does **not** mean that the EIDF S3 service is hosted in the US, it is not!
 
 ---
 
@@ -236,7 +236,7 @@ export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 
     `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 services. It is not recnogised by AWS CLI.
 
-    All three are defined here to cover all possible tools you may use.
+    All three are defined here to cover all possible tools you may use in this tutorial.
 
 #### Further information on AWS CLI configuration
 
@@ -283,11 +283,11 @@ A message will be displayed:
 make_bucket: mybucket
 ```
 
-!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket> argument of type 'NoneType' is not a container or iterable`"
+!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
 
     This error can occur if a bucket name does not conform to the naming requirements.
 
-!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket> Parameter validation failed`"
+!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucketname> Parameter validation failed`"
 
     This error can also occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
 
@@ -516,7 +516,7 @@ aws s3 ls s3://mybucket/
 
 `PRE` indicates that `lothian/` is a prefix and that there are files in the bucket whose keys have prefix `lothian/`. However, by default, these files are not listed.
 
-Rerun the command, adding a `--recursive` flag to request that these files be listed with their keys:
+Rerun the command, adding a `--recursive` option to request that these files be listed with their keys:
 
 ```bash
 aws s3 ls s3://mybucket/ --recursive
@@ -541,7 +541,7 @@ aws s3 ls s3://mybucket/lothian/
 
 `PRE` indicates that `edinburgh/` is a prefix and that there are files in the bucket whose keys have prefix `lothian/edinburgh/`. `edunis` is also shown without its prefix.
 
-List these files, again using the `--recursive` flag:
+List these files, again using the `--recursive` option:
 
 ```bash
 aws s3 ls s3://mybucket/lothian/ --recursive
@@ -576,7 +576,7 @@ aws s3 ls s3://mybucket/lothian/edinburgh/ --recursive
 
 Prefixes relate to the concept of 'virtual directories'. Each prefix is akin to a virtual directory. Here, the bucket has a virtual directory `lothian/` which, in turn, has a virtual directory, `edinburgh/`. Running `aws s3 ls` and citing `lothian/` or `edinburgh/` or `lothian/edinburgh/` is akin to listing the contents of these virtual directories including their files and any virtual directories, therein.
 
-Adding the `--recursive` flag is akin to a recursive listing of these virtual directories and their subdirectories.
+Adding the `--recursive` option is akin to a recursive listing of these virtual directories and their subdirectories.
 
 !!! Important "Virtual directories are virtual!"
 
@@ -631,7 +631,7 @@ In terms of virtual directories, these queries can be viewed as akin to using wi
 
     Uploading a file to `s3://mybucket/a/b/c/` results in a file with key `a/b/c//<filename>`. In contrast, uploading a file to `s3://mybucket/a/b/c` results in a file with key `a/b/c`.
 
-    Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` flag is used as it is a request to download all files whose key has prefix `a/b/c/`. In constrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
+    Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`. In constrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
 
 ### List files and file sizes
 
@@ -651,7 +651,7 @@ Total Objects: 1
    Total Size: 154 Bytes
 ```
 
-As done previously, use the `--recursive` flag to list information on all files:
+As done previously, use the `--recursive` option to list information on all files:
 
 ```bash
 aws s3 ls s3://mybucket --summarize --human-readable --recursive
@@ -698,13 +698,13 @@ delete: s3://mybucket/lothian/edinburgh/unis.csv
 
     When deleting files, a trailing slash is significant. A reference to `s3://mybucket/a/b/c/` is **not** the same as a reference to `s3://mybucket/a/b/c`.
 
-    Deleting files using reference `s3://mybucket/a/b/c/` will do nothing unless the `--recursive` flag is used. If used, then **all** files with prefix `a/b/c/` will be deleted. If no such files exist, then deletion does nothing.
+    Deleting files using reference `s3://mybucket/a/b/c/` will do nothing unless the `--recursive` option is used. If used, then **all** files with prefix `a/b/c/` will be deleted. If no such files exist, then deletion does nothing.
 
-    Deleting files using reference `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c` and will do nothing otherwise. If the `--recursive` flag is used, then **all** files whose key starts with `a/b/c` will be deleted (e.g., if there were files `a/b/cookie`, `a/b/c/dough`, then these would both be deleted).
+    Deleting files using reference `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c` and will do nothing otherwise. If the `--recursive` option is used, then **all** files whose key starts with `a/b/c` will be deleted (e.g., if there were files `a/b/cookie`, `a/b/c/dough`, then these would both be deleted).
 
 !!! Tip "Dry run file deletions"
 
-    `aws s3 rm` supports a `--dryrun` flag, which, if used, will list the files that will be deleted without deleting them.
+    `aws s3 rm` supports a `--dryrun` option, which, if used, will list the files that will be deleted without deleting them.
 
 Delete all files in a bucket:
 
@@ -722,7 +722,7 @@ Delete an empty bucket:
 aws s3 rb s3://mybucket
 ```
 
-!!! Troubleshooting "`remove_bucket failed: s3://<bucket> argument of type 'NoneType' is not a container or iterable`"
+!!! Troubleshooting "`remove_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
 
     This error can occur if an attempt is made to delete a bucket that is not empty.
 
@@ -746,37 +746,41 @@ These, and other, clients may have client-specific ways of configuring the clien
 
 Public buckets do not require credentials to be provided before their data can be accessed.
 
-TODO: Get an S3 example from the portal e.g., from the EIDF data publishing service?
-
-TODO: Rework below to use the chosen example.
-
-To read from a public bucket without providing credentials, add the option `--no-sign-request` to the call:
+To read from a public bucket, for example to list or download files, without providing credentials, use the option `--no-sign-request`:
 
 ```bash
 aws s3 ls s3://<bucketname> --no-sign-request
+aws s3 cp s3://<bucketname>/<key> . --no-sign-request
 ```
 
-For public S3 buckets, such as those provided for the EIDF [Data Publishing Service](../datapublishing/service.md), you can construct a downloadable https link to download files from an S3 link, e.g. taking:
-
-```text
-s3://eidfXXX-my-dataset/mydatafile.csv
-```
-
-and by making the following transformation:
-
-```text
-https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
-```
-
-Now you can open this link in a browser to download the file.
-
-Alternatively, you can use the aws client to download an entire data set:
+To specify an endpoint that differs from the default endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
 
 ```bash
-aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./mydataset --no-sign-request
+aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url <url>
+aws s3 cp s3://<bucketname>/<key> . --no-sign-request --endpoint-url <url>
 ```
 
-will copy the entire content of the S3 bucket to your `mydataset` subdirectory. Note that you must use `--no-sign-request` when accessing public buckets.
+For public S3 buckets, such as those provided for datasets hosted within the EIDF [Data Publishing Service](../datapublishing/service.md), https and S3 download links can be converted between each other. For example, here is an S3 bucket link and file and the corresponding https links:
+
+```text
+s3://eidfXXX-my-dataset
+s3://eidfXXX-my-dataset/my-data-file.csv
+```
+
+```text
+https://s3.eidf.ac.uk/eidfXXX-my-dataset
+https://s3.eidf.ac.uk/eidfXXX-my-dataset/my-data-file.csv
+```
+
+https links can be explored within a browser, and, for file links, downloaded.
+
+s3 links can be used with AWS CLI to explore the public bucket and download files. For example:
+
+```bash
+aws s3 ls --recursive s3://eidfXXX-my-dataset/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+aws s3 cp s3://eidfXXX-my-dataset/my-data-file.csv . --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./my-dataset --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+```
 
 ### Read data from public buckets using Python
 
