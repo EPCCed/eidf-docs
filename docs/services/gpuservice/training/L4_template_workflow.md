@@ -277,59 +277,17 @@ This process requires you to already have an [EIDF GitLab](https://gitlab.eidf.a
 
 #### Prerequisites
 
-1. **Set up ECIR project and robot account**: using the [EIDF GitLab](../../gitlab/quickstart.md) and [ECIR documentation](../../registry/working-with.md) create a project and robot account for your EIDF project. 
+1. **Set up ECIR project and robot account**: using the [EIDF GitLab](../../gitlab/quickstart.md) and [ECIR documentation](../../registry/working-with.md) create a project and robot account for your EIDF project.
 
-1. **Configure GitLab Harbor Integration**: Follow the [GitLab Harbor Integration documentation](https://docs.gitlab.com/user/project/integrations/harbor/) with the following values:
-   - Harbor URL: `https://registry.eidf.ac.uk`
-   - Harbor Project Name: Your EIDF project name (e.g., `eidf123`)
-   - Username: The ECIR push robot username (e.g., `robot$eidf123+pull_robot`)
-   - Password: The ECIR push robot secret key
+1. **Configure GitLab Harbor Integration** with your ECIR project and push robot credentials, as described in the [GitLab CI/CD documentation](../../gitlab/cicd.md).
 
 1. **Add the Dockerfile** to your GitLab repository (e.g., in a `code/docker/` folder).
 
-1. **Add the GitLab CI/CD configuration** file (`.gitlab-ci.yml`) to your repository root to automatically build and push images when changes are detected:
-
-    ```yaml
-    # .gitlab-ci.yml - Build and push Docker image to ECIR
-    build-rootless:
-      image:
-        name: moby/buildkit:rootless
-      stage: build
-      variables:
-        BUILDKITD_FLAGS: --oci-worker-no-process-sandbox
-        REG_IMAGE: "$HARBOR_HOST/$HARBOR_PROJECT/template-docker-image:$CI_COMMIT_SHA"
-      before_script:
-        - mkdir -p ~/.docker
-        - echo "{\"auths\":{\"$HARBOR_HOST\":{\"username\":\"$HARBOR_USERNAME\",\"password\":\"$HARBOR_PASSWORD\"}}}" > ~/.docker/config.json
-      script:
-        - |
-          buildctl-daemonless.sh build \
-            --frontend dockerfile.v0 \
-            --local context=. \
-            --local dockerfile=. \
-            --output type=image,name=$REG_IMAGE,push=true
-      rules:
-        - changes:
-            - code/docker/**
-    ```
-
-    This configuration:
-    - Uses rootless BuildKit for efficient image building without requiring root privileges on the GitLab runner to prevent containers being built being able to interact with others
-    - Tags images with the commit SHA for versioning
-    - Only runs when files in `code/docker/` are changed
-    - Pushes to your ECIR project repository
+1. **Add the GitLab CI/CD configuration** file (`.gitlab-ci.yml`) to your repository root, using the BuildKit template in the [GitLab CI/CD documentation](../../gitlab/cicd.md), to automatically build and push images when changes are detected.
 
 1. **Push a change** to the Dockerfile and verify the image is built and available in ECIR.
 
-!!! tip "Alternative: DOCKER_AUTH_CONFIG variable"
-    You can also set up a `DOCKER_AUTH_CONFIG` CI/CD variable for authentication:
-    ```yaml
-    variables:
-      DOCKER_AUTH_CONFIG: "{\"auths\":{\"$HARBOR_HOST\":{\"username\":\"$HARBOR_USERNAME\",\"password\":\"$HARBOR_PASSWORD\"}}}"
-    ```
-    This approach is documented in the [GitLab CI/CD Docker documentation](https://docs.gitlab.com/ci/docker/using_docker_images/#access-an-image-from-a-private-container-registry).
-
-For more examples and advanced configurations, see the [GitLab CI/CD Examples repository](https://gitlab.eidf.ac.uk/Liz/cicd-examples) and the [ECIR documentation](../../registry/working-with.md).
+For more examples and advanced configurations, see the [GitLab CI/CD documentation](../../gitlab/cicd.md), the [GitLab CI/CD Examples repository](https://gitlab.eidf.ac.uk/Liz/cicd-examples) and the [ECIR documentation](../../registry/working-with.md).
 
 ## Code development with K8s
 
