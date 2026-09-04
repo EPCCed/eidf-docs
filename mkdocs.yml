@@ -97,6 +97,7 @@ nav:
       - "Overview": services/s3/index.md
       - "Manage": services/s3/manage.md
       - "Tutorial": services/s3/tutorial.md
+      - "Using the EIDF S3 Browser": services/s3/s3browser.md
     - "Data Publishing":
        - "Getting started": services/datapublishing/service.md
        - "Your Data Catalogue entry": services/datapublishing/catalogue.md
