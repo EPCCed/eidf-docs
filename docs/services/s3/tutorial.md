@@ -84,7 +84,7 @@ Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) 
 
 !!! Note "S3 service region"
 
-    In the following, there are references to a region, `us-east-1`. This is adefault, it does **not** mean that the EIDF S3 service is hosted in the US, it is not!
+    In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 service is hosted in the US, it is not!
 
 ---
 
@@ -234,7 +234,7 @@ export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 
     `AWS_ENDPOINT_URL_S3` is a URL for S3 services accessed via AWS CLI. It too is recognised by AWS CLI.
 
-    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 services. It is not recnogised by AWS CLI.
+    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 services. It is not recognised by AWS CLI.
 
     All three are defined here to cover all possible tools you may use in this tutorial.
 
@@ -471,7 +471,7 @@ aws s3 ls s3://mybucket
 
 ### Prefixes and virtual directories
 
-So far, all the file uploads and downoads that have been done have used the file name as a key name for the files object within the S3 service.
+So far, all the file uploads and downloads that have been done have used the file name as a key name for the files object within the S3 service.
 
 Run the following to upload `unis.csv` into the bucket:
 
@@ -631,7 +631,7 @@ In terms of virtual directories, these queries can be viewed as akin to using wi
 
     Uploading a file to `s3://mybucket/a/b/c/` results in a file with key `a/b/c//<filename>`. In contrast, uploading a file to `s3://mybucket/a/b/c` results in a file with key `a/b/c`.
 
-    Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`. In constrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
+    Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`. In contrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
 
 ### List files and file sizes
 

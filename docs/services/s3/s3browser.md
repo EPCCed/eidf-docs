@@ -40,7 +40,7 @@ The files in the bucket will be listed.
 
 To refresh the view of the bucket, to reflect any changes to the bucket since the web page was last loaded, click **Refresh**.
 
-To upload a file, click **Upload**, then, either click **Browse Fiales** to select files, or drag and drop files into the browser.
+To upload a file, click **Upload**, then, either click **Browse Files** to select files, or drag and drop files into the browser.
 
 To download a file, select the file from the table, then click the download button.
 
