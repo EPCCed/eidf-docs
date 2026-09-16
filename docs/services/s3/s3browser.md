@@ -1,6 +1,6 @@
 # Using the EIDF S3 Browser
 
-The [EIDF S3 Service](./index.md) is complemented by the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/), part of the EIDF portal. The EIDF S3 Browser is a web-based user interface within the EIDF portal, for creating and managing buckets and uploading, downloading and deleting files.
+The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files.
 
 ## Select projects
 
