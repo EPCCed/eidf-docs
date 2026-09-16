@@ -45,7 +45,7 @@ To create a bucket:
 To view a bucket, including its URL and files:
 
 * Click the bucket name within the 'BUCKETS' area.
-* The bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`, for example `https://s3.eidf.ac.uk/eidf114:mybucket`.
+* The bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`, for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
 * The files in the bucket will be listed in a table.
 
 To refresh the view of the selected bucket, to reflect any changes to the bucket since the web page was last loaded, click **Refresh**.
@@ -123,7 +123,7 @@ To make a bucket publicly-readable:
 * Click **Settings** and select **Make Bucket Public**
 * A 'Make bucket publicly readable' dialog will appear.
 * Click **OK**.
-* A 'Bucket is public' area will appear and the bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` for example `https://s3.eidf.ac.uk/eidf114:mybucket`.
+* A 'Bucket is public' area will appear and the bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
 
 To view information about the bucket:
 
