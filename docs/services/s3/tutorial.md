@@ -1,12 +1,12 @@
-# Tutorial introduction to the EIDF S3 service
+# Tutorial introduction to the EIDF S3 Service
 
 ---
 
 ## Introduction
 
-This tutorial provides a hands-on introduction to S3 and the EIDF S3 service.
+This tutorial provides a hands-on introduction to S3 and the EIDF S3 Service.
 
-The tutorial assumes you have been granted access to the EIDF S3 service or have been given EIDF S3 credentials.
+The tutorial assumes you have been granted access to the EIDF S3 Service or have been given EIDF S3 credentials.
 
 The tutorial has been checked using the following platforms and packages as follows:
 
@@ -18,37 +18,59 @@ The tutorial has been checked using the following platforms and packages as foll
 
 TODO:
 
-* 'flat', key-value (hashtable, associative array, Python dict, R list in general concept, but storage, not in-memory!)
-* Endpoints
-* Buckets
-* Files vs. objects (file content + metadata), here we use files to keep it simple, unless we need to refer to objects.
-* Naming
-* Prefix, virtual folder/directory
+Amazon S3 (Simple Storage Service) Amazon Web Services
 
-TODO:
+'S3' as Amazon product vs. 'S3' as defacto API standard implemented by others, offering S3-compatible APIs.
 
-* The EIDF S3 service is an S3 object store. S3 means 'Simple Storage Service'.
-* 'S3' as Amazon product vs. 'S3' as defacto API standard implemented by others, offering S3-compatible APIs.
-* Aside: 'S3' is a a 'proprietary metonym' like 'Post-It' for 'sticky notes',  'Hoover' for 'vacuum cleaner' or 'Google' for 'online search'!
-* Whether some operations fail or do nothing depends on both S3 client and S3 service.
+Aside: 'S3' is a a 'proprietary metonym' like 'Post-It' for 'sticky notes',  'Hoover' for 'vacuum cleaner' or 'Google' for 'online search'!
+
+The EIDF S3 Service is an S3 object store. S3 means 'Simple Storage Service'.
+
+'flat', key-value (hashtable, associative array, Python dict, R list in general concept, but storage, not in-memory!)
+
+Endpoints
+
+Buckets:
+
+* Contain objects each of which has a key.
+* Names unique across all S3 users, alphanumeric characters plus dot and dash.
+* DNS and FQDN bucket names e.g. 's3://my-bucket.s3tools.org' are recommended.
+* Cannot be nested.
+
+Files vs. objects (file content + metadata), here we use files to keep it simple, unless we need to refer to objects.
+
+Objects:
+
+* Names, UTF-8, up to 1024 bytes long.
+* Public, accessible via HTTP.
+* Private
+* Access Control Lists (ACL)
+
+Naming
+
+Prefix, virtual folder/directory
 
 ---
 
-## About the EIDF S3 service
+## About the EIDF S3 Service
 
-TODO:
+The EIDF S3 Service is an S3 object store. S3 means 'Simple Storage Service'.
 
-* S3 products differ in S3 capabilities.
-* EIDF S3 uses Ceph S3.
-* Subset of Amazon S3 REST API
+Whether some operations fail or do nothing depends on both S3 client and S3 Service.
+
+S3 products differ in S3 capabilities.
+
+EIDF S3 uses Ceph S3.
+
+Subset of Amazon S3 REST API
 
 ---
 
 ## Get information to use EIDF S3
 
-To use an S3 service, you will need the S3 service endpoint URL, an access key and secret.
+To use an S3 Service, you will need the S3 Service endpoint URL, an access key and secret.
 
-The EIDF S3 service endpoint is https://s3.eidf.ac.uk.
+The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
 Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
 
@@ -59,15 +81,15 @@ Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) 
     * **Buckets**: The number of S3 buckets you can create.
     * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secret.
 
-!!! Note "S3 service region"
+!!! Note "S3 Service region"
 
-    In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 service is hosted in the US, it is not!
+    In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 Service is hosted in the US, it is not!
 
 ---
 
 ## Use EIDF S3 via the command-line
 
-This section describes how to use the EIDF S3 service via the command-line, using the [AWS Command Line Interface](https://aws.amazon.com/cli/) (AWS CLI). Other S3 clients are available, a selection is listed in [Other S3 Clients](#other-s3-clients) below.
+This section describes how to use the EIDF S3 Service via the command-line, using the [AWS Command Line Interface](https://aws.amazon.com/cli/) (AWS CLI). Other S3 clients are available, a selection is listed in [Other S3 Clients](#other-s3-clients) below.
 
 ### Install AWS CLI
 
@@ -125,7 +147,7 @@ aws s3 ls help
 
 ### Configure AWS CLI
 
-To interact with the EIDF S3 service, AWS CLI needs to know the S3 endpoint URL, access key and secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
+To interact with the EIDF S3 Service, AWS CLI needs to know the S3 endpoint URL, access key and secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
 
 #### Set endpoint and credentials configuration
 
@@ -150,7 +172,7 @@ Set the endpoint:
 aws configure set endpoint_url https://s3.eidf.ac.uk
 ```
 
-If you are using the EIDF S3 service from within an EIDF [Confidential Data Workspace](../confidentialdataworkspace/index.md), then add the path to the web proxy certificate bundle:
+If you are using the EIDF S3 Service from within an [EIDF Confidential Data Workspace](../confidentialdataworkspace/index.md), then add the path to the web proxy certificate bundle:
 
 ```bash
 aws configure set ca_bundle /usr/local/share/ca-certificates/extra/squid_proxyCA.crt
@@ -180,7 +202,7 @@ Set the credentials file to be readable by you only (Linux users only):
 chmod go-rwx .aws/credentials
 ```
 
-If you are using the EIDF S3 service from within an EIDF [Confidential Data Workspace](../confidentialdataworkspace/index.md), then add the path to web proxy certificate bundle to `.aws/config`:
+If you are using the EIDF S3 Service from within an [EIDF Confidential Data Workspace](../confidentialdataworkspace/index.md), then add the path to web proxy certificate bundle to `.aws/config`:
 
 ```ini
 ca_bundle = /usr/local/share/ca-certificates/extra/squid_proxyCA.crt
@@ -199,7 +221,7 @@ export AWS_S3_ENDPOINT=${AWS_ENDPOINT_URL}
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
-If you are using the EIDF S3 service from within an EIDF [Confidential Data Workspace](../confidentialdataworkspace/index.md), define the following environment variable with the path to the web proxy certificate bundle:
+If you are using the EIDF S3 Service from within an [EIDF Confidential Data Workspace](../confidentialdataworkspace/index.md), define the following environment variable with the path to the web proxy certificate bundle:
 
 ```bash
 export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
@@ -209,9 +231,9 @@ export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 
     `AWS_ENDPOINT_URL` is a URL for any services accessed via AWS CLI, including S3. It is recognised by AWS CLI.
 
-    `AWS_ENDPOINT_URL_S3` is a URL for S3 services accessed via AWS CLI. It too is recognised by AWS CLI.
+    `AWS_ENDPOINT_URL_S3` is a URL for S3 Services accessed via AWS CLI. It too is recognised by AWS CLI.
 
-    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 services. It is not recognised by AWS CLI.
+    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by AWS CLI.
 
     All three are defined here to cover all possible tools you may use in this tutorial.
 
@@ -232,11 +254,11 @@ List the buckets in your account:
 aws s3 ls
 ```
 
-If you are using a newly-created EIDF S3 service for your project, then there will be no buckets shown.
+If you are using a newly-created EIDF S3 Service for your project, then there will be no buckets shown.
 
 !!! Tip "Troubleshooting `SSL validation failed for https://s3.eidf.ac.uk/`"
 
-    If you are using the EIDF S3 service from within an EIDF [Confidential Data Workspace](../confidentialdataworkspace/index.md), and you see an error like:
+    If you are using the EIDF S3 Service from within an [EIDF Confidential Data Workspace](../confidentialdataworkspace/index.md), and you see an error like:
 
     ```text
     SSL validation failed for https://s3.eidf.ac.uk/ [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1032)
@@ -280,7 +302,7 @@ The new bucket will be listed:
 2026-09-04 09:18:35 mybucket
 ```
 
-List the files in the bucket, prefixing the bucket name with `s3://` so that the AWS CLI knows that the bucket on the S3 service is being referred to:
+List the files in the bucket, prefixing the bucket name with `s3://` so that the AWS CLI knows that the bucket on the S3 Service is being referred to:
 
 ```bash
 aws s3 ls s3://mybucket
@@ -448,7 +470,7 @@ aws s3 ls s3://mybucket
 
 ### Prefixes and virtual directories
 
-So far, all the file uploads and downloads that have been done have used the file name as a key name for the files object within the S3 service.
+So far, all the file uploads and downloads that have been done have used the file name as a key name for the files object within the S3 Service.
 
 Run the following to upload `unis.csv` into the bucket:
 
@@ -462,7 +484,7 @@ The upload message is:
 upload: ./unis.csv to s3://mybucket/lothian/edunis
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edunis`, the S3 service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edunis`'.
+When the file is uploaded using path `s3://mybucket/lothian/edunis`, the S3 Service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edunis`'.
 
 Now, rerun the command, but this time add a trailing slash to `edinburgh`:
 
@@ -476,7 +498,7 @@ The upload message is now:
 upload: ./unis.csv to s3://mybucket/lothian/edinburgh/unis.csv
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edinburgh/`, the S3 service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`'.
+When the file is uploaded using path `s3://mybucket/lothian/edinburgh/`, the S3 Service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`'.
 
 The absence of a trailing slash is interpreted to mean that the is to be given the key name specified in the path e.g., `lothian/edunis`. In contrast, the presence of a trailing slash is interpreted to mean that the file is to be given the key name specified in the path plus the filename itself e.g., `lothian/edinburgh/unis.csv`.
 
@@ -557,7 +579,7 @@ Adding the `--recursive` option is akin to a recursive listing of these virtual 
 
 !!! Important "Virtual directories are virtual!"
 
-    Keep in mind that an S3 service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!
+    Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!
 
 Run the following commands, but omit the trailing slashes:
 
@@ -707,71 +729,23 @@ aws s3 rb s3://mybucket
 
 ## Other S3 clients
 
-There are other S3 clients available, both for using an S3 service via the command line and via a graphical user interface.
+There are many other S3 clients available.
 
-An alternative command-line client is [s3cmd](https://s3tools.org/s3cmd).
+The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of the EIDF S3 Service and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files. See [Using the EIDF S3 Browser](./s3browser.md).
+
+Another command-line client is [s3cmd](https://s3tools.org/s3cmd).
 
 A client offering a graphical user interface is [Cyberduck](https://cyberduck.io). If using Cyberduck, you may need to [Connect using Deprecated Path Style Requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests) otherwise you may have problems listing the contents of a bucket. For more information, see the [Cyberduck documentation](https://docs.cyberduck.io/cyberduck/).
 
-A web browser-based client is the EIDF S3 service's own [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/), part of the EIDF portal. The EIDF S3 Browser is a web-based user interface within the EIDF portal, for creating and configuring buckets and uploading, downloading and deleting files. See [Using the EIDF S3 Browser](./s3browser.md).
-
-These, and other, clients may have client-specific ways of configuring the clients to interact with S3 services. Consult the relevant client's documentation for details.
-
----
-
-## Read data from public buckets
-
-Public buckets do not require credentials to be provided before their data can be accessed.
-
-To read from a public bucket, for example to list or download files, without providing credentials, use the option `--no-sign-request`:
-
-```bash
-aws s3 ls s3://<bucketname> --no-sign-request
-aws s3 cp s3://<bucketname>/<key> . --no-sign-request
-```
-
-To specify an endpoint that differs from the default endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
-
-```bash
-aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url <url>
-aws s3 cp s3://<bucketname>/<key> . --no-sign-request --endpoint-url <url>
-```
-
-For public S3 buckets, such as those provided for datasets hosted within the EIDF [Data Publishing Service](../datapublishing/service.md), https and S3 download links can be converted between each other. For example, here is an S3 bucket link and file and the corresponding https links:
-
-```text
-s3://eidfXXX-my-dataset
-s3://eidfXXX-my-dataset/my-data-file.csv
-```
-
-```text
-https://s3.eidf.ac.uk/eidfXXX-my-dataset
-https://s3.eidf.ac.uk/eidfXXX-my-dataset/my-data-file.csv
-```
-
-https links can be explored within a browser, and, for file links, downloaded.
-
-s3 links can be used with AWS CLI to explore the public bucket and download files. For example:
-
-```bash
-aws s3 ls --recursive s3://eidfXXX-my-dataset/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request
-aws s3 cp s3://eidfXXX-my-dataset/my-data-file.csv . --endpoint-url https://s3.eidf.ac.uk --no-sign-request
-aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./my-dataset --endpoint-url https://s3.eidf.ac.uk --no-sign-request
-```
-
-### Read data from public buckets using Python
-
-TODO: Python, do later
-
-### Read data from public buckets using R
-
-TODO: R, do later
+These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.
 
 ---
 
 ## Use EIDF S3 via Python
 
-This section describes how to use the EIDF S3 service via Python and the Amazon Web Services Software Development Kit for Python, [boto3](https://aws.amazon.com/sdk-for-python/).
+This section describes how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [boto3](https://aws.amazon.com/sdk-for-python/).
+
+The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
 
 TODO: Use comparable examples from the foregoing, with a different bucket name.
 
@@ -791,7 +765,7 @@ Install boto3:
 python -m pip install boto3
 ```
 
-### Configure Python to connect to the EIDF S3 service
+### Configure Python to connect to the EIDF S3 Service
 
 TODO: Does boto3 use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
@@ -826,7 +800,7 @@ response_checksum_validation=when_required
     s3 = boto3.resource('s3', config=config)
     ```
 
-### Interact with the EIDF S3 service using Python
+### Interact with the EIDF S3 Service using Python
 
 TODO: Check, edit, run.
 
@@ -880,7 +854,9 @@ bucket.download_file(
 
 ## Use EIDF S3 via R
 
-This section describes how to use the EIDF S3 service via R and the [TODO](TODO) package.
+This section describes how to use the EIDF S3 Service via R and the [TODO](TODO) package.
+
+The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
 
 TODO: Use comparable examples from the foregoing, with a different bucket name.
 
@@ -894,7 +870,7 @@ There are three different packages for R that you could install:
 
 TODO: Above is from `docs/safe-haven-services/s3-service.md` pull request. Why is aws.cli recommended and not Amazon's own paws?
 
-### Configure R to connect to the EIDF S3 service
+### Configure R to connect to the EIDF S3 Service
 
 TODO: Does aws.s3|paws use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
@@ -904,7 +880,7 @@ Credentials can be passed in as environment variables, as described above. Alter
 
     For the endpoint, `aws.s3` uses environment variable `AWS_S3_ENDPOINT`, not `AWS_ENDPOINT_URL`.
 
-### Interact with the EIDF S3 service using R
+### Interact with the EIDF S3 Service using R
 
 TODO: Use comparable examples to those used for Python.
 
@@ -953,17 +929,157 @@ If you want to use another programming language have a look at the [Ceph S3 API]
 
 ---
 
-## Accessing buckets in other projects
+## EIDF S3 bucket URIs and URLs
+
+There are subtleties around how to refer to EIDF S3 Service buckets and files in both S3 bucket URIs and URLs, depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
+
+### Private buckets
+
+To refer to private buckets and files within a project, when using an access key for that project, use S3 URIs of form `s3://<bucket-name>`. For example:
+
+```text
+s3://mybucket
+s3://mybucket/my-data-file.csv
+```
+
+### Private buckets in other projects or public buckets
+
+To refer to private buckets and files within a project when using an access key for another project that has been granted access to that project, or to refer to public buckets and files in such projects, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
+
+```text
+s3://eidfNNN:mybucket
+s3://eidfNNN:mybucket/my-data-file.csv
+```
+
+!!! Note "Projects, buckets and tenancies"
+
+    Each project has its own tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
+
+    The project name specified within S3 URIs allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
+
+    A project prefix is not required when accessing buckets within a project using an access key for that project as the access key itself identifies the project's tenancy.
+
+!!! Warning "Project identification and S3 tools"
+
+    S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid as their specification does not allow for the concept of tenancies, and `<project-name>:<bucket-name>` is viewed as an invalid bucket name due to the presence of the colon.
+
+    Some S3 tools do not allow such S3 URIs to be used, for example AWS CLI. Others, however, will, including the Python and R packages already described.
+
+TODO: Revisit once you've actually checked this for Python and R!
+
+### Public buckets within the EIDF Data Publishing Service
+
+To refer to public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md), use S3 bucket URIs of form `s3://<project-name>-<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a dash `-`. For example:
+
+```text
+s3://eidfNNN-mybucket
+s3://eidfNNN-mybucket/my-data-file.csv
+```
+
+!!! Note "Projects, buckets and tenancies and the EIDF Data Publishing Service"
+
+    The EIDF Data Publishing Service uses a single tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
+
+    Prefixing the bucket names with the project names allows for different projects to have buckets with the same name within the EIDF Data Publishing Service without ambiguity.
+
+### Public buckets and URLs
+
+To access public buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
+
+```text
+https://s3.eidf.ac.uk/eidfNNN:mybucket
+https://s3.eidf.ac.uk/eidfNNN:mybucket/my-data-file.csv
+```
+
+To access public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
+
+```text
+https://s3.eidf.ac.uk/eidfNNN-mybucket
+https://s3.eidf.ac.uk/eidfNNN-mybucket/my-data-file.csv
+```
+
+---
+
+## Read data from public buckets
+
+Public buckets, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided.
+
+### Read data from public buckets using cURL
+
+TODO: cURL
+
+### Read data from public buckets using AWS CLI
+
+TODO: AWS CLI
+
+!!! Warning "AWS CLI cannot be used for public project buckets or private buckets in other projects"
+
+    TODO: Add caveat that cannot use for public buckets in EIDF projects, but can in data publishing service.
+
+To read from a public bucket, for example to list or download files, without providing credentials, use the option `--no-sign-request`:
+
+```bash
+aws s3 ls s3://<bucketname> --no-sign-request
+aws s3 cp s3://<bucketname>/<key> . --no-sign-request
+```
+
+To specify an endpoint that differs from the default endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
+
+```bash
+aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url <url>
+aws s3 cp s3://<bucketname>/<key> . --no-sign-request --endpoint-url <url>
+```
+
+For public S3 buckets, such as those provided for datasets hosted within the [EIDF Data Publishing Service](../datapublishing/service.md), https and S3 download links can be converted between each other. For example, here is an S3 bucket link and file and the corresponding https links:
+
+```text
+s3://eidfXXX-my-dataset
+s3://eidfXXX-my-dataset/my-data-file.csv
+```
+
+https links can be explored within a browser, and, for file links, downloaded.
+
+s3 links can be used with AWS CLI to explore the public bucket and download files. For example:
+
+```bash
+aws s3 ls --recursive s3://eidfXXX-my-dataset/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+aws s3 cp s3://eidfXXX-my-dataset/my-data-file.csv . --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./my-dataset --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+```
+
+### Read data from public buckets using Python
+
+TODO: Python
+
+When accessing a bucket with the project code prefix, switch off the bucket name validation:
+
+```python
+import boto3
+from botocore.handlers import validate_bucket_name
+
+s3 = boto3.resource('s3', endpoint_url='https://s3.eidf.ac.uk')
+s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_bucket_name)
+```
+
+### Read data from public buckets using R
+
+TODO: R
+
+TODO: aws.s3 seemingly allows colon-delimitation. paws allows it to be disabled.
+
+---
+
+## Access buckets in other EIDF projects
+
+TODO: Cross-check this with the current online tutorial, did that cover 'public' buckets only too?
 
 TODO: Check, edit for consistency with foregoing. How can this be checked?
 
-Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
+TODO: Add note on AWS CLI
 
-The project code is a prefix on the bucket name, separated by a colon (`:`), for example `eidfXX1:somebucket`.
+### Read data from other projects using Python
 
-This is only relevant when accessing buckets outside your project tenancy - if you access buckets in your own project you can ignore this section.
-
-TODO: Introduce Python subsection
+TODO: Introduce Python subsection, if applicable.
 
 By default, the `boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
 
@@ -976,6 +1092,8 @@ from botocore.handlers import validate_bucket_name
 s3 = boto3.resource('s3', endpoint_url='https://s3.eidf.ac.uk')
 s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_bucket_name)
 ```
+
+### Read data from other projects using R
 
 TODO: Introduce R subsection, if applicable.
 
