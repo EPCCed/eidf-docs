@@ -1,10 +1,10 @@
 # Using the EIDF S3 Browser
 
-The [EIDF S3 service](./index.md) is complemented by the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/), part of the EIDF portal. The EIDF S3 Browser is a web-based user interface within the EIDF portal, for creating and managing buckets and uploading, downloading and deleting files.
+The [EIDF S3 Service](./index.md) is complemented by the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/), part of the EIDF portal. The EIDF S3 Browser is a web-based user interface within the EIDF portal, for creating and managing buckets and uploading, downloading and deleting files.
 
 ## Select projects
 
-The 'PROJECTS' area allows you to select one of your EIDF projects for which use of the EIDF S3 service has been enabled.
+The 'PROJECTS' area allows you to select one of your EIDF projects for which use of the EIDF S3 Service has been enabled.
 
 To select a project:
 
@@ -89,7 +89,7 @@ To delete file(s) from a bucket:
 
 ### Toggle file (object) versioning
 
-The EIDF S3 service supports file (object) versioning. By default, versioning is disabled, and only the latest version of files will be kept. If versioning is enabled, then you can preserve, retrieve, and restore every version of every file stored in your bucket.
+The EIDF S3 Service supports file (object) versioning. By default, versioning is disabled, and only the latest version of files will be kept. If versioning is enabled, then you can preserve, retrieve, and restore every version of every file stored in your bucket.
 
 To toggle versioning:
 
