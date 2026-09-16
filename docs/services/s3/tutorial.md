@@ -91,9 +91,9 @@ Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) 
 
 This section describes how to use the EIDF S3 Service via the command-line, using the [AWS Command Line Interface](https://aws.amazon.com/cli/) (AWS CLI). Other S3 clients are available, a selection is listed in [Other S3 Clients](#other-s3-clients) below.
 
-### Install AWS CLI
+### Install the AWS CLI
 
-Install AWS CLI:
+Install the AWS CLI:
 
 ```bash
 curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
@@ -103,7 +103,7 @@ TODO: Windows|Mac install, paths etc.
 
 !!! Note "AWS CLI install location"
 
-    On EIDF VMs, AWS CLI is installed into `$HOME/.local/share/aws-cli` with a symbolic link in `$HOME/.local/bin`. Your EIDF `.profile` ensures that `$HOME/.local/bin` is on your `PATH`.
+    On EIDF VMs, the AWS CLI is installed into `$HOME/.local/share/aws-cli` with a symbolic link in `$HOME/.local/bin`. Your EIDF `.profile` ensures that `$HOME/.local/bin` is on your `PATH`.
 
 Check version:
 
@@ -121,7 +121,7 @@ The version will be shown.
     export PATH="~/.local/bin:$PATH"
     ```
 
-AWS CLI S3 commands are of form:
+The AWS CLI S3 commands are of form:
 
 ```bash
 aws s3 <command>
@@ -145,9 +145,9 @@ For example, for help on the AWS CLI S3 `ls` command, run:
 aws s3 ls help
 ```
 
-### Configure AWS CLI
+### Configure the AWS CLI
 
-To interact with the EIDF S3 Service, AWS CLI needs to know the S3 endpoint URL, access key and secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
+To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, access key and secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
 
 #### Set endpoint and credentials configuration
 
@@ -229,11 +229,11 @@ export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 
 !!! Note "`AWS_ENDPOINT_URL` vs. `AWS_ENDPOINT_URL_S3` vs. `AWS_S3_ENDPOINT`"
 
-    `AWS_ENDPOINT_URL` is a URL for any services accessed via AWS CLI, including S3. It is recognised by AWS CLI.
+    `AWS_ENDPOINT_URL` is a URL for any services accessed via the AWS CLI, including S3. It is recognised by the AWS CLI.
 
-    `AWS_ENDPOINT_URL_S3` is a URL for S3 Services accessed via AWS CLI. It too is recognised by AWS CLI.
+    `AWS_ENDPOINT_URL_S3` is a URL for S3 Services accessed via the AWS CLI. It too is recognised by the AWS CLI.
 
-    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by AWS CLI.
+    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by the AWS CLI.
 
     All three are defined here to cover all possible tools you may use in this tutorial.
 
@@ -271,6 +271,8 @@ Create a bucket, 'mybucket':
 ```bash
 aws s3 mb s3://mybucket
 ```
+
+`s3://mybucket` is an S3 URI. S3 URIs are a standard way of referncing buckets, and files, available at S3 endpoints.
 
 !!! Important "Bucket names"
 
@@ -392,7 +394,7 @@ for i in 1 2 3; do
 done
 ```
 
-Now, upload only the `.dat` files from `data` into the bucket:
+Now, upload all `.dat` files, and only `.dat` files, from `data` into the bucket:
 
 ```bash
 aws s3 cp data s3://mybucket --recursive --exclude "*" --include "*.dat"
@@ -421,7 +423,7 @@ The listing will include the uploaded files:
 2026-09-04 09:18:40        154 unis.csv
 ```
 
-Now, download the `.dat` files from the bucket into a new local `downloaded` directory, ignoring any other files (for example, `unis.csv`), then list its contents:
+Now, download all `.dat` files from the bucket into a new local `downloaded` directory, ignoring any other files (for example, `unis.csv`), then list its contents:
 
 ```bash
 aws s3 cp s3://mybucket downloaded --recursive --exclude "*" --include "*.dat"
@@ -505,7 +507,7 @@ The absence of a trailing slash is interpreted to mean that the is to be given t
 Both these file's keys share a common prefix, `lothian/edinburgh/`. This can be seen by listing the files in the bucket:
 
 ```bash
-aws s3 ls s3://mybucket/
+aws s3 ls s3://mybucket
 ```
 
 ```text
@@ -518,7 +520,7 @@ aws s3 ls s3://mybucket/
 Rerun the command, adding a `--recursive` option to request that these files be listed with their keys:
 
 ```bash
-aws s3 ls s3://mybucket/ --recursive
+aws s3 ls s3://mybucket --recursive
 ```
 
 ```text
@@ -769,7 +771,7 @@ python -m pip install boto3
 
 TODO: Does boto3 use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
-Credentials can be passed in as parameters to the functions, as shown below, or as environment variables, as described above. Alternatively, you can set environment variables from within Python using `os.environ`.
+Credentials can be passed in as parameters to the functions, as shown below, or as environment variables, as described earlier. Alternatively, you can set environment variables from within Python using `os.environ`.
 
 Update `.aws/config`:
 
@@ -874,7 +876,7 @@ TODO: Above is from `docs/safe-haven-services/s3-service.md` pull request. Why i
 
 TODO: Does aws.s3|paws use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
-Credentials can be passed in as environment variables, as described above. Alternatively, you can set environment variables within your `.Renviron` file or from within R using `Sys.setenv`.
+Credentials can be passed in as environment variables, as described earlier. Alternatively, you can set environment variables within your `.Renviron` file or from within R using `Sys.setenv`.
 
 !!! Important
 
@@ -921,7 +923,7 @@ save_object( my_object_path,
 
 ---
 
-## Use EIDF S3 via other programming languages
+## Use the EIDF S3 Service via other programming languages
 
 TODO: Check, edit for consistency with foregoing.
 
@@ -942,9 +944,9 @@ s3://mybucket
 s3://mybucket/my-data-file.csv
 ```
 
-### Private buckets in other projects or public buckets
+### Private buckets in other projects or public project buckets
 
-To refer to private buckets and files within a project when using an access key for another project that has been granted access to that project, or to refer to public buckets and files in such projects, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
+To refer to private buckets and files within a project when using an access key for another project that has been granted access to that project, or to refer to public project buckets and files in such projects, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
 
 ```text
 s3://eidfNNN:mybucket
@@ -963,7 +965,7 @@ s3://eidfNNN:mybucket/my-data-file.csv
 
     S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid as their specification does not allow for the concept of tenancies, and `<project-name>:<bucket-name>` is viewed as an invalid bucket name due to the presence of the colon.
 
-    Some S3 tools do not allow such S3 URIs to be used, for example AWS CLI. Others, however, will, including the Python and R packages already described.
+    Some S3 tools do not allow such S3 URIs to be used, for example the AWS CLI. Others, however, will, including the Python and R packages already described.
 
 TODO: Revisit once you've actually checked this for Python and R!
 
@@ -984,7 +986,7 @@ s3://eidfNNN-mybucket/my-data-file.csv
 
 ### Public buckets and URLs
 
-To access public buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
+To access public project buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
 
 ```text
 https://s3.eidf.ac.uk/eidfNNN:mybucket
@@ -1000,86 +1002,173 @@ https://s3.eidf.ac.uk/eidfNNN-mybucket/my-data-file.csv
 
 ---
 
-## Read data from public buckets
+## Read from public buckets
 
 Public buckets, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided.
 
-### Read data from public buckets using cURL
+In this section, you'll use a public project bucket that you create.
 
-TODO: cURL
+!!! Tip "Read from public buckets in the EIDF Data Publishing Service"
 
-### Read data from public buckets using AWS CLI
+    Instead of creating your own public bucket, the examples in this section can also be tried using public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). Remember that, as described in [EIDF S3 bucket URIs and URLs](#eidf-s3-bucket-uris-and-urls), within the EIDF Data Publishing Service URIs and URLs use `<project-name>-<bucket-name>`, not `<project-name>:<bucket-name>`.
 
-TODO: AWS CLI
+### Create a public bucket
 
-!!! Warning "AWS CLI cannot be used for public project buckets or private buckets in other projects"
-
-    TODO: Add caveat that cannot use for public buckets in EIDF projects, but can in data publishing service.
-
-To read from a public bucket, for example to list or download files, without providing credentials, use the option `--no-sign-request`:
+To create a public bucket, using the AWS CLI, first recreate the 'mybucket' bucket and add the 'unis.csv' data file to it:
 
 ```bash
-aws s3 ls s3://<bucketname> --no-sign-request
-aws s3 cp s3://<bucketname>/<key> . --no-sign-request
+aws s3 mb s3://mybucket
+aws s3 cp unis.csv s3://mybucket/lothian/edinburgh/
 ```
 
-To specify an endpoint that differs from the default endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
+Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to make 'mybucket' public, by following the instructions to [Make a bucket public](./s3browser.md#make-a-bucket-public).
+
+!!! Note "Making a bucket public"
+
+    Here, the EIDF S3 Browser is used to make a bucket public. In [Access policies](#access-policies), you will see how to make a bucket public using the AWS CLI, Python and R.
+
+### Read from public buckets via a browser
+
+To access information about your bucket, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket` into your browser.
+
+A new browser tab will open, showing an XML document with information about the bucket and all the files it contains including their metadata.
+
+To download file `lothian/edinburgh/unis.csv`, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv` into your browser.
+
+Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.
+
+### Read from public buckets via 'curl'
+
+A popular Linux command-line utilities for accessing public URLs are is 'curl'. 'curl' can be used as follows to access your bucket.
+
+In the following, replace `<project-name>` with your EIDF project name 'eidfNNN'.
+
+Download information about your bucket contents (`-o` names the downloaded file):
 
 ```bash
-aws s3 ls s3://<bucketname> --no-sign-request --endpoint-url <url>
-aws s3 cp s3://<bucketname>/<key> . --no-sign-request --endpoint-url <url>
+curl -o mybucket.xml https://s3.eidf.ac.uk/<project-name>:mybucket
 ```
 
-For public S3 buckets, such as those provided for datasets hosted within the [EIDF Data Publishing Service](../datapublishing/service.md), https and S3 download links can be converted between each other. For example, here is an S3 bucket link and file and the corresponding https links:
+`mybucket.xml` will be an XML document with information about the bucket and all the files it contains including their metadata.
+
+Download file `lothian/edinburgh/unis.csv` (`-O` uses the remote file name as the downloaded file name):
+
+```bash
+curl -O https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv
+```
+
+`lothian/edinburgh/unis.csv` will be downloaded and saved as `unis.csv`.
+
+### Read from public buckets using the AWS CLI
+
+To read data from our public bucket using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+
+You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
+
+```bash
+aws s3 cp s3://<project-name>:mybucket/lothian/edinburgh/unis.csv . --no-sign-request
+```
+
+The AWS CLI will raise an error about the bucket name:
 
 ```text
-s3://eidfXXX-my-dataset
-s3://eidfXXX-my-dataset/my-data-file.csv
+fatal error: Parameter validation failed:
+Invalid bucket name "<project-name>:mybucket": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
 ```
 
-https links can be explored within a browser, and, for file links, downloaded.
+So, instead, to show a working example, let's use a dataset from the [EIDF Data Publishing Service](../datapublishing/service.md), specifically [High-resolution snapshots of the viscous sublayer from direct numerical simulation of a turbulent boundary layer](https://catalogue.eidf.ac.uk/dataset/eidf198-high-resolution-snapshots-of-the-viscous-sublayer-from-direct-numerical-simulation-of-a-turb), published by the Turbulence Simulation Group of Imperial College London.
 
-s3 links can be used with AWS CLI to explore the public bucket and download files. For example:
+List the bucket's files:
 
 ```bash
-aws s3 ls --recursive s3://eidfXXX-my-dataset/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request
-aws s3 cp s3://eidfXXX-my-dataset/my-data-file.csv . --endpoint-url https://s3.eidf.ac.uk --no-sign-request
-aws s3 cp --recursive s3://eidfXXX-my-dataset/ ./my-dataset --endpoint-url https://s3.eidf.ac.uk --no-sign-request
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request
 ```
 
-### Read data from public buckets using Python
+```text
+                           PRE data.zarr/
+                           PRE examples/
+2025-08-05 13:00:55      18657 LICENSE
+2026-04-30 11:09:15       8630 README.md
+```
+
+List the bucket's files, now requesting that all files be listed:
+
+```bash
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request --recursive
+```
+
+```text
+2025-08-05 13:00:55      18657 LICENSE
+2026-04-30 11:09:15       8630 README.md
+2025-07-23 16:16:02  223392171 data.zarr/snapshots/p/c/0/0/0/0
+2025-07-23 16:16:02  222867280 data.zarr/snapshots/p/c/0/1/0/0
+2025-07-23 16:16:02  221594924 data.zarr/snapshots/p/c/0/10/0/0
+2025-07-23 16:16:02  219647578 data.zarr/snapshots/p/c/0/100/0/0
+2025-07-23 16:16:02  220032475 data.zarr/snapshots/p/c/0/101/0/0
+2025-07-23 16:16:02  219736029 data.zarr/snapshots/p/c/0/102/0/0
+2025-07-23 16:16:02  219222531 data.zarr/snapshots/p/c/0/103/0/0
+2025-07-23 16:16:03  218831210 data.zarr/snapshots/p/c/0/104/0/0
+...
+```
+
+Now, list a subset of the files, for example those with prefix `data.zarr/statistics/ww/c/9/`:
+
+```bash
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/ --no-sign-request --recursive
+```
+
+```text
+2025-07-24 05:02:41   17904692 data.zarr/statistics/ww/c/9/0/0
+2025-07-24 05:02:41   17617793 data.zarr/statistics/ww/c/9/1/0
+2025-07-24 05:02:41   17099519 data.zarr/statistics/ww/c/9/10/0
+2025-07-24 05:02:41   17321505 data.zarr/statistics/ww/c/9/11/0
+2025-07-24 05:02:41   17735846 data.zarr/statistics/ww/c/9/12/0
+2025-07-24 05:02:41   15056303 data.zarr/statistics/ww/c/9/13/0
+2025-07-24 05:02:41   17365366 data.zarr/statistics/ww/c/9/2/0
+2025-07-24 05:02:41   17301940 data.zarr/statistics/ww/c/9/3/0
+2025-07-24 05:02:41   17208233 data.zarr/statistics/ww/c/9/4/0
+2025-07-24 05:02:41   17216908 data.zarr/statistics/ww/c/9/5/0
+2025-07-24 05:02:41   17193874 data.zarr/statistics/ww/c/9/6/0
+2025-07-24 05:02:41   17100098 data.zarr/statistics/ww/c/9/7/0
+2025-07-24 05:02:41   17240933 data.zarr/statistics/ww/c/9/8/0
+2025-07-24 05:02:41   17167142 data.zarr/statistics/ww/c/9/9/0
+```
+
+Now download those files into a directory:
+
+```bash
+mkdir -p stats
+aws s3 cp 's3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/' stats --no-sign-request --recursive
+```
+
+```text
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/11/0 to stats/11/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/12/0 to stats/12/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0 to stats/0/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/10/0 to stats/10/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/1/0 to stats/1/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/2/0 to stats/2/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/4/0 to stats/4/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/5/0 to stats/5/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/13/0 to stats/13/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/7/0 to stats/7/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/6/0 to stats/6/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/3/0 to stats/3/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/8/0 to stats/8/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to stats/9/0
+```
+
+!!! Tip "Specifying a different endpoint URL"
+
+    To specify an S3 endpoint that differs from the default S3 endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
+
+    ```bash
+    aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request  --endpoint-url https://s3.eidf.ac.uk
+    ```
+
+### Read from public buckets using Python
 
 TODO: Python
-
-When accessing a bucket with the project code prefix, switch off the bucket name validation:
-
-```python
-import boto3
-from botocore.handlers import validate_bucket_name
-
-s3 = boto3.resource('s3', endpoint_url='https://s3.eidf.ac.uk')
-s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_bucket_name)
-```
-
-### Read data from public buckets using R
-
-TODO: R
-
-TODO: aws.s3 seemingly allows colon-delimitation. paws allows it to be disabled.
-
----
-
-## Access buckets in other EIDF projects
-
-TODO: Cross-check this with the current online tutorial, did that cover 'public' buckets only too?
-
-TODO: Check, edit for consistency with foregoing. How can this be checked?
-
-TODO: Add note on AWS CLI
-
-### Read data from other projects using Python
-
-TODO: Introduce Python subsection, if applicable.
 
 By default, the `boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
 
@@ -1093,11 +1182,33 @@ s3 = boto3.resource('s3', endpoint_url='https://s3.eidf.ac.uk')
 s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_bucket_name)
 ```
 
-### Read data from other projects using R
+### Read from public buckets using R
 
-TODO: Introduce R subsection, if applicable.
+TODO: R
 
-TODO: Add comparable code for R.
+When accessing a bucket with the project code prefix, switch off the bucket name validation:
+
+TODO: aws.s3 seemingly allows colon-delimitation. paws allows it to be disabled.
+
+---
+
+## Access buckets in other EIDF projects
+
+If you have been granted access to buckets in other projects, either to private buckets, or write access to public buckets, then you can access these using the same techniques as described for your own bucket and for public buckets.
+
+TODO: Check, edit for consistency with foregoing. How can this be checked? Does the user use their own project's access key and secret?
+
+### Access buckets in other EIDF projects the AWS CLI
+
+To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+
+### Access buckets in other EIDF projects using Python
+
+TODO: Copy blurb from [Read from public buckets using Python](#read-from-public-buckets-using-python).
+
+### Access buckets in other EIDF projects using R
+
+TODO: Copy blurb from [Read from public buckets using R](#read-from-public-buckets-using-r).
 
 ---
 
@@ -1116,7 +1227,7 @@ TODO: Name some of these libraries.
 
 Bucket permissions use IAM (Identity Access Management) policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.
 
-### Set policy using AWS CLI
+### Set policy using the AWS CLI
 
 TODO: Check, edit for consistency with foregoing.
 
