@@ -2,29 +2,6 @@
 
 ---
 
-## About (to be deleted when complete)
-
-Use EIDF host, eidf114-mjackson, Ubuntu 24.04.4 LTS (noble), 8G memory, 96G storage.
-
-Content is based on that from:
-
-* [Tutorial](https://docs.eidf.ac.uk/services/s3/tutorial/). GitHub [EPCCed/eidf-docs](https://github.com/EPCCed/eidf-docs/) source file [docs/services/s3/tutorial.md](https://github.com/EPCCed/eidf-docs/blob/main/docs/services/s3/tutorial.md).
-* Update tutorial.md [EPCCed/eidf-docs#212](https://github.com/EPCCed/eidf-docs/pull/212) (Julien)
-* Update tutorial.md [EPCCed/eidf-docs#279](https://github.com/EPCCed/eidf-docs/pull/279) (Julien)
-* My pull request, [EPCCed/eidf-docs#345](https://github.com/EPCCed/eidf-docs/pull/345), for `docs/safe-haven-services/s3-service.md`.
-
-Notes:
-
-The EIDF tutorial online uses Python package 'awscli' (GitHub, [aws/aws-cli](https://github.com/aws/aws-cli)). The [awscli](https://pypi.org/project/awscli/) Pypi page comments that AWS CLI v1 entered maintenance mode on 5 August 2026 and end-of-support is on 15 July 2027.
-
-There is a 'awscliv2' package under development (in a 'v2' branch within the GitHub repository). The [awscliv2](https://pypi.org/project/awscliv2/) Pypi page comments that this is not an official AWS CLI v2 application.
-
-In my updates, the standalone AWS CLI installer, from [Installing or updating to the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), 'Linux', 'Install script (recommended)' is used.
-
-MikeJ
-
----
-
 ## Introduction
 
 This tutorial provides a hands-on introduction to S3 and the EIDF S3 service.
