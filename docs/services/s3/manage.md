@@ -39,6 +39,7 @@ You can view and manage your project's S3 allocation and accounts via the [EIDF 
 To create an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
 
 1. Click **Add Account** (default project view) or **Create Account** (new project view).
+1. A 'Create S3 Object Store Account' page will appear.
 1. Enter:
     * **Account name**: Only letters, numbers, and underscore `_`, are allowed.
     * **Display Name**: Alternative name for display. Spaces are allowed.
@@ -55,6 +56,12 @@ The account will be created along with an access key and associated secret.
 
     You cannot create an account with a quota greater than the project's total S3 storage quota.
 
+!!! Tip "Troubleshooting: `Failed to create account: name already in use`"
+
+    S3 account names must be unique.
+
+    This error can sometimes arise if you try to reuse the name of an S3 account that you have previously deleted. S3 account are not deleted as such but are marked as 'retired'.
+
 It may take a little while for the account to become available.
 
 Refresh the project page to update the list of accounts.
@@ -70,6 +77,25 @@ Refresh the project page to update the list of accounts.
     To revoke your access, the collaborator can change their bucket's policy.
 
     Within your own project, project members who given permission to view the access keys of this S3 account but no others, can interact with your collaborator's bucket but not create any buckets within your own project.
+
+### Delete an S3 account
+
+To delete an S3 account, within the EPCC [SAFE](https://safe.epcc.ed.ac.uk):
+
+1. Select **Projects** menu, your project project ID e.g., 'eidfNNN'.
+1. A 'Project' page will appear.
+1. Under 'Object store quotas', click **CephS3**.
+1. A '(CephS3)-(eidfNNN)' page will appear.
+1. Click **List accounts**.
+1. An 'Account list' page will appear.
+1. Click S3 account name.
+1. Click **Remove**.
+1. An 'Are you sure you want to remove this S3 account?' dialog will appear.
+1. Click **Yes**.
+
+!!! Warning "S3 account names cannot be reused"
+
+    S3 account are not deleted as such but are marked as 'retired'. This means you cannot reuse the names of S3 accounts you have previously deleted.
 
 ## Access keys
 
@@ -98,6 +124,7 @@ You can control which project members are allowed to view each access key and se
 To grant view permissions for an access key to a project member, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
 
 1. Click on the **Edit** icon next to the key.
+1. A 'Set Access Key Permissions' page will appear.
 1. Select the project members that will have view permissions for this access key.
 1. Click **Update Permissions**.
 
