@@ -72,7 +72,7 @@ To use an S3 Service, you will need the S3 Service endpoint URL, an access key a
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-To view EIDF access keys, secrets, and storage and bucket quotas:
+To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
 1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your select project's page will appear.
@@ -89,7 +89,7 @@ To view EIDF access keys, secrets, and storage and bucket quotas:
 
     You will only see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
 
-    If you are a project lead, then you will see all the access keys, and associated S3 accounts, for your project.
+    If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
 
 !!! Note "S3 Service region"
 
@@ -157,7 +157,7 @@ aws s3 ls help
 
 ### Configure the AWS CLI
 
-To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, access key and secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
+To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, an access key and the access key's associated secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
 
 #### Set endpoint and credentials configuration
 

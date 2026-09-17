@@ -22,7 +22,7 @@ The 'ACCESS KEYS' section shows your selected project's S3 access keys, grouped 
 
     You will only see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
 
-    If you are a project lead, then you will see all the access keys, and associated S3 accounts, for your project.
+    If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
 
 To select an access key, click on the access key.
 
