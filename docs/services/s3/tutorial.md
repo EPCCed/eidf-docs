@@ -6,7 +6,7 @@
 
 This tutorial provides a hands-on introduction to S3 and the EIDF S3 Service.
 
-The tutorial assumes you have been granted access to the EIDF S3 Service or have been given EIDF S3 credentials.
+The tutorial assumes you have been granted access to the EIDF S3 Service or, for using public buckets only, have been given appropriate EIDF S3 credentials.
 
 The tutorial has been checked using the following platforms and packages as follows:
 
@@ -66,13 +66,13 @@ Subset of Amazon S3 REST API
 
 ---
 
-## Get information to use EIDF S3
+## Get information to use the EIDF S3 Service
 
 To use an S3 Service, you will need the S3 Service endpoint URL, an access key and secret.
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
+You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
 
 * Select the **Projects** menu, select your project.
 * Within the **S3 Access Keys** section, for each S3 account for that project you will see:
@@ -80,6 +80,8 @@ Get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) 
     * **Quota**: Your S3 quota, the maximum amount of storage you have available.
     * **Buckets**: The number of S3 buckets you can create.
     * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secret.
+
+![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
 !!! Note "S3 Service region"
 
