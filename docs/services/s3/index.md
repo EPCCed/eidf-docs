@@ -35,6 +35,6 @@ You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.
 
 [Using the EIDF S3 Browser](./s3browser.md): A guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files.
 
-[Manage EIDF S3 Service access](./manage.md): A guide for project leads on managing accounts and access permissions for their projects' S3 allocations.
+[Manage EIDF S3 Service access](./manage.md): A guide for project leads on requests for EIDF S3 Service object store allocations and management of accounts and access permissions for these allocations.
 
 Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html): Amazon's own S3 documentation.
