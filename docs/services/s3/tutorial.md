@@ -272,7 +272,7 @@ Create a bucket, 'mybucket':
 aws s3 mb s3://mybucket
 ```
 
-`s3://mybucket` is an S3 URI. S3 URIs are a standard way of referncing buckets, and files, available at S3 endpoints.
+`s3://mybucket` is an S3 URI. S3 URIs are a standard way of referencing buckets, and files, available at S3 endpoints.
 
 !!! Important "Bucket names"
 
@@ -963,7 +963,7 @@ s3://eidfNNN:mybucket/my-data-file.csv
 
 !!! Warning "Project identification and S3 tools"
 
-    S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid as their specification does not allow for the concept of tenancies, and `<project-name>:<bucket-name>` is viewed as an invalid bucket name due to the presence of the colon.
+    S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid as their specification does not include the concept of tenancies, so `<project-name>:<bucket-name>` is viewed as an invalid bucket name due to the presence of the colon.
 
     Some S3 tools do not allow such S3 URIs to be used, for example the AWS CLI. Others, however, will, including the Python and R packages already described.
 
@@ -1069,7 +1069,7 @@ You can see what the AWS CLI does when given such a S3 URI, by running the follo
 aws s3 cp s3://<project-name>:mybucket/lothian/edinburgh/unis.csv . --no-sign-request
 ```
 
-The AWS CLI will raise an error about the bucket name:
+The AWS CLI will raise an error as it interprets `<project-name>:<bucket-name>` as a bucket name, having no knowledge of the concept of tenancies:
 
 ```text
 fatal error: Parameter validation failed:
