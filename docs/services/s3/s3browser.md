@@ -4,37 +4,37 @@ The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of t
 
 ## Select projects
 
-The 'PROJECTS' area allows you to select one of your EIDF projects for which use of the EIDF S3 Service has been enabled.
+The 'PROJECTS' section allows you to select one of your EIDF projects for which use of the EIDF S3 Service has been enabled.
 
 To select a project:
 
-* Click on the search field.
-* A list of your projects will be shown.
-* Click on a project.
+1. Click on the search field.
+1. A list of your projects will be shown.
+1. Click on a project.
 
-Your access keys for the project will be shown in the 'ACCESS KEYS' area.
+Your access keys for the project will be shown in the 'ACCESS KEYS' section.
 
 ## Select access keys
 
-The 'ACCESS KEYS' area shows your access keys for your selected project.
+The 'ACCESS KEYS' section shows your access keys for your selected project.
 
 To select an access key, click on the access key.
 
-Current buckets within your project to which this access key grants access will be shown in the 'BUCKETS' area.
+Current buckets within your project to which this access key grants access will be shown in the 'BUCKETS' section.
 
 ## Manage buckets
 
-The 'BUCKETS' area shows you the current buckets within your selected project to which your selected access key grants access. Within this area, you can manage buckets for your selected project, using your selected access key.
+The 'BUCKETS' section shows you the current buckets within your selected project to which your selected access key grants access. Within this section, you can manage buckets for your selected project, using your selected access key.
 
 ### Create a bucket
 
 To create a bucket:
 
-* Click **Create**.
-* A 'Create New Bucket' dialog will appear.
-* Enter a **New Bucket Name**.
-* Click **Create**.
-* The new bucket will be created.
+1. Click **Create**.
+1. A 'Create New Bucket' dialog will appear.
+1. Enter a **New Bucket Name**.
+1. Click **Create**.
+1. The new bucket will be created.
 
 !!! Important "Bucket names"
 
@@ -44,9 +44,9 @@ To create a bucket:
 
 To view a bucket, including its URL and files:
 
-* Click the bucket name within the 'BUCKETS' area.
-* The bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`, for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
-* The files in the bucket will be listed in a table.
+1. Click the bucket name within the 'BUCKETS' section.
+1. The bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`, for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
+1. The files in the bucket will be listed in a table.
 
 To refresh the view of the selected bucket, to reflect any changes to the bucket since the web page was last loaded, click **Refresh**.
 
@@ -54,34 +54,34 @@ To refresh the view of the selected bucket, to reflect any changes to the bucket
 
 To upload file(s) into a bucket:
 
-* Click **Upload**.
-* An 'Upload Files' area will appear.
-* Either, click **Browse Files** to select files, or, drag and drop files into the 'Upload Files' area.
-* The files will be queued for upload and listed in a 'QUEUED' list.
-* Click **Upload Queued/Failed** to upload the files in the queue.
-* Once uploaded, the files will be listed in a 'COMPLETED' list.
+1. Click **Upload**.
+1. An 'Upload Files' section will appear.
+1. Either, click **Browse Files** to select files, or, drag and drop files into the 'Upload Files' section.
+1. The files will be queued for upload and listed in a 'QUEUED' list.
+1. Click **Upload Queued/Failed** to upload the files in the queue.
+1. Once uploaded, the files will be listed in a 'COMPLETED' list.
 
 To remove files queued for upload:
 
-* Click **Clear All**.
-* Any queued files will be removed.
-* The 'QUEUED' and 'COMPLETED' lists will be hidden.
+1. Click **Clear All**.
+1. Any queued files will be removed.
+1. The 'QUEUED' and 'COMPLETED' lists will be hidden.
 
 ### Download a file from a bucket
 
 To download a file from a bucket:
 
-* Click the **Download** button, at the right of the file's row in the files table.
-* Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.
+1. Click the **Download** button, at the right of the file's row in the files table.
+1. Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.
 
 ### Delete file(s) from a bucket
 
 To delete file(s) from a bucket:
 
-* Select the file(s) from the files table..
-* Click the **Delete file** button.
-* A 'Permanently delete' dialog will appear.
-* Click **OK**.
+1. Select the file(s) from the files table..
+1. Click the **Delete file** button.
+1. A 'Permanently delete' dialog will appear.
+1. Click **OK**.
 
 !!! Warning "Files are permanently deleted"
 
@@ -93,10 +93,10 @@ The EIDF S3 Service supports file (object) versioning. By default, versioning is
 
 To toggle versioning:
 
-* Click **Settings** and select **Enable Versioning**.
-* A 'Bucket Versioning' dialog will appear.
-* Click the checkbox to toggle on and off versioning.
-* Click **Save Changes**.
+1. Click **Settings** and select **Enable Versioning**.
+1. A 'Bucket Versioning' dialog will appear.
+1. Click the checkbox to toggle on and off versioning.
+1. Click **Save Changes**.
 
 ### Configure bucket policies
 
@@ -104,8 +104,8 @@ You can configure bucket policies using the Bucket Policy Editor.
 
 To open the Bucket Policy Editor:
 
-* Click **Settings** and select **Set Bucket Policy**.
-* The 'Bucket Policy Editor' will appear.
+1. Click **Settings** and select **Set Bucket Policy**.
+1. The 'Bucket Policy Editor' will appear.
 
 Within the Bucket Policy Editor you can edit policies via one of:
 
@@ -120,16 +120,16 @@ To save the policy, click **Save Policy**.
 
 To make a bucket publicly-readable:
 
-* Click **Settings** and select **Make Bucket Public**
-* A 'Make bucket publicly readable' dialog will appear.
-* Click **OK**.
-* A 'Bucket is public' area will appear and the bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
+1. Click **Settings** and select **Make Bucket Public**
+1. A 'Make bucket publicly readable' dialog will appear.
+1. Click **OK**.
+1. A 'Bucket is public' section will appear and the bucket URL will be shown. The bucket URL is of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` for example `https://s3.eidf.ac.uk/eidfNNN:mybucket`.
 
 To view information about the bucket:
 
-* Either, visit the bucket URL.
-* Or, click the 'upward right pointing arrow button, at the right of the 'Bucket is public' area.
-* A new browser tab will open, showing an XML document with information about the bucket and all the files it contains including their metadata.
+1. Either, visit the bucket URL.
+1. Or, click the 'upward right pointing arrow button, at the right of the 'Bucket is public' section.
+1. A new browser tab will open, showing an XML document with information about the bucket and all the files it contains including their metadata.
 
 !!! Warning "Publicly-readable buckets are available to all"
 
@@ -146,12 +146,12 @@ To view information about the bucket:
 
 If you have previously made a bucket public following the steps of the previous section, then, to make the bucket private:
 
-* Click **Settings** and select **Set Bucket Policy**.
-* The 'Bucket Policy Editor' will appear.
-* Either, within the visual editor, click **Remove Rule** to remove the permission rules:
+1. Click **Settings** and select **Set Bucket Policy**.
+1. The 'Bucket Policy Editor' will appear.
+1. Either, within the visual editor, click **Remove Rule** to remove the permission rules:
     * Effect: Allow, Principals: Public Access (*), Actions: Read Objects
     * Effect: Allow, Principals: Public Access (*), Actions: List Bucket
-* Or, within the JSON editor, edit the `Statement` list to remove the statements:
+1. Or, within the JSON editor, edit the `Statement` list to remove the statements:
     * Effect: Allow, Principal: *, Action: s3:GetObject, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
     * Effect: Allow, Principal: *, Action: s3:ListBucket, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
-* Click **Save Policy**.
+1. Click **Save Policy**.
