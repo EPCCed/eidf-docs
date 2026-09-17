@@ -31,9 +31,9 @@ To view EIDF access keys, secrets, and storage and bucket quotas:
 
 !!! Note "S3 access keys and permissions"
 
-    You will only see information on those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
+    You will only see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
 
-    If you are a project lead, then you will see information on all the S3 accounts for your project.
+    If you are a project lead, then you will see all the access keys, and associated S3 accounts, for your project.
 
 ## Further information
 
