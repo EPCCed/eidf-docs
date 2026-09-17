@@ -80,7 +80,7 @@ To view S3 account names, access keys, secrets, and storage and bucket quotas:
 1. The 'S3 Access Keys' section will show a table where each row shoes:
     * **Name**: S3 account name.
     * **Quota**: Maximum amount of storage available to the account.
-    * **Buckets**: Maximum number of buckets the account can create.
+    * **Buckets**: Maximum number of buckets allowed for the account.
     * **Keys**: Access keys associated with this account, and, via the **Secret** drop-down menu, each key's associated secret.
 
 ![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
