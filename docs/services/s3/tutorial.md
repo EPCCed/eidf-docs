@@ -75,7 +75,7 @@ The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
 1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
-1. Your select project's page will appear.
+1. Your selected project's page will appear.
 1. If using the portal's new project view, click **Your S3 Keys**.
 1. The 'S3 Access Keys' section will show a table where each row shoes:
     * **Name**: S3 account name.
