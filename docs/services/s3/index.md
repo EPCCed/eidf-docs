@@ -18,13 +18,14 @@ The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
 You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
 
-* Select the **Projects** menu, select your project.
+* On the [Your Projects](https://portal.eidf.ac.uk/project/) page, click your project.
+* Your select project's page will appear.
+* If using the portal's 'new project view', click **Your S3 Keys**.
 * Within the **S3 Access Keys** section, for each S3 account for that project you will see:
     * **Name**: Your S3 username.
     * **Quota**: Your S3 quota, the maximum amount of storage you have available.
     * **Buckets**: The number of S3 buckets you can create.
-    * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secre
-t.
+    * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secret.
 
 ![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
