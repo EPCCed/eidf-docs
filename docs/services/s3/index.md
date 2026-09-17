@@ -10,7 +10,7 @@ The EIDF S3 Service is also accessible from anywhere in the world via S3-compati
 
 To access the EIDF S3 Service, you need to have an EIDF account as described in [EIDF Accounts](../../access/project.md).
 
-Project leads can request an EIDF S3 Service object store allocation for a project through a request to the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
+Project leads can request an EIDF S3 Service object store allocation for a project via a request to the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
 ## Information required to use the EIDF S3 Service
 
