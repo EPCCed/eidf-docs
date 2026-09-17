@@ -12,19 +12,23 @@ To select a project:
 1. A list of your projects will be shown.
 1. Click on a project.
 
-Your access keys for the project will be shown in the 'ACCESS KEYS' section.
+Your selected project's S3 account names and associated access keys will be shown in the 'ACCESS KEYS' section.
 
-## Select access keys
+## Select S3 accounts and access keys
 
-The 'ACCESS KEYS' section shows your access keys for your selected project.
+The 'ACCESS KEYS' section shows your selected project's S3 account names and associated access keys.
 
-To select an access key, click on the access key.
+!!! Note "S3 access keys and permissions"
 
-Current buckets within your project to which this access key grants access will be shown in the 'BUCKETS' section.
+    You will only see the S3 account names corresponding to those access keys to which your project lead has granted you permission to view.
+
+To select an S3 account and access key, click on an access key.
+
+The current buckets within your project, owned by this S3 account, will be shown in the 'BUCKETS' section.
 
 ## Manage buckets
 
-The 'BUCKETS' section shows you the current buckets within your selected project to which your selected access key grants access. Within this section, you can manage buckets for your selected project, using your selected access key.
+The 'BUCKETS' section shows you the current buckets within your project owned by your selected S3 account. Within this section, you can manage buckets for your selected project, using your selected access key.
 
 ### Create a bucket
 

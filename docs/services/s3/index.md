@@ -22,12 +22,16 @@ To get your EIDF access key and secret, and also view your storage and bucket qu
 1. Your select project's page will appear.
 1. If using the portal's 'new project view', click **Your S3 Keys**.
 1. Within the **S3 Access Keys** section, for each S3 account for that project you will see:
-    * **Name**: Your S3 username.
-    * **Quota**: Your S3 quota, the maximum amount of storage you have available.
-    * **Buckets**: The number of S3 buckets you can create.
-    * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secret.
+    * **Name**: An S3 account name.
+    * **Quota**: The S3 quota, the maximum amount of storage available.
+    * **Buckets**: The number of S3 buckets this account can create.
+    * **Keys**: The access keys and, via the **Secret** drop-down menu, the key's associated secrets.
 
 ![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
+
+!!! Note "S3 access keys and permissions"
+
+    You will only see the S3 account names corresponding to those access keys to which your project lead has granted you permission to view.
 
 ## Further information
 
