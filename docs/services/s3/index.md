@@ -16,22 +16,24 @@ Project leads can request an EIDF S3 Service object store allocation for a proje
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-To get your EIDF access key and secret, and also view your storage and bucket quotas:
+To view EIDF access keys, secrets, and storage and bucket quotas:
 
 1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your select project's page will appear.
-1. If using the portal's 'new project view', click **Your S3 Keys**.
-1. Within the **S3 Access Keys** section, for each S3 account for that project you will see:
-    * **Name**: An S3 account name.
-    * **Quota**: The S3 quota, the maximum amount of storage available.
-    * **Buckets**: The number of S3 buckets this account can create.
-    * **Keys**: The access keys and, via the **Secret** drop-down menu, the key's associated secrets.
+1. If using the portal's new project view, click **Your S3 Keys**.
+1. The 'S3 Access Keys' section will show a table where each row shoes:
+    * **Name**: S3 account name.
+    * **Quota**: Maximum amount of storage available to the account.
+    * **Buckets**: Maximum number of buckets the account can create.
+    * **Keys**: Access keys associated with this account, and, via the **Secret** drop-down menu, each key's associated secret.
 
 ![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
 !!! Note "S3 access keys and permissions"
 
-    You will only see the S3 account names corresponding to those access keys to which your project lead has granted you permission to view.
+    You will only see information on those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
+
+    If you are a project lead, then you will see information on all the S3 accounts for your project.
 
 ## Further information
 
