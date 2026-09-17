@@ -350,7 +350,7 @@ The file will be listed as it is uploaded:
 upload: ./unis.csv to s3://mybucket/unis.csv
 ```
 
-!!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`
+!!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`"
 
     This error can arise if the bucket name does not have the `s3` prefix.
 
@@ -737,7 +737,7 @@ Delete an empty bucket:
 aws s3 rb s3://mybucket
 ```
 
-!!! Troubleshooting "`remove_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
+!!! Tip "Troubleshooting: `remove_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
 
     This error can occur if an attempt is made to delete a bucket that is not empty.
 
