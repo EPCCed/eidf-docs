@@ -16,9 +16,9 @@ Project leads can request an EIDF S3 Service object store allocation for a proje
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
+To get your EIDF access key and secret, and also view your storage and bucket quotas:
 
-1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page, click your project.
+1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your select project's page will appear.
 1. If using the portal's 'new project view', click **Your S3 Keys**.
 1. Within the **S3 Access Keys** section, for each S3 account for that project you will see:
@@ -33,7 +33,7 @@ You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.
 
 [Tutorial](./tutorial.md): A hands-on introduction to S3 and the EIDF S3 Service.
 
-[Using the EIDF S3 Browser](./s3browser.md): A guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files.
+[Using the EIDF S3 Browser](./s3browser.md): A guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
 
 [Manage EIDF S3 Service access](./manage.md): A guide for project leads on requests for EIDF S3 Service object store allocations and management of accounts and access permissions for these allocations.
 

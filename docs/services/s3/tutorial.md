@@ -72,9 +72,9 @@ To use an S3 Service, you will need the S3 Service endpoint URL, an access key a
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
+To get your EIDF access key and secret, and also view your storage and bucket quotas:
 
-1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page, click your project.
+1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your select project's page will appear.
 1. If using the portal's 'new project view', click **Your S3 Keys**.
 1. Within the **S3 Access Keys** section, for each S3 account for that project you will see:
@@ -737,7 +737,7 @@ aws s3 rb s3://mybucket
 
 There are many other S3 clients available.
 
-The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of the EIDF S3 Service and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files. See [Using the EIDF S3 Browser](./s3browser.md).
+The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of the EIDF S3 Service and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files. See [Using the EIDF S3 Browser](./s3browser.md).
 
 Another command-line client is [s3cmd](https://s3tools.org/s3cmd).
 
