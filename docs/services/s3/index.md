@@ -1,26 +1,39 @@
 # Overview
 
-The EIDF S3 Service is an object store with an interface that is compatible with a subset of the Amazon S3 RESTful API.
+The EIDF S3 Service is an object store that offers an interface that is compatible with a subset of the Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/s3/) RESTful [S3 API](https://docs.aws.amazon.com/AmazonS3/latest/API).
+
+The EIDF S3 Service is directly accessible from the [EIDF Virtual Machine (VM) Service](../virtualmachines), the [EIDF GPU Service](../gpuservice/index.md) and the [EIDF Ultra2 Service](../ultra2/index.md).
+
+The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.
 
 ## Service Access
 
-Users should have an EIDF account as described in [EIDF Accounts](../../access/project.md).
+To access the EIDF S3 Service, you need to have an EIDF account as described in [EIDF Accounts](../../access/project.md).
 
-Project leads can request an object store allocation through a request to the EIDF helpdesk.
+Project leads can request an EIDF S3 Service object store allocation for a project through a request to the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
-## Access keys
+## Information required to use the EIDF S3 Service
 
-Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/).
-Your access keys are displayed in the table at the top of the page.
+The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
-![Portal-S3-Access-Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
+You can get your EIDF S3 credentials from the [EIDF Portal](https://portal.eidf.ac.uk/) as follows:
 
-For each account, the quota and the number of buckets that it is permitted to create is shown, as well as the access keys.
-Click on "Secret" to view the access secret.
-You will need the access key, the corresponding access secret and the endpoint `https://s3.eidf.ac.uk` to connect to the EIDF S3 Service with an S3 client.
+* Select the **Projects** menu, select your project.
+* Within the **S3 Access Keys** section, for each S3 account for that project you will see:
+    * **Name**: Your S3 username.
+    * **Quota**: Your S3 quota, the maximum amount of storage you have available.
+    * **Buckets**: The number of S3 buckets you can create.
+    * **Keys**: Your access key and, via the **Secret** drop-down menu, your key's associated secre
+t.
+
+![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
 ## Further information
 
-[Access management](./manage.md): Project management guide to managing accounts and access permissions for your S3 allocation.
+[Tutorial](./tutorial.md): A hands-on introduction to S3 and the EIDF S3 Service.
 
-[Tutorial](./tutorial.md): Examples using EIDF S3
+[Using the EIDF S3 Browser](./s3browser.md): A guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF portal for creating and managing buckets and uploading, downloading and deleting files.
+
+[Manage EIDF S3 Service access](./manage.md): A guide for project leads on managing accounts and access permissions for their projects' S3 allocations.
+
+Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html): Amazon's own S3 documentation.
