@@ -322,6 +322,10 @@ aws s3 ls s3://mybucket
 
 The new bucket will be empty.
 
+!!! Note "Bucket ownership within the EIDF S3 Service"
+
+    Within the EIDF S3 Service, buckets are owned by the S3 account associated with the access key used to create the bucket.
+
 ### Upload and download a file
 
 Create a file, `unis.csv`, with content:
