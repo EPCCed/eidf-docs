@@ -96,7 +96,7 @@ Refresh the project page to update the list of access keys.
 You can control which project members are allowed to view each access key and secret within the EIDF Portal.
 
 To grant view permissions for an access key to a project member, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
- 
+
 1. Click on the **Edit** icon next to the key.
 1. Select the project members that will have view permissions for this access key.
 1. Click **Update Permissions**.
