@@ -458,8 +458,6 @@ The `downloaded` directory will contain the downloaded files:
 data1.dat
 data2.dat
 data3.dat
-data4.dat
-data5.dat
 ```
 
 ### Delete files
@@ -470,8 +468,6 @@ Delete each data file in turn:
 aws s3 rm s3://mybucket/data1.dat
 aws s3 rm s3://mybucket/data2.dat
 aws s3 rm s3://mybucket/data3.dat
-aws s3 rm s3://mybucket/data4.dat
-aws s3 rm s3://mybucket/data5.dat
 ```
 
 List the files in the bucket that are left:
