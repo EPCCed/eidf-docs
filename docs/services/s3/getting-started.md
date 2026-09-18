@@ -10,7 +10,7 @@ The tutorial assumes you have been granted access to the EIDF S3 Service or, for
 
 The tutorial has been checked using the following platforms and packages as follows:
 
-* EIDF VM, Ubuntu 24.04.4 LTS (noble), AWS CLI 2.36.36, Python 3.12.3, boto3 1.43.97
+* EIDF VM, Ubuntu 24.04.4 LTS (noble), AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97
 
 ---
 
@@ -755,13 +755,13 @@ These, and other, clients may each have client-specific ways of configuring the 
 
 ## Use EIDF S3 via Python
 
-This section describes how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [boto3](https://aws.amazon.com/sdk-for-python/).
+This section describes how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
 
 The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
 
-### Install boto3
+### Install Boto3
 
-There are a number of options for installing the 'boto3' package. Here, 'boto3' is installed into a new Python virtual environment using 'pip'. Alternatively, you can used your preferred means of managing Python packages.
+There are a number of options for installing the Boto3 package. Here, Boto3 is installed into a new Python virtual environment using 'pip'. Alternatively, you can used your preferred means of managing Python packages.
 
 ```bash
 sudo apt install -y python3-venv
@@ -769,7 +769,7 @@ python3 -m venv s3-venv
 source s3-venv/bin/activate
 ```
 
-Install boto3:
+Install Boto3:
 
 ```bash
 python -m pip install boto3
@@ -777,14 +777,14 @@ python -m pip install boto3
 
 ### Configure Python to connect to the EIDF S3 Service
 
-TODO: Does boto3 use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
+TODO: Does Boto3 use '.aws'? Which environment variables does Boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
 Credentials can be passed in as parameters to the functions, as shown below, or as environment variables, as described earlier. Alternatively, you can set environment variables from within Python using `os.environ`.
 
 Update `.aws/config`:
 
 ```ini
-# The following two lines are required for Python boto3 version 1.36
+# The following two lines are required for Python Boto3 version 1.36
 # and later which introduced a breaking change that adopts new default
 # integrity protections not currently supported by EIDF S3.
 request_checksum_calculation=when_required
@@ -793,7 +793,7 @@ response_checksum_validation=when_required
 
 !!! Note
 
-    The last two lines are required since boto3 version 1.36 when a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3 (see boto3 GitHub issue [boto/boto#4392](https://github.com/boto/boto3/issues/4392)) If you see this error:
+    The last two lines are required since Boto3 version 1.36 when a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3 (see Boto3 GitHub issue [boto/boto#4392](https://github.com/boto/boto3/issues/4392)) If you see this error:
 
     ```text
     botocore.exceptions.ClientError: An error occurred (XAmzContentSHA256Mismatch) when calling the PutObject operation: None
@@ -812,55 +812,118 @@ response_checksum_validation=when_required
 
 ### Interact with the EIDF S3 Service using Python
 
-TODO: Use comparable examples from AWS CLI, with a different bucket name.
+!!! Note "Boto3 'resource' versus 'client' service interfaces
 
-TODO: Check, edit, run.
+    Boto3 provides both an object-oriented [Resources](https://docs.aws.amazon.com/boto3/latest/guide/resources.html) service interface and a [Low-level clients](https://docs.aws.amazon.com/boto3/latest/guide/clients.html) service interface, which maps more closely to S3 service APIs. On the 'Resources' page, the AWS Python SDK team advise that the interface is feature-frozen and recommend the use of the 'client' service interface. For this reason, the client interface is used in these examples.
 
-Connect, create an S3 client resource:
+TODO: Add code snippets from `getting_started.py` below and add `getting_started.py` to Git, renamed.
 
-```python
-import boto3
-s3 = boto3.resource('s3')
-```
+### Get S3 client
 
-List buckets:
+[S3 Client](https://docs.aws.amazon.com/boto3/latest/reference/services/s3.html)
 
-```python
-for bucket in s3.buckets.all():
-    print(f'{bucket.name}')
-```
+### List buckets
 
-List files in a bucket:
+[list_buckets](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_buckets.html)
 
-```python
-bucket_name = 'somebucket'
-bucket = s3.Bucket(bucket_name)
-for obj in bucket.objects.all():
-    print(f'{obj.key}')
-```
+### Create buckets
 
-Upload files to a bucket:
+[create_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/create_bucket.html)
 
-```python
-bucket = s3.Bucket(bucket_name)
-bucket.upload_file('./somedata.csv', 'somedata.csv')
-```
+!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (InvalidBucketName) when calling the CreateBucket operation: None`"
 
-Download file a bucket:
+    This exception can be raised if a bucket name does not conform to the naming requirements.
 
-```py
-import os
-resource = boto3.resource(
-    "s3",
-    region_name = "us-east-1",
-    endpoint_url = "http://nsh-fs02:7070",
-    aws_access_key_id = "put_your_key_here",
-    aws_secret_access_key = "put_your_secret_here")
-bucket = resource.Bucket("bucket_name")
-bucket.download_file(
-    "326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm",
-    "downloaded.dcm")
-```
+!!! Tip "Troubleshooting: `botocore.exceptions.ParamValidationError: Parameter validation failed: Invalid bucket name'"
+
+    This exception can also be raised if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
+
+### List files in a bucket
+
+[list_objects_v2](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_objects_v2.html)
+
+!!! Warning "`list_objects_v2` returns maximum of 1000 objects per call"
+
+    `list_objects_v2` returns maximum of 1000 objects per call, even if there are more than 1000 objects matching the request. See the Boto3 documentation on [Paginators](https://docs.aws.amazon.com/boto3/latest/guide/paginators.html) for information on how to handle more than 1000 objects.
+
+### Upload file
+
+[upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html)
+
+!!! Tip "Upload multiple files"
+
+    Multiple files can be uploaded by calling `upload_file` on each file in turn.
+
+!!! Warning "A trailing slash in a key is part of the key name"
+
+    If a key has a trailing slash then the trailing slash is part of the key name. For example, running:
+
+    ```python
+    s3client.upload_file(Filename='unis.csv', 
+                         Bucket='mybucket', 
+                         Key='lothian/edunis/') 
+    ```
+
+    will upload the file and give it a key `lothian/edunis/`. The file could then be downloaded using this key. For example:
+
+    ```python
+    s3client.download_file(Filename='download.csv', 
+                           Bucket='mybucket', 
+                           Key='lothian/edunis/') 
+    ```
+
+    This is different from how the AWS CLI behaves. For example, running
+
+    ```bash
+    aws s3 cp unis.csv s3://mybucket/lothian/edinburgh/
+    ```
+
+    will upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`' as the AWS CLI adds `unis.csv` to the path before contacting the S3 service.
+
+    Despite this inconsistency, files whose keys have trailing slashes can be downloaded by the AWS CLI. For example:
+    ```bash
+    aws s3 cp s3://mybucket/lothian/edunis/ unis.csv
+    ```
+
+    ```text
+    download: s3://mybucket/lothian/edunis/ to ./unis.csv
+    ```
+
+### Download file
+
+[download_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/download_file.html)
+
+!!! Tip "Download multiple files"
+
+    Multiple files can be downloaded by calling `download_file` on each file in turn.
+
+### Delete file
+
+[delete_object](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html)
+
+!!! Tip "Delete multiple files"
+
+    Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, `delete_objects` can be used with a list of the file keys. For example:
+
+    ```python
+    s3client = boto3.client('s3')
+    
+    response = s3client.delete_objects(
+        Bucket=bucket_name,
+        Delete={
+            'Objects':
+            [
+                {'Key': 'data1.dat'},
+                {'Key': 'data2.dat'},
+                {'Key': 'data3.dat'}
+            ]
+        }
+    )
+    ```
+
+### List files using prefixes
+
+`list_objects_v2` and `Prefix`
 
 ---
 
@@ -884,7 +947,7 @@ TODO: Above is from `docs/safe-haven-services/s3-service.md` pull request. Why i
 
 ### Configure R to connect to the EIDF S3 Service
 
-TODO: Does aws.s3|paws use '.aws'? Which environment variables does boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
+TODO: Does aws.s3|paws use '.aws'? Which environment variables does Boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
 
 Credentials can be passed in as environment variables, as described earlier. Alternatively, you can set environment variables within your `.Renviron` file or from within R using `Sys.setenv`.
 
@@ -893,10 +956,6 @@ Credentials can be passed in as environment variables, as described earlier. Alt
     For the endpoint, `aws.s3` uses environment variable `AWS_S3_ENDPOINT`, not `AWS_ENDPOINT_URL`.
 
 ### Interact with the EIDF S3 Service using R
-
-TODO: Use comparable examples to those used for Python.
-
-TODO: Check, edit, run.
 
 ```r
 library(aws.s3)
@@ -1180,7 +1239,7 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 
 TODO: Python
 
-By default, the `boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
+By default, the `Boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
 
 When accessing a bucket with the project code prefix, switch off the bucket name validation:
 
