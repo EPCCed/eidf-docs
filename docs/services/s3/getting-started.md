@@ -496,7 +496,7 @@ The upload message is:
 upload: ./unis.csv to s3://mybucket/lothian/edunis
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edunis`, the S3 Service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edunis`'.
+When the file is uploaded using path `s3://mybucket/lothian/edunis`, the AWS CLI interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edunis`'.
 
 Now, rerun the command, but this time add a trailing slash to `edinburgh`:
 
@@ -510,7 +510,7 @@ The upload message is now:
 upload: ./unis.csv to s3://mybucket/lothian/edinburgh/unis.csv
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edinburgh/`, the S3 Service interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`'.
+When the file is uploaded using path `s3://mybucket/lothian/edinburgh/`, the AWS CLI interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`' i.e., the AWS CLI adds `unis.csv` to the path before contacting the S3 service.
 
 The absence of a trailing slash is interpreted to mean that the is to be given the key name specified in the path e.g., `lothian/edunis`. In contrast, the presence of a trailing slash is interpreted to mean that the file is to be given the key name specified in the path plus the filename itself e.g., `lothian/edinburgh/unis.csv`.
 
