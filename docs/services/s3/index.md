@@ -6,13 +6,17 @@ The EIDF S3 Service is directly accessible from the [EIDF Virtual Machine (VM) S
 
 The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.
 
-## Service Access
+## Service access
 
-To access the EIDF S3 Service, you need to have an EIDF account as described in [EIDF Accounts](../../access/project.md).
+To access the EIDF S3 Service, users need to have an EIDF account as described in [EIDF Accounts](../../access/project.md).
 
-Project leads can request an EIDF S3 Service object store allocation for a project via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
+Project leads can request an EIDF S3 Service object store allocation, a portion of the EIDF S3 Service storage allocated for the exclusive use of a project, via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
-## Information required to use the EIDF S3 Service
+## Service management for project leads
+
+[Manage project's S3 object store allocation](./manage.md) is a guide for project leads on how to manage a project's object store allocation and its S3 accounts and access permissions.
+
+## Service use
 
 The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
 
@@ -35,12 +39,10 @@ To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
     If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
 
-## Further information
+The EIDF S3 Service [Tutorial](./tutorial.md) is a hands-on introduction to S3 and the EIDF S3 Service.
 
-[Tutorial](./tutorial.md): A hands-on introduction to S3 and the EIDF S3 Service.
+[Using the EIDF S3 Browser](./s3browser.md) is a guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
 
-[Using the EIDF S3 Browser](./s3browser.md): A guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
-
-[Manage EIDF S3 Service access](./manage.md): A guide for project leads on requests for EIDF S3 Service object store allocations and management of accounts and access permissions for these allocations.
+## Further information on S3
 
 Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html): Amazon's own S3 documentation.
