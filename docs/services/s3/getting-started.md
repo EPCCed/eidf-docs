@@ -763,17 +763,17 @@ This section describes how to use the EIDF S3 Service via Python and the Amazon 
 
 The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
 
-TODO: Use comparable examples from the foregoing, with a different bucket name.
-
 ### Install boto3
 
-Here, we install 'boto3' into a new Python virtual environment. Alternatively, use your preferred means of managing and installing Python packages.
+There are a number of options for installing the 'boto3' package. Here, 'boto3' is installed into a new Python virtual environment using 'pip'. Alternatively, you can used your preferred means of managing Python packages.
 
 ```bash
-sudo apt install -y python3.12-venv
+sudo apt install -y python3-venv
 python3 -m venv s3-venv
 source s3-venv/bin/activate
 ```
+
+TODO:
 
 Install boto3:
 
@@ -817,6 +817,8 @@ response_checksum_validation=when_required
     ```
 
 ### Interact with the EIDF S3 Service using Python
+
+TODO: Use comparable examples from AWS CLI, with a different bucket name.
 
 TODO: Check, edit, run.
 
@@ -874,7 +876,7 @@ This section describes how to use the EIDF S3 Service via R and the [TODO](TODO)
 
 The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
 
-TODO: Use comparable examples from the foregoing, with a different bucket name.
+TODO: Use comparable examples from AWS CLI, with a different bucket name.
 
 There are three different packages for R that you could install:
 
@@ -973,7 +975,7 @@ s3://eidfNNN:mybucket/my-data-file.csv
 
     The project name specified within S3 URIs allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
 
-    A project prefix is not required when accessing buckets within a project using an access key for that project as the access key itself identifies the project's tenancy.
+    A project prefix is not required when using buckets within a project using an access key for that project as the access key itself identifies the project's tenancy.
 
 !!! Warning "Project identification and S3 tools"
 
@@ -1000,14 +1002,14 @@ s3://eidfNNN-mybucket/my-data-file.csv
 
 ### Public buckets and URLs
 
-To access public project buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
+To use public project buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
 
 ```text
 https://s3.eidf.ac.uk/eidfNNN:mybucket
 https://s3.eidf.ac.uk/eidfNNN:mybucket/my-data-file.csv
 ```
 
-To access public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
+To use public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
 
 ```text
 https://s3.eidf.ac.uk/eidfNNN-mybucket
@@ -1043,7 +1045,7 @@ Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to 
 
 ### Read from public buckets via a browser
 
-To access information about your bucket, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket` into your browser.
+To get information about your bucket, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket` into your browser.
 
 A new browser tab will open, showing an XML document with information about the bucket and all the files it contains including their metadata.
 
@@ -1053,11 +1055,11 @@ Depending on both your browser and the file type, the file will either be opened
 
 ### Read from public buckets via 'curl'
 
-A popular Linux command-line utilities for accessing public URLs are is 'curl'. 'curl' can be used as follows to access your bucket.
+A popular Linux command-line utility for reading from public URLs is 'curl'. 'curl' can be used as follows to get information about your bucket and files from your bucket.
 
 In the following, replace `<project-name>` with your EIDF project name 'eidfNNN'.
 
-Download information about your bucket contents (`-o` names the downloaded file):
+Download information about your bucket (`-o` names the downloaded file):
 
 ```bash
 curl -o mybucket.xml https://s3.eidf.ac.uk/<project-name>:mybucket
@@ -1206,21 +1208,21 @@ TODO: aws.s3 seemingly allows colon-delimitation. paws allows it to be disabled.
 
 ---
 
-## Access buckets in other EIDF projects
+## Use buckets in other EIDF projects
 
 If you have been granted access to buckets in other projects, either to private buckets, or write access to public buckets, then you can access these using the same techniques as described for your own bucket and for public buckets.
 
 TODO: Check, edit for consistency with foregoing. How can this be checked? Does the user use their own project's access key and secret?
 
-### Access buckets in other EIDF projects the AWS CLI
+### Use buckets in other EIDF projects using the AWS CLI
 
 To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
-### Access buckets in other EIDF projects using Python
+### Use buckets in other EIDF projects using Python
 
 TODO: Copy blurb from [Read from public buckets using Python](#read-from-public-buckets-using-python).
 
-### Access buckets in other EIDF projects using R
+### Use buckets in other EIDF projects using R
 
 TODO: Copy blurb from [Read from public buckets using R](#read-from-public-buckets-using-r).
 
