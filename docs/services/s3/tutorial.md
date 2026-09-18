@@ -70,7 +70,7 @@ Subset of Amazon S3 REST API
 
 To use an S3 Service, you will need the S3 Service endpoint URL, an access key and secret.
 
-The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
+The EIDF S3 Service endpoint is <https://s3.eidf.ac.uk>.
 
 To view S3 account names, access keys, secrets, and storage and bucket quotas:
 

@@ -18,7 +18,7 @@ Project leads can request an EIDF S3 Service object store allocation, a portion 
 
 ## Service use
 
-The EIDF S3 Service endpoint is https://s3.eidf.ac.uk.
+The EIDF S3 Service endpoint is <https://s3.eidf.ac.uk>.
 
 To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
