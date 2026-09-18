@@ -258,7 +258,7 @@ For further information on AWS CLI configuration, see the AWS CLI documentation 
 
 ### List and create buckets
 
-List the buckets in your account:
+List the buckets owned by the S3 account associated with the access key:
 
 ```bash
 aws s3 ls
