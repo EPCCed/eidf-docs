@@ -1,4 +1,4 @@
-# Tutorial introduction to the EIDF S3 Service
+# Getting started with S3 and the EIDF S3 Service
 
 ---
 

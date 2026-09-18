@@ -14,7 +14,7 @@ Project leads can request an EIDF S3 Service object store allocation, a portion 
 
 ## Service management for project leads
 
-[Manage project's S3 object store allocation](./manage.md) is a guide for project leads on how to manage a project's object store allocation and its S3 accounts and access permissions.
+[Managing a project's S3 object store allocation](./manage.md) is a guide for project leads on how to manage a project's object store allocation and its S3 accounts and access permissions.
 
 ## Service use
 
@@ -39,7 +39,7 @@ To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
     If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
 
-The EIDF S3 Service [Tutorial](./tutorial.md) is a hands-on introduction to S3 and the EIDF S3 Service.
+[Getting started with S3 and the EIDF S3 Service](./getting-started.md) is a hands-on introduction to S3 and the EIDF S3 Service.
 
 [Using the EIDF S3 Browser](./s3browser.md) is a guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
 

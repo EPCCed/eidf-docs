@@ -1,4 +1,4 @@
-# Manage project's S3 object store allocation
+# Managing a project's S3 object store allocation
 
 Management of a project's EIDF S3 Service object store allocation and its S3 accounts and access permissions is done by project leads.
 

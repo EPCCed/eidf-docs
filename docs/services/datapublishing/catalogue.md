@@ -39,7 +39,7 @@ You should now be able to click on a link to your dataset to see a copy of the i
 
 ## Data upload
 
-Having created an S3 bucket please consult the [S3 tutorial section](../s3/tutorial.md) to get an overview of the commands you will require to upload your data to S3.
+Having created an S3 bucket please consult [Getting started with S3 and the EIDF S3 Service](../s3/getting-started.md) for an overview of the commands you will require to upload your data to S3.
 
 Note that versioning is enabled for data publishing S3 buckets.
 Versioning preserves existing files that are overwritten or deleted and
