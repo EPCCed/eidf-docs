@@ -10,7 +10,7 @@ The tutorial assumes you have been granted access to the EIDF S3 Service or, for
 
 The tutorial has been checked using the following platforms and packages as follows:
 
-* EIDF VM, Ubuntu 24.04.4 LTS (noble), AWS CLI 2.36.36.
+* EIDF VM, Ubuntu 24.04.4 LTS (noble), AWS CLI 2.36.36, Python 3.12.3, boto3 1.43.97
 
 ---
 
@@ -772,8 +772,6 @@ sudo apt install -y python3-venv
 python3 -m venv s3-venv
 source s3-venv/bin/activate
 ```
-
-TODO:
 
 Install boto3:
 
