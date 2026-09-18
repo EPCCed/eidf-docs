@@ -2,6 +2,8 @@
 
 Management of a project's EIDF S3 Service object store allocation and its S3 accounts and access permissions is done by project leads.
 
+---
+
 ## Object store allocations, S3 accounts and access keys
 
 An **object store allocation** is a portion of the EIDF S3 Service storage allocated for the exclusive use of a project. A project's S3 buckets are created within this object store allocation.
@@ -16,11 +18,15 @@ To create and access buckets, users need both an **access key** and a **secret**
 
 The number of buckets that a user can create and volume of files they can upload is constrained by both the bucket and storage quotas defined for the account associated with the access key used by the user.
 
+---
+
 ## Request an S3 allocation
 
 An object store allocation is the storage allocated within the EIDF S3 Service for a specific project.
 
 You can request an EIDF S3 Service object store allocation for your project via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
+
+---
 
 ## View and manage object store allocation
 
@@ -39,6 +45,8 @@ You can view and manage your project's S3 object store allocation via the [EIDF 
         * **Access Keys**: Access keys associated with this account.
 
 ![EIDF Portal 'S3 Allocation' section](../../images/access/portal-s3-accounts.png){: class="border-img"}
+
+---
 
 ## Create an S3 account
 
@@ -84,6 +92,8 @@ Refresh the project page to update the list of accounts.
 
     Within your own project, project members who have been granted permission to view the access keys of this account but no others can interact with your collaborator's bucket but not create any buckets within your own project.
 
+---
+
 ## Delete an S3 account
 
 To delete an S3 account, within the EPCC [SAFE](https://safe.epcc.ed.ac.uk):
@@ -103,6 +113,8 @@ To delete an S3 account, within the EPCC [SAFE](https://safe.epcc.ed.ac.uk):
 
     S3 accounts are never deleted but are marked as 'retired'. This means that you cannot reuse the names of accounts you have previously deleted.
 
+---
+
 ## Create an access key and secret
 
 To create an access key for an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
@@ -116,6 +128,8 @@ The access key will be created along with an associated secret
 It may take a little while for the account to become available.
 
 Refresh the project page to update the list of access keys.
+
+---
 
 ## Set access key permissions
 
@@ -133,6 +147,8 @@ It can take a little while for the permissions update to complete.
 !!! Warning "View permissions do not constrain access key and secret usage"
 
     Anyone who knows an access key and secret will be able to use these to interact with the EIDF S3 Service, regardless of the view permissions on the access key. These permissions apply to the EIDF Portal only.
+
+---
 
 ## Delete an access key
 

@@ -2,6 +2,8 @@
 
 The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
 
+---
+
 ## Select projects
 
 The 'PROJECTS' section allows you to select one of your EIDF projects for which use of the EIDF S3 Service has been enabled.
@@ -13,6 +15,8 @@ To select a project:
 1. Click on a project.
 
 Your selected project's S3 access keys will be shown in the 'ACCESS KEYS' section.
+
+---
 
 ## Select S3 accounts and access keys
 
@@ -27,6 +31,8 @@ The 'ACCESS KEYS' section shows your selected project's S3 access keys, grouped 
 To select an access key, click on the access key.
 
 The current buckets within your project, belonging to the S3 account which owns the selected access key, will be shown in the 'BUCKETS' section.
+
+---
 
 ## Manage buckets
 
