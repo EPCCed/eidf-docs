@@ -95,6 +95,8 @@ To view S3 account names, access keys, secrets, and storage and bucket quotas:
 
     In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 Service is hosted in the US, it is not!
 
+    There is no need to specify an S3 service region when listing buckets, files or downloading files. An S3 service region only needs to be specified when creating buckets or uploading files.
+
 ---
 
 ## Use EIDF S3 via the command-line
@@ -380,28 +382,27 @@ The listing will now include the file:
 
 The key of the file in the bucket is `unis.csv` i.e., the file name itself.
 
-Now, download this file. First, move `unis.csv` out of the way:
+Create a `downloads` directory:
 
 ```bash
-mv unis.csv unis.csv.bak
+mkdir -p downloads
 ```
 
-Download the file into the current directory, specifying the file's key within the bucket:
+Download the file into the `downloads` directory, specifying the file's key within the bucket:
 
 ```bash
-aws s3 cp s3://mybucket/unis.csv .
+aws s3 cp s3://mybucket/unis.csv downloads/
 ```
 
 The file will be downloaded:
-
 ```text
-download: s3://mybucket/unis.csv to ./unis.csv
+download: s3://mybucket/unis.csv to downloads/unis.csv
 ```
 
 Now compare the downloaded file to the original file that you backed up:
 
 ```bash
-cmp unis.csv unis.csv.bak
+cmp unis.csv downloads/unis.csv
 ```
 
 No differences should be reported, thereby showing that `unis.csv` was both uploaded into and downloaded from the bucket successfully.
@@ -452,8 +453,8 @@ The listing will include the uploaded files:
 Now, download all `.dat` files from the bucket into a new local `downloaded` directory, ignoring any other files (for example, `unis.csv`), then list its contents:
 
 ```bash
-aws s3 cp s3://mybucket downloaded --recursive --exclude "*" --include "*.dat"
-ls -1 downloaded
+aws s3 cp s3://mybucket downloads/data --recursive --exclude "*" --include "*.dat"
+ls -1 downloads/data
 ```
 
 The files will be listed as they are downloaded:
@@ -464,7 +465,7 @@ download: s3://mybucket/data3.dat to downloaded/data3.dat
 download: s3://mybucket/data2.dat to downloaded/data2.dat
 ```
 
-The `downloaded` directory will contain the downloaded files:
+The `downloads/data` directory will contain the downloaded files:
 
 ```text
 data1.dat
@@ -1135,7 +1136,7 @@ curl -o mybucket.xml https://s3.eidf.ac.uk/<project-name>:mybucket
 Download file `lothian/edinburgh/unis.csv` (`-O` uses the remote file name as the downloaded file name):
 
 ```bash
-curl -O https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv
+curl -o unis.csv https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv
 ```
 
 `lothian/edinburgh/unis.csv` will be downloaded and saved as `unis.csv`.
@@ -1147,7 +1148,7 @@ To read data from our public bucket using the AWS CLI requires the use of an S3 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
 
 ```bash
-aws s3 cp s3://<project-name>:mybucket/lothian/edinburgh/unis.csv . --no-sign-request
+aws s3 cp s3://<project-name>:mybucket/lothian/edinburgh/unis.csv downloads --no-sign-request
 ```
 
 The AWS CLI will raise an error as it interprets `<project-name>:<bucket-name>` as a bucket name, having no knowledge of the concept of tenancies:
@@ -1162,7 +1163,7 @@ So, instead, to show a working example, let's use a dataset from the [EIDF Data 
 List the bucket's files:
 
 ```bash
-aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --endpoint-url https://s3.eidf.ac.uk --no-sign-request
 ```
 
 ```text
@@ -1172,10 +1173,16 @@ aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-reque
 2026-04-30 11:09:15       8630 README.md
 ```
 
+!!! Note "S3 endpoint URLs, service regions and public endpoints"
+
+    If `--endpoint-url` is not provided, then the default S3 endpoint URL specified in any AWS CLI configuration or environment variable will be used.
+
+    There is no need to specify an S3 service region when listing buckets, files or downloading files.
+
 List the bucket's files, now requesting that all files be listed:
 
 ```bash
-aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request --recursive
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --endpoint-url https://s3.eidf.ac.uk --no-sign-request --recursive
 ```
 
 ```text
@@ -1195,7 +1202,7 @@ aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-reque
 Now, list a subset of the files, for example those with prefix `data.zarr/statistics/ww/c/9/`:
 
 ```bash
-aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/ --no-sign-request --recursive
+aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request --recursive
 ```
 
 ```text
@@ -1218,34 +1225,25 @@ aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 Now download those files into a directory:
 
 ```bash
-mkdir -p stats
-aws s3 cp 's3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/' stats --no-sign-request --recursive
+aws s3 cp 's3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/' downloads --endpoint-url https://s3.eidf.ac.uk --no-sign-request --recursive
 ```
 
 ```text
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/11/0 to stats/11/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/12/0 to stats/12/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0 to stats/0/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/10/0 to stats/10/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/1/0 to stats/1/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/2/0 to stats/2/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/4/0 to stats/4/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/5/0 to stats/5/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/13/0 to stats/13/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/7/0 to stats/7/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/6/0 to stats/6/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/3/0 to stats/3/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/8/0 to stats/8/0
-download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to stats/9/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/11/0 to downloads/11/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/12/0 to downloads/12/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0 to downloads/0/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/10/0 to downloads/10/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/1/0 to downloads/1/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/2/0 to downloads/2/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/4/0 to downloads/4/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/5/0 to downloads/5/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/13/0 to downloads/13/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/7/0 to downloads/7/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/6/0 to downloads/6/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/3/0 to downloads/3/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/8/0 to downloads/8/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to downloads/9/0
 ```
-
-!!! Tip "Specifying a different endpoint URL"
-
-    To specify an S3 endpoint that differs from the default S3 endpoint in your AWS CLI configuration, use the option `--endpoint-url`. For example:
-
-    ```bash
-    aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --no-sign-request  --endpoint-url https://s3.eidf.ac.uk
-    ```
 
 ### Read from public buckets using Python
 
