@@ -6,7 +6,7 @@ Bucket permissions use IAM (Identity Access Management) policies. You can grant 
 
 ## Example: Grant permissions to put, get and list objects
 
-An example policy document to grant permissions to put, get, delete and list objects in bucket `eidfXX1:somebucket` to the account `account2` in project `eidfXX2`, is:
+An example policy document to grant permissions to list objects in a bucket, `ListBucket`, download objects, `GetObject`, upload objects, `PutObject`, and delete objects, `DeleteObject`,  in EIDF project `eidfXX1`'s bucket `eidfXX1:somebucket` to the account `account2` in EIDF project `eidfXX2`:
 
 ```json
 {
@@ -34,6 +34,10 @@ An example policy document to grant permissions to put, get, delete and list obj
     ]
 }
 ```
+
+TODO: What is `Sid`?
+
+TODO: What does this _really_ do? esp. `/*` and the bucket bit?
 
 ---
 
@@ -111,11 +115,13 @@ aws s3api put-bucket-policy --bucket <bucket-name> --policy "$(cat bucket-policy
 
 ## Set policy using Python
 
-Frant permissions to get and list objects in bucket `eidfXX1:somebucket` to the account `account2` in project `eidfXX2`, is:
-
-Grant permissions to another account: In this example we grant `ListBucket` and `GetObject` permissions to account `account1` in project `eidfXX1` and `account2` in project `eidfXX2`.
+An example policy document to grant permissions to list objects in a bucket, `ListBucket`, download objects, `GetObject`,  in EIDF project `eidfXX1`'s bucket `eidfXX1:somebucket` to the accounts `account1` in EIDF project `eidfXX1` and the account `account2` in EIDF project `eidfXX2`:
 
 TODO: Why is '{bucket_name}' used?
+
+TODO: Why the `/*` too?
+
+TODO: Why no `Sid`?
 
 ```python
 import json
