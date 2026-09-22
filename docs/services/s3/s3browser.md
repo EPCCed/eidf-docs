@@ -66,6 +66,10 @@ To view a bucket, including its URL and files:
 
 To refresh the view of the selected bucket, to reflect any changes to the bucket since the web page was last loaded, click **Refresh**.
 
+!!! Warning "Keys with trailing slashes"
+
+    Files whose keys have trailing slashes cannot be viewed in the EIDF S3 Browser. The EIDF S3 Browser uses slashes in keys to present the contents of a bucket in the form of a 'virtual file browser', treating each slash-delimited element of a key as a 'virtual directory'. If a key has a trailing slash, then it assumes from the trailing slash that the key is a prefix, to be visualised as a 'virtual directory', and not the key for a file.
+
 ### Upload file(s) into a bucket
 
 To upload file(s) into a bucket:
