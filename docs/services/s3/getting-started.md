@@ -111,8 +111,6 @@ Install the AWS CLI:
 curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
 ```
 
-TODO: Windows|Mac install, paths etc.
-
 !!! Note "AWS CLI install location"
 
     On EIDF VMs, the AWS CLI is installed into `$HOME/.local/share/aws-cli` with a symbolic link in `$HOME/.local/bin`. Your EIDF `.profile` ensures that `$HOME/.local/bin` is on your `PATH`.
@@ -192,7 +190,7 @@ aws configure set ca_bundle /usr/local/share/ca-certificates/extra/squid_proxyCA
 
 #### Create configuration and credentials files
 
-Create a configuration file, `~/.aws/config` on Linux or `%USERPROFILE%\.aws\config` on Windows, with the S3 endpoint URL and service region:
+Create a configuration file, `~/.aws/config` with the S3 endpoint URL and service region:
 
 ```ini
 [default]
@@ -200,7 +198,7 @@ endpoint_url = https://s3.eidf.ac.uk
 region = us-east-1
 ```
 
-Create a credentials file, `~/.aws/credentials` on Linux or `%USERPROFILE%\.aws\credentials` on Windows, with the access key and secret:
+Create a credentials file, `~/.aws/credentials` with the access key and secret:
 
 ```ini
 [default]
@@ -208,7 +206,7 @@ aws_access_key_id = <access_key>
 aws_secret_access_key = <secret>
 ```
 
-Set the credentials file to be readable by you only (Linux users only):
+Set the credentials file to be readable by you only:
 
 ```bash
 chmod go-rwx .aws/credentials
