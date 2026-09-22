@@ -395,6 +395,7 @@ aws s3 cp s3://mybucket/unis.csv downloads/
 ```
 
 The file will be downloaded:
+
 ```text
 download: s3://mybucket/unis.csv to downloads/unis.csv
 ```
@@ -872,17 +873,17 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
     If a key has a trailing slash then the trailing slash is part of the key name. For example, running:
 
     ```python
-    s3client.upload_file(Filename='unis.csv', 
-                         Bucket='mybucket', 
-                         Key='lothian/edunis/') 
+    s3client.upload_file(Filename='unis.csv',
+                         Bucket='mybucket',
+                         Key='lothian/edunis/')
     ```
 
     will upload the file and give it a key `lothian/edunis/`. The file could then be downloaded using this key. For example:
 
     ```python
-    s3client.download_file(Filename='download.csv', 
-                           Bucket='mybucket', 
-                           Key='lothian/edunis/') 
+    s3client.download_file(Filename='download.csv',
+                           Bucket='mybucket',
+                           Key='lothian/edunis/')
     ```
 
     This is different from how the AWS CLI behaves. For example, running
@@ -894,6 +895,7 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
     will upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`' as the AWS CLI adds `unis.csv` to the path before contacting the S3 service.
 
     Despite this inconsistency, files whose keys have trailing slashes can be downloaded by the AWS CLI. For example:
+
     ```bash
     aws s3 cp s3://mybucket/lothian/edunis/ unis.csv
     ```
@@ -920,7 +922,7 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
 
     ```python
     s3client = boto3.client('s3')
-    
+
     response = s3client.delete_objects(
         Bucket=bucket_name,
         Delete={
