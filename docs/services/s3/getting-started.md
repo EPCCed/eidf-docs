@@ -157,17 +157,17 @@ aws s3 ls help
 
 ### Configure the AWS CLI
 
-To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, an access key and the access key's associated secret. This can be configured in one of three ways: via an AWS CLI configuration command, manually writing configuration and credentials files, or defining via environment variables.
+To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, an access key, the access key's associated secret, and the service region. These can be configured in one of four ways: via an AWS CLI configuration command, manually writing configuration and credentials files, defining via environment variables, or, for the S3 endpoint URL and service region. via AWS CLI command-line parameters.
 
 #### Set endpoint and credentials configuration
 
-Interactively set access key and secret.
+Set the access key, secret and service region:
 
 ```bash
 aws configure
 ```
 
-You will be prompted for the access key and secret and region name. You will also be prompted for an output format, for which you can accept the default:
+You will be prompted for the access key, secret and service region. You will also be prompted for an output format, for which you can accept the default:
 
 ```text
 AWS Access Key ID [None]: <access_key>
@@ -176,7 +176,7 @@ Default region name [None]: us-east-1
 Default output format [None]:
 ```
 
-Set the endpoint:
+Set the S3 endpoint URL:
 
 ```bash
 aws configure set endpoint_url https://s3.eidf.ac.uk
@@ -188,9 +188,9 @@ If you are using the EIDF S3 Service from within an [EIDF Confidential Data Work
 aws configure set ca_bundle /usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 ```
 
-#### Create configuration and credentials files manually
+#### Create configuration and credentials files
 
-Create a configuration file, `~/.aws/config` on Linux or `%USERPROFILE%\.aws\config` on Windows, with content:
+Create a configuration file, `~/.aws/config` on Linux or `%USERPROFILE%\.aws\config` on Windows, with the S3 endpoint URL and service region:
 
 ```ini
 [default]
@@ -198,7 +198,7 @@ endpoint_url = https://s3.eidf.ac.uk
 region = us-east-1
 ```
 
-Create a credentials file, `~/.aws/credentials` on Linux or `%USERPROFILE%\.aws\credentials` on Windows, with content:
+Create a credentials file, `~/.aws/credentials` on Linux or `%USERPROFILE%\.aws\credentials` on Windows, with the access key and secret:
 
 ```ini
 [default]
@@ -220,14 +220,14 @@ ca_bundle = /usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 
 #### Set AWS CLI environment variables
 
-Set the following environment variables:
+Set environment variables with the S3 endpoint URL, the access key, secret and service region:
 
 ```bash
-export AWS_ACCESS_KEY_ID=<access_key>
-export AWS_SECRET_ACCESS_KEY=<secret>
 export AWS_ENDPOINT_URL=https://s3.eidf.ac.uk
 export AWS_ENDPOINT_URL_S3=${AWS_ENDPOINT_URL}
 export AWS_S3_ENDPOINT=${AWS_ENDPOINT_URL}
+export AWS_ACCESS_KEY_ID=<access_key>
+export AWS_SECRET_ACCESS_KEY=<secret>
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
@@ -246,6 +246,18 @@ export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
     `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by the AWS CLI.
 
     All three are defined here to cover all possible tools you may use in this tutorial.
+
+#### Use AWS CLI command-line parameters
+
+The AWS CLI allows for the S3 endpoint URL and region to be provided at the command line via the parameters `--endpoint-url` and `--region`. For example:
+
+```bash
+aws s3 ls --endpoint-url https://s3.eidf.ac.uk --region us-east-1 s3://<bucket-name>
+```
+
+#### Configuration precedence
+
+AWS CLI configuration files, environment variables and command-line parameters can be used together. If this is the case, then the command-line parameters have highest precedence, followed by the environment variables, and, then, the configuration files.
 
 #### Further information on AWS CLI configuration
 
@@ -294,11 +306,11 @@ A message will be displayed:
 make_bucket: mybucket
 ```
 
-!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
+!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket-name> argument of type 'NoneType' is not a container or iterable`"
 
     This error can occur if a bucket name does not conform to the naming requirements.
 
-!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucketname> Parameter validation failed`"
+!!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket-name> Parameter validation failed`"
 
     This error can also occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
 
@@ -733,7 +745,7 @@ Delete an empty bucket:
 aws s3 rb s3://mybucket
 ```
 
-!!! Tip "Troubleshooting: `remove_bucket failed: s3://<bucketname> argument of type 'NoneType' is not a container or iterable`"
+!!! Tip "Troubleshooting: `remove_bucket failed: s3://<bucket-name> argument of type 'NoneType' is not a container or iterable`"
 
     This error can occur if an attempt is made to delete a bucket that is not empty.
 
@@ -830,7 +842,7 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
 
 [create_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/create_bucket.html)
 
-!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (InvalidBucketName) when calling the CreateBucket operation: None`"
+!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (InvalidBucket-Name) when calling the CreateBucket operation: None`"
 
     This exception can be raised if a bucket name does not conform to the naming requirements.
 
@@ -1303,13 +1315,13 @@ TODO: Check, edit for consistency with foregoing.
 Grant permissions stored in an IAM policy file:
 
 ```bash
-aws put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
+aws put-bucket-policy --bucket <bucket-name> --policy "$(cat bucket-policy.json)"
 ```
 
 TODO: Julien's pull request has the following. Which is correct?
 
 ```bash
-aws s3api put-bucket-policy --bucket <bucketname> --policy "$(cat bucket-policy.json)"
+aws s3api put-bucket-policy --bucket <bucket-name> --policy "$(cat bucket-policy.json)"
 ```
 
 ### Example bucket permission policies
