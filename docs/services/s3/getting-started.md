@@ -1179,7 +1179,7 @@ curl -o unis.csv https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh
 
 ### Read from public project buckets via the AWS CLI
 
-To read data from a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To read data from a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
 
@@ -1200,7 +1200,7 @@ There is no workaround for this.
 
 Boto3 can be used to read from public project buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created. The first is that authentication needs to be disabled.
 
-The second is that to read data a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
+The second is that to read data a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
 
 An S3 client to interact with a public project bucket can be created as follows:
 
@@ -1330,7 +1330,7 @@ TODO: Check, edit for consistency with foregoing. How can this be checked? Does 
 
 ### Use buckets in other EIDF projects using the AWS CLI
 
-To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
 ### Use buckets in other EIDF projects using Python
 
