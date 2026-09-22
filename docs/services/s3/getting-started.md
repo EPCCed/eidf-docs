@@ -314,7 +314,7 @@ make_bucket: mybucket
 
 !!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket-name> Parameter validation failed`"
 
-    This error can also occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
+    This error can occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
 
 Now, list the buckets again:
 
@@ -366,7 +366,7 @@ upload: ./unis.csv to s3://mybucket/unis.csv
 
 !!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`"
 
-    This error can arise if the bucket name does not have the `s3` prefix.
+    This error can occur if the bucket name does not have the `s3` prefix.
 
 Now, list the contents of the bucket:
 
@@ -658,9 +658,9 @@ In terms of virtual directories, these queries can be viewed as akin to using wi
 
     Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`. In contrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
 
-### List files and file sizes
+### List total number of files and file sizes
 
-List the files in a bucket and the total number of files (objects) and their total size. For example:
+List the total number of files (objects) and their total size. For example:
 
 ```bash
 aws s3 ls s3://mybucket --summarize --human-readable
@@ -830,7 +830,7 @@ response_checksum_validation=when_required
 
     Boto3 provides both an object-oriented [Resources](https://docs.aws.amazon.com/boto3/latest/guide/resources.html) service interface and a [Low-level clients](https://docs.aws.amazon.com/boto3/latest/guide/clients.html) service interface, which maps more closely to S3 service APIs. On the 'Resources' page, the AWS Python SDK team advise that the interface is feature-frozen and recommend the use of the 'client' service interface. For this reason, the client interface is used in these examples.
 
-TODO: Add code snippets from `getting_started.py` below and add `getting_started.py` to Git, renamed.
+TODO: Add code snippets from `*.py` and explanatory text.
 
 ### Get S3 client
 
@@ -846,11 +846,11 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
 
 !!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (InvalidBucket-Name) when calling the CreateBucket operation: None`"
 
-    This exception can be raised if a bucket name does not conform to the naming requirements.
+    This error can occur if a bucket name does not conform to the naming requirements.
 
 !!! Tip "Troubleshooting: `botocore.exceptions.ParamValidationError: Parameter validation failed: Invalid bucket name'"
 
-    This exception can also be raised if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
+    This error can occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
 
 ### List files in a bucket
 
@@ -859,6 +859,12 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
 !!! Warning "`list_objects_v2` returns maximum of 1000 objects per call"
 
     `list_objects_v2` returns maximum of 1000 objects per call, even if there are more than 1000 objects matching the request. See the Boto3 documentation on [Paginators](https://docs.aws.amazon.com/boto3/latest/guide/paginators.html) for information on how to handle more than 1000 objects.
+
+`list_objects_v2` and `Prefix`
+
+### List total number of files and file sizes
+
+To get total number of objects in bucket and total size, need to use `list_objects_v2` and sum `Size` of each object.
 
 ### Upload file
 
@@ -916,29 +922,35 @@ TODO: Add code snippets from `getting_started.py` below and add `getting_started
 
 [delete_object](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html)
 
-!!! Tip "Delete multiple files"
+### Delete multiple files
 
-    Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, `delete_objects` can be used with a list of the file keys. For example:
+[delete_objects](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_objects.html)
 
-    ```python
-    s3client = boto3.client('s3')
+Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, `delete_objects` can be used with a list of the file keys. For example:
 
-    response = s3client.delete_objects(
-        Bucket=bucket_name,
-        Delete={
-            'Objects':
-            [
-                {'Key': 'data1.dat'},
-                {'Key': 'data2.dat'},
-                {'Key': 'data3.dat'}
-            ]
-        }
-    )
-    ```
+```python
+s3client = boto3.client('s3')
 
-### List files using prefixes
+response = s3client.delete_objects(
+    Bucket=bucket_name,
+    Delete={
+        'Objects':
+        [
+            {'Key': 'data1.dat'},
+            {'Key': 'data2.dat'},
+            {'Key': 'data3.dat'}
+        ]
+    }
+)
+```
 
-`list_objects_v2` and `Prefix`
+### Delete bucket
+
+[delete_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket.html)
+
+!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (BucketNotEmpty) when calling the DeleteBucket operation: None'"
+
+    This error can occur if an attempt is made to delete a bucket that is not empty.
 
 ---
 
@@ -1145,7 +1157,7 @@ curl -o unis.csv https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh
 
 ### Read from public buckets using the AWS CLI
 
-To read data from our public bucket using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To read data from our public bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
 
@@ -1229,11 +1241,13 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 
 ### Read from public buckets using Python
 
-TODO: Python
+TODO: Add code snippets from `*.py` and explanatory text.
 
-By default, the `Boto3` Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
+By default, the Boto3 Python library raises an error that bucket names with a colon `:` (as used by the EIDF S3 Service) are invalid.
 
-When accessing a bucket with the project code prefix, switch off the bucket name validation:
+To read data from our public bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. By default, Boto does not allow such S3 URIs.
+
+However, when accessing a bucket with the project code prefix, switch off the bucket name validation:
 
 ```python
 import boto3
@@ -1242,6 +1256,9 @@ from botocore.handlers import validate_bucket_name
 s3 = boto3.resource('s3', endpoint_url='https://s3.eidf.ac.uk')
 s3.meta.client.meta.events.unregister('before-parameter-build.s3', validate_bucket_name)
 ```
+
+No need for this for the EIDF Data Publishing Service.
+
 
 ### Read from public buckets using R
 
