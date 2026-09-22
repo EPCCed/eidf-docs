@@ -1140,77 +1140,6 @@ The `response` from `delete_bucket` includes information about the deletion.
 
 ---
 
-## Use EIDF S3 via R
-
-This section describes how to use the EIDF S3 Service via R and the [TODO](TODO) package.
-
-The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
-
-TODO: Use comparable examples from AWS CLI, with a different bucket name.
-
-There are three different packages for R that you could install:
-
-* [aws.s3](https://cran.r-project.org/web/packages/aws.s3/)
-* [s3](https://cran.r-project.org/web/packages/s3/)
-* [paws](https://cran.r-project.org/web/packages/paws/)
-
-`aws.s3` is recommended and documented here.
-
-TODO: Above is from `docs/safe-haven-services/s3-service.md` pull request. Why is aws.cli recommended and not Amazon's own paws?
-
-### Configure R to connect to the EIDF S3 Service
-
-TODO: Does aws.s3|paws use '.aws'? Which environment variables does Boto3 use? Which Python `botocore.config` parameters? Where best to put all this? Clean this up!
-
-Credentials can be passed in as environment variables, as described earlier. Alternatively, you can set environment variables within your `.Renviron` file or from within R using `Sys.setenv`.
-
-!!! Important
-
-    For the endpoint, `aws.s3` uses environment variable `AWS_S3_ENDPOINT`, not `AWS_ENDPOINT_URL`.
-
-### Interact with the EIDF S3 Service using R
-
-```r
-library(aws.s3)
-my_bucket <- "bucket_name"
-my_access_key <- "put_your_key_here"
-my_secret_key <- "put_your_secret_here"
-my_region <- "us-east-1"
-my_endpoint <- "http://nsh-fs02:7070"
-my_endpoint_host <- "nsh-fs02:7070"
-my_object_path <- "326834963428524640226726425259803542053/249177910747091225438117569123869339900/MR.304084489533501143843524990882920225135-an.dcm"
-Sys.setenv( AWS_ENDPOINT_URL="http://nsh-fs02:7070" )
-Sys.setenv( AWS_S3_ENDPOINT="http://nsh-fs02:7070" )
-Sys.setenv( AWS_DEFAULT_REGION="us-east-1" )
-Sys.setenv( http_proxy="" )
-save_object( my_object_path,
-             file = "downloaded.dcm",
-             bucket = my_bucket,
-             base_url = my_endpoint_host,
-             region = "",
-             use_https = FALSE,
-             key = my_access_key,
-             secret = my_secret_key )
-```
-
-!!! Important
-
-    `install.packages()` must be called **before** `Sys.setenv( http_proxy="" )`, so that any packages are downloaded via the web proxy otherwise R won't be able to access the packages.
-
-    You need to have the region set in the environment variable `AWS_DEFAULT_REGION` and pass `region=""` to `save_object`, otherwise you will get a `cannot resolve host` error.
-
-    The `base_url` argument to `save_object` is the host and port only with no `http://` prefix.
-
-    `use_https` must be `FALSE`.
-
----
-
-## Use the EIDF S3 Service via other programming languages
-
-If you want to use another programming language have a look at the [Ceph S3 API](https://docs.ceph.com/en/latest/radosgw/s3/) interfaces (Ceph is the underlying platform used).
-
----
-
 ## Read from public project buckets
 
 Public project buckets, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided.
@@ -1267,7 +1196,7 @@ Invalid bucket name "<project-name>:mybucket": Bucket name must match the regex 
 
 There is no workaround for this.
 
-### Read from public project buckets using Python
+### Read from public project buckets via Python
 
 Boto3 can be used to read from public project buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created. The first is that authentication needs to be disabled.
 
@@ -1310,7 +1239,7 @@ A popular Linux command-line utility for interacting with REST-based online serv
 curl -O https://s3.eidf.ac.uk/eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0
 ```
 
-### Read from public buckets in the EIDF Data Publishing Service using the AWS CLI
+### Read from public buckets in the EIDF Data Publishing Service via the AWS CLI
 
 Examples of using the AWS CLI to read from public buckets in the EIDF Data Publishing Service using the AWS CLI are as follows.
 
@@ -1373,7 +1302,7 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to downloads/9/0
 ```
 
-### Read from public buckets using Python
+### Read from public buckets in the EIDF Data Publishing Service via Python
 
 Boto3 can be used to read from public buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created.
 
@@ -1391,14 +1320,6 @@ s3client = boto3.client('s3',
                         config=Config(signature_version=UNSIGNED))
 ```
 
-### Read from public buckets using R
-
-TODO: R
-
-When accessing a bucket with the project code prefix, switch off the bucket name validation:
-
-TODO: aws.s3 seemingly allows colon-delimitation. paws allows it to be disabled.
-
 ---
 
 ## Use buckets in other EIDF projects
@@ -1412,10 +1333,6 @@ TODO: Check, edit for consistency with foregoing. How can this be checked? Does 
 To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public buckets](#private-buckets-in-other-projects-or-public-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
 ### Use buckets in other EIDF projects using Python
-
-TODO: Copy blurb from elsewhere
-
-### Use buckets in other EIDF projects using R
 
 TODO: Copy blurb from elsewhere
 
@@ -1569,8 +1486,3 @@ policy = bucket.Policy()
 policy.put(Policy=json.dumps(bucket_policy))
 ```
 
-### Set policy using R
-
-TODO: Add comparable code for R.
-
----
