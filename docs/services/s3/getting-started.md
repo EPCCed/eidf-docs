@@ -1181,27 +1181,7 @@ aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --endpoint-url 
 
     There is no need to specify an S3 service region when listing buckets, files or downloading files.
 
-List the bucket's files, now requesting that all files be listed:
-
-```bash
-aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400 --endpoint-url https://s3.eidf.ac.uk --no-sign-request --recursive
-```
-
-```text
-2025-08-05 13:00:55      18657 LICENSE
-2026-04-30 11:09:15       8630 README.md
-2025-07-23 16:16:02  223392171 data.zarr/snapshots/p/c/0/0/0/0
-2025-07-23 16:16:02  222867280 data.zarr/snapshots/p/c/0/1/0/0
-2025-07-23 16:16:02  221594924 data.zarr/snapshots/p/c/0/10/0/0
-2025-07-23 16:16:02  219647578 data.zarr/snapshots/p/c/0/100/0/0
-2025-07-23 16:16:02  220032475 data.zarr/snapshots/p/c/0/101/0/0
-2025-07-23 16:16:02  219736029 data.zarr/snapshots/p/c/0/102/0/0
-2025-07-23 16:16:02  219222531 data.zarr/snapshots/p/c/0/103/0/0
-2025-07-23 16:16:03  218831210 data.zarr/snapshots/p/c/0/104/0/0
-...
-```
-
-Now, list a subset of the files, for example those with prefix `data.zarr/statistics/ww/c/9/`:
+List a subset of the files, for example those with prefix `data.zarr/statistics/ww/c/9/`:
 
 ```bash
 aws s3 ls s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/ --endpoint-url https://s3.eidf.ac.uk --no-sign-request --recursive
