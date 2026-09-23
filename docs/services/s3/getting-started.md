@@ -8,9 +8,7 @@ This tutorial provides a hands-on introduction to S3 and the EIDF S3 Service.
 
 The tutorial assumes you have been granted access to the EIDF S3 Service or, for using public buckets only, have been given appropriate EIDF S3 credentials.
 
-The tutorial has been checked using the following platforms and packages as follows:
-
-* EIDF VM, Ubuntu 24.04.4 LTS (noble), AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97
+The tutorial was developed under an EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36.
 
 ---
 
@@ -66,49 +64,49 @@ EIDF S3 uses Ceph S3.
 
 Subset of Amazon S3 REST API
 
-### EIDF S3 bucket URIs and URLs
+### EIDF S3 bucket naming
 
-There are subtleties around how to refer to EIDF S3 Service buckets and files in both S3 bucket URIs and URLs, depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
+There are subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
 
 ### Private buckets in a project
 
-To refer to private buckets and files within a project, when using an access key for that project, use S3 URIs of form `s3://<bucket-name>`. For example:
+To refer to private buckets within a project, when using an access key for that project, use bucket names of form `<bucket-name>`. For example:
 
 ```text
-s3://mybucket
-s3://mybucket/my-data-file.csv
+mybucket
+mybucket/my-data-file.csv
 ```
 
 ### Public project buckets or buckets of other projects
 
-To refer to public project buckets, via anonymous access, or to buckets of other EIDF projects, to which you have been granted, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
+To refer to public project buckets, via anonymous access, or to buckets of other EIDF projects, to which you have been granted, use bucket names of form `<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
 
 ```text
-s3://eidfNNN:somebucket
-s3://eidfNNN:somebucket/some-data-file.csv
+eidfNNN:somebucket
+eidfNNN:somebucket/some-data-file.csv
 ```
 
 !!! Note "Projects, buckets and tenancies"
 
     Each project has its own tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
-    The project name specified within S3 URIs allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
+    The project name specified within bucket names allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
 
     A project prefix is not required when using buckets within a project using an access key for that project as the access key itself identifies the project's tenancy.
 
 !!! Warning "Project identification and S3 tools"
 
-    S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid as their specification does not include the concept of tenancies, so `<project-name>:<bucket-name>` is viewed as an invalid bucket name due to the presence of the colon.
+    Bucket names of form `<project-name>:<bucket-name>` are strictly invalid due to the presence of the colon `:`, as the S3 bucket name specification does not include the concept of tenancies.
 
-    Some S3 tools do not allow such S3 URIs to be used, for example the AWS CLI. Others, however, will, but some may need to be configured to do so.
+    Some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.
 
 ### Public buckets within the EIDF Data Publishing Service
 
-To refer to public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md), use S3 bucket URIs of form `s3://<project-name>-<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a dash `-`. For example:
+To refer to public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), use bucket names of form `<project-name>-<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a dash `-`. For example:
 
 ```text
-s3://eidfNNN-mybucket
-s3://eidfNNN-mybucket/my-data-file.csv
+eidfNNN-somebucket
+eidfNNN-somebucket/some-data-file.csv
 ```
 
 !!! Note "Projects, buckets and tenancies and the EIDF Data Publishing Service"
@@ -119,18 +117,18 @@ s3://eidfNNN-mybucket/my-data-file.csv
 
 ### Public buckets and URLs
 
-To reference public project buckets and files for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
+To reference public project buckets for a project via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
 
 ```text
 https://s3.eidf.ac.uk/eidfNNN:mybucket
 https://s3.eidf.ac.uk/eidfNNN:mybucket/my-data-file.csv
 ```
 
-To reference public buckets and files within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
+To reference public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
 
 ```text
-https://s3.eidf.ac.uk/eidfNNN-mybucket
-https://s3.eidf.ac.uk/eidfNNN-mybucket/my-data-file.csv
+https://s3.eidf.ac.uk/eidfNNN-somebucket
+https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
 ```
 
 ---
@@ -849,299 +847,6 @@ These, and other, clients may each have client-specific ways of configuring the 
 
 ---
 
-## Use EIDF S3 via Python
-
-This section describes how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
-
-The example tasks covered are comparable to those described in [Use EIDF S3 via the command-line](#use-eidf-s3-via-the-command-line).
-
-### Install Boto3
-
-There are a number of options for installing the Boto3 package. Here, Boto3 is installed into a new Python virtual environment using 'pip'. Alternatively, you can used your preferred means of managing Python packages.
-
-```bash
-sudo apt install -y python3-venv
-python3 -m venv s3-venv
-source s3-venv/bin/activate
-```
-
-Install Boto3:
-
-```bash
-python -m pip install boto3
-```
-
-### Create an S3 client
-
-To interact with the EIDF S3 Service within Python, you can create a [client](https://docs.aws.amazon.com/boto3/latest/guide/clients.html) service interface.
-
-The client needs to know the S3 endpoint URL, an access key, the access key's associated secret, and the service region. The client can be configured in various ways:
-
-* Create AWS CLI configuration within `~/.aws/config` and `~/.aws/credentials` files.
-    * Either, [Set AWS CLI configuration via the command-line](#set-aws-cli-configuration-via-the-command-line).
-    * Or, [Create AWS CLI configuration files](#create-aws-cli-configuration-files).
-* [Set AWS CLI environment variables](#set-aws-cli-environment-variables).
-* In-code parameters, as shown below.
-
-AWS CLI configuration files, environment variables and in-code parameters can be used together. If this is the case, then the in-code parameters have highest precedence, followed by the environment variables, and, then, the configuration files.
-
-A minimal S3 client, if using AWS CLI configuration or environment variables, can be created as follows:
-
-```python
-import boto3
-
-s3client = boto3.client('s3')
-```
-
-An S3 client, using in-code parameters, can be created as follows:
-
-```python
-import boto3
-
-s3client = boto3.client(
-    's3',
-    endpoint_url='https://s3.eidf.ac.uk',
-    region_name='us-east-1',
-    aws_access_key_id='<access-key>',
-    aws_secret_access_key='<secret>'
-)
-```
-
-If you are using the EIDF S3 Service from within an [EIDF Confidential Data Workspace](../confidentialdataworkspace/index.md), then add a `verify` parameter to `boto3.client` with the path to the web proxy certificate bundle:
-
-```python
-s3client = boto3.client(
-    's3',
-    endpoint_url='https://s3.eidf.ac.uk',
-    region_name='us-east-1',
-    aws_access_key_id='<access-key>',
-    aws_secret_access_key='<secret>',
-    verify='/usr/local/share/ca-certificates/extra/squid_proxyCA.crt'
-)
-```
-
-Boto3 [Session](https://docs.aws.amazon.com/boto3/latest/reference/core/session.html) provides information on the parameters supported by `boto3.client` (`boto3.client` creates a `boto3.session.Session` behind the scenes).
-
-!!! Note "Boto3 'resource' versus 'client' service interfaces"
-
-    Boto3 provides both an object-oriented [Resources](https://docs.aws.amazon.com/boto3/latest/guide/resources.html) service interface and a [Low-level clients](https://docs.aws.amazon.com/boto3/latest/guide/clients.html) service interface, which maps more closely to S3 service APIs. On the 'Resources' page, the AWS Python SDK team advise that the interface is feature-frozen and recommend the use of the 'client' service interface. For this reason, the client interface is used in these examples.
-
-!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (XAmzContentSHA256Mismatch) when calling the PutObject operation: None`"
-
-    In Boto3 version 1.36 a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3 (see Boto3 GitHub issue [boto/boto#4392](https://github.com/boto/boto3/issues/4392)). If you see this error, then:
-
-    * Either, add the following to your AWS CLI configuration file (~/.aws/config`):
-
-        ```ini
-        # Required for Python Boto3 version 1.36 and later which
-        # introduced a breaking change that adopts new default
-        # integrity protections not currently supported by EIDF S3.
-        request_checksum_calculation=when_required
-        response_checksum_validation=when_required
-        ```
-
-    * Or, update your Boto3 S3 client creation code as follows:
-
-        ```python
-        from botocore.config import Config
-
-        config = Config(
-            request_checksum_calculation="when_required",
-            response_checksum_validation="when_required",
-        )
-        ```
-
-        Then, add `config=config` to your `boto3.client` call. For example:
-
-        ```python
-        s3client = boto3.client('s3', config=config)
-        ```
-
-### List buckets
-
-[list_buckets](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_buckets.html) lists the buckets at the S3 endpoint URL. For example, get a list of buckets, and print their names:
-
-```python
-response = s3client.list_buckets()
-# Get 'Buckets' list from 'response' dict.
-buckets = response['Buckets']
-# For each bucket's dict, print bucket 'Name'.
-for bucket in buckets:
-    print(f'{bucket['Name']}')
-```
-
-The `response` from `list_buckets` includes information about the buckets.
-
-### Create buckets
-
-[create_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/create_bucket.html) creates a bucket. For example:
-
-```python
-response = s3client.create_bucket(Bucket='mybucket')
-```
-
-The `response` from `create_bucket` includes information about the new bucket.
-
-!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (InvalidBucket-Name) when calling the CreateBucket operation: None`"
-
-    This error can occur if a bucket name does not conform to the naming requirements.
-
-!!! Tip "Troubleshooting: `botocore.exceptions.ParamValidationError: Parameter validation failed: Invalid bucket name'"
-
-    This error can occur if a bucket name does not conform to the naming requirements, specifically if it has a colon `:`.
-
-### List files in a bucket
-
-[list_objects_v2](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_objects_v2.html) lists the files (objects) in a bucket. For example, get a list of files, and print their keys:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-# Get 'Contents'  list from 'response' dict, but only if 'Contents' is
-# present i.e., bucket has one or more files.
-if 'Contents' in response:
-    # For each file's dict, print file 'Key'.
-    for f in response['Contents']:
-        print(f'{f['Key']}')
-```
-
-!!! Warning "`list_objects_v2` returns maximum of 1000 objects per call"
-
-    `list_objects_v2` returns maximum of 1000 objects per call, even if there are more than 1000 objects matching the request. See the Boto3 documentation on [Paginators](https://docs.aws.amazon.com/boto3/latest/guide/paginators.html) for information on how to handle buckets with more than 1000 objects.
-
-### Upload file
-
-[upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) uploads a file to a bucket. For example:
-
-```python
-s3client.upload_file(Filename='edinburgh.csv',
-                      Bucket='mybucket',
-                      Key='scotland/lothian/edinburgh.csv')
-```
-
-!!! Tip "Upload multiple files"
-
-    Multiple files can be uploaded by calling `upload_file` on each file in turn.
-
-!!! Warning "A trailing slash in a key is part of the key name"
-
-    If a key has a trailing slash then the trailing slash becomes part of the key name. For example,
-
-    ```python
-    s3client.upload_file(Filename='edinburgh.csv',
-                         Bucket='mybucket',
-                         Key='scotland/lothian/')
-    ```
-
-    will upload the file and give it the key `scotland/lothian/`. This is different from how the AWS CLI behaves, where uploading the file` to `s3://mybucket/scotland/lothian/` will upload the file and give it the key `scotland/lothian/edinburgh.csv`'. AWS CLI adds `edinburgh.csv` to the path before contacting the S3 service. Boto3 does not.
-
-    However, both Boto3 and the AWS CLI allow for files whose keys have trailing slashes to be downloaded.
-
-### Download file
-
-[download_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/download_file.html) downloads a file from a bucket. For example:
-
-```python
-s3client.download_file(Filename='edinburgh.csv',
-                       Bucket='mybucket',
-                       Key='scotland/lothian/edinburgh.csv')
-```
-
-!!! Tip "Download multiple files"
-
-    Multiple files can be downloaded by calling `download_file` on each file in turn.
-
-### List files and sizes
-
-The `response` from `list_objects_v2` includes information about each file. This includes each file's size, keyed by `Size`. This can be used to calculate the total number of objects in the bucket and their total size. For example:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-total_size = 0
-num_files = 0
-if 'Contents' in response:
-    for f in response['Contents']:
-        # For each file's dict, print file 'Key' and 'Size'.
-        print(f'{f['Key']}: {f['Size']} bytes')
-        total_size += f['Size']
-    num_files = len(response['Contents'])
-print(f"Number of files: {num_files}. Total size: {total_size}")
-```
-
-### List files with a prefix
-
-`list_object_v2` has a `Prefix` parameter allowing for files whose keys have a specific prefix to be listed. For example:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket',
-                                    Prefix='scotland')
-```
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket',
-                                    Prefix='scotland/lothian/ed')
-```
-
-### Delete file
-
-[delete_object](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html) allows for a file to be deleted. For example:
-
-```python
-response = s3client.delete_object(Bucket='mybucket',
-                                  Key='scotland/lothian/edinburgh.csv')
-```
-
-The `response` from `delete_object` includes information about the deletion.
-
-### Delete multiple files
-
-Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, [delete_objects](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_objects.html) allows for multiple files to be deleted, given a list of the file keys. For example:
-
-```python
-response = s3client.delete_objects(
-        Bucket='mybucket',
-        Delete={
-            'Objects':
-                [
-                    {'Key': 'scotland/lothian/edinburgh.csv'},
-                    {'Key': 'scotland/strathclyde/glasgow.csv'},
-                    {'Key': 'scotland/grampian/aberdeen.csv'}
-                ]
-        }
-)
-```
-
-The `response` from `delete_objects` includes information about the deletion.
-
-The list of keys could be created programatically from a query to `list_objects_v2`. For example:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-file_keys = None
-if 'Contents' in response:
-    # Create list of keys compatible with that expected by
-    # 'delete_objects'.
-    file_keys = [{'Key': obj['Key']} for obj in response['Contents']]
-
-response = s3client.delete_objects(Bucket='mybucket',
-                                   Delete={'Objects': file_keys})
-```
-
-### Delete bucket
-
-[delete_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket.html) allows for a bucket to be deleted. For example:
-
-```python
-response = s3client.delete_bucket(Bucket='mybucket')
-```
-
-The `response` from `delete_bucket` includes information about the deletion.
-
-!!! Tip "Troubleshooting: `botocore.exceptions.ClientError: An error occurred (BucketNotEmpty) when calling the DeleteBucket operation: None'"
-
-    This error can occur if an attempt is made to delete a bucket that is not empty.
-
----
-
 ## Read from public project buckets
 
 Public project buckets, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided.
@@ -1181,7 +886,7 @@ curl -o downloads/edinburgh.csv https://s3.eidf.ac.uk/<project-name>:mybucket/sc
 
 ### Read from public project buckets via the AWS CLI
 
-To read data from the public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To read data from the public project bucket requires the use of a bucket name of `<project-name>:mybucket`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.
 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
 
@@ -1197,27 +902,6 @@ Invalid bucket name "<project-name>:mybucket": Bucket name must match the regex 
 ```
 
 There is no workaround for this.
-
-### Read from public project buckets via Python
-
-Boto3 can be used to read from public project buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created. The first is that authentication needs to be disabled.
-
-The second is that to read data from the public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
-
-An S3 client to interact with a public project bucket can be created as follows:
-
-```python
-import boto3
-from botocore import UNSIGNED
-from botocore.client import Config
-from botocore.handlers import validate_bucket_name
-
-s3client = boto3.client('s3',
-                        endpoint_url='https://s3.eidf.ac.uk',
-                        config=Config(signature_version=UNSIGNED))
-s3client.meta.events.unregister('before-parameter-build.s3',
-                                validate_bucket_name)
-```
 
 ---
 
@@ -1243,7 +927,7 @@ curl -O https://s3.eidf.ac.uk/eidf198-highres-snapshots-sublayer-dns-tbl-re2400/
 
 ### Read from public buckets in the EIDF Data Publishing Service via the AWS CLI
 
-Examples of using the AWS CLI to read from public buckets in the EIDF Data Publishing Service using the AWS CLI are as follows.
+To read from public buckets within the EIDF Data Publishing Service requires the use of bucket names of form `<project-name>-<bucket-name>`. These are valid bucket names, so the AWS CLI can be used.
 
 List the bucket's files:
 
@@ -1304,46 +988,10 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to downloads/9/0
 ```
 
-### Read from public buckets in the EIDF Data Publishing Service via Python
-
-Boto3 can be used to read from public buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created.
-
-To read data from both public project buckets and public buckets within the EIDF Data Publishing Service, authentication needs to be disabled.
-
-An S3 client to interact with a public project bucket can be created as follows:
-
-```python
-import boto3
-from botocore import UNSIGNED
-from botocore.client import Config
-
-s3client = boto3.client('s3',
-                        endpoint_url='https://s3.eidf.ac.uk',
-                        config=Config(signature_version=UNSIGNED))
-```
-
 ---
 
 ## Use buckets of other EIDF projects
 
 To refer to buckets of other EIDF projects, to which you have been granted, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`.
 
-### Use buckets of other EIDF projects using the AWS CLI
-
-To use buckets of other EIDF projects requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool. There is no workaround for this.
-
-### Use buckets in other EIDF projects using Python
-
-To use buckets of other EIDF projects requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
-
-An S3 client to interact with another EIDF project's bucket can be created as follows:
-
-```python
-import boto3
-from botocore.handlers import validate_bucket_name
-
-s3client = boto3.client('s3',
-                        endpoint_url='https://s3.eidf.ac.uk')
-s3client.meta.events.unregister('before-parameter-build.s3',
-                                validate_bucket_name)
-```
+To use buckets of other EIDF projects requires the use of bucket names of form `<project-name>:<bucket-name>`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used.Others, however, will, but some may need to be configured to do so.

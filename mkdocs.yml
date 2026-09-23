@@ -96,6 +96,7 @@ nav:
     - "S3":
       - "Overview": services/s3/index.md
       - "Getting started": services/s3/getting-started.md
+      - "Using the EIDF S3 service via Python": services/s3/s3-python.md
       - "Using S3 policies": services/s3/s3-policies.md
       - "Using the EIDF S3 Browser": services/s3/s3browser.md
       - "Managing a project's S3 object store allocation": services/s3/manage.md
