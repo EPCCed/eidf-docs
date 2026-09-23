@@ -345,7 +345,7 @@ For further information on AWS CLI configuration, see the AWS CLI documentation 
 * [Configuring environment variables for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html).
 * [aws configure set](https://docs.aws.amazon.com/cli/latest/reference/configure/set.html).
 
-### List buckets
+### List S3 buckets
 
 List the buckets owned by the S3 account associated with the access key:
 
@@ -365,7 +365,7 @@ If you are using a newly-created EIDF S3 Service for your project, then there wi
 
     then you need to configure the path to the web proxy certificate bundle. This can be done as described earlier, either using a ` ca_bundle` configuration value or an `AWS_CA_BUNDLE` environment variable.
 
-### Create a bucket
+### Create an S3 bucket
 
 Create a bucket, 'mybucket':
 
@@ -417,7 +417,7 @@ The new bucket will be empty.
 
     Within the EIDF S3 Service, buckets are owned by the S3 account associated with the access key used to create the bucket.
 
-### Upload a file
+### Upload a file to an S3 bucket
 
 Create a `data` directory:
 
@@ -428,13 +428,13 @@ mkdir -p data
 Create a CSV file of universities in Edinburgh and their postcodes, `data/edinburgh.csv`. This can be done programatically as follows:
 
 ```bash
-cat << EOF > data/edinburgh.csv 
-name,postcode 
-The University of Edinburgh,EH8 9YL 
-Edinburgh Napier University,EH14 1DJ 
-Heriot-Watt University,EH14 4AS 
-Queen Margaret University,EH21 6UU 
-EOF 
+cat << EOF > data/edinburgh.csv
+name,postcode
+The University of Edinburgh,EH8 9YL
+Edinburgh Napier University,EH14 1DJ
+Heriot-Watt University,EH14 4AS
+Queen Margaret University,EH21 6UU
+EOF
 ```
 
 Upload the file into the bucket:
@@ -446,7 +446,7 @@ aws s3 cp data/edinburgh.csv s3://mybucket
 The file will be listed as it is uploaded:
 
 ```text
-upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv         
+upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv
 ```
 
 !!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`"
@@ -467,7 +467,7 @@ The listing will now include the file:
 
 The key of the file in the bucket is `edinburgh.csv` i.e., the file name itself. This is because we did not specify a key for the file, so the AWS CLI uses the file name.
 
-### Download a file
+### Download a file from an S3 bucket
 
 Create a `downloads` directory:
 
@@ -484,7 +484,7 @@ aws s3 cp s3://mybucket/edinburgh.csv downloads/
 The file will be downloaded:
 
 ```text
-download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv  
+download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv
 ```
 
 Now compare the downloaded file to the original file:
@@ -502,13 +502,13 @@ Multiple files can be both uploaded to and downloaded from an S3 bucket.
 Create CSV files of universities in Aberdeen, `data/aberdeen.csv`, and Glasgow, `data/glasgow.csv`. This can be done programatically as follows:
 
 ```bash
-cat << EOF > data/aberdeen.csv 
+cat << EOF > data/aberdeen.csv
 name,postcode
 University of Aberdeen,AB24 3FX
 Robert Gordon University,AB10 7QB
 EOF
 
-cat << EOF > data/glasgow.csv 
+cat << EOF > data/glasgow.csv
 name,postcode
 University of Glasgow,G12 8QQ
 University of Strathclyde,G1 1XQ
@@ -535,7 +535,7 @@ List the bucket to see the uploaded files:
 aws s3 ls s3://mybucket
 ```
 
-The listing will include the uploaded files 
+The listing will include the uploaded files
 
 ```text
 2026-09-23 08:36:01         80 aberdeen.csv
@@ -553,9 +553,9 @@ ls -1 downloads
 The files will be listed as they are downloaded:
 
 ```text
-download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv  
-download: s3://mybucket/aberdeen.csv to downloads/aberdeen.csv    
-download: s3://mybucket/glasgow.csv to downloads/glasgow.csv      
+download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv
+download: s3://mybucket/aberdeen.csv to downloads/aberdeen.csv
+download: s3://mybucket/glasgow.csv to downloads/glasgow.csv
 ```
 
 The `downloads` directory will contain the downloaded files:
@@ -583,7 +583,7 @@ Total Objects: 3
    Total Size: 387 Bytes
 ```
 
-### Delete files
+### Delete a file from an S3 bucket
 
 Delete each file in turn, using S3 URIs including both the bucket name and the file's keys:
 
@@ -616,7 +616,7 @@ aws s3 cp data/edinburgh.csv s3://mybucket/scotland/edinburgh
 The upload message is:
 
 ```text
-upload: data/edinburgh.csv to s3://mybucket/scotland/edinburgh      
+upload: data/edinburgh.csv to s3://mybucket/scotland/edinburgh
 ```
 
 When the file is uploaded using S3 URI `s3://mybucket/scotland/edinburgh`, the absence of a trailing slash means that the AWS CLI interprets the request as 'upload `data/edinburgh.csv` to `mybucket` and give it the key `scotland/edinburgh`.
@@ -672,6 +672,7 @@ To illustrate this further, run:
 ```bash
 aws s3 ls s3://mybucket/scotland
 ```
+
 ```text
                            PRE scotland/
 ```
@@ -683,6 +684,7 @@ Now run:
 ```bash
 aws s3 ls s3://mybucket/scotland/
 ```
+
 ```text
                            PRE glasgow/
 2026-09-23 09:58:00        154 edinburgh
@@ -993,13 +995,13 @@ The `response` from `create_bucket` includes information about the new bucket.
 [list_objects_v2](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_objects_v2.html) lists the files (objects) in a bucket. For example, get a list of files, and print their keys:
 
 ```python
-response = s3client.list_objects_v2(Bucket='mybucket') 
-# Get 'Contents'  list from 'response' dict, but only if 'Contents' is 
-# present i.e., bucket has one or more files. 
-if 'Contents' in response: 
-    # For each file's dict, print file 'Key'. 
-    for f in response['Contents']: 
-        print(f'{f['Key']}') 
+response = s3client.list_objects_v2(Bucket='mybucket')
+# Get 'Contents'  list from 'response' dict, but only if 'Contents' is
+# present i.e., bucket has one or more files.
+if 'Contents' in response:
+    # For each file's dict, print file 'Key'.
+    for f in response['Contents']:
+        print(f'{f['Key']}')
 ```
 
 !!! Warning "`list_objects_v2` returns maximum of 1000 objects per call"
@@ -1011,9 +1013,9 @@ if 'Contents' in response:
 [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) uploads a file to a bucket. For example:
 
 ```python
-s3client.upload_file(Filename='edinburgh.csv', 
-                      Bucket='mybucket', 
-                      Key='scotland/lothian/edinburgh.csv') 
+s3client.upload_file(Filename='edinburgh.csv',
+                      Bucket='mybucket',
+                      Key='scotland/lothian/edinburgh.csv')
 ```
 
 !!! Tip "Upload multiple files"
@@ -1053,16 +1055,16 @@ s3client.download_file(Filename='edinburgh.csv',
 The `response` from `list_objects_v2` includes information about each file. This includes each file's size, keyed by `Size`. This can be used to calculate the total number of objects in the bucket and their total size. For example:
 
 ```python
-response = s3client.list_objects_v2(Bucket='mybucket') 
-total_size = 0 
-num_files = 0 
-if 'Contents' in response: 
-    for f in response['Contents']: 
-        # For each file's dict, print file 'Key' and 'Size'. 
-        print(f'{f['Key']}: {f['Size']} bytes') 
-        total_size += f['Size'] 
-    num_files = len(response['Contents']) 
-print(f"Number of files: {num_files}. Total size: {total_size}") 
+response = s3client.list_objects_v2(Bucket='mybucket')
+total_size = 0
+num_files = 0
+if 'Contents' in response:
+    for f in response['Contents']:
+        # For each file's dict, print file 'Key' and 'Size'.
+        print(f'{f['Key']}: {f['Size']} bytes')
+        total_size += f['Size']
+    num_files = len(response['Contents'])
+print(f"Number of files: {num_files}. Total size: {total_size}")
 ```
 
 ### List files with a prefix
@@ -1084,8 +1086,8 @@ response = s3client.list_objects_v2(Bucket='mybucket',
 [delete_object](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html) allows for a file to be deleted. For example:
 
 ```python
-response = s3client.delete_object(Bucket='mybucket', 
-                                  Key='scotland/lothian/edinburgh.csv') 
+response = s3client.delete_object(Bucket='mybucket',
+                                  Key='scotland/lothian/edinburgh.csv')
 ```
 
 The `response` from `delete_object` includes information about the deletion.
@@ -1095,17 +1097,17 @@ The `response` from `delete_object` includes information about the deletion.
 Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, [delete_objects](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_objects.html) allows for multiple files to be deleted, given a list of the file keys. For example:
 
 ```python
-response = s3client.delete_objects( 
-        Bucket='mybucket', 
-        Delete={ 
-            'Objects': 
-                [ 
-                    {'Key': 'scotland/lothian/edinburgh.csv'}, 
-                    {'Key': 'scotland/strathclyde/glasgow.csv'}, 
-                    {'Key': 'scotland/grampian/aberdeen.csv'} 
-                ] 
-        } 
-) 
+response = s3client.delete_objects(
+        Bucket='mybucket',
+        Delete={
+            'Objects':
+                [
+                    {'Key': 'scotland/lothian/edinburgh.csv'},
+                    {'Key': 'scotland/strathclyde/glasgow.csv'},
+                    {'Key': 'scotland/grampian/aberdeen.csv'}
+                ]
+        }
+)
 ```
 
 The `response` from `delete_objects` includes information about the deletion.
@@ -1113,15 +1115,15 @@ The `response` from `delete_objects` includes information about the deletion.
 The list of keys could be created programatically from a query to `list_objects_v2`. For example:
 
 ```python
-response = s3client.list_objects_v2(Bucket='mybucket') 
-file_keys = None 
-if 'Contents' in response: 
-    # Create list of keys compatible with that expected by 
-    # 'delete_objects'. 
-    file_keys = [{'Key': obj['Key']} for obj in response['Contents']] 
+response = s3client.list_objects_v2(Bucket='mybucket')
+file_keys = None
+if 'Contents' in response:
+    # Create list of keys compatible with that expected by
+    # 'delete_objects'.
+    file_keys = [{'Key': obj['Key']} for obj in response['Contents']]
 
-response = s3client.delete_objects(Bucket='mybucket', 
-                                   Delete={'Objects': file_keys}) 
+response = s3client.delete_objects(Bucket='mybucket',
+                                   Delete={'Objects': file_keys})
 ```
 
 ### Delete bucket
@@ -1129,7 +1131,7 @@ response = s3client.delete_objects(Bucket='mybucket',
 [delete_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket.html) allows for a bucket to be deleted. For example:
 
 ```python
-response = s3client.delete_bucket(Bucket='mybucket') 
+response = s3client.delete_bucket(Bucket='mybucket')
 ```
 
 The `response` from `delete_bucket` includes information about the deletion.
