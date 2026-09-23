@@ -4,6 +4,102 @@ Bucket permissions use IAM (Identity Access Management) policies. You can grant 
 
 ---
 
+## Example: Grant public read access to a bucket
+
+Here is an example policy document to grant public read access to a bucket, `mybucket`, in project `eidfNN`, allowing the files in the bucket to be both listed and read (downloaded):
+
+```json
+{ 
+  "Version": "2012-10-17", 
+  "Statement": [ 
+    { 
+      "Sid": "PublicListBucket", 
+      "Effect": "Allow", 
+      "Principal": "*", 
+      "Action": "s3:ListBucket", 
+      "Resource": "arn:aws:s3::eidfNN:mybucket" 
+    }, 
+    { 
+      "Sid": "PublicReadGetObject", 
+      "Effect": "Allow", 
+      "Principal": "*", 
+      "Action": "s3:GetObject", 
+      "Resource": "arn:aws:s3::eidfNN:mybucket/*" 
+    } 
+  ] 
+} 
+```
+
+Within policies, bucket names need to be prefixed with the project name, delimited by a colon, `:`.
+
+The policy document consists of two policies, chained together in the `Statement` list.
+
+### Set and get a bucket policy via the AWS CLI
+
+To set the bucket policy using the AWS CLI, run, for example:
+```bash
+aws s3api put-bucket-policy --bucket mybucket --policy "$(cat read-only-bucket-policy.json)"
+```
+
+To get the bucket policy using the AWS CLI, run, for example:
+```bash
+aws s3api get-bucket-policy --bucket mybucket  --query Policy --output text > policy.json
+```
+
+### Set and get a bucket policy via Python
+
+An policy can be defined programatically, for example:
+
+```python
+project = 'eidfNN'
+bucket_name = 'mybucket'
+
+# Policies require project name to prefix bucket name.
+bucket = f"{project}:{bucket_name}"
+
+# Define bucket policy with 'Resource' values defined using Python
+# f-strings so that the value of 'bucket' is inserted.
+bucket_policy = {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicListBucket",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:ListBucket",
+            "Resource": f"arn:aws:s3::{bucket}"
+        },
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": f"arn:aws:s3::{bucket}/*"
+            }
+        ]
+    }
+```
+
+This can be converted to a JSON string and then set on a bucket using Boto3's [put_bucket_policy](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/put_bucket_policy.html). For example:
+
+```python
+# Convert 'bucket_policy' dict to JSON string.
+policy = json.dumps(bucket_policy)
+response = s3client.put_bucket_policy(Bucket=bucket,
+                                      Policy=policy)
+```
+
+Boto3's [get_bucket_policy](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/get_bucket_policy.html) can be used to get a policy. For example:
+
+```python
+response = s3client.get_bucket_policy(Bucket=bucket_name)
+# Get 'Policy' string from 'response' dict and convert to dict.
+policy_string = response['Policy']
+policy_data = json.loads(policy_string)
+```
+
+---
+
 ## Example: Grant permissions to put, get and list objects
 
 An example policy document to grant permissions to list objects in a bucket, `ListBucket`, download objects, `GetObject`, upload objects, `PutObject`, and delete objects, `DeleteObject`,  in EIDF project `eidfXX1`'s bucket `eidfXX1:somebucket` to the account `account2` in EIDF project `eidfXX2`:
@@ -41,87 +137,17 @@ TODO: What does this _really_ do? esp. `/*` and the bucket bit?
 
 ---
 
-## Example: Give public read access to a bucket
+### Another example
 
-An example policy document to give public read access to a bucket (listing and downloading files) is:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3::eidf114:mybucket/*"
-    },
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3::eidf114:mybucket/*"
-    }
-  ]
-}
-```
-
-Here, two policies have been chained together in the `Statement` array.
-
-TODO: Above is from portal. Current example is as follows. Try above. If OK, then delete below. Then templatise bucket and project in above.
+TODO:
 
 ... replacing `<project-name>` with your EIDF project name 'eidfNNN' ... `<bucket-name>` ...
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:ListBucket"],
-      "Resource": [
-        "arn:aws:s3::eidfXX1:somebucket"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:GetObject"],
-      "Resource": [
-        "arn:aws:s3::eidfXX1:somebucket/*"
-      ]
-    }
-  ]
-}
-```
-
----
-
-## Set policy using the AWS CLI
-
-Grant permissions stored in an IAM policy file:
-
-```bash
-aws put-bucket-policy --bucket <bucket-name> --policy "$(cat bucket-policy.json)"
-```
-
-TODO: Julien's pull request has the following. Which is correct?
-
-```bash
-aws s3api put-bucket-policy --bucket <bucket-name> --policy "$(cat bucket-policy.json)"
-```
-
----
-
-## Set policy using Python
-
 An example policy document to grant permissions to list objects in a bucket, `ListBucket`, download objects, `GetObject`,  in EIDF project `eidfXX1`'s bucket `eidfXX1:somebucket` to the accounts `account1` in EIDF project `eidfXX1` and the account `account2` in EIDF project `eidfXX2`:
 
-TODO: Why is '{bucket_name}' used?
+TODO: Why is '{bucket_name}' used? Because there should be format strings if in Python!
 
 TODO: Why the `/*` too?
-
-TODO: Why no `Sid`?
 
 ```python
 import json
