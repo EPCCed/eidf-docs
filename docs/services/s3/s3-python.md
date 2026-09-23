@@ -114,7 +114,7 @@ Boto3 [Session](https://docs.aws.amazon.com/boto3/latest/reference/core/session.
         s3client = boto3.client('s3', config=config)
         ```
 
-## Create an S3 client to use buckets of other EIDF projects
+### Create an S3 client to use buckets of other EIDF projects
 
 To use buckets of other EIDF projects requires the use of bucket names of form `<project-name>:<bucket-name>`. However, as described in [Public project buckets or buckets of other projects](./getting-started.md#public-project-buckets-or-buckets-of-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.
 
