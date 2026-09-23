@@ -1,4 +1,4 @@
-# Using the EIDF S3 service via Python
+# Using the EIDF S3 Service via Python
 
 ## Introduction
 
