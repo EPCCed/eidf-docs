@@ -50,6 +50,8 @@ Naming
 
 Prefix, virtual folder/directory
 
+`s3://mybucket` is an S3 URI. S3 URIs are a standard way of referencing buckets, and files, available at S3 endpoints.
+
 ---
 
 ## About the EIDF S3 Service
@@ -68,7 +70,7 @@ Subset of Amazon S3 REST API
 
 There are subtleties around how to refer to EIDF S3 Service buckets and files in both S3 bucket URIs and URLs, depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
 
-### Private buckets
+### Private buckets in a project
 
 To refer to private buckets and files within a project, when using an access key for that project, use S3 URIs of form `s3://<bucket-name>`. For example:
 
@@ -77,13 +79,13 @@ s3://mybucket
 s3://mybucket/my-data-file.csv
 ```
 
-### Private buckets in other projects or public project buckets
+### Public project buckets or buckets of other projects
 
-To refer to private buckets and files within a project when using an access key for another project that has been granted access to that project, or to refer to public project buckets and files in such projects, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
+To refer to public project buckets, via anonymous access, or to buckets of other EIDF projects, to which you have been granted, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`, where the bucket name is prefixed by its project name and delimited by a colon `:`. For example:
 
 ```text
-s3://eidfNNN:mybucket
-s3://eidfNNN:mybucket/my-data-file.csv
+s3://eidfNNN:somebucket
+s3://eidfNNN:somebucket/some-data-file.csv
 ```
 
 !!! Note "Projects, buckets and tenancies"
@@ -343,7 +345,7 @@ For further information on AWS CLI configuration, see the AWS CLI documentation 
 * [Configuring environment variables for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html).
 * [aws configure set](https://docs.aws.amazon.com/cli/latest/reference/configure/set.html).
 
-### List and create buckets
+### List buckets
 
 List the buckets owned by the S3 account associated with the access key:
 
@@ -362,6 +364,8 @@ If you are using a newly-created EIDF S3 Service for your project, then there wi
     ```
 
     then you need to configure the path to the web proxy certificate bundle. This can be done as described earlier, either using a ` ca_bundle` configuration value or an `AWS_CA_BUNDLE` environment variable.
+
+### Create a bucket
 
 Create a bucket, 'mybucket':
 
@@ -398,10 +402,10 @@ aws s3 ls
 The new bucket will be listed:
 
 ```text
-2026-09-04 09:18:35 mybucket
+2026-09-23 08:35:54 mybucket
 ```
 
-List the files in the bucket, prefixing the bucket name with `s3://` so that the AWS CLI knows that the bucket on the S3 Service is being referred to:
+List the files in the bucket, using an S3 URI to refer to the bucket:
 
 ```bash
 aws s3 ls s3://mybucket
@@ -413,33 +417,41 @@ The new bucket will be empty.
 
     Within the EIDF S3 Service, buckets are owned by the S3 account associated with the access key used to create the bucket.
 
-### Upload and download a file
+### Upload a file
 
-Create a file, `unis.csv`, with content:
+Create a `data` directory:
 
-```csv
-name,postcode
-The University of Edinburgh,EH8 9YL
-Edinburgh Napier University,EH14 1DJ
-Heriot-Watt University,EH14 4AS
-Queen Margaret University,EH21 6UU
+```bash
+mkdir -p data
+```
+
+Create a CSV file of universities in Edinburgh and their postcodes, `data/edinburgh.csv`. This can be done programatically as follows:
+
+```bash
+cat << EOF > data/edinburgh.csv 
+name,postcode 
+The University of Edinburgh,EH8 9YL 
+Edinburgh Napier University,EH14 1DJ 
+Heriot-Watt University,EH14 4AS 
+Queen Margaret University,EH21 6UU 
+EOF 
 ```
 
 Upload the file into the bucket:
 
 ```bash
-aws s3 cp unis.csv s3://mybucket
+aws s3 cp data/edinburgh.csv s3://mybucket
 ```
 
 The file will be listed as it is uploaded:
 
 ```text
-upload: ./unis.csv to s3://mybucket/unis.csv
+upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv         
 ```
 
 !!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`"
 
-    This error can occur if the bucket name does not have the `s3` prefix.
+    This error can occur if the bucket name does not have the `s3://` URI prefix.
 
 Now, list the contents of the bucket:
 
@@ -450,10 +462,12 @@ aws s3 ls s3://mybucket
 The listing will now include the file:
 
 ```text
-2026-09-04 09:18:40        154 unis.csv
+2026-09-23 08:35:57        154 edinburgh.csv
 ```
 
-The key of the file in the bucket is `unis.csv` i.e., the file name itself.
+The key of the file in the bucket is `edinburgh.csv` i.e., the file name itself. This is because we did not specify a key for the file, so the AWS CLI uses the file name.
+
+### Download a file
 
 Create a `downloads` directory:
 
@@ -461,47 +475,53 @@ Create a `downloads` directory:
 mkdir -p downloads
 ```
 
-Download the file into the `downloads` directory, specifying the file's key within the bucket:
+Download the file from the bucket into the `downloads` directory, using an S3 URI including both the bucket name, `mybucket`, and the file's key, `edinburgh.csv`:
 
 ```bash
-aws s3 cp s3://mybucket/unis.csv downloads/
+aws s3 cp s3://mybucket/edinburgh.csv downloads/
 ```
 
 The file will be downloaded:
 
 ```text
-download: s3://mybucket/unis.csv to downloads/unis.csv
+download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv  
 ```
 
-Now compare the downloaded file to the original file that you backed up:
+Now compare the downloaded file to the original file:
 
 ```bash
-cmp unis.csv downloads/unis.csv
+cmp data/edinburgh.csv downloads/edinburgh.csv
 ```
 
-No differences should be reported, thereby showing that `unis.csv` was both uploaded into and downloaded from the bucket successfully.
+The comparison should succeed, thereby showing that `edinburgh.csv` was both uploaded into and downloaded from the bucket successfully.
 
 ### Upload and download multiple files
 
 Multiple files can be both uploaded to and downloaded from an S3 bucket.
 
-Create a `data` directory and add 6 data files, 3 with suffix `.dat` and 3 with suffix `.txt`, and each with 1000 random characters:
+Create CSV files of universities in Aberdeen, `data/aberdeen.csv`, and Glasgow, `data/glasgow.csv`. This can be done programatically as follows:
 
 ```bash
-mkdir -p data
-for i in 1 2 3; do
-    base64 /dev/urandom | head -c 1000 > data/data$i.dat
-    base64 /dev/urandom | head -c 1000 > data/data$i.txt
-done
+cat << EOF > data/aberdeen.csv 
+name,postcode
+University of Aberdeen,AB24 3FX
+Robert Gordon University,AB10 7QB
+EOF
+
+cat << EOF > data/glasgow.csv 
+name,postcode
+University of Glasgow,G12 8QQ
+University of Strathclyde,G1 1XQ
+Glasgow Caledonian University,G4 0BA
+Royal Conservatoire of Scotland,G2 3DB
+EOF
 ```
 
-Now, upload all `.dat` files, and only `.dat` files, from `data` into the bucket:
+Now, upload all `.csv` files, and only `.csv` files, from `data` into the bucket:
 
 ```bash
-aws s3 cp data s3://mybucket --recursive --exclude "*" --include "*.dat"
+aws s3 cp data s3://mybucket --recursive --exclude "*" --include "*.csv"
 ```
-
-Only the 3 `.dat` files will be uploaded:
 
 ```text
 upload: data/data2.dat to s3://mybucket/data2.dat
@@ -515,282 +535,235 @@ List the bucket to see the uploaded files:
 aws s3 ls s3://mybucket
 ```
 
-The listing will include the uploaded files:
+The listing will include the uploaded files 
 
 ```text
-2026-09-04 09:18:45       1000 data1.dat
-2026-09-04 09:18:45       1000 data2.dat
-2026-09-04 09:18:45       1000 data3.dat
-2026-09-04 09:18:40        154 unis.csv
+2026-09-23 08:36:01         80 aberdeen.csv
+2026-09-23 08:36:01        154 edinburgh.csv
+2026-09-23 08:36:01        153 glasgow.csv
 ```
 
-Now, download all `.dat` files from the bucket into a new local `downloaded` directory, ignoring any other files (for example, `unis.csv`), then list its contents:
+Now, download all `.csv` files from the bucket into the `downloads` directory, then list the directory's contents:
 
 ```bash
-aws s3 cp s3://mybucket downloads/data --recursive --exclude "*" --include "*.dat"
-ls -1 downloads/data
+aws s3 cp s3://mybucket downloads --recursive --exclude "*" --include "*.csv"
+ls -1 downloads
 ```
 
 The files will be listed as they are downloaded:
 
 ```text
-download: s3://mybucket/data1.dat to downloaded/data1.dat
-download: s3://mybucket/data3.dat to downloaded/data3.dat
-download: s3://mybucket/data2.dat to downloaded/data2.dat
+download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv  
+download: s3://mybucket/aberdeen.csv to downloads/aberdeen.csv    
+download: s3://mybucket/glasgow.csv to downloads/glasgow.csv      
 ```
 
-The `downloads/data` directory will contain the downloaded files:
+The `downloads` directory will contain the downloaded files:
 
 ```text
-data1.dat
-data2.dat
-data3.dat
+aberdeen.csv
+edinburgh.csv
+glasgow.csv
+```
+
+### List total number of files and file sizes
+
+List the total number of files (objects) and their total size:
+
+```bash
+aws s3 ls s3://mybucket --summarize --human-readable
+```
+
+```text
+2026-09-23 08:36:01   80 Bytes aberdeen.csv
+2026-09-23 08:36:01  154 Bytes edinburgh.csv
+2026-09-23 08:36:01  153 Bytes glasgow.csv
+
+Total Objects: 3
+   Total Size: 387 Bytes
 ```
 
 ### Delete files
 
-Delete each data file in turn:
+Delete each file in turn, using S3 URIs including both the bucket name and the file's keys:
 
 ```bash
-aws s3 rm s3://mybucket/data1.dat
-aws s3 rm s3://mybucket/data2.dat
-aws s3 rm s3://mybucket/data3.dat
-```
-
-List the files in the bucket that are left:
-
-```bash
-aws s3 ls s3://mybucket
+aws s3 rm s3://mybucket/aberdeen.csv
+aws s3 rm s3://mybucket/edinburgh.csv
+aws s3 rm s3://mybucket/glasgow.csv
 ```
 
 ```text
-2026-09-04 09:18:40        154 unis.csv
+delete: s3://mybucket/aberdeen.csv
+delete: s3://mybucket/edinburgh.csv
+delete: s3://mybucket/glasgow.csv
 ```
+
+!!! Note "File deletion messages are printed before deletion"
+
+    File deletion messages display what will the AWS CLI intends to request the S3 service delete, not what actually may or may not be deleted. If the file does not exist, then the message will still be displayed.
 
 ### Prefixes and virtual directories
 
-So far, all the file uploads and downloads that have been done have used the file name as a key name for the files object within the S3 Service.
+So far, all the file uploads and downloads have used the file name as a key name for the files within the bucket.
 
-Run the following to upload `unis.csv` into the bucket:
+Upload `data/edinburgh.csv` into the bucket as follows:
 
 ```bash
-aws s3 cp unis.csv s3://mybucket/lothian/edunis
+aws s3 cp data/edinburgh.csv s3://mybucket/scotland/edinburgh
 ```
 
 The upload message is:
 
 ```text
-upload: ./unis.csv to s3://mybucket/lothian/edunis
+upload: data/edinburgh.csv to s3://mybucket/scotland/edinburgh      
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edunis`, the AWS CLI interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edunis`'.
+When the file is uploaded using S3 URI `s3://mybucket/scotland/edinburgh`, the absence of a trailing slash means that the AWS CLI interprets the request as 'upload `data/edinburgh.csv` to `mybucket` and give it the key `scotland/edinburgh`.
 
-Now, rerun the command, but this time add a trailing slash to `edinburgh`:
+Now upload `data/glasgow.csv`, but this time add a trailing slash to the S3 URI:
 
 ```bash
-aws s3 cp unis.csv s3://mybucket/lothian/edinburgh/
+aws s3 cp data/glasgow.csv s3://mybucket/scotland/glasgow/
 ```
 
 The upload message is now:
 
 ```text
-upload: ./unis.csv to s3://mybucket/lothian/edinburgh/unis.csv
+upload: data/glasgow.csv to s3://mybucket/scotland/glasgow/glasgow.csv
 ```
 
-When the file is uploaded using path `s3://mybucket/lothian/edinburgh/`, the AWS CLI interprets this as 'upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`' i.e., the AWS CLI adds `unis.csv` to the path before contacting the S3 service.
+When the file is uploaded using S3 URI `s3://mybucket/scotland/glasgow/`, the presence of the trailing slash means that the AWS CLI interprets the request as 'upload `data/glasgow.csv` to `mybucket` and give it the key `scotland/glasgow/glasgow.csv` i.e., the AWS CLI adds the file name, `glasgow.csv`, to the URI before contacting the S3 service.
 
-The absence of a trailing slash is interpreted to mean that the is to be given the key name specified in the path e.g., `lothian/edunis`. In contrast, the presence of a trailing slash is interpreted to mean that the file is to be given the key name specified in the path plus the filename itself e.g., `lothian/edinburgh/unis.csv`.
-
-Both these file's keys share a common prefix, `lothian/edinburgh/`. This can be seen by listing the files in the bucket:
+List the files in the bucket:
 
 ```bash
 aws s3 ls s3://mybucket
 ```
 
 ```text
-                           PRE lothian/
-2026-09-04 09:18:40        154 unis.csv
+                           PRE scotland/
 ```
 
-`PRE` indicates that `lothian/` is a prefix and that there are files in the bucket whose keys have prefix `lothian/`. However, by default, these files are not listed.
+`PRE` indicates that `scotland/` is a 'prefix' and that there are files in the bucket whose keys have prefix `scotland/`. However, by default, these files are not listed.
 
-Rerun the command, adding a `--recursive` option to request that these files be listed with their keys:
+All the files in the bucket can be listed as follows:
 
 ```bash
 aws s3 ls s3://mybucket --recursive
 ```
 
 ```text
-2026-09-04 09:18:58        154 lothian/edinburgh/unis.csv
-2026-09-04 09:18:56        154 lothian/edunis
-2026-09-04 09:18:40        154 unis.csv
+2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
 ```
 
-Now, list those files with the prefix `lothian/` as follows, by adding the prefix to the bucket name:
+Allowing a bucket to be considered as a 'virtual directory' with keys acting like virtual file paths, with each part of the path delimited by a slash, `/`, can make it easier to organise files within a bucket. The nature of the keys of the files in the bucket gives a virtual directory structure akin to:
+
+```text
+scotland/         # Virtual directory
+  edinburgh       # CSV file
+  glasgow/        # Virtual directory
+    glasgow.csv   # CSV file
+```
+
+To illustrate this further, run:
 
 ```bash
-aws s3 ls s3://mybucket/lothian/
+aws s3 ls s3://mybucket/scotland
+```
+```text
+                           PRE scotland/
+```
+
+The AWS CLI interprets this as a request to list all files whose keys have the the prefix `scotland`. In virtual directory terms, this is akin to listing all virtual directories whose name's start with the text `scotland`.
+
+Now run:
+
+```bash
+aws s3 ls s3://mybucket/scotland/
+```
+```text
+                           PRE glasgow/
+2026-09-23 09:58:00        154 edinburgh
+```
+
+The AWS CLI interprets this as a request to list all files whose keys have the prefix `scotland/`. In virtual directory terms, this is akin to listing the contents of the virtual directory called `scotland`.
+
+Adding `--recursive` shows the same result for both:
+
+```bash
+aws s3 ls s3://mybucket/scotland --recursive
+
+aws s3 ls s3://mybucket/scotland/ --recursive
 ```
 
 ```text
-                           PRE edinburgh/
-2026-09-04 09:18:56        154 edunis
+2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
+
+2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
 ```
 
-`PRE` indicates that `edinburgh/` is a prefix and that there are files in the bucket whose keys have prefix `lothian/edinburgh/`. `edunis` is also shown without its prefix.
-
-List these files, again using the `--recursive` option:
-
-```bash
-aws s3 ls s3://mybucket/lothian/ --recursive
-```
-
-Now all the files with prefix `lothian/` are shown with their full keys:
-
-```text
-2026-09-04 09:18:58        154 lothian/edinburgh/unis.csv
-2026-09-04 09:18:56        154 lothian/edunis
-```
-
-Now, list the files with prefix `lothian/edinburgh/`:
-
-```bash
-aws s3 ls s3://mybucket/lothian/edinburgh/
-```
-
-```text
-2026-09-04 09:18:58        154 unis.csv
-```
-
-And, again, requesting that the full keys be shown:
-
-```bash
-aws s3 ls s3://mybucket/lothian/edinburgh/ --recursive
-```
-
-```text
-2026-09-04 09:11:28        154 lothian/edinburgh/unis.csv
-```
-
-Prefixes relate to the concept of 'virtual directories'. Each prefix is akin to a virtual directory. Here, the bucket has a virtual directory `lothian/` which, in turn, has a virtual directory, `edinburgh/`. Running `aws s3 ls` and citing `lothian/` or `edinburgh/` or `lothian/edinburgh/` is akin to listing the contents of these virtual directories including their files and any virtual directories, therein.
-
-Adding the `--recursive` option is akin to a recursive listing of these virtual directories and their subdirectories.
+In virtual directory terms, this is akin to recursively listing all virtual directories whose name's start with the text `scotland`.
 
 !!! Important "Virtual directories are virtual!"
 
     Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!
 
-Run the following commands, but omit the trailing slashes:
+In the absence of a trailing slash when listing files, the prefix is essentially treated as a wils-card search of form `<prefix>*`. For example, the following all return the same results:
 
 ```bash
-aws s3 ls s3://mybucket/lothian
-aws s3 ls s3://mybucket/lothian/edinburgh
+aws s3 ls s3://mybucket/scotland
+aws s3 ls s3://mybucket/scot
+aws s3 ls s3://mybucket/s
+```
+
+i.e.,
+
+```text
+                           PRE scotland/
+
+                           PRE scotland/
+
+                           PRE scotland/
+```
+
+!!! Warning "Trailing slashes are significant for uploads and downloads too"
+
+    When uploading or downloading files, a trailing slash is significant. A reference to `s3://mybucket/a/b/c` is **not** the same as a reference to `s3://mybucket/a/b/c/`.
+
+    Uploading `data.csv` to `s3://mybucket/a/b/c` results in a file with key `a/b/c`. In contrast, uploading a file to `s3://mybucket/a/b/c/` results in a file with key `a/b/c/data.csv`.
+
+    Downloading a file from `s3://mybucket/a/b/c` will succeed only if there is a file with key `a/b/c`, otherwise it will fail. If, however, there are files with prefix `a/b/c/` and `--recursive` is used, then these files will be downloaded.
+
+In contrast, downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`.
+
+### Delete files
+
+Try deleting files specifying an S3 URI with a prefix `scotland/glasgow/`:
+
+```bash
+aws s3 rm s3://mybucket/scotland/glasgow/
 ```
 
 ```text
-                           PRE lothian/
-
-                           PRE edinburgh/
+delete: s3://mybucket/scotland/glasgow/
 ```
 
-Since there are no trailing slashes, both `lothian` and `lothian/edinburgh` are not treated as prefixes but rather as queries to show all files whose keys start with `lothian` and `lothian/edinburgh` respectively. That this is the case can be seen by running the following commands, listing all files whose keys start with `u`, `lothian/e` and `lothian/edu` respectively:
+Now list the bucket:
 
 ```bash
-aws s3 ls s3://mybucket/u
-aws s3 ls s3://mybucket/lothian/e
-aws s3 ls s3://mybucket/lothian/edu
+aws s3 ls s3://mybucket --recursive
 ```
 
 ```text
-2026-09-04 09:18:40        154 unis.csv
-
-                           PRE edinburgh/
-2026-09-04 09:18:56        154 edunis
-
-2026-09-04 09:18:56        154 edunis
+2026-09-23 10:16:55        154 scotland/edinburgh
+2026-09-23 10:16:56        153 scotland/glasgow/glasgow.csv
 ```
 
-Again, note the presence of `PRE` for the prefix `edinburgh/`. `--recursive` can be used to list all the files with their full keys:
-
-```bash
-aws s3 ls s3://mybucket/lothian/e --recursive
-```
-
-```text
-2026-09-04 09:18:58        154 lothian/edinburgh/unis.csv
-2026-09-04 09:18:56        154 lothian/edunis
-```
-
-In terms of virtual directories, these queries can be viewed as akin to using wildcards to list matching virtual directories and files within these.
-
-!!! Warning "Trailing slashes are significant"
-
-    When uploading or downloading files, a trailing slash is significant. A reference to `s3://mybucket/a/b/c/` is **not** the same as a reference to `s3://mybucket/a/b/c`.
-
-    Uploading a file to `s3://mybucket/a/b/c/` results in a file with key `a/b/c//<filename>`. In contrast, uploading a file to `s3://mybucket/a/b/c` results in a file with key `a/b/c`.
-
-    Downloading a file from `s3://mybucket/a/b/c/` will fail unless the `--recursive` option is used as it is a request to download all files whose key has prefix `a/b/c/`. In contrast, downloading a file from `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c`, otherwise it will fail.
-
-### List total number of files and file sizes
-
-List the total number of files (objects) and their total size. For example:
-
-```bash
-aws s3 ls s3://mybucket --summarize --human-readable
-```
-
-This lists information on files (objects) in the bucket only, not any whose keys have prefixes (i.e., not any in a virtual directory):
-
-```text
-                           PRE lothian/
-2026-09-04 09:18:40  154 Bytes unis.csv
-
-Total Objects: 1
-   Total Size: 154 Bytes
-```
-
-As done previously, use the `--recursive` option to list information on all files:
-
-```bash
-aws s3 ls s3://mybucket --summarize --human-readable --recursive
-```
-
-```text
-2026-09-04 09:18:58  154 Bytes lothian/edinburgh/unis.csv
-2026-09-04 09:18:56  154 Bytes lothian/edunis
-2026-09-04 09:18:40  154 Bytes unis.csv
-
-Total Objects: 3
-   Total Size: 462 Bytes
-```
-
-### Delete files and buckets
-
-Delete a file:
-
-```bash
-aws s3 rm s3://mybucket/lothian/edunis
-```
-
-The file being deleted will be shown:
-
-```text
-delete: s3://mybucket/lothian/edunis
-```
-
-!!! Note
-
-    If the file's key is unknown then this command does nothing, but the above message will still be printed.
-
-Delete all files with prefix `lothian/edinburgh/`:
-
-```bash
-aws s3 rm s3://mybucket/lothian/edinburgh/ --recursive
-```
-
-```text
-delete: s3://mybucket/lothian/edinburgh/unis.csv
-```
+Nothing has happened! As noted earlier, file deletion messages are printed before deletion, and may, or may not, reflect what actually is deleted.
 
 !!! Warning "Trailing slashes are significant"
 
@@ -800,24 +773,58 @@ delete: s3://mybucket/lothian/edinburgh/unis.csv
 
     Deleting files using reference `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c` and will do nothing otherwise. If the `--recursive` option is used, then **all** files whose key starts with `a/b/c` will be deleted (e.g., if there were files `a/b/cookie`, `a/b/c/dough`, then these would both be deleted).
 
-!!! Tip "Dry run file deletions"
+Retry the deletion, specifying `--recursive`:
 
-    `aws s3 rm` supports a `--dryrun` option, which, if used, will list the files that will be deleted without deleting them.
+```bash
+aws s3 rm s3://mybucket/scotland/glasgow/ --recursive
+```
 
-Delete all files in a bucket:
+```text
+delete: s3://mybucket/scotland/glasgow/glasgow.csv
+```
+
+Now list the bucket:
+
+```bash
+aws s3 ls s3://mybucket --recursive
+```
+
+```text
+2026-09-23 10:16:55        154 scotland/edinburgh
+```
+
+The files with the the prefix `scotland/glasgow/` have been deleted.
+
+`aws s3 rm` supports a `--dryrun` option, which, if used, will list the files that will be deleted without deleting them. Try this for a request to delete all files in the bucket:
+
+```bash
+aws s3 rm s3://mybucket --recursive --dryrun
+```
+
+```text
+(dryrun) delete: s3://mybucket/scotland/edinburgh
+```
+
+Now, delete all files in the bucket:
 
 ```bash
 aws s3 rm s3://mybucket --recursive
 ```
 
 ```text
-delete: s3://mybucket/unis.csv
+delete: s3://mybucket/scotland/edinburgh
 ```
+
+### Delete an empty bucket
 
 Delete an empty bucket:
 
 ```bash
 aws s3 rb s3://mybucket
+```
+
+```text
+remove_bucket: mybucket
 ```
 
 !!! Tip "Troubleshooting: `remove_bucket failed: s3://<bucket-name> argument of type 'NoneType' is not a container or iterable`"
@@ -986,60 +993,27 @@ The `response` from `create_bucket` includes information about the new bucket.
 [list_objects_v2](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_objects_v2.html) lists the files (objects) in a bucket. For example, get a list of files, and print their keys:
 
 ```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-# Get 'Contents'  list from 'response' dict, but only if 'Contents' is
-# present i.e., bucket has one or more files.
-if 'Contents' in response:
-    # For each file's dict, print file 'Key'.
-    for f in response['Contents']:
-        print(f'{f['Key']}')
-```
-
-The `response` from `list_objects_v2` includes information about each file. This includes each file's size, keyed by `Size`. This can be used to calculate the total number of objects in the bucket and their total size. For example:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-total_size = 0
-num_files = 0
-if 'Contents' in response:
-    for f in response['Contents']:
-        # Each file's dict includes file size (bytes).
-        print(f'{f['Key']}: {f['Size']} bytes')
-        total_size += f['Size']
-    num_files = len(response['Contents'])
-print(f"Number of files: {num_files}. Total size: {total_size}")
+response = s3client.list_objects_v2(Bucket='mybucket') 
+# Get 'Contents'  list from 'response' dict, but only if 'Contents' is 
+# present i.e., bucket has one or more files. 
+if 'Contents' in response: 
+    # For each file's dict, print file 'Key'. 
+    for f in response['Contents']: 
+        print(f'{f['Key']}') 
 ```
 
 !!! Warning "`list_objects_v2` returns maximum of 1000 objects per call"
 
     `list_objects_v2` returns maximum of 1000 objects per call, even if there are more than 1000 objects matching the request. See the Boto3 documentation on [Paginators](https://docs.aws.amazon.com/boto3/latest/guide/paginators.html) for information on how to handle buckets with more than 1000 objects.
 
-`list_object_v2` has a `Prefix` parameter allowing for files whose keys have a specific prefix to be listed. For example:
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket',
-                                    Prefix='lothian')
-```
-
-```python
-response = s3client.list_objects_v2(Bucket='mybucket',
-                                    Prefix='lothian/ed')
-```
-
 ### Upload file
 
 [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) uploads a file to a bucket. For example:
 
 ```python
-s3client.upload_file(Filename='unis.csv',
-                     Bucket='mybucket',
-                     Key='unis.csv')
-```
-
-```python
-s3client.upload_file(Filename='unis.csv',
-                     Bucket='mybucket',
-                     Key='lothian/edunis')
+s3client.upload_file(Filename='edinburgh.csv', 
+                      Bucket='mybucket', 
+                      Key='scotland/lothian/edinburgh.csv') 
 ```
 
 !!! Tip "Upload multiple files"
@@ -1051,41 +1025,67 @@ s3client.upload_file(Filename='unis.csv',
     If a key has a trailing slash then the trailing slash becomes part of the key name. For example,
 
     ```python
-    s3client.upload_file(Filename='unis.csv',
+    s3client.upload_file(Filename='edinburgh.csv',
                          Bucket='mybucket',
-                         Key='lothian/edinburgh/')
+                         Key='scotland/lothian/')
     ```
 
-    will upload the file and give it a key `lothian/edinburgh/`. This is different from how the AWS CLI behaves. For example, running
+    will upload the file and give it the key `scotland/lothian/`. This is different from how the AWS CLI behaves, where uploading the file` to `s3://mybucket/scotland/lothian/` will upload the file and give it the key `scotland/lothian/edinburgh.csv`'. AWS CLI adds `edinburgh.csv` to the path before contacting the S3 service. Boto3 does not.
 
-    ```bash
-    aws s3 cp unis.csv s3://mybucket/lothian/edinburgh/
-    ```
-
-    will upload `unis.csv` to `mybucket` and give it the key `lothian/edinburgh/unis.csv`'. AWS CLI adds `unis.csv` to the path before contacting the S3 service.
-
-    Both Boto3 and the AWS CLI allow for files whose keys have trailing slashes to be downloaded.
+    However, both Boto3 and the AWS CLI allow for files whose keys have trailing slashes to be downloaded.
 
 ### Download file
 
 [download_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/download_file.html) downloads a file from a bucket. For example:
 
 ```python
-s3client.download_file(Filename='unis.csv',
+s3client.download_file(Filename='edinburgh.csv',
                        Bucket='mybucket',
-                       Key='unis.csv')
+                       Key='scotland/lothian/edinburgh.csv')
 ```
 
 !!! Tip "Download multiple files"
 
     Multiple files can be downloaded by calling `download_file` on each file in turn.
 
+### List files and sizes
+
+The `response` from `list_objects_v2` includes information about each file. This includes each file's size, keyed by `Size`. This can be used to calculate the total number of objects in the bucket and their total size. For example:
+
+```python
+response = s3client.list_objects_v2(Bucket='mybucket') 
+total_size = 0 
+num_files = 0 
+if 'Contents' in response: 
+    for f in response['Contents']: 
+        # For each file's dict, print file 'Key' and 'Size'. 
+        print(f'{f['Key']}: {f['Size']} bytes') 
+        total_size += f['Size'] 
+    num_files = len(response['Contents']) 
+print(f"Number of files: {num_files}. Total size: {total_size}") 
+```
+
+### List files with a prefix
+
+`list_object_v2` has a `Prefix` parameter allowing for files whose keys have a specific prefix to be listed. For example:
+
+```python
+response = s3client.list_objects_v2(Bucket='mybucket',
+                                    Prefix='scotland')
+```
+
+```python
+response = s3client.list_objects_v2(Bucket='mybucket',
+                                    Prefix='scotland/lothian/ed')
+```
+
 ### Delete file
 
 [delete_object](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html) allows for a file to be deleted. For example:
 
 ```python
-response = s3client.delete_object(Bucket='mybucket', Key='unis.csv')
+response = s3client.delete_object(Bucket='mybucket', 
+                                  Key='scotland/lothian/edinburgh.csv') 
 ```
 
 The `response` from `delete_object` includes information about the deletion.
@@ -1095,17 +1095,17 @@ The `response` from `delete_object` includes information about the deletion.
 Multiple files can be deleted by calling `delete_file` on each file in turn. Alternatively, [delete_objects](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_objects.html) allows for multiple files to be deleted, given a list of the file keys. For example:
 
 ```python
-response = s3client.delete_objects(
-        Bucket='mybucket',
-        Delete={
-            'Objects':
-                [
-                    {'Key': 'lothian/edinburgh/unis.csv'},
-                    {'Key': 'lothian/edunis'},
-                    {'Key': 'unis.csv'}
-                ]
-        }
-)
+response = s3client.delete_objects( 
+        Bucket='mybucket', 
+        Delete={ 
+            'Objects': 
+                [ 
+                    {'Key': 'scotland/lothian/edinburgh.csv'}, 
+                    {'Key': 'scotland/strathclyde/glasgow.csv'}, 
+                    {'Key': 'scotland/grampian/aberdeen.csv'} 
+                ] 
+        } 
+) 
 ```
 
 The `response` from `delete_objects` includes information about the deletion.
@@ -1113,15 +1113,15 @@ The `response` from `delete_objects` includes information about the deletion.
 The list of keys could be created programatically from a query to `list_objects_v2`. For example:
 
 ```python
-response = s3client.list_objects_v2(Bucket='mybucket')
-file_keys = None
-if 'Contents' in response:
-    # Create list of keys compatible with that expected by
-    # 'delete_objects'.
-    file_keys = [{'Key': obj['Key']} for obj in response['Contents']]
+response = s3client.list_objects_v2(Bucket='mybucket') 
+file_keys = None 
+if 'Contents' in response: 
+    # Create list of keys compatible with that expected by 
+    # 'delete_objects'. 
+    file_keys = [{'Key': obj['Key']} for obj in response['Contents']] 
 
-response = s3client.delete_objects(Bucket='mybucket',
-                                   Delete={'Objects': file_keys})
+response = s3client.delete_objects(Bucket='mybucket', 
+                                   Delete={'Objects': file_keys}) 
 ```
 
 ### Delete bucket
@@ -1129,7 +1129,7 @@ response = s3client.delete_objects(Bucket='mybucket',
 [delete_bucket](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket.html) allows for a bucket to be deleted. For example:
 
 ```python
-response = s3client.delete_bucket(Bucket='mybucket')
+response = s3client.delete_bucket(Bucket='mybucket') 
 ```
 
 The `response` from `delete_bucket` includes information about the deletion.
@@ -1148,11 +1148,11 @@ In this section, you'll use a public project bucket that you create.
 
 ### Create a project public bucket
 
-To create a public project bucket, using the AWS CLI, first recreate the 'mybucket' bucket and add the 'unis.csv' data file to it:
+To create a public project bucket, using the AWS CLI, first recreate the `mybucket` bucket and add the `data/edinburgh.csv` data file to it as follows:
 
 ```bash
 aws s3 mb s3://mybucket
-aws s3 cp unis.csv s3://mybucket/lothian/edinburgh/
+aws s3 cp data/edinburgh.csv s3://mybucket/scotland/lothian/edinburgh.csv
 ```
 
 Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to make 'mybucket' public, by following the instructions to [Make a bucket public](./s3browser.md#make-a-bucket-public).
@@ -1163,28 +1163,28 @@ Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to 
 
 ### Read from public project buckets via a browser
 
-Files can be downloaded within your browser. For example, To download the file `lothian/edinburgh/unis.csv`, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv` into your browser.
+Files can be downloaded within your browser. For example, To download the file `scotland/lothian/edinburgh.csv`, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket/scotland/lothian/edinburgh.csv` into your browser.
 
 Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.
 
 ### Read from public project buckets via 'curl'
 
-A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file `lothian/edinburgh/unis.csv`, run (`-O` uses the remote file name as the downloaded file name):
+A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file `scotland/lothian/edinburgh.csv`, run (`-O` uses the remote file name as the downloaded file name):
 
 ```bash
-curl -o unis.csv https://s3.eidf.ac.uk/<project-name>:mybucket/lothian/edinburgh/unis.csv
+curl -o downloads/edinburgh.csv https://s3.eidf.ac.uk/<project-name>:mybucket/scotland/lothian/edinburgh.csv
 ```
 
-`lothian/edinburgh/unis.csv` will be downloaded and saved as `unis.csv`.
+`scotland/lothian/edinburgh.csv` will be downloaded and saved as `edinburgh.csv`.
 
 ### Read from public project buckets via the AWS CLI
 
-To read data from a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To read data from the public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any configured credentials):
 
 ```bash
-aws s3 cp s3://<project-name>:mybucket/lothian/edinburgh/unis.csv downloads --no-sign-request
+aws s3 cp s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv downloads --no-sign-request
 ```
 
 The AWS CLI will raise an error as it interprets `<project-name>:<bucket-name>` as a bucket name, having no knowledge of the concept of tenancies:
@@ -1200,7 +1200,7 @@ There is no workaround for this.
 
 Boto3 can be used to read from public project buckets using the examples described in [Use EIDF S3 via Python](#use-eidf-s3-via-python). However, there are differences in how an S3 client is created. The first is that authentication needs to be disabled.
 
-The second is that to read data a public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
+The second is that to read data from the public project bucket requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
 
 An S3 client to interact with a public project bucket can be created as follows:
 
@@ -1322,16 +1322,26 @@ s3client = boto3.client('s3',
 
 ---
 
-## Use buckets in other EIDF projects
+## Use buckets of other EIDF projects
 
-If you have been granted access to buckets in other projects, either to private buckets, or write access to public buckets, then you can access these using the same techniques as described for your own bucket and for public buckets.
+To refer to buckets of other EIDF projects, to which you have been granted, use S3 bucket URIs of form `s3://<project-name>:<bucket-name>`.
 
-TODO: Check, edit for consistency with foregoing. How can this be checked? Does the user use their own project's access key and secret?
+### Use buckets of other EIDF projects using the AWS CLI
 
-### Use buckets in other EIDF projects using the AWS CLI
-
-To read data from public buckets in other using the AWS CLI requires the use of an S3 URI of form `s3://<project-name>:mybucket/lothian/edinburgh/unis.csv`. However, as described in [Private buckets in other projects or public project buckets](#private-buckets-in-other-projects-or-public-project-buckets) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool.
+To use buckets of other EIDF projects requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid and some S3 tools do not allow such S3 URIs to be used. The AWS CLI is one such tool. There is no workaround for this.
 
 ### Use buckets in other EIDF projects using Python
 
-TODO: Copy blurb from elsewhere
+To use buckets of other EIDF projects requires the use of an S3 URI of form `s3://<project-name>:mybucket/scotland/lothian/edinburgh.csv`. However, as described in [Public project buckets or buckets of other projects](#public-project-buckets-or-buckets-of-other-projects) earlier, S3 URIs of form `s3://<project-name>:<bucket-name>` are strictly invalid. By default, Boto does not allow such S3 URIs, but does allow its URI validation functionality to be turned off.
+
+An S3 client to interact with another EIDF project's bucket can be created as follows:
+
+```python
+import boto3
+from botocore.handlers import validate_bucket_name
+
+s3client = boto3.client('s3',
+                        endpoint_url='https://s3.eidf.ac.uk')
+s3client.meta.events.unregister('before-parameter-build.s3',
+                                validate_bucket_name)
+```
