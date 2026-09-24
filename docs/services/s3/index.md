@@ -24,7 +24,7 @@ To access EIDF S3 Service object store allocation and account information within
 
 [Getting started with S3 and the EIDF S3 Service](./getting-started.md) is a hands-on introduction to S3 and the EIDF S3 Service.
 
-[Get information to use the EIDF S3 Service](./getting-started/#get-information-to-use-the-eidf-s3-service), part of the introduction, describes the S3 Service endpoint URL and how to view your S3 account names, access keys, secrets, and storage and bucket quotas:
+[Get information to use the EIDF S3 Service](./getting-started.md#get-information-to-use-the-eidf-s3-service), part of the introduction, describes the S3 Service endpoint URL and how to view your S3 account names, access keys, secrets, and storage and bucket quotas:
 
 [Using the EIDF S3 Browser](./s3browser.md) is a guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
 
