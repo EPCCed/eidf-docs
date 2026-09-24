@@ -6,7 +6,9 @@
 
 Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is an object storage service developed by [Amazon Web Services](https://aws.amazon.com). However, in the same way that 'Hoover' is used to refer to any 'vacuum cleaner' or 'Google' for any 'online search', the term 'S3' has now come to mean any storage service that offers an S3-compatible interface.
 
-The EIDF S3 Service is implemented using [Ceph](https://ceph.io), an open source storage platform. Ceph's [Object Gateway](https://docs.ceph.com/en/latest/radosgw/) provides an object storage interface which supports an S3-compatibility mode. From hereon, this will be referred to as 'Ceph S3'. S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.
+The EIDF S3 Service is implemented using [Ceph](https://ceph.io), an open source storage platform. Ceph's [Object Gateway](https://docs.ceph.com/en/latest/radosgw/) provides an object storage interface which supports an S3-compatibility mode. From hereon, this will be referred to as 'Ceph S3'.
+
+S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.
 
 !!! Info "Amazon S3 service interfaces and Ceph S3 compliance"
 
