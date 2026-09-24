@@ -114,9 +114,11 @@ Boto3 [Session](https://docs.aws.amazon.com/boto3/latest/reference/core/session.
         s3client = boto3.client('s3', config=config)
         ```
 
-### Create an S3 client to use buckets of other EIDF projects
+### Create an S3 client to use buckets within other projects
 
-To use buckets of other EIDF projects requires the use of bucket names of form `<project-name>:<bucket-name>`. However, as described in [Public project buckets or buckets of other projects](./getting-started.md#public-project-buckets-or-buckets-of-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.
+Bucket names of form `<project-name>:<bucket-name>` need to be used for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.
+
+But, be aware that, as described in [Public project buckets or buckets within other projects](./getting-started.md#public-project-buckets-or-buckets-within-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.
 
 This can be turned off as follows, after creating the S3 client, `s3client` in this example:
 
@@ -129,9 +131,7 @@ s3client.meta.events.unregister('before-parameter-build.s3',
 
 ### Create an S3 client to read from a public project bucket
 
-For an S3 client to anonymously read from public project buckets, there is no need for any AWS CLI configuration nor environment variables, nor authentication.
-
-To read from public project buckets requires the use of bucket names of form `<project-name>:<bucket-name>`. However, as described in [Public project buckets or buckets of other projects](./getting-started.md#public-project-buckets-or-buckets-of-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.
+Disabling bucket name validation as described in the previous section is required to anonymously read from a public project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.
 
 An S3 client that meets these requirements can be created as follows:
 
@@ -150,9 +150,7 @@ s3client.meta.events.unregister('before-parameter-build.s3',
 
 ### Create an S3 client to interact with the EIDF Data Publishing Service
 
-For an S3 client to read from public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), there is no need for any AWS CLI configuration nor environment variables
-
-To read from public buckets within the EIDF Data Publishing Service requires the use of bucket names of form `<project-name>-<bucket-name>`. These are valid bucket names, so Boto3's bucket validation does not need to be turned off.
+Bucket names of form `<project-name>-<bucket-name>` need to be used to anonymously read from public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). As these are valid bucket names, so Boto3's bucket validation does not need to be turned off. There is no need for any AWS CLI configuration nor environment variables nor authenitication.
 
 An S3 client that meets these requirements can be created as follows:
 

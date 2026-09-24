@@ -4,44 +4,56 @@ Bucket permissions use IAM (Identity Access Management) policies. You can grant 
 
 ---
 
+## Bucket naming in policies
+
+Use bucket names of form `<project-name>:<bucket-name>` within policies. For example, `eidfNNN:somebucket`.
+
+---
+
 ## Example: Grant public read access to a bucket
 
-Here is an example policy document to grant public read access to a bucket, `mybucket`, in project `eidfNN`, allowing the files in the bucket to be both listed and read (downloaded):
+Here is an example policy document to grant public anonymous read access to a bucket, `mybucket`, in project `eidfNNN`, allowing the files in the bucket to be both listed and read (downloaded):
 
 ```json
-{ 
-  "Version": "2012-10-17", 
-  "Statement": [ 
-    { 
-      "Sid": "PublicListBucket", 
-      "Effect": "Allow", 
-      "Principal": "*", 
-      "Action": "s3:ListBucket", 
-      "Resource": "arn:aws:s3::eidfNN:mybucket" 
-    }, 
-    { 
-      "Sid": "PublicReadGetObject", 
-      "Effect": "Allow", 
-      "Principal": "*", 
-      "Action": "s3:GetObject", 
-      "Resource": "arn:aws:s3::eidfNN:mybucket/*" 
-    } 
-  ] 
-} 
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicListBucket",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3::eidfNNN:mybucket"
+    },
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3::eidfNNN:mybucket/*"
+    }
+  ]
+}
 ```
 
-Within policies, bucket names need to be prefixed with the project name, delimited by a colon, `:`.
-
 The policy document consists of two policies, chained together in the `Statement` list.
+
+This is the policy applied by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
+
+!!! Warning "Publicly-readable buckets are available to all"
+
+    Making a bucket publicly-readable allows anyone who knows the bucket URL to anonymously read the bucket, and the files within.
 
 ### Set and get a bucket policy via the AWS CLI
 
 To set the bucket policy using the AWS CLI, run, for example:
+
 ```bash
 aws s3api put-bucket-policy --bucket mybucket --policy "$(cat read-only-bucket-policy.json)"
 ```
 
 To get the bucket policy using the AWS CLI, run, for example:
+
 ```bash
 aws s3api get-bucket-policy --bucket mybucket  --query Policy --output text > policy.json
 ```
@@ -51,7 +63,7 @@ aws s3api get-bucket-policy --bucket mybucket  --query Policy --output text > po
 An policy can be defined programatically, for example:
 
 ```python
-project = 'eidfNN'
+project = 'eidfNNN'
 bucket_name = 'mybucket'
 
 # Policies require project name to prefix bucket name.
@@ -141,7 +153,7 @@ TODO: What does this _really_ do? esp. `/*` and the bucket bit?
 
 TODO:
 
-... replacing `<project-name>` with your EIDF project name 'eidfNNN' ... `<bucket-name>` ...
+... replacing `<project-name>` with your EIDF project name 'eidfNNNN' ... `<bucket-name>` ...
 
 An example policy document to grant permissions to list objects in a bucket, `ListBucket`, download objects, `GetObject`,  in EIDF project `eidfXX1`'s bucket `eidfXX1:somebucket` to the accounts `account1` in EIDF project `eidfXX1` and the account `account2` in EIDF project `eidfXX2`:
 
