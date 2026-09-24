@@ -4,9 +4,9 @@
 
 ## Introduction
 
-Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is an object storage service developed by [Amazon Web Services](https://aws.amazon.com). However, in the same way that 'Hoover' is used to refer to any 'vacuum cleaner' or 'Google' for any 'online search', the term 'S3' has now come to mean any storage service that offers an S3-compatible interface. 
+Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is an object storage service developed by [Amazon Web Services](https://aws.amazon.com). However, in the same way that 'Hoover' is used to refer to any 'vacuum cleaner' or 'Google' for any 'online search', the term 'S3' has now come to mean any storage service that offers an S3-compatible interface.
 
-The EIDF S3 Service is implemented using [Ceph](https://ceph.io), an open source storage platform. Ceph's [Object Gateway](https://docs.ceph.com/en/latest/radosgw/) provides an object storage interface which supports an S3-compatibilty mode. From hereon, this will be refered to as 'Ceph S3'. S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.
+The EIDF S3 Service is implemented using [Ceph](https://ceph.io), an open source storage platform. Ceph's [Object Gateway](https://docs.ceph.com/en/latest/radosgw/) provides an object storage interface which supports an S3-compatibility mode. From hereon, this will be referred to as 'Ceph S3'. S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.
 
 !!! Info "Amazon S3 service interfaces and Ceph S3 compliance"
 
@@ -32,7 +32,7 @@ Though the organisation of objects within a bucket has no hierarchy, many S3 imp
 
 Each project has a tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
-The [EIDF Data Publishing Service](../datapublishing/service.md) also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies biused for project-specific buckets.
+The [EIDF Data Publishing Service](../datapublishing/service.md) also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
 
 Tenancies are not a general S3 concept but are Ceph S3-specific.
 
@@ -427,7 +427,7 @@ upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv
 
 !!! Info "Object (key) naming"
 
-    The AWS S3 documentation on [Naming Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) states that a key can be a sequence of UTF-8-encoded characters, with a mazimum length of 1,024 bytes. Key names are case-sensitive.
+    The AWS S3 documentation on [Naming Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) states that a key can be a sequence of UTF-8-encoded characters, with a maximum length of 1,024 bytes. Key names are case-sensitive.
 
 Now, list the contents of the bucket:
 
