@@ -78,7 +78,7 @@ aws s3api get-bucket-policy --bucket mybucket --query Policy --output text > pol
 
 ## Set and get a bucket policy via Python
 
-A policy can be defined programatically within Python. For example:
+A policy can be defined programmatically within Python. For example:
 
 ```python
 project = 'eidfNNN'
@@ -112,7 +112,6 @@ bucket_policy = {
 
 This can be converted to a JSON string and then set on a bucket using Boto3's [put_bucket_policy](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/put_bucket_policy.html). For example:
 
-
 ```python
 # Convert 'bucket_policy' dict to JSON string.
 policy = json.dumps(bucket_policy)
@@ -133,14 +132,14 @@ policy_data = json.loads(policy_string)
 
 ## Example: Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to both their own user, `nnnuser`, and a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret accociated with `nnnuser` or `abcuser` can read from the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to both their own user, `nnnuser`, and a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with `nnnuser` or `abcuser` can read from the bucket.
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "ProjectReadOnlyBucket", 
+      "Sid": "ProjectReadOnlyBucket",
       "Effect": "Allow",
       "Principal": {
           "AWS": [
@@ -165,7 +164,7 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
 
 ## Example: Grant read-write access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret accociated with `abcuser` can read from or write to the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with `abcuser` can read from or write to the bucket.
 
 ```json
 {

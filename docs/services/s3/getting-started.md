@@ -421,7 +421,7 @@ Create a `data` directory:
 mkdir -p data
 ```
 
-Create a CSV file of universities in Edinburgh and their postcodes, `data/edinburgh.csv`. This can be done programatically as follows:
+Create a CSV file of universities in Edinburgh and their postcodes, `data/edinburgh.csv`. This can be done programmatically as follows:
 
 ```bash
 cat << EOF > data/edinburgh.csv
@@ -495,7 +495,7 @@ The comparison should succeed, thereby showing that `edinburgh.csv` was both upl
 
 Multiple files can be both uploaded to and downloaded from an S3 bucket.
 
-Create CSV files of universities in Aberdeen, `data/aberdeen.csv`, and Glasgow, `data/glasgow.csv`. This can be done programatically as follows:
+Create CSV files of universities in Aberdeen, `data/aberdeen.csv`, and Glasgow, `data/glasgow.csv`. This can be done programmatically as follows:
 
 ```bash
 cat << EOF > data/aberdeen.csv
@@ -864,7 +864,7 @@ Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to 
 
 !!! Note "Making the bucket public"
 
-    Here, the EIDF S3 Browser is used to make a bucket public. The page on [Using policies](./s3-policies.md) describes how to make a bucket public using both the AWS CLI and Python.
+    Here, the EIDF S3 Browser is used to make a bucket public. The page on [Using S3 policies](./policies.md) describes how to make a bucket public using both the AWS CLI and Python.
 
 ### Read from a public project bucket via a browser
 

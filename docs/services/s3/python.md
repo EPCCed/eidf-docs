@@ -150,7 +150,7 @@ s3client.meta.events.unregister('before-parameter-build.s3',
 
 ### Create an S3 client to interact with the EIDF Data Publishing Service
 
-Bucket names of form `<project-name>-<bucket-name>` need to be used to anonymously read from public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). As these are valid bucket names, so Boto3's bucket validation does not need to be turned off. There is no need for any AWS CLI configuration nor environment variables nor authenitication.
+Bucket names of form `<project-name>-<bucket-name>` need to be used to anonymously read from public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). As these are valid bucket names, so Boto3's bucket validation does not need to be turned off. There is no need for any AWS CLI configuration nor environment variables nor authentication.
 
 An S3 client that meets these requirements can be created as follows:
 
@@ -337,7 +337,7 @@ response = s3client.delete_objects(
 
 The `response` from `delete_objects` includes information about the deletion.
 
-The list of keys could be created programatically from a query to `list_objects_v2`. For example:
+The list of keys could be created programmatically from a query to `list_objects_v2`. For example:
 
 ```python
 response = s3client.list_objects_v2(Bucket='mybucket')
