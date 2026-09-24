@@ -4,7 +4,7 @@
 
 This page provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/). These examples assume you are familiar with the content of [Getting started with S3 and the EIDF S3 Service](./getting-started.md).
 
-The tutorial was developed under an EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
+Note: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
 ---
 
