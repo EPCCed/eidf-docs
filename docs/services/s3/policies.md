@@ -4,7 +4,7 @@ Identity Access Management (IAM) policies can be applied to buckets. For example
 
 Policies are defined as S3 policy documents, in JSON format.
 
-Note: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
+**Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
 ---
 

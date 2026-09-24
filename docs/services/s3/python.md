@@ -4,7 +4,7 @@
 
 This page provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/). These examples assume you are familiar with the content of [Getting started with S3 and the EIDF S3 Service](./getting-started.md).
 
-Note: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
+**Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
 ---
 
@@ -247,7 +247,7 @@ s3client.upload_file(Filename='edinburgh.csv',
                          Key='scotland/lothian/')
     ```
 
-    will upload the file and give it the key `scotland/lothian/`. This is different from how the AWS CLI behaves, where uploading the file` to `s3://mybucket/scotland/lothian/` will upload the file and give it the key `scotland/lothian/edinburgh.csv`'. AWS CLI adds `edinburgh.csv` to the path before contacting the S3 service. Boto3 does not.
+    will upload the file and give it the key `scotland/lothian/`. This is different from how the AWS CLI behaves, where uploading the file with a key `scotland/lothian/` will upload the file and give it the key `scotland/lothian/edinburgh.csv`'. AWS CLI adds `edinburgh.csv` to the path before contacting the S3 service. Boto3 does not.
 
     However, both Boto3 and the AWS CLI allow for files whose keys have trailing slashes to be downloaded.
 
@@ -337,7 +337,7 @@ response = s3client.delete_objects(
 
 The `response` from `delete_objects` includes information about the deletion.
 
-The list of keys could be created programmatically from a query to `list_objects_v2`. For example:
+A list of keys can be created programmatically from a query to `list_objects_v2`. For example:
 
 ```python
 response = s3client.list_objects_v2(Bucket='mybucket')
