@@ -4,69 +4,45 @@
 
 ## Introduction
 
-This tutorial provides a hands-on introduction to S3 and the EIDF S3 Service.
+Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is an object storage service developed by [Amazon Web Services](https://aws.amazon.com). However, in the same way that 'Hoover' is used to refer to any 'vacuum cleaner' or 'Google' for any 'online search', the term 'S3' has now come to mean any storage service that offers an S3-compatible interface. 
 
-The tutorial was developed under an EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36.
+The EIDF S3 Service is implemented using [Ceph](https://ceph.io), an open source storage platform. Ceph's [Object Gateway](https://docs.ceph.com/en/latest/radosgw/) provides an object storage interface which supports an S3-compatibilty mode. From hereon, this will be refered to as 'Ceph S3'. S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.
 
----
+!!! Info "Amazon S3 service interfaces and Ceph S3 compliance"
 
-## About S3
+    For more information on the S3 service interfaces, see the Amazon [S3 API Reference](https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html), and, for Ceph S3's compliance with the S3 service interfaces, see [Ceph Object Gateway S3 API](https://docs.ceph.com/en/latest/radosgw/s3/).
 
-TODO:
+This tutorial provides an introduction to S3 and the EIDF S3 Service.
 
-Amazon S3 (Simple Storage Service) Amazon Web Services
-
-'S3' as Amazon product vs. 'S3' as defacto API standard implemented by others, offering S3-compatible APIs.
-
-Aside: 'S3' is a a 'proprietary metonym' like 'Post-It' for 'sticky notes',  'Hoover' for 'vacuum cleaner' or 'Google' for 'online search'!
-
-The EIDF S3 Service is an S3 object store. S3 means 'Simple Storage Service'.
-
-'flat', key-value (hashtable, associative array, Python dict, R list in general concept, but storage, not in-memory!)
-
-Endpoints
-
-Buckets:
-
-* Contain objects each of which has a key.
-* Names unique across all S3 users, alphanumeric characters plus dot and dash.
-* DNS and FQDN bucket names e.g. 's3://my-bucket.s3tools.org' are recommended.
-* Cannot be nested.
-
-Files vs. objects (file content + metadata), here we use files to keep it simple, unless we need to refer to objects.
-
-Objects:
-
-* Names, UTF-8, up to 1024 bytes long.
-* Public, accessible via HTTP.
-* Private
-* Access Control Lists (ACL)
-
-Naming
-
-Prefix, virtual folder/directory
-
-`s3://mybucket` is an S3 URI. S3 URIs are a standard way of referencing buckets, and files, available at S3 endpoints.
+**Author's Note**: Commands on code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36.
 
 ---
 
-## About the EIDF S3 Service
+## S3 and the EIDF S3 Service
 
-The EIDF S3 Service is an S3 object store. S3 means 'Simple Storage Service'.
+An S3 service consists of **buckets**. Each bucket stores **objects** where an object is a file plus associated metadata. Unlike a file system, which organises files into a tree-like structure of directories and sub-directories, within a bucket there is no such organisation, a bucket is 'flat', it can only contain objects not other buckets.
 
-Whether some operations fail or do nothing depends on both S3 client and S3 Service.
+A bucket can be viewed as way of storing objects akin to the use of key-value stores, hashtables, associative arrays, dictionaries (in Python), or lists (in R) in programming languages for storing values.
 
-S3 products differ in S3 capabilities.
+Each object within the bucket is referenced via a **key**, a unique name for the object within the bucket. The key is chosen when a file is uploaded.
 
-EIDF S3 uses Ceph S3.
+Though the organisation of objects within a bucket has no hierarchy, many S3 implementations allow for a hierarchy to be simulated via the use of keys with slashes (`/`), for example, `scotland/lothian/edinburgh.csv`. With such keys, the key **prefix**, `scotland/lothian/` can be viewed as a **virtual directory**.
 
-Subset of Amazon S3 REST API
+### Project tenancies
 
-### EIDF S3 bucket naming
+Each project has a tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
-There are subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
+The [EIDF Data Publishing Service](../datapublishing/service.md) also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies biused for project-specific buckets.
 
-### Private buckets within a project
+Tenancies are not a general S3 concept but are Ceph S3-specific.
+
+### Bucket naming
+
+The AWS S3 documentation on [General purpose bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens `-`, or full stops `.`.
+
+However, there are some subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
+
+#### Private buckets within a project
 
 Use bucket names of form `<bucket-name>` for private buckets within a project, when using an access key for that project. For example:
 
@@ -75,7 +51,7 @@ somebucket
 somebucket/some-data-file.csv
 ```
 
-### Public project buckets or buckets within other projects
+#### Public project buckets or buckets within other projects
 
 Use bucket names of form `<project-name>:<bucket-name>` for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:
 
@@ -84,9 +60,9 @@ eidfNNN:somebucket
 eidfNNN:somebucket/some-data-file.csv
 ```
 
-!!! Note "Projects, buckets and tenancies"
+!!! Info "Projects, tenancies, and bucket names"
 
-    Each project has its own tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
+    Each project has a so-called tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
     The project name specified within bucket names allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
 
@@ -98,7 +74,7 @@ eidfNNN:somebucket/some-data-file.csv
 
     Some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.
 
-### Public buckets within the EIDF Data Publishing Service
+#### Public buckets within the EIDF Data Publishing Service
 
 Use bucket names of form `<project-name>-<bucket-name>` for public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), if accessing anonymously. For example:
 
@@ -107,13 +83,13 @@ eidfNNN-somebucket
 eidfNNN-somebucket/some-data-file.csv
 ```
 
-!!! Note "Projects, buckets and tenancies and the EIDF Data Publishing Service"
+!!! Info "Projects, tenancies, bucket names and the EIDF Data Publishing Service"
 
-    The EIDF Data Publishing Service uses a single tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
+    The EIDF Data Publishing Service also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
 
     Prefixing the bucket names with the project names allows for different projects to have buckets with the same name within the EIDF Data Publishing Service without ambiguity.
 
-### Public buckets and URLs
+#### Public buckets and URLs
 
 To reference public project buckets via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
 
@@ -137,7 +113,7 @@ To use an S3 Service, you will need the S3 Service endpoint URL, an access key a
 
 The EIDF S3 Service endpoint is <https://s3.eidf.ac.uk>.
 
-To view you S3 account names, access keys, secrets, and storage and bucket quotas:
+To view your S3 account names, access keys, secrets, and storage and bucket quotas:
 
 1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your selected project's page will appear.
@@ -150,19 +126,17 @@ To view you S3 account names, access keys, secrets, and storage and bucket quota
 
 ![EIDF Portal S3 Access Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
 
-!!! Note "S3 access keys and permissions"
+You will **only** see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
 
-    You will only see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
+If you are a project lead, then you will see **all** the access keys, for **all** S3 accounts, for your project.
 
-    If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
-
-!!! Note "S3 Service region"
+!!! Info "S3 Service region"
 
     In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 Service is hosted in the US, it is not!
 
     There is no need to specify an S3 service region when listing buckets, files or downloading files. An S3 service region only needs to be specified when creating buckets or uploading files.
 
-!!! Note "Using public project buckets within other projects and public buckets in the EIDF Data Publishing Service"
+!!! Info "Using public project buckets within other projects and public buckets in the EIDF Data Publishing Service"
 
     Public project buckets and public buckets in the [EIDF Data Publishing Service](../datapublishing/service.md), and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided. You only need to know the project ID (of form 'eidfNNN' and bucket name).
 
@@ -180,7 +154,7 @@ Install the AWS CLI:
 curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
 ```
 
-!!! Note "AWS CLI install location"
+!!! Info "AWS CLI install location"
 
     On EIDF VMs, the AWS CLI is installed into `$HOME/.local/share/aws-cli` with a symbolic link in `$HOME/.local/bin`. Your EIDF `.profile` ensures that `$HOME/.local/bin` is on your `PATH`.
 
@@ -314,13 +288,13 @@ If you are using the EIDF S3 Service from within an [EIDF Confidential Data Work
 export AWS_CA_BUNDLE=/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
 ```
 
-!!! Note "`AWS_ENDPOINT_URL` vs. `AWS_ENDPOINT_URL_S3` vs. `AWS_S3_ENDPOINT`"
+!!! Info "`AWS_ENDPOINT_URL` vs. `AWS_ENDPOINT_URL_S3` vs. `AWS_S3_ENDPOINT`"
 
-    `AWS_ENDPOINT_URL` is a URL for any services accessed via the AWS CLI, including S3. It is recognised by the AWS CLI.
+    `AWS_ENDPOINT_URL` is a URL for any services accessed via the AWS CLI, including S3. It is recognised by the AWS CLI and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
 
-    `AWS_ENDPOINT_URL_S3` is a URL for S3 Services accessed via the AWS CLI. It too is recognised by the AWS CLI.
+    `AWS_ENDPOINT_URL_S3` is a URL for S3 Services accessed via the AWS CLI. It too is recognised by the AWS CLI and Boto3.
 
-    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by the AWS CLI.
+    `AWS_S3_ENDPOINT` is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by the AWS CLI nor Boto3.
 
     All three are defined here to cover all possible tools you may use in this tutorial.
 
@@ -332,14 +306,14 @@ The AWS CLI allows for the S3 endpoint URL and region to be provided at the comm
 aws s3 ls --endpoint-url https://s3.eidf.ac.uk --region us-east-1 s3://<bucket-name>
 ```
 
-#### Further information on AWS CLI configuration
+!!! Info "AWS CLI configuration"
 
-For further information on AWS CLI configuration, see the AWS CLI documentation on:
+    For further information on AWS CLI configuration, see the AWS CLI documentation on:
 
-* [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html).
-* [Configuration and credential file settings in the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
-* [Configuring environment variables for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html).
-* [aws configure set](https://docs.aws.amazon.com/cli/latest/reference/configure/set.html).
+    * [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html).
+    * [Configuration and credential file settings in the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+    * [Configuring environment variables for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html).
+    * [aws configure set](https://docs.aws.amazon.com/cli/latest/reference/configure/set.html).
 
 ### List S3 buckets
 
@@ -371,15 +345,17 @@ aws s3 mb s3://mybucket
 
 `s3://mybucket` is an S3 URI. S3 URIs are a standard way of referencing buckets, and files, available at S3 endpoints.
 
-!!! Important "Bucket names"
-
-    Bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens `-`, or full stops `.`. See the AWS S3 documentation on [General purpose bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
-
 A message will be displayed:
 
 ```text
 make_bucket: mybucket
 ```
+
+!!! Info "Bucket naming"
+
+    The AWS S3 documentation on [General purpose bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens `-`, or full stops `.`.
+
+    See [Bucket naming](#bucket-naming) for subtleties around how to refer to EIDF S3 Service buckets.
 
 !!! Tip "Troubleshooting: `make_bucket failed: s3://<bucket-name> argument of type 'NoneType' is not a container or iterable`"
 
@@ -409,7 +385,7 @@ aws s3 ls s3://mybucket
 
 The new bucket will be empty.
 
-!!! Note "Bucket ownership within the EIDF S3 Service"
+!!! Info "Bucket ownership within the EIDF S3 Service"
 
     Within the EIDF S3 Service, buckets are owned by the S3 account associated with the access key used to create the bucket.
 
@@ -448,6 +424,10 @@ upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv
 !!! Tip "Troubleshooting: `aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp <LocalPath> <S3Uri> or <S3Uri> <LocalPath> or <S3Uri> <S3Uri>`"
 
     This error can occur if the bucket name does not have the `s3://` URI prefix.
+
+!!! Info "Object (key) naming"
+
+    The AWS S3 documentation on [Naming Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) states that a key can be a sequence of UTF-8-encoded characters, with a mazimum length of 1,024 bytes. Key names are case-sensitive.
 
 Now, list the contents of the bucket:
 
@@ -595,7 +575,7 @@ delete: s3://mybucket/edinburgh.csv
 delete: s3://mybucket/glasgow.csv
 ```
 
-!!! Note "File deletion messages are printed before deletion"
+!!! Warning "File deletion messages are printed before deletion"
 
     File deletion messages display what will the AWS CLI intends to request the S3 service delete, not what actually may or may not be deleted. If the file does not exist, then the message will still be displayed.
 
@@ -728,7 +708,7 @@ i.e.,
                            PRE scotland/
 ```
 
-!!! Warning "Trailing slashes are significant for uploads and downloads too"
+!!! Warning "Trailing slashes and uploads and downloads"
 
     When uploading or downloading files, a trailing slash is significant. A reference to `s3://mybucket/a/b/c` is **not** the same as a reference to `s3://mybucket/a/b/c/`.
 
@@ -763,11 +743,11 @@ aws s3 ls s3://mybucket --recursive
 
 Nothing has happened! As noted earlier, file deletion messages are printed before deletion, and may, or may not, reflect what actually is deleted.
 
-!!! Warning "Trailing slashes are significant"
+!!! Warning "Trailing slashes and deletion"
 
     When deleting files, a trailing slash is significant. A reference to `s3://mybucket/a/b/c/` is **not** the same as a reference to `s3://mybucket/a/b/c`.
 
-    Deleting files using reference `s3://mybucket/a/b/c/` will do nothing unless the `--recursive` option is used. If used, then **all** files with prefix `a/b/c/` will be deleted. If no such files exist, then deletion does nothing.
+    Deleting files using reference `s3://mybucket/a/b/c/` will do nothing unless the `--recursive` option is used. If the `--recursive` option is used, then **all** files with prefix `a/b/c/` will be deleted. If no such files exist, then the operation does nothing.
 
     Deleting files using reference `s3://mybucket/a/b/c` will succeed if there is a file with key `a/b/c` and will do nothing otherwise. If the `--recursive` option is used, then **all** files whose key starts with `a/b/c` will be deleted (e.g., if there were files `a/b/cookie`, `a/b/c/dough`, then these would both be deleted).
 
@@ -862,7 +842,7 @@ aws s3 cp data/edinburgh.csv s3://mybucket/scotland/lothian/edinburgh.csv
 
 Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to make 'mybucket' public, by following the instructions to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
-!!! Note "Making the bucket public"
+!!! Info "Making the bucket public"
 
     Here, the EIDF S3 Browser is used to make a bucket public. The page on [Using S3 policies](./policies.md) describes how to make a bucket public using both the AWS CLI and Python.
 
