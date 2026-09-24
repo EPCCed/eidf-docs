@@ -22,11 +22,9 @@ Your selected project's S3 access keys will be shown in the 'ACCESS KEYS' sectio
 
 The 'ACCESS KEYS' section shows your selected project's S3 access keys, grouped by their S3 account names.
 
-!!! Note "S3 access keys and permissions"
+You will **only** see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
 
-    You will only see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.
-
-    If you are a project lead, then you will see all the access keys, for all S3 accounts, for your project.
+If you are a project lead, then you will see **all** the access keys, for **all** S3 accounts, for your project.
 
 To select an access key, click on the access key.
 
@@ -38,7 +36,7 @@ The current buckets within your project, belonging to the S3 account which owns 
 
 The 'BUCKETS' section shows you the current buckets within your project belonging to the S3 account which owns the selected access key.
 
-!!! Note "Access keys, S3 accounts and buckets"
+!!! Info "Access keys, S3 accounts and buckets"
 
     Selecting different access keys belonging to the same S3 account will show the same buckets in the 'BUCKETS' section, as all the buckets belonging to the S3 account are shown.
 
@@ -155,7 +153,7 @@ To view information about the bucket:
 
     Making a bucket publicly-readable allows anyone who knows the bucket URL to anonymously read the bucket, and the files within.
 
-!!! Note "Effect on existing bucket policies (for those familiar with policies)"
+!!! Info "Effect on existing bucket policies (for those familiar with policies)"
 
     Making a bucket public will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:
 
