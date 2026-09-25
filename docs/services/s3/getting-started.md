@@ -32,17 +32,17 @@ Though the organisation of objects within a bucket has no hierarchy, many S3 imp
 
 ### Project tenancies
 
-Each project has a tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
+Each project has a **tenancy** within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
-The [EIDF Data Publishing Service](../datapublishing/service.md) also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
+Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., `eidfNNN:`) when referencing your public buckets anonymously or buckets within other projects. When using your own private buckets there is no need for such prefixes to be used.
 
-Tenancies are not a general S3 concept but are Ceph S3-specific.
+The [EIDF Data Publishing Service](../datapublishing/service.md) uses the default tenancy within the EIDF S3 Service. This default tenancy is distinct from the project-specific tenancies used for project-specific buckets. As all projects which publish data within the EIDF Data Publishing Service share the same tenancy, the service adopts a convention of adding project names to bucket names (e.g., `eidfNNN-`) to allow a specific project's buckets, within this default tenancy, to be identified.
 
 ### Bucket naming
 
 The AWS S3 documentation on [General purpose bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens `-`, or full stops `.`.
 
-However, there are some subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted.
+However, there are some subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted. These arise from the use of [Project tenancies](#project-tenancies) within the service.
 
 #### Private buckets within a project
 
@@ -53,24 +53,18 @@ somebucket
 somebucket/some-data-file.csv
 ```
 
+A project prefix is not required when using buckets within a project and using an access key for that project as the access key itself identifies the project's tenancy.
+
 #### Public project buckets or buckets within other projects
 
-Use bucket names of form `<project-name>:<bucket-name>` for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:
+Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, for public buckets within a project, when accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:
 
 ```text
 eidfNNN:somebucket
 eidfNNN:somebucket/some-data-file.csv
 ```
 
-!!! Info "Projects, tenancies, and bucket names"
-
-    Each project has a so-called tenancy within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
-
-    The project name specified within bucket names allows for the project tenancy to be identified, before identifying the bucket within that project's tenancy.
-
-    A project prefix is not required when using buckets within a project using an access key for that project as the access key itself identifies the project's tenancy.
-
-!!! Warning "Project identification and S3 tools"
+!!! Warning "Tenancies, bucket naming and S3 tools"
 
     Bucket names of form `<project-name>:<bucket-name>` are strictly invalid due to the presence of the colon `:`, as the S3 bucket name specification does not include the concept of tenancies.
 
@@ -78,18 +72,12 @@ eidfNNN:somebucket/some-data-file.csv
 
 #### Public buckets within the EIDF Data Publishing Service
 
-Use bucket names of form `<project-name>-<bucket-name>` for public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), if accessing anonymously. For example:
+Use bucket names of form `<project-name>-<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a dash, `-`, for public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), if accessing anonymously. For example:
 
 ```text
 eidfNNN-somebucket
 eidfNNN-somebucket/some-data-file.csv
 ```
-
-!!! Info "Projects, tenancies, bucket names and the EIDF Data Publishing Service"
-
-    The EIDF Data Publishing Service also has a tenancy within the EIDF S3 Service for all the buckets for all the projects that publish data using the service. This shared tenancy is distinct from the project-specific tenancies used for project-specific buckets.
-
-    Prefixing the bucket names with the project names allows for different projects to have buckets with the same name within the EIDF Data Publishing Service without ambiguity.
 
 #### Public buckets and URLs
 
