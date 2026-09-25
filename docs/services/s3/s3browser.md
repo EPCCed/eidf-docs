@@ -149,9 +149,9 @@ To view information about the bucket:
 1. Or, click the 'upward right pointing arrow button, at the right of the 'Bucket is public' section.
 1. A new browser tab will open, showing an XML document with information about the bucket and all the files it contains including their metadata.
 
-!!! Warning "Publicly-readable buckets are available to all"
+!!! Warning "Publicly-readable buckets are anonymously readable by anyone"
 
-    Making a bucket publicly-readable allows anyone who knows the bucket URL to anonymously read the bucket, and the files within.
+    **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
 !!! Info "Effect on existing bucket policies (for those familiar with policies)"
 
