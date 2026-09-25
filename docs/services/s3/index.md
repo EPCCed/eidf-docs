@@ -1,26 +1,33 @@
 # Overview
 
-The EIDF S3 Service is an object store with an interface that is compatible with a subset of the Amazon S3 RESTful API.
+The EIDF S3 Service is an object store, provisioned using the [Ceph](https://ceph.io) storage platform, that implements a subset of Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) service interfaces.
 
-## Service Access
+The EIDF S3 Service is directly accessible from the [EIDF Virtual Machine (VM) Service](../virtualmachines), the [EIDF GPU Service](../gpuservice/index.md) and the [EIDF Ultra2 Service](../ultra2/index.md). The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.
 
-Users should have an EIDF account as described in [EIDF Accounts](../../access/project.md).
+---
 
-Project leads can request an object store allocation through a request to the EIDF helpdesk.
+## Service provision
 
-## Access keys
+Project leads can request an EIDF S3 Service object store allocation, a portion of the EIDF S3 Service storage allocated for the exclusive use of a project, via the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
-Select your project at [https://portal.eidf.ac.uk/project/](https://portal.eidf.ac.uk/project/).
-Your access keys are displayed in the table at the top of the page.
+To access EIDF S3 Service object store allocation and account information within the EIDF Portal, users need to have an EIDF account as described in [EIDF Accounts](../../access/project.md).
 
-![Portal-S3-Access-Keys](../../images/access/portal-s3-keys.png){: class="border-img"}
+---
 
-For each account, the quota and the number of buckets that it is permitted to create is shown, as well as the access keys.
-Click on "Secret" to view the access secret.
-You will need the access key, the corresponding access secret and the endpoint `https://s3.eidf.ac.uk` to connect to the EIDF S3 Service with an S3 client.
+## Service management for project leads
 
-## Further information
+[Managing a project's S3 object store allocation](./manage.md) is a guide for project leads on how to manage a project's object store allocation and its S3 accounts and access permissions.
 
-[Access management](./manage.md): Project management guide to managing accounts and access permissions for your S3 allocation.
+---
 
-[Tutorial](./tutorial.md): Examples using EIDF S3
+## Using the EIDF S3 Service
+
+[Getting started with S3 and the EIDF S3 Service](./getting-started.md) is a hands-on introduction to S3 and the EIDF S3 Service.
+
+[Get information to use the EIDF S3 Service](./getting-started.md#get-information-to-use-the-eidf-s3-service), part of the introduction, describes the S3 Service endpoint URL and how to view your S3 account names, access keys, secrets, and storage and bucket quotas:
+
+[Using the EIDF S3 Browser](./s3browser.md) is a guide to using the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) which is part of the [EIDF S3 Service](./index.md) and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.
+
+[Using the EIDF S3 Service via Python](./python.md) provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
+
+[Using S3 policies](./policies.md) provides examples of applying Identity Access Management (IAM) policies to buckets. For example, you can grant other accounts (within the same project or from other EIDF projects) read or write access to your buckets, or grant public anonymous read access.
