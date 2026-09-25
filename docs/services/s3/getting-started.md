@@ -848,6 +848,10 @@ Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to 
 
     Here, the EIDF S3 Browser is used to make a bucket public. The page on [Using S3 policies](./policies.md) describes how to make a bucket public using both the AWS CLI and Python.
 
+!!! Warning "Publicly-readable buckets are anonymously readable by anyone"
+
+    **Beware!** Here we are making the bucket publicly-readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
+
 ### Read from a public project bucket via a browser
 
 Your bucket's files can be downloaded within your browser. For example, To download the file `scotland/lothian/edinburgh.csv`, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket/scotland/lothian/edinburgh.csv` into your browser.
