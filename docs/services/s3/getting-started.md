@@ -124,7 +124,7 @@ If you are a project lead, then you will see **all** the access keys, for **all*
 
     In the following, there are references to a region, `us-east-1`. This is a default, it does **not** mean that the EIDF S3 Service is hosted in the US, it is not!
 
-    There is no need to specify an S3 service region when listing buckets, files or downloading files. An S3 service region only needs to be specified when creating buckets or uploading files.
+    The EIDF S3 Service typically ignores the region, but some S3 tools require it to be provided when they make their requests. There is no need to specify an S3 service region when listing buckets, files or downloading files. An S3 service region only needs to be specified when creating buckets or uploading files.
 
 !!! Info "Using public project buckets within other projects and public buckets in the EIDF Data Publishing Service"
 
