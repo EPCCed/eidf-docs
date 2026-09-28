@@ -1,0 +1,4650 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.eidf.ac.uk/services/s3/getting-started/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../python/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Getting started - EIDF User Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/access.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-s3-and-the-eidf-s3-service" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+      
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EIDF User Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EPCCed/eidf-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EPCCed/eidf-docs.git
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+      
+  <img src="../../../images/EIDF_rgb.png" alt="logo">
+
+    </a>
+    EIDF User Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EPCCed/eidf-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EPCCed/eidf-docs.git
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Service Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentation overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About EIDF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            About EIDF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/acknowledgements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Service Access
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Service Access
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web and SSH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EIDF Web Portal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Desktop Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Storage in the EIDF
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Storage in the EIDF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../storage/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../storage/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Computing Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Computing Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Virtual Desktops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Virtual Desktops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QuickStart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Desktop Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/sharedfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH Access to VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/flavours/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VM Flavours
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../virtualmachines/rdp-tunnelling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RDP tunnelling over SSH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Confidential Data Workspace
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Confidential Data Workspace
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VM & User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/router-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Router Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidentialdataworkspace/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ultra2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ultra2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ultra2/access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ultra2/connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ultra2/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running codes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cerebras
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cerebras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running codes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GPU Service
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            GPU Service
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/kueue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kueue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/shared-cephfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shared Filesystem (CephFS) PVCs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5_5" id="__nav_6_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/training/L1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent Volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running a Pytorch Pod
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/training/L4_template_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template K8s Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpuservice/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPU Service FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jhub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jhub/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cirrus HPC System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Cirrus HPC System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cirrus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Data Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    S3
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            S3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s3-and-the-eidf-s3-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3 and the EIDF S3 Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="S3 and the EIDF S3 Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-tenancies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project tenancies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucket-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucket naming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucket naming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-buckets-within-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private buckets within a project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-project-buckets-or-buckets-within-other-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public project buckets or buckets within other projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-buckets-within-the-eidf-data-publishing-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public buckets within the EIDF Data Publishing Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-buckets-and-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public buckets and URLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-information-to-use-the-eidf-s3-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get information to use the EIDF S3 Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-eidf-s3-via-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use EIDF S3 via the command-line
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use EIDF S3 via the command-line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure the AWS CLI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure the AWS CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-aws-cli-configuration-via-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set AWS CLI configuration via the command-line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-aws-cli-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create AWS CLI configuration files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-aws-cli-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set AWS CLI environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-aws-cli-command-line-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use AWS CLI command-line parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      List S3 buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-a-file-to-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload a file to an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-a-file-from-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download a file from an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-and-download-multiple-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload and download multiple files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-total-number-of-files-and-file-sizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      List total number of files and file sizes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-file-from-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete a file from an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefixes-and-virtual-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixes and virtual directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-an-empty-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an empty bucket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-s3-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other S3 clients
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-from-public-project-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from public project buckets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read from public project buckets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-public-project-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a public project bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-a-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via a browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via 'curl'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-from-public-buckets-in-the-eidf-data-publishing-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from public buckets in the EIDF Data Publishing Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read from public buckets in the EIDF Data Publishing Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-a-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via a browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via 'curl'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-buckets-of-other-eidf-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use buckets of other EIDF projects
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Service via Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using S3 policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s3browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Browser
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing a project's S3 object store allocation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data Publishing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Publishing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datapublishing/service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datapublishing/catalogue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Your Data Catalogue entry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data Catalogue
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Data Catalogue
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datacatalogue/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metadata information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code Collaboration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Code Collaboration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gitlab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitlab/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gitlab Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container Image Registry Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registry/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container Image Registry Projects and Caches
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registry/working-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container Image Registry Use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registry/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container Image Registry FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Safe Haven Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Safe Haven Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/safe-haven-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/transition-to-clusters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transition to the Clusters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    HPC Service
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            HPC Service
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-superdome-flex/L1_Accessing_the_SDF_Inside_the_EPCC_SHS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accessing HPC in Safe Havens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-superdome-flex/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running R/Python Scripts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-superdome-flex/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Submitting Scripts to Slurm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-superdome-flex/L4_parallelised_python_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parallelised Python Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-superdome-flex/L5_parallelised_r_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parallelised R Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            SHS GPU Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/kueue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kueue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5_4" id="__nav_8_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L2_building_and_testing_containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Pushing Containers to GHCR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L3_using_containers_in_the_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Downloading Containers in the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L4_creating_your_first_pod_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating your first pod template within a job yaml file
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L5_accessing_the_beegfs_inside_the_epcc_shs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transfer Data Inside the SHS GPU Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L6_requesting_persistent_volumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent Volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-gpu-cluster/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHS GPU Cluster FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Container Service
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Container Service
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-container-user-guide/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accessing and running containers in Safe Havens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-container-user-guide/development-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-container-user-guide/workflow-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflow Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/shs-container-user-guide/container-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../safe-haven-services/software-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Software Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EIDF Frequently Asked Questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial-videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EIDF Tutorial Videos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s3-and-the-eidf-s3-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3 and the EIDF S3 Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="S3 and the EIDF S3 Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-tenancies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project tenancies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucket-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucket naming
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucket naming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-buckets-within-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private buckets within a project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-project-buckets-or-buckets-within-other-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public project buckets or buckets within other projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-buckets-within-the-eidf-data-publishing-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public buckets within the EIDF Data Publishing Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-buckets-and-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public buckets and URLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-information-to-use-the-eidf-s3-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get information to use the EIDF S3 Service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-eidf-s3-via-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use EIDF S3 via the command-line
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use EIDF S3 via the command-line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure the AWS CLI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure the AWS CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-aws-cli-configuration-via-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set AWS CLI configuration via the command-line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-aws-cli-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create AWS CLI configuration files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-aws-cli-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set AWS CLI environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-aws-cli-command-line-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use AWS CLI command-line parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      List S3 buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-a-file-to-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload a file to an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-a-file-from-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download a file from an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-and-download-multiple-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload and download multiple files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-total-number-of-files-and-file-sizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      List total number of files and file sizes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-file-from-an-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete a file from an S3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefixes-and-virtual-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixes and virtual directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-an-empty-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an empty bucket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-s3-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other S3 clients
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-from-public-project-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from public project buckets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read from public project buckets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-public-project-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a public project bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-a-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via a browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via 'curl'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-project-bucket-via-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public project bucket via the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-from-public-buckets-in-the-eidf-data-publishing-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from public buckets in the EIDF Data Publishing Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read from public buckets in the EIDF Data Publishing Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-a-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via a browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via 'curl'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-the-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read from a public bucket in the EIDF Data Publishing Service via the AWS CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-buckets-of-other-eidf-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use buckets of other EIDF projects
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="getting-started-with-s3-and-the-eidf-s3-service">Getting started with S3 and the EIDF S3 Service</h1>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Amazon <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Simple Storage Service (S3)</a> is an object storage service developed by <a href="https://aws.amazon.com">Amazon Web Services</a>. However, in the same way that 'Hoover' is used to refer to any 'vacuum cleaner' or 'Google' for any 'online search', the term 'S3' has now come to mean any storage service that offers an S3-compatible interface.</p>
+<p>The EIDF S3 Service is implemented using <a href="https://ceph.io">Ceph</a>, an open source storage platform. Ceph's <a href="https://docs.ceph.com/en/latest/radosgw/">Object Gateway</a> provides an object storage interface which supports an S3-compatibility mode. From hereon, this will be referred to as 'Ceph S3'.</p>
+<p>S3 products provided by other vendors can often differ in their S3 capabilities, depending on the extent to which they implement S3 features and support S3-compliant interfaces. Ceph S3 is one such product, and supports a subset of Amazon's S3 service interfaces.</p>
+<div class="admonition info">
+<p class="admonition-title">Amazon S3 service interfaces and Ceph S3 compliance</p>
+<p>For more information on the S3 service interfaces, see the Amazon <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">S3 API Reference</a>, and, for Ceph S3's compliance with the S3 service interfaces, see <a href="https://docs.ceph.com/en/latest/radosgw/s3/">Ceph Object Gateway S3 API</a>.</p>
+</div>
+<p>This tutorial provides an introduction to S3 and the EIDF S3 Service.</p>
+<p><strong>Author's Note</strong>: Commands on code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36.</p>
+<hr />
+<h2 id="s3-and-the-eidf-s3-service">S3 and the EIDF S3 Service</h2>
+<p>An S3 service consists of <strong>buckets</strong>. Each bucket stores <strong>objects</strong> where an object is a file plus associated metadata. Unlike a file system, which organises files into a tree-like structure of directories and sub-directories, within a bucket there is no such organisation, a bucket is 'flat', it can only contain objects not other buckets.</p>
+<p>A bucket can be viewed as way of storing objects akin to the use of key-value stores, hashtables, associative arrays, dictionaries (in Python), or lists (in R) in programming languages for storing values.</p>
+<p>Each object within the bucket is referenced via a <strong>key</strong>, a unique name for the object within the bucket. The key is chosen when a file is uploaded.</p>
+<p>Though the organisation of objects within a bucket has no hierarchy, many S3 implementations allow for a hierarchy to be simulated via the use of keys with slashes (<code>/</code>), for example, <code>scotland/lothian/edinburgh.csv</code>. With such keys, the key <strong>prefix</strong>, <code>scotland/lothian/</code> can be viewed as a <strong>virtual directory</strong>.</p>
+<h3 id="project-tenancies">Project tenancies</h3>
+<p>Each project has a <strong>tenancy</strong> within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.</p>
+<p>Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., <code>eidfNNN:</code>) when referencing your public buckets anonymously or buckets within other projects. When using your own private buckets there is no need for such prefixes to be used.</p>
+<p>The <a href="../../datapublishing/service/">EIDF Data Publishing Service</a> uses the default tenancy within the EIDF S3 Service. This default tenancy is distinct from the project-specific tenancies used for project-specific buckets. As all projects which publish data within the EIDF Data Publishing Service share the same tenancy, the service adopts a convention of adding project names to bucket names (e.g., <code>eidfNNN-</code>) to allow a specific project's buckets, within this default tenancy, to be identified.</p>
+<h3 id="bucket-naming">Bucket naming</h3>
+<p>The AWS S3 documentation on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html">General purpose bucket naming rules</a> states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens <code>-</code>, or full stops <code>.</code>.</p>
+<p>However, there are some subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted. These arise from the use of <a href="#project-tenancies">Project tenancies</a> within the service.</p>
+<h4 id="private-buckets-within-a-project">Private buckets within a project</h4>
+<p>Use bucket names of form <code>&lt;bucket-name&gt;</code> for private buckets within a project, when using an access key for that project. For example:</p>
+<div class="highlight"><pre><span></span><code>somebucket
+somebucket/some-data-file.csv
+</code></pre></div>
+<p>A project prefix is not required when using buckets within a project and using an access key for that project as the access key itself identifies the project's tenancy.</p>
+<h4 id="public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</h4>
+<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a colon, <code>:</code>, for public buckets within a project, when accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:</p>
+<div class="highlight"><pre><span></span><code>eidfNNN:somebucket
+eidfNNN:somebucket/some-data-file.csv
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Tenancies, bucket naming and S3 tools</p>
+<p>Bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> are strictly invalid due to the presence of the colon <code>:</code>, as the S3 bucket name specification does not include the concept of tenancies.</p>
+<p>Some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.</p>
+</div>
+<h4 id="public-buckets-within-the-eidf-data-publishing-service">Public buckets within the EIDF Data Publishing Service</h4>
+<p>Use bucket names of form <code>&lt;project-name&gt;-&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a dash, <code>-</code>, for public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>, if accessing anonymously. For example:</p>
+<div class="highlight"><pre><span></span><code>eidfNNN-somebucket
+eidfNNN-somebucket/some-data-file.csv
+</code></pre></div>
+<h4 id="public-buckets-and-urls">Public buckets and URLs</h4>
+<p>To reference public project buckets via a URL, use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;:&lt;bucket-name&gt;</code>. For example:</p>
+<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN:somebucket
+https://s3.eidf.ac.uk/eidfNNN:somebucket/some-data-file.csv
+</code></pre></div>
+<p>To reference public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a> via a URL, use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;-&lt;bucket-name&gt;</code>. For example:</p>
+<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN-somebucket
+https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
+</code></pre></div>
+<hr />
+<h2 id="get-information-to-use-the-eidf-s3-service">Get information to use the EIDF S3 Service</h2>
+<p>To use an S3 Service, you will need the S3 Service endpoint URL, an access key and secret.</p>
+<p>The EIDF S3 Service endpoint is <a href="https://s3.eidf.ac.uk">https://s3.eidf.ac.uk</a>.</p>
+<p>To view your S3 account names, access keys, secrets, and storage and bucket quotas:</p>
+<ol>
+<li>On the <a href="https://portal.eidf.ac.uk/project/">Your Projects</a> page within the EIDF Portal, click your project.</li>
+<li>Your selected project's page will appear.</li>
+<li>If using the portal's new project view, click <strong>Your S3 Keys</strong>.</li>
+<li>The 'S3 Access Keys' section will show a table where each row shoes:<ul>
+<li><strong>Name</strong>: S3 account name.</li>
+<li><strong>Quota</strong>: Maximum amount of storage available to the account.</li>
+<li><strong>Buckets</strong>: Maximum number of buckets allowed for the account.</li>
+<li><strong>Keys</strong>: Access keys associated with this account, and, via the <strong>Secret</strong> drop-down menu, each key's associated secret.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="EIDF Portal S3 Access Keys" class="border-img" src="../../../images/access/portal-s3-keys.png" /></p>
+<p>You will <strong>only</strong> see those access keys, and associated S3 accounts, which your project lead has granted you permission to view.</p>
+<p>If you are a project lead, then you will see <strong>all</strong> the access keys, for <strong>all</strong> S3 accounts, for your project.</p>
+<div class="admonition info">
+<p class="admonition-title">S3 Service region</p>
+<p>In the following, there are references to a region, <code>us-east-1</code>. This is a default, it does <strong>not</strong> mean that the EIDF S3 Service is hosted in the US, it is not!</p>
+<p>The EIDF S3 Service typically ignores the region, but some S3 tools require it to be provided when they make their requests. There is no need to specify an S3 service region when listing buckets, files or downloading files. An S3 service region only needs to be specified when creating buckets or uploading files.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Using public project buckets within other projects and public buckets in the EIDF Data Publishing Service</p>
+<p>Public project buckets and public buckets in the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided. You only need to know the project ID (of form 'eidfNNN' and bucket name).</p>
+</div>
+<hr />
+<h2 id="use-eidf-s3-via-the-command-line">Use EIDF S3 via the command-line</h2>
+<p>This section describes how to use the EIDF S3 Service via the command-line, using the <a href="https://aws.amazon.com/cli/">AWS Command Line Interface</a> (AWS CLI). Other S3 clients are available, a selection is listed in <a href="#other-s3-clients">Other S3 Clients</a> below.</p>
+<h3 id="install-the-aws-cli">Install the AWS CLI</h3>
+<p>Install the AWS CLI:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://awscli.amazonaws.com/v2/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">AWS CLI install location</p>
+<p>On EIDF VMs, the AWS CLI is installed into <code>$HOME/.local/share/aws-cli</code> with a symbolic link in <code>$HOME/.local/bin</code>. Your EIDF <code>.profile</code> ensures that <code>$HOME/.local/bin</code> is on your <code>PATH</code>.</p>
+</div>
+<p>Check version:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>--version
+</code></pre></div>
+<p>The version will be shown.</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>command not found</code></p>
+<p>If you get <code>command not found</code>, then add <code>~/.local/bin</code> to your <code>PATH</code> environment variable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"~/.local/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div>
+</div>
+<p>The AWS CLI S3 commands are of form:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>&lt;command&gt;
+</code></pre></div>
+<p>To get help on the AWS CLI options for any S3 command, run:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+<p>For a particular command, run:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+<p>For example, for help on the AWS CLI S3 <code>ls</code> command, run:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+<h3 id="configure-the-aws-cli">Configure the AWS CLI</h3>
+<p>To interact with the EIDF S3 Service, the AWS CLI needs to know the S3 endpoint URL, an access key, the access key's associated secret, and the service region. These can be configured in various ways:</p>
+<ul>
+<li>Create AWS CLI configuration within <code>~/.aws/config</code> and <code>~/.aws/credentials</code> files.<ul>
+<li>Either, <a href="#set-aws-cli-configuration-via-the-command-line">Set AWS CLI configuration via the command-line</a>.</li>
+<li>Or, <a href="#create-aws-cli-configuration-files">Create AWS CLI configuration files</a>.</li>
+</ul>
+</li>
+<li><a href="#set-aws-cli-environment-variables">Set AWS CLI environment variables</a>.</li>
+<li>For the S3 endpoint URL and service region. <a href="#use-aws-cli-command-line-parameters">Use AWS CLI command-line parameters</a>.</li>
+</ul>
+<p>AWS CLI configuration files, environment variables and command-line parameters can be used together. If this is the case, then the command-line parameters have highest precedence, followed by the environment variables, and, then, the configuration files.</p>
+<h4 id="set-aws-cli-configuration-via-the-command-line">Set AWS CLI configuration via the command-line</h4>
+<p>Set the access key, secret and service region:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure
+</code></pre></div>
+<p>You will be prompted for the access key, secret and service region. You will also be prompted for an output format, for which you can accept the default:</p>
+<div class="highlight"><pre><span></span><code>AWS Access Key ID [None]: &lt;access_key&gt;
+AWS Secret Access Key [None]: &lt;secret&gt;
+Default region name [None]: us-east-1
+Default output format [None]:
+</code></pre></div>
+<p>Set the S3 endpoint URL:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>endpoint_url<span class="w"> </span>https://s3.eidf.ac.uk
+</code></pre></div>
+<p>If you are using the EIDF S3 Service from within an <a href="../../confidentialdataworkspace/">EIDF Confidential Data Workspace</a>, then add the path to the web proxy certificate bundle:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ca_bundle<span class="w"> </span>/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
+</code></pre></div>
+<h4 id="create-aws-cli-configuration-files">Create AWS CLI configuration files</h4>
+<p>Create a configuration file, <code>~/.aws/config</code> with the S3 endpoint URL and service region:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[default]</span>
+<span class="na">endpoint_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://s3.eidf.ac.uk</span>
+<span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">us-east-1</span>
+</code></pre></div>
+<p>Create a credentials file, <code>~/.aws/credentials</code> with the access key and secret:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[default]</span>
+<span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;access_key&gt;</span>
+<span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;secret&gt;</span>
+</code></pre></div>
+<p>Set the credentials file to be readable by you only:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>go-rwx<span class="w"> </span>.aws/credentials
+</code></pre></div>
+<p>If you are using the EIDF S3 Service from within an <a href="../../confidentialdataworkspace/">EIDF Confidential Data Workspace</a>, then add the path to web proxy certificate bundle to <code>~/.aws/config</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="na">ca_bundle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/usr/local/share/ca-certificates/extra/squid_proxyCA.crt</span>
+</code></pre></div>
+<h4 id="set-aws-cli-environment-variables">Set AWS CLI environment variables</h4>
+<p>Set environment variables with the S3 endpoint URL, the access key, secret and service region:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>https://s3.eidf.ac.uk
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ENDPOINT_URL_S3</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ENDPOINT_URL</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_S3_ENDPOINT</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ENDPOINT_URL</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;access_key&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;secret&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-1
+</code></pre></div>
+<p>If you are using the EIDF S3 Service from within an <a href="../../confidentialdataworkspace/">EIDF Confidential Data Workspace</a>, define the following environment variable with the path to the web proxy certificate bundle:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_CA_BUNDLE</span><span class="o">=</span>/usr/local/share/ca-certificates/extra/squid_proxyCA.crt
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><code>AWS_ENDPOINT_URL</code> vs. <code>AWS_ENDPOINT_URL_S3</code> vs. <code>AWS_S3_ENDPOINT</code></p>
+<p><code>AWS_ENDPOINT_URL</code> is a URL for any services accessed via the AWS CLI, including S3. It is recognised by the AWS CLI and the Amazon Web Services Software Development Kit for Python, <a href="https://aws.amazon.com/sdk-for-python/">Boto3</a>.</p>
+<p><code>AWS_ENDPOINT_URL_S3</code> is a URL for S3 Services accessed via the AWS CLI. It too is recognised by the AWS CLI and Boto3.</p>
+<p><code>AWS_S3_ENDPOINT</code> is a URL for legacy or custom packages that interact with S3 Services. It is not recognised by the AWS CLI nor Boto3.</p>
+<p>All three are defined here to cover all possible tools you may use in this tutorial.</p>
+</div>
+<h4 id="use-aws-cli-command-line-parameters">Use AWS CLI command-line parameters</h4>
+<p>The AWS CLI allows for the S3 endpoint URL and region to be provided at the command line via the parameters <code>--endpoint-url</code> and <code>--region</code>. For example:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>--endpoint-url<span class="w"> </span>https://s3.eidf.ac.uk<span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>s3://&lt;bucket-name&gt;
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">AWS CLI configuration</p>
+<p>For further information on AWS CLI configuration, see the AWS CLI documentation on:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/cli/latest/topic/config-vars.html">AWS CLI Configuration Variables</a>.</li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html">Configuration and credential file settings in the AWS CLI</a>.</li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html">Configuring environment variables for the AWS CLI</a>.</li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/reference/configure/set.html">aws configure set</a>.</li>
+</ul>
+</div>
+<h3 id="list-s3-buckets">List S3 buckets</h3>
+<p>List the buckets owned by the S3 account associated with the access key:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls
+</code></pre></div>
+<p>If you are using a newly-created EIDF S3 Service for your project, then there will be no buckets shown.</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting <code>SSL validation failed for https://s3.eidf.ac.uk/</code></p>
+<p>If you are using the EIDF S3 Service from within an <a href="../../confidentialdataworkspace/">EIDF Confidential Data Workspace</a>, and you see an error like:</p>
+<div class="highlight"><pre><span></span><code>SSL validation failed for https://s3.eidf.ac.uk/ [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1032)
+</code></pre></div>
+<p>then you need to configure the path to the web proxy certificate bundle. This can be done as described earlier, either using a <code>ca_bundle</code> configuration value or an <code>AWS_CA_BUNDLE</code> environment variable.</p>
+</div>
+<h3 id="create-an-s3-bucket">Create an S3 bucket</h3>
+<p>Create a bucket, 'mybucket':</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<p><code>s3://mybucket</code> is an S3 URI. S3 URIs are a standard way of referencing buckets, and files, available at S3 endpoints.</p>
+<p>A message will be displayed:</p>
+<div class="highlight"><pre><span></span><code>make_bucket: mybucket
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Bucket naming</p>
+<p>The AWS S3 documentation on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html">General purpose bucket naming rules</a> states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens <code>-</code>, or full stops <code>.</code>.</p>
+<p>See <a href="#bucket-naming">Bucket naming</a> for subtleties around how to refer to EIDF S3 Service buckets.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>make_bucket failed: s3://&lt;bucket-name&gt; argument of type 'NoneType' is not a container or iterable</code></p>
+<p>This error can occur if a bucket name does not conform to the naming requirements.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>make_bucket failed: s3://&lt;bucket-name&gt; Parameter validation failed</code></p>
+<p>This error can occur if a bucket name does not conform to the naming requirements, specifically if it has a colon <code>:</code>.</p>
+</div>
+<p>Now, list the buckets again:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls
+</code></pre></div>
+<p>The new bucket will be listed:</p>
+<div class="highlight"><pre><span></span><code>2026-09-23 08:35:54 mybucket
+</code></pre></div>
+<p>List the files in the bucket, using an S3 URI to refer to the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<p>The new bucket will be empty.</p>
+<div class="admonition info">
+<p class="admonition-title">Bucket ownership within the EIDF S3 Service</p>
+<p>Within the EIDF S3 Service, buckets are owned by the S3 account associated with the access key used to create the bucket.</p>
+</div>
+<h3 id="upload-a-file-to-an-s3-bucket">Upload a file to an S3 bucket</h3>
+<p>Create a <code>data</code> directory:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>data
+</code></pre></div>
+<p>Create a CSV file of universities in Edinburgh and their postcodes, <code>data/edinburgh.csv</code>. This can be done programmatically as follows:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; data/edinburgh.csv</span>
+<span class="s">name,postcode</span>
+<span class="s">The University of Edinburgh,EH8 9YL</span>
+<span class="s">Edinburgh Napier University,EH14 1DJ</span>
+<span class="s">Heriot-Watt University,EH14 4AS</span>
+<span class="s">Queen Margaret University,EH21 6UU</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Upload the file into the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data/edinburgh.csv<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<p>The file will be listed as it is uploaded:</p>
+<div class="highlight"><pre><span></span><code>upload: data/edinburgh.csv to s3://mybucket/edinburgh.csv
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>aws: [ERROR]: An error occurred (ParamValidation): usage: aws s3 cp &lt;LocalPath&gt; &lt;S3Uri&gt; or &lt;S3Uri&gt; &lt;LocalPath&gt; or &lt;S3Uri&gt; &lt;S3Uri&gt;</code></p>
+<p>This error can occur if the bucket name does not have the <code>s3://</code> URI prefix.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Object (key) naming</p>
+<p>The AWS S3 documentation on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html">Naming Amazon S3 objects</a> states that a key can be a sequence of UTF-8-encoded characters, with a maximum length of 1,024 bytes. Key names are case-sensitive.</p>
+</div>
+<p>Now, list the contents of the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<p>The listing will now include the file:</p>
+<div class="highlight"><pre><span></span><code>2026-09-23 08:35:57        154 edinburgh.csv
+</code></pre></div>
+<p>The key of the file in the bucket is <code>edinburgh.csv</code> i.e., the file name itself. This is because we did not specify a key for the file, so the AWS CLI uses the file name.</p>
+<h3 id="download-a-file-from-an-s3-bucket">Download a file from an S3 bucket</h3>
+<p>Create a <code>downloads</code> directory:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>downloads
+</code></pre></div>
+<p>Download the file from the bucket into the <code>downloads</code> directory, using an S3 URI including both the bucket name, <code>mybucket</code>, and the file's key, <code>edinburgh.csv</code>:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://mybucket/edinburgh.csv<span class="w"> </span>downloads/
+</code></pre></div>
+<p>The file will be downloaded:</p>
+<div class="highlight"><pre><span></span><code>download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv
+</code></pre></div>
+<p>Now compare the downloaded file to the original file:</p>
+<div class="highlight"><pre><span></span><code>cmp<span class="w"> </span>data/edinburgh.csv<span class="w"> </span>downloads/edinburgh.csv
+</code></pre></div>
+<p>The comparison should succeed, thereby showing that <code>edinburgh.csv</code> was both uploaded into and downloaded from the bucket successfully.</p>
+<h3 id="upload-and-download-multiple-files">Upload and download multiple files</h3>
+<p>Multiple files can be both uploaded to and downloaded from an S3 bucket.</p>
+<p>Create CSV files of universities in Aberdeen, <code>data/aberdeen.csv</code>, and Glasgow, <code>data/glasgow.csv</code>. This can be done programmatically as follows:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; data/aberdeen.csv</span>
+<span class="s">name,postcode</span>
+<span class="s">University of Aberdeen,AB24 3FX</span>
+<span class="s">Robert Gordon University,AB10 7QB</span>
+<span class="s">EOF</span>
+
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; data/glasgow.csv</span>
+<span class="s">name,postcode</span>
+<span class="s">University of Glasgow,G12 8QQ</span>
+<span class="s">University of Strathclyde,G1 1XQ</span>
+<span class="s">Glasgow Caledonian University,G4 0BA</span>
+<span class="s">Royal Conservatoire of Scotland,G2 3DB</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Now, upload all <code>.csv</code> files, and only <code>.csv</code> files, from <code>data</code> into the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">"*.csv"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>upload: data/data2.dat to s3://mybucket/data2.dat
+upload: data/data1.dat to s3://mybucket/data1.dat
+upload: data/data3.dat to s3://mybucket/data3.dat
+</code></pre></div>
+<p>List the bucket to see the uploaded files:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<p>The listing will include the uploaded files</p>
+<div class="highlight"><pre><span></span><code>2026-09-23 08:36:01         80 aberdeen.csv
+2026-09-23 08:36:01        154 edinburgh.csv
+2026-09-23 08:36:01        153 glasgow.csv
+</code></pre></div>
+<p>Now, download all <code>.csv</code> files from the bucket into the <code>downloads</code> directory, then list the directory's contents:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://mybucket<span class="w"> </span>downloads<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">"*.csv"</span>
+ls<span class="w"> </span>-1<span class="w"> </span>downloads
+</code></pre></div>
+<p>The files will be listed as they are downloaded:</p>
+<div class="highlight"><pre><span></span><code>download: s3://mybucket/edinburgh.csv to downloads/edinburgh.csv
+download: s3://mybucket/aberdeen.csv to downloads/aberdeen.csv
+download: s3://mybucket/glasgow.csv to downloads/glasgow.csv
+</code></pre></div>
+<p>The <code>downloads</code> directory will contain the downloaded files:</p>
+<div class="highlight"><pre><span></span><code>aberdeen.csv
+edinburgh.csv
+glasgow.csv
+</code></pre></div>
+<h3 id="list-total-number-of-files-and-file-sizes">List total number of files and file sizes</h3>
+<p>List the total number of files (objects) and their total size:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket<span class="w"> </span>--summarize<span class="w"> </span>--human-readable
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2026-09-23 08:36:01   80 Bytes aberdeen.csv
+2026-09-23 08:36:01  154 Bytes edinburgh.csv
+2026-09-23 08:36:01  153 Bytes glasgow.csv
+
+Total Objects: 3
+   Total Size: 387 Bytes
+</code></pre></div>
+<h3 id="delete-a-file-from-an-s3-bucket">Delete a file from an S3 bucket</h3>
+<p>Delete each file in turn, using S3 URIs including both the bucket name and the file's keys:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket/aberdeen.csv
+aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket/edinburgh.csv
+aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket/glasgow.csv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>delete: s3://mybucket/aberdeen.csv
+delete: s3://mybucket/edinburgh.csv
+delete: s3://mybucket/glasgow.csv
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">File deletion messages are printed before deletion</p>
+<p>File deletion messages display what will the AWS CLI intends to request the S3 service delete, not what actually may or may not be deleted. If the file does not exist, then the message will still be displayed.</p>
+</div>
+<h3 id="prefixes-and-virtual-directories">Prefixes and virtual directories</h3>
+<p>So far, all the file uploads and downloads have used the file name as a key name for the files within the bucket.</p>
+<p>Upload <code>data/edinburgh.csv</code> into the bucket as follows:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data/edinburgh.csv<span class="w"> </span>s3://mybucket/scotland/edinburgh
+</code></pre></div>
+<p>The upload message is:</p>
+<div class="highlight"><pre><span></span><code>upload: data/edinburgh.csv to s3://mybucket/scotland/edinburgh
+</code></pre></div>
+<p>When the file is uploaded using S3 URI <code>s3://mybucket/scotland/edinburgh</code>, the absence of a trailing slash means that the AWS CLI interprets the request as 'upload <code>data/edinburgh.csv</code> to <code>mybucket</code> and give it the key <code>scotland/edinburgh</code>.</p>
+<p>Now upload <code>data/glasgow.csv</code>, but this time add a trailing slash to the S3 URI:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data/glasgow.csv<span class="w"> </span>s3://mybucket/scotland/glasgow/
+</code></pre></div>
+<p>The upload message is now:</p>
+<div class="highlight"><pre><span></span><code>upload: data/glasgow.csv to s3://mybucket/scotland/glasgow/glasgow.csv
+</code></pre></div>
+<p>When the file is uploaded using S3 URI <code>s3://mybucket/scotland/glasgow/</code>, the presence of the trailing slash means that the AWS CLI interprets the request as 'upload <code>data/glasgow.csv</code> to <code>mybucket</code> and give it the key <code>scotland/glasgow/glasgow.csv</code> i.e., the AWS CLI adds the file name, <code>glasgow.csv</code>, to the URI before contacting the S3 service.</p>
+<p>List the files in the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                           PRE scotland/
+</code></pre></div>
+<p><code>PRE</code> indicates that <code>scotland/</code> is a 'prefix' and that there are files in the bucket whose keys have prefix <code>scotland/</code>. However, by default, these files are not listed.</p>
+<p>All the files in the bucket can be listed as follows:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
+</code></pre></div>
+<p>Allowing a bucket to be considered as a 'virtual directory' with keys acting like virtual file paths, with each part of the path delimited by a slash, <code>/</code>, can make it easier to organise files within a bucket. The nature of the keys of the files in the bucket gives a virtual directory structure akin to:</p>
+<div class="highlight"><pre><span></span><code>scotland/         # Virtual directory
+  edinburgh       # CSV file
+  glasgow/        # Virtual directory
+    glasgow.csv   # CSV file
+</code></pre></div>
+<p>To illustrate this further, run:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                           PRE scotland/
+</code></pre></div>
+<p>The AWS CLI interprets this as a request to list all files whose keys have the the prefix <code>scotland</code>. In virtual directory terms, this is akin to listing all virtual directories whose name's start with the text <code>scotland</code>.</p>
+<p>Now run:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                           PRE glasgow/
+2026-09-23 09:58:00        154 edinburgh
+</code></pre></div>
+<p>The AWS CLI interprets this as a request to list all files whose keys have the prefix <code>scotland/</code>. In virtual directory terms, this is akin to listing the contents of the virtual directory called <code>scotland</code>.</p>
+<p>Adding <code>--recursive</code> shows the same result for both:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland<span class="w"> </span>--recursive
+
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland/<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
+
+2026-09-23 09:58:00        154 scotland/edinburgh
+2026-09-23 09:58:01        153 scotland/glasgow/glasgow.csv
+</code></pre></div>
+<p>In virtual directory terms, this is akin to recursively listing all virtual directories whose name's start with the text <code>scotland</code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Virtual directories are virtual!</p>
+<p>Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!</p>
+</div>
+<p>In the absence of a trailing slash when listing files, the prefix is essentially treated as a wils-card search of form <code>&lt;prefix&gt;*</code>. For example, the following all return the same results:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scot
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/s
+</code></pre></div>
+<p>i.e.,</p>
+<div class="highlight"><pre><span></span><code>                           PRE scotland/
+
+                           PRE scotland/
+
+                           PRE scotland/
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Trailing slashes and uploads and downloads</p>
+<p>When uploading or downloading files, a trailing slash is significant. A reference to <code>s3://mybucket/a/b/c</code> is <strong>not</strong> the same as a reference to <code>s3://mybucket/a/b/c/</code>.</p>
+<p>Uploading <code>data.csv</code> to <code>s3://mybucket/a/b/c</code> results in a file with key <code>a/b/c</code>. In contrast, uploading a file to <code>s3://mybucket/a/b/c/</code> results in a file with key <code>a/b/c/data.csv</code>.</p>
+<p>Downloading a file from <code>s3://mybucket/a/b/c</code> will succeed only if there is a file with key <code>a/b/c</code>, otherwise it will fail. If, however, there are files with prefix <code>a/b/c/</code> and <code>--recursive</code> is used, then these files will be downloaded.</p>
+</div>
+<p>In contrast, downloading a file from <code>s3://mybucket/a/b/c/</code> will fail unless the <code>--recursive</code> option is used as it is a request to download all files whose key has prefix <code>a/b/c/</code>.</p>
+<h3 id="delete-files">Delete files</h3>
+<p>Try deleting files specifying an S3 URI with a prefix <code>scotland/glasgow/</code>:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket/scotland/glasgow/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>delete: s3://mybucket/scotland/glasgow/
+</code></pre></div>
+<p>Now list the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2026-09-23 10:16:55        154 scotland/edinburgh
+2026-09-23 10:16:56        153 scotland/glasgow/glasgow.csv
+</code></pre></div>
+<p>Nothing has happened! As noted earlier, file deletion messages are printed before deletion, and may, or may not, reflect what actually is deleted.</p>
+<div class="admonition warning">
+<p class="admonition-title">Trailing slashes and deletion</p>
+<p>When deleting files, a trailing slash is significant. A reference to <code>s3://mybucket/a/b/c/</code> is <strong>not</strong> the same as a reference to <code>s3://mybucket/a/b/c</code>.</p>
+<p>Deleting files using reference <code>s3://mybucket/a/b/c/</code> will do nothing unless the <code>--recursive</code> option is used. If the <code>--recursive</code> option is used, then <strong>all</strong> files with prefix <code>a/b/c/</code> will be deleted. If no such files exist, then the operation does nothing.</p>
+<p>Deleting files using reference <code>s3://mybucket/a/b/c</code> will succeed if there is a file with key <code>a/b/c</code> and will do nothing otherwise. If the <code>--recursive</code> option is used, then <strong>all</strong> files whose key starts with <code>a/b/c</code> will be deleted (e.g., if there were files <code>a/b/cookie</code>, <code>a/b/c/dough</code>, then these would both be deleted).</p>
+</div>
+<p>Retry the deletion, specifying <code>--recursive</code>:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket/scotland/glasgow/<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>delete: s3://mybucket/scotland/glasgow/glasgow.csv
+</code></pre></div>
+<p>Now list the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2026-09-23 10:16:55        154 scotland/edinburgh
+</code></pre></div>
+<p>The files with the the prefix <code>scotland/glasgow/</code> have been deleted.</p>
+<p><code>aws s3 rm</code> supports a <code>--dryrun</code> option, which, if used, will list the files that will be deleted without deleting them. Try this for a request to delete all files in the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--dryrun
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(dryrun) delete: s3://mybucket/scotland/edinburgh
+</code></pre></div>
+<p>Now, delete all files in the bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>delete: s3://mybucket/scotland/edinburgh
+</code></pre></div>
+<h3 id="delete-an-empty-bucket">Delete an empty bucket</h3>
+<p>Delete an empty bucket:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rb<span class="w"> </span>s3://mybucket
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>remove_bucket: mybucket
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>remove_bucket failed: s3://&lt;bucket-name&gt; argument of type 'NoneType' is not a container or iterable</code></p>
+<p>This error can occur if an attempt is made to delete a bucket that is not empty.</p>
+</div>
+<hr />
+<h2 id="other-s3-clients">Other S3 clients</h2>
+<p>There are many other S3 clients available.</p>
+<p>The <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> is part of the EIDF S3 Service and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files. See <a href="../s3browser/">Using the EIDF S3 Browser</a>.</p>
+<p>Another command-line client is <a href="https://s3tools.org/s3cmd">s3cmd</a>.</p>
+<p>A client offering a graphical user interface is <a href="https://cyberduck.io">Cyberduck</a>. If using Cyberduck, you may need to <a href="https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests">Connect using Deprecated Path Style Requests</a> otherwise you may have problems listing the contents of a bucket. For more information, see the <a href="https://docs.cyberduck.io/cyberduck/">Cyberduck documentation</a>.</p>
+<p>These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.</p>
+<hr />
+<h2 id="read-from-public-project-buckets">Read from public project buckets</h2>
+<p>If a project bucket has been configured for public read access, then they can be read anonymously i.e., they do not require credentials such as an access key to be provided.</p>
+<p>In this section, you'll use a public project bucket that you create.</p>
+<h3 id="create-a-public-project-bucket">Create a public project bucket</h3>
+<p>To create a project bucket, configured for public read access, using the AWS CLI, first recreate the <code>mybucket</code> bucket and add the <code>data/edinburgh.csv</code> data file to it as follows:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://mybucket
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data/edinburgh.csv<span class="w"> </span>s3://mybucket/scotland/lothian/edinburgh.csv
+</code></pre></div>
+<p>Now, use the <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> to make 'mybucket' public, by following the instructions to <a href="../s3browser/#make-a-bucket-public">Make a bucket public</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Making the bucket public</p>
+<p>Here, the EIDF S3 Browser is used to make a bucket public. The page on <a href="../policies/">Using S3 policies</a> describes how to make a bucket public using both the AWS CLI and Python.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Publicly-readable buckets are anonymously readable by anyone</p>
+<p><strong>Beware!</strong> Here we are making the bucket publicly-readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly-readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
+</div>
+<h3 id="read-from-a-public-project-bucket-via-a-browser">Read from a public project bucket via a browser</h3>
+<p>Your bucket's files can be downloaded within your browser. For example, To download the file <code>scotland/lothian/edinburgh.csv</code>, enter the URL <code>https://s3.eidf.ac.uk/&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv</code> into your browser.</p>
+<p>Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.</p>
+<h3 id="read-from-a-public-project-bucket-via-curl">Read from a public project bucket via 'curl'</h3>
+<p>A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file <code>scotland/lothian/edinburgh.csv</code>, run (<code>-O</code> uses the remote file name as the downloaded file name):</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-o<span class="w"> </span>downloads/edinburgh.csv<span class="w"> </span>https://s3.eidf.ac.uk/&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv
+</code></pre></div>
+<p><code>scotland/lothian/edinburgh.csv</code> will be downloaded and saved as <code>edinburgh.csv</code>.</p>
+<h3 id="read-from-a-public-project-bucket-via-the-aws-cli">Read from a public project bucket via the AWS CLI</h3>
+<p>To read data from the public project bucket requires the use of a bucket name of <code>&lt;project-name&gt;:mybucket</code>. However, as described in <a href="#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.</p>
+<p>You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing <code>&lt;project-name&gt;</code> with your EIDF project name 'eidfNNN' (<code>--no-sign-request</code> tells the AWS CLI to not use any credentials):</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv<span class="w"> </span>downloads<span class="w"> </span>--no-sign-request
+</code></pre></div>
+<p>The AWS CLI will raise an error as it interprets <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> as a bucket name, having no knowledge of the concept of tenancies:</p>
+<div class="highlight"><pre><span></span><code>fatal error: Parameter validation failed:
+Invalid bucket name "&lt;project-name&gt;:mybucket": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
+</code></pre></div>
+<p>There is no workaround for this.</p>
+<hr />
+<h2 id="read-from-public-buckets-in-the-eidf-data-publishing-service">Read from public buckets in the EIDF Data Publishing Service</h2>
+<p>Public buckets in the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>, and their files, can be read anonymously i.e., they do not require credentials such as an access key to be provided.</p>
+<p>As an example, this section uses the dataset <a href="https://catalogue.eidf.ac.uk/dataset/eidf198-high-resolution-snapshots-of-the-viscous-sublayer-from-direct-numerical-simulation-of-a-turb">High-resolution snapshots of the viscous sublayer from direct numerical simulation of a turbulent boundary layer</a>, published by the Turbulence Simulation Group of Imperial College London.</p>
+<h3 id="read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-a-browser">Read from a public bucket in the EIDF Data Publishing Service via a browser</h3>
+<p>Files can be downloaded within your browser. For example, To download the file <code>data.zarr/statistics/ww/c/9/0/0</code>, one would enter the URL <a href="https://s3.eidf.ac.uk/eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0">https://s3.eidf.ac.uk/eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0</a>.</p>
+<p>Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.</p>
+<h3 id="read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-curl">Read from a public bucket in the EIDF Data Publishing Service via 'curl'</h3>
+<p>A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file <code>data.zarr/statistics/ww/c/9/0/0</code>, run (<code>-O</code> uses the remote file name as the downloaded file name):</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-O<span class="w"> </span>https://s3.eidf.ac.uk/eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0
+</code></pre></div>
+<h3 id="read-from-a-public-bucket-in-the-eidf-data-publishing-service-via-the-aws-cli">Read from a public bucket in the EIDF Data Publishing Service via the AWS CLI</h3>
+<p>To read from a public bucket within the EIDF Data Publishing Service requires the use of bucket names of form <code>&lt;project-name&gt;-&lt;bucket-name&gt;</code>. These are valid bucket names, so the AWS CLI can be used.</p>
+<p>List the bucket's files:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400<span class="w"> </span>--endpoint-url<span class="w"> </span>https://s3.eidf.ac.uk<span class="w"> </span>--no-sign-request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                           PRE data.zarr/
+                           PRE examples/
+2025-08-05 13:00:55      18657 LICENSE
+2026-04-30 11:09:15       8630 README.md
+</code></pre></div>
+<p>List a subset of the files, for example those with prefix <code>data.zarr/statistics/ww/c/9/</code>:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/<span class="w"> </span>--endpoint-url<span class="w"> </span>https://s3.eidf.ac.uk<span class="w"> </span>--no-sign-request<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2025-07-24 05:02:41   17904692 data.zarr/statistics/ww/c/9/0/0
+2025-07-24 05:02:41   17617793 data.zarr/statistics/ww/c/9/1/0
+2025-07-24 05:02:41   17099519 data.zarr/statistics/ww/c/9/10/0
+2025-07-24 05:02:41   17321505 data.zarr/statistics/ww/c/9/11/0
+2025-07-24 05:02:41   17735846 data.zarr/statistics/ww/c/9/12/0
+2025-07-24 05:02:41   15056303 data.zarr/statistics/ww/c/9/13/0
+2025-07-24 05:02:41   17365366 data.zarr/statistics/ww/c/9/2/0
+2025-07-24 05:02:41   17301940 data.zarr/statistics/ww/c/9/3/0
+2025-07-24 05:02:41   17208233 data.zarr/statistics/ww/c/9/4/0
+2025-07-24 05:02:41   17216908 data.zarr/statistics/ww/c/9/5/0
+2025-07-24 05:02:41   17193874 data.zarr/statistics/ww/c/9/6/0
+2025-07-24 05:02:41   17100098 data.zarr/statistics/ww/c/9/7/0
+2025-07-24 05:02:41   17240933 data.zarr/statistics/ww/c/9/8/0
+2025-07-24 05:02:41   17167142 data.zarr/statistics/ww/c/9/9/0
+</code></pre></div>
+<p>Now download those files into a directory:</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span><span class="s1">'s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/'</span><span class="w"> </span>downloads<span class="w"> </span>--endpoint-url<span class="w"> </span>https://s3.eidf.ac.uk<span class="w"> </span>--no-sign-request<span class="w"> </span>--recursive
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/11/0 to downloads/11/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/12/0 to downloads/12/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/0/0 to downloads/0/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/10/0 to downloads/10/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/1/0 to downloads/1/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/2/0 to downloads/2/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/4/0 to downloads/4/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/5/0 to downloads/5/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/13/0 to downloads/13/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/7/0 to downloads/7/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/6/0 to downloads/6/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/3/0 to downloads/3/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/8/0 to downloads/8/0
+download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/statistics/ww/c/9/9/0 to downloads/9/0
+</code></pre></div>
+<hr />
+<h2 id="use-buckets-of-other-eidf-projects">Use buckets of other EIDF projects</h2>
+<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.</p>
+<p>But, be aware that, as described in <a href="#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/services/s3/tutorial/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/services/s3/python/">
       
       
-        <link rel="prev" href="../manage/">
+        <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../../datapublishing/service/">
+        <link rel="next" href="../policies/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Tutorial - EIDF User Documentation</title>
+        <title>Using the EIDF S3 Service via Python - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial" class="md-skip">
+        <a href="#using-the-eidf-s3-service-via-python" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial
+              Using the EIDF S3 Service via Python
             
           </span>
         </div>
@@ -1900,12 +1900,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../manage/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Manage
+    Getting started
     
   </span>
   
@@ -1937,7 +1937,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial
+    Using the EIDF S3 Service via Python
     
   </span>
   
@@ -1950,7 +1950,7 @@
   
   
   <span class="md-ellipsis">
-    Tutorial
+    Using the EIDF S3 Service via Python
     
   </span>
   
@@ -1973,46 +1973,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-cli" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS CLI
+      Introduction
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS CLI">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-boto3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Boto3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-s3-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create an S3 client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#create-an-s3-client-to-interact-with-your-projects-s3-endpoint" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      Create an S3 client to interact with your project's S3 endpoint
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure" class="md-nav__link">
+  <a href="#create-an-s3-client-to-use-buckets-within-other-projects" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure
+      Create an S3 client to use buckets within other projects
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#create-an-s3-client-to-read-from-a-public-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      Create an S3 client to read from a public project bucket
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
+  <a href="#create-an-s3-client-to-interact-with-the-eidf-data-publishing-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Create an S3 client to interact with the EIDF Data Publishing Service
     </span>
   </a>
   
@@ -2024,44 +2042,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-using-boto3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python using boto3
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Python using boto3">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connect
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#list-buckets" class="md-nav__link">
     <span class="md-ellipsis">
       List buckets
@@ -2069,74 +2049,85 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#list-objects-in-a-bucket" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#create-buckets" class="md-nav__link">
     <span class="md-ellipsis">
-      List objects in a bucket
+      Create buckets
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uploading-files-to-a-bucket" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uploading files to a bucket
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-buckets-in-other-projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing buckets in other projects
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-policies" class="md-nav__link">
+  <a href="#list-files-in-a-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Access policies
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set-policy-using-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      Set policy using AWS CLI
+      List files in a bucket
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#set-policy-using-python-boto3" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#upload-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Set policy using Python boto3
+      Upload file
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#download-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-files-and-sizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files and sizes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-files-with-a-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files with a prefix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-multiple-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete multiple files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete bucket
+    </span>
+  </a>
   
 </li>
       
@@ -2144,6 +2135,75 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using S3 policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s3browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Browser
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing a project's S3 object store allocation
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3338,46 +3398,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-cli" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS CLI
+      Introduction
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS CLI">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-boto3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Boto3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-s3-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create an S3 client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#create-an-s3-client-to-interact-with-your-projects-s3-endpoint" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      Create an S3 client to interact with your project's S3 endpoint
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure" class="md-nav__link">
+  <a href="#create-an-s3-client-to-use-buckets-within-other-projects" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure
+      Create an S3 client to use buckets within other projects
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#create-an-s3-client-to-read-from-a-public-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      Create an S3 client to read from a public project bucket
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
+  <a href="#create-an-s3-client-to-interact-with-the-eidf-data-publishing-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Create an S3 client to interact with the EIDF Data Publishing Service
     </span>
   </a>
   
@@ -3389,44 +3467,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-using-boto3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python using boto3
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Python using boto3">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connect
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#list-buckets" class="md-nav__link">
     <span class="md-ellipsis">
       List buckets
@@ -3434,74 +3474,85 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#list-objects-in-a-bucket" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#create-buckets" class="md-nav__link">
     <span class="md-ellipsis">
-      List objects in a bucket
+      Create buckets
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uploading-files-to-a-bucket" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uploading files to a bucket
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-buckets-in-other-projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing buckets in other projects
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-policies" class="md-nav__link">
+  <a href="#list-files-in-a-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Access policies
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set-policy-using-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      Set policy using AWS CLI
+      List files in a bucket
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#set-policy-using-python-boto3" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#upload-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Set policy using Python boto3
+      Upload file
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#download-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-files-and-sizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files and sizes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-files-with-a-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files with a prefix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-multiple-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete multiple files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete bucket
+    </span>
+  </a>
   
 </li>
       
@@ -3524,236 +3575,267 @@
   
 
 
-<h1 id="tutorial">Tutorial</h1>
-<h2 id="aws-cli">AWS CLI</h2>
-<p>The following examples use the AWS Command Line Interface (AWS CLI) to connect to EIDF S3.</p>
-<h3 id="setup">Setup</h3>
-<p>Install with pip</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>awscli
+<h1 id="using-the-eidf-s3-service-via-python">Using the EIDF S3 Service via Python</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This page provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, <a href="https://aws.amazon.com/sdk-for-python/">Boto3</a>. These examples assume you are familiar with the content of <a href="../getting-started/">Getting started with S3 and the EIDF S3 Service</a>.</p>
+<p><strong>Author's Note</strong>: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.</p>
+<hr />
+<h2 id="install-boto3">Install Boto3</h2>
+<p>There are a number of options for installing the Boto3 package. Here, Boto3 is installed into a new Python virtual environment using 'pip'. Alternatively, you can used your preferred means of managing Python packages.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-venv
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>s3-venv
+<span class="nb">source</span><span class="w"> </span>s3-venv/bin/activate
 </code></pre></div>
-<p>Installers are available for various platforms if you are not using Python: see <a href="https://aws.amazon.com/cli/">https://aws.amazon.com/cli/</a></p>
-<h3 id="configure">Configure</h3>
-<p>Set your access key and secret as environment variables or configure a credentials file at <code>~/.aws/credentials</code> on Linux or <code>%USERPROFILE%\.aws\credentials</code> on Windows.</p>
-<p>Credentials file:</p>
-<div class="highlight"><pre><span></span><code><span class="k">[default]</span>
-<span class="na">aws_access_key_id</span><span class="o">=</span><span class="s">&lt;key&gt;</span>
-<span class="na">aws_secret_access_key</span><span class="o">=</span><span class="s">&lt;secret&gt;</span>
-<span class="na">endpoint_url</span><span class="o">=</span><span class="s">https://s3.eidf.ac.uk</span>
+<p>Install Boto3:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>boto3
+</code></pre></div>
+<hr />
+<h2 id="create-an-s3-client">Create an S3 client</h2>
+<p>To interact with the EIDF S3 Service within Python, you can create a <a href="https://docs.aws.amazon.com/boto3/latest/guide/clients.html">client</a> service interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Boto3 'resource' versus 'client' service interfaces</p>
+<p>Boto3 provides both an object-oriented <a href="https://docs.aws.amazon.com/boto3/latest/guide/resources.html">Resources</a> service interface and a <a href="https://docs.aws.amazon.com/boto3/latest/guide/clients.html">Low-level clients</a> service interface, which maps more closely to S3 service APIs. On the 'Resources' page, the AWS Python SDK team advise that the interface is feature-frozen and recommend the use of the 'client' service interface. For this reason, the client interface is used in these examples.</p>
+</div>
+<h3 id="create-an-s3-client-to-interact-with-your-projects-s3-endpoint">Create an S3 client to interact with your project's S3 endpoint</h3>
+<p>The client needs to know the S3 endpoint URL, an access key, the access key's associated secret, and the service region. The client can be configured in various ways:</p>
+<ul>
+<li>Create AWS CLI configuration within <code>~/.aws/config</code> and <code>~/.aws/credentials</code> files.<ul>
+<li>Either, <a href="../getting-started/#set-aws-cli-configuration-via-the-command-line">Set AWS CLI configuration via the command-line</a>.</li>
+<li>Or, <a href="../getting-started/#create-aws-cli-configuration-files">Create AWS CLI configuration files</a>.</li>
+</ul>
+</li>
+<li><a href="../getting-started/#set-aws-cli-environment-variables">Set AWS CLI environment variables</a>.</li>
+<li>In-code parameters, as shown below.</li>
+</ul>
+<p>AWS CLI configuration files, environment variables and in-code parameters can be used together. If this is the case, then the in-code parameters have highest precedence, followed by the environment variables, and, then, the configuration files.</p>
+<p>A minimal S3 client, if using AWS CLI configuration or environment variables, can be created as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 
+<span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">)</span>
+</code></pre></div>
+<p>An S3 client, using in-code parameters, can be created as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+
+<span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+    <span class="s1">'s3'</span><span class="p">,</span>
+    <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">,</span>
+    <span class="n">region_name</span><span class="o">=</span><span class="s1">'us-east-1'</span><span class="p">,</span>
+    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s1">'&lt;access-key&gt;'</span><span class="p">,</span>
+    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s1">'&lt;secret&gt;'</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>If you are using the EIDF S3 Service from within an <a href="../../confidentialdataworkspace/">EIDF Confidential Data Workspace</a>, then add a <code>verify</code> parameter to <code>boto3.client</code> with the path to the web proxy certificate bundle:</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+    <span class="s1">'s3'</span><span class="p">,</span>
+    <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">,</span>
+    <span class="n">region_name</span><span class="o">=</span><span class="s1">'us-east-1'</span><span class="p">,</span>
+    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s1">'&lt;access-key&gt;'</span><span class="p">,</span>
+    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s1">'&lt;secret&gt;'</span><span class="p">,</span>
+    <span class="n">verify</span><span class="o">=</span><span class="s1">'/usr/local/share/ca-certificates/extra/squid_proxyCA.crt'</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Boto3 <a href="https://docs.aws.amazon.com/boto3/latest/reference/core/session.html">Session</a> provides information on the parameters supported by <code>boto3.client</code> (<code>boto3.client</code> creates a <code>boto3.session.Session</code> behind the scenes).</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>botocore.exceptions.ClientError: An error occurred (XAmzContentSHA256Mismatch) when calling the PutObject operation: None</code></p>
+<p>In Boto3 version 1.36 a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3 (see Boto3 GitHub issue <a href="https://github.com/boto/boto3/issues/4392">boto/boto#4392</a>). If you see this error, then:</p>
+<ul>
+<li>
+<p>Either, add the following to your AWS CLI configuration file (~/.aws/config`):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Required for Python Boto3 version 1.36 and later which</span>
+<span class="c1"># introduced a breaking change that adopts new default</span>
+<span class="c1"># integrity protections not currently supported by EIDF S3.</span>
 <span class="na">request_checksum_calculation</span><span class="o">=</span><span class="s">when_required</span>
 <span class="na">response_checksum_validation</span><span class="o">=</span><span class="s">when_required</span>
 </code></pre></div>
-<p>The last two lines are required since boto3 version 1.36 when a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3.</p>
-<p>Environment variables:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;key&gt;
-<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;secret&gt;
-<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>https://s3.eidf.ac.uk
-</code></pre></div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Confidential Data Workspace users should see the <a href="../../confidentialdataworkspace/faq/#aws-cli">Confidential Data Workspace FAQs</a> for additional steps on how to set up AWS CLI in the Confidential Data Workspace environment.</p>
-</div>
-<h3 id="commands">Commands</h3>
-<p>List the buckets in your account:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls
-</code></pre></div>
-<p>Create a bucket:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>create-bucket<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucketname&gt;
-</code></pre></div>
-<p>Upload a file:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>s3://&lt;bucketname&gt;
-</code></pre></div>
-<p>Check that the file above was uploaded successfully by listing objects in the bucket:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;
-</code></pre></div>
-<p>To read from a public bucket without providing credentials, add the option <code>--no-sign-request</code> to the call:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;<span class="w"> </span>--no-sign-request
-</code></pre></div>
-<p>You can get help on the options for any command using:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span><span class="nb">help</span>
-</code></pre></div>
-<p>or for particular commands</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span><span class="nb">help</span>
-</code></pre></div>
-<p>Alternatively, there are many graphical clients that act as a file browser for S3, for example <a href="https://cyberduck.io">Cyberduck</a> - to use Cyberduck you may need to enable <a href="https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests">connections using deprecated path style requests</a> otherwise you may have problems listing the contents of a bucket. For more details please consult the <a href="https://docs.cyberduck.io/cyberduck/">Cyberduck documentation</a>.</p>
-<p>If you want to use another programming language have a look at the <a href="https://docs.ceph.com/en/latest/radosgw/s3/">Ceph S3 API</a> interfaces (Ceph is the underlying platform used).</p>
-<h3 id="examples">Examples</h3>
-<p>You want to upload all the files in a subdirectory to your S3 bucket</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./mydir<span class="w"> </span>s3://mybucket<span class="w"> </span>--recursive<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">"*.dat"</span>
-</code></pre></div>
-<p>Here all <code>*.dat</code>  files only in <code>mydir</code> will be uploaded to <code>s3://mybucket</code>.</p>
-<p>You can check your upload using:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>--summarize<span class="w"> </span>--human-readable<span class="w"> </span>--recursive<span class="w"> </span>s3://mybucket/
-</code></pre></div>
-<p>For public S3 buckets, such as those provided for the data publishing service,  you can construct a downloadable https link  to download files from an S3 link, e.g. taking:</p>
-<div class="highlight"><pre><span></span><code>s3://eidfXXX-my-dataset/mydatafile.csv
-</code></pre></div>
-<p>and by making the following transformation:</p>
-<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfXXX-my-dataset/mydatafile.csv
-</code></pre></div>
-<p>Now you can open this link in a browser to download the file.</p>
-<p>Alternatively, you can use the aws client to download an entire data set:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>--recursive<span class="w"> </span>s3://eidfXXX-my-dataset/<span class="w"> </span>./mydataset<span class="w"> </span>--no-sign-request
-</code></pre></div>
-<p>will copy the entire content of the S3 bucket to your <code>mydataset</code> subdirectory. Note that you must use <code>--no-sign-request</code> when accessing public buckets.</p>
-<h2 id="python-using-boto3">Python using <code>boto3</code></h2>
-<p>The following examples use the Python library <code>boto3</code>.</p>
-<h3 id="install">Install</h3>
-<p>Installation:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>boto3
-</code></pre></div>
-<h3 id="usage">Usage</h3>
-<h4 id="connect">Connect</h4>
-<p>Create an S3 client resource:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="list-buckets">List buckets</h4>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">s3</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="list-objects-in-a-bucket">List objects in a bucket</h4>
-<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
-<span class="n">bucket</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="uploading-files-to-a-bucket">Uploading files to a bucket</h4>
-<div class="highlight"><pre><span></span><code><span class="n">bucket</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">)</span>
-<span class="n">bucket</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s1">'./somedata.csv'</span><span class="p">,</span> <span class="s1">'somedata.csv'</span><span class="p">)</span>
-</code></pre></div>
-<p>In boto3 version 1.36, a breaking change was introduced that adopts new default integrity protections which is not currently supported by EIDF S3
-(see <a href="https://github.com/boto/boto3/issues/4392">https://github.com/boto/boto3/issues/4392</a>). If you see this error</p>
-<div class="highlight"><pre><span></span><code>botocore.exceptions.ClientError: An error occurred (XAmzContentSHA256Mismatch) when calling the PutObject operation: None
-</code></pre></div>
-<p>use the following configuration for your client:</p>
+</li>
+<li>
+<p>Or, update your Boto3 S3 client creation code as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+
 <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
     <span class="n">request_checksum_calculation</span><span class="o">=</span><span class="s2">"when_required"</span><span class="p">,</span>
     <span class="n">response_checksum_validation</span><span class="o">=</span><span class="s2">"when_required"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </code></pre></div>
-<p>Then upload your files as shown above.</p>
-<h3 id="accessing-buckets-in-other-projects">Accessing buckets in other projects</h3>
-<p>Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
-The project code is a prefix on the bucket name, separated by a colon (<code>:</code>), for example <code>eidfXX1:somebucket</code>.</p>
-<p>This is only relevant when accessing buckets outside your project tenancy - if you access buckets in your own project you can ignore this section.</p>
-<p>By default, the <code>boto3</code> Python library raises an error that bucket names with a colon <code>:</code> (as used by the EIDF S3 Service) are invalid.</p>
-<p>When accessing a bucket with the project code prefix, switch off the bucket name validation:</p>
+<p>Then, add <code>config=config</code> to your <code>boto3.client</code> call. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ul>
+</div>
+<h3 id="create-an-s3-client-to-use-buckets-within-other-projects">Create an S3 client to use buckets within other projects</h3>
+<p>Bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> need to be used for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.</p>
+<p>But, be aware that, as described in <a href="../getting-started/#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.</p>
+<p>This can be turned off as follows, after creating the S3 client, <code>s3client</code> in this example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_bucket_name</span>
+
+<span class="n">s3client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">'before-parameter-build.s3'</span><span class="p">,</span>
+                                <span class="n">validate_bucket_name</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="create-an-s3-client-to-read-from-a-public-project-bucket">Create an S3 client to read from a public project bucket</h3>
+<p>Disabling bucket name validation as described in the previous section is required to anonymously read from a public project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.</p>
+<p>An S3 client that meets these requirements can be created as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNSIGNED</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">botocore.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_bucket_name</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">)</span>
-<span class="n">s3</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">'before-parameter-build.s3'</span><span class="p">,</span> <span class="n">validate_bucket_name</span><span class="p">)</span>
+<span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span>
+                        <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">,</span>
+                        <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(</span><span class="n">signature_version</span><span class="o">=</span><span class="n">UNSIGNED</span><span class="p">))</span>
+<span class="n">s3client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">'before-parameter-build.s3'</span><span class="p">,</span>
+                                <span class="n">validate_bucket_name</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="access-policies">Access policies</h2>
-<p>Buckets owned by an EIDF project are placed in a tenancy in the EIDF S3 Service.
-The project code is a prefix on the bucket name, separated by a colon (<code>:</code>), for example <code>eidfXX1:somebucket</code>.
-Note that some S3 client libraries do not accept bucket names in this format.</p>
-<p>Bucket permissions use IAM (Identity Access Management) policies. You can grant other accounts (within the same project or from other projects) read or write access to your buckets.</p>
-<p>For example to grant permissions to put, get, delete and list objects in bucket <code>eidfXX1:somebucket</code> to the account <code>account2</code> in project <code>eidfXX2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllowAccessToBucket"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">"arn:aws:iam::eidfXX2:user/account2"</span><span class="p">,</span>
-<span class="w">              </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">"s3:DeleteObject"</span><span class="p">,</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">"arn:aws:s3:::/*"</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">"arn:aws:s3::eidfXX1:somebucket"</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>You can chain multiple policies in the statement array:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Give public read access to a bucket (listing and downloading files):</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w"> </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"s3:ListBucket"</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="kc">f</span><span class="s2">"arn:aws:s3::eidfXX1:somebucket"</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"s3:GetObject"</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="kc">f</span><span class="s2">"arn:aws:s3::eidfXX1:somebucket/*"</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="w"> </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="set-policy-using-aws-cli">Set policy using AWS CLI</h3>
-<p>Grant permissions stored in an IAM policy file:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucketname&gt;<span class="w"> </span>--policy<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>bucket-policy.json<span class="k">)</span><span class="s2">"</span>
-</code></pre></div>
-<h3 id="set-policy-using-python-boto3">Set policy using Python <code>boto3</code></h3>
-<p>Grant permissions to another account: In this example we grant <code>ListBucket</code> and <code>GetObject</code> permissions to account <code>account1</code> in project <code>eidfXX1</code> and <code>account2</code> in project <code>eidfXX2</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<h3 id="create-an-s3-client-to-interact-with-the-eidf-data-publishing-service">Create an S3 client to interact with the EIDF Data Publishing Service</h3>
+<p>Bucket names of form <code>&lt;project-name&gt;-&lt;bucket-name&gt;</code> need to be used to anonymously read from public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>. As these are valid bucket names, so Boto3's bucket validation does not need to be turned off. There is no need for any AWS CLI configuration nor environment variables nor authentication.</p>
+<p>An S3 client that meets these requirements can be created as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNSIGNED</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_bucket_name</span>
 
-<span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
- <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
-    <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">"arn:aws:iam::eidfXX1:user/account1"</span><span class="p">,</span>
-        <span class="s2">"arn:aws:iam::eidfXX2:user/account2"</span><span class="p">,</span>
-      <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">"s3:ListBucket"</span><span class="p">,</span>
-        <span class="s2">"s3:GetObject"</span>
-    <span class="p">],</span>
-    <span class="s2">"Resource"</span><span class="p">:</span> <span class="p">[</span>
-      <span class="sa">f</span><span class="s2">"arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span>
-      <span class="sa">f</span><span class="s2">"arn:aws:s3::eidfXX1:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
- <span class="p">]</span>
-<span class="p">}</span>
-
-<span class="n">policy</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">Policy</span><span class="p">()</span>
-<span class="n">policy</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">Policy</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">bucket_policy</span><span class="p">))</span>
+<span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span>
+                        <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">,</span>
+                        <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(</span><span class="n">signature_version</span><span class="o">=</span><span class="n">UNSIGNED</span><span class="p">))</span>
 </code></pre></div>
+<hr />
+<h2 id="list-buckets">List buckets</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_buckets.html">list_buckets</a> lists the buckets at the S3 endpoint URL. For example, get a list of buckets, and print their names:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
+<span class="c1"># Get 'Buckets' list from 'response' dict.</span>
+<span class="n">buckets</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">'Buckets'</span><span class="p">]</span>
+<span class="c1"># For each bucket's dict, print bucket 'Name'.</span>
+<span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">buckets</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>response</code> from <code>list_buckets</code> includes information about the buckets.</p>
+<hr />
+<h2 id="create-buckets">Create buckets</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/create_bucket.html">create_bucket</a> creates a bucket. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>response</code> from <code>create_bucket</code> includes information about the new bucket.</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>botocore.exceptions.ClientError: An error occurred (InvalidBucket-Name) when calling the CreateBucket operation: None</code></p>
+<p>This error can occur if a bucket name does not conform to the naming requirements.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: `botocore.exceptions.ParamValidationError: Parameter validation failed: Invalid bucket name'</p>
+<p>This error can occur if a bucket name does not conform to the naming requirements, specifically if it has a colon <code>:</code>.</p>
+</div>
+<hr />
+<h2 id="list-files-in-a-bucket">List files in a bucket</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/list_objects_v2.html">list_objects_v2</a> lists the files (objects) in a bucket. For example, get a list of files, and print their keys:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">)</span>
+<span class="c1"># Get 'Contents'  list from 'response' dict, but only if 'Contents' is</span>
+<span class="c1"># present i.e., bucket has one or more files.</span>
+<span class="k">if</span> <span class="s1">'Contents'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="c1"># For each file's dict, print file 'Key'.</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">'Contents'</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">'Key'</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"><code>list_objects_v2</code> returns maximum of 1000 objects per call</p>
+<p><code>list_objects_v2</code> returns maximum of 1000 objects per call, even if there are more than 1000 objects matching the request. See the Boto3 documentation on <a href="https://docs.aws.amazon.com/boto3/latest/guide/paginators.html">Paginators</a> for information on how to handle buckets with more than 1000 objects.</p>
+</div>
+<hr />
+<h2 id="upload-file">Upload file</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html">upload_file</a> uploads a file to a bucket. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">Filename</span><span class="o">=</span><span class="s1">'edinburgh.csv'</span><span class="p">,</span>
+                      <span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                      <span class="n">Key</span><span class="o">=</span><span class="s1">'scotland/lothian/edinburgh.csv'</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Upload multiple files</p>
+<p>Multiple files can be uploaded by calling <code>upload_file</code> on each file in turn.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">A trailing slash in a key is part of the key name</p>
+<p>If a key has a trailing slash then the trailing slash becomes part of the key name. For example,</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">Filename</span><span class="o">=</span><span class="s1">'edinburgh.csv'</span><span class="p">,</span>
+                     <span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                     <span class="n">Key</span><span class="o">=</span><span class="s1">'scotland/lothian/'</span><span class="p">)</span>
+</code></pre></div>
+<p>will upload the file and give it the key <code>scotland/lothian/</code>. This is different from how the AWS CLI behaves, where uploading the file with a key <code>scotland/lothian/</code> will upload the file and give it the key <code>scotland/lothian/edinburgh.csv</code>'. AWS CLI adds <code>edinburgh.csv</code> to the path before contacting the S3 service. Boto3 does not.</p>
+<p>However, both Boto3 and the AWS CLI allow for files whose keys have trailing slashes to be downloaded.</p>
+</div>
+<hr />
+<h2 id="download-file">Download file</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/download_file.html">download_file</a> downloads a file from a bucket. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">Filename</span><span class="o">=</span><span class="s1">'edinburgh.csv'</span><span class="p">,</span>
+                       <span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                       <span class="n">Key</span><span class="o">=</span><span class="s1">'scotland/lothian/edinburgh.csv'</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Download multiple files</p>
+<p>Multiple files can be downloaded by calling <code>download_file</code> on each file in turn.</p>
+</div>
+<hr />
+<h2 id="list-files-and-sizes">List files and sizes</h2>
+<p>The <code>response</code> from <code>list_objects_v2</code> includes information about each file. This includes each file's size, keyed by <code>Size</code>. This can be used to calculate the total number of objects in the bucket and their total size. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">)</span>
+<span class="n">total_size</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_files</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="s1">'Contents'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">'Contents'</span><span class="p">]:</span>
+        <span class="c1"># For each file's dict, print file 'Key' and 'Size'.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">'Key'</span><span class="p">]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">'Size'</span><span class="p">]</span><span class="si">}</span><span class="s1"> bytes'</span><span class="p">)</span>
+        <span class="n">total_size</span> <span class="o">+=</span> <span class="n">f</span><span class="p">[</span><span class="s1">'Size'</span><span class="p">]</span>
+    <span class="n">num_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">'Contents'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of files: </span><span class="si">{</span><span class="n">num_files</span><span class="si">}</span><span class="s2">. Total size: </span><span class="si">{</span><span class="n">total_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="list-files-with-a-prefix">List files with a prefix</h2>
+<p><code>list_object_v2</code> has a <code>Prefix</code> parameter allowing for files whose keys have a specific prefix to be listed. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                                    <span class="n">Prefix</span><span class="o">=</span><span class="s1">'scotland'</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                                    <span class="n">Prefix</span><span class="o">=</span><span class="s1">'scotland/lothian/ed'</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="delete-file">Delete file</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_object.html">delete_object</a> allows for a file to be deleted. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                                  <span class="n">Key</span><span class="o">=</span><span class="s1">'scotland/lothian/edinburgh.csv'</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>response</code> from <code>delete_object</code> includes information about the deletion.</p>
+<hr />
+<h2 id="delete-multiple-files">Delete multiple files</h2>
+<p>Multiple files can be deleted by calling <code>delete_file</code> on each file in turn. Alternatively, <a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_objects.html">delete_objects</a> allows for multiple files to be deleted, given a list of the file keys. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">delete_objects</span><span class="p">(</span>
+        <span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+        <span class="n">Delete</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">'Objects'</span><span class="p">:</span>
+                <span class="p">[</span>
+                    <span class="p">{</span><span class="s1">'Key'</span><span class="p">:</span> <span class="s1">'scotland/lothian/edinburgh.csv'</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">'Key'</span><span class="p">:</span> <span class="s1">'scotland/strathclyde/glasgow.csv'</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">'Key'</span><span class="p">:</span> <span class="s1">'scotland/grampian/aberdeen.csv'</span><span class="p">}</span>
+                <span class="p">]</span>
+        <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>The <code>response</code> from <code>delete_objects</code> includes information about the deletion.</p>
+<p>A list of keys can be created programmatically from a query to <code>list_objects_v2</code>. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">)</span>
+<span class="n">file_keys</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">if</span> <span class="s1">'Contents'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="c1"># Create list of keys compatible with that expected by</span>
+    <span class="c1"># 'delete_objects'.</span>
+    <span class="n">file_keys</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">'Key'</span><span class="p">:</span> <span class="n">obj</span><span class="p">[</span><span class="s1">'Key'</span><span class="p">]}</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">'Contents'</span><span class="p">]]</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">delete_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">,</span>
+                                   <span class="n">Delete</span><span class="o">=</span><span class="p">{</span><span class="s1">'Objects'</span><span class="p">:</span> <span class="n">file_keys</span><span class="p">})</span>
+</code></pre></div>
+<hr />
+<h2 id="delete-bucket">Delete bucket</h2>
+<p><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket.html">delete_bucket</a> allows for a bucket to be deleted. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">delete_bucket</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">'mybucket'</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>response</code> from <code>delete_bucket</code> includes information about the deletion.</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: `botocore.exceptions.ClientError: An error occurred (BucketNotEmpty) when calling the DeleteBucket operation: None'</p>
+<p>This error can occur if an attempt is made to delete a bucket that is not empty.</p>
+</div>
 
 
 

@@ -14,7 +14,7 @@
         <link rel="prev" href="../cirrus/">
       
       
-        <link rel="next" href="manage/">
+        <link rel="next" href="getting-started/">
       
       
       <link rel="icon" href="../../images/favicon.ico">
@@ -1927,27 +1927,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-access" class="md-nav__link">
+  <a href="#service-provision" class="md-nav__link">
     <span class="md-ellipsis">
-      Service Access
+      Service provision
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-keys" class="md-nav__link">
+  <a href="#service-management-for-project-leads" class="md-nav__link">
     <span class="md-ellipsis">
-      Access keys
+      Service management for project leads
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-information" class="md-nav__link">
+  <a href="#using-the-eidf-s3-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Further information
+      Using the EIDF S3 Service
     </span>
   </a>
   
@@ -1969,12 +1969,12 @@
   
   
     <li class="md-nav__item">
-      <a href="manage/" class="md-nav__link">
+      <a href="getting-started/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Manage
+    Getting started
     
   </span>
   
@@ -1992,12 +1992,81 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorial/" class="md-nav__link">
+      <a href="python/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Tutorial
+    Using the EIDF S3 Service via Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using S3 policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="s3browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Browser
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing a project's S3 object store allocation
     
   </span>
   
@@ -3197,27 +3266,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-access" class="md-nav__link">
+  <a href="#service-provision" class="md-nav__link">
     <span class="md-ellipsis">
-      Service Access
+      Service provision
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-keys" class="md-nav__link">
+  <a href="#service-management-for-project-leads" class="md-nav__link">
     <span class="md-ellipsis">
-      Access keys
+      Service management for project leads
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-information" class="md-nav__link">
+  <a href="#using-the-eidf-s3-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Further information
+      Using the EIDF S3 Service
     </span>
   </a>
   
@@ -3243,20 +3312,22 @@
 
 
 <h1 id="overview">Overview</h1>
-<p>The EIDF S3 Service is an object store with an interface that is compatible with a subset of the Amazon S3 RESTful API.</p>
-<h2 id="service-access">Service Access</h2>
-<p>Users should have an EIDF account as described in <a href="../../access/project/">EIDF Accounts</a>.</p>
-<p>Project leads can request an object store allocation through a request to the EIDF helpdesk.</p>
-<h2 id="access-keys">Access keys</h2>
-<p>Select your project at <a href="https://portal.eidf.ac.uk/project/">https://portal.eidf.ac.uk/project/</a>.
-Your access keys are displayed in the table at the top of the page.</p>
-<p><img alt="Portal-S3-Access-Keys" class="border-img" src="../../images/access/portal-s3-keys.png" /></p>
-<p>For each account, the quota and the number of buckets that it is permitted to create is shown, as well as the access keys.
-Click on "Secret" to view the access secret.
-You will need the access key, the corresponding access secret and the endpoint <code>https://s3.eidf.ac.uk</code> to connect to the EIDF S3 Service with an S3 client.</p>
-<h2 id="further-information">Further information</h2>
-<p><a href="manage/">Access management</a>: Project management guide to managing accounts and access permissions for your S3 allocation.</p>
-<p><a href="tutorial/">Tutorial</a>: Examples using EIDF S3</p>
+<p>The EIDF S3 Service is an object store, provisioned using the <a href="https://ceph.io">Ceph</a> storage platform, that implements a subset of Amazon <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Simple Storage Service (S3)</a> service interfaces.</p>
+<p>The EIDF S3 Service is directly accessible from the <a href="../virtualmachines">EIDF Virtual Machine (VM) Service</a>, the <a href="../gpuservice/">EIDF GPU Service</a> and the <a href="../ultra2/">EIDF Ultra2 Service</a>. The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.</p>
+<hr />
+<h2 id="service-provision">Service provision</h2>
+<p>Project leads can request an EIDF S3 Service object store allocation, a portion of the EIDF S3 Service storage allocated for the exclusive use of a project, via the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a>.</p>
+<p>To access EIDF S3 Service object store allocation and account information within the EIDF Portal, users need to have an EIDF account as described in <a href="../../access/project/">EIDF Accounts</a>.</p>
+<hr />
+<h2 id="service-management-for-project-leads">Service management for project leads</h2>
+<p><a href="manage/">Managing a project's S3 object store allocation</a> is a guide for project leads on how to manage a project's object store allocation and its S3 accounts and access permissions.</p>
+<hr />
+<h2 id="using-the-eidf-s3-service">Using the EIDF S3 Service</h2>
+<p><a href="getting-started/">Getting started with S3 and the EIDF S3 Service</a> is a hands-on introduction to S3 and the EIDF S3 Service.</p>
+<p><a href="getting-started/#get-information-to-use-the-eidf-s3-service">Get information to use the EIDF S3 Service</a>, part of the introduction, describes the S3 Service endpoint URL and how to view your S3 account names, access keys, secrets, and storage and bucket quotas:</p>
+<p><a href="s3browser/">Using the EIDF S3 Browser</a> is a guide to using the <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> which is part of the <a href="./">EIDF S3 Service</a> and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files.</p>
+<p><a href="python/">Using the EIDF S3 Service via Python</a> provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, <a href="https://aws.amazon.com/sdk-for-python/">Boto3</a>.</p>
+<p><a href="policies/">Using S3 policies</a> provides examples of applying Identity Access Management (IAM) policies to buckets. For example, you can grant other accounts (within the same project or from other EIDF projects) read or write access to your buckets, or grant public anonymous read access.</p>
 
 
 

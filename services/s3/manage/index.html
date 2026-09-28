@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://docs.eidf.ac.uk/services/s3/manage/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../s3browser/">
       
       
-        <link rel="next" href="../tutorial/">
+        <link rel="next" href="../../datapublishing/service/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Manage - EIDF User Documentation</title>
+        <title>Managing a project's S3 object store allocation - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manage-eidf-s3-access" class="md-skip">
+        <a href="#managing-a-projects-s3-object-store-allocation" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Manage
+              Managing a project's S3 object store allocation
             
           </span>
         </div>
@@ -1897,6 +1897,98 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Service via Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using S3 policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s3browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the EIDF S3 Browser
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1914,7 +2006,7 @@
   
   
   <span class="md-ellipsis">
-    Manage
+    Managing a project's S3 object store allocation
     
   </span>
   
@@ -1927,7 +2019,7 @@
   
   
   <span class="md-ellipsis">
-    Manage
+    Managing a project's S3 object store allocation
     
   </span>
   
@@ -1950,36 +2042,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#request-an-allocation" class="md-nav__link">
+  <a href="#object-store-allocations-s3-accounts-and-access-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Request an allocation
+      Object store allocations, S3 accounts and access keys
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-store-accounts" class="md-nav__link">
+  <a href="#request-an-s3-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Object store accounts
+      Request an S3 allocation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-keys" class="md-nav__link">
+  <a href="#view-and-manage-object-store-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Access keys
+      View and manage object store allocation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-key-permissions" class="md-nav__link">
+  <a href="#create-an-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Access key permissions
+      Create an S3 account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-s3-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an S3 account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-access-key-and-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an access key and secret
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-access-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set access key permissions
     </span>
   </a>
   
@@ -1998,29 +2117,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tutorial/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tutorial
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3215,36 +3311,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#request-an-allocation" class="md-nav__link">
+  <a href="#object-store-allocations-s3-accounts-and-access-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Request an allocation
+      Object store allocations, S3 accounts and access keys
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-store-accounts" class="md-nav__link">
+  <a href="#request-an-s3-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Object store accounts
+      Request an S3 allocation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-keys" class="md-nav__link">
+  <a href="#view-and-manage-object-store-allocation" class="md-nav__link">
     <span class="md-ellipsis">
-      Access keys
+      View and manage object store allocation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-key-permissions" class="md-nav__link">
+  <a href="#create-an-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Access key permissions
+      Create an S3 account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-s3-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete an S3 account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-access-key-and-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an access key and secret
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-access-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set access key permissions
     </span>
   </a>
   
@@ -3278,62 +3401,134 @@
   
 
 
-<h1 id="manage-eidf-s3-access">Manage EIDF S3 access</h1>
-<p>Access keys and accounts for the object store are managed by project managers via the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>.</p>
-<h2 id="request-an-allocation">Request an allocation</h2>
-<p>An object store allocation for a project may be requested by contacting the EIDF helpdesk.</p>
-<h2 id="object-store-accounts">Object store accounts</h2>
-<p>Select your project at <a href="https://portal.eidf.ac.uk/project/">https://portal.eidf.ac.uk/project/</a>
-and jump to "S3 Allocation" on the project page to manage access keys and accounts.</p>
-<p><img alt="Portal-S3-Access-Keys" class="border-img" src="../../../images/access/portal-s3-accounts.png" /></p>
-<p>S3 buckets and objects are owned by an account.
-Each account has a quota for storage and the number of buckets that it can create.
-The sum of all account quotas is limited by the total storage quota of the project object store allocation shown at the top.</p>
-<p>An account with the minimum storage quota (1B) and zero buckets is effectively read only
-as it may not create new buckets and so cannot upload files.</p>
-<p>To create an account:</p>
+<h1 id="managing-a-projects-s3-object-store-allocation">Managing a project's S3 object store allocation</h1>
+<p>Management of a project's EIDF S3 Service object store allocation and its S3 accounts and access permissions is done by project leads.</p>
+<hr />
+<h2 id="object-store-allocations-s3-accounts-and-access-keys">Object store allocations, S3 accounts and access keys</h2>
+<p>An <strong>object store allocation</strong> is a portion of the EIDF S3 Service storage allocated for the exclusive use of a project. A project's S3 buckets are created within this object store allocation.</p>
+<p>Each S3 bucket, and the objects within that bucket, is owned by an <strong>S3 object store account</strong> (hereon called an <strong>S3 account</strong> or <strong>account</strong>). S3 accounts are created by a project lead.</p>
+<p>Each account has a <strong>storage quota</strong>, the maximum amount of storage, from the project's object store allocation, that the account can use. The storage quota is defined by a project lead. The sum of all account quotas is limited by the total storage quota of a project's object store allocation.</p>
+<p>Each account also has a <strong>bucket quota</strong>, the maximum number of buckets allowed for the account. The bucket quota is also defined by a project lead.</p>
+<p>To create and access buckets, users need both an <strong>access key</strong> and a <strong>secret</strong>. An account can have zero or more access keys, each with an associated secret.</p>
+<p>The number of buckets that a user can create and volume of files they can upload is constrained by both the bucket and storage quotas defined for the account associated with the access key used by the user.</p>
+<hr />
+<h2 id="request-an-s3-allocation">Request an S3 allocation</h2>
+<p>An object store allocation is the storage allocated within the EIDF S3 Service for a specific project.</p>
+<p>You can request an EIDF S3 Service object store allocation for your project via the <a href="https://portal.eidf.ac.uk/queries/submit">EIDF Helpdesk</a>.</p>
+<hr />
+<h2 id="view-and-manage-object-store-allocation">View and manage object store allocation</h2>
+<p>You can view and manage your project's S3 object store allocation via the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>:</p>
 <ol>
-<li>On the project page scroll to "S3 Allocation"</li>
-<li>Click "Add Account"</li>
-<li>Enter:<ul>
-<li>an account name (letters, numbers and underscore <code>_</code> only)</li>
-<li>a description</li>
-<li>a quota: a number with a unit B, kB, MiB (MB), GiB (GB), or TiB (TB), the minimum is 1B (1 Byte).</li>
-<li>the number of buckets that the account may create</li>
+<li>On the EIDF portal's <a href="https://portal.eidf.ac.uk/project/">Your Projects</a> page, click your project.</li>
+<li>Your select project's page will appear.</li>
+<li>If using the portal's default project view, view 'S3 Allocation', else, if using the portal's new project view, click 'S3 Object Storage'.</li>
+<li>The 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section will show the following:<ul>
+<li><strong>Quota</strong>: Project's object store allocation (portal's default view only).</li>
+<li><strong>Accounts allocation</strong>: Project's object store allocation and current usage (portal's new project view only).</li>
+<li>For each S3 account:<ul>
+<li><strong>Name</strong>: Account name.</li>
+<li><strong>Quota</strong>: Maximum amount of storage available to the account.</li>
+<li><strong>Max Buckets</strong>: Maximum number of buckets allowed for the account.</li>
+<li><strong>Access Keys</strong>: Access keys associated with this account.</li>
 </ul>
 </li>
-<li>Click "Create Account"</li>
+</ul>
+</li>
 </ol>
-<p>You will not be allowed to create an account with the quota greater than the available storage quota of the project.</p>
-<p>It may take a little while for the account to become available.
-Refresh the project page to update the list of accounts.</p>
-<h2 id="access-keys">Access keys</h2>
-<p>To use S3 (listing or creating buckets, listing objects or uploading and downloading files) you need an access key and a secret.
-An account can own any number of access keys.
-These keys share the account's quota and have access to the same buckets.</p>
-<p>To create an access key:</p>
+<p><img alt="EIDF Portal 'S3 Allocation' section" class="border-img" src="../../../images/access/portal-s3-accounts.png" /></p>
+<hr />
+<h2 id="create-an-s3-account">Create an S3 account</h2>
+<p>To create an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
 <ol>
-<li>Select an account and click "Add Key"</li>
-<li>Click "Create Access Key"</li>
+<li>Click <strong>Add Account</strong> (default project view) or <strong>Create Account</strong> (new project view).</li>
+<li>A 'Create S3 Object Store Account' page will appear.</li>
+<li>Enter:<ul>
+<li><strong>Account name</strong>: Only letters, numbers, and underscore <code>_</code>, are allowed.</li>
+<li><strong>Display Name</strong>: Alternative name for display. Spaces are allowed.</li>
+<li><strong>Maximum number of buckets allowed</strong>: Select:<ul>
+<li><strong>None</strong>: If selected, then this account cannot have any buckets.</li>
+<li><strong>Unlimited</strong></li>
+<li><strong>Or choose a limit:</strong> If selected, enter the number of buckets in <strong>Number of buckets</strong>.</li>
+</ul>
+</li>
+<li><strong>Quota</strong>: Maximum amount of storage available to this account. Enter both the number and the storage unit, one of 'B', 'kB', 'MiB' (MB), 'GiB' (GB), or 'TiB' (TB). The minimum quota is 1B (i.e., 1 byte).</li>
+</ul>
+</li>
+<li>Click <strong>Create Account</strong>.</li>
 </ol>
-<p>It can take a little while for the access keys to become available.
-Refresh the project page to update the list of keys.</p>
-<h2 id="access-key-permissions">Access key permissions</h2>
-<p>You can control which project members are allowed to view an access key and secret in the EIDF Portal or the SAFE.
-Project managers and the PI have access to all S3 accounts and can view associated access keys and secrets in the project management view.</p>
-<p>To grant view permissions for an access key to a project member:</p>
+<p>The account will be created along with an access key and associated secret.</p>
+<div class="admonition warning">
+<p class="admonition-title">Account quotas and project S3 storage quota</p>
+<p>You cannot create an account with a quota greater than the project's total S3 storage quota.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting: <code>Failed to create account: name already in use</code></p>
+<p>S3 account names must be unique within your project.</p>
+<p>This error can sometimes arise if you try to reuse the name of an account that you have previously deleted. Accounts are never deleted but are marked as 'retired'.</p>
+</div>
+<p>It may take a little while for the account to become available.</p>
+<p>Refresh the project page to update the list of accounts.</p>
+<div class="admonition tip">
+<p class="admonition-title">Using S3 accounts that cannot create buckets for collaboration</p>
+<p>One could create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B, and so cannot create any buckets. Such an account cannot be used to create buckets for your project. Why might such an account be useful?</p>
+<p>One scenario is for collaboration with another project which also has buckets hosted within the EIDF S3 Service. Rather than your collaborator giving you an access key and secret, you, instead, give them the name of your account, one that you have created for this purpose only.</p>
+<p>Your collaborator can then apply an S3 policy to one of their buckets to grant your account access to their bucket, for example to read files from or write files to their bucket. You would interact with their bucket using your access key for the account.</p>
+<p>To revoke your access, the collaborator can change their bucket's policy.</p>
+<p>Within your own project, project members who have been granted permission to view the access keys of this account but no others can interact with your collaborator's bucket but not create any buckets within your own project.</p>
+</div>
+<hr />
+<h2 id="delete-an-s3-account">Delete an S3 account</h2>
+<p>To delete an S3 account, within the EPCC <a href="https://safe.epcc.ed.ac.uk">SAFE</a>:</p>
 <ol>
-<li>Click on the "Edit" icon next to the key.</li>
+<li>Select <strong>Projects</strong> menu, your project project ID e.g., 'eidfNNN'.</li>
+<li>A 'Project' page will appear.</li>
+<li>Under 'Object store quotas', click <strong>CephS3</strong>.</li>
+<li>A '(CephS3)-(eidfNNN)' page will appear.</li>
+<li>Click <strong>List accounts</strong>.</li>
+<li>An 'Account list' page will appear.</li>
+<li>Click S3 account name.</li>
+<li>Click <strong>Remove</strong>.</li>
+<li>An 'Are you sure you want to remove this S3 account?' dialog will appear.</li>
+<li>Click <strong>Yes</strong>.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">S3 account names cannot be reused</p>
+<p>S3 accounts are never deleted but are marked as 'retired'. This means that you cannot reuse the names of accounts you have previously deleted.</p>
+</div>
+<hr />
+<h2 id="create-an-access-key-and-secret">Create an access key and secret</h2>
+<p>To create an access key for an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<ol>
+<li>Click <strong>Add Key</strong> in the account's table row.</li>
+<li>An 'Add Access Key' page will appear.</li>
+<li>Click <strong>Create Access Key</strong>.</li>
+</ol>
+<p>The access key will be created along with an associated secret</p>
+<p>It may take a little while for the account to become available.</p>
+<p>Refresh the project page to update the list of access keys.</p>
+<hr />
+<h2 id="set-access-key-permissions">Set access key permissions</h2>
+<p>You can control which project members are allowed to view each access key and secret within the EIDF Portal.</p>
+<p>To grant view permissions for an access key to a project member, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<ol>
+<li>Click on the <strong>Edit</strong> icon next to the key.</li>
+<li>A 'Set Access Key Permissions' page will appear.</li>
 <li>Select the project members that will have view permissions for this access key.</li>
-<li>Press "Update Permissions"</li>
+<li>Click <strong>Update Permissions</strong>.</li>
 </ol>
 <p>It can take a little while for the permissions update to complete.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Anyone who knows an access key and secret will be able to perform the associated activities via the S3 API regardless of the view permissions.</p>
+<div class="admonition warning">
+<p class="admonition-title">View permissions do not constrain access key and secret usage</p>
+<p>Anyone who knows an access key and secret will be able to use these to interact with the EIDF S3 Service, regardless of the view permissions on the access key. These permissions apply to the EIDF Portal only.</p>
 </div>
+<hr />
 <h2 id="delete-an-access-key">Delete an access key</h2>
-<p>Click on the "Bin" icon next to a key and press "Delete" on the form.</p>
+<p>To delete an access key, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<ol>
+<li>Click on the "bin" icon next to a key.</li>
+<li>A 'Delete Access Key' dialog will appear.</li>
+<li>Click <strong>Delete</strong>.</li>
+</ol>
 
 
 
