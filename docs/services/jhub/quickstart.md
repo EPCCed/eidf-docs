@@ -60,4 +60,4 @@ Once mounted, the project space is available at the path `/sharedfs` in your not
 
 Note that there are limited amounts of memory and cores available per user. Users do not have sudo permissions in the containers so you cannot install any system packages.
 
-Currently there is no access to GPUs. You can submit jobs to the EIDF GPU Service but you cannot run your notebooks on a GPU.
+There are no GPUs available in the Notebook Service. You can submit jobs to the GPU Service or connect to an interactive notebook session in an active GPU Service pod from this service.

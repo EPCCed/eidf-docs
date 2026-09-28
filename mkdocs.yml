@@ -95,8 +95,11 @@ nav:
   - "Data Services":
     - "S3":
       - "Overview": services/s3/index.md
-      - "Manage": services/s3/manage.md
-      - "Tutorial": services/s3/tutorial.md
+      - "Getting started": services/s3/getting-started.md
+      - "Using the EIDF S3 Service via Python": services/s3/python.md
+      - "Using S3 policies": services/s3/policies.md
+      - "Using the EIDF S3 Browser": services/s3/s3browser.md
+      - "Managing a project's S3 object store allocation": services/s3/manage.md
     - "Data Publishing":
        - "Getting started": services/datapublishing/service.md
        - "Your Data Catalogue entry": services/datapublishing/catalogue.md
