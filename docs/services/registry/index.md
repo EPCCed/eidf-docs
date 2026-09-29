@@ -1,4 +1,4 @@
-# Overview
+# Overview of the EIDF Container Image Registry
 
 EIDF Container Image Registry (ECIR) is an image registry for use in EIDF, EPCC and related services. ECIR uses [Harbor](https://goharbor.io) to provide services for image storage, vulnerability scanning and Software Bill of Materials (SBOM) generation.
 
