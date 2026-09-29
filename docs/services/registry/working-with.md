@@ -1,4 +1,4 @@
-# Working with ECIR
+# Working with the EIDF Container Image Registry (ECIR)
 
 ## The Registry Interface and Accounts
 
@@ -12,6 +12,10 @@ User tokens can be accessed from the User Profile from the dropdown under your U
    *Example User Profile*
 
 See the FAQ section ['Unauthorised' error when logging into the registry from Docker](./faq.md#unauthorised-error-when-logging-into-the-registry-from-docker) for help with token expiry and authorisation issues.
+
+## ECIR Project
+
+Each EIDF project can have a private space on the registry, this is called an ECIR project. An ECIR project can be used to store images and artifacts that are private to the project. All projects should, by default, have an ECIR project created for them but if your project does not have one, you can request one by contacting the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit).
 
 ## Push Commands
 
@@ -62,19 +66,13 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ```
 
-From your command line, you can now push and pull images to the registry.
+Note that user tokens have a limited validity period and therefore, robot accounts are recommended for long-term use. Contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) to create a robot account for your project.
+
+From your command line, you may now push and pull images to the registry using docker commands as described in the [docker documentation](https://docs.docker.com/reference/cli/docker/).
 
 ## Kubernetes/GPU Service Access
 
-To pull images from the registry, from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period.
-
-If you are regularly using a repository from a project where you are sharing resources, it is recommended to create a robot account with limited read only privileges, this can be requested via a Helpdesk Request for your project.
-
-!!! important "Portal Management"
-
-    There will be new functionality soon added to the EIDF Portal to allow for project users to create read only robot accounts and for PI/Managers to create read/write robot accounts for use in CI/CD pipelines for image building.
-
-This is then treated like a normal user secret when you have the robot credentials.
+To pull images from the registry, including from private or authenticated projects, you will need to add a secret to the namespace you are using and reference it in your job definition. Note that user tokens have a limited validity period and hence ECIR robot accounts are recommended for long-term use. Contact the [EIDF Helpdesk](https://portal.eidf.ac.uk/queries/submit) to create a robot account for your project.
 
 Secrets can be created in one of two ways, as detailed below, either directly via kubectl from your Docker config.json file, or by creating a YAML file.
 

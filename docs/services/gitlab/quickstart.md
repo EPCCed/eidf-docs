@@ -2,7 +2,7 @@
 
 ## Accessing
 
-Access the EIDF gitlab in your browser by opening [https://gitlab.eidf.ac.uk/](https://gitlab.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF gitlab Service.
+Access the EIDF GitLab in your browser by opening [https://gitlab.eidf.ac.uk/](https://gitlab.eidf.ac.uk/). You must be a member of an active EIDF project and have a user account to use the EIDF GitLab Service.
 
 ![GitLab Login Page](../../images/access/gitlab-login.png)
 
@@ -34,8 +34,8 @@ From the command line, you can clone this repository by adding your username and
 
 To clone a repository using git over SSH, click on the "Code" button to get the git+ssh URL. You will need to have added an SSH key to your account for this method to work.
 
-For a more complete set of documentation relating to adding and using SSH keys with Gitlab, see the upstream [Gitlab Documentation](https://docs.gitlab.com/user/ssh/)
+For a more complete set of documentation relating to adding and using SSH keys with GitLab, see the upstream [GitLab Documentation](https://docs.gitlab.com/user/ssh/)
 
-## CI/CD Examples
+## Where to go next?
 
-A repository containing some common Gitlab CI/CD configurations and relevant examples is maintained at at [Gitlab CI/Cd Examples](https://gitlab.eidf.ac.uk/Liz/cicd-examples)
+CI/CD pipelines for automation of workflows are documented in the [GitLab CI/CD documentation](cicd.md).
