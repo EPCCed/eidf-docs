@@ -328,7 +328,7 @@ metadata:
  labels:
     kueue.x-k8s.io/queue-name:  <project-namespace>-user-queue
 spec:
- completions: 1
+ completions: 3
  backoffLimit: 1
  ttlSecondsAfterFinished: 1800
  parallelism: 1
