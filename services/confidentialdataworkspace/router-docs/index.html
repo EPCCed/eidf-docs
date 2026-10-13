@@ -3389,7 +3389,11 @@
 <li>HTTPS: 3129</li>
 </ul>
 <h2 id="certificate-when-using-the-proxy-for-https-traffic">Certificate When Using the Proxy for HTTPS Traffic</h2>
-<p>For applications that require it, the self-signed certificate used by the Squid service is available on every VM at <code>/usr/local/share/ca-certificates/extra/squid_proxyCA.crt</code>.</p>
+<p>For applications that require it, the self-signed certificate used by the Squid service is available on every VM at:</p>
+<ul>
+<li><code>/usr/local/share/ca-certificates/extra/squid_proxyCA.crt</code> for Ubuntu</li>
+<li><code>/etc/pki/ca-trust/source/anchors/squid_proxyCA.crt</code> for Rocky</li>
+</ul>
 <h2 id="ssh-access-to-the-cdw-router">SSH Access to the CDW Router</h2>
 <p>Data Managers and VM Admins can access the CDW Router <code>&lt;project_code&gt;-router</code> machine via SSH. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.</p>
 <p>This requires users have set up the EIDF Gateway for their user, as this must be jumped through to access the router. An example SSH config file entry for the router is shown below:</p>
