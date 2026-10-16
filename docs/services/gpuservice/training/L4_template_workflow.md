@@ -223,7 +223,7 @@ This is not an introduction to building docker images, please see the [Docker tu
     ```
 
 !!! important "Building images for different CPU architectures"
-    Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDFGPU Service's AMD64 based architecture.
+    Be aware that docker images built for Apple ARM64 architectures will not function optimally on the EIDF GPU Service's AMD64 based architecture.
 
     If building docker images locally on an Apple device you must tell the docker daemon to use AMD64 based images by passing the `--platform linux/amd64` flag to the build function.
 
@@ -319,7 +319,7 @@ Production code can be included within a Docker image to aid reproducibility as 
 
 However, binding the code to the docker image during development can delay the testing cycle as re-downloading all of the software for every change in a code block can take time.
 
-If the docker image is consistent across tests, then it can be cached locally on the EIDFGPU Service instead of being re-downloaded (this occurs automatically although the cache is node specific and is not shared across nodes).
+If the docker image is consistent across tests, then it can be cached locally on the EIDF GPU Service instead of being re-downloaded (this occurs automatically although the cache is node specific and is not shared across nodes).
 
 A pod yaml file can be defined to automatically pull the latest code version before running any tests.
 
