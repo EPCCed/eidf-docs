@@ -4,7 +4,6 @@ The EIDF offers the following storage options:
 
 - [Virtual Machine (VM) local storage](#virtual-machine-vm-local)
 - [GPU local storage](#gpu-service-local)
-- [Ultra2 local storage](#ultra2-local)
 - [S3](#s3)
 - [Shared Filesystem (CephFS)](#shared-filesystem-cephfs)
 - [Data Publishing Service](#data-publishing-service)
@@ -13,13 +12,12 @@ These storage options are backed by the hardware described on this [page](https:
 
 ## Summary of Storage Options and Access
 
-|         Service         | VM Local | GPU Local | Ultra2 Local | S3  | Shared Filesystem (CephFS) | Data Publishing Service |
-| :---------------------: | :------: | :-------: | :----------: | :-: | :-------------------: | :---------------------: |
-|           VMs           |   Yes    |    No     |      No      | Yes |          Yes          |           Yes           |
-|       GPU Service       |    No    |    Yes    |      No      | Yes |          Yes          |           Yes           |
-|         Ultra2          |    No    |    No     |     Yes      | Yes |          No           |           Yes           |
-|        Cerebras         |    No    |    No     |      No      | No  |          Yes          |           No            |
-|        Notebooks        |    No    |    No     |      No      | Yes |          Yes          |           Yes           |
+|         Service         | VM Local | GPU Local |  S3  | Shared Filesystem (CephFS) | Data Publishing Service |
+| :---------------------: | :------: | :-------: |  :-: | :-------------------: | :---------------------: |
+|           VMs           |   Yes    |    No     |  Yes |          Yes          |           Yes           |
+|       GPU Service       |    No    |    Yes    |  Yes |          Yes          |           Yes           |
+|        Cerebras         |    No    |    No     |  No  |          Yes          |           No            |
+|        Notebooks        |    No    |    No     |  Yes |          Yes          |           Yes           |
 
 ## Persistent Volumes attached to specific services
 
@@ -40,17 +38,11 @@ Currently GPU Service persistent volumes are included in the GPU Service costs.
 
 See more details about the [GPU service](../services/gpuservice/index.md).
 
-### Ultra2 local
-
-Ultra2 uses our e1000 Lustre parallel filesystem; this storage is not accessible from anywhere else on the EIDF.
-
-See more general details about [Ultra2](../services/ultra2/access.md).
-
 ## Storage available for use on multiple EIDF Services
 
 ### S3
 
-The EIDF S3 is directly accessible from the VM, GPU and Ultra2 services.
+The EIDF S3 is directly accessible from the VM, GPU and Cerebras services.
 
 We are working to make S3 accessible from the Cerebras processing unit.
 
@@ -75,10 +67,3 @@ This is accessible from all EIDF services and has public read-only access, imple
 The Data Publishing Service is visible from all systems with external network access except the EIDF Cerebras processing-nodes.
 
 See more information about the [Data Publishing service](../services/datapublishing/service.md).
-
-## Disaster Recovery
-
-The Ultra2-local storage is replicated onto tape for recovery from disaster. Disaster recovery is triggered by disk hardware failure, not user error. Restoring data due to user actions, such as accidental file deletion, is **not** supported or planned as a service.
-
-There is no user interface for the Disaster Recovery and any action will be taken by the EIDF team in response to issues. If you suspect disk failures on Ultra2, please raise a ticket through the EIDF Portal facility.
-The EIDF Disaster Recovery is implemented through the [HPE Data Management Framework](https://www.hpe.com/us/en/collaterals/collateral.a00022795enw.html).

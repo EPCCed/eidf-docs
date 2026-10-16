@@ -32,7 +32,6 @@ Remote SSH access to Confidential Data Workspace VMs is **disabled** for securit
 
 Includes access to the following services:
 
-* [Ultra2](../services/ultra2/index.md)
 * [EIDF Interim and Experimental Systems](../services/experimental/index.md)
 
 To login to most command-line services with `ssh` you should use the username and password

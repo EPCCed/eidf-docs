@@ -2,7 +2,7 @@
 
 The EIDF S3 Service is an object store, provisioned using the [Ceph](https://ceph.io) storage platform, that implements a subset of Amazon [Simple Storage Service (S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) service interfaces.
 
-The EIDF S3 Service is directly accessible from the [EIDF Virtual Machine (VM) Service](../virtualmachines), the [EIDF GPU Service](../gpuservice/index.md) and the [EIDF Ultra2 Service](../ultra2/index.md). The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.
+The EIDF S3 Service is directly accessible from the [EIDF Virtual Machine (VM) Service](../virtualmachines) and the [EIDF GPU Service](../gpuservice/index.md). The EIDF S3 Service is also accessible from anywhere in the world via S3-compatible workflows.
 
 ---
 

@@ -8,8 +8,6 @@
 
 [Notebooks](./jhub/index.md)
 
-[Ultra2](./ultra2/index.md)
-
 [GitLab Code Storage](./gitlab/index.md)
 
 ## Data Services
