@@ -26,9 +26,15 @@ To clone a repository via HTTPS, click on the "Code" button to get the https-bas
 
 ![GitLab New Repo](../../images/access/gitlab-newrepo.png)
 
-From the command line, you can clone this repository by adding your username and token into the URL between the `https://` and `@gitlab.eidf` parts of the url as shown. Your EIDF GitLab username can easily be found by clicking your profile image near the top left of any GitLab page. The username is the part below your name, without the `@` symbol.
+From the command line, you can clone this repository by using the `git clone` command with the https-based url. You will be prompted to enter your username and password (a personal access token) for authentication.
+
+For automation purposes, you can alternatively clone this repository by adding your username and password (a personal access token) into the URL between the `https://` and `@gitlab.eidf` parts of the URL as shown.
 
 ![GitLab Clone CLI](../../images/access/gitlab-httpstoken.png)
+
+Your EIDF GitLab username can easily be found by clicking your profile image near the top left of any GitLab page. The username is the part below your name, without the `@` symbol.
+
+For authentication using Personal Access Tokens, you will need to generate a token with the appropriate scope. GitLab has documentation describing [how to create a Personal Access Token in the UI](https://docs.gitlab.com/user/profile/personal_access_tokens/#create-a-personal-access-token).
 
 ## Clone repository via SSH
 
