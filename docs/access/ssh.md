@@ -1,60 +1,160 @@
 # SSH Access to Virtual Machines using the EIDF-Gateway Jump Host
 
-The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
-You will require three things to use the gateway:
+EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the EIDF [Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
 
-1. A user within a project allowed to access the gateway and a password set.
-1. An SSH-key linked to this account, used to authenticate against the gateway.
-1. Have MFA setup with your project account via SAFE.
+Access to EIDF VMs via SSH uses the EIDF-Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
 
-Steps to meet all of these requirements are explained below.
+!!! Note "SSH access is not the same as SSH"
 
-## Generating and Adding an SSH Key
+    You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your own host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your host to an EIDF VM.
 
-In order to make use of the EIDF-Gateway, your EIDF account needs an SSH-Key associated with it.
-If you added one while creating your EIDF account, you can skip this step.
+To access an EIDF VM via SSH from your terminal or console, you will need:
 
-### Check for an existing SSH Key
+1. An EIDF project user account to have been created for you.
+1. Access to the project VM for your user account to have been granted.
+1. Access to the EIDF-Gateway, eidf-gateway.epcc.ed.ac.uk, to have been granted.
 
-To check if you have an SSH Key associated with your account:
+The above steps need to be done by your project lead.
 
-1. Login to the [Portal](https://portal.eidf.ac.uk)
-1. Select 'Your Projects'
-1. Select your project name
-1. Select your username
+Once your account has been created and access granted, you need to set up your SSH access as follows:
 
-If there is an entry under 'Credentials', then you're all setup.
-If not, you'll need to generate an SSH-Key, to do this:
+1. [Create an SSH private-public key pair](#create-an-ssh-private-public-key-pair) on the host from which you want to access the EIDF VM via SSH.
+1. [Add the public key to your account](#add-the-public-key-to-your-account) within the EIDF Portal.
+1. [Set up multi-factor authentication](#set-up-multi-factor-authentication) for your account within the EIDF Portal.
 
-### Generate a new SSH Key
+Once you have done these setup steps, you can [connect to the EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh).
 
-1. Open a new window of whatever terminal you will use to SSH to EIDF.
-1. Generate a new SSH Key:
+## Create an SSH private-public key pair
+
+TODO: Replace `/c/Users/mjj` with `/home/someuser`
+TODO: Replace 'NNN' with `<project_id>` where appropriate.
+
+Create a SSH private-public key pair on the host from which you want to access the EIDF VM via SSH.
+
+1. Create a `$HOME/.ssh` directory if one does not exist:
 
     ```bash
-    ssh-keygen
+    mkdir -p $HOME/.ssh
     ```
 
-1. It is fine to accept the default name and path for the key unless you manage a number of keys.
-1. Press enter to finish generating the key
+1. Create an SSH private-public key pair, replacing `<comment>` with a comment (see below) and `<project_id>` with your EIDF project number, 'NNN':
+
+    ```bash
+    ssh-keygen -C '<comment>' -f $HOME/.ssh/id_ed25519_eidf<project_id>
+    ```
+
+    A suitable value for `<commment>` can be your email address, or a username and local host name (e.g., `someuser-laptop` or `someuser-cirrus`), Alternatively, `-C '<comment>'` can be omitted, and the default comment of `<user>@<host>` will be used.
+
+    `-f` specifies the private key file path. We recommend that the file name include the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>`, in the file name. This will help if you have multiple keys for multiple projects or other services.
+
+1. When prompted, enter, then re-enter a passphrase:
+
+    ```bash
+    Generating public/private ed25519 key pair.
+    Enter passphrase for "/c/Users/mjj/.ssh/id_ed25519_eidfNNN" (empty for no passphrase):
+    Enter same passphrase again:
+    ```
+
+    The passphrase is used to protect the key. Whenever you use the key, you will be prompted for the passphrase.
+
+Information about the key will be printed. For example:
+
+```text
+Your identification has been saved in /c/Users/mjj/.ssh/id_ed25519_eidfNNN
+Your public key has been saved in /c/Users/mjj/.ssh/id_ed25519_eidfNNN.pub
+The key fingerprint is:
+SHA256:KBjX+Dl0wl8GO8ec7Q7M6PCUETk+yqM/eybpUBuY7Bc a@b
+The key's randomart image is:
++--[ED25519 256]--+
+|        o.       |
+|     +  o* o     |
+|  . o =.=.B .    |
+|   = = *o@ .     |
+|  . =.E.S.+ .    |
+|   . o+X   o     |
+|    o.ooo   .    |
+|    .o+ o        |
+|     o+*         |
++----[SHA256]-----+
+```
+
+Two files will be created in your `.ssh` directory:
+
+* `.ssh/id_ed25519_eidfNNN`, the private key file, which includes the private key itself. **Do not** share your private key with anyone.
+* `.ssh/id_ed25519_eidfNNN.pub`, a complementary public key file, which shares the private key file name with a `.pub` suffix. The public key file has content:
+
+    ```text
+    <key-type> <base64-encoded-public-key> <comment>
+    ```
+
+    The default `<key-type>` is `ssh-ed25519`.
+
+## Add the public key to your account
+
+To add the public key to your account:
+
+1. On the [Your Projects](https://portal.eidf.ac.uk/project) page within the [EIDF Portal](https://portal.eidf.ac.uk/), click your project.
+1. Your selected project's page will appear.
+1. Within the 'Your Accounts' table, click your user account name.
+1. Your 'User Account Info' page will appear.
+1. Under 'Credentials', click **+**.
+1. Either, the paste contents of the public key file, `$HOME/.ssh/id_ed25519_eidfNNN.pub`, into the **Credential** field.
+1. Or, click **Choose file** and select the public key file, `$HOME/.ssh/id_ed25519_eidfNNN.pub`
+1. Click **Upload Credential**.
+1. The 'User Account Info' page will reappear.
+
+Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'. Initially, the public key will have a 'Status' of 'Pending'. If you refresh the page, the 'Status' will eventually update to 'Active'.
+
+!!! Warning "Delay in public key being usable"
+
+    There may be a lag, possibly up to an hour, between a public key being added and it being usable, even if the public key is marked as 'Active'. This is due to the time taken for the update to be reflected across the EIDF infrastructure.
+    
+TODO: Double-check delay with AK.
+
+## Set up multi-factor authentication
+
+To set up multi-factor authentication for your account within the EIDF Portal:
+
+TODO
+
+## Connect to an EIDF VM via SSH
+
+TODO
+
+## Miscellaneous
+
+### Remove a public key from your account
+
+To remove a public key from your account:
+
+* On the [Your Projects](https://portal.eidf.ac.uk/project) page within the EIDF Portal, click your project.
+* Your selected project's page will appear.
+* Within the 'Your Accounts' table, click your account name.
+* Your 'User Account Info' page will appear.
+* Under 'Credentials', click the **bin** icon.
+* Select a public key to delete.
+* Click **Delete Selected**.
+* The 'User Account Info' page will reappear.
+
+Initially, the public key will have a 'Status' of 'Deleting'. If you refresh the page, the public key will eventually disappear from the table.
+
+!!! Warning "Delay in public key being no longer usable"
+
+    There may be a lag, possibly up to an hour, between a public key being removed and it being no longer usable, even if the public key is no longer shown. This is due to the time taken for the update to be reflected across the EIDF infrastructure.
+    
+TODO: Double-check delay with AK.
+
+---
+---
+---
+
+## Existing content
 
 ### Adding the new SSH Key to your account via the Portal
 
-1. Login into the [Portal](https://portal.eidf.ac.uk)
-1. Select 'Your Projects'
-1. Select the relevant project
-1. Select your username
-1. Select the plus button under  'Credentials'
-1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the `<ssh-key>.pub` file you just created and copy its contents into the text box.
 1. Click 'Upload Credential' - it should look something like this:
 
    ![eidf-portal-ssh](../images/access/eidf-portal-ssh.png){: class="border-img"}
-
-#### Adding a new SSH Key via SAFE
-
-This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
-If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
-However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
 
 ## Enabling MFA via the Portal
 
