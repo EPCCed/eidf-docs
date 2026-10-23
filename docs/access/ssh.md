@@ -59,7 +59,7 @@ To create a SSH private-public key pair on the host from which you want to acces
 
     where:
 
-    * `-C <comment>` is a comment added to the public key that is created, A suitable value for `<commment>` can be your email address, or a username and local host name (e.g., `some-user-laptop` or `some-user-cirrus`), Alternatively, `-C '<comment>'` can be omitted, and the default comment of `<user>@<host>` will be used.
+    * `-C <comment>` is a comment added to the public key that is created, A suitable value for `<comment>` can be your email address, or a username and local host name (e.g., `some-user-laptop` or `some-user-cirrus`), Alternatively, `-C '<comment>'` can be omitted, and the default comment of `<user>@<host>` will be used.
     * `-f` specifies the private key file path. It is recommended that the file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services.
 
     For example:
@@ -82,24 +82,24 @@ To create a SSH private-public key pair on the host from which you want to acces
 
         It is **strongly recommended** that you use a unique, **non-empty**, passphrase for each key that your create.
 
-Information about the private-public key pair will be printed. This will include the file names:
-
-```text
-Your identification has been saved in /home/some-user/.ssh/id_ed25519_eidfNNN
-Your public key has been saved in /home/some-user/.ssh/id_ed25519_eidfNNN.pub
-...
-```
-
-Two files will be created in your `.ssh` directory:
-
-* `.ssh/id_ed25519_eidf<project_id>`, the private key file, which includes the private key itself. **Do not** share your private key with anyone.
-* `.ssh/id_ed25519_eidf<project_id>.pub`, a complementary public key file, which shares the private key file name with a `.pub` suffix. The public key file has content:
+1. Information about the private-public key pair will be printed. This will include the file names:
 
     ```text
-    <key-type> <base64-encoded-public-key> <comment>
+    Your identification has been saved in /home/some-user/.ssh/id_ed25519_eidf000
+    Your public key has been saved in /home/some-user/.ssh/id_ed25519_eidf000.pub
+    ...
     ```
 
-    The default `<key-type>` is `ssh-ed25519`.
+1. Two files will be created in your `.ssh` directory:
+
+    * `.ssh/id_ed25519_eidf<project_id>`, the private key file, which includes the private key itself. **Do not** share your private key with anyone.
+    * `.ssh/id_ed25519_eidf<project_id>.pub`, a complementary public key file, which shares the private key file name with a `.pub` suffix. The public key file has content:
+
+        ```text
+        <key-type> <base64-encoded-public-key> <comment>
+        ```
+
+        The default `<key-type>` is `ssh-ed25519`.
 
 ### Add the public key to your project account
 
@@ -114,8 +114,8 @@ To add the public key to your project account:
 1. Or, click **Choose file** and select the public key file, `$HOME/.ssh/id_ed25519_eidf<project_id>.pub`
 1. Click **Upload Credential**.
 1. The 'User Account Info' page will reappear.
-
-Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'. Initially, the public key will have a 'Status' of 'Pending'. If you refresh the page, the 'Status' will eventually update to 'Active'.
+1. Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'.
+1. Initially, the public key will have a 'Status' of 'Pending'. If you refresh the page, the 'Status' will eventually update to 'Active'.
 
 !!! Warning "Delay in public key being usable"
 
@@ -153,7 +153,7 @@ To set up multi-factor authentication for your project account within the EIDF P
 
 ## Connect to an EIDF VM via SSH
 
-To connect to a EIDF VM via SSH:
+To connect to an EIDF VM via SSH:
 
 1. Run:
 
@@ -219,8 +219,7 @@ To connect to a EIDF VM via SSH:
     ```
 
 1. Again, enter your private key's passphrase.
-
-All going well, you will now be logged into the EIDF VM.
+1. All going well, you will be logged into the EIDF VM and its prompt will appear.
 
 What you are prompted for depends upon when you SSH into an EIDF VM via the EIDF-Gateway as shown in the table below:
 
@@ -343,7 +342,7 @@ In the configuration above:
 * `Host <host_name>` includes configuration parameters specific to the EIDF VM only.
 * `Host eidf-gateway<project_id> <host_name>` includes configuration parameters common to both.
 
-One the SSH configuration file has been edited, to connect to an EIDF VM via the EIDF-Gateway, run:
+One the SSH configuration file has been edited, to connect to a EIDF VM via SSH, run:
 
 ```bash
 ssh <host_name>
@@ -359,11 +358,11 @@ ssh eidf000-vm
 
 The SSH configuration file parameters are as follows (from [ssh_config](https://man7.org/linux/man-pages/man5/ssh_config.5.html)):
 
-* `Host`, pattern that matches to host names provided on the command-line when running `ssh`.
+* `Host`, pattern that matches to host names provided on the command-line when running 'ssh'.
 * `User`, username to log in as.
 * `HostName`, actual host name or IP address.
 * `IdentityFile`, private key file.
-* `IdentitiesOnly yes`, require that only the key specified in `IdentityFile` be used.
+* `IdentitiesOnly yes`, require that only the key specified in `IdentityFile` be used. This is of use if you [Cache private keys using 'ssh-agent'](#cache-private-keys-using-ssh-agent). By default an 'ssh-agent' will try every private key it knows about in turn which, if there are many keys, can raise a 'Too many authentication failures' error. This SSH configuration file parameter tells the 'ssh-agent' to only use this key.
 * `ProxyJump`, jump proxy.
 
 When `ssh <host_name>` is run, the following happens:
@@ -412,21 +411,159 @@ Host eidf-gateway<project_id> <host_name> <other_host_name>
 
 If you have access to EIDF VMs in multiple projects, then you can add entries for each project using the template given at the start of this [Write an SSH configuration file](#write-an-ssh-configuration-file) section, and replacing `<project_id>` with the appropriate EIDF VM project ID in each case.
 
-### Port forwarding
-
-TODO
-
-Port forwarding, link to RDP
-
-TODO
-
 ---
 
-## Cache private key passphrases using 'ssh-agent'
+## Cache private keys using 'ssh-agent'
 
-'ssh-agent' is an in-memory SSH key manager. You can add a private key to 'ssh-agent' and, once added, you will not be prompted for that private key's passphrase again until the 'ssh-agent' is stopped or you remove the private key.
+'ssh-agent' is an SSH key manager which caches decrypted private keys in-memory. You can add private keys to the 'ssh-agent' and, once you've provided your passphrase to decrypt the key, you will not be prompted for that private key's passphrase again when using the private key until either you remove the private key from the 'ssh-agent' or the 'ssh-agent' is stopped.
 
-TODO
+### Start the 'ssh-agent'
+
+To start the 'ssh-agent':
+
+1. Check if the 'ssh-agent' is running:
+
+    ```bash
+    ssh-add -l
+    ```
+
+    If the output is `The agent has no identities.`, then the 'ssh-agent' is running.
+
+    If the output is either of the following, then the 'ssh-agent' is not running:
+
+    * Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS: `Could not open a connection to your authentication agent.`
+    * Windows (Powershell): `Error connecting to agent: No such file or directory`
+
+1. Start the 'ssh-agent' if it is not running:
+
+    Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:
+
+    ```bash
+    eval $(ssh-agent)
+    ```
+
+    Windows (Powershell), as Administrator:
+
+    ```powershell
+    Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+    Start-Service -Name ssh-agent
+    Get-Service -Name ssh-agent
+    ```
+
+### Add a private key to the 'ssh-agent'
+
+To add a private key to the 'ssh-agent':
+
+1. Run:
+
+    ```bash
+    ssh-add $HOME/.ssh/id_ed25519_eidf<project_id>
+    ```
+
+    For example:
+
+    ```bash
+    ssh-add $HOME/.ssh/id_ed25519_eidf000
+    ```
+
+1. You will be prompted for your private key's passphrase:
+
+    ```bash
+    Enter passphrase for /home/someuser/.ssh/id_ed25519_eidf000
+    ```
+
+1. Enter your private key's passphrase.
+1. The private key will be added and a message displayed which includes the comment from when you created your key:
+
+    ```text
+    Identity added: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+    ```
+
+When you connect to a EIDF VM via SSH, if SSH finds your private key in the 'ssh-agent', then it will not prompt you to enter your private key's passphrase.
+
+### List the keys currently cached by the 'ssh-agent'
+
+To list the keys currently cached by the 'ssh-agent':
+
+1. Run:
+
+    ```bash
+    ssh-add -L
+    ```
+
+1. A list of public keys corresponding to the private keys will be displayed. For example:
+
+    ```text
+    ssh-ed25519 AABACHRza72l6Q31ZTD5ABAEIB/kq6tgG4chsEgI7BhGDhngFJ6SyjgU4Q53S3tGpmya some-user@somedept.ed.ac.uk)
+    ```
+
+    If there are no private keys, then the output will be:
+
+     ```text
+     The agent has no identities.
+     ```
+
+### Remove private keys from the 'ssh-agent'
+
+To remove a private key from the 'ssh-agent':
+
+1. Run:
+
+    ```bash
+    ssh-add -d ~/.ssh/id_ed25519_eidf<project_id>
+    ```
+
+1. The private key will be removed and a message displayed which includes the comment from when you created your key:
+
+    ```text
+    Identity removed: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+    ```
+
+To remove all the private keys from the 'ssh-agent', run:
+
+```bash
+ssh-add -D
+```
+
+### Stop the 'ssh-agent'
+
+The 'ssh-agent' runs until one of the following occurs:
+
+* Your local host is restarted or rebooted.
+* You manually stop the 'ssh-agent'.
+
+To manually stop the 'ssh-agent':
+
+* Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:
+
+    Run, in the same terminal in which you started the 'ssh-agent':
+
+    ```bash
+    ssh-agent -k
+    ```
+
+    If you no longer have that terminal open, then run:
+
+    ```bash
+    ps -ef | grep ssh-agent
+    ```
+
+    And, using te 'ssh-agent' process ID from the second column, kill the 'ssh-agent' process:
+
+    ```bash
+    kill <process_id>
+    ```
+
+* Windows (Powershell), as Administrator:
+
+    ```powershell
+    Stop-Service ssh-agent
+    Get-Service ssh-agent
+    ```
+
+!!! Warning "Stopping 'ssh-agent' under Powershell does not delete cached private keys"
+
+    Stopping 'ssh-agent' under Powershell does not delete the cached private keys. When the 'ssh-agent' is restarted, then the private keys will still be available. This is because the keys are cached in the Windows registry, encrypted in a Windows-specific way. If you want to ensure that the keys have been deleted, then run `ssh-add -D` when the 'ssh-agent' is running.
 
 ---
 
@@ -442,8 +579,8 @@ To remove a public key from your project account:
 1. Select a public key to delete.
 1. Click **Delete Selected**.
 1. The 'User Account Info' page will reappear.
-
-Initially, the public key will have a 'Status' of 'Deleting'. If you refresh the page, the public key will eventually disappear from the table.
+1. Initially, the public key will have a 'Status' of 'Deleting'.
+1. If you refresh the page, the public key will eventually disappear from the table.
 
 !!! Warning "Delay in public key being no longer usable"
 
