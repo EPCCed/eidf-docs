@@ -6,7 +6,7 @@ Access to EIDF VMs via SSH uses the EIDF-Gateway, a secure 'jump host' which is 
 
 !!! Note "SSH access is not the same as SSH"
 
-    You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your own host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your host to an EIDF VM.
+    You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your local host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your local host to an EIDF VM.
 
 ## Commands and operating systems
 
@@ -293,6 +293,32 @@ i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM
 
 ---
 
+## Accessing services on an EIDF VM via port forwarding and SSH tunnelling
+
+There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop from a remote desktop client running on your local host (as described in [RDP tunnelling over SSH](../services/virtualmachines/rdp-tunnelling/)).
+
+For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' call, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host:
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf<project_id> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf<project_id> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+Interactions with the local port on your local host are securely forwarded, or 'tunnelled', to the port on your EIDF host.
+
+For example, in the following, the port 13389 on a user's local host is forwarded to the remote desktop service port 3389 on their EIDF VM:
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 13389:localhost:3389
+```
+
+Multiple `-L` parameters can be used, if required. For example:
+
+```bash
+ssh ... -L 13389:localhost:3389 -L 18192:localhost:8192
+```
+
+---
+
 ## Write an SSH configuration file
 
 The command to [connect to the EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh), described above, is very verbose:
@@ -387,6 +413,48 @@ When `ssh <host_name>` is run, the following happens:
     ```
 
 * A connection is made to the EIDF-Gateway, using the username (`User`) and private key (`IdentityFile`), and then on to the EIDF VM, again, using the username (`User`) and private key (`IdentityFile`).
+
+### Port forwarding and the SSH configuration file
+
+If using a SSH configuration file, you can still forward ports by using `-L <local_port>:localhost:<eidf_vm_port>` parameters:
+
+```bash
+ssh <host_name> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+For example:
+
+```bash
+ssh eidf000-vm -L 13389:localhost:3389
+```
+
+To save typing, you can add port forwarding parameters to EIDF VM's host block in your SSH configuration file, using the `LocalForward` parameter:
+
+```text
+Host <host_name>
+    HostName <host_ip>
+    ProxyJump eidf-gateway<project_id>
+    LocalForward <local_port> localhost:<eidf_vm_port>
+```
+
+For example:
+
+```text
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway000
+    LocalForward 13389 localhost:3389
+```
+
+Multiple `LookForward` parameters can be used, if required. For example:
+
+```text
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway000
+    LocalForward 13389 localhost:3389
+    LocalForward 18192 localhost:8192
+```
 
 ### Adding other hosts for the same project
 
