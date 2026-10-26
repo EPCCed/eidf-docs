@@ -295,7 +295,7 @@ i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM
 
 ## Accessing services on an EIDF VM via port forwarding and SSH tunnelling
 
-There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop from a remote desktop client running on your local host (as described in [RDP tunnelling over SSH](../services/virtualmachines/rdp-tunnelling/)).
+There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop from a remote desktop client running on your local host (as described in [RDP tunnelling over SSH](../services/virtualmachines/rdp-tunnelling.md)).
 
 For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' call, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host:
 
