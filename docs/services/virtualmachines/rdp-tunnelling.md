@@ -96,6 +96,7 @@ Host eidf-gateway<project_id> <host_name>
     IdentityFile ~/.ssh/id_ed25519_eidf<project_id>
     IdentitiesOnly yes
     LocalForward <local_port> localhost:<eidf_vm_port>
+    ServerAliveInterval 60
 ```
 
 For example:
@@ -111,6 +112,7 @@ Host eidf-gateway000 eidf000-vm
     IdentityFile ~/.ssh/id_ed25519_eidf000
     IdentitiesOnly yes
     LocalForward 23001 localhost:3389
+    ServerAliveInterval 60
 ```
 
 then, run the 'ssh' command:
