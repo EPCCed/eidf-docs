@@ -1,8 +1,8 @@
-# SSH Access to Virtual Machines using the EIDF-Gateway Jump Host
+# SSH Access to Virtual Machines using the EIDF Gateway Jump Host
 
 EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the EIDF [Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
 
-Access to EIDF VMs via SSH uses the EIDF-Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
+Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
 
 !!! Note "SSH access is not the same as SSH"
 
@@ -20,7 +20,7 @@ To access an EIDF VM via SSH from your terminal or console, you will need:
 
 1. An EIDF project account to have been created for you.
 1. Access to the project VM to have been granted for your project account.
-1. Access to the EIDF-Gateway, eidf-gateway.epcc.ed.ac.uk, to have been granted.
+1. Access to the EIDF Gateway, eidf-gateway.epcc.ed.ac.uk, to have been granted.
 
 The above steps need to be done by your project lead.
 
@@ -123,7 +123,7 @@ To add the public key to your project account:
 
 ### Get a multi-factor authentication app
 
-To provide additional security, the EIDF-Gateway uses multi-factor authentication (MFA). When you access an EIDF VM with the EIDF-Gateway you will be prompted not only for your private key's passphrase but also for a time-based one-time password (TOTP) code. To provide this password you will need to have installed a suitable authenticator app on your mobile device. There are many such apps available. Popular options include:
+To provide additional security, the EIDF Gateway uses multi-factor authentication (MFA). When you access an EIDF VM with the EIDF Gateway you will be prompted not only for your private key's passphrase but also for a time-based one-time password (TOTP) code. To provide this password you will need to have installed a suitable authenticator app on your mobile device. There are many such apps available. Popular options include:
 
 * [Apple Passwords app](https://support.apple.com/en-gb/120758)
 * [Google Authenticator](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)
@@ -166,9 +166,9 @@ To connect to an EIDF VM via SSH:
     * `<project_id>` is your EIDF project ID.
     * `<user>` is your project account username.
     * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
-    * `-o ProxyCommand="..."` requests a connection to the EIDF-Gateway.
+    * `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
     * `-i` specifies your private key file.
-    * `-W %h:%p` requests that the EIDF-Gateway forward standard input and output to the EIDF VM.
+    * `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
 
     For example:
 
@@ -176,7 +176,7 @@ To connect to an EIDF VM via SSH:
     ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999
     ```
 
-1. The first time that you connect to the EIDF-Gateway you will be asked if you want to connect.
+1. The first time that you connect to the EIDF Gateway you will be asked if you want to connect.
 
     ```bash
     The authenticity of host 'eidf-gateway.epcc.ed.ac.uk (129.215.62.65)' can't be established.
@@ -186,7 +186,7 @@ To connect to an EIDF VM via SSH:
     ```
 
 1. Enter `yes`.
-1. When you connect to the EIDF-Gateway, a welcome message will be displayed. You will then be prompted for your private key's passphrase, to log into the EIDF-Gateway:
+1. When you connect to the EIDF Gateway, a welcome message will be displayed. You will then be prompted for your private key's passphrase, to log into the EIDF Gateway:
 
     ```bash
     Enter passphrase for key '/home/some-user/.ssh/id_ed25519_eidf000':
@@ -221,15 +221,15 @@ To connect to an EIDF VM via SSH:
 1. Again, enter your private key's passphrase.
 1. All going well, you will be logged into the EIDF VM and its prompt will appear.
 
-What you are prompted for depends upon when you SSH into an EIDF VM via the EIDF-Gateway as shown in the table below:
+What you are prompted for depends upon when you SSH into an EIDF VM via the EIDF Gateway as shown in the table below:
 
-| When | Connect to EIDF-Gateway? | Passphrase | Connect to EIDF VM? | TOTP code | Passphrase |
+| When | Connect to EIDF Gateway? | Passphrase | Connect to EIDF VM? | TOTP code | Passphrase |
 | ---- | ------------------------ | ---------- | ------------------- | --------- | ---------- |
 | First connection via SSH ever | &#10004; | &#10004; | &#10004; | &#10004; | &#10004; |
 | First connection via SSH on a specific day | | &#10004; | | &#10004; | &#10004; |
 | Subsequent connection via SSH on the same day | | &#10004; | | | &#10004; |
 
-You can now connect to your EIDF VM via the EIDF-Gateway. As the command is verbose, you can [Write an SSH configuration file](#write-an-ssh-configuration-file), described below, to reduce the verbosity.
+You can now connect to your EIDF VM via the EIDF Gateway. As the command is verbose, you can [Write an SSH configuration file](#write-an-ssh-configuration-file), described below, to reduce the verbosity.
 
 ### Troubleshooting: 'Warning: Identity file .ssh/id_ed25519_eidf000 not accessible: No such file or directory'
 
@@ -254,7 +254,7 @@ some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
 Connection closed by UNKNOWN port 65535
 ```
 
-then this means that your public key is not known to the EIDF-Gateway.
+then this means that your public key is not known to the EIDF Gateway.
 
 !!! Warning "Delay in public key being usable"
 
@@ -274,9 +274,9 @@ then you need to [Set up multi-factor authentication](#set-up-multi-factor-authe
 
 You can expect to be prompted for your private key's passphrase twice. If you are prompted more than twice then this implies that you have entered the wrong passphrase.
 
-For each passphrase prompt - to access the EIDF-Gateway and to access the EIDF VM - you have three attempts.
+For each passphrase prompt - to access the EIDF Gateway and to access the EIDF VM - you have three attempts.
 
-If you fail all three attempts when prompted by the EIDF-Gateway, you will see:
+If you fail all three attempts when prompted by the EIDF Gateway, you will see:
 
 ```text
 some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
@@ -364,7 +364,7 @@ Host eidf-gateway000 eidf000-vm
 
 In the configuration above:
 
-* `Host eidf-gateway<project_id>` includes configuration parameters specific to the EIDF-Gateway only.
+* `Host eidf-gateway<project_id>` includes configuration parameters specific to the EIDF Gateway only.
 * `Host <host_name>` includes configuration parameters specific to the EIDF VM only.
 * `Host eidf-gateway<project_id> <host_name>` includes configuration parameters common to both.
 
@@ -393,7 +393,7 @@ The SSH configuration file parameters are as follows (from [ssh_config](https://
 
 When `ssh <host_name>` is run, the following happens:
 
-* A search is done in the SSH configuration file for all blocks whose `Host` includes the pattern `<host_name>` and the configuration parameters from all matching blocks are aggregated. This gives the following parameters for `<host_name>`, that is, everything needed to connect to the EIDF VM at `<host_ip>` via the EIDF-Gateway:
+* A search is done in the SSH configuration file for all blocks whose `Host` includes the pattern `<host_name>` and the configuration parameters from all matching blocks are aggregated. This gives the following parameters for `<host_name>`, that is, everything needed to connect to the EIDF VM at `<host_ip>` via the EIDF Gateway:
 
     ```text
     HostName <host_ip>
@@ -403,7 +403,7 @@ When `ssh <host_name>` is run, the following happens:
     IdentitiesOnly yes
     ```
 
-* As these configuration parameters include a `ProxyJump`, a search is done for all blocks whose `Host` includes the pattern `eidf-gateway<project_id>` and, again, the parameters are aggregated. This gives the following parameters for `eidf-gateway<project_id>`, that is, everything needed to connect to the EIDF-Gateway:
+* As these configuration parameters include a `ProxyJump`, a search is done for all blocks whose `Host` includes the pattern `eidf-gateway<project_id>` and, again, the parameters are aggregated. This gives the following parameters for `eidf-gateway<project_id>`, that is, everything needed to connect to the EIDF Gateway:
 
     ```text
     HostName eidf-gateway.epcc.ed.ac.uk
@@ -412,7 +412,7 @@ When `ssh <host_name>` is run, the following happens:
     IdentitiesOnly yes
     ```
 
-* A connection is made to the EIDF-Gateway, using the username (`User`) and private key (`IdentityFile`), and then on to the EIDF VM, again, using the username (`User`) and private key (`IdentityFile`).
+* A connection is made to the EIDF Gateway, using the username (`User`) and private key (`IdentityFile`), and then on to the EIDF VM, again, using the username (`User`) and private key (`IdentityFile`).
 
 ### Specify port forwarding
 
@@ -658,6 +658,6 @@ To remove a public key from your project account:
 
 ## EIDF VM passwords
 
-An SSH private-public key pair is sufficient to access an EIDF VM via SSH and the EIDF-Gateway, you do not have to set a password for your account on that VM.
+An SSH private-public key pair is sufficient to access an EIDF VM via SSH and the EIDF Gateway, you do not have to set a password for your account on that VM.
 
 However, if you intend to run commands via 'sudo' once logged in, then you will need your EIDF VM password. You can set (or reset) a password via the 'User Account Info' page in the EIDF Portal by following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
