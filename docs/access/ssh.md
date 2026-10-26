@@ -428,12 +428,9 @@ For example:
 ssh eidf000-vm -L 23001:localhost:3389
 ```
 
-To save typing, you can add port forwarding parameters to EIDF VM's host block in your SSH configuration file, using the `LocalForward` parameter. An additional SSH parameter, `ServerAliveInterval` can configure 'ssh' to regularly request a response from the server which can help to avoid connection timeouts:
+To save typing, you can add port forwarding parameters to the EIDF VM's host block in your SSH configuration file, using the `LocalForward` parameter. An additional SSH parameter, `ServerAliveInterval` can configure 'ssh' to regularly request a response from the server which can help to avoid connection timeouts:
 
 ```text
-Host <host_name>
-    HostName <host_ip>
-    ProxyJump eidf-gateway<project_id>
     LocalForward <local_port> localhost:<eidf_vm_port>
     ServerAliveInterval <interval_in_seconds>
 ```
