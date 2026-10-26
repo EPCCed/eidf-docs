@@ -414,7 +414,7 @@ When `ssh <host_name>` is run, the following happens:
 
 * A connection is made to the EIDF-Gateway, using the username (`User`) and private key (`IdentityFile`), and then on to the EIDF VM, again, using the username (`User`) and private key (`IdentityFile`).
 
-### Port forwarding and the SSH configuration file
+### Specify port forwarding
 
 If using a SSH configuration file, you can still forward ports by using `-L <local_port>:localhost:<eidf_vm_port>` parameters:
 
@@ -456,7 +456,7 @@ Host eidf000-vm
     LocalForward 18192 localhost:8192
 ```
 
-### Adding other hosts for the same project
+### Add other hosts for the same project
 
 To add other hosts for the same project, add a new `Host` block for the host, with `HostName` and `ProxyJump` parameters for the host, and edit the `Host eidf-gateway<project_id> <host_name>` pattern to add the new host name. For example, the following adds to the example above content for another project host `<other_host>` with IP address `<other_host_ip>`:
 
@@ -475,7 +475,7 @@ Host eidf-gateway<project_id> <host_name> <other_host_name>
     IdentitiesOnly yes
 ```
 
-### Adding hosts for other project(s)
+### Add hosts for other project(s)
 
 If you have access to EIDF VMs in multiple projects, then you can add entries for each project using the template given at the start of this [Write an SSH configuration file](#write-an-ssh-configuration-file) section, and replacing `<project_id>` with the appropriate EIDF VM project ID in each case.
 
