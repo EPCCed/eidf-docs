@@ -1,120 +1,217 @@
-# RDP tunnelling over SSH
+# Access remote desktops via SSH
 
-RDP tunneling is a technique that relies on SSH to create a secure channel that forwards local traffic to a remote server's RDP port. The content of the local traffic in RDP tunneling includes:
+The [EIDF Virtual Desktop Interface (VDI)](../../access/virtualmachines-vdi.md) provides a way of using EIDF VMs via SSH or remote desktop sessions run within your browser. On this page an alternative is described, using a remote desktop client running on your local host to connect to a remote desktop service running on your EIDF VM.
 
-- User Input: Keyboard and mouse actions.
-- Display Data: Screen updates and graphical interface data.
-- Clipboard Contents: Text or files copied and pasted between the local and remote systems.
-- File Transfers: Transferred files if drive redirection is enabled.
+Using a remote desktop client can be both more usable and useful than the VDI for long periods of work. Remote desktop clients can offer a a sharper display than the VDI, better support for copying and pasting, and support for file sharing and other features that may not be available via the VDI.
 
-By setting up an SSH tunnel, a local port is forwarded to the remote server's RDP port (3389). The RDP client is then connected to `localhost:<local_port>`, ensuring that the RDP session is encrypted.
+!!! Tip "Try the VDI first"
 
-## SSH Commands
+    It is strongly recommended that you, initially at least, try using EIDF VMs via remote desktop connections supported by the [EIDF Virtual Desktop Interface (VDI)](../../access/virtualmachines-vdi.md) as the steps to access the remote desktop via the VDI are far more straightforward than those to use a remote desktop client.
 
-### Steps
+!!! Note "Remote desktop client connection security"
 
-1. Jump host (-J): connect first to the eidf_gateway as an intermediary before reaching the target VM. Authentication is achieved using the identity file provided by the host (-i).
-1. Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.
-1. Configure a RDP client (for example 'Windows App') to connect to `localhost:<local_forwarded_port>` instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.
+    Interactions with the remote desktop client on your local host are securely forwarded, or 'tunnelled', via SSH, to the remote desktop service on your EIDF host, and vice-versa. All your interactions with the remote desktop, including keyboard and mouse clicks, the display state, clipboard contents and files (if drive redirection is enabled) are encrypted.
 
-### Example
+---
 
-Connect to eidf666 (IP address 10.24.2.224) as user u666
+## Set up SSH access to your EIDF VM and configure port forwarding
 
-```sh
-ssh -J u666@eidf-gateway.epcc.ed.ac.uk -L 23001:localhost:3389 u666@10.24.2.224
-```
+To connect to a remote desktop service running on your EIDF VM you need to both:
 
-Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.
+1. Set up SSH access.
+1. Connect to the EIDF VM via SSH, forwarding ports from a custom port on your local host to the remote desktop service port, 3389, on your EIDF VM.
 
-Once the connection is established, on Windows App or similar use pc name: `localhost:23001`. When prompted, the username will be 'u666' with corresponding password.
+See [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md) for instructions on how to:
 
-### SSH Configuration
+* Set up SSH access.
+* Connect to an EIDF VM via SSH.
+* Access services on an EIDF VM via port forwarding and SSH tunnelling.
+* Write an SSH configuration file.
+* Specify port forwarding within the SSH configuration file.
 
-All of the above can also be achieved adding the following to the SSH `.config` file:
+!!! Note "Limitations of some remote desktop clients"
 
-```sh
-host eidf666_gateway
-    Hostname eidf-gateway.epcc.ed.ac.uk
-    User u666
-    IdentityFile ~/.ssh/eidf666-vm
+    Whilst some remote desktop clients support access to VMs via jump hosts, some clients to not support everything required to connect to an EIDF VM via the EIDF Gateway. For example, the [Windows App](https://apps.apple.com/us/app/windows-app/id1295203466) for MacOS does not support connections via SSH keys. This is why accessing your EIDF VM via SSH, and configuring port forwarding, is also required.
 
-host eidf666_rdp
-    Hostname 10.24.2.224
-    User u666
-    PubKeyAuthentication yes
-    PasswordAuthentication yes
-    IdentityFile ~/.ssh/eidf666-vm
-    ProxyJump eidf666_gateway
-    ServerAliveInterval 900
-    ForwardAgent yes
-    ForwardX11 yes
-    ForwardX11Trusted yes
-    LocalForward 23001 localhost:3389
-```
+---
 
-Can then use the command 'ssh eidf666_rdp' to create the connection.
-
-## Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client
-
-The Guacamole web interface makes it easy to connect to a remote desktop. This page details how to connect with a dedicated remote desktop client application, which can be useful for longer work. Dedicated remote desktop viewer programs allow better support for copy and pasting, file sharing and other features that may not be available on the web interface.
-
-!!! warning "Prerequisites"
-     It is recommended to connect to the host machine via Guacamole **first** as this process is simpler see instructions in [Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)](../../access/virtualmachines-vdi.md)
-
-We refer to a **Host** machine as the machine with an RDP server running on it, within EIDF infrastructure this is the Virtual machine.
-
-The **Client** machine is any machine that you are using to connect to the host machine via the RDP protocol and remote desktop viewing software.
-
-!!! warning
-     Opening a remote connection means having full access to the host machines as though it was unlocked on your desk. You should not provide access credentials to other users you would not want using the machine or leave your client machine unattended and unlocked whilst connected as this risks the EIDF Virtual Machine being accessed by unauthorized users!
-
-Using RDP tunnelling allows you to connect to a remote desktop machine securely through an SSH tunnel. This is particularly useful when accessing Virtual Desktop Infrastructure (VDI) machines on the EIDF.
-
-!!! note
-     Port forwarding is needed to get through the EIDF gateway. Whilst some remote desktop viewers support gateways they do not always support all the required features for connection to the EIDF gateway (e.g. the Windows app for macOS does not support SSH keys)
-
-Instructions specific to the operating system in use are given in the below sections. If you have your own preferred remote desktop viewing software or cannot use the below instructions for whatever reason then the key details to be configured are:
-
-```text
-PC or server name and port: localhost:23001
-VDI account credentials: We recommend leaving this blank or as 'Ask when
-required' until you have successfully connected to the machine. If prompted for
-credentials you will need those which you have for VDI connections, the same as
-in Guacamole
-Protocol: RDP
-Friendly Name: <ProjectID> Remote Connection via local port
-```
-
-### Windows
-
-The Microsoft Windows documentation [Remote Desktop Connection](https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) is relevant from step 2 "_Use Remote Desktop to connect to the PC you set up_" onwards. The Remote Desktop Connection program is preinstalled on Windows machines.
-
-1. Open the 'Remote Desktop Connection' program (`mstsc` in Run)
-1. Input `localhost:<port forwarded to>` e.g. `localhost:23001` as the connection name![Windows Remote Desktop](../../images/access/rdp_client_connect/Windows_Remote_Desktop.png)
-1. Click 'Connect'
-1. Input VDI login credentials once prompted at the login screen
-
-### macOS
-
-These instructions use the [Microsoft Windows App](https://learn.microsoft.com/en-us/windows-app/) a free program available from the [Apple App Store](https://apps.apple.com/us/app/windows-app/id1295203466?mt=12).
-
-1. Open the Windows App -> Click '+' -> Add PC
-1. Input into 'PC Name' the forwarded port on the local machine `localhost:<port forwarded to>` e.g. `localhost:23001`![macOS server input](../../images/access/rdp_client_connect/macos_ip_input.png)
-1. Also add a 'friendly name' to describe the device being connected to
-1. Leave all other options as defaults at this stage
-1. Click Add
-1. Double-click on the newly created PC to connect
-1. You will be prompted for the VDI username and password
+## Install a remote desktop client
 
 ### Linux
 
-The following uses [Remmina](https://remmina.org), a stable Linux RDP client available via most package managers.
+[Remmina](https://remmina.org) is a remote desktop client for Linux. Under Ubuntu, Remmina can be installed by running:
 
-1. Install and open Remmina
-1. Select "Add a new connection profile" in the top right for the connection profile window to appear![linux add new connection](../../images/access/rdp_client_connect/Add_New_Connection_Remmina.png)
-1. Ensure that 'Protocol' is set to RDP
-1. In the 'Server' field input the localhost and forwarded port `localhost:<port forwarded to>` e.g. `localhost:23001`![Linux configuration via Remmina](../../images/access/rdp_client_connect/Connection_Config_Remmina.png)
-1. Enter a 'Friendly Name' to describe the device being connected to
-1. Leave the 'Username' and 'Password' fields blank at this stage. After your first successful connection, save your VDI credentials here for easier connection in the future
-1. Click Save and Connect to start the remote desktop connection. You will be able to double-click on the friendly name in the main Remmina pane the next time you want to connect to the machine
+```bash
+sudo apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
+```
+
+For other Linux flavours, see Remmina's [How to install Remmina](https://remmina.org/how-to-install-remmina/).
+
+### Windows
+
+Windows provides a built-in remote desktop client, Remote Desktop Connection.
+
+### MacOS
+
+[Windows App](https://apps.apple.com/us/app/windows-app/id1295203466) is a free remote desktop client for MacOS. Despite its name, it can be used to connect to Linux VMs also.
+
+---
+
+## Connect to the EIDF VM via SSH
+
+If you are not using an SSH configuration file, then run the 'ssh' command described in [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md):
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf<project_id> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf<project_id> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+where:
+
+* `<project_id>` is your EIDF project ID.
+* `<user>` is your project account username.
+* `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the [EIDF Portal](https://portal.eidf.ac.uk/).
+* `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
+* `-i` specifies your private key file.
+* `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
+* `<local_port>` is a port on your local host.
+* `localhost` refers to your EIDF VM.
+* `<eidf_vm_port>` is a port on your EIDF host.
+
+For example
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+```
+
+If you using an SSH configuration file of the format described in [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md) i.e.:
+
+```text
+Host eidf-gateway<project_id>
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host <host_name>
+    HostName <host_ip>
+    ProxyJump eidf-gateway<project_id>
+Host eidf-gateway<project_id> <host_name>
+    User <user>
+    IdentityFile ~/.ssh/id_ed25519_eidf<project_id>
+    IdentitiesOnly yes
+    LocalForward <local_port> localhost:<eidf_vm_port>
+```
+
+For example:
+
+```text
+Host eidf-gateway000
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway000
+Host eidf-gateway000 eidf000-vm
+    User some-eidf-user
+    IdentityFile ~/.ssh/id_ed25519_eidf000
+    IdentitiesOnly yes
+    LocalForward 23001 localhost:3389
+```
+
+then, run the 'ssh' command:
+
+```bash
+ssh <host_name>
+```
+
+For example:
+
+```bash
+ssh eidf000-vm
+```
+
+---
+
+## Connect to the EIDF VM remote desktop service via a remote desktop client
+
+Though specific remote desktop clients vary, the following settings are common to many clients:
+
+* Remote desktop server host name and port. As port forwarding is being used, for EIDF VMs the host and port is `localhost:<local_port>` e.g., `localhost:23001`.
+* Protocol. 'RDP' or 'Remote Desktop'.
+* Memorable name for the connection. One option is to enter a enter a name including the EIDF VM `<host_name>` e.g., `eidf000-vm (SSH/RDP)`.
+* Username and password. This will be your EIDF VM username and password.
+
+!!! Tip "Caching usernames and passwords"
+
+    It is recommend that initially you do not cache these values, but instead enter them when the connection is established, or alternatively that you select any 'Ask when required' option, if offered. This allows you to check that you can successfully set up a remote desktop session with your EIDF VM.
+
+    If caching passwords, you should check out the documentation for the remote desktop client you are using, to see how passwords are cached, and how securely.
+
+!!! Warning "Do not leave your remote desktop client session unattended"
+
+    Once a remote desktop client has connected to the EIDF VM, you have access to your EIDF VM as though it was an application running on your local host. You should not leave your local host unlocked while connected to an EIDF VM as this risks both your local host and EIDF VM being accessed by unauthorised users!
+
+### Connect using Remmina on Linux
+
+To run Remmina:
+
+1. Run:
+
+    ```bash
+    remmina
+    ```
+
+1. The Remmina Remote Desktop Client will appear.
+
+To connect to a remote desktop service in the Remmina Remote Desktop Client:
+
+1. Click **+** (New Connection Profile), on the top-left of the client.
+1. A 'Remote Connection Profile' dialog will appear.
+1. Enter **Name**: enter a memorable name for the connection.
+1. Select **Protocol**: RDP - Remote Desktop Protocol.
+1. Enter **Server**: `localhost:<local_port>` e.g., `localhost:23001`
+1. Click **Save and Connect**.
+1. An 'Enter RDP authentication credentials' dialog will appear.
+1. Enter **Username** and **Password**: your EIDF VM username and password.
+1. Click **OK**.
+1. A window will appear with a remote desktop for your EIDF VM.
+
+To reconnect to a remote desktop service in the Remmina Remote Desktop Client:
+
+1. Double-click on on the row for your remote desktop connection.
+1. An 'Enter RDP authentication credentials' dialog will appear.
+1. Enter **Username** and **Password**: your EIDF VM username and password.
+1. Click **OK**.
+1. A window will appear with a remote desktop for your EIDF VM.
+
+To cache your username and, if desired, password in the Remmina Remote Desktop Client:
+
+1. Right-click on the row for your remote desktop connection, select **Edit**.
+1. The 'Remote Connection Profile' dialog will appear.
+1. Enter **Username** and **Password**: your EIDF VM username and password.
+1. Click **OK**.
+1. A window will appear with a remote desktop for your EIDF VM.
+
+### Connect using Remote Desktop Connection on Windows
+
+To connect to a remote desktop service using Remote Desktop Connection:
+
+1. Click Windows **Start** or **Search**.
+1. Enter 'Remote Desktop Connection' or `mstsc` in the search field.
+1. Click **Remote Desktop Connection** when it appears.
+1. The 'Remote Desktop Connection' dialog will appear.
+1. Enter **Computer**: `localhost:<local_port>` e.g., `localhost:23001`
+1. Click **Connect**.
+1. A 'The identity of the remote computer cannot be verified. Do you want to connect anyway?' dialog will appear.
+1. Click **Yes**.
+1. A window will appear with a remote desktop for your EIDF VM.
+1. Log in using your EIDF VM username and password.
+
+### Connect using Windows App on MacOS
+
+To connect to a remote desktop service using Windows app:
+
+1. Open the Windows App
+1. Click **+**, select **Add PC**.
+1. The 'Add PC' dialog will appear.
+1. Enter **PC Namer**: `localhost:<local_port>` e.g., `localhost:23001`
+1. Enter **Friendly name**: : enter a memorable name for the connection.
+1. Select **Reconnect if the connection is dropped**.
+1. Click **Add**.
+1. Double-click on on the row for your remote desktop connection.
+1. You will be prompted for your EIDF VM username and password.
