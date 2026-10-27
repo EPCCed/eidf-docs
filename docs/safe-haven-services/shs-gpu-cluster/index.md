@@ -21,9 +21,9 @@ The full specification of the SHS GPU Cluster as of October 2025 is as follows:
 
 ## SHS GPU Cluster Access
 
-!!! Important "Early Adopters"
+!!! Important "Access"
 
-    The EPCC SHS GPU Cluster is currently open to early adopters. Please contact the Research Coordinator team of your Safe Haven to discuss.
+    The EPCC SHS GPU Cluster is currently open. Please contact the Research Coordinator team of your Safe Haven to discuss.
 
 Users should have a [SHS Account](../safe-haven-access.md) as the SHS GPU Cluster is only accessible through Safe Haven Virtual Machines.
 
@@ -92,7 +92,9 @@ The SHS GPU Cluster has been using the Kueue system since May 2025. The use of t
 
     As a general rule, the higher the GPU/CPU/Memory resource request of a single job, the longer the job will queue before enough resources are free on a single node for it to be allocated.
 
-    Furthermore, a project may have a quota of up to 12 GPUs but due to demand may only be able to access a smaller number at any given time.
+    Furthermore, each individual job can request a maximum of 8 GPUs, as each GPU node has 8 GPUs, so a job asking for 9 more GPUs will never get scheduled to run.
+
+    Users can submit multiple concurrent jobs, even exceeding their maximum quota. For example, a project with a quota of 12 GPUs could submit three concurrent jobs requesting 8, 4, and 2 GPUs respectively. However, since the total request of 14 GPUs exceeds the project's 12-GPU quota, not all jobs can run simultaneously, and one job will remain queued until other jobs of this project finish, so the total jobs running never exceed the project quota.
 
 ## Additional Service Information
 

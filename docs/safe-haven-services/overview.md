@@ -40,6 +40,8 @@ The SHS GPU Cluster is not included in the standard bundle and all use incurs a 
 
 To find the price of the GPU-hour for the GPU Cluster, please check the specification of the GPUs on the GPU Cluster page and seek that on the [EIDF Access page](https://edinburgh-international-data-facility.ed.ac.uk/access). For example, for A100, seek “NVIDIA A100 in GPU Service”, for the correct type of user.
 
+Please note that charging is by the number of GPUs specified in the job definition, not the number of GPUs that the job actually uses. That is because we do not over-allocate GPUs on the SHS GPU Cluster, and so, while the job is running, other jobs cannot use the under-utilised GPUs of the job.
+
 ### Quotation and billing
 
 Safe Haven Controllers: To agree use of resources not covered by the current agreement please contact your dedicated helpdesk with your requirements. Please include type of resource, number of units and period of access.
