@@ -1,14 +1,48 @@
 # Login
 
-The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion, as for the EIDF VirDS desktop VMs. This requires two credentials, your SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
+Access to CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as used for accessing EIDF virtual desktop VMs via SSH. This access requires two credentials: an SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
 
-## Access credentials
+## Set up access credentials
 
-To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for `eidf-gateway`.
+[Set up SSH access](../../access/ssh.md#set-up-ssh-access) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md) describes how to:
 
-To configure your SSH keys and MFA (TOTP) token, see [SSH access via the EIDF Gateway jump host](../../access/ssh.md).
+* Create an SSH private-public key pair
+* Add the public key to your project account
+* Get a multi-factor authentication app.
+* Set up multi-factor authentication, so you can get a TOTP when you connect.
 
-### SSH Login example
+### Log in to CS3 user-nodes
 
-To login to the CS3 user-nodes, you will need to use the SSH Key and TOTP token as noted above.
-With the appropriate key loaded<br>`ssh -J <username>@eidf-gateway.epcc.ed.ac.uk cerebras` will then prompt you, roughly once per day, for your TOTP code.
+If you created your private key file with a default private key file name (e.g., `id_ed25519` or `id_rsa`), then you can connect to CS3 by running:
+
+```bash
+ssh -J <user>@eidf-gateway.epcc.ed.ac.uk cerebras
+```
+
+Alternatively, if you use custom private key file names, you can connect to CS3 by running:
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@cerebras
+```
+
+Alternatively, you can add the following definition to an SSH configuration file, `$HOME/.ssh/config`:
+
+```text
+Host eidf-gateway-cerebras
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host cerebras
+    HostName cerebras
+    ProxyJump eidf-gateway
+Host eidf-gateway cerebras
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+```
+
+then, you can connect to CS3 by running:
+
+```bash
+ssh cerebras
+```
+
+In each case, you will be prompted for your SSH key passphrase, then your TOTP, then your SSH key passphrase again. You will only be prompted for a TOTP code roughly once a day.
