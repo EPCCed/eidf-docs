@@ -13,13 +13,13 @@ Access to CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as us
 
 ### Log in to CS3 user-nodes
 
-If your private key file has a default OpenSSH private key file name (e.g., `id_ed25519` or `id_rsa`) then run:
+If your private key file has a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`) then run:
 
 ```bash
 ssh -J <user>@eidf-gateway.epcc.ed.ac.uk cerebras
 ```
 
-Alternatively, if you are using a custom private key file name defined by you, then run:
+Alternatively, if your private key file has a custom name defined by you, then run:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@cerebras
