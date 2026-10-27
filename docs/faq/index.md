@@ -20,7 +20,7 @@ This may happen when a machine/VM was added to your connections list while you w
 
 ### Default SSH private keys
 
-'Can I connect to an EIDF VM using a private key file with a default OpenSSH private key file name (e.g., `id_ed25519` or `id_rsa`)?'
+'Can I connect to an EIDF VM using a private key file with a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`)?'
 
 Yes. In the 'ssh' command described in [SSH access via the EIDF Gateway jump host](../access/ssh.md) the use of named, non-default, private key files, can be replaced by the default private key file names. For example:
 
