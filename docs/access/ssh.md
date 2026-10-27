@@ -28,51 +28,50 @@ The above steps need to be done by your project lead.
 
 Once your account has been created and access granted, you need to set up your SSH access as follows:
 
-1. [Create an SSH private-public key pair](#create-an-ssh-private-public-key-pair) on the host from which you want to access the EIDF VM via SSH.
+1. [Create SSH private and public keys](#create-ssh-private-and-public-keys) on the host from which you want to access the EIDF VM via SSH.
 1. [Add the public key to your project account](#add-the-public-key-to-your-project-account) within the EIDF Portal.
 1. [Get a multi-factor authentication app](#get-a-multi-factor-authentication-app).
 1. [Set up multi-factor authentication](#set-up-multi-factor-authentication) for your project account within the EIDF Portal.
 
 Once you have done these setup steps, you can [connect to your EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh).
 
-### Create an SSH private-public key pair
+### Create SSH private and public keys
 
-To create a SSH private-public key pair on the host from which you want to access the EIDF VM via SSH:
+To create SSH private and public keys on the host from which you want to access the EIDF VM via SSH:
 
-1. Create a `$HOME/.ssh` directory if one does not exist:
+1. Run `ssh-keygen` as follows:
 
-    Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:
+    * **EITHER** (recommended) Create private and public keys with a custom file name defined by you, where `-f <key_file>` specifies the path of the private key file to be created:
 
-    ```bash
-    mkdir -p $HOME/.ssh
-    ```
+        ```bash
+        ssh-keygen -f $HOME/.ssh/<key_file>
+        ```
 
-    Windows (Powershell):
+        For example:
 
-    ```powershell
-    mkdir -Force $HOME/.ssh
-    ```
+        ```bash
+        ssh-keygen -f $HOME/.ssh/id_ed25519_eidf000
+        ```
 
-1. Create an SSH private-public key pair:
+        !!! Tip "Naming the private key file"
 
-    ```bash
-    ssh-keygen -C '<comment>' -f $HOME/.ssh/<key_file>
-    ```
+             It is recommended that the private key file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>` i.e., `<key_file>` is `id_ed25519_eidf<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services. However, your choice of key name is up to you.
 
-    where:
+    * **OR** Create private and public keys with a default OpenSSH file name:
 
-    * `-C <comment>` is a comment added to the public key that is created, A suitable value for `<comment>` can be your email address, or a username and local host name (e.g., `some-user-laptop` or `some-user-cirrus`), Alternatively, `-C '<comment>'` can be omitted, and the default comment of `<user>@<host>` will be used.
-    * `-f <key_file>` specifies the private key file path.
+        ```bash
+        ssh-keygen
+        ```
 
-    For example:
+        You will be prompted to specify the key file name. For example:
 
-    ```bash
-    ssh-keygen -C 'some-user@somedept.ed.ac.uk' -f $HOME/.ssh/id_ed25519_eidf000
-    ```
+        ```bash
+        Enter file in which to save the key (/home/some-user/.ssh/id_ed25519):
+        ```
 
-    !!! Tip "Naming the private key file"
+        Press Enter/Return to accept the default.
 
-        It is recommended that the private file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>` i.e., `<key_file>` is `id_ed25519_eidf<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services. However, your choice of key name is up to you.
+        The default private key file name has a prefix `id_` followed by the default algorithm used to create the key e.g., `ed25519`.
 
 1. You will be prompted to enter, then re-enter a passphrase to protect your private key. For example:
 
@@ -106,6 +105,8 @@ To create a SSH private-public key pair on the host from which you want to acces
         ```
 
         The default `<key_type>` is `ssh-ed25519`.
+
+        The default `<comment>` is `<username>@<hostname>` where `<username>` and `<hostname>` are inferred by `ssh-keygen` from your local host. You can specify a comment by using the `ssh-keygen` parameter `-C <comment>`.
 
 ### Add the public key to your project account
 
@@ -161,26 +162,45 @@ To set up multi-factor authentication for your project account within the EIDF P
 
 To connect to an EIDF VM via SSH:
 
-1. Run:
+1. Run 'ssh' to connect to the EIDF VM via SSH and the EIDF Gateway:
 
-    ```bash
-    ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip>
-    ```
+    * **EITHER** If your private key file has a custom name defined by you, then run:
 
-    where:
+        ```bash
+        ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip>
+        ```
 
-    * `-i` specifies your private key file.
-    * `<key_file>` is your private key file.
-    * `<user>` is your project account username.
-    * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
-    * `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
-    * `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
+        where:
 
-    For example:
+        * `-i` specifies your private key file.
+        * `<key_file>` is your private key file.
+        * `<user>` is your project account username.
+        * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
+        * `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
+        * `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
 
-    ```bash
-    ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999
-    ```
+        For example:
+
+        ```bash
+        ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999
+        ```
+
+    * **OR** If your private key file has a default OpenSSH name (e.g., id_ed25519 or id_rsa) then run:
+
+        ```bash
+        ssh -J <user>@eidf-gateway.epcc.ed.ac.uk <user>@<host_ip>
+        ```
+
+        where:
+
+        * `<user>` is your project account username.
+        * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
+
+        For example:
+
+        ```bash
+        ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999
+        ```
 
 1. The first time that you connect to the EIDF Gateway you will be asked if you want to connect. For example:
 
@@ -303,18 +323,26 @@ i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM
 
 There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop service, if available, from a remote desktop client running on your local host (as described in [Remote desktop client access via SSH](./ssh-rdp.md)).
 
-For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' command, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host:
+For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' command, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host. For example:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
 ```
 
+```bash
+ssh -J <user>@eidf-gateway.epcc.ed.ac.uk <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+```
+
 Interactions with the local port on your local host are securely forwarded, or 'tunnelled', to the port on your EIDF host.
 
-For example, in the following, the port 23001 on a user's local host is forwarded to the remote desktop service port 3389 on their EIDF VM:
+For example, in each of the following, the port 23001 on a user's local host is forwarded to the remote desktop service port 3389 on their EIDF VM:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+```
+
+```bash
+ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999 -L 23001:localhost:3389
 ```
 
 Multiple `-L` parameters can be used, if required. For example:
@@ -327,13 +355,7 @@ ssh ... -L 23001:localhost:3389 -L 18192:localhost:8192
 
 ## Write an SSH configuration file
 
-The command to [connect to the EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh), described above, is very verbose:
-
-```bash
-ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip>
-```
-
-An SSH configuration file can be used to specify some, or all, of these parameters and so reduce the verbosity of this command.
+The commands to [connect to the EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh), described above, can become very verbose. An SSH configuration file can be used to specify some, or all, of these parameters and so reduce the verbosity of this command.
 
 Create a file, `$HOME/.ssh/config`, with the following content, or, if you already have an `$HOME/.ssh/config` file, then add the following content, where:
 

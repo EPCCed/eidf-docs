@@ -63,30 +63,35 @@ MacOS [Windows App](https://apps.apple.com/us/app/windows-app/id1295203466) is a
 
 ## Connect to the EIDF VM via SSH
 
-If you are not using an SSH configuration file, then run the 'ssh' command described in [SSH access via the EIDF Gateway jump host](./ssh.md):
+You can connect to the EIDF VM via SSH and set up port forwarding to allow for a remote desktop client to connect to a remote desktop service running on the EIDF VM as follows.
 
-```bash
-ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip> -L <local_port>:localhost:3389
-```
+If you **are not** using an SSH configuration file, then:
 
-where:
+* **EITHER** If your private key file has a custom name defined by you, then run:
 
-* `-i` specifies your private key file.
-* `<key_file>` is your private key file.
-* `<user>` is your project account username.
-* `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the [EIDF Portal](https://portal.eidf.ac.uk/).
-* `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
-* `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
-* `<local_port>` is a port on your local host to forward to the remote desktop service port 3389 on the EIDF VM.
-* `localhost` refers to your EIDF VM.
+    ```bash
+    ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip> -L <local_port>:localhost:3389
+    ```
 
-For example
+    For example
 
-```bash
-ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
-```
+    ```bash
+    ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+    ```
 
-If you using an SSH configuration file of the format described in [SSH access via the EIDF Gateway jump host](./ssh.md) i.e.:
+* **OR** If your private key file has a default OpenSSH name (e.g., id_ed25519 or id_rsa) then run:
+
+    ```bash
+    ssh -J <user>@eidf-gateway.epcc.ed.ac.uk <user>@<host_ip> -L <local_port>:localhost:3389
+    ```
+
+    For example:
+
+    ```bash
+    ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+    ```
+
+Alternatively, if you **are** using an SSH configuration file of the format described in [SSH access via the EIDF Gateway jump host](./ssh.md) i.e.:
 
 ```text
 Host eidf-gateway<project_id>
@@ -118,7 +123,7 @@ Host eidf-gateway000 eidf000-vm
     IdentitiesOnly yes
 ```
 
-then, run the 'ssh' command:
+then, run:
 
 ```bash
 ssh <host_name>
