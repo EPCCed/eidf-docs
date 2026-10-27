@@ -71,6 +71,12 @@ To create SSH private and public keys on the host from which you want to access 
 
         Press Enter/Return to accept the default.
 
+        !!! Warning "`.ssh/id_ed25519 already exists. Overwrite (y/n)?`"
+
+            If you have an existing key with the default name, then you will see this request. It is recommended that you enter `n` and then go down to [Add the public key to your project account](#add-the-public-key-to-your-project-account).
+
+            If you enter `y`, your current key will be overwritten, and a new public and private key created, and any services that you currently use it to access will need to have your new public key registered with them.
+
         The default private key file name has a prefix `id_` followed by the default algorithm used to create the key e.g., `ed25519`.
 
 1. You will be prompted to enter, then re-enter a passphrase to protect your private key. For example:
