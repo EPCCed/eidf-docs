@@ -451,7 +451,7 @@ Host eidf000-vm
     ServerAliveInterval 60
 ```
 
-Multiple `LookForward` parameters can be used, if required. For example:
+Multiple `LocalForward` parameters can be used, if required. For example:
 
 ```text
 Host eidf000-vm
