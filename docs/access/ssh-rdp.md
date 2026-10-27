@@ -39,9 +39,13 @@ See [SSH access via the EIDF Gateway jump host](./ssh.md) for instructions on ho
 
 ---
 
-## Install a remote desktop client
+## Set your EIDF VM password
 
-### Linux
+You will need to set a password for your EIDF VM, if you have not already done so. You can set (or reset) a password via the 'User Account Info' page in the EIDF Portal by following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
+
+---
+
+## Install a remote desktop client
 
 [Remmina](https://remmina.org) is a remote desktop client for Linux. Under Ubuntu, Remmina can be installed by running:
 
@@ -51,13 +55,9 @@ sudo apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
 
 For other Linux flavours, see Remmina's [How to install Remmina](https://remmina.org/how-to-install-remmina/).
 
-### Windows
-
 Windows provides a built-in remote desktop client, Remote Desktop Connection.
 
-### MacOS
-
-[Windows App](https://apps.apple.com/us/app/windows-app/id1295203466) is a free remote desktop client for MacOS. Despite its name, it can be used to connect to Linux VMs also.
+MacOS [Windows App](https://apps.apple.com/us/app/windows-app/id1295203466) is a free remote desktop client. Despite its name, it can be used to connect to Linux VMs also.
 
 ---
 
@@ -66,20 +66,19 @@ Windows provides a built-in remote desktop client, Remote Desktop Connection.
 If you are not using an SSH configuration file, then run the 'ssh' command described in [SSH access via the EIDF Gateway jump host](./ssh.md):
 
 ```bash
-ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf<project_id> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf<project_id> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip> -L <local_port>:localhost:3389
 ```
 
 where:
 
-* `<project_id>` is your EIDF project ID.
+* `-i` specifies your private key file.
+* `<key_file>` is your private key file.
 * `<user>` is your project account username.
 * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the [EIDF Portal](https://portal.eidf.ac.uk/).
 * `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
-* `-i` specifies your private key file.
 * `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
-* `<local_port>` is a port on your local host.
+* `<local_port>` is a port on your local host to forward to the remote desktop service port 3389 on the EIDF VM.
 * `localhost` refers to your EIDF VM.
-* `<eidf_vm_port>` is a port on your EIDF host.
 
 For example
 
@@ -95,12 +94,12 @@ Host eidf-gateway<project_id>
 Host <host_name>
     HostName <host_ip>
     ProxyJump eidf-gateway<project_id>
+    LocalForward <local_port> localhost:3389
+    ServerAliveInterval <interval_in_seconds>
 Host eidf-gateway<project_id> <host_name>
     User <user>
-    IdentityFile ~/.ssh/id_ed25519_eidf<project_id>
+    IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes
-    LocalForward <local_port> localhost:<eidf_vm_port>
-    ServerAliveInterval 60
 ```
 
 For example:
@@ -111,12 +110,12 @@ Host eidf-gateway000
 Host eidf000-vm
     HostName 10.24.999.999
     ProxyJump eidf-gateway000
+    LocalForward 23001 localhost:3389
+    ServerAliveInterval 60
 Host eidf-gateway000 eidf000-vm
     User some-eidf-user
     IdentityFile ~/.ssh/id_ed25519_eidf000
     IdentitiesOnly yes
-    LocalForward 23001 localhost:3389
-    ServerAliveInterval 60
 ```
 
 then, run the 'ssh' command:
@@ -135,16 +134,18 @@ ssh eidf000-vm
 
 ## Connect to the EIDF VM remote desktop service via a remote desktop client
 
+Having connected to the EIDF VM via SSH and set up port forwarding to the EIDF VM's remote desktop service, you are now ready to connect using a remote desktop client.
+
 Though specific remote desktop clients vary, the following settings are common to many clients:
 
-* Remote desktop server host name and port. As port forwarding is being used, for EIDF VMs the host and port is `localhost:<local_port>` e.g., `localhost:23001`.
+* Remote desktop server host name and port. As port forwarding is being used from your local host, the host and port is `localhost:<local_port>` e.g., `localhost:23001`.
 * Protocol. 'RDP' or 'Remote Desktop'.
-* Memorable name for the connection. One option is to enter a enter a name including the EIDF VM `<host_name>` e.g., `eidf000-vm (SSH/RDP)`.
-* Username and password. This will be your EIDF VM username and password.
+* Memorable name for the connection. One option is to use a name including the EIDF VM `<host_name>` and the connection protocol e.g., `eidf000-vm (SSH/RDP)`.
+* Username and password. Your EIDF VM username and password.
 
 !!! Tip "Caching usernames and passwords"
 
-    It is recommend that initially you do not cache these values, but instead enter them when the connection is established, or alternatively that you select any 'Ask when required' option, if offered. This allows you to check that you can successfully set up a remote desktop session with your EIDF VM.
+    It is recommend that initially you do not cache these values in a remote desktop client, but instead enter them when the connection is established, or, alternatively, that you select any 'Ask when required' option, if offered. This allows you to check that you can successfully set up a remote desktop session with your EIDF VM.
 
     If caching passwords, you should check out the documentation for the remote desktop client you are using, to see how passwords are cached, and how securely.
 
@@ -166,7 +167,7 @@ To run Remmina:
 
 To connect to a remote desktop service in the Remmina Remote Desktop Client:
 
-1. Click **+** (New Connection Profile), on the top-left of the client.
+1. Click **+** ('Add a new connection profile'), on the top-left of the client.
 1. A 'Remote Connection Profile' dialog will appear.
 1. Enter **Name**: enter a memorable name for the connection.
 1. Select **Protocol**: RDP - Remote Desktop Protocol.
@@ -190,7 +191,7 @@ To cache your username and, if desired, password in the Remmina Remote Desktop C
 1. Right-click on the row for your remote desktop connection, select **Edit**.
 1. The 'Remote Connection Profile' dialog will appear.
 1. Enter **Username** and **Password**: your EIDF VM username and password.
-1. Click **OK**.
+1. Click **Save and Connect**.
 1. A window will appear with a remote desktop for your EIDF VM.
 
 ### Connect using Remote Desktop Connection on Windows
