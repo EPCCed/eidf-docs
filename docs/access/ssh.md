@@ -12,7 +12,7 @@ Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is 
 
     You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your local host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your local host to an EIDF VM.
 
-SSH (OpenSSH) is available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.
+SSH (OpenSSH) is available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, or Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.
 
 ---
 
