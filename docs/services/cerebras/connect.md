@@ -6,7 +6,7 @@ The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion
 
 To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for `eidf-gateway`.
 
-To configure your SSH keys and MFA (TOTP) token, see [our general SSH documentation.](https://docs.eidf.ac.uk/access/ssh/)
+To configure your SSH keys and MFA (TOTP) token, see [SSH access via the EIDF Gateway jump host](../../access/ssh.md).
 
 ### SSH Login example
 
