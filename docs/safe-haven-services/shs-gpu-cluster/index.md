@@ -21,9 +21,9 @@ The full specification of the SHS GPU Cluster as of October 2025 is as follows:
 
 ## SHS GPU Cluster Access
 
-!!! Important "Early Adopters"
+!!! Important "Access"
 
-    The EPCC SHS GPU Cluster is currently open to early adopters. Please contact the Research Coordinator team of your Safe Haven to discuss.
+    The EPCC SHS GPU Cluster is currently open. Please contact the Research Coordinator team of your Safe Haven to discuss.
 
 Users should have a [SHS Account](../safe-haven-access.md) as the SHS GPU Cluster is only accessible through Safe Haven Virtual Machines.
 
