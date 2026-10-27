@@ -80,7 +80,7 @@ To create a SSH private-public key pair on the host from which you want to acces
 
     Whenever you use the private key, you will be prompted for the passphrase.
 
-    !!! Tip "Use a unique passphrase"
+    !!! Tip "Use a unique non-empty passphrase"
 
         It is **strongly recommended** that you use a unique, **non-empty**, passphrase for each key that your create.
 
