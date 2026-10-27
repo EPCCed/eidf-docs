@@ -113,7 +113,7 @@ To add the public key to your project account:
 1. Your 'User Account Info' page will appear.
 1. Under 'Credentials', click the **+ (plus)** button.
 1. Either, the paste contents of the public key file, `$HOME/.ssh/id_ed25519_eidf<project_id>.pub`, into the **Credential** field.
-1. Or, click **Choose file** and select the public key file, `$HOME/.ssh/id_ed25519_eidf<project_id>.pub`
+1. Or, click **Choose File** and select the public key file, `$HOME/.ssh/id_ed25519_eidf<project_id>.pub`
 1. Click **Upload Credential**.
 1. The 'User Account Info' page will reappear.
 1. Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'.
