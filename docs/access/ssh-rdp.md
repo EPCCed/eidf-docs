@@ -4,7 +4,7 @@ The [EIDF Virtual Desktop Interface (VDI)](./virtualmachines-vdi.md) provides a 
 
 Using a remote desktop client can be both more usable and useful than the VDI for long periods of work. Remote desktop clients can offer a a sharper display than the VDI, better support for copying and pasting, and support for file sharing and other features that may not be available via the VDI.
 
-!!! Important "Remote desktop client preprequisites"
+!!! Important "Remote desktop client prerequisites"
 
     You can only access an EIDF VM via a remote desktop client if your project lead has granted you permission to access both the VM and the EIDF Gateway and the EIDF VM is running a remote desktop service, which a project lead can configure via the EIDF Portal.
 
