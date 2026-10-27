@@ -43,9 +43,11 @@ nav:
     - "Acknowledgements": overview/acknowledgements.md
     - "Contact": overview/contacts.md
   - "Service Access":
-    - "Web and SSH": access/index.md
-    - "EIDF Web Portal": access/project.md
-    - "Virtual Desktop Interface": access/virtualmachines-vdi.md
+    - "Overview": access/index.md
+    - "EIDF Portal": access/project.md
+    - "Virtual Desktop Interface (VDI)": access/virtualmachines-vdi.md
+    - "SSH access via the EIDF Gateway jump host": access/ssh.md
+    - "Remote desktop client access via SSH": access/ssh-rdp.md
   - "Storage in the EIDF":
     - "Overview": storage/overview.md
     - "FAQs": storage/faq.md
@@ -54,12 +56,9 @@ nav:
       - "Overview": services/virtualmachines/index.md
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Managing VMs": services/virtualmachines/docs.md
-      - "Virtual Desktop Interface": access/virtualmachines-vdi.md
       - "Shared Filesystem": services/virtualmachines/sharedfs.md
-      - "SSH Access to VMs": access/ssh.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
-      - "RDP tunnelling over SSH": services/virtualmachines/rdp-tunnelling.md
     - "Confidential Data Workspace":
       - "Overview": services/confidentialdataworkspace/index.md
       - "Admin Quickstart": services/confidentialdataworkspace/quickstart.md

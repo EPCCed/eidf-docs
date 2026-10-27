@@ -1,7 +1,6 @@
 # Accessing EIDF
 
-Some EIDF services are accessed via a Web browser and some by "traditional" command-line
-`ssh`.
+Some EIDF services are accessed via a Web browser and some by "traditional" command-line SSH.
 
 All EIDF services use the [EPCC SAFE](https://safe.epcc.ed.ac.uk/) service management
 back end, to ensure compatibility with other EPCC high-performance computing services.
@@ -22,7 +21,11 @@ desktop interface.
 
 ## SSH Access to Virtual Machines
 
-Users with the appropriate permissions can also [use `ssh` to login to Virtual Desktop VMs](./ssh.md)
+Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH. See [SSH access via the EIDF Gateway jump host](./ssh.md).
+
+## Remote Desktop Client Access to Virtual Machines
+
+Users who have been granted access to an EIDF virtual machine via SSH may also connect to the virtual machine via a remote desktop client, if the virtual machine has a remote desktop service installed. See [Remote desktop client access via SSH](./ssh-rdp.md).
 
 ## SSH Access to Confidential Data Workspace Service
 
@@ -30,12 +33,7 @@ Remote SSH access to Confidential Data Workspace VMs is **disabled** for securit
 
 ## SSH Access to Computing Services
 
-Includes access to the following services:
+SSH access is used for the following services:
 
 * [Ultra2](../services/ultra2/index.md)
 * [EIDF Interim and Experimental Systems](../services/experimental/index.md)
-
-To login to most command-line services with `ssh` you should use the username and password
-you obtained from SAFE when you applied for access, along with the SSH Key you
-registered when creating the account. You can then login to the host following the appropriately linked instructions
-above.

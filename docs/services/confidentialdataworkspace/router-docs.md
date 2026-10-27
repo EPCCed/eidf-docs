@@ -41,7 +41,7 @@ Host eidfxxx-router
 
 Where the `<Router IP Address>` can be found in the EIDF Portal under the project details page. Note that the CDW Proxy Address is not the IP address that you use to SSH to the router, the address under `machines`, `eidfxxx-router` is the correct address to use for ssh access to the router.
 
-SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
+SSH credentials for the router can be added in the EIDF Portal under the project details page. See [Add the public key to your project account](../../access/ssh.md#add-the-public-key-to-your-project-account) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md), using your public key file.
 
 You can then connect to the router using the command:
 
@@ -65,7 +65,7 @@ Host eidfxxx-<vm-name>
 
 Where the VM IP Address can be found in the EIDF Portal under the project details page, under the `machines` section for the relevant VM.
 
-SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on [ssh Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
+SSH credentials for the router can be added in the EIDF Portal under the project details page. See [Add the public key to your project account](../../access/ssh.md#add-the-public-key-to-your-project-account) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md), using your public key file.
 
 You can then connect to the VM using the command:
 

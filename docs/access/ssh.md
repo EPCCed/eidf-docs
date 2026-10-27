@@ -1,6 +1,6 @@
-# Access EIDF VMs via SSH and the EIDF Gateway jump host
+# SSH access via the EIDF Gateway jump host
 
-EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the EIDF [Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
+EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the [EIDF Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
 
 Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
 
@@ -60,7 +60,7 @@ To create a SSH private-public key pair on the host from which you want to acces
     where:
 
     * `-C <comment>` is a comment added to the public key that is created, A suitable value for `<comment>` can be your email address, or a username and local host name (e.g., `some-user-laptop` or `some-user-cirrus`), Alternatively, `-C '<comment>'` can be omitted, and the default comment of `<user>@<host>` will be used.
-    * `-f` specifies the private key file path. It is recommended that the file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services.
+    * `-f` specifies the private key file path. It is recommended that the file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services. However, your choice of key name is up to you.
 
     For example:
 
@@ -295,7 +295,7 @@ i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM
 
 ## Access services on an EIDF VM via port forwarding and SSH tunnelling
 
-There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop from a remote desktop client running on your local host (as described in [Remote desktop tunnelling over SSH](../services/virtualmachines/rdp-tunnelling.md)).
+There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop from a remote desktop client running on your local host (as described in [Remote desktop client access via SSH](./ssh-rdp.md)).
 
 For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' call, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host:
 

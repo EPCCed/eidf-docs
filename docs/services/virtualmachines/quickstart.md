@@ -65,4 +65,6 @@ There may be a short delay while the change is implemented before the new passwo
 
 [Virtual Desktop Interface](../../access/virtualmachines-vdi.md): Working with the VDI interface.
 
-[EIDF Gateway](../../access/ssh.md): SSH access to VMs via the EIDF SSH Gateway jump host.
+[SSH access via the EIDF Gateway jump host](../../access/ssh.md): Using EIDF VMs via SSH.
+
+[Remote desktop client access via SSH](../../access/ssh-rdp.md): Using EIDF VMs via a remote desktop client.

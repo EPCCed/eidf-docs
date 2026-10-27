@@ -51,7 +51,7 @@ For a user to transfer data to and from the CDW VMs using `scp` the following is
 
 - The user has the Data Manager role
 - The user has been added to the EIDF gateway, CDW Router `<project_code>-router` and the target CDW VM in the EIDF Portal
-- An SSH client is installed on the user's local machine (see [SSH connection to EIDF](../../access/ssh.md) for more details)
+- An SSH client is installed on the user's local machine (see [SSH access via the EIDF Gateway jump host](../../access/ssh.md) for more details)
 - The user has SSH access to the CDW Router `<project_code>-router`
 
 Data transfer using `scp` is performed by jumping through the CDW project's router, `<project_code>-router`, which acts as an intermediary for data transfer and access.
@@ -87,7 +87,7 @@ scp \
 
 Where:
 
-- `<path-to-private-key>` is the path to the user's private SSH key that corresponds to the public SSH key added for the user in the EIDF Portal for access to the router and VM, more information on how to do this can be seen in the documentation section on [SSH Credentials in the EIDF Portal](../../access/ssh.md#generate-a-new-ssh-key).
+- `<path-to-private-key>` is the path to the user's private SSH key that corresponds to the public SSH key added for the user in the EIDF Portal for access to the router and VM. For more information, see [Set up SSH access](../../access/ssh.md#set-up-ssh-access) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md).
 - `<username>` is the user's SSH username for EIDF gateway, router and the CDW VM
 - `<project-router-ip>` is the IP address of the CDW Router for the project. This IP address can be found in the EIDF Portal on the project details page, in the `machines` section, for the router machine named `<project_code>-router`.
 - `<local-file-path>` is the path to the file on the user's local machine

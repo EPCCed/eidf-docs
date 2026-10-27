@@ -1,12 +1,12 @@
-# Access remote desktops via SSH
+# Remote desktop client access via SSH
 
-The [EIDF Virtual Desktop Interface (VDI)](../../access/virtualmachines-vdi.md) provides a way of using EIDF VMs via SSH or remote desktop sessions run within your browser. On this page an alternative is described, using a remote desktop client running on your local host to connect to a remote desktop service running on your EIDF VM.
+The [EIDF Virtual Desktop Interface (VDI)](./virtualmachines-vdi.md) provides a way of using EIDF VMs via SSH or remote desktop sessions run within your browser. On this page an alternative is described, using a remote desktop client running on your local host to connect to a remote desktop service running on your EIDF VM.
 
 Using a remote desktop client can be both more usable and useful than the VDI for long periods of work. Remote desktop clients can offer a a sharper display than the VDI, better support for copying and pasting, and support for file sharing and other features that may not be available via the VDI.
 
 !!! Tip "Try the VDI first"
 
-    It is strongly recommended that you, initially at least, try using EIDF VMs via remote desktop connections supported by the [EIDF Virtual Desktop Interface (VDI)](../../access/virtualmachines-vdi.md) as the steps to access the remote desktop via the VDI are far more straightforward than those to use a remote desktop client.
+    It is strongly recommended that you, initially at least, try using EIDF VMs via remote desktop connections supported by the [EIDF Virtual Desktop Interface (VDI)](./virtualmachines-vdi.md) as the steps to access the remote desktop via the VDI are far more straightforward than those to use a remote desktop client.
 
 !!! Note "Remote desktop client connection security"
 
@@ -21,7 +21,7 @@ To connect to a remote desktop service running on your EIDF VM you need to both:
 1. Set up SSH access.
 1. Connect to the EIDF VM via SSH, forwarding ports from a custom port on your local host to the remote desktop service port, 3389, on your EIDF VM.
 
-See [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md) for instructions on how to:
+See [SSH access via the EIDF Gateway jump host](./ssh.md) for instructions on how to:
 
 * Set up SSH access.
 * Connect to an EIDF VM via SSH.
@@ -59,7 +59,7 @@ Windows provides a built-in remote desktop client, Remote Desktop Connection.
 
 ## Connect to the EIDF VM via SSH
 
-If you are not using an SSH configuration file, then run the 'ssh' command described in [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md):
+If you are not using an SSH configuration file, then run the 'ssh' command described in [SSH access via the EIDF Gateway jump host](./ssh.md):
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf<project_id> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf<project_id> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
@@ -83,7 +83,7 @@ For example
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
 ```
 
-If you using an SSH configuration file of the format described in [Access EIDF VMs via SSH and the EIDF Gateway jump host](../../access/ssh.md) i.e.:
+If you using an SSH configuration file of the format described in [SSH access via the EIDF Gateway jump host](./ssh.md) i.e.:
 
 ```text
 Host eidf-gateway<project_id>
