@@ -4,13 +4,15 @@ EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console o
 
 Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
 
-!!! Note "SSH access is not the same as SSH"
+!!! Important "SSH access prerequisites"
+
+    You can only access an EIDF VM via SSH and the EIDF Gateway if your project lead has granted you permission to access both the VM and the EIDF Gateway.
+
+!!! Note "SSH access is not the same as SSH via the EIDF Virtual Desktop Interface"
 
     You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your local host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your local host to an EIDF VM.
 
-## Commands and operating systems
-
-OpenSSH available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.
+SSH (OpenSSH) is available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.
 
 ---
 
