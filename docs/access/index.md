@@ -1,39 +1,37 @@
 # Accessing EIDF
 
-Some EIDF services are accessed via a Web browser and some by "traditional" command-line SSH.
+Some EIDF services are accessed via a web browser and some via the command-line, using SSH. Some EIDF services can be accessed via both.
 
-All EIDF services use the [EPCC SAFE](https://safe.epcc.ed.ac.uk/) service management
-back end, to ensure compatibility with other EPCC high-performance computing services.
+All EIDF services use the [EPCC SAFE](https://safe.epcc.ed.ac.uk/) service management back end, to ensure compatibility with other EPCC high-performance computing services.
 
 ## Web Access to Virtual Machines
 
-The Virtual Desktop VM service is browser-based, providing a virtual desktop interface
-(Apache Guacamole) for "desktop-in-a-browser" access. Applications to use the VM service
-are made through the EIDF Portal.
+The EIDF Virtual Desktop Interface (VDI) service provides browser-based access to EIDF virtual machines. From within a browser, users can interact with an EIDF virtual machine via a user interface that mimics a command-line SSH session or, if the virtual machine has a remote desktop service installed, via a user interface that provides access to this remote desktop.
 
-[EIDF Portal](./project.md): how to ask to join an existing EIDF project and
-how to apply for a new project
+The EIDF VDI service can be used to access a project's [EIDF virtual machines](../services/virtualmachines/index.md) and virtual machines within a [Confidential Data Workspace (CDW)](../services/confidentialdataworkspace/index.md).
 
-[VDI access to virtual machines](./virtualmachines-vdi.md): how to connect to the virtual
-desktop interface.
+Applications to use the EIDF VDI service, and to access EIDF virtual machines, are made through the EIDF Portal.
 
-[VDI access to Confidential Data Workspace VMs](../services/confidentialdataworkspace/quickstart.md): how to connect to the Confidential Data Workspace service.
+For more information, see:
 
-## SSH Access to Virtual Machines
+* [EIDF Portal](./project.md): how to ask to join an existing EIDF project and how to apply for a new project.
+* [VDI access to virtual machines](./virtualmachines-vdi.md): how to connect to the virtual desktop interface, and so to EIDF virtual machines, from a browser.
 
-Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH. See [SSH access via the EIDF Gateway jump host](./ssh.md).
+## SSH Access to EIDF Virtual Machines
 
-## Remote Desktop Client Access to Virtual Machines
+Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH from their local host. See [SSH access via the EIDF Gateway jump host](./ssh.md).
 
-Users who have been granted access to an EIDF virtual machine via SSH may also connect to the virtual machine via a remote desktop client, if the virtual machine has a remote desktop service installed. See [Remote desktop client access via SSH](./ssh-rdp.md).
+!!! Note "SSH Access to Confidential Data Workspace service"
 
-## SSH Access to Confidential Data Workspace Service
+    SSH access to Confidential Data Workspace VMs is **disabled** for security of the Confidential Data Workspace service, access is provided through the EIDF Virtual Desktop Interface service only.
 
-Remote SSH access to Confidential Data Workspace VMs is **disabled** for security of the service, access is provided through the Guacamole web interface only. Access is described in the [Confidential Data Workspace Quickstart](../services/confidentialdataworkspace/quickstart.md) guide.
+## Remote Desktop Client Access to EIDF Virtual Machines
 
-## SSH Access to Computing Services
+Users who have been granted access to an EIDF virtual machine via SSH can also connect to the virtual machine via a remote desktop client on their local host, if the EIDF virtual machine has a remote desktop service installed. See [Remote desktop client access via SSH](./ssh-rdp.md).
 
-SSH access is used for the following services:
+## SSH Access to Other EIDF Computing Services
+
+SSH is used to access the following services:
 
 * [Ultra2](../services/ultra2/index.md)
 * [EIDF Interim and Experimental Systems](../services/experimental/index.md)
