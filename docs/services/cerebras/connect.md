@@ -32,8 +32,8 @@ Host eidf-gateway-cerebras
     HostName eidf-gateway.epcc.ed.ac.uk
 Host cerebras
     HostName cerebras
-    ProxyJump eidf-gateway
-Host eidf-gateway cerebras
+    ProxyJump eidf-gateway-cerebras
+Host eidf-gateway-cerebras cerebras
     User <user>
     IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes
