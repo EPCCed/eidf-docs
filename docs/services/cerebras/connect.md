@@ -1,8 +1,10 @@
-# Login
+# Connect to Cerebras
 
-Access to CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as used for accessing EIDF virtual desktop VMs via SSH. This access requires two credentials: an SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
+Access to Cerebras CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as used for accessing EIDF virtual desktop VMs via SSH. This access requires two credentials: an SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
 
-## Set up access credentials
+---
+
+## Set up SSH access
 
 [Set up SSH access](../../access/ssh.md#set-up-ssh-access) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md) describes how to:
 
@@ -11,7 +13,9 @@ Access to CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as us
 * Get a multi-factor authentication app.
 * Set up multi-factor authentication, so you can get a TOTP when you connect.
 
-## Log in to CS3 user-nodes
+---
+
+## Log in to Cerebras CS3 user-nodes
 
 If your private key file has a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`) then run:
 
