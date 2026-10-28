@@ -8,10 +8,10 @@ Access to Cerebras CS3 user-nodes is done using SSH via the EIDF Gateway jump ho
 
 [Set up SSH access](../../access/ssh.md#set-up-ssh-access) in [SSH access via the EIDF Gateway jump host](../../access/ssh.md) describes how to:
 
-* Create an SSH private-public key pair
-* Add the public key to your project account
-* Get a multi-factor authentication app.
-* Set up multi-factor authentication, so you can get a TOTP when you connect.
+1. Create SSH private and public keys on the host from which you want to access the EIDF VM via SSH.
+1. Add the public key to your project account within the EIDF Portal.
+1. Get a multi-factor authentication app.
+1. Set up multi-factor authentication for your project account within the EIDF Portal.
 
 ---
 
