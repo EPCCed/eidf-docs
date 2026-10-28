@@ -65,6 +65,6 @@ There may be a short delay while the change is implemented before the new passwo
 
 [Virtual Desktop Interface](../../access/virtualmachines-vdi.md): Working with the VDI interface.
 
-[SSH access to EIDF VMs](../../access/ssh.md): Using EIDF VMs via SSH.
+[SSH access to EIDF VMs](../../access/ssh.md): accessing and using EIDF VMs via SSH.
 
-[Remote desktop client access via SSH](../../access/ssh-rdp.md): Using EIDF VMs via a remote desktop client.
+[Remote desktop client access via SSH](../../access/ssh-rdp.md): accessing and using EIDF VMs via a remote desktop client.
