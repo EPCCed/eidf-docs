@@ -46,7 +46,7 @@ nav:
     - "Overview": access/index.md
     - "EIDF Portal": access/project.md
     - "Virtual Desktop Interface (VDI)": access/virtualmachines-vdi.md
-    - "SSH access via the EIDF Gateway jump host": access/ssh.md
+    - "SSH access to EIDF VMs": access/ssh.md
     - "Remote desktop client access via SSH": access/ssh-rdp.md
   - "Storage in the EIDF":
     - "Overview": storage/overview.md

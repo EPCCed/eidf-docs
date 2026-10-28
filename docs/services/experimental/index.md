@@ -33,6 +33,6 @@ Once your account has been added, you need to enable MFA. Like the SSH key, this
 
 ## Using the Gateway
 
-[SSH access via the EIDF Gateway jump host](../../access/ssh.md) describes how to access an EIDF VM via the EIDF Gateway jump host, `eidf-gateway.epcc.ed.ac.uk`.  These instructions can also be used to access thhe experimental services gateway by replacing all mentions of `eidf-gateway.epcc.ed.ac.uk` with `gateway.epcc.ed.ac.uk` in any 'ssh' commands and SSH configuration files.
+[SSH access to EIDF VMs](../../access/ssh.md) describes how to access an EIDF VM via the EIDF Gateway jump host, `eidf-gateway.epcc.ed.ac.uk`.  These instructions can also be used to access thhe experimental services gateway by replacing all mentions of `eidf-gateway.epcc.ed.ac.uk` with `gateway.epcc.ed.ac.uk` in any 'ssh' commands and SSH configuration files.
 
 `eidf-gateway.epcc.ed.ac.uk` and `gateway.epcc.ed.ac.uk` are two separate services and you cannot access experimental services through `eidf-gateway.epcc.ed.ac.uk`.

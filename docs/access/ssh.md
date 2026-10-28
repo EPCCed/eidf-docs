@@ -1,4 +1,4 @@
-# SSH access via the EIDF Gateway jump host
+# SSH access to EIDF VMs
 
 EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the [EIDF Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
 

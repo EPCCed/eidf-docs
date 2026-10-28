@@ -19,7 +19,7 @@ For more information, see:
 
 ## SSH Access to EIDF Virtual Machines
 
-Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH from their local host. See [SSH access via the EIDF Gateway jump host](./ssh.md).
+Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH from their local host. See [SSH access to EIDF VMs](./ssh.md).
 
 !!! Note "SSH Access to Confidential Data Workspace service"
 

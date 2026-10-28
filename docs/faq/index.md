@@ -22,7 +22,7 @@ This may happen when a machine/VM was added to your connections list while you w
 
 'Can I connect to an EIDF VM using a private key file with a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`)?'
 
-Yes. In the 'ssh' command described in [SSH access via the EIDF Gateway jump host](../access/ssh.md) the use of named, non-default, private key files, can be replaced by the default private key file names. For example:
+Yes. In the 'ssh' command described in [SSH access to EIDF VMs](../access/ssh.md) the use of named, non-default, private key files, can be replaced by the default private key file names. For example:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519 some-eidf-user@10.24.999.999
@@ -38,7 +38,7 @@ ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999
 
 'Can I connect to an EIDF VM via SSH using a private key file with a custom name defined by me?'
 
-Yes. In the 'ssh' command described in [SSH access via the EIDF Gateway jump host](../access/ssh.md) the use of named, non-default, private key files, is shown. For example:
+Yes. In the 'ssh' command described in [SSH access to EIDF VMs](../access/ssh.md) the use of named, non-default, private key files, is shown. For example:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999
@@ -48,7 +48,7 @@ ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-use
 
 'My EIDF Gateway username and EIDF VM usernames and private keys differ. How do I log into my EIDF VM via SSH?'
 
-In the 'ssh' command described in [SSH access via the EIDF Gateway jump host](../access/ssh.md) the usernames and private key files used to connect to both the EIDF Gateway and an EIDF VM are specified. This allows for a different username and private key to be used for each host. For example:
+In the 'ssh' command described in [SSH access to EIDF VMs](../access/ssh.md) the usernames and private key files used to connect to both the EIDF Gateway and an EIDF VM are specified. This allows for a different username and private key to be used for each host. For example:
 
 ```bash
 ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_gateway_key -W %h:%p some-eidf-gateway-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf_host_key some-eidf-user@10.24.999.999

@@ -25,7 +25,7 @@ To connect to a remote desktop service running on your EIDF VM you need to both:
 1. Set up SSH access.
 1. Connect to the EIDF VM via SSH, forwarding ports from a custom port on your local host to the remote desktop service port, 3389, on your EIDF VM.
 
-See [SSH access via the EIDF Gateway jump host](./ssh.md) for instructions on how to:
+See [SSH access to EIDF VMs](./ssh.md) for instructions on how to:
 
 * Set up SSH access.
 * Connect to an EIDF VM via SSH.
@@ -91,7 +91,7 @@ If you **are not** using an SSH configuration file, then:
     ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999 -L 23001:localhost:3389
     ```
 
-Alternatively, if you **are** using an SSH configuration file of the format described in [SSH access via the EIDF Gateway jump host](./ssh.md) i.e.:
+Alternatively, if you **are** using an SSH configuration file of the format described in [SSH access to EIDF VMs](./ssh.md) i.e.:
 
 ```text
 Host eidf-gateway-<project_id>
