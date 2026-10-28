@@ -49,4 +49,4 @@ then run:
 ssh cerebras
 ```
 
-In each case, you will be prompted for your SSH key passphrase, then your TOTP, then your SSH key passphrase again. You will only be prompted for a TOTP code roughly once a day.
+In each case, you will be prompted for your SSH key passphrase, then your TOTP, then your SSH key passphrase again. You will only be prompted for a TOTP roughly once a day.
