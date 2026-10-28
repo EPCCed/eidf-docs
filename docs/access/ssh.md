@@ -371,12 +371,12 @@ Create a file, `$HOME/.ssh/config`, with the following content, or, if you alrea
 * `<user>` is your project account username.
 
 ```text
-Host eidf-gateway<project_id>
+Host eidf-gateway-<project_id>
     HostName eidf-gateway.epcc.ed.ac.uk
 Host <host_name>
     HostName <host_ip>
-    ProxyJump eidf-gateway<project_id>
-Host eidf-gateway<project_id> <host_name>
+    ProxyJump eidf-gateway-<project_id>
+Host eidf-gateway-<project_id> <host_name>
     User <user>
     IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes
@@ -385,12 +385,12 @@ Host eidf-gateway<project_id> <host_name>
 For example:
 
 ```text
-Host eidf-gateway000
+Host eidf-gateway-000
     HostName eidf-gateway.epcc.ed.ac.uk
 Host eidf000-vm
     HostName 10.24.999.999
-    ProxyJump eidf-gateway000
-Host eidf-gateway000 eidf000-vm
+    ProxyJump eidf-gateway-000
+Host eidf-gateway-000 eidf000-vm
     User some-eidf-user
     IdentityFile ~/.ssh/id_ed25519_eidf000
     IdentitiesOnly yes
@@ -398,9 +398,9 @@ Host eidf-gateway000 eidf000-vm
 
 In the configuration above:
 
-* `Host eidf-gateway<project_id>` includes configuration parameters specific to the EIDF Gateway only.
+* `Host eidf-gateway-<project_id>` includes configuration parameters specific to the EIDF Gateway only.
 * `Host <host_name>` includes configuration parameters specific to the EIDF VM only.
-* `Host eidf-gateway<project_id> <host_name>` includes configuration parameters common to both.
+* `Host eidf-gateway-<project_id> <host_name>` includes configuration parameters common to both.
 
 One the SSH configuration file has been edited, to connect to a EIDF VM via SSH, run:
 
@@ -431,13 +431,13 @@ When `ssh <host_name>` is run, the following happens:
 
     ```text
     HostName <host_ip>
-    ProxyJump eidf-gateway<project_id>
+    ProxyJump eidf-gateway-<project_id>
     User <user>
     IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes
     ```
 
-* As these configuration parameters include a `ProxyJump`, a search is done for all blocks whose `Host` includes the pattern `eidf-gateway<project_id>` and, again, the parameters are aggregated. This gives the following parameters for `eidf-gateway<project_id>`, that is, everything needed to connect to the EIDF Gateway:
+* As these configuration parameters include a `ProxyJump`, a search is done for all blocks whose `Host` includes the pattern `eidf-gateway-<project_id>` and, again, the parameters are aggregated. This gives the following parameters for `eidf-gateway-<project_id>`, that is, everything needed to connect to the EIDF Gateway:
 
     ```text
     HostName eidf-gateway.epcc.ed.ac.uk
@@ -474,7 +474,7 @@ For example:
 ```text
 Host eidf000-vm
     HostName 10.24.999.999
-    ProxyJump eidf-gateway000
+    ProxyJump eidf-gateway-000
     LocalForward 23001 localhost:3389
     ServerAliveInterval 60
 ```
@@ -484,7 +484,7 @@ Multiple `LocalForward` parameters can be used, if required. For example:
 ```text
 Host eidf000-vm
     HostName 10.24.999.999
-    ProxyJump eidf-gateway000
+    ProxyJump eidf-gateway-000
     LocalForward 23001 localhost:3389
     LocalForward 18192 localhost:8192
     ServerAliveInterval 60
@@ -492,18 +492,18 @@ Host eidf000-vm
 
 ### Add other hosts for the same project
 
-To add other hosts for the same project, add a new `Host` block for the host, with `HostName` and `ProxyJump` parameters for the host, and edit the `Host eidf-gateway<project_id> <host_name>` pattern to add the new host name. For example, the following adds to the example above content for another project host `<other_host>` with IP address `<other_host_ip>`:
+To add other hosts for the same project, add a new `Host` block for the host, with `HostName` and `ProxyJump` parameters for the host, and edit the `Host eidf-gateway-<project_id> <host_name>` pattern to add the new host name. For example, the following adds to the example above content for another project host `<other_host>` with IP address `<other_host_ip>`:
 
 ```text
-Host eidf-gateway<project_id>
+Host eidf-gateway-<project_id>
     HostName eidf-gateway.epcc.ed.ac.uk
 Host <host_name>
     HostName <host_ip>
-    ProxyJump eidf-gateway<project_id>
+    ProxyJump eidf-gateway-<project_id>
 Host <other_host_name>
     HostName <other_host_ip>
-    ProxyJump eidf-gateway<project_id>
-Host eidf-gateway<project_id> <host_name> <other_host_name>
+    ProxyJump eidf-gateway-<project_id>
+Host eidf-gateway-<project_id> <host_name> <other_host_name>
     User <user>
     IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes

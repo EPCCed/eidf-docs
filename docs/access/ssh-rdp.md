@@ -94,14 +94,14 @@ If you **are not** using an SSH configuration file, then:
 Alternatively, if you **are** using an SSH configuration file of the format described in [SSH access via the EIDF Gateway jump host](./ssh.md) i.e.:
 
 ```text
-Host eidf-gateway<project_id>
+Host eidf-gateway-<project_id>
     HostName eidf-gateway.epcc.ed.ac.uk
 Host <host_name>
     HostName <host_ip>
-    ProxyJump eidf-gateway<project_id>
+    ProxyJump eidf-gateway-<project_id>
     LocalForward <local_port> localhost:3389
     ServerAliveInterval <interval_in_seconds>
-Host eidf-gateway<project_id> <host_name>
+Host eidf-gateway-<project_id> <host_name>
     User <user>
     IdentityFile ~/.ssh/<key_file>
     IdentitiesOnly yes
@@ -110,14 +110,14 @@ Host eidf-gateway<project_id> <host_name>
 For example:
 
 ```text
-Host eidf-gateway000
+Host eidf-gateway-000
     HostName eidf-gateway.epcc.ed.ac.uk
 Host eidf000-vm
     HostName 10.24.999.999
-    ProxyJump eidf-gateway000
+    ProxyJump eidf-gateway-000
     LocalForward 23001 localhost:3389
     ServerAliveInterval 60
-Host eidf-gateway000 eidf000-vm
+Host eidf-gateway-000 eidf000-vm
     User some-eidf-user
     IdentityFile ~/.ssh/id_ed25519_eidf000
     IdentitiesOnly yes
