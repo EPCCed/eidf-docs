@@ -11,7 +11,7 @@ Access to CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as us
 * Get a multi-factor authentication app.
 * Set up multi-factor authentication, so you can get a TOTP when you connect.
 
-### Log in to CS3 user-nodes
+## Log in to CS3 user-nodes
 
 If your private key file has a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`) then run:
 
