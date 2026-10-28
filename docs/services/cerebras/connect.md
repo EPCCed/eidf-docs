@@ -15,7 +15,7 @@ Access to Cerebras CS3 user-nodes is done using SSH via the EIDF Gateway jump ho
 
 ---
 
-## Log in to Cerebras CS3 user-nodes
+## Connect to Cerebras CS3 via SSH
 
 If your private key file has a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`) then run:
 
