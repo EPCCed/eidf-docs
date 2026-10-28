@@ -13,7 +13,7 @@ To set up SSH access to Ultra2:
 1. Create SSH private and public keys on the host from which you want to access Ultra2. For example, see [Create SSH private and public keys](../../access/ssh.md#create-ssh-private-and-public-keys) in [SSH access to EIDF VMs](../../access/ssh.md).
 1. Add the public key to SAFE, by following SAFE's [How to add an SSH public key to your account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account).
 1. Get a multi-factor authentication app. For example, see [Get a multi-factor authentication app](../../access/ssh.md#get-a-multi-factor-authentication-app) in [SSH access to EIDF VMs](../../access/ssh.md).
-1. Set up multi-factor authentication for your account within SAFE, by following SAFE's [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account),
+1. Set up multi-factor authentication for your account within SAFE, by following SAFE's [How to turn on MFA on your machine account](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account).
 
 ---
 
