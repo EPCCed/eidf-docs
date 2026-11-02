@@ -34,25 +34,25 @@ You can view and manage your project's S3 object store allocation via the [EIDF 
 
 1. On the EIDF portal's [Your Projects](https://portal.eidf.ac.uk/project/) page, click your project.
 1. Your select project's page will appear.
-1. If using the portal's default project view, view 'S3 Allocation', else, if using the portal's new project view, click 'S3 Object Storage'.
-1. The 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section will show the following:
-    * **Quota**: Project's object store allocation (portal's default view only).
-    * **Accounts allocation**: Project's object store allocation and current usage (portal's new project view only).
+1. Click **S3 Object Storage**, or, if using the 'classic' view, click **S3 Allocation**.
+1. The 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section will show the following:
+    * **Accounts allocation**: Project's object store allocation and current usage (default view only).
+    * **Quota**: Project's object store allocation ('classic' view only).
     * For each S3 account:
         * **Name**: Account name.
         * **Quota**: Maximum amount of storage available to the account.
         * **Max Buckets**: Maximum number of buckets allowed for the account.
         * **Access Keys**: Access keys associated with this account.
 
-![EIDF Portal 'S3 Allocation' section](../../images/access/portal-s3-accounts.png){: class="border-img"}
+![EIDF Portal 'S3 Allocation' section with 'Access Keys' obfuscated](../../images/access/portal-s3-accounts.png){: class="border-img"}
 
 ---
 
 ## Create an S3 account
 
-To create an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
+To create an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:
 
-1. Click **Add Account** (default project view) or **Create Account** (new project view).
+1. Click **Create Account**, or, if using the 'classic' view, click **Add Account**.
 1. A 'Create S3 Object Store Account' page will appear.
 1. Enter:
     * **Account name**: Only letters, numbers, and underscore `_`, are allowed.
@@ -117,7 +117,7 @@ To delete an S3 account, within the EPCC [SAFE](https://safe.epcc.ed.ac.uk):
 
 ## Create an access key and secret
 
-To create an access key for an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
+To create an access key for an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:
 
 1. Click **Add Key** in the account's table row.
 1. An 'Add Access Key' page will appear.
@@ -135,7 +135,7 @@ Refresh the project page to update the list of access keys.
 
 You can control which project members are allowed to view each access key and secret within the EIDF Portal.
 
-To grant view permissions for an access key to a project member, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
+To grant view permissions for an access key to a project member, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:
 
 1. Click on the **Edit** icon next to the key.
 1. A 'Set Access Key Permissions' page will appear.
@@ -152,7 +152,7 @@ It can take a little while for the permissions update to complete.
 
 ## Delete an access key
 
-To delete an access key, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:
+To delete an access key for an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:
 
 1. Click on the "bin" icon next to a key.
 1. A 'Delete Access Key' dialog will appear.
