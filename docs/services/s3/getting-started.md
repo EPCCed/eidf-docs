@@ -680,7 +680,7 @@ In virtual directory terms, this is akin to recursively listing all virtual dire
 
     Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!
 
-In the absence of a trailing slash when listing files, the prefix is essentially treated as a wils-card search of form `<prefix>*`. For example, the following all return the same results:
+In the absence of a trailing slash when listing files, the prefix is essentially treated as a wild-card search of form `<prefix>*`. For example, the following all return the same results:
 
 ```bash
 aws s3 ls s3://mybucket/scotland
