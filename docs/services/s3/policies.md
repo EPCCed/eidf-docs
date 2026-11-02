@@ -147,6 +147,22 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants p
 
 This is the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
+
+!!! Info "S3 resource names"
+
+    `arn:aws:s3` is an Amazon Resource Name for an S3 resource, in this case a bucket.
+
+!!! Info "Project name in resource names"
+
+    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Alternatively, the following values could be used for each value of `Resource` respectively:
+
+    * `arn:aws:s3:::somebucket`
+    * `arn:aws:s3:::somebucket/*`
+
+    Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
+
+   The examples in the following sections do not include the project name in `Resource` values for this reason.
+
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects and buckets:
 
 ```python
@@ -207,6 +223,10 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
   ]
 }
 ```
+
+!!! Info "Identity Access and Management resource names"
+
+    `arn:aws:iam` is an Amazon Resource Name for an Identity Access and Management resource, in this case a user in a project.
 
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
 
