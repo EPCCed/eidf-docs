@@ -181,7 +181,7 @@ bucket_policy = {
 
 ## Example: Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to both their own user, `nnnuser`, and a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user accounts `nnnuser` or `abcuser` can read from the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user accounts `nnnuser` or `abcuser` can read from the bucket.
 
 ```json
 {
@@ -192,7 +192,6 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
       "Effect": "Allow",
       "Principal": {
           "AWS": [
-            "arn:aws:iam::eidfNNN:user/nnnuser",
             "arn:aws:iam::eidfABC:user/abcuser"
           ]
       },
@@ -229,7 +228,6 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{project}:user/{project_user}",
                     f"arn:aws:iam::{guest_project}:user/{guest_user}"
                 ]
             },
