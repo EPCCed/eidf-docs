@@ -8,12 +8,6 @@ Policies are defined as S3 policy documents, in JSON format.
 
 ---
 
-## Bucket naming in policies
-
-Use bucket names of form `<project-name>:<bucket-name>` within policies. For example, `eidfNNN:somebucket`.
-
----
-
 ## Manage bucket policies via the AWS CLI
 
 ### Set bucket policy via the AWS CLI
@@ -159,12 +153,9 @@ Here is the same policy, defined programmatically in Python. Python f-strings ar
 project = 'eidfNNN'
 bucket_name = 'somebucket'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Resource' values defined using Python
-# f-strings so that the value of 'bucket' is inserted.
+# f-strings so that the values of 'project' and 'bucket_name'
+# are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -173,14 +164,14 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:ListBucket",
-            "Resource": f"arn:aws:s3::{bucket}"
+            "Resource": f"arn:aws:s3::{project}:{bucket_name}"
         },
         {
             "Sid": "PublicReadGetObject",
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": f"arn:aws:s3::{bucket}/*"
+            "Resource": f"arn:aws:s3::{project}:{bucket_name}/*"
             }
         ]
     }
@@ -210,8 +201,8 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
         "s3:GetObject"
       ],
       "Resource": [
-        "arn:aws:s3::eidfNNN:somebucket",
-        "arn:aws:s3::eidfNNN:somebucket/*"
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
       ]
     }
   ]
@@ -227,12 +218,8 @@ project_user = 'nnnuser'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project', 'bucket',
+# using Python f-strings so that the values of 'project',
 # 'project_user', and 'guest_user' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
@@ -251,8 +238,8 @@ bucket_policy = {
                 "s3:GetObject"
             ],
             "Resource": [
-                f"arn:aws:s3::{bucket}",
-                f"arn:aws:s3::{bucket}/*"
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
             ]
         }
     ]
@@ -284,8 +271,8 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
         "s3:DeleteObject"
       ],
       "Resource": [
-        "arn:aws:s3::eidfNNN:somebucket",
-        "arn:aws:s3::eidfNNN:somebucket/*"
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
       ]
     }
   ]
@@ -300,13 +287,9 @@ bucket_name = 'somebucket'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project', 'bucket',
-# and 'guest_user' are inserted.
+# using Python f-strings so that the values of 'project',
+# 'project_user', and 'guest_user' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -325,8 +308,8 @@ bucket_policy = {
                 "s3:DeleteObject"
             ],
             "Resource": [
-                f"arn:aws:s3::{bucket}",
-                f"arn:aws:s3::{bucket}/*"
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
             ]
         }
     ]
