@@ -2075,6 +2075,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Create an S3 account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-s3-account-for-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 account for collaboration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3344,6 +3359,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Create an S3 account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-s3-account-for-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an S3 account for collaboration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3421,10 +3451,10 @@
 <ol>
 <li>On the EIDF portal's <a href="https://portal.eidf.ac.uk/project/">Your Projects</a> page, click your project.</li>
 <li>Your select project's page will appear.</li>
-<li>If using the portal's default project view, view 'S3 Allocation', else, if using the portal's new project view, click 'S3 Object Storage'.</li>
-<li>The 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section will show the following:<ul>
-<li><strong>Quota</strong>: Project's object store allocation (portal's default view only).</li>
-<li><strong>Accounts allocation</strong>: Project's object store allocation and current usage (portal's new project view only).</li>
+<li>Click <strong>S3 Object Storage</strong>, or, if using the 'classic' view, click <strong>S3 Allocation</strong>.</li>
+<li>The 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section will show the following:<ul>
+<li><strong>Accounts allocation</strong>: Project's object store allocation and current usage (default view only).</li>
+<li><strong>Quota</strong>: Project's object store allocation ('classic' view only).</li>
 <li>For each S3 account:<ul>
 <li><strong>Name</strong>: Account name.</li>
 <li><strong>Quota</strong>: Maximum amount of storage available to the account.</li>
@@ -3435,20 +3465,20 @@
 </ul>
 </li>
 </ol>
-<p><img alt="EIDF Portal 'S3 Allocation' section" class="border-img" src="../../../images/access/portal-s3-accounts.png" /></p>
+<p><img alt="EIDF Portal 'S3 Allocation' section with 'Access Keys' obfuscated" class="border-img" src="../../../images/access/portal-s3-accounts.png" /></p>
 <hr />
 <h2 id="create-an-s3-account">Create an S3 account</h2>
-<p>To create an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<p>To create an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:</p>
 <ol>
-<li>Click <strong>Add Account</strong> (default project view) or <strong>Create Account</strong> (new project view).</li>
+<li>Click <strong>Create Account</strong>, or, if using the 'classic' view, click <strong>Add Account</strong>.</li>
 <li>A 'Create S3 Object Store Account' page will appear.</li>
 <li>Enter:<ul>
 <li><strong>Account name</strong>: Only letters, numbers, and underscore <code>_</code>, are allowed.</li>
 <li><strong>Display Name</strong>: Alternative name for display. Spaces are allowed.</li>
 <li><strong>Maximum number of buckets allowed</strong>: Select:<ul>
-<li><strong>None</strong>: If selected, then this account cannot have any buckets.</li>
-<li><strong>Unlimited</strong></li>
-<li><strong>Or choose a limit:</strong> If selected, enter the number of buckets in <strong>Number of buckets</strong>.</li>
+<li><strong>None</strong>: If selected, then this account cannot have any buckets. If selected, then leave  <strong>Number of buckets</strong> empty.</li>
+<li><strong>Unlimited</strong>. If selected, then leave  <strong>Number of buckets</strong> empty.</li>
+<li><strong>Or choose a limit:</strong> If selected, then enter the number of buckets in <strong>Number of buckets</strong>.</li>
 </ul>
 </li>
 <li><strong>Quota</strong>: Maximum amount of storage available to this account. Enter both the number and the storage unit, one of 'B', 'kB', 'MiB' (MB), 'GiB' (GB), or 'TiB' (TB). The minimum quota is 1B (i.e., 1 byte).</li>
@@ -3461,6 +3491,10 @@
 <p class="admonition-title">Account quotas and project S3 storage quota</p>
 <p>You cannot create an account with a quota greater than the project's total S3 storage quota.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Accounts with an 'Unlimited' quota</p>
+<p>If you create an account with a quota of 'Unlimited', then you will not be able to create any another accounts.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Troubleshooting: <code>Failed to create account: name already in use</code></p>
 <p>S3 account names must be unique within your project.</p>
@@ -3468,15 +3502,13 @@
 </div>
 <p>It may take a little while for the account to become available.</p>
 <p>Refresh the project page to update the list of accounts.</p>
-<div class="admonition tip">
-<p class="admonition-title">Using S3 accounts that cannot create buckets for collaboration</p>
-<p>One could create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B, and so cannot create any buckets. Such an account cannot be used to create buckets for your project. Why might such an account be useful?</p>
-<p>One scenario is for collaboration with another project which also has buckets hosted within the EIDF S3 Service. Rather than your collaborator giving you an access key and secret, you, instead, give them the name of your account, one that you have created for this purpose only.</p>
-<p>Your collaborator can then apply an S3 policy to one of their buckets to grant your account access to their bucket, for example to read files from or write files to their bucket. You would interact with their bucket using your access key for the account.</p>
-<p>To revoke your access, the collaborator can change their bucket's policy.</p>
-<p>Within your own project, project members who have been granted permission to view the access keys of this account but no others can interact with your collaborator's bucket but not create any buckets within your own project.</p>
-</div>
-<hr />
+<h3 id="create-an-s3-account-for-collaboration">Create an S3 account for collaboration</h3>
+<p>It is possible to create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B. While this account cannot be used to create buckets or upload files into your own project's buckets, it can be useful when collaborating with another project which also has buckets hosted within the EIDF S3 Service.</p>
+<p>Given only your project name and the account name, your collaborator can apply an S3 policy to one of their buckets to grant this account access to their bucket, for example to read files from or write files to their bucket. For example, see <a href="../policies/#grant-read-only-access-to-another-projects-user">Grant read-only access to another project's user</a>.</p>
+<p>Your project members can then interact with the collaborator's bucket using the access key for this account.</p>
+<p>To revoke your access, the collaborator changes or reverts their bucket's policy.</p>
+<p>Granting access in this way makes collaboration easier for your collaborator, as they don't need to worry about creating accounts, access keys and secrets for use by your project.</p>
+<p>Use of such an account also allows for you to keep a separation between accounts you use to access your own project's buckets and accounts you use to access those of your collaborator. It also allows for your project members to be given access to your collaborator's buckets, but not your own, if required.</p>
 <h2 id="delete-an-s3-account">Delete an S3 account</h2>
 <p>To delete an S3 account, within the EPCC <a href="https://safe.epcc.ed.ac.uk">SAFE</a>:</p>
 <ol>
@@ -3497,7 +3529,7 @@
 </div>
 <hr />
 <h2 id="create-an-access-key-and-secret">Create an access key and secret</h2>
-<p>To create an access key for an S3 account, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<p>To create an access key for an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:</p>
 <ol>
 <li>Click <strong>Add Key</strong> in the account's table row.</li>
 <li>An 'Add Access Key' page will appear.</li>
@@ -3509,7 +3541,7 @@
 <hr />
 <h2 id="set-access-key-permissions">Set access key permissions</h2>
 <p>You can control which project members are allowed to view each access key and secret within the EIDF Portal.</p>
-<p>To grant view permissions for an access key to a project member, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<p>To grant view permissions for an access key to a project member, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:</p>
 <ol>
 <li>Click on the <strong>Edit</strong> icon next to the key.</li>
 <li>A 'Set Access Key Permissions' page will appear.</li>
@@ -3523,7 +3555,7 @@
 </div>
 <hr />
 <h2 id="delete-an-access-key">Delete an access key</h2>
-<p>To delete an access key, within the 'S3 Allocation' (default portal view) or 'S3 Object Storage' (new portal view) section:</p>
+<p>To delete an access key for an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Allocation' ('classic' view) section:</p>
 <ol>
 <li>Click on the "bin" icon next to a key.</li>
 <li>A 'Delete Access Key' dialog will appear.</li>

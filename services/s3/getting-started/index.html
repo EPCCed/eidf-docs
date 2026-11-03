@@ -4058,7 +4058,7 @@ https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
 <ol>
 <li>On the <a href="https://portal.eidf.ac.uk/project/">Your Projects</a> page within the EIDF Portal, click your project.</li>
 <li>Your selected project's page will appear.</li>
-<li>If using the portal's new project view, click <strong>Your S3 Keys</strong>.</li>
+<li>Click <strong>Your S3 Keys</strong>, or, if using the 'classic' view, click <strong>Your S3 Access Keys</strong>.</li>
 <li>The 'S3 Access Keys' section will show a table where each row shoes:<ul>
 <li><strong>Name</strong>: S3 account name.</li>
 <li><strong>Quota</strong>: Maximum amount of storage available to the account.</li>
@@ -4419,7 +4419,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s
 <p class="admonition-title">Virtual directories are virtual!</p>
 <p>Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!</p>
 </div>
-<p>In the absence of a trailing slash when listing files, the prefix is essentially treated as a wils-card search of form <code>&lt;prefix&gt;*</code>. For example, the following all return the same results:</p>
+<p>In the absence of a trailing slash when listing files, the prefix is essentially treated as a wild-card search of form <code>&lt;prefix&gt;*</code>. For example, the following all return the same results:</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scotland
 aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/scot
 aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://mybucket/s
@@ -4493,7 +4493,19 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s
 <p>There are many other S3 clients available.</p>
 <p>The <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> is part of the EIDF S3 Service and offers a web-based user interface within the EIDF Portal for creating and managing buckets and uploading, downloading and deleting files. See <a href="../s3browser/">Using the EIDF S3 Browser</a>.</p>
 <p>Another command-line client is <a href="https://s3tools.org/s3cmd">s3cmd</a>.</p>
-<p>A client offering a graphical user interface is <a href="https://cyberduck.io">Cyberduck</a>. If using Cyberduck, you may need to <a href="https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests">Connect using Deprecated Path Style Requests</a> otherwise you may have problems listing the contents of a bucket. For more information, see the <a href="https://docs.cyberduck.io/cyberduck/">Cyberduck documentation</a>.</p>
+<p>A client offering a graphical user interface is <a href="https://cyberduck.io">Cyberduck</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Cyberduck and 'Listing directory <code>&lt;bucket-name&gt;</code> failed'</p>
+<p>If, after connecting to the EIDF S3 service, you see your buckets but clicking on them causes a 'Listing directory <code>&lt;bucket-name&gt;</code> failed' dialog to appear, then you may need to <a href="https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests">Connect using Deprecated Path Style Requests</a>. One way of doing this is as follows:</p>
+<ol>
+<li>Select <strong>Edit</strong> menu, <strong>Preferences...</strong></li>
+<li>A 'Preferences' window will appear.</li>
+<li>Enter 'deprecated' into the search box.</li>
+<li>Select <strong>S3 (Deprecated path style requests)</strong> (not 'S3 (HTTP, Deprecated path style requests)').</li>
+<li>Click <strong>X</strong> on the top-right of the 'Preferences' window.</li>
+</ol>
+<p>When you open a connection, in the drop-down list of data source types select <strong>S3 (Deprecated path style requests)</strong>.</p>
+</div>
 <p>These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.</p>
 <hr />
 <h2 id="read-from-public-project-buckets">Read from public project buckets</h2>
