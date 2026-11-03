@@ -115,7 +115,7 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
 ---
 
-## Example: Grant public anonymous read-only access to a bucket
+## Grant public anonymous read-only access to a bucket
 
 !!! Warning "Publicly-readable buckets are anonymously readable by anyone"
 
@@ -194,7 +194,7 @@ bucket_policy = {
 
 ---
 
-## Example: Grant read-only access to another project's user
+## Grant read-only access to another project's user
 
 Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
@@ -263,7 +263,7 @@ bucket_policy = {
 
 ---
 
-## Example: Grant read-write access to another project's user
+## Grant read-write access to another project's user
 
 Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 

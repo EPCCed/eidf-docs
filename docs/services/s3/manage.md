@@ -88,7 +88,7 @@ Refresh the project page to update the list of accounts.
 
 It is possible to create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B. While this account cannot be used to create buckets or upload files into your own project's buckets, it can be useful when collaborating with another project which also has buckets hosted within the EIDF S3 Service.
 
-Given only your project name and the account name, your collaborator can apply an S3 policy to one of their buckets to grant this account access to their bucket, for example to read files from or write files to their bucket. For example, see [Grant read-only access to another project's user](./policies.md#example-grant-read-only-access-to-another-projects-user).
+Given only your project name and the account name, your collaborator can apply an S3 policy to one of their buckets to grant this account access to their bucket, for example to read files from or write files to their bucket. For example, see [Grant read-only access to another project's user](./policies.md#grant-read-only-access-to-another-projects-user).
 
 Your project members can then interact with the collaborator's bucket using the access key for this account.
 
