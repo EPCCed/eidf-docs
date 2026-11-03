@@ -809,7 +809,19 @@ The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of t
 
 Another command-line client is [s3cmd](https://s3tools.org/s3cmd).
 
-A client offering a graphical user interface is [Cyberduck](https://cyberduck.io). If using Cyberduck, you may need to [Connect using Deprecated Path Style Requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests) otherwise you may have problems listing the contents of a bucket. For more information, see the [Cyberduck documentation](https://docs.cyberduck.io/cyberduck/).
+A client offering a graphical user interface is [Cyberduck](https://cyberduck.io).
+
+!!! Tip "Cyberduck and 'Listing directory `<bucket-name>` failed'"
+
+    If, after connecting to the EIDF S3 service, you see your buckets but clicking on them causes a 'Listing directory `<bucket-name>` failed' dialog to appear, then you may need to [Connect using Deprecated Path Style Requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests). One way of doing this is as follows:
+
+    1. Select **Edit** menu, **Preferences...**
+    1. A 'Preferences' window will appear.
+    1. Enter 'deprecated' into the search box.
+    1. Select **S3 (Deprecated path style requests)** (not 'S3 (HTTP, Deprecated path style requests)').
+    1. Click **X** on the top-right of the 'Preferences' window.
+
+    When you open a connection, in the drop-down list of data source types select **S3 (Deprecated path style requests)**.
 
 These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.
 
