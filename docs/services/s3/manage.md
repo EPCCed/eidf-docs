@@ -58,9 +58,9 @@ To create an S3 account, within the 'S3 Object Storage' (default view) or 'S3 Al
     * **Account name**: Only letters, numbers, and underscore `_`, are allowed.
     * **Display Name**: Alternative name for display. Spaces are allowed.
     * **Maximum number of buckets allowed**: Select:
-        * **None**: If selected, then this account cannot have any buckets.
-        * **Unlimited**
-        * **Or choose a limit:** If selected, enter the number of buckets in **Number of buckets**.
+        * **None**: If selected, then this account cannot have any buckets. If selected, then leave  **Number of buckets** empty.
+        * **Unlimited**. If selected, then leave  **Number of buckets** empty.
+        * **Or choose a limit:** If selected, then enter the number of buckets in **Number of buckets**.
     * **Quota**: Maximum amount of storage available to this account. Enter both the number and the storage unit, one of 'B', 'kB', 'MiB' (MB), 'GiB' (GB), or 'TiB' (TB). The minimum quota is 1B (i.e., 1 byte).
 1. Click **Create Account**.
 
@@ -69,6 +69,10 @@ The account will be created along with an access key and associated secret.
 !!! Warning "Account quotas and project S3 storage quota"
 
     You cannot create an account with a quota greater than the project's total S3 storage quota.
+
+!!! Warning "Accounts with an 'Unlimited' quota"
+
+    If you create an account with a quota of 'Unlimited', then you will not be able to create any another accounts.
 
 !!! Tip "Troubleshooting: `Failed to create account: name already in use`"
 
@@ -80,19 +84,19 @@ It may take a little while for the account to become available.
 
 Refresh the project page to update the list of accounts.
 
-!!! Tip "Using S3 accounts that cannot create buckets for collaboration"
+### Create an S3 account for collaboration
 
-    One could create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B, and so cannot create any buckets. Such an account cannot be used to create buckets for your project. Why might such an account be useful?
+It is possible to create an S3 account that has the maximum number of buckets set to zero, and with a minimum storage quota of 1B. While this account cannot be used to create buckets or upload files into your own project's buckets, it can be useful when collaborating with another project which also has buckets hosted within the EIDF S3 Service.
 
-    One scenario is for collaboration with another project which also has buckets hosted within the EIDF S3 Service. Rather than your collaborator giving you an access key and secret, you, instead, give them the name of your account, one that you have created for this purpose only.
+Given only your project name and the account name, your collaborator can apply an S3 policy to one of their buckets to grant this account access to their bucket, for example to read files from or write files to their bucket. For example, see [Grant read-only access to another project's user](./policies.md#example-grant-read-only-access-to-another-projects-user).
 
-    Your collaborator can then apply an S3 policy to one of their buckets to grant your account access to their bucket, for example to read files from or write files to their bucket. You would interact with their bucket using your access key for the account.
+Your project members can then interact with the collaborator's bucket using the access key for this account.
 
-    To revoke your access, the collaborator can change their bucket's policy.
+To revoke your access, the collaborator changes or reverts their bucket's policy.
 
-    Within your own project, project members who have been granted permission to view the access keys of this account but no others can interact with your collaborator's bucket but not create any buckets within your own project.
+Granting access in this way makes collaboration easier for your collaborator, as they don't need to worry about creating accounts, access keys and secrets for use by your project.
 
----
+Use of such an account also allows for you to keep a separation between accounts you use to access your own project's buckets and accounts you use to access those of your collaborator. It also allows for your project members to be given access to your collaborator's buckets, but not your own, if required.
 
 ## Delete an S3 account
 
