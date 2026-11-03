@@ -147,7 +147,6 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants p
 
 This is the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
-
 !!! Info "S3 resource names"
 
     `arn:aws:s3` is an Amazon Resource Name for an S3 resource, in this case a bucket.
