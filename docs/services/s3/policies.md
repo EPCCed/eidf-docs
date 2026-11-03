@@ -235,8 +235,8 @@ guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'guest_project' and
-# 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project',
+# 'guest_user' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -302,8 +302,8 @@ guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'guest_project' and
-# 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project',
+# 'guest_user' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
