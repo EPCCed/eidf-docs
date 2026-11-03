@@ -8,12 +8,6 @@ Policies are defined as S3 policy documents, in JSON format.
 
 ---
 
-## Bucket naming in policies
-
-Use bucket names of form `<project-name>:<bucket-name>` within policies. For example, `eidfNNN:somebucket`.
-
----
-
 ## Manage bucket policies via the AWS CLI
 
 ### Set bucket policy via the AWS CLI
@@ -70,7 +64,7 @@ aws s3api delete-bucket-policy --bucket somebucket
 
 ### Set bucket policy via Python
 
-Bucket policies can be defined in JSON files and loaded into Python for submission via Boto3. Alternatively, policies can be defined programmatically within Python as a Python dict, then converted to JSON. This is shown in the example policies below.
+Bucket policies can be defined in JSON files and loaded into Python as a JSON string. Alternatively, policies can be defined programmatically as a Python dictionary, then converted to a JSON string. In either case, the policy, as a JSON string, can be submitted to the EIDF S3 Service, for example using the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
 
 Use Boto3's [put_bucket_policy](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/put_bucket_policy.html) to set a policy. For example:
 
@@ -121,7 +115,7 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
 ---
 
-## Example: Grant public anonymous read-only access to a bucket
+## Grant public anonymous read-only access to a bucket
 
 !!! Warning "Publicly-readable buckets are anonymously readable by anyone"
 
@@ -153,18 +147,30 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants p
 
 This is the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
+!!! Info "S3 resource names"
+
+    `arn:aws:s3` is an Amazon Resource Name for an S3 resource, in this case a bucket.
+
+!!! Info "Project name in resource names"
+
+    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Alternatively, the following values could be used for each value of `Resource` respectively:
+
+    * `arn:aws:s3:::somebucket`
+    * `arn:aws:s3:::somebucket/*`
+
+    Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
+
+   The examples in the following sections do not include the project name in `Resource` values for this reason.
+
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects and buckets:
 
 ```python
 project = 'eidfNNN'
 bucket_name = 'somebucket'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Resource' values defined using Python
-# f-strings so that the value of 'bucket' is inserted.
+# f-strings so that the values of 'project' and 'bucket_name'
+# are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -173,14 +179,14 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:ListBucket",
-            "Resource": f"arn:aws:s3::{bucket}"
+            "Resource": f"arn:aws:s3::{project}:{bucket_name}"
         },
         {
             "Sid": "PublicReadGetObject",
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": f"arn:aws:s3::{bucket}/*"
+            "Resource": f"arn:aws:s3::{project}:{bucket_name}/*"
             }
         ]
     }
@@ -188,9 +194,9 @@ bucket_policy = {
 
 ---
 
-## Example: Grant read-only access to another project's user
+## Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to both their own user, `nnnuser`, and a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user accounts `nnnuser` or `abcuser` can read from the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -201,7 +207,6 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
       "Effect": "Allow",
       "Principal": {
           "AWS": [
-            "arn:aws:iam::eidfNNN:user/nnnuser",
             "arn:aws:iam::eidfABC:user/abcuser"
           ]
       },
@@ -210,30 +215,28 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
         "s3:GetObject"
       ],
       "Resource": [
-        "arn:aws:s3::eidfNNN:somebucket",
-        "arn:aws:s3::eidfNNN:somebucket/*"
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
       ]
     }
   ]
 }
 ```
 
+!!! Info "Identity Access and Management resource names"
+
+    `arn:aws:iam` is an Amazon Resource Name for an Identity Access and Management resource, in this case a user in a project.
+
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
 
 ```python
-project = 'eidfNNN'
 bucket_name = 'somebucket'
-project_user = 'nnnuser'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project', 'bucket',
-# 'project_user', and 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project',
+# 'guest_user' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -242,7 +245,6 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{project}:user/{project_user}",
                     f"arn:aws:iam::{guest_project}:user/{guest_user}"
                 ]
             },
@@ -251,8 +253,8 @@ bucket_policy = {
                 "s3:GetObject"
             ],
             "Resource": [
-                f"arn:aws:s3::{bucket}",
-                f"arn:aws:s3::{bucket}/*"
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
             ]
         }
     ]
@@ -261,9 +263,9 @@ bucket_policy = {
 
 ---
 
-## Example: Grant read-write access to another project's user
+## Grant read-write access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to a user, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
@@ -284,8 +286,8 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
         "s3:DeleteObject"
       ],
       "Resource": [
-        "arn:aws:s3::eidfNNN:somebucket",
-        "arn:aws:s3::eidfNNN:somebucket/*"
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
       ]
     }
   ]
@@ -295,18 +297,13 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
 
 ```python
-project = 'eidfNNN'
 bucket_name = 'somebucket'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
-# Within policies for buckets within the EIDF S3 Service, the project
-# name needs to prefix the bucket name.
-bucket = f"{project}:{bucket_name}"
-
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project', 'bucket',
-# and 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project',
+# 'guest_user' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -325,8 +322,8 @@ bucket_policy = {
                 "s3:DeleteObject"
             ],
             "Resource": [
-                f"arn:aws:s3::{bucket}",
-                f"arn:aws:s3::{bucket}/*"
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
             ]
         }
     ]
