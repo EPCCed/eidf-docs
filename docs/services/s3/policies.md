@@ -64,7 +64,7 @@ aws s3api delete-bucket-policy --bucket somebucket
 
 ### Set bucket policy via Python
 
-Bucket policies can be defined in JSON files and loaded into Python for submission via Boto3. Alternatively, policies can be defined programmatically within Python as a Python dict, then converted to JSON. This is shown in the example policies below.
+Bucket policies can be defined in JSON files and loaded into Python as a JSON string. Alternatively, policies can be defined programmatically as a Python dictionary, then converted to a JSON string. In either case, the policy, as a JSON string, can be submitted to the EIDF S3 Service, for example using the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
 
 Use Boto3's [put_bucket_policy](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/put_bucket_policy.html) to set a policy. For example:
 
