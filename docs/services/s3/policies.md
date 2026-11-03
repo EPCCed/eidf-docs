@@ -196,7 +196,7 @@ bucket_policy = {
 
 ## Example: Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user accounts `nnnuser` or `abcuser` can read from the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -230,15 +230,13 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
 
 ```python
-project = 'eidfNNN'
 bucket_name = 'somebucket'
-project_user = 'nnnuser'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project',
-# 'project_user', and 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project' and
+# 'guest_user' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -299,14 +297,13 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants r
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
 
 ```python
-project = 'eidfNNN'
 bucket_name = 'somebucket'
 guest_project = 'eidfABC'
 guest_user = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
-# using Python f-strings so that the values of 'project',
-# 'project_user', and 'guest_user' are inserted.
+# using Python f-strings so that the values of 'guest_project' and
+# 'guest_user' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
