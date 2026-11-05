@@ -1,4 +1,14 @@
-# FAQ
+# FAQ about the EIDF Container Image Registry
+
+## What credentials can I use for the registry in an automation?
+
+To access the registry in an automation, you should create a robot account for your project. Robot accounts are service accounts that can be used to access the registry without needing to use your personal credentials. They are configured with specific permissions (e.g., pull-only, push-pull) and have a limited validity period for security purposes.
+
+Instructions for using a robot account can be found in the [Working with the EIDF Container Image Registry](working-with.md#robot-accounts-for-automations-in-the-ecir) documentation.
+
+## My Robot Account credentials have been compromised, what should I do?
+
+If you believe your robot account credentials have been compromised, you should immediately refresh the robot account secret to invalidate the compromised secret. This can be done by a project PI or manager in the Image Registry section of your project. Instructions for refreshing the robot account secret can be found in the [Working with the Registry](working-with.md#robot-accounts-for-automations-in-the-ecir) documentation.
 
 ## Known Issues
 
