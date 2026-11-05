@@ -329,3 +329,125 @@ bucket_policy = {
     ]
 }
 ```
+
+### Require bucket owner to be given full control over uploaded files
+
+We could define a policy akin to [Grant read-only access to another project's user](#grant-read-only-access-to-another-projects-user) adding `s3:PutObject` and `s3:DeleteObject` to the `Action` list. This would allow the guest user to
+
+By default, if a file is uploaded, it would be owned by the uploader i.e., the guest user, `abcuser`.  An attempt by the bucket owner to read the file would then give an error of form
+```text
+An error occurred (403) when calling the HeadObject operation: Forbidden
+```
+even though they are the bucket owner! The bucket owner can delete this file from their bucket but not read it! To avoid this problem, the guest user needs to grant the bucket control full control over the uploaded file. In Python, this can done by passing this as an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) e.g.,
+
+```python
+s3client.upload_file(Filename=os.path.join(uploads, data),
+                     Bucket=bucket,
+                     Key=key,
+                     ExtraArgs={'ACL': 'bucket-owner-full-control'})
+```
+
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProjectListGetDelete",
+      "Effect": "Allow",
+      "Principal": {
+          "AWS": [
+            "arn:aws:iam::eidfABC:user/abcuser"
+          ]
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
+      ]
+    },
+    {
+      "Sid": "ProjectPut",
+      "Effect": "Allow",
+      "Principal": {
+          "AWS": [
+            "arn:aws:iam::eidf031:user/mikejro"
+          ]
+      },
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    }
+  ]
+}
+```
+
+Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
+
+```python
+bucket_name = 'somebucket'
+guest_project = 'eidfABC'
+guest_user = 'abcuser'
+
+# Define bucket policy with 'Principal' and 'Resource' values defined
+# using Python f-strings so that the values of 'guest_project',
+# 'guest_user' and 'bucket_name' are inserted.
+bucket_policy = {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ProjectListGetDelete",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                ]
+            },
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:DeleteObject"
+                ],
+            "Resource": [
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
+            ]
+        },
+        {
+            "Sid": "ProjectPut",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                ]
+            },
+            "Action": [
+                "s3:PutObject"
+                ],
+            "Resource": [
+                f"arn:aws:s3:::{bucket_name}",
+                f"arn:aws:s3:::{bucket_name}/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        }
+    ]
+}
+```
