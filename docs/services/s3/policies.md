@@ -1,14 +1,100 @@
 # Using S3 policies
 
-Identity Access Management (IAM) policies can be applied to buckets. For example, you can grant other accounts (within the same project or from other EIDF projects) read or write access to your buckets, or grant public anonymous read access.
+S3 policies allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when. Rich, fine-grained, highly project-specific policies can be applied.
 
-Policies are defined as S3 policy documents in [JSON](https://json.org) format.
+**Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
+
+---
+
+## Introducing S3 policies
+
+To introduce S3 policies, consider the following. Imagine a bucket, `somebucket`, has been created by project `eidfNNN` by their S3 account `someuser`. By default, this bucket can be accessed and used by any `eidfNNN` project member with the access key and secret key associated with `someuser`. Now, project `eidfNNN` wants to work with another project, `eidfABC`, and wants to grant that project read-write access to `somebucket`.
+
+Here is a policy document which, when attached to `somebucket`, grants read-write access to `eidfNNN`'s bucket, `somebucket`, to an S3 account, `abcuser`, belonging to project, `eidfABC`.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProjectListGetDelete",
+      "Effect": "Allow",
+      "Principal": {
+          "AWS": [
+            "arn:aws:iam::eidfABC:user/abcuser"
+          ]
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
+      ]
+    },
+    {
+      "Sid": "ProjectPut",
+      "Effect": "Allow",
+      "Principal": {
+          "AWS": [
+            "arn:aws:iam::eidfABC:user/abcuser"
+          ]
+      },
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::somebucket",
+        "arn:aws:s3:::somebucket/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    }
+  ]
+}
+```
+
+Essentially, what any S3 policy says is 'if a `Principal` makes a request to perform an `Action` on a `Resource`, then, taking into account any `Condition`s, the `Effect` is to either `Deny` or `Allow` the `Action`'.
+
+More specifically, this example policy states that:
+
+* S3 account `abcuser` of project `eidfABC` (`Principal`) is allowed to list the bucket contents, download files and delete files (`Action`) within the bucket `somebucket` (`Resource`).
+* S3 account `abcuser` of project `eidfABC` (`Principal`) is allowed to upload files, (`Action`) within the bucket `somebucket` (`Resource`) but only if they grant the bucket owner full control over the uploaded file (`Condition`).
+
+Anything not specifically allowed by a policy is denied. The exception is for the S3 account that created the bucket, who can create, list, download files from and upload files and delete files from the bucket, and delete the bucket itself.
+
+S3 policies are defined as documents in [JSON](https://json.org) format. The key features of a policy document, as shown in the example above, are as follows:
+
+* `Version`: Policy language syntax version. The current version is 2012-10-17.
+* `Statement`: A single policy statement or list of policy statements. Here, the policy document includes two statements.
+* `Sid`: An optional, human-readable, policy statement identifier.
+* `Action`: A single S3 action or a list of S3 actions to which the policy statement applies.
+* `Resource`: A single S3 resource or a list of S3 resources to which the policy statement applies.
+    * A resource can be a bucket, or files in a bucket, or another resource. Here, both the bucket, `somebucket`, and all the files within the bucket, `somebucket/*`, are specified.
+    * S3 resources are specified as Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for buckets and objects have a prefix `arn:aws:s3:<region>:<project-name>:<bucket>`, where `<region>` is empty, and `<project-name>` is optional.
+* `Principal`: A single principal or a list of principals to who permission being allowed or denied.
+    * The `AWS` element is required and specifies the list of principals.
+    * Each principal is specified as an Amazon Resorce Names (ARN). Within the EIDF S3 Service, ARNs for principals have form `arn:aws:iam:<region>:<project-name>:<account>`, where `<region>` is empty, `<project-name>` is an EIDF project name (e.g., `eidfABC`), and `<account>` is an S3 account in that project. `<project-name>` can be empty if the S3 account belongs to the same project as the bucket to which the policy is attached.
+    * Either `"*"` or `{"AWS":"*"}` can be used to specify any principal, which allows for anonymous access.
+* `Condition`: An optional element specifying any condition(s) affecting the policy.
+    * `StringEquals` compares a value from a 'context variable', a variable provided by the principal when requesting the action, to an expected value. Here, it is expected that the context variable `s3:x-amz-acl`, which specifies a 'canned', or pre-defined, access control list (ACL), needs to be equal to `bucket-owner-full-control`.
+* `Effect`: Whether the policy allows (`Allow`) or denies (`Deny`) the actions governed by the policy.
+
+!!! Note "More information on S3 policies"
+
+    This page is a necessarily brief introduction to S3 policies. For more information, see, for example:
+
+    * AWS [Policies and permissions in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html)
+    * AWS [IAM JSON policy element reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html)
 
 !!! Info "Ceph S3 support for Amazon S3 policies"
 
     Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
-
-**Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
 ---
 
@@ -149,10 +235,6 @@ Here is a policy document which grants public anonymous read-only access to a bu
 }
 ```
 
-!!! Info "S3 resource names"
-
-    `arn:aws:s3` is an Amazon Resource Name (ARN) for an S3 resource, in this case a bucket.
-
 This policy is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
 !!! Info "Project name in resource names"
@@ -203,9 +285,9 @@ bucket_policy = {
 
 ---
 
-## Grant read-only access to another project's user
+## Grant read-only access to another project's S3 account
 
-Here is a policy document which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
+Here is a policy document which grants read-only access to a bucket, `somebucket`, to an S3 account, `abcuser`, belonging to a project, `eidfABC`. Anyone with an access key and secret associated with the S3 account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -232,20 +314,16 @@ Here is a policy document which grants read-only access to a bucket, `somebucket
 }
 ```
 
-!!! Info "Identity Access and Management resource names"
-
-    `arn:aws:iam` is an Amazon Resource Name for an Identity Access and Management resource, in this case a user in a project.
-
 Here is the same policy document, defined programmatically in Python:
 
 ```python
 bucket_name = 'somebucket'
 guest_project = 'eidfABC'
-guest_user = 'abcuser'
+guest_account = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
 # using Python f-strings so that the values of 'guest_project',
-# 'guest_user' and 'bucket_name' are inserted.
+# 'guest_account' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -254,7 +332,7 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                    f"arn:aws:iam::{guest_project}:user/{guest_account}"
                 ]
             },
             "Action": [
@@ -272,9 +350,9 @@ bucket_policy = {
 
 ---
 
-## Grant read-write access to another project's user
+## Grant read-write access to another project's S3 account
 
-Here is a policy document which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is a policy document which grants read-write access to a bucket, `somebucket`, to an S3 account, `abcuser`, belonging to a project, `eidfABC`. Anyone with an access key and secret associated with the S3 account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
@@ -308,11 +386,11 @@ Here is the same policy document, defined programmatically in Python:
 ```python
 bucket_name = 'somebucket'
 guest_project = 'eidfABC'
-guest_user = 'abcuser'
+guest_account = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
 # using Python f-strings so that the values of 'guest_project',
-# 'guest_user' and 'bucket_name' are inserted.
+# 'guest_account' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -321,7 +399,7 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                    f"arn:aws:iam::{guest_project}:user/{guest_account}"
                 ]
             },
             "Action": [
@@ -341,7 +419,7 @@ bucket_policy = {
 
 ### Require bucket owner to be given full control over uploaded files
 
-The above policy is a copy of that for [Grant read-only access to another project's user](#grant-read-only-access-to-another-projects-user) with both `s3:PutObject` and `s3:DeleteObject` added to the `Action` list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest user, `abcuser`.
+The above policy is a copy of that for [Grant read-only access to another project's S3 account](#grant-read-only-access-to-another-projects-s3-account) with both `s3:PutObject` and `s3:DeleteObject` added to the `Action` list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest S3 account, `abcuser`.
 
 A subsequent attempt by the bucket owner to read the uploaded file, which is in their own bucket, would then raise an error:
 
@@ -349,7 +427,7 @@ A subsequent attempt by the bucket owner to read the uploaded file, which is in 
 An error occurred (403) when calling the HeadObject operation: Forbidden
 ```
 
-While the bucket owner can delete the uploaded file from their bucket they cannot read it! To avoid this problem, the guest user needs to grant the bucket owner full control over the uploaded file. In Python, this can done by passing an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html):
+While the bucket owner can delete the uploaded file from their bucket they cannot read it! To avoid this problem, the guest S3 account needs to grant the bucket owner full control over the uploaded file. In Python, this can done by passing an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html):
 
 ```python
 s3client.upload_file(Filename=os.path.join(uploads, data),
@@ -358,7 +436,7 @@ s3client.upload_file(Filename=os.path.join(uploads, data),
                      ExtraArgs={'ACL': 'bucket-owner-full-control'})
 ```
 
-This requests that the EIDF S3 service apply a 'canned' access control list (ACL) called `bucket-owner-full-control` to the object once uploaded. Behind the scenes, when the EIDF S3 service is contacted, the request includes an S3 `x-amz-acl` parameter with value `bucket-owner-full-control`.
+This requests that the EIDF S3 service apply a 'canned', or pre-defined, access control list (ACL) called `bucket-owner-full-control` to the object once uploaded. Behind the scenes, when the EIDF S3 service is contacted, the request includes an S3 `x-amz-acl` parameter with value `bucket-owner-full-control`.
 
 The requirement for this argument can be made mandatory by updating the policy to deny any upload request that does not include this argument. Here is the updated policy:
 
@@ -389,7 +467,7 @@ The requirement for this argument can be made mandatory by updating the policy t
       "Effect": "Allow",
       "Principal": {
           "AWS": [
-            "arn:aws:iam::eidf031:user/mikejro"
+            "arn:aws:iam::eidfABC:user/abcuser"
           ]
       },
       "Action": [
@@ -409,9 +487,9 @@ The requirement for this argument can be made mandatory by updating the policy t
 }
 ```
 
-The first policy statement is as before, allowing the user to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload request to include the 'canned' ACL `s3:x-amz-acl` parameter with value `bucket-owner-full-control`.
+The first policy statement is as before, allowing the guest S3 account to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload request to include the 'canned' ACL `s3:x-amz-acl` parameter with value `bucket-owner-full-control`.
 
-If the guest user attempts to upload a file without this argument, then their upload will be denied. For example:
+If the guest S3 account attempts to upload a file without this argument, then their upload will be denied. For example:
 
 ```text
 Failed to upload data/edinburgh.csv to eidf114:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None"
@@ -422,11 +500,11 @@ Here is the same policy document, defined programmatically in Python:
 ```python
 bucket_name = 'somebucket'
 guest_project = 'eidfABC'
-guest_user = 'abcuser'
+guest_account = 'abcuser'
 
 # Define bucket policy with 'Principal' and 'Resource' values defined
 # using Python f-strings so that the values of 'guest_project',
-# 'guest_user' and 'bucket_name' are inserted.
+# 'guest_account' and 'bucket_name' are inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -435,7 +513,7 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                    f"arn:aws:iam::{guest_project}:user/{guest_account}"
                 ]
             },
             "Action": [
@@ -453,7 +531,7 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    f"arn:aws:iam::{guest_project}:user/{guest_user}"
+                    f"arn:aws:iam::{guest_project}:user/{guest_account}"
                 ]
             },
             "Action": [
@@ -475,6 +553,6 @@ bucket_policy = {
 
 !!! Important "Let guest users know to grant the bucket owner full control over uploaded files"
 
-    If using this policy, then you need to let guest users know that they need to request that the EIDF S3 service apply the 'canned' ACL `bucket-owner-full-control` to their object once uploaded.
+    If using this policy, then you need to let guest S3 account users know that they need to request that the EIDF S3 service apply the 'canned' ACL `bucket-owner-full-control` to their object once uploaded.
 
     If using Python and Boto3 this can be done using an `ExtraArgs={'ACL': 'bucket-owner-full-control'}` argument to `upload_file`. Other S3 packages have their own approaches.
