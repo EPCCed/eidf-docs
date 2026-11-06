@@ -121,7 +121,7 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
     **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants public anonymous read-only access to their bucket, `somebucket`, allowing the the bucket to be listed and the files read (downloaded):
+Here is an example JSON policy document for a project, `eidfNNN`, which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and the files read (downloaded):
 
 ```json
 {
@@ -132,40 +132,46 @@ Here is an example JSON policy document for a project, `eidfNNN`, which grants p
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3::eidfNNN:somebucket"
+      "Resource": "arn:aws:s3:::somebucket"
     },
     {
       "Sid": "PublicReadGetObject",
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3::eidfNNN:somebucket/*"
+      "Resource": "arn:aws:s3:::somebucket/*"
     }
   ]
 }
 ```
 
-This is the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
+This is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
 !!! Info "S3 resource names"
 
-    `arn:aws:s3` is an Amazon Resource Name for an S3 resource, in this case a bucket.
+    `arn:aws:s3` is an Amazon Resource Name (ARN) for an S3 resource, in this case a bucket.
 
 !!! Info "Project name in resource names"
 
-    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Alternatively, the following values could be used for each value of `Resource` respectively:
+    The policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket public](./s3browser.md#make-a-bucket-public) has Amazon Resource Names of form:
+   
+    ```text
+    "Resource": "arn:aws:s3::eidfNNN:<bucket>"
+    "Resource": "arn:aws:s3::eidfNNN:<bucket>/*"
+    ```
 
-    * `arn:aws:s3:::somebucket`
-    * `arn:aws:s3:::somebucket/*`
+    The example above does not cite the project name, `eidfNNN`, i.e.,:
 
-    Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
+    ```text
+    "Resource": "arn:aws:s3:::<bucket>"
+    "Resource": "arn:aws:s3:::<bucket>/*"
+    ```
 
-   The examples in the following sections do not include the project name in `Resource` values for this reason.
+    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
 
 Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects and buckets:
 
 ```python
-project = 'eidfNNN'
 bucket_name = 'somebucket'
 
 # Define bucket policy with 'Resource' values defined using Python
@@ -179,14 +185,14 @@ bucket_policy = {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:ListBucket",
-            "Resource": f"arn:aws:s3::{project}:{bucket_name}"
+            "Resource": f"arn:aws:s3:::{bucket_name}"
         },
         {
             "Sid": "PublicReadGetObject",
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": f"arn:aws:s3::{project}:{bucket_name}/*"
+            "Resource": f"arn:aws:s3:::{bucket_name}/*"
             }
         ]
     }
@@ -196,7 +202,7 @@ bucket_policy = {
 
 ## Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -265,7 +271,7 @@ bucket_policy = {
 
 ## Grant read-write access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
