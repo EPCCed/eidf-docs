@@ -4,6 +4,10 @@ Identity Access Management (IAM) policies can be applied to buckets. For example
 
 Policies are defined as S3 policy documents, in JSON format.
 
+!!! Info "Ceph S3 support for Amazon S3 policies"
+
+    Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
+
 **Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
 ---
@@ -154,7 +158,7 @@ This is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if
 !!! Info "Project name in resource names"
 
     The policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket public](./s3browser.md#make-a-bucket-public) has Amazon Resource Names of form:
-   
+
     ```text
     "Resource": "arn:aws:s3::eidfNNN:<bucket>"
     "Resource": "arn:aws:s3::eidfNNN:<bucket>/*"
@@ -341,9 +345,11 @@ bucket_policy = {
 We could define a policy akin to [Grant read-only access to another project's user](#grant-read-only-access-to-another-projects-user) adding `s3:PutObject` and `s3:DeleteObject` to the `Action` list. This would allow the guest user to
 
 By default, if a file is uploaded, it would be owned by the uploader i.e., the guest user, `abcuser`.  An attempt by the bucket owner to read the file would then give an error of form
+
 ```text
 An error occurred (403) when calling the HeadObject operation: Forbidden
 ```
+
 even though they are the bucket owner! The bucket owner can delete this file from their bucket but not read it! To avoid this problem, the guest user needs to grant the bucket control full control over the uploaded file. In Python, this can done by passing this as an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) e.g.,
 
 ```python

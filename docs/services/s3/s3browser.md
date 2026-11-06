@@ -134,6 +134,10 @@ To switch between these editors, click **JSON** when in the visual editor and cl
 
 To save the policy, click **Save Policy**.
 
+!!! Info "Ceph S3 support for Amazon S3 policies"
+
+    Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
+
 ### Make a bucket public
 
 !!! Warning "Publicly-readable buckets are anonymously readable by anyone"
