@@ -30,4 +30,4 @@ To access EIDF S3 Service object store allocation and account information within
 
 [Using the EIDF S3 Service via Python](./python.md) provides examples of how to use the EIDF S3 Service via Python and the Amazon Web Services Software Development Kit for Python, [Boto3](https://aws.amazon.com/sdk-for-python/).
 
-[Using S3 policies](./policies.md) procides examples of S3 policies which allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when.
+[Using S3 policies](./policies.md) introduces, and provides examples of, S3 policies which allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when.
