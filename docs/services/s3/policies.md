@@ -2,7 +2,7 @@
 
 Identity Access Management (IAM) policies can be applied to buckets. For example, you can grant other accounts (within the same project or from other EIDF projects) read or write access to your buckets, or grant public anonymous read access.
 
-Policies are defined as S3 policy documents, in JSON format.
+Policies are defined as S3 policy documents in [JSON](https://json.org) format.
 
 !!! Info "Ceph S3 support for Amazon S3 policies"
 
@@ -125,7 +125,7 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
     **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and the files read (downloaded):
+Here is an example policy document for a project, `eidfNNN`, which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and the files read (downloaded):
 
 ```json
 {
@@ -206,7 +206,7 @@ bucket_policy = {
 
 ## Grant read-only access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
+Here is an example policy document for a project, `eidfNNN`, which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -275,7 +275,7 @@ bucket_policy = {
 
 ## Grant read-write access to another project's user
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is an example policy document for a project, `eidfNNN`, which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
@@ -359,7 +359,7 @@ s3client.upload_file(Filename=os.path.join(uploads, data),
                      ExtraArgs={'ACL': 'bucket-owner-full-control'})
 ```
 
-Here is an example JSON policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is an example policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
