@@ -358,7 +358,7 @@ s3client.upload_file(Filename=os.path.join(uploads, data),
                      ExtraArgs={'ACL': 'bucket-owner-full-control'})
 ```
 
-Behind the scenes, an S3 `x-amz-acl` parameter with value `bucket-owner-full-control` to be passed to the EIDF S3 Service.
+This requests that the EIDF S3 service apply a 'canned' access control list (ACL) called `bucket-owner-full-control` to the object once uploaded. Behind the scenes, when the EIDF S3 service is contacted, the request includes an S3 `x-amz-acl` parameter with value `bucket-owner-full-control`.
 
 The requirement for this argument can be made mandatory by updating the policy to deny any upload request that does not include this argument. Here is the updated policy:
 
@@ -409,9 +409,9 @@ The requirement for this argument can be made mandatory by updating the policy t
 }
 ```
 
-The first policy statement is as before, allowing the user to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload list to include an `s3:x-amz-acl` parameter (in S3 terminology, a 'context key') with value `bucket-owner-full-control`.
+The first policy statement is as before, allowing the user to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload request to include the 'canned' ACL `s3:x-amz-acl` parameter with value `bucket-owner-full-control`.
 
-Any guest who attempts to upload a file without granting `bucket-owner-full-control` will have their upload denied. For example:
+If the guest user attempts to upload a file without this argument, then their upload will be denied. For example:
 
 ```text
 Failed to upload data/edinburgh.csv to eidf114:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None"
@@ -472,3 +472,9 @@ bucket_policy = {
     ]
 }
 ```
+
+!!! Important "Let guest users know to grant the bucket owner full control over uploaded files"
+
+    If using this policy, then you need to let guest users know that they need to request that the EIDF S3 service apply the 'canned' ACL `bucket-owner-full-control` to their object once uploaded.
+
+    If using Python and Boto3 this can be done using an `ExtraArgs={'ACL': 'bucket-owner-full-control'}` argument to `upload_file`. Other S3 packages have their own approaches.
