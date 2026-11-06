@@ -125,7 +125,7 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
     **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-Here is an example policy document for a project, `eidfNNN`, which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and the files read (downloaded):
+Here is a policy document which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and its files read (downloaded):
 
 ```json
 {
@@ -149,11 +149,11 @@ Here is an example policy document for a project, `eidfNNN`, which grants public
 }
 ```
 
-This is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
-
 !!! Info "S3 resource names"
 
     `arn:aws:s3` is an Amazon Resource Name (ARN) for an S3 resource, in this case a bucket.
+
+This policy is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
 
 !!! Info "Project name in resource names"
 
@@ -173,14 +173,13 @@ This is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if
 
     In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
 
-Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects and buckets:
+Here is the same policy document, defined programmatically in Python:
 
 ```python
 bucket_name = 'somebucket'
 
 # Define bucket policy with 'Resource' values defined using Python
-# f-strings so that the values of 'project' and 'bucket_name'
-# are inserted.
+# f-strings so that the value of 'bucket_name' is inserted.
 bucket_policy = {
     "Version": "2012-10-17",
     "Statement": [
@@ -206,7 +205,7 @@ bucket_policy = {
 
 ## Grant read-only access to another project's user
 
-Here is an example policy document for a project, `eidfNNN`, which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
+Here is a policy document which grants read-only access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from the bucket.
 
 ```json
 {
@@ -237,7 +236,7 @@ Here is an example policy document for a project, `eidfNNN`, which grants read-o
 
     `arn:aws:iam` is an Amazon Resource Name for an Identity Access and Management resource, in this case a user in a project.
 
-Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
+Here is the same policy document, defined programmatically in Python:
 
 ```python
 bucket_name = 'somebucket'
@@ -275,7 +274,7 @@ bucket_policy = {
 
 ## Grant read-write access to another project's user
 
-Here is an example policy document for a project, `eidfNNN`, which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Here is a policy document which grants read-write access to a bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
 
 ```json
 {
@@ -304,7 +303,7 @@ Here is an example policy document for a project, `eidfNNN`, which grants read-w
 }
 ```
 
-Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
+Here is the same policy document, defined programmatically in Python:
 
 ```python
 bucket_name = 'somebucket'
@@ -342,15 +341,15 @@ bucket_policy = {
 
 ### Require bucket owner to be given full control over uploaded files
 
-We could define a policy akin to [Grant read-only access to another project's user](#grant-read-only-access-to-another-projects-user) adding `s3:PutObject` and `s3:DeleteObject` to the `Action` list. This would allow the guest user to
+The above policy is a copy of that for [Grant read-only access to another project's user](#grant-read-only-access-to-another-projects-user) with both `s3:PutObject` and `s3:DeleteObject` added to the `Action` list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest user, `abcuser`.
 
-By default, if a file is uploaded, it would be owned by the uploader i.e., the guest user, `abcuser`.  An attempt by the bucket owner to read the file would then give an error of form
+A subsequent attempt by the bucket owner to read the uploaded file, which is in their own bucket, would then raise an error:
 
 ```text
 An error occurred (403) when calling the HeadObject operation: Forbidden
 ```
 
-even though they are the bucket owner! The bucket owner can delete this file from their bucket but not read it! To avoid this problem, the guest user needs to grant the bucket control full control over the uploaded file. In Python, this can done by passing this as an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html) e.g.,
+While the bucket owner can delete the uploaded file from their bucket they cannot read it! To avoid this problem, the guest user needs to grant the bucket owner full control over the uploaded file. In Python, this can done by passing an extra argument to [upload_file](https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html):
 
 ```python
 s3client.upload_file(Filename=os.path.join(uploads, data),
@@ -359,7 +358,9 @@ s3client.upload_file(Filename=os.path.join(uploads, data),
                      ExtraArgs={'ACL': 'bucket-owner-full-control'})
 ```
 
-Here is an example policy document for a project, `eidfNNN`, which grants read-write access to their bucket, `somebucket`, to an S3 user account, `abcuser`, from another project, `eidfABC`. Anyone with an access key and secret associated with the S3 user account `abcuser` can read from or write to the bucket or delete files in it.
+Behind the scenes, an S3 `x-amz-acl` parameter with value `bucket-owner-full-control` to be passed to the EIDF S3 Service.
+
+The requirement for this argument can be made mandatory by updating the policy to deny any upload request that does not include this argument. Here is the updated policy:
 
 ```json
 {
@@ -408,7 +409,15 @@ Here is an example policy document for a project, `eidfNNN`, which grants read-w
 }
 ```
 
-Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:
+The first policy statement is as before, allowing the user to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload list to include an `s3:x-amz-acl` parameter (in S3 terminology, a 'context key') with value `bucket-owner-full-control`.
+
+Any guest who attempts to upload a file without granting `bucket-owner-full-control` will have their upload denied. For example:
+
+```text
+Failed to upload data/edinburgh.csv to eidf114:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None"
+```
+
+Here is the same policy document, defined programmatically in Python:
 
 ```python
 bucket_name = 'somebucket'
