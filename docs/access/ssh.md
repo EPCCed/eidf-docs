@@ -1,288 +1,699 @@
-# SSH Access to Virtual Machines using the EIDF-Gateway Jump Host
+# SSH access to EIDF VMs
 
-The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
-You will require three things to use the gateway:
+EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the [EIDF Virtual Desktop Interface (VDI)](virtualmachines-vdi.md) to access the EIDF VMs.
 
-1. A user within a project allowed to access the gateway and a password set.
-1. An SSH-key linked to this account, used to authenticate against the gateway.
-1. Have MFA setup with your project account via SAFE.
+Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.
 
-Steps to meet all of these requirements are explained below.
+!!! Important "SSH access prerequisites"
 
-## Generating and Adding an SSH Key
+    You can only access an EIDF VM via SSH and the EIDF Gateway if your project lead has granted you permission to access both the VM and the EIDF Gateway.
 
-In order to make use of the EIDF-Gateway, your EIDF account needs an SSH-Key associated with it.
-If you added one while creating your EIDF account, you can skip this step.
+!!! Note "SSH access is not the same as SSH via the EIDF Virtual Desktop Interface"
 
-### Check for an existing SSH Key
+    You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your local host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your local host to an EIDF VM.
 
-To check if you have an SSH Key associated with your account:
+SSH (OpenSSH) is available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, or Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.
 
-1. Login to the [Portal](https://portal.eidf.ac.uk)
-1. Select 'Your Projects'
-1. Select your project name
-1. Select your username
+---
 
-If there is an entry under 'Credentials', then you're all setup.
-If not, you'll need to generate an SSH-Key, to do this:
+## Set up SSH access
 
-### Generate a new SSH Key
+To access an EIDF VM via SSH from your terminal or console, you will need:
 
-1. Open a new window of whatever terminal you will use to SSH to EIDF.
-1. Generate a new SSH Key:
+1. An EIDF project account to have been created for you.
+1. Access to the project VM to have been granted for your project account.
+1. Access to the EIDF Gateway, eidf-gateway.epcc.ed.ac.uk, to have been granted.
+
+The above steps need to be done by your project lead.
+
+Once your account has been created and access granted, you need to set up your SSH access as follows:
+
+1. [Create SSH private and public keys](#create-ssh-private-and-public-keys) on the host from which you want to access the EIDF VM via SSH.
+1. [Add the public key to your project account](#add-the-public-key-to-your-project-account) within the EIDF Portal.
+1. [Get a multi-factor authentication app](#get-a-multi-factor-authentication-app).
+1. [Set up multi-factor authentication](#set-up-multi-factor-authentication) for your project account within the EIDF Portal.
+
+Once you have done these setup steps, you can [connect to your EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh).
+
+### Create SSH private and public keys
+
+To create SSH private and public keys on the host from which you want to access the EIDF VM via SSH:
+
+1. Run `ssh-keygen` as follows:
+
+    * **EITHER** (recommended) Create private and public keys with a custom file name defined by you, where `-f <key_file>` specifies the path of the private key file to be created:
+
+        ```bash
+        ssh-keygen -f $HOME/.ssh/<key_file>
+        ```
+
+        For example:
+
+        ```bash
+        ssh-keygen -f $HOME/.ssh/id_ed25519_eidf000
+        ```
+
+        !!! Tip "Naming the private key file"
+
+             It is recommended that the private key file name include both the default algorithm used to create the key, `ed25519`, and the EIDF project number, `<project_id>` i.e., `<key_file>` is `id_ed25519_eidf<project_id>`. This can be useful if you have multiple keys for multiple projects or for other services. However, your choice of key name is up to you.
+
+    * **OR** Create private and public keys with a default OpenSSH file name:
+
+        ```bash
+        ssh-keygen
+        ```
+
+        You will be prompted to specify the key file name. For example:
+
+        ```bash
+        Enter file in which to save the key (/home/some-user/.ssh/id_ed25519):
+        ```
+
+        Press Enter/Return to accept the default.
+
+        !!! Warning "`.ssh/id_ed25519 already exists. Overwrite (y/n)?`"
+
+            If you have an existing key with the default name, then you will see this request. It is recommended that you enter `n` and then go down to [Add the public key to your project account](#add-the-public-key-to-your-project-account).
+
+            If you enter `y`, your current key will be overwritten, and a new public and private key created, and any services that you currently use it to access will need to have your new public key registered with them.
+
+        The default private key file name has a prefix `id_` followed by the default algorithm used to create the key e.g., `ed25519`.
+
+1. You will be prompted to enter, then re-enter a passphrase to protect your private key. For example:
 
     ```bash
-    ssh-keygen
+    Generating public/private ed25519 key pair.
+    Enter passphrase for "/home/some-user/.ssh/id_ed25519_eidf000" (empty for no passphrase):
+    Enter same passphrase again:
     ```
 
-1. It is fine to accept the default name and path for the key unless you manage a number of keys.
-1. Press enter to finish generating the key
+    Whenever you use the private key, you will be prompted for the passphrase.
 
-### Adding the new SSH Key to your account via the Portal
+    !!! Tip "Use a unique non-empty passphrase"
 
-1. Login into the [Portal](https://portal.eidf.ac.uk)
-1. Select 'Your Projects'
-1. Select the relevant project
-1. Select your username
-1. Select the plus button under  'Credentials'
-1. Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the `<ssh-key>.pub` file you just created and copy its contents into the text box.
-1. Click 'Upload Credential' - it should look something like this:
+        It is **strongly recommended** that you use a unique, **non-empty**, passphrase for each key that your create.
 
-   ![eidf-portal-ssh](../images/access/eidf-portal-ssh.png){: class="border-img"}
+1. Private and public key files will be created in your `.ssh` directory:
 
-#### Adding a new SSH Key via SAFE
+    ```text
+    Your identification has been saved in /home/some-user/.ssh/id_ed25519_eidf000
+    Your public key has been saved in /home/some-user/.ssh/id_ed25519_eidf000.pub
+    ...
+    ```
 
-This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
-If you need to add an SSH Key directly to SAFE, you can follow this [guide.](https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account)
-However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.
+    The files are:
 
-## Enabling MFA via the Portal
+    * `.ssh/<key_file>`, the private key file, which includes the private key itself. **Do not** share your private key with anyone.
+    * `.ssh/<key_file>.pub`, a complementary public key file, which shares the private key file name with a `.pub` suffix. The public key file has content:
 
-A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway.
+        ```text
+        <key_type> <base64_encoded_public_key> <comment>
+        ```
 
-To enable this for your EIDF account:
+        The default `<key_type>` is `ssh-ed25519`.
 
-1. Login to the [portal.](https://portal.eidf.ac.uk)
-1. Select 'Projects' then 'Your Projects'
-1. Select the project containing the account you'd like to add MFA to.
-1. Under 'Your Accounts', select the account you would like to add MFA to.
-1. Select 'Set MFA Token'
-1. Within your chosen MFA application, scan the QR Code or enter the key and add the token.
-1. Enter the code displayed in the app into the 'Verification Code' box and select 'Set Token'
-1. You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.
+        The default `<comment>` is `<username>@<hostname>` where `<username>` and `<hostname>` are inferred by `ssh-keygen` from your local host. You can specify a comment by using the `ssh-keygen` parameter `-C <comment>`.
 
-!!! note
-    TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.
-    An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.
+### Add the public key to your project account
 
-### Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
+To add the public key to your project account:
 
-1. From your local terminal, import the SSH Key you generated above:
-    `ssh-add /path/to/ssh-key`
+1. On the [Your Projects](https://portal.eidf.ac.uk/project) page within the [EIDF Portal](https://portal.eidf.ac.uk/), click your project.
+1. Your selected project's page will appear.
+1. Within the 'Your Accounts' table, click your account username.
+1. Your 'User Account Info' page will appear.
+1. Under 'Credentials', click the **+ (plus)** button.
+1. Either, the paste contents of the public key file, `$HOME/.ssh/<key_file>.pub`, into the **Credential** field.
+1. Or, click **Choose File** and select the public key file, `$HOME/.ssh/<key_file>.pub`
+1. Click **Upload Credential**.
+1. The 'User Account Info' page will reappear.
+1. Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'.
+1. Initially, the public key will have a 'Status' of 'Pending'. If you refresh the page, the 'Status' will eventually update to 'Active'.
 
-1. This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.
+!!! Warning "Delay in public key being usable"
 
-## Accessing From MacOS/Linux
+    There may be a lag, possibly of a few minutes, between a public key being added and it being usable, even if the public key is marked as 'Active'. This is due to the time taken for the update to be reflected across the EIDF infrastructure.
 
-OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.
+### Get a multi-factor authentication app
 
-Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:
+To provide additional security, the EIDF Gateway uses multi-factor authentication (MFA). When you access an EIDF VM with the EIDF Gateway you will be prompted not only for your private key's passphrase but also for a time-based one-time password (TOTP) code. To provide this password you will need to have installed a suitable authenticator app on your mobile device. There are many such apps available. Popular options include:
+
+* [Apple Passwords app](https://support.apple.com/en-gb/120758)
+* [Google Authenticator](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)
+* [Microsoft Authenticator](https://www.microsoft.com/en-gb/security/mobile-authenticator-app)
+
+!!! Note "Your mobile device and EIDF"
+
+    Use of these apps does not require you to register your mobile device with the EIDF infrastructure. Instead, these apps rely on the use of a shared secret between the EIDF infrastructure and the app. How this secret is shared is described in the next section.
+
+### Set up multi-factor authentication
+
+To set up multi-factor authentication for your project account within the EIDF Portal:
+
+1. On the [Your Projects](https://portal.eidf.ac.uk/project) page within the [EIDF Portal](https://portal.eidf.ac.uk/), click your project.
+1. Your selected project's page will appear.
+1. Within the 'Your Accounts' table, click your account username.
+1. Your 'User Account Info' page will appear.
+1. Click **Set MFA Token**.
+1. The 'Set MFA token' page will appear. This will show both a QR code and a **Key** field with a complementary key.
+1. Within your authenticator app, either scan the QR code or enter the key value.
+1. Your authenticator app will add an entry for your project account username and display a TOTP code.
+1. Enter the TOTP code from your authenticator app into the **Verification code** field.
+1. Click **Set Token**.
+1. The 'User Account Info' page will reappear, with the text 'Added MFA Token'. The 'MFA token' entry on the 'User Account Info' page will show a tick/check mark.
+
+---
+
+## Connect to an EIDF VM via SSH
+
+To connect to an EIDF VM via SSH:
+
+1. Run 'ssh' to connect to the EIDF VM via SSH and the EIDF Gateway:
+
+    * **EITHER** If your private key file has a custom name defined by you, then run:
+
+        ```bash
+        ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip>
+        ```
+
+        where:
+
+        * `-i` specifies your private key file.
+        * `<key_file>` is your private key file.
+        * `<user>` is your project account username.
+        * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
+        * `-o ProxyCommand="..."` requests a connection to the EIDF Gateway.
+        * `-W %h:%p` requests that the EIDF Gateway forward standard input and output to the EIDF VM.
+
+        For example:
+
+        ```bash
+        ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999
+        ```
+
+    * **OR** If your private key file has a default OpenSSH name (e.g., id_ed25519 or id_rsa) then run:
+
+        ```bash
+        ssh -J <user>@eidf-gateway.epcc.ed.ac.uk <user>@<host_ip>
+        ```
+
+        where:
+
+        * `<user>` is your project account username.
+        * `<host_ip>` is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
+
+        For example:
+
+        ```bash
+        ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999
+        ```
+
+1. The first time that you connect to the EIDF Gateway you will be asked if you want to connect. For example:
+
+    ```bash
+    The authenticity of host 'eidf-gateway.epcc.ed.ac.uk (129.215.62.65)' can't be established.
+    ED25519 key fingerprint is SHA256:........
+    This key is not known by any other names.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])?
+    ```
+
+1. Enter `yes`.
+1. When you connect to the EIDF Gateway, a welcome message will be displayed. You will then be prompted for your private key's passphrase, to log into the EIDF Gateway. For example:
+
+    ```bash
+    Enter passphrase for key '/home/some-user/.ssh/id_ed25519_eidf000':
+    ```
+
+1. Enter your private key's passphrase.
+1. The first time that you connect to an EIDF VM each day, you will be prompted for a TOTP code. For example:
+
+    ```bash
+    Expecting a code for eidf-ipa:some-user
+
+    (some-eidf-user@eidf-gateway.epcc.ed.ac.uk) TOTP code:
+    ```
+
+1. Open your authenticator app, and enter the TOTP code shown.
+1. The first time you connect to the EIDF VM, you will be asked if you want to connect. For example:
+
+    ```text
+    The authenticity of host '10.24.999.999 (<no hostip for proxy command>)' can't be established.
+    ED25519 key fingerprint is SHA256:........
+    This key is not known by any other names.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+    ```
+
+1. Enter `yes`.
+1. You will again be prompted for your private key's passphrase, this time to log into the EIDF VM. For example:
+
+    ```bash
+    Enter passphrase for key '/home/some-user/.ssh/id_ed25519_eidf000':
+    ```
+
+1. Again, enter your private key's passphrase.
+1. All going well, you will be logged into the EIDF VM and its prompt will appear.
+
+What you are prompted for depends upon when you SSH into an EIDF VM via the EIDF Gateway as shown in the table below:
+
+| When | Connect to EIDF Gateway? | Passphrase | Connect to EIDF VM? | TOTP code | Passphrase |
+| ---- | ------------------------ | ---------- | ------------------- | --------- | ---------- |
+| First connection via SSH ever | &#10004; | &#10004; | &#10004; | &#10004; | &#10004; |
+| First connection via SSH on a specific day | | &#10004; | | &#10004; | &#10004; |
+| Subsequent connection via SSH on the same day | | &#10004; | | | &#10004; |
+
+As the 'ssh' connection command is verbose, you can [Write an SSH configuration file](#write-an-ssh-configuration-file), described below, to reduce the verbosity.
+
+### Troubleshooting: 'Warning: Identity file .ssh/id_ed25519_eidf000 not accessible: No such file or directory'
+
+If you see an error like:
+
+```text
+Warning: Identity file /home/some-user/.ssh/id_ed25519_eidf000 not accessible: No such file or directory.
+Warning: Identity file /home/some-user/.ssh/id_ed25519_eidf000 not accessible: No such file or directory.
+...
+some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+```
+
+then this means that your private key file could not be found on your local host.
+
+### Troubleshooting: 'Permission denied (publickey)'
+
+If you see an error like:
+
+```text
+some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+```
+
+then this means that your public key is not known to the EIDF Gateway.
+
+!!! Warning "Delay in public key being usable"
+
+    There may be a lag, possibly of a few minutes, between a public key being added and it being usable, even if the public key is marked as 'Active'. This is due to the time taken for the update to be reflected across the EIDF infrastructure.
+
+### Troubleshooting: 'No MFA key for this user'
+
+If you see an error like:
+
+```text
+No MFA key for this user
+```
+
+then you need to [Set up multi-factor authentication](#set-up-multi-factor-authentication) for your project account within the EIDF Portal.
+
+### Troubleshooting: Multiple prompts to 'Enter passphrase'
+
+You can expect to be prompted for your private key's passphrase twice. If you are prompted more than twice then this implies that you have entered the wrong passphrase.
+
+For each passphrase prompt - to access the EIDF Gateway and to access the EIDF VM - you have three attempts.
+
+If you fail all three attempts when prompted by the EIDF Gateway, you will see:
+
+```text
+some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+```
+
+If you fail all three attempts when prompted by the EIDF VM, you will see:
+
+```text
+(some-eidf-user@10.24.999.999) Password:
+```
+
+i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM password (as described in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account)), then you can use it. If not, then you will need to try connecting again, remembering to use the correct passphrase.
+
+---
+
+## Access services on an EIDF VM via port forwarding and SSH tunnelling
+
+There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop service, if available, from a remote desktop client running on your local host (as described in [Remote desktop client access via SSH](./ssh-rdp.md)).
+
+For each port you want to access on your EIDF VM, add a parameter of form `-L <local_port>:localhost:<eidf_vm_port>` to your 'ssh' command, where `<local_port>` is a port on your local host, `localhost` refers to your EIDF VM, and `<eidf_vm_port>` is a port on your EIDF host. For example:
 
 ```bash
-ssh-add /path/to/ssh-key
-ssh -J [username]@eidf-gateway.epcc.ed.ac.uk [username]@[vm_ip]
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+```bash
+ssh -J <user>@eidf-gateway.epcc.ed.ac.uk <user>@<host_ip> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+Interactions with the local port on your local host are securely forwarded, or 'tunnelled', to the port on your EIDF host.
+
+For example, in each of the following, the port 23001 on a user's local host is forwarded to the remote desktop service port 3389 on their EIDF VM:
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/id_ed25519_eidf000 some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+```
+
+```bash
+ssh -J some-eidf-user@eidf-gateway.epcc.ed.ac.uk some-eidf-user@10.24.999.999 -L 23001:localhost:3389
+```
+
+Multiple `-L` parameters can be used, if required. For example:
+
+```bash
+ssh ... -L 23001:localhost:3389 -L 18192:localhost:8192
+```
+
+---
+
+## Write an SSH configuration file
+
+The commands to [connect to the EIDF VM via SSH](#connect-to-an-eidf-vm-via-ssh), described above, can become very verbose. An SSH configuration file can be used to specify some, or all, of these parameters and so reduce the verbosity of this command.
+
+Create a file, `$HOME/.ssh/config`, with the following content, or, if you already have an `$HOME/.ssh/config` file, then add the following content, where:
+
+* `<project_id>` is your EIDF project ID.
+* `<host_name>` is the name of the EIDF VM. Host names and IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.
+* `<host_ip>` is the IP address of the EIDF VM.
+* `<user>` is your project account username.
+
+```text
+Host eidf-gateway-<project_id>
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host <host_name>
+    HostName <host_ip>
+    ProxyJump eidf-gateway-<project_id>
+Host eidf-gateway-<project_id> <host_name>
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+```
+
+For example:
+
+```text
+Host eidf-gateway-000
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+Host eidf-gateway-000 eidf000-vm
+    User some-eidf-user
+    IdentityFile ~/.ssh/id_ed25519_eidf000
+    IdentitiesOnly yes
+```
+
+In the configuration above:
+
+* `Host eidf-gateway-<project_id>` includes configuration parameters specific to the EIDF Gateway only.
+* `Host <host_name>` includes configuration parameters specific to the EIDF VM only.
+* `Host eidf-gateway-<project_id> <host_name>` includes configuration parameters common to both.
+
+One the SSH configuration file has been edited, to connect to a EIDF VM via SSH, run:
+
+```bash
+ssh <host_name>
 ```
 
 For example:
 
 ```bash
-ssh-add ~/.ssh/keys/id_ed25519
-ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
+ssh eidf000-vm
 ```
 
-!!! info
-    If the `ssh-add` command fails saying the SSH Agent is not running, run the below command:
+### About the SSH configuration file
+
+The SSH configuration file parameters are as follows (from [ssh_config](https://man7.org/linux/man-pages/man5/ssh_config.5.html)):
+
+* `Host`, pattern that matches to host names provided on the command-line when running 'ssh'.
+* `User`, username to log in as.
+* `HostName`, actual host name or IP address.
+* `IdentityFile`, private key file.
+* `IdentitiesOnly yes`, require that only the key specified in `IdentityFile` be used. This is of use if you [Cache private keys using 'ssh-agent'](#cache-private-keys-using-ssh-agent). By default, an 'ssh-agent' will try every private key it knows about in turn which, if there are many keys, can raise a 'Too many authentication failures' error. This SSH configuration file parameter tells the 'ssh-agent' to only use this key.
+* `ProxyJump`, jump proxy.
+
+When `ssh <host_name>` is run, the following happens:
+
+* A search is done in the SSH configuration file for all blocks whose `Host` includes the pattern `<host_name>` and the configuration parameters from all matching blocks are aggregated. This gives the following parameters for `<host_name>`, that is, everything needed to connect to the EIDF VM at `<host_ip>` via the EIDF Gateway:
+
+    ```text
+    HostName <host_ip>
+    ProxyJump eidf-gateway-<project_id>
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+    ```
+
+* As these configuration parameters include a `ProxyJump`, a search is done for all blocks whose `Host` includes the pattern `eidf-gateway-<project_id>` and, again, the parameters are aggregated. This gives the following parameters for `eidf-gateway-<project_id>`, that is, everything needed to connect to the EIDF Gateway:
+
+    ```text
+    HostName eidf-gateway.epcc.ed.ac.uk
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+    ```
+
+* A connection is made to the EIDF Gateway, using the username (`User`) and private key (`IdentityFile`), and then on to the EIDF VM, again, using the username (`User`) and private key (`IdentityFile`).
+
+### Specify port forwarding
+
+If using a SSH configuration file, you can still forward ports by using `-L <local_port>:localhost:<eidf_vm_port>` parameters:
+
+```bash
+ssh <host_name> -L <local_port>:localhost:<eidf_vm_port>
+```
+
+For example:
+
+```bash
+ssh eidf000-vm -L 23001:localhost:3389
+```
+
+To save typing, you can add port forwarding parameters to the EIDF VM's host block in your SSH configuration file, using the `LocalForward` parameter. An additional SSH parameter, `ServerAliveInterval`, is also useful, to configure SSH to regularly request a response from the server which can help to avoid connection timeouts:
+
+```text
+    LocalForward <local_port> localhost:<eidf_vm_port>
+    ServerAliveInterval <interval_in_seconds>
+```
+
+For example:
+
+```text
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+    LocalForward 23001 localhost:3389
+    ServerAliveInterval 60
+```
+
+Multiple `LocalForward` parameters can be used, if required. For example:
+
+```text
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+    LocalForward 23001 localhost:3389
+    LocalForward 18192 localhost:8192
+    ServerAliveInterval 60
+```
+
+### Add other hosts for the same project
+
+To add other hosts for the same project, add a new `Host` block for the host, with `HostName` and `ProxyJump` parameters for the host, and edit the `Host eidf-gateway-<project_id> <host_name>` pattern to add the new host name. For example, the following adds to the example above content for another project host `<other_host>` with IP address `<other_host_ip>`:
+
+```text
+Host eidf-gateway-<project_id>
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host <host_name>
+    HostName <host_ip>
+    ProxyJump eidf-gateway-<project_id>
+Host <other_host_name>
+    HostName <other_host_ip>
+    ProxyJump eidf-gateway-<project_id>
+Host eidf-gateway-<project_id> <host_name> <other_host_name>
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+```
+
+### Add hosts for other project(s)
+
+If you have access to EIDF VMs in multiple projects, then you can add entries for each project using the template given at the start of this [Write an SSH configuration file](#write-an-ssh-configuration-file) section, and replacing `<project_id>` and `<key_file>` with the appropriate EIDF VM project ID and private key file name in each case.
+
+---
+
+## Cache private keys using 'ssh-agent'
+
+'ssh-agent' is an SSH key manager which caches decrypted private keys in-memory. You can add private keys to the 'ssh-agent' and, once you've provided your passphrase to decrypt the key, you will not be prompted for that private key's passphrase again when using the private key until either you remove the private key from the 'ssh-agent' or the 'ssh-agent' is stopped.
+
+### Start the 'ssh-agent'
+
+To start the 'ssh-agent':
+
+1. Check if the 'ssh-agent' is running:
 
     ```bash
-    eval `ssh-agent`
+    ssh-add -l
     ```
 
-    Then re-run the ssh-add command above.
+    If the output is `The agent has no identities.`, then the 'ssh-agent' is running.
 
-The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
+    If the output is either of the following, then the 'ssh-agent' is not running:
 
-You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
+    * Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS: `Could not open a connection to your authentication agent.`
+    * Windows (Powershell): `Error connecting to agent: No such file or directory`
 
-## Accessing from Windows
+1. Start the 'ssh-agent' if it is not running:
 
-Windows will require the installation of OpenSSH-Server to use SSH. Putty or MobaXTerm can also be used but won’t be covered in this tutorial.
+    Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:
 
-### Installing and using OpenSSH
-
-1. Click the ‘Start’ button at the bottom of the screen
-1. Click the ‘Settings’ cog icon
-1. Select 'System'
-1. Select the ‘Optional Features’ option at the bottom of the list
-1. If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button
-1. Search ‘OpenSSH Client’
-1. Select the check box next to ‘OpenSSH Client’ and click ‘Install’
-
-### Accessing EIDF via a Terminal
-
-1. Open either Powershell or the Windows Terminal
-1. Import the SSH Key you generated above:
-
-    ```powershell
-
-    ssh-add \path\to\sshkey
+    ```bash
+    eval $(ssh-agent)
     ```
 
-    For Example:
+    Windows (Powershell), as Administrator:
 
     ```powershell
-    ssh-add .\.ssh\id_ed25519
-    ```
-
-1. This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:
-
-    ```powershell
-
     Get-Service -Name ssh-agent | Set-Service -StartupType Manual
-    Start-Service ssh-agent
-    ssh-add \path\to\sshkey
-
+    Start-Service -Name ssh-agent
+    Get-Service -Name ssh-agent
     ```
 
-1. Login by jumping through the gateway.
+### Add a private key to the 'ssh-agent'
 
-    ```powershell
-    ssh -J [EIDF username]@eidf-gateway.epcc.ed.ac.uk [EIDF username]@[vm_ip]
-    ```
+To add a private key to the 'ssh-agent':
 
-    For Example:
-
-    ```powershell
-    ssh -J alice@eidf-gateway.epcc.ed.ac.uk alice@10.24.1.1
-    ```
-
-You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.
-
-### Accessing with PuTTY
-
-#### Creating the Gateway Config
-
-1. Install PuTTY v0.81 or greater and launch it
-1. From the default 'Session' menu, input the gateway URL: `eidf-gateway.epcc.ed.ac.uk`
-1. Set the port to `22`
-1. Naviagte to 'Connection' > 'SSH' > 'Auth' > 'Credentials'
-1. Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'
-1. Select the path to your SSH key for your gateway account
-1. Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'
-1. Click Save
-
-#### Adding a client/VM config
-
-Now we can create a config session for a VM which can be connected to through the gateway
-
-1. From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'
-1. Input the hostname/IP of the VM, e.g. 10.24.X.Y.
-1. Ensure the port is `22`
-1. From the navigation menu, move to 'Connection' > 'Proxy'
-1. Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. *Note this doesn't exist in older versions of PuTTY*
-1. Under 'Proxy Hostname', set the name of the gateway session you created above. In the SOP this was called 'eidf-gateway'
-1. Set the Port to `22`
-1. Put your eidf-gateway username into the 'Username' box
-1. Set 'Do DNS name lookup at proxy end' to 'Yes'
-1. Navigate to 'Connection' > 'SSH' > 'Auth' > 'Credentials' and select 'Browse' next to the 'Private key file for authentication' box
-1. Select your private key for your VM account (this may be the same as the gateway)
-1. Navigate to 'Connection' > 'Data'
-1. Put your VM username into the 'Auto-Login username' box
-1. Return to the original 'Sesstion' tab
-1. Put the VM name or a nickname into the 'Saved Settings' name box
-1. Select 'Save'
-1. Select 'Open' and you should connect to your VM.
-
-## SSH Aliases
-
-You can use SSH Aliases to access your VMs with a single command.
-
-1. Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:
+1. Run:
 
     ```bash
-
-    vi ~/.ssh/config
-
-    ```
-
-1. Insert the following lines:
-
-    ```bash
-
-    Host eidf-gateway
-      Hostname eidf-gateway.epcc.ed.ac.uk
-      User <eidf project username>
-      IdentityFile /path/to/ssh/key
-
+    ssh-add $HOME/.ssh/<key_file>
     ```
 
     For example:
 
     ```bash
-
-    Host eidf-gateway
-      Hostname eidf-gateway.epcc.ed.ac.uk
-      User alice
-      IdentityFile ~/.ssh/id_ed25519
-
+    ssh-add $HOME/.ssh/id_ed25519_eidf000
     ```
 
-1. Save and quit the file.
-
-1. Now you can ssh to your VM using the below command:
+1. You will be prompted for your private key's passphrase. For example:
 
     ```bash
-
-    ssh -J eidf-gateway [EIDF username]@[vm_ip] -i /path/to/ssh/key
-
+    Enter passphrase for /home/someuser/.ssh/id_ed25519_eidf000
     ```
 
-    For Example:
+1. Enter your private key's passphrase.
+1. The private key will be added and a message displayed which includes the comment from when you created your key. For example:
+
+    ```text
+    Identity added: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+    ```
+
+Now, when you connect to a EIDF VM via the 'ssh' command, if SSH finds your private key in the 'ssh-agent', then it will not prompt you to enter your private key's passphrase.
+
+### List the keys currently cached by the 'ssh-agent'
+
+To list the keys currently cached by the 'ssh-agent':
+
+1. Run:
 
     ```bash
-    ssh -J eidf-gateway alice@10.24.1.1 -i ~/.ssh/id_ed25519
+    ssh-add -L
     ```
 
-1. You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:
+1. A list of public keys corresponding to the private keys will be displayed. For example:
 
-    ```terminalShell
-    Host <vm name/alias>
-      HostName 10.24.VM.IP
-      User <vm username>
-      IdentityFile /path/to/ssh/key
-      ProxyCommand ssh eidf-gateway -W %h:%p
+    ```text
+    ssh-ed25519 AABACHRza72l6Q31ZTD5ABAEIB/kq6tgG4chsEgI7BhGDhngFJ6SyjgU4Q53S3tGpmya some-user@somedept.ed.ac.uk
     ```
 
-    For Example:
+    If there are no private keys, then the output will be:
 
-    ```terminalShell
-    Host demo
-      HostName 10.24.1.1
-      User alice
-      IdentityFile ~/.ssh/id_ed25519
-      ProxyCommand ssh eidf-gateway -W %h:%p
+     ```text
+     The agent has no identities.
+     ```
+
+### Remove private keys from the 'ssh-agent'
+
+To remove a private key from the 'ssh-agent':
+
+1. Run:
+
+    ```bash
+    ssh-add -d ~/.ssh/<key_file>
     ```
 
-    If your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
-    `HostKeyAlgorithms +ssh-rsa`
+1. The private key will be removed and a message displayed which includes the comment from when you created your key:
 
-1. Now, by running `ssh demo` your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.
+    ```text
+    Identity removed: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+    ```
 
-!!! info
-    This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
-    This method allows for a much less complicated ssh command to reach your VMs.
-    You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like.
-    The `-J` flag is use to specify that we will access the second specified host by jumping through the first specified host.
+To remove all the private keys from the 'ssh-agent', run:
 
-## sudo, Password Setting and Password Resets
+```bash
+ssh-add -D
+```
 
-You do not have to set a password to log into virtual machines. However, if you have been given sudo permission, you will need to set a password to be able to make use of sudo. You can set (or reset) a password using the web form in the EIDF Portal following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
+### Stop the 'ssh-agent'
+
+The 'ssh-agent' runs until one of the following occurs:
+
+* Your local host is restarted or rebooted.
+* You manually stop the 'ssh-agent'.
+
+To manually stop the 'ssh-agent':
+
+* Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:
+
+    Run, in the same terminal in which you started the 'ssh-agent':
+
+    ```bash
+    ssh-agent -k
+    ```
+
+    If you no longer have that terminal open, then run:
+
+    ```bash
+    ps -ef | grep ssh-agent
+    ```
+
+    And, using te 'ssh-agent' process ID from the second column, kill the 'ssh-agent' process:
+
+    ```bash
+    kill <process_id>
+    ```
+
+* Windows (Powershell), as Administrator:
+
+    ```powershell
+    Stop-Service ssh-agent
+    Get-Service ssh-agent
+    ```
+
+!!! Warning "Stopping 'ssh-agent' under Powershell does not delete cached private keys"
+
+    Stopping 'ssh-agent' under Powershell does not delete the cached private keys. When the 'ssh-agent' is restarted, then the private keys will still be available. This is because the keys are cached in the Windows registry, encrypted in a Windows-specific way.
+
+    To ensure that the keys are deleted, run `ssh-add -D` when the 'ssh-agent' is running.
+
+---
+
+## Remove a public key from your project account
+
+To remove a public key from your project account:
+
+1. On the [Your Projects](https://portal.eidf.ac.uk/project) page within the [EIDF Portal](https://portal.eidf.ac.uk/), click your project.
+1. Your selected project's page will appear.
+1. Within the 'Your Accounts' table, click your account username.
+1. Your 'User Account Info' page will appear.
+1. Under 'Credentials', click the **bin** button.
+1. Select a public key to delete.
+1. Click **Delete Selected**.
+1. The 'User Account Info' page will reappear.
+1. Initially, the public key will have a 'Status' of 'Deleting'.
+1. If you refresh the page, the public key will eventually disappear from the table.
+
+!!! Warning "Delay in public key being no longer usable"
+
+    There may be a lag, possibly of a few minutes, between a public key being removed and it being no longer usable, even if the public key is no longer shown. This is due to the time taken for the update to be reflected across the EIDF infrastructure.
+
+---
+
+## EIDF VM passwords
+
+An SSH private-public key pair is sufficient to access an EIDF VM via SSH and the EIDF Gateway, you do not have to set a password for your account on that VM.
+
+However, if you intend to run commands via 'sudo' once logged in, then you will need your EIDF VM password. You can set (or reset) a password via the 'User Account Info' page in the EIDF Portal by following the instructions in [Set or change the password for a user account](../services/virtualmachines/quickstart.md#set-or-change-the-password-for-a-user-account).
