@@ -49,8 +49,8 @@ However, there are some subtleties around how to refer to EIDF S3 Service bucket
 Use bucket names of form `<bucket-name>` for private buckets within a project, when using an access key for that project. For example:
 
 ```text
-somebucket
-somebucket/some-data-file.csv
+mybucket
+mybucket/some-data-file.csv
 ```
 
 A project prefix is not required when using buckets within a project and using an access key for that project as the access key itself identifies the project's tenancy.
@@ -60,8 +60,8 @@ A project prefix is not required when using buckets within a project and using a
 Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, when anonymously using your own project's public buckets or using any buckets within other projects, private or public.
 
 ```text
-eidfNNN:somebucket
-eidfNNN:somebucket/some-data-file.csv
+eidfNNN:mybucket
+eidfNNN:mybucket/some-data-file.csv
 ```
 
 !!! Warning "Tenancies, bucket naming and S3 tools"
@@ -75,8 +75,8 @@ eidfNNN:somebucket/some-data-file.csv
 Use bucket names of form `<project-name>-<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a dash, `-`, when anonymously using public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). For example:
 
 ```text
-eidfNNN-somebucket
-eidfNNN-somebucket/some-data-file.csv
+eidfNNN-mybucket
+eidfNNN-mybucket/some-data-file.csv
 ```
 
 #### Public buckets and URLs
@@ -84,15 +84,15 @@ eidfNNN-somebucket/some-data-file.csv
 Use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` when using public project buckets via a URL. For example:
 
 ```text
-https://s3.eidf.ac.uk/eidfNNN:somebucket
-https://s3.eidf.ac.uk/eidfNNN:somebucket/some-data-file.csv
+https://s3.eidf.ac.uk/eidfNNN:mybucket
+https://s3.eidf.ac.uk/eidfNNN:mybucket/some-data-file.csv
 ```
 
 Use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>` when using public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL. For example:
 
 ```text
-https://s3.eidf.ac.uk/eidfNNN-somebucket
-https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
+https://s3.eidf.ac.uk/eidfNNN-mybucket
+https://s3.eidf.ac.uk/eidfNNN-mybucket/some-data-file.csv
 ```
 
 ---
