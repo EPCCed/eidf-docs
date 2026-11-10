@@ -80,7 +80,7 @@ S3 policies are defined as documents in [JSON](https://json.org) format. The key
 * `Principal`: A single principal or a list of principals to who permission being allowed or denied.
     * The `AWS` element is required and specifies the list of principals.
     * Each principal is specified as an Amazon Resorce Names (ARN). Within the EIDF S3 Service, ARNs for principals have form `arn:aws:iam:<region>:<project-name>:<account>`, where `<region>` is empty, `<project-name>` is an EIDF project name (e.g., `eidfABC`), and `<account>` is an S3 account in that project. `<project-name>` can be empty if the S3 account belongs to the same project as the bucket to which the policy is attached.
-    * Either `"*"` or `{"AWS":"*"}` can be used to specify any principal, which allows for anonymous access.
+    * Either `"*"` or `{"AWS":"*"}` can be used to specify any principal, which allows for anonymous access to a bucket or its files.
 * `Condition`: An optional element specifying any condition(s) affecting the policy.
     * `StringEquals` compares a value from a 'context variable', a variable provided by the principal when requesting the action, to an expected value. Here, it is expected that the context variable `s3:x-amz-acl`, which specifies a 'canned', or pre-defined, access control list (ACL), needs to be equal to `bucket-owner-full-control`.
 * `Effect`: Whether the policy allows (`Allow`) or denies (`Deny`) the actions governed by the policy.
@@ -205,13 +205,13 @@ response = s3client.delete_bucket_policy(Bucket=bucket_name)
 
 ---
 
-## Grant public anonymous read-only access to a bucket
+## Grant public read-only access to a bucket
 
-!!! Warning "Publicly-readable buckets are anonymously readable by anyone"
+!!! Warning "Publicly readable buckets are anonymously readable by anyone"
 
-    **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
+    **Beware!** Making a bucket publicly readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-Here is a policy document which grants public anonymous read-only access to a bucket, `somebucket`, allowing the bucket to be listed and its files read (downloaded):
+Here is a policy document which grants public read-only access to a bucket, `somebucket`, allowing the bucket to be listed and its files read (downloaded):
 
 ```json
 {
@@ -235,11 +235,11 @@ Here is a policy document which grants public anonymous read-only access to a bu
 }
 ```
 
-This policy is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket public](./s3browser.md#make-a-bucket-public).
+This policy is comparable to the policy set by the [EIDF S3 Browser](./s3browser.md) if you use it to [Make a bucket publicly readable](./s3browser.md#make-a-bucket-publicly-readable).
 
 !!! Info "Project name in resource names"
 
-    The policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket public](./s3browser.md#make-a-bucket-public) has Amazon Resource Names of form:
+    The policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket publicly readable](./s3browser.md#make-a-bucket-publicly-readable) has Amazon Resource Names of form:
 
     ```text
     "Resource": "arn:aws:s3::eidfNNN:<bucket>"

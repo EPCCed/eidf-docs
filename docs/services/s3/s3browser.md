@@ -138,13 +138,13 @@ To save the policy, click **Save Policy**.
 
     Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
 
-### Make a bucket public
+### Make a bucket publicly readable
 
-!!! Warning "Publicly-readable buckets are anonymously readable by anyone"
+!!! Warning "Publicly readable buckets are anonymously readable by anyone"
 
-    **Beware!** Making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
+    **Beware!** Making a bucket publicly readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-To make a bucket publicly-readable:
+To make a bucket publicly readable:
 
 1. Click **Settings** and select **Make Bucket Public**
 1. A 'Make bucket publicly readable' dialog will appear.
@@ -159,7 +159,7 @@ To view information about the bucket:
 
 !!! Info "Effect on existing bucket policies (for those familiar with policies)"
 
-    Making a bucket public will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:
+    Making a bucket publicly readable will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:
 
     ```json
     {
@@ -178,12 +178,12 @@ To view information about the bucket:
 
 ### Make a bucket private
 
-If you have previously made a bucket public following the steps of the previous section, then, to make the bucket private:
+If you have previously made a bucket publicly readable following the steps of the previous section, then, to make the bucket private:
 
 1. Click **Settings** and select **Set Bucket Policy**.
 1. The 'Bucket Policy Editor' will appear.
 1. Either, within the visual editor, click **Remove Rule** to remove the permission rules:
     * Effect: Allow, Principals: Public Access (*), Actions: Read Objects
     * Effect: Allow, Principals: Public Access (*), Actions: List Bucket
-1. Or, within the JSON editor, edit the `Statement` list to remove the statements shown in [Make a bucket public](#make-a-bucket-public) above.
+1. Or, within the JSON editor, edit the `Statement` list to remove the statements shown in [Make a bucket publicly readable](#make-a-bucket-publicly-readable) above.
 1. Click **Save Policy**.
