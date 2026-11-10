@@ -161,8 +161,20 @@ To view information about the bucket:
 
     Making a bucket public will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:
 
-    * Effect: Allow, Principal: *, Action: s3:GetObject, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
-    * Effect: Allow, Principal: *, Action: s3:ListBucket, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
+    ```json
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3::<project-name>:<bucket-name>/*"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3::<project-name>:<bucket-name>/*"
+    }
+    ```
 
 ### Make a bucket private
 
@@ -173,7 +185,5 @@ If you have previously made a bucket public following the steps of the previous 
 1. Either, within the visual editor, click **Remove Rule** to remove the permission rules:
     * Effect: Allow, Principals: Public Access (*), Actions: Read Objects
     * Effect: Allow, Principals: Public Access (*), Actions: List Bucket
-1. Or, within the JSON editor, edit the `Statement` list to remove the statements:
-    * Effect: Allow, Principal: *, Action: s3:GetObject, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
-    * Effect: Allow, Principal: *, Action: s3:ListBucket, Resource: `arn:aws:s3::<project-name>:<bucket-name>/*`
+1. Or, within the JSON editor, edit the `Statement` list to remove the statements shown in [Make a bucket public](#make-a-bucket-public) above.
 1. Click **Save Policy**.
