@@ -1,14 +1,52 @@
-# Login
+# Connect to Cerebras
 
-The route for SSH access to the CS3 user-nodes is via the `eidf-gateway` bastion, as for the EIDF VirDS desktop VMs. This requires two credentials, your SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
+Access to Cerebras CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as used for accessing EIDF VMs via SSH. This access requires two credentials: an SSH key pair protected by a passphrase **and** a Time-based one-time password (TOTP).
 
-## Access credentials
+---
 
-To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for `eidf-gateway`.
+## Set up SSH access
 
-To configure your SSH keys and MFA (TOTP) token, see [our general SSH documentation.](https://docs.eidf.ac.uk/access/ssh/)
+[Set up SSH access](../../access/ssh.md#set-up-ssh-access) in [SSH access to EIDF VMs](../../access/ssh.md) describes how to:
 
-### SSH Login example
+1. Create SSH private and public keys on the host from which you want to access the EIDF VM via SSH.
+1. Add the public key to your project account within the EIDF Portal.
+1. Get a multi-factor authentication app.
+1. Set up multi-factor authentication for your project account within the EIDF Portal.
 
-To login to the CS3 user-nodes, you will need to use the SSH Key and TOTP token as noted above.
-With the appropriate key loaded<br>`ssh -J <username>@eidf-gateway.epcc.ed.ac.uk cerebras` will then prompt you, roughly once per day, for your TOTP code.
+---
+
+## Connect to Cerebras CS3 via SSH
+
+If your private key file has a default OpenSSH name (e.g., `id_ed25519` or `id_rsa`) then run:
+
+```bash
+ssh -J <user>@eidf-gateway.epcc.ed.ac.uk cerebras
+```
+
+Alternatively, if your private key file has a custom name defined by you, then run:
+
+```bash
+ssh -o ProxyCommand="ssh -i $HOME/.ssh/<key_file> -W %h:%p <user>@eidf-gateway.epcc.ed.ac.uk" -i $HOME/.ssh/<key_file> <user>@cerebras
+```
+
+Alternatively, you can add the following definition to an SSH configuration file, `$HOME/.ssh/config`:
+
+```text
+Host eidf-gateway-cerebras
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host cerebras
+    HostName cerebras
+    ProxyJump eidf-gateway-cerebras
+Host eidf-gateway-cerebras cerebras
+    User <user>
+    IdentityFile ~/.ssh/<key_file>
+    IdentitiesOnly yes
+```
+
+then run:
+
+```bash
+ssh cerebras
+```
+
+In each case, you will be prompted for your SSH key passphrase, then your TOTP, then your SSH key passphrase again. You will only be prompted for a TOTP roughly once a day.
