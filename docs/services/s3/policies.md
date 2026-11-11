@@ -105,7 +105,7 @@ aws s3api put-bucket-policy --bucket <bucket> --policy "$(cat <policy-file>)"
 For example:
 
 ```bash
-aws s3api put-bucket-policy --bucket mybucket --policy "$(cat grant-public-ro.json)"
+aws s3api put-bucket-policy --bucket mybucket --policy "$(cat grant_public_read_only.json)"
 ```
 
 ### Get bucket policy via the AWS CLI
@@ -555,10 +555,10 @@ bucket_policy = {
 
 ## Create an anonymous S3 download link for a project bucket
 
-An S3 policy can be used to create anonymous S3 download links for files within a project bucket. Below is the source code for an example Python script, `create_anonymous_s3_download.py`, that uploads a file into a bucket, creates a key for the file, and applies an S3 policy to configure read-only access to the file within a specific time period and constrains access to clients from a specific range of IP addresses only. The script can be run as follows:
+An S3 policy can be used to create anonymous S3 download links for files within a project bucket. Below is the source code for an example Python script, `create_anonymous_download_link.py`, that uploads a file into a bucket, creates a key for the file, and applies an S3 policy to configure read-only access to the file within a specific time period and constrains access to clients from a specific range of IP addresses only. The script can be run as follows:
 
 ```bash
-python create_anonymous_s3_download.py <bucket> <download-id> <file> \
+python create_anonymous_download_link.py <bucket> <download-id> <file> \
     <valid-from> <valid-to> <ips>
 ```
 
@@ -573,7 +573,7 @@ A bucket policy is applied to allow anonymous downloads only of this file with t
 For example, running:
 
 ```bash
-python create_anonymous_s3_download.py mybucket auto data/edinburgh.csv \
+python create_anonymous_download_link.py mybucket auto data/edinburgh.csv \
     2026-11-09T15:30:00Z 2026-11-09T16:00:00Z 10.24.9.999/32
 ```
 
@@ -622,7 +622,7 @@ These constraints are enforced by the following S3 policy, created by the script
 
     In this policy there is both an `Allow` statement and a `Deny` statement. Within S3 policies, explicit `Deny` statements always override explicit `Allow` statements. So, for this example, even if a request is made to the bucket with the correct key and within the allowed times, if the host IP is not 10.24.9.999, then the request would be denied.
 
-`create_anonymous_s3_download.py`:
+`create_anonymous_download_link.py`:
 
 ```python
 #!/usr/bin/env python
