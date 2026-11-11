@@ -87,6 +87,10 @@ S3 policies are defined as documents in [JSON](https://json.org) format. The key
 * `Effect`: Whether the policy allows (`Allow`) or denies (`Deny`) the actions governed by the policy.
     * In case of conflicts or overlaps, explicit `Deny` statements override explicit `Allow` statements.
 
+!!! Important "Only a single policy can be applied to a bucket"
+
+    Only a single policy can be applied to a bucket. To support fine-grained access control may require a policy with a large number of statements covering both allowed and denied actions.
+
 !!! Info "Ceph S3 support for Amazon S3 policies"
 
     Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
