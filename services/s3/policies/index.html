@@ -1996,6 +1996,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-s3-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing S3 policies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-bucket-policies-via-the-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
       Manage bucket policies via the AWS CLI
@@ -2080,27 +2089,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-public-anonymous-read-only-access-to-a-bucket" class="md-nav__link">
+  <a href="#grant-public-read-only-access-to-a-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant public anonymous read-only access to a bucket
+      Grant public read-only access to a bucket
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-read-only-access-to-another-projects-user" class="md-nav__link">
+  <a href="#grant-read-only-access-to-another-projects-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant read-only access to another project's user
+      Grant read-only access to another project's S3 account
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-read-write-access-to-another-projects-user" class="md-nav__link">
+  <a href="#grant-read-write-access-to-another-projects-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant read-write access to another project's user
+      Grant read-write access to another project's S3 account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grant read-write access to another project&#39;s S3 account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require-bucket-owner-to-be-given-full-control-over-uploaded-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Require bucket owner to be given full control over uploaded files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-anonymous-s3-download-link-for-a-project-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an anonymous S3 download link for a project bucket
     </span>
   </a>
   
@@ -3350,6 +3383,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-s3-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing S3 policies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-bucket-policies-via-the-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
       Manage bucket policies via the AWS CLI
@@ -3434,27 +3476,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-public-anonymous-read-only-access-to-a-bucket" class="md-nav__link">
+  <a href="#grant-public-read-only-access-to-a-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant public anonymous read-only access to a bucket
+      Grant public read-only access to a bucket
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-read-only-access-to-another-projects-user" class="md-nav__link">
+  <a href="#grant-read-only-access-to-another-projects-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant read-only access to another project's user
+      Grant read-only access to another project's S3 account
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grant-read-write-access-to-another-projects-user" class="md-nav__link">
+  <a href="#grant-read-write-access-to-another-projects-s3-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant read-write access to another project's user
+      Grant read-write access to another project's S3 account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grant read-write access to another project&#39;s S3 account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require-bucket-owner-to-be-given-full-control-over-uploaded-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Require bucket owner to be given full control over uploaded files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-anonymous-s3-download-link-for-a-project-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an anonymous S3 download link for a project bucket
     </span>
   </a>
   
@@ -3480,9 +3546,109 @@
 
 
 <h1 id="using-s3-policies">Using S3 policies</h1>
-<p>Identity Access Management (IAM) policies can be applied to buckets. For example, you can grant other accounts (within the same project or from other EIDF projects) read or write access to your buckets, or grant public anonymous read access.</p>
-<p>Policies are defined as S3 policy documents, in JSON format.</p>
+<p>S3 policies allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when. Rich project-specific policies, enforcing fine-grained access control, can be applied to both buckets and files.</p>
 <p><strong>Author's Note</strong>: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.</p>
+<hr />
+<h2 id="introducing-s3-policies">Introducing S3 policies</h2>
+<p>To introduce S3 policies, imagine that you have created a bucket, <code>mybucket</code>. By default, this bucket can be accessed and used by any member of your project who has the access key and secret that you used to create the bucket. Now, you want to work with another EIDF project, <code>eidfABC</code>, and want to grant a user of that project read-write access to <code>mybucket</code>.</p>
+<p>Here is a policy document which, when attached to <code>mybucket</code>, grants read-write access to your project's bucket, <code>mybucket</code>, to an S3 account, <code>abcuser</code>, belonging to the other EIDF project, <code>eidfABC</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProjectListGetDelete"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"arn:aws:iam::eidfABC:user/abcuser"</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"s3:DeleteObject"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProjectPut"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"arn:aws:iam::eidfABC:user/abcuser"</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"s3:PutObject"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Essentially, what any S3 policy says is 'if a <code>Principal</code> makes a request to perform an <code>Action</code> on a <code>Resource</code>, then, taking into account any <code>Condition</code>s, the <code>Effect</code> is to either <code>Deny</code> or <code>Allow</code> the <code>Action</code>'.</p>
+<p>Anything not specifically allowed by a policy is, by default, denied. The exception is for the bucket owner, whoever created the bucket, which is determined by the access key and secret used when the bucket was created.  The bucket owner can create, list, download files from, upload files to, and delete files from the bucket, and delete the bucket itself.</p>
+<p>This example policy states that:</p>
+<ul>
+<li>S3 account <code>abcuser</code> of project <code>eidfABC</code> is allowed to list the contents of <code>mybucket</code>, download its files, and its delete files.</li>
+<li>S3 account <code>abcuser</code> of project <code>eidfABC</code> is allowed to upload files to <code>mybucket</code>, but only on condition that they grant the bucket owner full control over the uploaded file.</li>
+<li>All other actions are, by default, denied, with the exception of those performed by the bucket owner.</li>
+</ul>
+<p>S3 policies are defined as documents in <a href="https://json.org">JSON</a> format. The key features of a policy document, as shown in the example above, are as follows:</p>
+<ul>
+<li><code>Version</code>: Policy language syntax version. The current version is 2012-10-17.</li>
+<li><code>Statement</code>: A single policy statement or list of policy statements. Here, the policy document includes two statements.</li>
+<li><code>Sid</code>: An optional, human-readable, policy statement identifier.</li>
+<li><code>Action</code>: A single S3 action or a list of S3 actions to which the policy statement applies. The policy controls whether these actions are allowed or denied.</li>
+<li><code>Resource</code>: A single S3 resource or a list of S3 resources to which the policy statement applies.<ul>
+<li>Each S3 resource is specified as an Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for buckets and objects are of form <code>arn:aws:s3:&lt;region&gt;:[&lt;project-name&gt;]:&lt;bucket&gt;[/&lt;prefix&gt;]</code>, where <code>&lt;region&gt;</code> is empty, and <code>&lt;project-name&gt;</code> is optional. For file resources, a <code>/&lt;prefix&gt;</code> pattern can be provided, which can include wild-cards.</li>
+<li>A resource can be a bucket, or files in a bucket, or another resource. Here, both the bucket, <code>mybucket</code>, and all the files within the bucket, <code>mybucket/*</code>, are specified.</li>
+</ul>
+</li>
+<li><code>Principal</code>: A single principal or a list of principals to whom permission being allowed or denied.<ul>
+<li>The <code>AWS</code> element specifies the list of principals themselves.</li>
+<li>Each principal is specified as an Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for principals have form <code>arn:aws:iam:&lt;region&gt;:&lt;project-name&gt;:&lt;account&gt;</code>, where <code>&lt;region&gt;</code> is empty, <code>&lt;project-name&gt;</code> is an EIDF project name (e.g., <code>eidfABC</code>), and <code>&lt;account&gt;</code> is an S3 account in that project (e.g., <code>abcuser</code>). <code>&lt;project-name&gt;</code> can be empty if the S3 account belongs to the same project as the bucket to which the policy is attached.</li>
+<li>Either <code>"*"</code> or <code>{"AWS":"*"}</code> can be used to specify any principal, if allowing anonymous access to a bucket or its files.</li>
+</ul>
+</li>
+<li><code>Condition</code>: An optional element specifying any condition(s) affecting the policy.<ul>
+<li><code>StringEquals</code> compares a value from a 'context variable', a variable provided by the principal when requesting the action, to an expected value. Here, it is expected that the context variable <code>s3:x-amz-acl</code>, which specifies a 'canned', or pre-defined, access control list (ACL), needs to be equal to <code>bucket-owner-full-control</code>.</li>
+</ul>
+</li>
+<li><code>Effect</code>: Whether the policy allows (<code>Allow</code>) or denies (<code>Deny</code>) the actions governed by the policy.<ul>
+<li>In case of conflicts or overlaps, explicit <code>Deny</code> statements override explicit <code>Allow</code> statements.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Only a single policy can be applied to a bucket</p>
+<p>Only a single policy can be applied to a bucket. To support fine-grained access control may require a policy with a large number of statements covering both allowed and denied actions.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Ceph S3 support for Amazon S3 policies</p>
+<p>Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 <a href="https://docs.ceph.com/en/latest/radosgw/bucketpolicy/">Bucket Policies</a>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">More information on S3 policies</p>
+<p>The foregoing is a necessarily brief introduction to S3 policies. For more information, see, for example, AWS pages on:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html">Policies and permissions in Amazon S3</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html">IAM JSON policy element reference</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html">Allows access based on date and time</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_deny-ip.html">Denies access to AWS based on the source IP</a></li>
+</ul>
+</div>
 <hr />
 <h2 id="manage-bucket-policies-via-the-aws-cli">Manage bucket policies via the AWS CLI</h2>
 <h3 id="set-bucket-policy-via-the-aws-cli">Set bucket policy via the AWS CLI</h3>
@@ -3490,14 +3656,14 @@
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucket&gt;<span class="w"> </span>--policy<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>&lt;policy-file&gt;<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>somebucket<span class="w"> </span>--policy<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>grant-public-ro.json<span class="k">)</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>mybucket<span class="w"> </span>--policy<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>grant_public_read_only.json<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="get-bucket-policy-via-the-aws-cli">Get bucket policy via the AWS CLI</h3>
 <p>To get a policy, run:</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucket&gt;<span class="w"> </span>--query<span class="w"> </span>Policy<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span>&gt;<span class="w"> </span>&lt;local-file&gt;
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>somebucket<span class="w"> </span>--query<span class="w"> </span>Policy<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span>&gt;<span class="w"> </span>policy.json
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>mybucket<span class="w"> </span>--query<span class="w"> </span>Policy<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span>&gt;<span class="w"> </span>policy.json
 </code></pre></div>
 <p>If you have the <a href="https://jqlang.org/">jq</a> JSON query tool installed, then you can pretty-print the policy as follows:</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>get-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucket&gt;<span class="w"> </span>--query<span class="w"> </span>Policy<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>&gt;<span class="w"> </span>&lt;local-file&gt;
@@ -3507,7 +3673,7 @@
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>delete-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>&lt;bucket&gt;
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>delete-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>somebucket
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3api<span class="w"> </span>delete-bucket-policy<span class="w"> </span>--bucket<span class="w"> </span>mybucket
 </code></pre></div>
 <hr />
 <h2 id="manage-bucket-policies-via-python">Manage bucket policies via Python</h2>
@@ -3517,7 +3683,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 
-<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 <span class="c1"># Bucket policy defined as a dict.</span>
 <span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
 
@@ -3532,7 +3698,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 
-<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 
 <span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">get_bucket_policy</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">)</span>
@@ -3544,18 +3710,18 @@
 <p>Use Boto3's <a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/delete_bucket_policy.html">delete_bucket_policy</a> to delete a policy. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 
-<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 
 <span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">delete_bucket_policy</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="grant-public-anonymous-read-only-access-to-a-bucket">Grant public anonymous read-only access to a bucket</h2>
+<h2 id="grant-public-read-only-access-to-a-bucket">Grant public read-only access to a bucket</h2>
 <div class="admonition warning">
-<p class="admonition-title">Publicly-readable buckets are anonymously readable by anyone</p>
-<p><strong>Beware!</strong> Making a bucket publicly-readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
+<p class="admonition-title">Publicly readable buckets are anonymously readable by anyone</p>
+<p><strong>Beware!</strong> Making a bucket publicly readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
 </div>
-<p>Here is an example JSON policy document for a project, <code>eidfNNN</code>, which grants public anonymous read-only access to their bucket, <code>somebucket</code>, allowing the the bucket to be listed and the files read (downloaded):</p>
+<p>Here is a policy document which grants public read-only access to a bucket, <code>mybucket</code>, allowing the bucket to be listed and its files read (downloaded):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -3564,40 +3730,36 @@
 <span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3::eidfNNN:somebucket"</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::mybucket"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PublicReadGetObject"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3::eidfNNN:somebucket/*"</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This is the policy set by the <a href="../s3browser/">EIDF S3 Browser</a> if you use it to <a href="../s3browser/#make-a-bucket-public">Make a bucket public</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">S3 resource names</p>
-<p><code>arn:aws:s3</code> is an Amazon Resource Name for an S3 resource, in this case a bucket.</p>
-</div>
+<p>This policy is comparable to the policy set by the <a href="../s3browser/">EIDF S3 Browser</a> if you use it to <a href="../s3browser/#make-a-bucket-publicly-readable">Make a bucket publicly readable</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Project name in resource names</p>
-<p>In this example, citing the project name, <code>eidfNNN</code>, in the S3 <code>Resource</code> values, is optional. Alternatively, the following values could be used for each value of <code>Resource</code> respectively:</p>
-<ul>
-<li><code>arn:aws:s3:::somebucket</code></li>
-<li><code>arn:aws:s3:::somebucket/*</code></li>
-</ul>
-<p>Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.</p>
+<p>The example policy document above does not include the project name, <code>eidfNNN</code>, in the Amazon Resource Names for the resources i.e.,:</p>
+<div class="highlight"><pre><span></span><code>"Resource": "arn:aws:s3:::&lt;bucket&gt;"
+"Resource": "arn:aws:s3:::&lt;bucket&gt;/*"
+</code></pre></div>
+<p>In contrast, he policy set by the <a href="../s3browser/">EIDF S3 Browser</a> when used to <a href="../s3browser/#make-a-bucket-publicly-readable">Make a bucket publicly readable</a> does include the project name:</p>
+<div class="highlight"><pre><span></span><code>"Resource": "arn:aws:s3::eidfNNN:&lt;bucket&gt;"
+"Resource": "arn:aws:s3::eidfNNN:&lt;bucket&gt;/*"
+</code></pre></div>
+<p>In this example, citing the project name, <code>eidfNNN</code>, in the S3 <code>Resource</code> values, is optional. Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket name the associated project.</p>
 </div>
-<p>The examples in the following sections do not include the project name in <code>Resource</code> values for this reason.</p>
-<p>Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects and buckets:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="s1">'eidfNNN'</span>
-<span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<p>Here is the same policy document, defined programmatically in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 
 <span class="c1"># Define bucket policy with 'Resource' values defined using Python</span>
-<span class="c1"># f-strings so that the values of 'project' and 'bucket_name'</span>
-<span class="c1"># are inserted.</span>
+<span class="c1"># f-strings so that the value of 'bucket_name' is inserted.</span>
 <span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
     <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
@@ -3606,21 +3768,21 @@
             <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
             <span class="s2">"Principal"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">,</span>
             <span class="s2">"Action"</span><span class="p">:</span> <span class="s2">"s3:ListBucket"</span><span class="p">,</span>
-            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3::</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s2">"Sid"</span><span class="p">:</span> <span class="s2">"PublicReadGetObject"</span><span class="p">,</span>
             <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
             <span class="s2">"Principal"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">,</span>
             <span class="s2">"Action"</span><span class="p">:</span> <span class="s2">"s3:GetObject"</span><span class="p">,</span>
-            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3::</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="grant-read-only-access-to-another-projects-user">Grant read-only access to another project's user</h2>
-<p>Here is an example JSON policy document for a project, <code>eidfNNN</code>, which grants read-only access to their bucket, <code>somebucket</code>, to an S3 user account, <code>abcuser</code>, from another project, <code>eidfABC</code>. Anyone with an access key and secret associated with the S3 user account <code>abcuser</code> can read from the bucket.</p>
+<h2 id="grant-read-only-access-to-another-projects-s3-account">Grant read-only access to another project's S3 account</h2>
+<p>Here is a policy document which grants read-only access to a bucket, <code>mybucket</code>, to an S3 account, <code>abcuser</code>, belonging to a project, <code>eidfABC</code>. Anyone with an access key and secret associated with the S3 account <code>abcuser</code> can read from the bucket.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -3637,25 +3799,21 @@
 <span class="w">        </span><span class="s2">"s3:GetObject"</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">"arn:aws:s3:::somebucket"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"arn:aws:s3:::somebucket/*"</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Identity Access and Management resource names</p>
-<p><code>arn:aws:iam</code> is an Amazon Resource Name for an Identity Access and Management resource, in this case a user in a project.</p>
-</div>
-<p>Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:</p>
-<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<p>Here is the same policy document, defined programmatically in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 <span class="n">guest_project</span> <span class="o">=</span> <span class="s1">'eidfABC'</span>
-<span class="n">guest_user</span> <span class="o">=</span> <span class="s1">'abcuser'</span>
+<span class="n">guest_account</span> <span class="o">=</span> <span class="s1">'abcuser'</span>
 
 <span class="c1"># Define bucket policy with 'Principal' and 'Resource' values defined</span>
 <span class="c1"># using Python f-strings so that the values of 'guest_project',</span>
-<span class="c1"># 'guest_user' and 'bucket_name' are inserted.</span>
+<span class="c1"># 'guest_account' and 'bucket_name' are inserted.</span>
 <span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
     <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
@@ -3664,7 +3822,7 @@
             <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
             <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_user</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_account</span><span class="si">}</span><span class="s2">"</span>
                 <span class="p">]</span>
             <span class="p">},</span>
             <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
@@ -3680,8 +3838,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="grant-read-write-access-to-another-projects-user">Grant read-write access to another project's user</h2>
-<p>Here is an example JSON policy document for a project, <code>eidfNNN</code>, which grants read-write access to their bucket, <code>somebucket</code>, to an S3 user account, <code>abcuser</code>, from another project, <code>eidfABC</code>. Anyone with an access key and secret associated with the S3 user account <code>abcuser</code> can read from or write to the bucket or delete files in it.</p>
+<h2 id="grant-read-write-access-to-another-projects-s3-account">Grant read-write access to another project's S3 account</h2>
+<p>Here is a policy document which grants read-write access to a bucket, <code>mybucket</code>, to an S3 account, <code>abcuser</code>, belonging to a project, <code>eidfABC</code>. Anyone with an access key and secret associated with the S3 account <code>abcuser</code> can read from or write to the bucket or delete files in it.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -3700,21 +3858,21 @@
 <span class="w">        </span><span class="s2">"s3:DeleteObject"</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">"arn:aws:s3:::somebucket"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"arn:aws:s3:::somebucket/*"</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Here is the same policy, defined programmatically in Python. Python f-strings are for values in the policy to allow for it to be more easily customised for different projects, buckets and users:</p>
-<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'somebucket'</span>
+<p>Here is the same policy document, defined programmatically in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
 <span class="n">guest_project</span> <span class="o">=</span> <span class="s1">'eidfABC'</span>
-<span class="n">guest_user</span> <span class="o">=</span> <span class="s1">'abcuser'</span>
+<span class="n">guest_account</span> <span class="o">=</span> <span class="s1">'abcuser'</span>
 
 <span class="c1"># Define bucket policy with 'Principal' and 'Resource' values defined</span>
 <span class="c1"># using Python f-strings so that the values of 'guest_project',</span>
-<span class="c1"># 'guest_user' and 'bucket_name' are inserted.</span>
+<span class="c1"># 'guest_account' and 'bucket_name' are inserted.</span>
 <span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
     <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
@@ -3723,7 +3881,7 @@
             <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
             <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_user</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_account</span><span class="si">}</span><span class="s2">"</span>
                 <span class="p">]</span>
             <span class="p">},</span>
             <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
@@ -3739,6 +3897,260 @@
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
+</code></pre></div>
+<h3 id="require-bucket-owner-to-be-given-full-control-over-uploaded-files">Require bucket owner to be given full control over uploaded files</h3>
+<p>The above policy is a copy of that for <a href="#grant-read-only-access-to-another-projects-s3-account">Grant read-only access to another project's S3 account</a> updated to add both <code>s3:PutObject</code> and <code>s3:DeleteObject</code> to the <code>Action</code> list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest S3 account, <code>abcuser</code>.</p>
+<p>A subsequent attempt by the bucket owner to read the uploaded file, which is in their own bucket, would then raise an error:</p>
+<div class="highlight"><pre><span></span><code>An error occurred (403) when calling the HeadObject operation: Forbidden
+</code></pre></div>
+<p>While the bucket owner can delete the uploaded file from their bucket they cannot read it! To avoid this problem, the guest S3 account needs to grant the bucket owner full control over the uploaded file. In Python, this can done by passing an extra argument to <a href="https://docs.aws.amazon.com/boto3/latest/reference/services/s3/client/upload_file.html">upload_file</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">s3client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">Filename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">uploads</span><span class="p">,</span> <span class="n">data</span><span class="p">),</span>
+                     <span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span>
+                     <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                     <span class="n">ExtraArgs</span><span class="o">=</span><span class="p">{</span><span class="s1">'ACL'</span><span class="p">:</span> <span class="s1">'bucket-owner-full-control'</span><span class="p">})</span>
+</code></pre></div>
+<p>This requests that the EIDF S3 service apply a 'canned', or pre-defined, access control list (ACL) called <code>bucket-owner-full-control</code> to the object once uploaded. Behind the scenes, when the EIDF S3 service is contacted, the request includes an S3 <code>x-amz-acl</code> parameter with value <code>bucket-owner-full-control</code>.</p>
+<p>The requirement for this argument can be made mandatory by updating the policy to deny any upload request that does not include this argument. Here is the updated policy:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProjectListGetDelete"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"arn:aws:iam::eidfABC:user/abcuser"</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"s3:DeleteObject"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProjectPut"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"arn:aws:iam::eidfABC:user/abcuser"</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"s3:PutObject"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:s3:::mybucket/*"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The first policy statement is as before, allowing the guest S3 account to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, <code>s3:PutObject</code>, which requires any upload request to include the 'canned' ACL <code>x-amz-acl</code> parameter with value <code>bucket-owner-full-control</code>. The <code>s3:</code> prefix to this parameter in the policy is make it clear that this is expected as a S3 parameter in the request.</p>
+<p>If the guest S3 account attempts to upload a file without this argument, then their upload will be denied. For example:</p>
+<div class="highlight"><pre><span></span><code>Failed to upload data/edinburgh.csv to eidfNNN:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None
+</code></pre></div>
+<p>Here is the same policy document, defined programmatically in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bucket_name</span> <span class="o">=</span> <span class="s1">'mybucket'</span>
+<span class="n">guest_project</span> <span class="o">=</span> <span class="s1">'eidfABC'</span>
+<span class="n">guest_account</span> <span class="o">=</span> <span class="s1">'abcuser'</span>
+
+<span class="c1"># Define bucket policy with 'Principal' and 'Resource' values defined</span>
+<span class="c1"># using Python f-strings so that the values of 'guest_project',</span>
+<span class="c1"># 'guest_account' and 'bucket_name' are inserted.</span>
+<span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
+    <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"Sid"</span><span class="p">:</span> <span class="s2">"ProjectListGetDelete"</span><span class="p">,</span>
+            <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
+            <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_account</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+                <span class="s2">"s3:GetObject"</span><span class="p">,</span>
+                <span class="s2">"s3:DeleteObject"</span>
+                <span class="p">],</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"Sid"</span><span class="p">:</span> <span class="s2">"ProjectPut"</span><span class="p">,</span>
+            <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
+            <span class="s2">"Principal"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"AWS"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">"arn:aws:iam::</span><span class="si">{</span><span class="n">guest_project</span><span class="si">}</span><span class="s2">:user/</span><span class="si">{</span><span class="n">guest_account</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">"Action"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"s3:PutObject"</span>
+                <span class="p">],</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/*"</span>
+            <span class="p">],</span>
+            <span class="s2">"Condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"StringEquals"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"s3:x-amz-acl"</span><span class="p">:</span> <span class="s2">"bucket-owner-full-control"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Let guest users know to grant the bucket owner full control over uploaded files</p>
+<p>If using this policy, then you need to let guest S3 account users know that they need to request that the EIDF S3 service apply the 'canned' ACL <code>bucket-owner-full-control</code> to their object once uploaded.</p>
+<p>If using Python and Boto3 this can be done using an <code>ExtraArgs={'ACL': 'bucket-owner-full-control'}</code> argument to <code>upload_file</code>. Other S3 packages have their own approaches.</p>
+</div>
+<hr />
+<h2 id="create-an-anonymous-s3-download-link-for-a-project-bucket">Create an anonymous S3 download link for a project bucket</h2>
+<p>An S3 policy can be used to create anonymous S3 download links for files within a project bucket. Below is the source code for an example Python script, <code>create_anonymous_download_link.py</code>, that uploads a file into a bucket, creates a key for the file, and applies an S3 policy to configure read-only access to the file within a specific time period and constrains access to clients from a specific range of IP addresses only. The script can be run as follows:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>create_anonymous_download_link.py<span class="w"> </span>&lt;bucket&gt;<span class="w"> </span>&lt;download-id&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;valid-from&gt;<span class="w"> </span>&lt;valid-to&gt;<span class="w"> </span>&lt;ips&gt;
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;file&gt;</code> is uploaded into <code>&lt;bucket&gt;</code> with key <code>downloads/&lt;download-id&gt;/&lt;file-name&gt;</code>. If <code>&lt;download-id&gt;</code> has value <code>auto</code>, then a secure random ID is created, else <code>&lt;download-id&gt;</code> is used as-is.</li>
+<li><code>&lt;valid-from&gt;</code> and <code>&lt;valid-to&gt;</code> are date-times of form <code>&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;T&lt;HH&gt;:&lt;MM&gt;:&lt;SS&gt;Z</code> where <code>T</code> is the delimiter between date and time and <code>Z</code> denotes 'UTC' time.</li>
+<li><code>&lt;ips&gt;</code> is a comma-delimited list of one or more IP addresses in CIDR notation i.e., of form <code>&lt;ip-address&gt;/&lt;routing-prefix&gt;</code>. Use a <code>&lt;routing-prefix&gt;</code> of <code>32</code> to specify a single IP address (e.g., <code>11.22.33.44/32</code>) or <code>24</code> to specify a range of 256 addresses (e.g., <code>11.22.33.0/24</code>).</li>
+</ul>
+<p>A bucket policy is applied to allow anonymous downloads only of this file with this key. Downloads are only allowed between the <code>&lt;valid-from&gt;</code> and <code>&lt;valid-to&gt;</code> date-times and only from hosts in the list of <code>&lt;ips&gt;</code>.</p>
+<p>For example, running:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>create_anonymous_download_link.py<span class="w"> </span>mybucket<span class="w"> </span>auto<span class="w"> </span>data/edinburgh.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="m">2026</span>-11-09T15:30:00Z<span class="w"> </span><span class="m">2026</span>-11-09T16:00:00Z<span class="w"> </span><span class="m">10</span>.24.9.999/32
+</code></pre></div>
+<p>would upload <code>data/edinburgh.csv</code> and assign it a key with a secure random ID, for example, <code>downloads/oImIs5K5AhTRP-lFB31upw/edinburgh.csv</code>. This file would be anonymously readable between 15:30 and 16:00 on 09-11-2026 only from a host with IP address 10.24.9.999. Any attempt to access any other file, to access the file outside of these times, or from another host, would give an error.</p>
+<p>These constraints would be enforced by the following S3 policy, created by the script:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllowPublicGetObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::mybucket/downloads/oImIs5K5AhTRP-lFB31upw/edinburgh.csv"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"DateGreaterThan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"aws:CurrentTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-10T15:30:00Z"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"DateLessThan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"aws:CurrentTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-10T16:00:00Z"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DenyUnknownIPs"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::mybucket/downloads/oImIs5K5AhTRP-lFB31upw/edinburgh.csv"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"NotIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"10.24.9.999/32"</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Explicit <code>Deny</code> statements override explicit <code>Allow</code> statements</p>
+<p>In this policy there is both an <code>Allow</code> statement and a <code>Deny</code> statement. Within S3 policies, explicit <code>Deny</code> statements always override explicit <code>Allow</code> statements. So, for this example, even if a request is made to the bucket with the correct key and within the allowed times, if the host IP is not 10.24.9.999, then the request would be denied.</p>
+</div>
+<p>The <code>create_anonymous_download_link.py</code> implementation is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botocore.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientError</span>
+
+<span class="c1"># Bucket in project</span>
+<span class="n">bucket_name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Download ID</span>
+<span class="n">download_id</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># Upload file path</span>
+<span class="n">upload_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># Downloads valid from time</span>
+<span class="n">valid_from</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="c1"># Downloads valid to time</span>
+<span class="n">valid_to</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="c1"># IPs</span>
+<span class="n">ips</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+
+<span class="n">s3client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'s3'</span><span class="p">,</span>
+                        <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">'https://s3.eidf.ac.uk'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">download_id</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+    <span class="n">download_id</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_urlsafe</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">upload_file</span><span class="p">)</span>
+<span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"downloads/</span><span class="si">{</span><span class="n">download_id</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">s3client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">upload_file</span><span class="p">,</span>
+                         <span class="n">Bucket</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">,</span>
+                         <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">boto3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">S3UploadFailedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">bucket_policy</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
+    <span class="s2">"Statement"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"Sid"</span><span class="p">:</span> <span class="s2">"AllowPublicGetObject"</span><span class="p">,</span>
+            <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Allow"</span><span class="p">,</span>
+            <span class="s2">"Principal"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">,</span>
+            <span class="s2">"Action"</span><span class="p">:</span> <span class="s2">"s3:GetObject"</span><span class="p">,</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="s2">"Condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"DateGreaterThan"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"aws:CurrentTime"</span><span class="p">:</span> <span class="n">valid_from</span><span class="p">},</span>
+                <span class="s2">"DateLessThan"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"aws:CurrentTime"</span><span class="p">:</span> <span class="n">valid_to</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"Sid"</span><span class="p">:</span> <span class="s2">"DenyUnknownIPs"</span><span class="p">,</span>
+            <span class="s2">"Effect"</span><span class="p">:</span> <span class="s2">"Deny"</span><span class="p">,</span>
+            <span class="s2">"Principal"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">,</span>
+            <span class="s2">"Action"</span><span class="p">:</span> <span class="s2">"s3:GetObject"</span><span class="p">,</span>
+            <span class="s2">"Resource"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"arn:aws:s3:::</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="s2">"Condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"NotIpAddress"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"aws:SourceIp"</span><span class="p">:</span> <span class="n">ips</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">policy</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">bucket_policy</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">s3client</span><span class="o">.</span><span class="n">put_bucket_policy</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">,</span>
+                                      <span class="n">Policy</span><span class="o">=</span><span class="n">policy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 </code></pre></div>
 
 

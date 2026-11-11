@@ -2227,36 +2227,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-public-project-bucket" class="md-nav__link">
+  <a href="#create-a-publicly-readable-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a public project bucket
+      Create a publicly readable project bucket
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-a-browser" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-a-browser" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via a browser
+      Read from a publicly readable project bucket via a browser
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-curl" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-curl" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via 'curl'
+      Read from a publicly readable project bucket via 'curl'
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-the-aws-cli" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-the-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via the AWS CLI
+      Read from a publicly readable project bucket via the AWS CLI
     </span>
   </a>
   
@@ -3885,36 +3885,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-public-project-bucket" class="md-nav__link">
+  <a href="#create-a-publicly-readable-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a public project bucket
+      Create a publicly readable project bucket
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-a-browser" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-a-browser" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via a browser
+      Read from a publicly readable project bucket via a browser
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-curl" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-curl" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via 'curl'
+      Read from a publicly readable project bucket via 'curl'
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#read-from-a-public-project-bucket-via-the-aws-cli" class="md-nav__link">
+  <a href="#read-from-a-publicly-readable-project-bucket-via-the-aws-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      Read from a public project bucket via the AWS CLI
+      Read from a publicly readable project bucket via the AWS CLI
     </span>
   </a>
   
@@ -4015,21 +4015,21 @@
 <p>Though the organisation of objects within a bucket has no hierarchy, many S3 implementations allow for a hierarchy to be simulated via the use of keys with slashes (<code>/</code>), for example, <code>scotland/lothian/edinburgh.csv</code>. With such keys, the key <strong>prefix</strong>, <code>scotland/lothian/</code> can be viewed as a <strong>virtual directory</strong>.</p>
 <h3 id="project-tenancies">Project tenancies</h3>
 <p>Each project has a <strong>tenancy</strong> within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.</p>
-<p>Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., <code>eidfNNN:</code>) when referencing your public buckets anonymously or buckets within other projects. When using your own private buckets there is no need for such prefixes to be used.</p>
+<p>Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., <code>eidfNNN:</code>) when anonymously using your own project's public buckets or using any buckets, private or public, within other projects. When using your own private buckets there is no need for such prefixes to be used.</p>
 <p>The <a href="../../datapublishing/service/">EIDF Data Publishing Service</a> uses the default tenancy within the EIDF S3 Service. This default tenancy is distinct from the project-specific tenancies used for project-specific buckets. As all projects which publish data within the EIDF Data Publishing Service share the same tenancy, the service adopts a convention of adding project names to bucket names (e.g., <code>eidfNNN-</code>) to allow a specific project's buckets, within this default tenancy, to be identified.</p>
 <h3 id="bucket-naming">Bucket naming</h3>
 <p>The AWS S3 documentation on <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html">General purpose bucket naming rules</a> states that bucket names must be between 3-63 characters in length, and must contain only lower case letters, numbers, hyphens <code>-</code>, or full stops <code>.</code>.</p>
 <p>However, there are some subtleties around how to refer to EIDF S3 Service buckets depending on both how the bucket is being accessed and where within the EIDF S3 Service it is hosted. These arise from the use of <a href="#project-tenancies">Project tenancies</a> within the service.</p>
 <h4 id="private-buckets-within-a-project">Private buckets within a project</h4>
 <p>Use bucket names of form <code>&lt;bucket-name&gt;</code> for private buckets within a project, when using an access key for that project. For example:</p>
-<div class="highlight"><pre><span></span><code>somebucket
-somebucket/some-data-file.csv
+<div class="highlight"><pre><span></span><code>mybucket
+mybucket/some-data-file.csv
 </code></pre></div>
 <p>A project prefix is not required when using buckets within a project and using an access key for that project as the access key itself identifies the project's tenancy.</p>
 <h4 id="public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</h4>
-<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a colon, <code>:</code>, for public buckets within a project, when accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:</p>
-<div class="highlight"><pre><span></span><code>eidfNNN:somebucket
-eidfNNN:somebucket/some-data-file.csv
+<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a colon, <code>:</code>, when anonymously using your own project's public buckets or using any buckets within other projects, private or public.</p>
+<div class="highlight"><pre><span></span><code>eidfNNN:mybucket
+eidfNNN:mybucket/some-data-file.csv
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Tenancies, bucket naming and S3 tools</p>
@@ -4037,18 +4037,18 @@ eidfNNN:somebucket/some-data-file.csv
 <p>Some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.</p>
 </div>
 <h4 id="public-buckets-within-the-eidf-data-publishing-service">Public buckets within the EIDF Data Publishing Service</h4>
-<p>Use bucket names of form <code>&lt;project-name&gt;-&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a dash, <code>-</code>, for public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>, if accessing anonymously. For example:</p>
-<div class="highlight"><pre><span></span><code>eidfNNN-somebucket
-eidfNNN-somebucket/some-data-file.csv
+<p>Use bucket names of form <code>&lt;project-name&gt;-&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a dash, <code>-</code>, when anonymously using public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a>. For example:</p>
+<div class="highlight"><pre><span></span><code>eidfNNN-mybucket
+eidfNNN-mybucket/some-data-file.csv
 </code></pre></div>
 <h4 id="public-buckets-and-urls">Public buckets and URLs</h4>
-<p>To reference public project buckets via a URL, use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;:&lt;bucket-name&gt;</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN:somebucket
-https://s3.eidf.ac.uk/eidfNNN:somebucket/some-data-file.csv
+<p>Use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;:&lt;bucket-name&gt;</code> when using public project buckets via a URL. For example:</p>
+<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN:mybucket
+https://s3.eidf.ac.uk/eidfNNN:mybucket/some-data-file.csv
 </code></pre></div>
-<p>To reference public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a> via a URL, use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;-&lt;bucket-name&gt;</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN-somebucket
-https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
+<p>Use a URL of form <code>https://s3.eidf.ac.uk/&lt;project-name&gt;-&lt;bucket-name&gt;</code> when using public buckets within the <a href="../../datapublishing/service/">EIDF Data Publishing Service</a> via a URL. For example:</p>
+<div class="highlight"><pre><span></span><code>https://s3.eidf.ac.uk/eidfNNN-mybucket
+https://s3.eidf.ac.uk/eidfNNN-mybucket/some-data-file.csv
 </code></pre></div>
 <hr />
 <h2 id="get-information-to-use-the-eidf-s3-service">Get information to use the EIDF S3 Service</h2>
@@ -4509,32 +4509,32 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s
 <p>These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.</p>
 <hr />
 <h2 id="read-from-public-project-buckets">Read from public project buckets</h2>
-<p>If a project bucket has been configured for public read access, then they can be read anonymously i.e., they do not require credentials such as an access key to be provided.</p>
-<p>In this section, you'll use a public project bucket that you create.</p>
-<h3 id="create-a-public-project-bucket">Create a public project bucket</h3>
-<p>To create a project bucket, configured for public read access, using the AWS CLI, first recreate the <code>mybucket</code> bucket and add the <code>data/edinburgh.csv</code> data file to it as follows:</p>
+<p>If a project bucket has been configured to be publicly readable, then it can be read anonymously i.e., it does not require credentials such as an access key to be provided.</p>
+<p>In this section, you'll use a publicly readable project bucket that you create.</p>
+<h3 id="create-a-publicly-readable-project-bucket">Create a publicly readable project bucket</h3>
+<p>To create a publicly readable project bucket, using the AWS CLI, first recreate the <code>mybucket</code> bucket and add the <code>data/edinburgh.csv</code> data file to it as follows:</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://mybucket
 aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>data/edinburgh.csv<span class="w"> </span>s3://mybucket/scotland/lothian/edinburgh.csv
 </code></pre></div>
-<p>Now, use the <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> to make 'mybucket' public, by following the instructions to <a href="../s3browser/#make-a-bucket-public">Make a bucket public</a>.</p>
+<p>Now, use the <a href="https://portal.eidf.ac.uk/project/s3browser/">EIDF S3 Browser</a> to make 'mybucket' publicly readable, by following the instructions to <a href="../s3browser/#make-a-bucket-publicly-readable">Make a bucket publicly readable</a>.</p>
 <div class="admonition info">
-<p class="admonition-title">Making the bucket public</p>
-<p>Here, the EIDF S3 Browser is used to make a bucket public. The page on <a href="../policies/">Using S3 policies</a> describes how to make a bucket public using both the AWS CLI and Python.</p>
+<p class="admonition-title">Making the bucket publicly readable</p>
+<p>Here, the EIDF S3 Browser is used to make a bucket publicly readable. The page on <a href="../policies/">Using S3 policies</a> describes how to make a bucket public using both the AWS CLI and Python.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Publicly-readable buckets are anonymously readable by anyone</p>
-<p><strong>Beware!</strong> Here we are making the bucket publicly-readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly-readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
+<p class="admonition-title">Publicly readable buckets are anonymously readable by anyone</p>
+<p><strong>Beware!</strong> Here we are making the bucket publicly readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
 </div>
-<h3 id="read-from-a-public-project-bucket-via-a-browser">Read from a public project bucket via a browser</h3>
+<h3 id="read-from-a-publicly-readable-project-bucket-via-a-browser">Read from a publicly readable project bucket via a browser</h3>
 <p>Your bucket's files can be downloaded within your browser. For example, To download the file <code>scotland/lothian/edinburgh.csv</code>, enter the URL <code>https://s3.eidf.ac.uk/&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv</code> into your browser.</p>
 <p>Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.</p>
-<h3 id="read-from-a-public-project-bucket-via-curl">Read from a public project bucket via 'curl'</h3>
+<h3 id="read-from-a-publicly-readable-project-bucket-via-curl">Read from a publicly readable project bucket via 'curl'</h3>
 <p>A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file <code>scotland/lothian/edinburgh.csv</code>, run (<code>-O</code> uses the remote file name as the downloaded file name):</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-o<span class="w"> </span>downloads/edinburgh.csv<span class="w"> </span>https://s3.eidf.ac.uk/&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv
 </code></pre></div>
 <p><code>scotland/lothian/edinburgh.csv</code> will be downloaded and saved as <code>edinburgh.csv</code>.</p>
-<h3 id="read-from-a-public-project-bucket-via-the-aws-cli">Read from a public project bucket via the AWS CLI</h3>
-<p>To read data from the public project bucket requires the use of a bucket name of <code>&lt;project-name&gt;:mybucket</code>. However, as described in <a href="#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.</p>
+<h3 id="read-from-a-publicly-readable-project-bucket-via-the-aws-cli">Read from a publicly readable project bucket via the AWS CLI</h3>
+<p>To read data from the publicly readable project bucket requires the use of a bucket name of <code>&lt;project-name&gt;:mybucket</code>. However, as described in <a href="#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.</p>
 <p>You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing <code>&lt;project-name&gt;</code> with your EIDF project name 'eidfNNN' (<code>--no-sign-request</code> tells the AWS CLI to not use any credentials):</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://&lt;project-name&gt;:mybucket/scotland/lothian/edinburgh.csv<span class="w"> </span>downloads<span class="w"> </span>--no-sign-request
 </code></pre></div>
@@ -4602,7 +4602,7 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 </code></pre></div>
 <hr />
 <h2 id="use-buckets-of-other-eidf-projects">Use buckets of other EIDF projects</h2>
-<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.</p>
+<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a colon, <code>:</code>, when using any buckets within other projects, private or public.</p>
 <p>But, be aware that, as described in <a href="#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.</p>
 
 

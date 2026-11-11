@@ -2019,9 +2019,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-an-s3-client-to-read-from-a-public-project-bucket" class="md-nav__link">
+  <a href="#create-an-s3-client-to-read-from-a-publicly-readable-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an S3 client to read from a public project bucket
+      Create an S3 client to read from a publicly readable project bucket
     </span>
   </a>
   
@@ -3444,9 +3444,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-an-s3-client-to-read-from-a-public-project-bucket" class="md-nav__link">
+  <a href="#create-an-s3-client-to-read-from-a-publicly-readable-project-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an S3 client to read from a public project bucket
+      Create an S3 client to read from a publicly readable project bucket
     </span>
   </a>
   
@@ -3664,7 +3664,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </
 </ul>
 </div>
 <h3 id="create-an-s3-client-to-use-buckets-within-other-projects">Create an S3 client to use buckets within other projects</h3>
-<p>Bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code> need to be used for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.</p>
+<p>Use bucket names of form <code>&lt;project-name&gt;:&lt;bucket-name&gt;</code>, with the bucket name prefixed by the project name, and delimited by a colon, <code>:</code>, when anonymously using your own project's public buckets or using any buckets within other projects, private or public.</p>
 <p>But, be aware that, as described in <a href="../getting-started/#public-project-buckets-or-buckets-within-other-projects">Public project buckets or buckets within other projects</a> such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.</p>
 <p>This can be turned off as follows, after creating the S3 client, <code>s3client</code> in this example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_bucket_name</span>
@@ -3672,8 +3672,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </
 <span class="n">s3client</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="s1">'before-parameter-build.s3'</span><span class="p">,</span>
                                 <span class="n">validate_bucket_name</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="create-an-s3-client-to-read-from-a-public-project-bucket">Create an S3 client to read from a public project bucket</h3>
-<p>Disabling bucket name validation as described in the previous section is required to anonymously read from a public project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.</p>
+<h3 id="create-an-s3-client-to-read-from-a-publicly-readable-project-bucket">Create an S3 client to read from a publicly readable project bucket</h3>
+<p>Disabling bucket name validation as described in the previous section is required to anonymously read from a publicly readable project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.</p>
 <p>An S3 client that meets these requirements can be created as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">botocore</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNSIGNED</span>

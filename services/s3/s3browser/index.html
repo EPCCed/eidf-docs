@@ -2110,9 +2110,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#make-a-bucket-public" class="md-nav__link">
+  <a href="#make-a-bucket-publicly-readable" class="md-nav__link">
     <span class="md-ellipsis">
-      Make a bucket public
+      Make a bucket publicly readable
     </span>
   </a>
   
@@ -3444,9 +3444,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#make-a-bucket-public" class="md-nav__link">
+  <a href="#make-a-bucket-publicly-readable" class="md-nav__link">
     <span class="md-ellipsis">
-      Make a bucket public
+      Make a bucket publicly readable
     </span>
   </a>
   
@@ -3593,12 +3593,16 @@
 </ul>
 <p>To switch between these editors, click <strong>JSON</strong> when in the visual editor and click <strong>Visual</strong> when in the JSON editor.</p>
 <p>To save the policy, click <strong>Save Policy</strong>.</p>
-<h3 id="make-a-bucket-public">Make a bucket public</h3>
-<div class="admonition warning">
-<p class="admonition-title">Publicly-readable buckets are anonymously readable by anyone</p>
-<p><strong>Beware!</strong> Making a bucket publicly-readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
+<div class="admonition info">
+<p class="admonition-title">Ceph S3 support for Amazon S3 policies</p>
+<p>Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 <a href="https://docs.ceph.com/en/latest/radosgw/bucketpolicy/">Bucket Policies</a>.</p>
 </div>
-<p>To make a bucket publicly-readable:</p>
+<h3 id="make-a-bucket-publicly-readable">Make a bucket publicly readable</h3>
+<div class="admonition warning">
+<p class="admonition-title">Publicly readable buckets are anonymously readable by anyone</p>
+<p><strong>Beware!</strong> Making a bucket publicly readable allows <strong>anyone</strong> who knows the bucket URL to <strong>anonymously</strong> read the bucket and download its files.</p>
+</div>
+<p>To make a bucket publicly readable:</p>
 <ol>
 <li>Click <strong>Settings</strong> and select <strong>Make Bucket Public</strong></li>
 <li>A 'Make bucket publicly readable' dialog will appear.</li>
@@ -3613,14 +3617,23 @@
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Effect on existing bucket policies (for those familiar with policies)</p>
-<p>Making a bucket public will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:</p>
-<ul>
-<li>Effect: Allow, Principal: *, Action: s3:GetObject, Resource: <code>arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*</code></li>
-<li>Effect: Allow, Principal: *, Action: s3:ListBucket, Resource: <code>arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*</code></li>
-</ul>
+<p>Making a bucket publicly readable will not overwrite any existing bucket policy you may have defined. Rather, it adds two policy statements to your existing policy, if these have not already been added:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*"</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*"</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 <h3 id="make-a-bucket-private">Make a bucket private</h3>
-<p>If you have previously made a bucket public following the steps of the previous section, then, to make the bucket private:</p>
+<p>If you have previously made a bucket publicly readable following the steps of the previous section, then, to make the bucket private:</p>
 <ol>
 <li>Click <strong>Settings</strong> and select <strong>Set Bucket Policy</strong>.</li>
 <li>The 'Bucket Policy Editor' will appear.</li>
@@ -3629,11 +3642,7 @@
 <li>Effect: Allow, Principals: Public Access (*), Actions: List Bucket</li>
 </ul>
 </li>
-<li>Or, within the JSON editor, edit the <code>Statement</code> list to remove the statements:<ul>
-<li>Effect: Allow, Principal: *, Action: s3:GetObject, Resource: <code>arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*</code></li>
-<li>Effect: Allow, Principal: *, Action: s3:ListBucket, Resource: <code>arn:aws:s3::&lt;project-name&gt;:&lt;bucket-name&gt;/*</code></li>
-</ul>
-</li>
+<li>Or, within the JSON editor, edit the <code>Statement</code> list to remove the statements shown in <a href="#make-a-bucket-publicly-readable">Make a bucket publicly readable</a> above.</li>
 <li>Click <strong>Save Policy</strong>.</li>
 </ol>
 
