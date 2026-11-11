@@ -1,6 +1,6 @@
 # Using S3 policies
 
-S3 policies allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when. Rich, fine-grained, highly project-specific policies can be applied.
+S3 policies allow you to control who can use a bucket, or the files within the bucket, what they can do with these, and when. Rich project-specific policies, enforcing fine-grained access control, can be applied to both buckets and files.
 
 **Author's Note**: Commands and code on this page were checked using a EIDF VM, Ubuntu 24.04.4 LTS (noble) with AWS CLI 2.36.36, Python 3.12.3, Boto3 1.43.97.
 
@@ -8,9 +8,9 @@ S3 policies allow you to control who can use a bucket, or the files within the b
 
 ## Introducing S3 policies
 
-To introduce S3 policies, consider the following. Imagine a bucket, `mybucket`, has been created by project `eidfNNN` by their S3 account `someuser`. By default, this bucket can be accessed and used by any `eidfNNN` project member with the access key and secret key associated with `someuser`. Now, project `eidfNNN` wants to work with another project, `eidfABC`, and wants to grant that project read-write access to `mybucket`.
+To introduce S3 policies, imagine that you have created a bucket, `mybucket`. By default, this bucket can be accessed and used by any member of your project who has the access key and secret that you used to create the bucket. Now, you want to work with another EIDF project, `eidfABC`, and want to grant a user of that project read-write access to `mybucket`.
 
-Here is a policy document which, when attached to `mybucket`, grants read-write access to `eidfNNN`'s bucket, `mybucket`, to an S3 account, `abcuser`, belonging to project, `eidfABC`.
+Here is a policy document which, when attached to `mybucket`, grants read-write access to your project's bucket, `mybucket`, to an S3 account, `abcuser`, belonging to the other EIDF project, `eidfABC`.
 
 ```json
 {
@@ -61,34 +61,44 @@ Here is a policy document which, when attached to `mybucket`, grants read-write 
 
 Essentially, what any S3 policy says is 'if a `Principal` makes a request to perform an `Action` on a `Resource`, then, taking into account any `Condition`s, the `Effect` is to either `Deny` or `Allow` the `Action`'.
 
-More specifically, this example policy states that:
+Anything not specifically allowed by a policy is, by default, denied. The exception is for the bucket owner, whoever created the bucket, which is determined by the access key and secret used when the bucket was created.  The bucket owner can create, list, download files from, upload files to, and delete files from the bucket, and delete the bucket itself.
 
-* S3 account `abcuser` of project `eidfABC` (`Principal`) is allowed to list the bucket contents, download files and delete files (`Action`) within the bucket `mybucket` (`Resource`).
-* S3 account `abcuser` of project `eidfABC` (`Principal`) is allowed to upload files, (`Action`) within the bucket `mybucket` (`Resource`) but only if they grant the bucket owner full control over the uploaded file (`Condition`).
+This example policy states that:
 
-Anything not specifically allowed by a policy is denied. The exception is for the S3 account that created the bucket, who can create, list, download files from and upload files and delete files from the bucket, and delete the bucket itself.
+* S3 account `abcuser` of project `eidfABC` is allowed to list the contents of `mybucket`, download its files, and its delete files.
+* S3 account `abcuser` of project `eidfABC` is allowed to upload files to `mybucket`, but only on condition that they grant the bucket owner full control over the uploaded file.
+* All other actions are, by default, denied, with the exception of those performed by the bucket owner.
 
 S3 policies are defined as documents in [JSON](https://json.org) format. The key features of a policy document, as shown in the example above, are as follows:
 
 * `Version`: Policy language syntax version. The current version is 2012-10-17.
 * `Statement`: A single policy statement or list of policy statements. Here, the policy document includes two statements.
 * `Sid`: An optional, human-readable, policy statement identifier.
-* `Action`: A single S3 action or a list of S3 actions to which the policy statement applies.
+* `Action`: A single S3 action or a list of S3 actions to which the policy statement applies. The policy controls whether these actions are allowed or denied.
 * `Resource`: A single S3 resource or a list of S3 resources to which the policy statement applies.
+    * Each S3 resource is specified as an Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for buckets and objects are of form `arn:aws:s3:<region>:[<project-name>]:<bucket>[/<prefix>]`, where `<region>` is empty, and `<project-name>` is optional. For file resources, a `/<prefix>` pattern can be provided, which can include wild-cards.
     * A resource can be a bucket, or files in a bucket, or another resource. Here, both the bucket, `mybucket`, and all the files within the bucket, `mybucket/*`, are specified.
-    * S3 resources are specified as Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for buckets and objects have a prefix `arn:aws:s3:<region>:<project-name>:<bucket>`, where `<region>` is empty, and `<project-name>` is optional.
-* `Principal`: A single principal or a list of principals to who permission being allowed or denied.
-    * The `AWS` element is required and specifies the list of principals.
-    * Each principal is specified as an Amazon Resorce Names (ARN). Within the EIDF S3 Service, ARNs for principals have form `arn:aws:iam:<region>:<project-name>:<account>`, where `<region>` is empty, `<project-name>` is an EIDF project name (e.g., `eidfABC`), and `<account>` is an S3 account in that project. `<project-name>` can be empty if the S3 account belongs to the same project as the bucket to which the policy is attached.
-    * Either `"*"` or `{"AWS":"*"}` can be used to specify any principal, which allows for anonymous access to a bucket or its files.
+* `Principal`: A single principal or a list of principals to whom permission being allowed or denied.
+    * The `AWS` element specifies the list of principals themselves.
+    * Each principal is specified as an Amazon Resource Name (ARN). Within the EIDF S3 Service, ARNs for principals have form `arn:aws:iam:<region>:<project-name>:<account>`, where `<region>` is empty, `<project-name>` is an EIDF project name (e.g., `eidfABC`), and `<account>` is an S3 account in that project (e.g., `abcuser`). `<project-name>` can be empty if the S3 account belongs to the same project as the bucket to which the policy is attached.
+    * Either `"*"` or `{"AWS":"*"}` can be used to specify any principal, if allowing anonymous access to a bucket or its files.
 * `Condition`: An optional element specifying any condition(s) affecting the policy.
     * `StringEquals` compares a value from a 'context variable', a variable provided by the principal when requesting the action, to an expected value. Here, it is expected that the context variable `s3:x-amz-acl`, which specifies a 'canned', or pre-defined, access control list (ACL), needs to be equal to `bucket-owner-full-control`.
 * `Effect`: Whether the policy allows (`Allow`) or denies (`Deny`) the actions governed by the policy.
-    * Explicit `Deny` statements override explicit `Allow` statements.
+    * In case of conflicts or overlaps, explicit `Deny` statements override explicit `Allow` statements.
 
 !!! Info "Ceph S3 support for Amazon S3 policies"
 
     Ceph S3 supports a subset of the Amazon S3 policy language. For information on what is, and is not, supported, see Ceph S3 [Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/).
+
+!!! Info "More information on S3 policies"
+
+    The foregoing is a necessarily brief introduction to S3 policies. For more information, see, for example, AWS pages on:
+
+    * [Policies and permissions in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html)
+    * [IAM JSON policy element reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html)
+    * [Allows access based on date and time](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html)
+    * [Denies access to AWS based on the source IP](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_deny-ip.html)
 
 ---
 
@@ -233,21 +243,21 @@ This policy is comparable to the policy set by the [EIDF S3 Browser](./s3browser
 
 !!! Info "Project name in resource names"
 
-    The policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket publicly readable](./s3browser.md#make-a-bucket-publicly-readable) has Amazon Resource Names of form:
-
-    ```text
-    "Resource": "arn:aws:s3::eidfNNN:<bucket>"
-    "Resource": "arn:aws:s3::eidfNNN:<bucket>/*"
-    ```
-
-    The example above does not cite the project name, `eidfNNN`, i.e.,:
+    The example policy document above does not include the project name, `eidfNNN`, in the Amazon Resource Names for the resources i.e.,:
 
     ```text
     "Resource": "arn:aws:s3:::<bucket>"
     "Resource": "arn:aws:s3:::<bucket>/*"
     ```
 
-    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket the associated project.
+    In contrast, he policy set by the [EIDF S3 Browser](./s3browser.md) when used to [Make a bucket publicly readable](./s3browser.md#make-a-bucket-publicly-readable) does include the project name:
+
+    ```text
+    "Resource": "arn:aws:s3::eidfNNN:<bucket>"
+    "Resource": "arn:aws:s3::eidfNNN:<bucket>/*"
+    ```
+
+    In this example, citing the project name, `eidfNNN`, in the S3 `Resource` values, is optional. Within the S3 service, the policy is attached to a specific bucket within a project, and the S3 service itself can infer from the bucket name the associated project.
 
 Here is the same policy document, defined programmatically in Python:
 
@@ -413,7 +423,7 @@ bucket_policy = {
 
 ### Require bucket owner to be given full control over uploaded files
 
-The above policy is a copy of that for [Grant read-only access to another project's S3 account](#grant-read-only-access-to-another-projects-s3-account) with both `s3:PutObject` and `s3:DeleteObject` added to the `Action` list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest S3 account, `abcuser`.
+The above policy is a copy of that for [Grant read-only access to another project's S3 account](#grant-read-only-access-to-another-projects-s3-account) updated to add both `s3:PutObject` and `s3:DeleteObject` to the `Action` list. However, it has a problem. in that, by default, when a file is uploaded, it is owned by the account of the uploader, in this example, the guest S3 account, `abcuser`.
 
 A subsequent attempt by the bucket owner to read the uploaded file, which is in their own bucket, would then raise an error:
 
@@ -481,12 +491,12 @@ The requirement for this argument can be made mandatory by updating the policy t
 }
 ```
 
-The first policy statement is as before, allowing the guest S3 account to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload request to include the 'canned' ACL `s3:x-amz-acl` parameter with value `bucket-owner-full-control`.
+The first policy statement is as before, allowing the guest S3 account to list the bucket, download files and delete files. However, a new policy statement is introduced for file uploads, `s3:PutObject`, which requires any upload request to include the 'canned' ACL `x-amz-acl` parameter with value `bucket-owner-full-control`. The `s3:` prefix to this parameter in the policy is make it clear that this is expected as a S3 parameter in the request.
 
 If the guest S3 account attempts to upload a file without this argument, then their upload will be denied. For example:
 
 ```text
-Failed to upload data/edinburgh.csv to eidf114:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None"
+Failed to upload data/edinburgh.csv to eidfNNN:mybucket/scotland/lothian/edinburgh.csv: An error occurred (AccessDenied) when calling the PutObject operation: None
 ```
 
 Here is the same policy document, defined programmatically in Python:
@@ -577,9 +587,9 @@ python create_anonymous_download_link.py mybucket auto data/edinburgh.csv \
     2026-11-09T15:30:00Z 2026-11-09T16:00:00Z 10.24.9.999/32
 ```
 
-would upload `data/ediunburgh.csv` and assign it a key with a secure random ID. For example, `downloads/oImIs5K5AhTRP-lFB31upw/edinburgh.csv`. This file would be anonymously readable between 15:30 and 16:00 on 09-11-2026 only to a host with IP address 10.24.9.999. Any attempt to access any other file, to access the file outside of these times or from another host would give an error.
+would upload `data/edinburgh.csv` and assign it a key with a secure random ID, for example, `downloads/oImIs5K5AhTRP-lFB31upw/edinburgh.csv`. This file would be anonymously readable between 15:30 and 16:00 on 09-11-2026 only from a host with IP address 10.24.9.999. Any attempt to access any other file, to access the file outside of these times, or from another host, would give an error.
 
-These constraints are enforced by the following S3 policy, created by the script:
+These constraints would be enforced by the following S3 policy, created by the script:
 
 ```json
 {
@@ -622,12 +632,12 @@ These constraints are enforced by the following S3 policy, created by the script
 
     In this policy there is both an `Allow` statement and a `Deny` statement. Within S3 policies, explicit `Deny` statements always override explicit `Allow` statements. So, for this example, even if a request is made to the bucket with the correct key and within the allowed times, if the host IP is not 10.24.9.999, then the request would be denied.
 
-`create_anonymous_download_link.py`:
+The `create_anonymous_download_link.py` implementation is as follows:
 
 ```python
 #!/usr/bin/env python
 
-mport json
+import json
 import os.path
 import secrets
 import sys
@@ -700,14 +710,3 @@ response = s3client.put_bucket_policy(Bucket=bucket_name,
                                       Policy=policy)
 print(key)
 ```
-
----
-
-## More information on S3 policies
-
-This page is a necessarily brief introduction to S3 policies. For more information, see, for example
-
-* AWS [Policies and permissions in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html)
-* AWS [IAM JSON policy element reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html)
-* AWS [Allows access based on date and time](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-dates.html)
-* AWS: [Denies access to AWS based on the source IP](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_deny-ip.html)
