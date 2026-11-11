@@ -34,7 +34,7 @@ Though the organisation of objects within a bucket has no hierarchy, many S3 imp
 
 Each project has a **tenancy** within the EIDF S3 Service. The tenancy holds the buckets for that project. Tenancies allow for different projects to have buckets with the same name without any ambiguity.
 
-Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., `eidfNNN:`) when referencing your public buckets anonymously or buckets within other projects. When using your own private buckets there is no need for such prefixes to be used.
+Tenancies are not a general S3 concept but are Ceph S3-specific. One consequence of this is that bucket names need to be prefixed by their EIDF project name (e.g., `eidfNNN:`) when anonymously using your own project's public buckets or using any buckets, private or public, within other projects. When using your own private buckets there is no need for such prefixes to be used.
 
 The [EIDF Data Publishing Service](../datapublishing/service.md) uses the default tenancy within the EIDF S3 Service. This default tenancy is distinct from the project-specific tenancies used for project-specific buckets. As all projects which publish data within the EIDF Data Publishing Service share the same tenancy, the service adopts a convention of adding project names to bucket names (e.g., `eidfNNN-`) to allow a specific project's buckets, within this default tenancy, to be identified.
 
@@ -49,19 +49,19 @@ However, there are some subtleties around how to refer to EIDF S3 Service bucket
 Use bucket names of form `<bucket-name>` for private buckets within a project, when using an access key for that project. For example:
 
 ```text
-somebucket
-somebucket/some-data-file.csv
+mybucket
+mybucket/some-data-file.csv
 ```
 
 A project prefix is not required when using buckets within a project and using an access key for that project as the access key itself identifies the project's tenancy.
 
 #### Public project buckets or buckets within other projects
 
-Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, for public buckets within a project, when accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key. For example:
+Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, when anonymously using your own project's public buckets or using any buckets within other projects, private or public.
 
 ```text
-eidfNNN:somebucket
-eidfNNN:somebucket/some-data-file.csv
+eidfNNN:mybucket
+eidfNNN:mybucket/some-data-file.csv
 ```
 
 !!! Warning "Tenancies, bucket naming and S3 tools"
@@ -72,27 +72,27 @@ eidfNNN:somebucket/some-data-file.csv
 
 #### Public buckets within the EIDF Data Publishing Service
 
-Use bucket names of form `<project-name>-<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a dash, `-`, for public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md), if accessing anonymously. For example:
+Use bucket names of form `<project-name>-<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a dash, `-`, when anonymously using public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md). For example:
 
 ```text
-eidfNNN-somebucket
-eidfNNN-somebucket/some-data-file.csv
+eidfNNN-mybucket
+eidfNNN-mybucket/some-data-file.csv
 ```
 
 #### Public buckets and URLs
 
-To reference public project buckets via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>`. For example:
+Use a URL of form `https://s3.eidf.ac.uk/<project-name>:<bucket-name>` when using public project buckets via a URL. For example:
 
 ```text
-https://s3.eidf.ac.uk/eidfNNN:somebucket
-https://s3.eidf.ac.uk/eidfNNN:somebucket/some-data-file.csv
+https://s3.eidf.ac.uk/eidfNNN:mybucket
+https://s3.eidf.ac.uk/eidfNNN:mybucket/some-data-file.csv
 ```
 
-To reference public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL, use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>`. For example:
+Use a URL of form `https://s3.eidf.ac.uk/<project-name>-<bucket-name>` when using public buckets within the [EIDF Data Publishing Service](../datapublishing/service.md) via a URL. For example:
 
 ```text
-https://s3.eidf.ac.uk/eidfNNN-somebucket
-https://s3.eidf.ac.uk/eidfNNN-somebucket/some-data-file.csv
+https://s3.eidf.ac.uk/eidfNNN-mybucket
+https://s3.eidf.ac.uk/eidfNNN-mybucket/some-data-file.csv
 ```
 
 ---
@@ -107,7 +107,7 @@ To view your S3 account names, access keys, secrets, and storage and bucket quot
 
 1. On the [Your Projects](https://portal.eidf.ac.uk/project/) page within the EIDF Portal, click your project.
 1. Your selected project's page will appear.
-1. If using the portal's new project view, click **Your S3 Keys**.
+1. Click **Your S3 Keys**, or, if using the 'classic' view, click **Your S3 Access Keys**.
 1. The 'S3 Access Keys' section will show a table where each row shoes:
     * **Name**: S3 account name.
     * **Quota**: Maximum amount of storage available to the account.
@@ -680,7 +680,7 @@ In virtual directory terms, this is akin to recursively listing all virtual dire
 
     Keep in mind that an S3 Service offers 'flat' object store with each bucket holding objects each with a unique key. This is why the term 'virtual directories' is used, the use of prefixes mimic directories but are not actual directories!
 
-In the absence of a trailing slash when listing files, the prefix is essentially treated as a wils-card search of form `<prefix>*`. For example, the following all return the same results:
+In the absence of a trailing slash when listing files, the prefix is essentially treated as a wild-card search of form `<prefix>*`. For example, the following all return the same results:
 
 ```bash
 aws s3 ls s3://mybucket/scotland
@@ -809,7 +809,19 @@ The [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) is part of t
 
 Another command-line client is [s3cmd](https://s3tools.org/s3cmd).
 
-A client offering a graphical user interface is [Cyberduck](https://cyberduck.io). If using Cyberduck, you may need to [Connect using Deprecated Path Style Requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests) otherwise you may have problems listing the contents of a bucket. For more information, see the [Cyberduck documentation](https://docs.cyberduck.io/cyberduck/).
+A client offering a graphical user interface is [Cyberduck](https://cyberduck.io).
+
+!!! Tip "Cyberduck and 'Listing directory `<bucket-name>` failed'"
+
+    If, after connecting to the EIDF S3 service, you see your buckets but clicking on them causes a 'Listing directory `<bucket-name>` failed' dialog to appear, then you may need to [Connect using Deprecated Path Style Requests](https://docs.cyberduck.io/protocols/s3/#connecting-using-deprecated-path-style-requests). One way of doing this is as follows:
+
+    1. Select **Edit** menu, **Preferences...**
+    1. A 'Preferences' window will appear.
+    1. Enter 'deprecated' into the search box.
+    1. Select **S3 (Deprecated path style requests)** (not 'S3 (HTTP, Deprecated path style requests)').
+    1. Click **X** on the top-right of the 'Preferences' window.
+
+    When you open a connection, in the drop-down list of data source types select **S3 (Deprecated path style requests)**.
 
 These, and other, clients may each have client-specific ways of configuring the clients to interact with S3 Services. Consult the relevant client's documentation for details.
 
@@ -817,36 +829,36 @@ These, and other, clients may each have client-specific ways of configuring the 
 
 ## Read from public project buckets
 
-If a project bucket has been configured for public read access, then they can be read anonymously i.e., they do not require credentials such as an access key to be provided.
+If a project bucket has been configured to be publicly readable, then it can be read anonymously i.e., it does not require credentials such as an access key to be provided.
 
-In this section, you'll use a public project bucket that you create.
+In this section, you'll use a publicly readable project bucket that you create.
 
-### Create a public project bucket
+### Create a publicly readable project bucket
 
-To create a project bucket, configured for public read access, using the AWS CLI, first recreate the `mybucket` bucket and add the `data/edinburgh.csv` data file to it as follows:
+To create a publicly readable project bucket, using the AWS CLI, first recreate the `mybucket` bucket and add the `data/edinburgh.csv` data file to it as follows:
 
 ```bash
 aws s3 mb s3://mybucket
 aws s3 cp data/edinburgh.csv s3://mybucket/scotland/lothian/edinburgh.csv
 ```
 
-Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to make 'mybucket' public, by following the instructions to [Make a bucket public](./s3browser.md#make-a-bucket-public).
+Now, use the [EIDF S3 Browser](https://portal.eidf.ac.uk/project/s3browser/) to make 'mybucket' publicly readable, by following the instructions to [Make a bucket publicly readable](./s3browser.md#make-a-bucket-publicly-readable).
 
-!!! Info "Making the bucket public"
+!!! Info "Making the bucket publicly readable"
 
-    Here, the EIDF S3 Browser is used to make a bucket public. The page on [Using S3 policies](./policies.md) describes how to make a bucket public using both the AWS CLI and Python.
+    Here, the EIDF S3 Browser is used to make a bucket publicly readable. The page on [Using S3 policies](./policies.md) describes how to make a bucket public using both the AWS CLI and Python.
 
-!!! Warning "Publicly-readable buckets are anonymously readable by anyone"
+!!! Warning "Publicly readable buckets are anonymously readable by anyone"
 
-    **Beware!** Here we are making the bucket publicly-readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly-readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
+    **Beware!** Here we are making the bucket publicly readable to show how such buckets can be read. In practice, when working with your own buckets, keep in mind that making a bucket publicly readable allows **anyone** who knows the bucket URL to **anonymously** read the bucket and download its files.
 
-### Read from a public project bucket via a browser
+### Read from a publicly readable project bucket via a browser
 
 Your bucket's files can be downloaded within your browser. For example, To download the file `scotland/lothian/edinburgh.csv`, enter the URL `https://s3.eidf.ac.uk/<project-name>:mybucket/scotland/lothian/edinburgh.csv` into your browser.
 
 Depending on both your browser and the file type, the file will either be opened in a new browser tab or downloaded.
 
-### Read from a public project bucket via 'curl'
+### Read from a publicly readable project bucket via 'curl'
 
 A popular Linux command-line utility for interacting with REST-based online services, such as the EIDF S3 Service, is 'curl'. 'curl' can be used to download files. For example, to download the file `scotland/lothian/edinburgh.csv`, run (`-O` uses the remote file name as the downloaded file name):
 
@@ -856,9 +868,9 @@ curl -o downloads/edinburgh.csv https://s3.eidf.ac.uk/<project-name>:mybucket/sc
 
 `scotland/lothian/edinburgh.csv` will be downloaded and saved as `edinburgh.csv`.
 
-### Read from a public project bucket via the AWS CLI
+### Read from a publicly readable project bucket via the AWS CLI
 
-To read data from the public project bucket requires the use of a bucket name of `<project-name>:mybucket`. However, as described in [Public project buckets or buckets within other projects](#public-project-buckets-or-buckets-within-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.
+To read data from the publicly readable project bucket requires the use of a bucket name of `<project-name>:mybucket`. However, as described in [Public project buckets or buckets within other projects](#public-project-buckets-or-buckets-within-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. The AWS CLI is one such tool.
 
 You can see what the AWS CLI does when given such a S3 URI, by running the following, replacing `<project-name>` with your EIDF project name 'eidfNNN' (`--no-sign-request` tells the AWS CLI to not use any credentials):
 
@@ -964,6 +976,6 @@ download: s3://eidf198-highres-snapshots-sublayer-dns-tbl-re2400/data.zarr/stati
 
 ## Use buckets of other EIDF projects
 
-Use bucket names of form `<project-name>:<bucket-name>` for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.
+Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, when using any buckets within other projects, private or public.
 
 But, be aware that, as described in [Public project buckets or buckets within other projects](#public-project-buckets-or-buckets-within-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. Others, however, will, but some may need to be configured to do so.

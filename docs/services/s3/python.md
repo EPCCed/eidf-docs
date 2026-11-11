@@ -116,7 +116,7 @@ Boto3 [Session](https://docs.aws.amazon.com/boto3/latest/reference/core/session.
 
 ### Create an S3 client to use buckets within other projects
 
-Bucket names of form `<project-name>:<bucket-name>` need to be used for public buckets within a project, if accessing anonymously, or public or private buckets within a project, for which access has been granted to you, when using an access key.
+Use bucket names of form `<project-name>:<bucket-name>`, with the bucket name prefixed by the project name, and delimited by a colon, `:`, when anonymously using your own project's public buckets or using any buckets within other projects, private or public.
 
 But, be aware that, as described in [Public project buckets or buckets within other projects](./getting-started.md#public-project-buckets-or-buckets-within-other-projects) such bucket names are strictly invalid and some S3 tools do not allow such bucket names to be used. By default, Boto3 validates bucket names, and so disallows these, but the validation can be turned off.
 
@@ -129,9 +129,9 @@ s3client.meta.events.unregister('before-parameter-build.s3',
                                 validate_bucket_name)
 ```
 
-### Create an S3 client to read from a public project bucket
+### Create an S3 client to read from a publicly readable project bucket
 
-Disabling bucket name validation as described in the previous section is required to anonymously read from a public project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.
+Disabling bucket name validation as described in the previous section is required to anonymously read from a publicly readable project bucket. However, there is no need for any AWS CLI configuration nor environment variables nor authentication.
 
 An S3 client that meets these requirements can be created as follows:
 
