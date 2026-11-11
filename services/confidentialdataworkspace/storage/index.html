@@ -440,7 +440,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -463,7 +463,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -486,7 +486,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -749,58 +795,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -847,29 +847,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3409,7 +3386,7 @@ Buckets must then be added by the VM Admin to the allowed S3 buckets list on the
 <ul>
 <li>The user has the Data Manager role</li>
 <li>The user has been added to the EIDF gateway, CDW Router <code>&lt;project_code&gt;-router</code> and the target CDW VM in the EIDF Portal</li>
-<li>An SSH client is installed on the user's local machine (see <a href="../../../access/ssh/">SSH connection to EIDF</a> for more details)</li>
+<li>An SSH client is installed on the user's local machine (see <a href="../../../access/ssh/">SSH access to EIDF VMs</a> for more details)</li>
 <li>The user has SSH access to the CDW Router <code>&lt;project_code&gt;-router</code></li>
 </ul>
 <p>Data transfer using <code>scp</code> is performed by jumping through the CDW project's router, <code>&lt;project_code&gt;-router</code>, which acts as an intermediary for data transfer and access.</p>
@@ -3435,7 +3412,7 @@ In this case, the <code>scp</code> command is:</p>
 </code></pre></div>
 <p>Where:</p>
 <ul>
-<li><code>&lt;path-to-private-key&gt;</code> is the path to the user's private SSH key that corresponds to the public SSH key added for the user in the EIDF Portal for access to the router and VM, more information on how to do this can be seen in the documentation section on <a href="../../../access/ssh/#generate-a-new-ssh-key">SSH Credentials in the EIDF Portal</a>.</li>
+<li><code>&lt;path-to-private-key&gt;</code> is the path to the user's private SSH key that corresponds to the public SSH key added for the user in the EIDF Portal for access to the router and VM. For more information, see <a href="../../../access/ssh/#set-up-ssh-access">Set up SSH access</a> in <a href="../../../access/ssh/">SSH access to EIDF VMs</a>.</li>
 <li><code>&lt;username&gt;</code> is the user's SSH username for EIDF gateway, router and the CDW VM</li>
 <li><code>&lt;project-router-ip&gt;</code> is the IP address of the CDW Router for the project. This IP address can be found in the EIDF Portal on the project details page, in the <code>machines</code> section, for the router machine named <code>&lt;project_code&gt;-router</code>.</li>
 <li><code>&lt;local-file-path&gt;</code> is the path to the file on the user's local machine</li>

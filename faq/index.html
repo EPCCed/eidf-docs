@@ -440,7 +440,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -463,7 +463,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -486,7 +486,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -747,58 +793,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../services/virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -845,29 +845,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../services/virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3216,9 +3193,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-default-ssh-keys" class="md-nav__link">
+  <a href="#default-ssh-private-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Non-default SSH Keys
+      Default SSH private keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-default-ssh-private-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-default SSH private keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#different-eidf-gateway-and-eidf-vm-usernames-and-private-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different EIDF Gateway and EIDF VM usernames and private keys
     </span>
   </a>
   
@@ -3332,9 +3327,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-default-ssh-keys" class="md-nav__link">
+  <a href="#default-ssh-private-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Non-default SSH Keys
+      Default SSH private keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-default-ssh-private-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-default SSH private keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#different-eidf-gateway-and-eidf-vm-usernames-and-private-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different EIDF Gateway and EIDF VM usernames and private keys
     </span>
   </a>
   
@@ -3383,12 +3396,25 @@
 <h3 id="new-vms-and-vdi-connections">New VMs and VDI connections</h3>
 <p>My project manager gave me access to a VM but the connection doesn't show up in the VDI connections list?</p>
 <p>This may happen when a machine/VM was added to your connections list while you were logged in to the VDI. Please refresh the connections list by logging out and logging in again, and the new connections should appear.</p>
-<h3 id="non-default-ssh-keys">Non-default SSH Keys</h3>
-<p>I have different SSH keys for the SSH gateway and my VM, or I use a key which does not have the default name (~/.ssh/id_rsa) and I cannot login.</p>
-<p>The command syntax shown in our SSH documentation (using the <code>-J &lt;username&gt;@eidf-gateway</code> stanza) makes assumptions about SSH keys and their naming. You should try the full version of the command:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i ~/.ssh/&lt;gateway_private_key&gt; -W %h:%p &lt;gateway_username&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/&lt;vm_private_key&gt;<span class="w"> </span>&lt;vm_username&gt;@&lt;vm_ip&gt;
+<h3 id="default-ssh-private-keys">Default SSH private keys</h3>
+<p>'Can I connect to an EIDF VM using a private key file with a default OpenSSH name (e.g., <code>id_ed25519</code> or <code>id_rsa</code>)?'</p>
+<p>Yes. In the 'ssh' command described in <a href="../access/ssh/">SSH access to EIDF VMs</a> the use of named, non-default, private key files, can be replaced by the default private key file names. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519<span class="w"> </span>some-eidf-user@10.24.999.999
 </code></pre></div>
-<p>Note that for the majority of users, gateway_username and vm_username are the same, as are gateway_private_key and vm_private_key</p>
+<p>Alternatively, you can run the more succinct:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>some-eidf-user@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>some-eidf-user@10.24.999.999
+</code></pre></div>
+<h3 id="non-default-ssh-private-keys">Non-default SSH private keys</h3>
+<p>'Can I connect to an EIDF VM via SSH using a private key file with a custom name defined by me?'</p>
+<p>Yes. In the 'ssh' command described in <a href="../access/ssh/">SSH access to EIDF VMs</a> the use of named, non-default, private key files, is shown. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000<span class="w"> </span>some-eidf-user@10.24.999.999
+</code></pre></div>
+<h3 id="different-eidf-gateway-and-eidf-vm-usernames-and-private-keys">Different EIDF Gateway and EIDF VM usernames and private keys</h3>
+<p>'My EIDF Gateway username and EIDF VM usernames and private keys differ. How do I log into my EIDF VM via SSH?'</p>
+<p>In the 'ssh' command described in <a href="../access/ssh/">SSH access to EIDF VMs</a> the usernames and private key files used to connect to both the EIDF Gateway and an EIDF VM are specified. This allows for a different username and private key to be used for each host. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519_gateway_key -W %h:%p some-eidf-gateway-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf_host_key<span class="w"> </span>some-eidf-user@10.24.999.999
+</code></pre></div>
+<p>For the majority of EIDF users, however, the same user name and private key will be used to access both the EIDF Gateway and an EIDF VM.</p>
 <h3 id="username-policy">Username Policy</h3>
 <p>I already have an EIDF username for project Y, can I use this for project X?</p>
 <p>We mandate that every username must be unique across our estate. EPCC machines including EIDF services such as the SDF and DSC VMs, and HPC services such as Cirrus require you to create a new machine account with a unique username for each project you work on. Usernames cannot be used on multiple projects, even if the previous project has finished. However, some projects span multiple machines so you may be able to login to multiple machines with the same username.</p>

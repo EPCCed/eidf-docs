@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.eidf.ac.uk/services/virtualmachines/rdp-tunnelling/">
+        <link rel="canonical" href="https://docs.eidf.ac.uk/access/ssh-rdp/">
       
       
-        <link rel="prev" href="../policies/">
+        <link rel="prev" href="../ssh/">
       
       
-        <link rel="next" href="../../confidentialdataworkspace/">
+        <link rel="next" href="../../storage/overview/">
       
       
-      <link rel="icon" href="../../../images/favicon.ico">
+      <link rel="icon" href="../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>RDP tunnelling over SSH - EIDF User Documentation</title>
+        <title>Remote desktop client access via SSH - EIDF User Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/eidf.css">
+      <link rel="stylesheet" href="../../stylesheets/eidf.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/access.css">
+      <link rel="stylesheet" href="../../stylesheets/access.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rdp-tunnelling-over-ssh" class="md-skip">
+        <a href="#remote-desktop-client-access-via-ssh" class="md-skip">
           Skip to content
         </a>
       
@@ -101,9 +101,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../.." title="EIDF User Documentation" class="md-header__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RDP tunnelling over SSH
+              Remote desktop client access via SSH
             
           </span>
         </div>
@@ -210,9 +210,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
+    <a href="../.." title="EIDF User Documentation" class="md-nav__button md-logo" aria-label="EIDF User Documentation" data-md-component="logo">
       
-  <img src="../../../images/EIDF_rgb.png" alt="logo">
+  <img src="../../images/EIDF_rgb.png" alt="logo">
 
     </a>
     EIDF User Documentation
@@ -239,7 +239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../status/" class="md-nav__link">
+      <a href="../../status/" class="md-nav__link">
         
   
   
@@ -261,7 +261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -321,7 +321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   
@@ -344,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/acknowledgements/" class="md-nav__link">
+      <a href="../../overview/acknowledgements/" class="md-nav__link">
         
   
   
@@ -367,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/contacts/" class="md-nav__link">
+      <a href="../../overview/contacts/" class="md-nav__link">
         
   
   
@@ -394,18 +394,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -421,7 +423,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Service Access
@@ -435,12 +437,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -458,12 +460,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/project/" class="md-nav__link">
+      <a href="../project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -481,17 +483,183 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
+      <a href="../virtualmachines-vdi/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-ssh-access-to-your-eidf-vm-and-configure-port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set up SSH access to your EIDF VM and configure port forwarding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-your-eidf-vm-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set your EIDF VM password
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-remote-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a remote desktop client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-eidf-vm-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to the EIDF VM via SSH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-eidf-vm-remote-desktop-service-via-a-remote-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to the EIDF VM remote desktop service via a remote desktop client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect to the EIDF VM remote desktop service via a remote desktop client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-using-remmina-on-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect using Remmina on Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-using-remote-desktop-connection-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect using Remote Desktop Connection on Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-using-windows-app-on-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect using Windows App on MacOS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -549,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../storage/overview/" class="md-nav__link">
+      <a href="../../storage/overview/" class="md-nav__link">
         
   
   
@@ -572,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../storage/faq/" class="md-nav__link">
+      <a href="../../storage/faq/" class="md-nav__link">
         
   
   
@@ -599,20 +767,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -628,7 +794,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -639,20 +805,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -668,7 +832,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             Virtual Desktops
@@ -682,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../services/virtualmachines/" class="md-nav__link">
         
   
   
@@ -705,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/" class="md-nav__link">
+      <a href="../../services/virtualmachines/quickstart/" class="md-nav__link">
         
   
   
@@ -728,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/" class="md-nav__link">
+      <a href="../../services/virtualmachines/docs/" class="md-nav__link">
         
   
   
@@ -751,30 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sharedfs/" class="md-nav__link">
+      <a href="../../services/virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
@@ -797,30 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flavours/" class="md-nav__link">
+      <a href="../../services/virtualmachines/flavours/" class="md-nav__link">
         
   
   
@@ -843,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../policies/" class="md-nav__link">
+      <a href="../../services/virtualmachines/policies/" class="md-nav__link">
         
   
   
@@ -854,155 +972,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Commands
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Configuration
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    <span class="md-ellipsis">
-      macOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1061,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/" class="md-nav__link">
         
   
   
@@ -1084,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/quickstart/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/quickstart/" class="md-nav__link">
         
   
   
@@ -1107,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/docs/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/docs/" class="md-nav__link">
         
   
   
@@ -1130,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/router-docs/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/router-docs/" class="md-nav__link">
         
   
   
@@ -1153,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/policies/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/policies/" class="md-nav__link">
         
   
   
@@ -1176,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/storage/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/storage/" class="md-nav__link">
         
   
   
@@ -1199,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../confidentialdataworkspace/faq/" class="md-nav__link">
+      <a href="../../services/confidentialdataworkspace/faq/" class="md-nav__link">
         
   
   
@@ -1268,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ultra2/access/" class="md-nav__link">
+      <a href="../../services/ultra2/access/" class="md-nav__link">
         
   
   
@@ -1291,7 +1260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ultra2/connect/" class="md-nav__link">
+      <a href="../../services/ultra2/connect/" class="md-nav__link">
         
   
   
@@ -1314,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ultra2/run/" class="md-nav__link">
+      <a href="../../services/ultra2/run/" class="md-nav__link">
         
   
   
@@ -1383,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cerebras/access/" class="md-nav__link">
+      <a href="../../services/cerebras/access/" class="md-nav__link">
         
   
   
@@ -1406,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cerebras/connect/" class="md-nav__link">
+      <a href="../../services/cerebras/connect/" class="md-nav__link">
         
   
   
@@ -1429,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cerebras/run/" class="md-nav__link">
+      <a href="../../services/cerebras/run/" class="md-nav__link">
         
   
   
@@ -1498,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/" class="md-nav__link">
+      <a href="../../services/gpuservice/" class="md-nav__link">
         
   
   
@@ -1521,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/policies/" class="md-nav__link">
+      <a href="../../services/gpuservice/policies/" class="md-nav__link">
         
   
   
@@ -1544,7 +1513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/kueue/" class="md-nav__link">
+      <a href="../../services/gpuservice/kueue/" class="md-nav__link">
         
   
   
@@ -1567,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/shared-cephfs/" class="md-nav__link">
+      <a href="../../services/gpuservice/shared-cephfs/" class="md-nav__link">
         
   
   
@@ -1628,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../services/gpuservice/training/L1_getting_started/" class="md-nav__link">
         
   
   
@@ -1651,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
+      <a href="../../services/gpuservice/training/L2_requesting_persistent_volumes/" class="md-nav__link">
         
   
   
@@ -1674,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
+      <a href="../../services/gpuservice/training/L3_running_a_pytorch_task/" class="md-nav__link">
         
   
   
@@ -1697,7 +1666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/training/L4_template_workflow/" class="md-nav__link">
+      <a href="../../services/gpuservice/training/L4_template_workflow/" class="md-nav__link">
         
   
   
@@ -1728,7 +1697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpuservice/faq/" class="md-nav__link">
+      <a href="../../services/gpuservice/faq/" class="md-nav__link">
         
   
   
@@ -1797,7 +1766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jhub/" class="md-nav__link">
+      <a href="../../services/jhub/" class="md-nav__link">
         
   
   
@@ -1820,7 +1789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jhub/quickstart/" class="md-nav__link">
+      <a href="../../services/jhub/quickstart/" class="md-nav__link">
         
   
   
@@ -1889,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cirrus/" class="md-nav__link">
+      <a href="../../services/cirrus/" class="md-nav__link">
         
   
   
@@ -2003,7 +1972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/" class="md-nav__link">
+      <a href="../../services/s3/" class="md-nav__link">
         
   
   
@@ -2026,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/getting-started/" class="md-nav__link">
+      <a href="../../services/s3/getting-started/" class="md-nav__link">
         
   
   
@@ -2049,7 +2018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/python/" class="md-nav__link">
+      <a href="../../services/s3/python/" class="md-nav__link">
         
   
   
@@ -2072,7 +2041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/policies/" class="md-nav__link">
+      <a href="../../services/s3/policies/" class="md-nav__link">
         
   
   
@@ -2095,7 +2064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/s3browser/" class="md-nav__link">
+      <a href="../../services/s3/s3browser/" class="md-nav__link">
         
   
   
@@ -2118,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../s3/manage/" class="md-nav__link">
+      <a href="../../services/s3/manage/" class="md-nav__link">
         
   
   
@@ -2187,7 +2156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../datapublishing/service/" class="md-nav__link">
+      <a href="../../services/datapublishing/service/" class="md-nav__link">
         
   
   
@@ -2210,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../datapublishing/catalogue/" class="md-nav__link">
+      <a href="../../services/datapublishing/catalogue/" class="md-nav__link">
         
   
   
@@ -2279,7 +2248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../datacatalogue/metadata/" class="md-nav__link">
+      <a href="../../services/datacatalogue/metadata/" class="md-nav__link">
         
   
   
@@ -2348,7 +2317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gitlab/" class="md-nav__link">
+      <a href="../../services/gitlab/" class="md-nav__link">
         
   
   
@@ -2371,7 +2340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gitlab/quickstart/" class="md-nav__link">
+      <a href="../../services/gitlab/quickstart/" class="md-nav__link">
         
   
   
@@ -2394,7 +2363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../registry/" class="md-nav__link">
+      <a href="../../services/registry/" class="md-nav__link">
         
   
   
@@ -2417,7 +2386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../registry/projects/" class="md-nav__link">
+      <a href="../../services/registry/projects/" class="md-nav__link">
         
   
   
@@ -2440,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../registry/working-with/" class="md-nav__link">
+      <a href="../../services/registry/working-with/" class="md-nav__link">
         
   
   
@@ -2463,7 +2432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../registry/faq/" class="md-nav__link">
+      <a href="../../services/registry/faq/" class="md-nav__link">
         
   
   
@@ -2539,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/overview/" class="md-nav__link">
+      <a href="../../safe-haven-services/overview/" class="md-nav__link">
         
   
   
@@ -2562,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/safe-haven-access/" class="md-nav__link">
+      <a href="../../safe-haven-services/safe-haven-access/" class="md-nav__link">
         
   
   
@@ -2585,7 +2554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/transition-to-clusters/" class="md-nav__link">
+      <a href="../../safe-haven-services/transition-to-clusters/" class="md-nav__link">
         
   
   
@@ -2646,7 +2615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-superdome-flex/L1_Accessing_the_SDF_Inside_the_EPCC_SHS/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-superdome-flex/L1_Accessing_the_SDF_Inside_the_EPCC_SHS/" class="md-nav__link">
         
   
   
@@ -2669,7 +2638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-superdome-flex/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-superdome-flex/L2_running_R_Python_analysis_scripts/" class="md-nav__link">
         
   
   
@@ -2692,7 +2661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-superdome-flex/L3_submitting_scripts_to_slurm/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-superdome-flex/L3_submitting_scripts_to_slurm/" class="md-nav__link">
         
   
   
@@ -2715,7 +2684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-superdome-flex/L4_parallelised_python_analysis/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-superdome-flex/L4_parallelised_python_analysis/" class="md-nav__link">
         
   
   
@@ -2738,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-superdome-flex/L5_parallelised_r_analysis/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-superdome-flex/L5_parallelised_r_analysis/" class="md-nav__link">
         
   
   
@@ -2807,7 +2776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/" class="md-nav__link">
         
   
   
@@ -2830,7 +2799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/policies/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/policies/" class="md-nav__link">
         
   
   
@@ -2853,7 +2822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/kueue/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/kueue/" class="md-nav__link">
         
   
   
@@ -2914,7 +2883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L1_getting_started/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L1_getting_started/" class="md-nav__link">
         
   
   
@@ -2937,7 +2906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L2_building_and_testing_containers/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L2_building_and_testing_containers/" class="md-nav__link">
         
   
   
@@ -2960,7 +2929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L3_using_containers_in_the_shs/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L3_using_containers_in_the_shs/" class="md-nav__link">
         
   
   
@@ -2983,7 +2952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L4_creating_your_first_pod_template/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L4_creating_your_first_pod_template/" class="md-nav__link">
         
   
   
@@ -3006,7 +2975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L5_accessing_the_beegfs_inside_the_epcc_shs/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L5_accessing_the_beegfs_inside_the_epcc_shs/" class="md-nav__link">
         
   
   
@@ -3029,7 +2998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/training/L6_requesting_persistent_volumes/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/training/L6_requesting_persistent_volumes/" class="md-nav__link">
         
   
   
@@ -3060,7 +3029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-gpu-cluster/faq/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-gpu-cluster/faq/" class="md-nav__link">
         
   
   
@@ -3129,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-container-user-guide/introduction/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-container-user-guide/introduction/" class="md-nav__link">
         
   
   
@@ -3152,7 +3121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-container-user-guide/development-workflow/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-container-user-guide/development-workflow/" class="md-nav__link">
         
   
   
@@ -3175,7 +3144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-container-user-guide/workflow-examples/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-container-user-guide/workflow-examples/" class="md-nav__link">
         
   
   
@@ -3198,7 +3167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/shs-container-user-guide/container-examples/" class="md-nav__link">
+      <a href="../../safe-haven-services/shs-container-user-guide/container-examples/" class="md-nav__link">
         
   
   
@@ -3229,7 +3198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../safe-haven-services/software-management/" class="md-nav__link">
+      <a href="../../safe-haven-services/software-management/" class="md-nav__link">
         
   
   
@@ -3259,7 +3228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   
@@ -3281,7 +3250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial-videos/" class="md-nav__link">
+      <a href="../../tutorial-videos/" class="md-nav__link">
         
   
   
@@ -3323,79 +3292,73 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh-commands" class="md-nav__link">
+  <a href="#set-up-ssh-access-to-your-eidf-vm-and-configure-port-forwarding" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Commands
+      Set up SSH access to your EIDF VM and configure port forwarding
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="SSH Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Configuration
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client" class="md-nav__link">
+  <a href="#set-your-eidf-vm-password" class="md-nav__link">
     <span class="md-ellipsis">
-      Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client
+      Set your EIDF VM password
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-remote-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a remote desktop client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-eidf-vm-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to the EIDF VM via SSH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-eidf-vm-remote-desktop-service-via-a-remote-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to the EIDF VM remote desktop service via a remote desktop client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect to the EIDF VM remote desktop service via a remote desktop client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+  <a href="#connect-using-remmina-on-linux" class="md-nav__link">
     <span class="md-ellipsis">
-      Windows
+      Connect using Remmina on Linux
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
+  <a href="#connect-using-remote-desktop-connection-on-windows" class="md-nav__link">
     <span class="md-ellipsis">
-      macOS
+      Connect using Remote Desktop Connection on Windows
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
+  <a href="#connect-using-windows-app-on-macos" class="md-nav__link">
     <span class="md-ellipsis">
-      Linux
+      Connect using Windows App on MacOS
     </span>
   </a>
   
@@ -3425,104 +3388,191 @@
   
 
 
-<h1 id="rdp-tunnelling-over-ssh">RDP tunnelling over SSH</h1>
-<p>RDP tunneling is a technique that relies on SSH to create a secure channel that forwards local traffic to a remote server's RDP port. The content of the local traffic in RDP tunneling includes:</p>
-<ul>
-<li>User Input: Keyboard and mouse actions.</li>
-<li>Display Data: Screen updates and graphical interface data.</li>
-<li>Clipboard Contents: Text or files copied and pasted between the local and remote systems.</li>
-<li>File Transfers: Transferred files if drive redirection is enabled.</li>
-</ul>
-<p>By setting up an SSH tunnel, a local port is forwarded to the remote server's RDP port (3389). The RDP client is then connected to <code>localhost:&lt;local_port&gt;</code>, ensuring that the RDP session is encrypted.</p>
-<h2 id="ssh-commands">SSH Commands</h2>
-<h3 id="steps">Steps</h3>
-<ol>
-<li>Jump host (-J): connect first to the eidf_gateway as an intermediary before reaching the target VM. Authentication is achieved using the identity file provided by the host (-i).</li>
-<li>Local Port Forwarding (-L): Forwards local port 12345 to localhost:3389 on the remote machine, allowing RDP access via localhost:12345.</li>
-<li>Configure a RDP client (for example 'Windows App') to connect to <code>localhost:&lt;local_forwarded_port&gt;</code> instead of directly accessing the remote machine's IP. Then connect on the remote server as 'username'.</li>
-</ol>
-<h3 id="example">Example</h3>
-<p>Connect to eidf666 (IP address 10.24.2.224) as user u666</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>u666@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389<span class="w"> </span>u666@10.24.2.224
-</code></pre></div>
-<p>Defaults like PubkeyAuthentication=yes, PasswordAuthentication=yes, ForwardAgent=yes, ForwardX11=yes, and ForwardX11Trusted=yes are omitted.</p>
-<p>Once the connection is established, on Windows App or similar use pc name: <code>localhost:23001</code>. When prompted, the username will be 'u666' with corresponding password.</p>
-<h3 id="ssh-configuration">SSH Configuration</h3>
-<p>All of the above can also be achieved adding the following to the SSH <code>.config</code> file:</p>
-<div class="highlight"><pre><span></span><code>host<span class="w"> </span>eidf666_gateway
-<span class="w">    </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
-<span class="w">    </span>User<span class="w"> </span>u666
-<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/eidf666-vm
-
-host<span class="w"> </span>eidf666_rdp
-<span class="w">    </span>Hostname<span class="w"> </span><span class="m">10</span>.24.2.224
-<span class="w">    </span>User<span class="w"> </span>u666
-<span class="w">    </span>PubKeyAuthentication<span class="w"> </span>yes
-<span class="w">    </span>PasswordAuthentication<span class="w"> </span>yes
-<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/eidf666-vm
-<span class="w">    </span>ProxyJump<span class="w"> </span>eidf666_gateway
-<span class="w">    </span>ServerAliveInterval<span class="w"> </span><span class="m">900</span>
-<span class="w">    </span>ForwardAgent<span class="w"> </span>yes
-<span class="w">    </span>ForwardX11<span class="w"> </span>yes
-<span class="w">    </span>ForwardX11Trusted<span class="w"> </span>yes
-<span class="w">    </span>LocalForward<span class="w"> </span><span class="m">23001</span><span class="w"> </span>localhost:3389
-</code></pre></div>
-<p>Can then use the command 'ssh eidf666_rdp' to create the connection.</p>
-<h2 id="using-rdp-tunnelling-to-connect-to-vms-remote-desktops-via-a-rdp-client">Using RDP Tunnelling to connect to VMs Remote Desktops via a RDP client</h2>
-<p>The Guacamole web interface makes it easy to connect to a remote desktop. This page details how to connect with a dedicated remote desktop client application, which can be useful for longer work. Dedicated remote desktop viewer programs allow better support for copy and pasting, file sharing and other features that may not be available on the web interface.</p>
-<div class="admonition warning">
-<p class="admonition-title">Prerequisites</p>
-<p>It is recommended to connect to the host machine via Guacamole <strong>first</strong> as this process is simpler see instructions in <a href="../../../access/virtualmachines-vdi/">Virtual Machines (VMs) and the EIDF Virtual Desktop Interface (VDI)</a></p>
+<h1 id="remote-desktop-client-access-via-ssh">Remote desktop client access via SSH</h1>
+<p>The <a href="../virtualmachines-vdi/">EIDF Virtual Desktop Interface (VDI)</a> provides a way of using EIDF VMs via SSH or remote desktop sessions run within your browser. On this page an alternative is described, using a remote desktop client running on your local host to connect to a remote desktop service running on your EIDF VM.</p>
+<p>Using a remote desktop client can be both more usable and useful than the VDI for long periods of work. Remote desktop clients can offer a a sharper display than the VDI, better support for copying and pasting, and support for file sharing and other features that may not be available via the VDI.</p>
+<div class="admonition important">
+<p class="admonition-title">Remote desktop client prerequisites</p>
+<p>You can only access an EIDF VM via a remote desktop client if your project lead has granted you permission to access both the VM and the EIDF Gateway and the EIDF VM is running a remote desktop service, which a project lead can configure via the EIDF Portal.</p>
 </div>
-<p>We refer to a <strong>Host</strong> machine as the machine with an RDP server running on it, within EIDF infrastructure this is the Virtual machine.</p>
-<p>The <strong>Client</strong> machine is any machine that you are using to connect to the host machine via the RDP protocol and remote desktop viewing software.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Opening a remote connection means having full access to the host machines as though it was unlocked on your desk. You should not provide access credentials to other users you would not want using the machine or leave your client machine unattended and unlocked whilst connected as this risks the EIDF Virtual Machine being accessed by unauthorized users!</p>
+<div class="admonition tip">
+<p class="admonition-title">Try the VDI first</p>
+<p>It is strongly recommended that you, initially at least, try using EIDF VMs via remote desktop connections supported by the <a href="../virtualmachines-vdi/">EIDF Virtual Desktop Interface (VDI)</a> as the steps to access the remote desktop via the VDI are far more straightforward than those to use a remote desktop client.</p>
 </div>
-<p>Using RDP tunnelling allows you to connect to a remote desktop machine securely through an SSH tunnel. This is particularly useful when accessing Virtual Desktop Infrastructure (VDI) machines on the EIDF.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Port forwarding is needed to get through the EIDF gateway. Whilst some remote desktop viewers support gateways they do not always support all the required features for connection to the EIDF gateway (e.g. the Windows app for macOS does not support SSH keys)</p>
+<p class="admonition-title">Remote desktop client connection security</p>
+<p>Interactions with the remote desktop client on your local host are securely forwarded, or 'tunnelled', via SSH, to the remote desktop service on your EIDF host, and vice-versa. All your interactions with the remote desktop, including keyboard and mouse clicks, the display state, clipboard contents and files (if drive redirection is enabled) are encrypted.</p>
 </div>
-<p>Instructions specific to the operating system in use are given in the below sections. If you have your own preferred remote desktop viewing software or cannot use the below instructions for whatever reason then the key details to be configured are:</p>
-<div class="highlight"><pre><span></span><code>PC or server name and port: localhost:23001
-VDI account credentials: We recommend leaving this blank or as 'Ask when
-required' until you have successfully connected to the machine. If prompted for
-credentials you will need those which you have for VDI connections, the same as
-in Guacamole
-Protocol: RDP
-Friendly Name: &lt;ProjectID&gt; Remote Connection via local port
+<hr />
+<h2 id="set-up-ssh-access-to-your-eidf-vm-and-configure-port-forwarding">Set up SSH access to your EIDF VM and configure port forwarding</h2>
+<p>To connect to a remote desktop service running on your EIDF VM you need to both:</p>
+<ol>
+<li>Set up SSH access.</li>
+<li>Connect to the EIDF VM via SSH, forwarding ports from a custom port on your local host to the remote desktop service port, 3389, on your EIDF VM.</li>
+</ol>
+<p>See <a href="../ssh/">SSH access to EIDF VMs</a> for instructions on how to:</p>
+<ul>
+<li>Set up SSH access.</li>
+<li>Connect to an EIDF VM via SSH.</li>
+<li>Access services on an EIDF VM via port forwarding and SSH tunnelling.</li>
+<li>Write an SSH configuration file.</li>
+<li>Specify port forwarding within the SSH configuration file.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Limitations of some remote desktop clients</p>
+<p>Whilst some remote desktop clients support access to VMs via jump hosts, some clients to not support everything required to connect to an EIDF VM via the EIDF Gateway. For example, the <a href="https://apps.apple.com/us/app/windows-app/id1295203466">Windows App</a> for MacOS does not support connections via SSH keys. This is why accessing your EIDF VM via SSH, and configuring port forwarding, is also required.</p>
+</div>
+<hr />
+<h2 id="set-your-eidf-vm-password">Set your EIDF VM password</h2>
+<p>You will need to set a password for your EIDF VM, if you have not already done so. You can set (or reset) a password via the 'User Account Info' page in the EIDF Portal by following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+<hr />
+<h2 id="install-a-remote-desktop-client">Install a remote desktop client</h2>
+<p><a href="https://remmina.org">Remmina</a> is a remote desktop client for Linux. Under Ubuntu, Remmina can be installed by running:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>remmina<span class="w"> </span>remmina-plugin-rdp<span class="w"> </span>remmina-plugin-secret
 </code></pre></div>
-<h3 id="windows">Windows</h3>
-<p>The Microsoft Windows documentation <a href="https://support.microsoft.com/en-gb/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c">Remote Desktop Connection</a> is relevant from step 2 "<em>Use Remote Desktop to connect to the PC you set up</em>" onwards. The Remote Desktop Connection program is preinstalled on Windows machines.</p>
+<p>For other Linux flavours, see Remmina's <a href="https://remmina.org/how-to-install-remmina/">How to install Remmina</a>.</p>
+<p>Windows provides a built-in remote desktop client, Remote Desktop Connection.</p>
+<p>MacOS <a href="https://apps.apple.com/us/app/windows-app/id1295203466">Windows App</a> is a free remote desktop client. Despite its name, it can be used to connect to Linux VMs also.</p>
+<hr />
+<h2 id="connect-to-the-eidf-vm-via-ssh">Connect to the EIDF VM via SSH</h2>
+<p>You can connect to the EIDF VM via SSH and set up port forwarding to allow for a remote desktop client to connect to a remote desktop service running on the EIDF VM as follows.</p>
+<p>If you <strong>are not</strong> using an SSH configuration file, then:</p>
+<ul>
+<li>
+<p><strong>EITHER</strong> If your private key file has a custom name defined by you, then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/&lt;key_file&gt; -W %h:%p &lt;user&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:3389
+</code></pre></div>
+<p>For example</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000<span class="w"> </span>some-eidf-user@10.24.999.999<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389
+</code></pre></div>
+</li>
+<li>
+<p><strong>OR</strong> If your private key file has a default OpenSSH name (e.g., id_ed25519 or id_rsa) then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>&lt;user&gt;@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:3389
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>some-eidf-user@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>some-eidf-user@10.24.999.999<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389
+</code></pre></div>
+</li>
+</ul>
+<p>Alternatively, if you <strong>are</strong> using an SSH configuration file of the format described in <a href="../ssh/">SSH access to EIDF VMs</a> i.e.:</p>
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-&lt;project_id&gt;
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host &lt;host_name&gt;
+    HostName &lt;host_ip&gt;
+    ProxyJump eidf-gateway-&lt;project_id&gt;
+    LocalForward &lt;local_port&gt; localhost:3389
+    ServerAliveInterval &lt;interval_in_seconds&gt;
+Host eidf-gateway-&lt;project_id&gt; &lt;host_name&gt;
+    User &lt;user&gt;
+    IdentityFile ~/.ssh/&lt;key_file&gt;
+    IdentitiesOnly yes
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-000
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+    LocalForward 23001 localhost:3389
+    ServerAliveInterval 60
+Host eidf-gateway-000 eidf000-vm
+    User some-eidf-user
+    IdentityFile ~/.ssh/id_ed25519_eidf000
+    IdentitiesOnly yes
+</code></pre></div>
+<p>then, run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>&lt;host_name&gt;
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>eidf000-vm
+</code></pre></div>
+<hr />
+<h2 id="connect-to-the-eidf-vm-remote-desktop-service-via-a-remote-desktop-client">Connect to the EIDF VM remote desktop service via a remote desktop client</h2>
+<p>Having connected to the EIDF VM via SSH and set up port forwarding to the EIDF VM's remote desktop service, you are now ready to connect using a remote desktop client.</p>
+<p>Though specific remote desktop clients vary, the following settings are common to many clients:</p>
+<ul>
+<li>Remote desktop server host name and port. As port forwarding is being used from your local host, the host and port is <code>localhost:&lt;local_port&gt;</code> e.g., <code>localhost:23001</code>.</li>
+<li>Protocol. 'RDP' or 'Remote Desktop'.</li>
+<li>Memorable name for the connection. One option is to use a name including the EIDF VM <code>&lt;host_name&gt;</code> and the connection protocol e.g., <code>eidf000-vm (SSH/RDP)</code>.</li>
+<li>Username and password. Your EIDF VM username and password.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Caching usernames and passwords</p>
+<p>It is recommend that initially you do not cache these values in a remote desktop client, but instead enter them when the connection is established, or, alternatively, that you select any 'Ask when required' option, if offered. This allows you to check that you can successfully set up a remote desktop session with your EIDF VM.</p>
+<p>If caching passwords, you should check out the documentation for the remote desktop client you are using, to see how passwords are cached, and how securely.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Do not leave your remote desktop client session unattended</p>
+<p>Once a remote desktop client has connected to the EIDF VM, you have access to your EIDF VM as though it was an application running on your local host. You should not leave your local host unlocked while connected to an EIDF VM as this risks both your local host and EIDF VM being accessed by unauthorised users!</p>
+</div>
+<h3 id="connect-using-remmina-on-linux">Connect using Remmina on Linux</h3>
+<p>To run Remmina:</p>
 <ol>
-<li>Open the 'Remote Desktop Connection' program (<code>mstsc</code> in Run)</li>
-<li>Input <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code> as the connection name<img alt="Windows Remote Desktop" src="../../../images/access/rdp_client_connect/Windows_Remote_Desktop.png" /></li>
-<li>Click 'Connect'</li>
-<li>Input VDI login credentials once prompted at the login screen</li>
+<li>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>remmina
+</code></pre></div>
+</li>
+<li>
+<p>The Remmina Remote Desktop Client will appear.</p>
+</li>
 </ol>
-<h3 id="macos">macOS</h3>
-<p>These instructions use the <a href="https://learn.microsoft.com/en-us/windows-app/">Microsoft Windows App</a> a free program available from the <a href="https://apps.apple.com/us/app/windows-app/id1295203466?mt=12">Apple App Store</a>.</p>
+<p>To connect to a remote desktop service in the Remmina Remote Desktop Client:</p>
 <ol>
-<li>Open the Windows App -&gt; Click '+' -&gt; Add PC</li>
-<li>Input into 'PC Name' the forwarded port on the local machine <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code><img alt="macOS server input" src="../../../images/access/rdp_client_connect/macos_ip_input.png" /></li>
-<li>Also add a 'friendly name' to describe the device being connected to</li>
-<li>Leave all other options as defaults at this stage</li>
-<li>Click Add</li>
-<li>Double-click on the newly created PC to connect</li>
-<li>You will be prompted for the VDI username and password</li>
+<li>Click <strong>+</strong> ('Add a new connection profile'), on the top-left of the client.</li>
+<li>A 'Remote Connection Profile' dialog will appear.</li>
+<li>Enter <strong>Name</strong>: enter a memorable name for the connection.</li>
+<li>Select <strong>Protocol</strong>: RDP - Remote Desktop Protocol.</li>
+<li>Enter <strong>Server</strong>: <code>localhost:&lt;local_port&gt;</code> e.g., <code>localhost:23001</code></li>
+<li>Click <strong>Save and Connect</strong>.</li>
+<li>An 'Enter RDP authentication credentials' dialog will appear.</li>
+<li>Enter <strong>Username</strong> and <strong>Password</strong>: your EIDF VM username and password.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>A window will appear with a remote desktop for your EIDF VM.</li>
 </ol>
-<h3 id="linux">Linux</h3>
-<p>The following uses <a href="https://remmina.org">Remmina</a>, a stable Linux RDP client available via most package managers.</p>
+<p>To reconnect to a remote desktop service in the Remmina Remote Desktop Client:</p>
 <ol>
-<li>Install and open Remmina</li>
-<li>Select "Add a new connection profile" in the top right for the connection profile window to appear<img alt="linux add new connection" src="../../../images/access/rdp_client_connect/Add_New_Connection_Remmina.png" /></li>
-<li>Ensure that 'Protocol' is set to RDP</li>
-<li>In the 'Server' field input the localhost and forwarded port <code>localhost:&lt;port forwarded to&gt;</code> e.g. <code>localhost:23001</code><img alt="Linux configuration via Remmina" src="../../../images/access/rdp_client_connect/Connection_Config_Remmina.png" /></li>
-<li>Enter a 'Friendly Name' to describe the device being connected to</li>
-<li>Leave the 'Username' and 'Password' fields blank at this stage. After your first successful connection, save your VDI credentials here for easier connection in the future</li>
-<li>Click Save and Connect to start the remote desktop connection. You will be able to double-click on the friendly name in the main Remmina pane the next time you want to connect to the machine</li>
+<li>Double-click on on the row for your remote desktop connection.</li>
+<li>An 'Enter RDP authentication credentials' dialog will appear.</li>
+<li>Enter <strong>Username</strong> and <strong>Password</strong>: your EIDF VM username and password.</li>
+<li>Click <strong>OK</strong>.</li>
+<li>A window will appear with a remote desktop for your EIDF VM.</li>
+</ol>
+<p>To cache your username and, if desired, password in the Remmina Remote Desktop Client:</p>
+<ol>
+<li>Right-click on the row for your remote desktop connection, select <strong>Edit</strong>.</li>
+<li>The 'Remote Connection Profile' dialog will appear.</li>
+<li>Enter <strong>Username</strong> and <strong>Password</strong>: your EIDF VM username and password.</li>
+<li>Click <strong>Save and Connect</strong>.</li>
+<li>A window will appear with a remote desktop for your EIDF VM.</li>
+</ol>
+<h3 id="connect-using-remote-desktop-connection-on-windows">Connect using Remote Desktop Connection on Windows</h3>
+<p>To connect to a remote desktop service using Remote Desktop Connection:</p>
+<ol>
+<li>Click Windows <strong>Start</strong> or <strong>Search</strong>.</li>
+<li>Enter 'Remote Desktop Connection' or <code>mstsc</code> in the search field.</li>
+<li>Click <strong>Remote Desktop Connection</strong> when it appears.</li>
+<li>The 'Remote Desktop Connection' dialog will appear.</li>
+<li>Enter <strong>Computer</strong>: <code>localhost:&lt;local_port&gt;</code> e.g., <code>localhost:23001</code></li>
+<li>Click <strong>Connect</strong>.</li>
+<li>A 'The identity of the remote computer cannot be verified. Do you want to connect anyway?' dialog will appear.</li>
+<li>Click <strong>Yes</strong>.</li>
+<li>A window will appear with a remote desktop for your EIDF VM.</li>
+<li>Log in using your EIDF VM username and password.</li>
+</ol>
+<h3 id="connect-using-windows-app-on-macos">Connect using Windows App on MacOS</h3>
+<p>To connect to a remote desktop service using Windows app:</p>
+<ol>
+<li>Open the Windows App</li>
+<li>Click <strong>+</strong>, select <strong>Add PC</strong>.</li>
+<li>The 'Add PC' dialog will appear.</li>
+<li>Enter <strong>PC Namer</strong>: <code>localhost:&lt;local_port&gt;</code> e.g., <code>localhost:23001</code></li>
+<li>Enter <strong>Friendly name</strong>: : enter a memorable name for the connection.</li>
+<li>Select <strong>Reconnect if the connection is dropped</strong>.</li>
+<li>Click <strong>Add</strong>.</li>
+<li>Double-click on on the row for your remote desktop connection.</li>
+<li>You will be prompted for your EIDF VM username and password.</li>
 </ol>
 
 
@@ -3572,10 +3622,10 @@ Friendly Name: &lt;ProjectID&gt; Remote Connection via local port
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

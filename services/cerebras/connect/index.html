@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#login" class="md-skip">
+        <a href="#connect-to-cerebras" class="md-skip">
           Skip to content
         </a>
       
@@ -440,7 +440,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -463,7 +463,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -486,7 +486,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -749,58 +795,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -847,29 +847,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -1330,26 +1307,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#access-credentials" class="md-nav__link">
+  <a href="#set-up-ssh-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Access credentials
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access credentials">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh-login-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Login example
+      Set up SSH access
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-cerebras-cs3-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to Cerebras CS3 via SSH
+    </span>
+  </a>
   
 </li>
       
@@ -3263,26 +3234,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#access-credentials" class="md-nav__link">
+  <a href="#set-up-ssh-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Access credentials
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access credentials">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh-login-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Login example
+      Set up SSH access
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-cerebras-cs3-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to Cerebras CS3 via SSH
+    </span>
+  </a>
   
 </li>
       
@@ -3305,14 +3270,40 @@
   
 
 
-<h1 id="login">Login</h1>
-<p>The route for SSH access to the CS3 user-nodes is via the <code>eidf-gateway</code> bastion, as for the EIDF VirDS desktop VMs. This requires two credentials, your SSH key pair protected by a passphrase <strong>and</strong> a Time-based one-time password (TOTP).</p>
-<h2 id="access-credentials">Access credentials</h2>
-<p>To access the CS3 system, follow the login example below. For the majority of authorised users, no further passwords or credentials are required other than for <code>eidf-gateway</code>.</p>
-<p>To configure your SSH keys and MFA (TOTP) token, see <a href="https://docs.eidf.ac.uk/access/ssh/">our general SSH documentation.</a></p>
-<h3 id="ssh-login-example">SSH Login example</h3>
-<p>To login to the CS3 user-nodes, you will need to use the SSH Key and TOTP token as noted above.
-With the appropriate key loaded<br><code>ssh -J &lt;username&gt;@eidf-gateway.epcc.ed.ac.uk cerebras</code> will then prompt you, roughly once per day, for your TOTP code.</p>
+<h1 id="connect-to-cerebras">Connect to Cerebras</h1>
+<p>Access to Cerebras CS3 user-nodes is done using SSH via the EIDF Gateway jump host, as used for accessing EIDF VMs via SSH. This access requires two credentials: an SSH key pair protected by a passphrase <strong>and</strong> a Time-based one-time password (TOTP).</p>
+<hr />
+<h2 id="set-up-ssh-access">Set up SSH access</h2>
+<p><a href="../../../access/ssh/#set-up-ssh-access">Set up SSH access</a> in <a href="../../../access/ssh/">SSH access to EIDF VMs</a> describes how to:</p>
+<ol>
+<li>Create SSH private and public keys on the host from which you want to access the EIDF VM via SSH.</li>
+<li>Add the public key to your project account within the EIDF Portal.</li>
+<li>Get a multi-factor authentication app.</li>
+<li>Set up multi-factor authentication for your project account within the EIDF Portal.</li>
+</ol>
+<hr />
+<h2 id="connect-to-cerebras-cs3-via-ssh">Connect to Cerebras CS3 via SSH</h2>
+<p>If your private key file has a default OpenSSH name (e.g., <code>id_ed25519</code> or <code>id_rsa</code>) then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>&lt;user&gt;@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>cerebras
+</code></pre></div>
+<p>Alternatively, if your private key file has a custom name defined by you, then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/&lt;key_file&gt; -W %h:%p &lt;user&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;<span class="w"> </span>&lt;user&gt;@cerebras
+</code></pre></div>
+<p>Alternatively, you can add the following definition to an SSH configuration file, <code>$HOME/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-cerebras
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host cerebras
+    HostName cerebras
+    ProxyJump eidf-gateway-cerebras
+Host eidf-gateway-cerebras cerebras
+    User &lt;user&gt;
+    IdentityFile ~/.ssh/&lt;key_file&gt;
+    IdentitiesOnly yes
+</code></pre></div>
+<p>then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>cerebras
+</code></pre></div>
+<p>In each case, you will be prompted for your SSH key passphrase, then your TOTP, then your SSH key passphrase again. You will only be prompted for a TOTP roughly once a day.</p>
 
 
 

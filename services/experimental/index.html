@@ -436,7 +436,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -459,7 +459,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -482,7 +482,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -743,58 +789,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -841,29 +841,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3208,9 +3185,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-mfa-token" class="md-nav__link">
+  <a href="#set-multi-factor-authentication-token" class="md-nav__link">
     <span class="md-ellipsis">
-      Set MFA Token
+      Set Multi-Factor Authentication Token
     </span>
   </a>
   
@@ -3251,34 +3228,38 @@
 
 <h1 id="experimental-system-access">Experimental System Access</h1>
 <h2 id="introduction">Introduction</h2>
-<p>A pair of redundant SSH Gateways were built to replace the aging Hydra-VPN Service. This service replicates the requirements of Hydra-VPn, while implementing much higher security standards, with greater ease of use.</p>
+<p>A pair of redundant SSH Gateways were built to replace the aging Hydra-VPN Service. This service replicates the requirements of Hydra-VPN, while implementing much higher security standards, with greater ease of use.</p>
 <p>In order to access these gateways, you need to be a member of a project which uses them, for example a NextGenIO Project. If you're unsure if you need access, speak to your EPCC Project Contact.</p>
-<p>These gateways act as a jump host only, you can't SSH to them directly. See the <a href="#using-the-gateway">Using the Gateway</a> section for more information.</p>
+<p>These gateways act as a jump host only, you cannot SSH to them directly. See <a href="#using-the-gateway">Using the Gateway</a> below for more information.</p>
 <h2 id="gaining-access">Gaining Access</h2>
 <ol>
-<li>Access <a href="https://safe.epcc.ed.ac.uk">SAFE</a></li>
-<li>Select 'Projects' and 'Request Access'</li>
-<li>Search for your project code, e.g. nx04</li>
-<li>Select 'Request machine account' then 'Apply'</li>
-<li>Under the 'Select a machine for the login account' select 'gateways'</li>
-<li>Select 'Next'</li>
-<li>Specify the username you'd like. This can't be the same as an account name in another project</li>
-<li>Upload an SSH public key. This is required to access these gateways.</li>
-<li>Select 'Request'</li>
+<li>Access <a href="https://safe.epcc.ed.ac.uk">SAFE</a>.</li>
+<li>Select 'Projects' menu, 'Request Access' option.</li>
+<li>Beside 'Project', search for your project code, e.g. 'nx04'.</li>
+<li>Beside 'Access route', select 'Request machine account'.</li>
+<li>Click 'Apply'.</li>
+<li>Under the 'Select a machine for the login account' select 'gateways'.</li>
+<li>Click 'Next'.</li>
+<li>Specify the username you'd like. This <strong>cannot</strong> be the same as an account name in another project.</li>
+<li>Upload an SSH public key. This is required to access these gateways. To create an SSH private and public key, if you do not already have one, see, for example, <a href="../../access/ssh/#create-ssh-private-and-public-keys">Create SSH private and public keys</a> in <a href="../../access/ssh/">SSH access to EIDF VMs</a>.</li>
+<li>Click 'Request'.</li>
 <li>You'll get an email when your account has been accepted.</li>
 </ol>
-<h3 id="set-mfa-token">Set MFA Token</h3>
-<p>Once your account has been added, you need to enable MFA. Like the SSH key, this is required to use these gateways.</p>
+<h3 id="set-multi-factor-authentication-token">Set Multi-Factor Authentication Token</h3>
+<p>Once your account has been added, you need to enable multi-factor authentication (MFA). Like your SSH key, this is required to use these gateways.</p>
 <ol>
-<li>Access <a href="https://safe.epcc.ed.ac.uk">SAFE</a></li>
-<li>Select 'Login Accounts' and select the username you just made</li>
-<li>Select 'Set MFA-Token'</li>
-<li>Scan the QR Code into the authenticator of your choice, and verify the code displayed in your app in the 'Verification Code' box.</li>
+<li>Get a multi-factor authentication app, if you do not already have one. For example, see <a href="../../access/ssh/#get-a-multi-factor-authentication-app">Get a multi-factor authentication app</a> in <a href="../../access/ssh/">SSH access to EIDF VMs</a>.</li>
+<li>Access <a href="https://safe.epcc.ed.ac.uk">SAFE</a>.</li>
+<li>Select 'Login Accounts' menu and select the username you just made.</li>
+<li>Click 'Set MFA Token'.</li>
+<li>Scan the QR code or enter the 'New token' into your authenticator</li>
+<li>Within 'Verification Code', enter the code displayed in your authenticator app.</li>
+<li>Click 'Set'</li>
 <li>MFA has now been enabled.</li>
 </ol>
 <h2 id="using-the-gateway">Using the Gateway</h2>
-<p>See the <a href="../../access/ssh/">EIDF-Gateway</a> docs for instructions on how to use the gateways from <a href="../../access/ssh/#accessing-from-macoslinux">Linux/MacOS</a> or <a href="../../access/ssh/#accessing-from-windows">Windows</a>.</p>
-<p>Substitute all mentions of <code>eidf-gateway.epcc.ed.ac.uk</code> to be <code>gateway.epcc.ed.ac.uk</code> in your config. These are two seperate services and you cannot access experimental services through <code>eidf-gateway.epcc.ed.ac.uk</code></p>
+<p><a href="../../access/ssh/">SSH access to EIDF VMs</a> describes how to access an EIDF VM via the EIDF Gateway jump host, <code>eidf-gateway.epcc.ed.ac.uk</code>.  These instructions can also be used to access the experimental services gateway by replacing all mentions of <code>eidf-gateway.epcc.ed.ac.uk</code> with <code>gateway.epcc.ed.ac.uk</code> in any 'ssh' commands and SSH configuration files.</p>
+<p><code>eidf-gateway.epcc.ed.ac.uk</code> and <code>gateway.epcc.ed.ac.uk</code> are two separate services and you cannot access experimental services through <code>eidf-gateway.epcc.ed.ac.uk</code>.</p>
 
 
 

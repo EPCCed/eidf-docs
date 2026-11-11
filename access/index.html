@@ -22,7 +22,7 @@
     
     
       
-        <title>Web and SSH - EIDF User Documentation</title>
+        <title>Overview - EIDF User Documentation</title>
       
     
     
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Web and SSH
+              Overview
             
           </span>
         </div>
@@ -451,7 +451,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -464,7 +464,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -496,27 +496,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-virtual-machines" class="md-nav__link">
+  <a href="#ssh-access-to-eidf-virtual-machines" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Virtual Machines
+      SSH Access to EIDF Virtual Machines
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-confidential-data-workspace-service" class="md-nav__link">
+  <a href="#remote-desktop-client-access-to-eidf-virtual-machines" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Confidential Data Workspace Service
+      Remote Desktop Client Access to EIDF Virtual Machines
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-computing-services" class="md-nav__link">
+  <a href="#ssh-access-to-other-eidf-computing-services" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Computing Services
+      SSH Access to Other EIDF Computing Services
     </span>
   </a>
   
@@ -543,7 +543,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -566,7 +566,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -827,58 +873,12 @@
   
   
     <li class="md-nav__item">
-      <a href="virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../services/virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -925,29 +925,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../services/virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3282,27 +3259,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-virtual-machines" class="md-nav__link">
+  <a href="#ssh-access-to-eidf-virtual-machines" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Virtual Machines
+      SSH Access to EIDF Virtual Machines
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-confidential-data-workspace-service" class="md-nav__link">
+  <a href="#remote-desktop-client-access-to-eidf-virtual-machines" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Confidential Data Workspace Service
+      Remote Desktop Client Access to EIDF Virtual Machines
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-access-to-computing-services" class="md-nav__link">
+  <a href="#ssh-access-to-other-eidf-computing-services" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Access to Computing Services
+      SSH Access to Other EIDF Computing Services
     </span>
   </a>
   
@@ -3328,33 +3305,31 @@
 
 
 <h1 id="accessing-eidf">Accessing EIDF</h1>
-<p>Some EIDF services are accessed via a Web browser and some by "traditional" command-line
-<code>ssh</code>.</p>
-<p>All EIDF services use the <a href="https://safe.epcc.ed.ac.uk/">EPCC SAFE</a> service management
-back end, to ensure compatibility with other EPCC high-performance computing services.</p>
+<p>Some EIDF services are accessed via a web browser and some via the command-line, using SSH. Some EIDF services can be accessed via both.</p>
+<p>All EIDF services use the <a href="https://safe.epcc.ed.ac.uk/">EPCC SAFE</a> service management back end, to ensure compatibility with other EPCC high-performance computing services.</p>
 <h2 id="web-access-to-virtual-machines">Web Access to Virtual Machines</h2>
-<p>The Virtual Desktop VM service is browser-based, providing a virtual desktop interface
-(Apache Guacamole) for "desktop-in-a-browser" access. Applications to use the VM service
-are made through the EIDF Portal.</p>
-<p><a href="project/">EIDF Portal</a>: how to ask to join an existing EIDF project and
-how to apply for a new project</p>
-<p><a href="virtualmachines-vdi/">VDI access to virtual machines</a>: how to connect to the virtual
-desktop interface.</p>
-<p><a href="../services/confidentialdataworkspace/quickstart/">VDI access to Confidential Data Workspace VMs</a>: how to connect to the Confidential Data Workspace service.</p>
-<h2 id="ssh-access-to-virtual-machines">SSH Access to Virtual Machines</h2>
-<p>Users with the appropriate permissions can also <a href="ssh/">use <code>ssh</code> to login to Virtual Desktop VMs</a></p>
-<h2 id="ssh-access-to-confidential-data-workspace-service">SSH Access to Confidential Data Workspace Service</h2>
-<p>Remote SSH access to Confidential Data Workspace VMs is <strong>disabled</strong> for security of the service, access is provided through the Guacamole web interface only. Access is described in the <a href="../services/confidentialdataworkspace/quickstart/">Confidential Data Workspace Quickstart</a> guide.</p>
-<h2 id="ssh-access-to-computing-services">SSH Access to Computing Services</h2>
-<p>Includes access to the following services:</p>
+<p>The EIDF Virtual Desktop Interface (VDI) service provides browser-based access to EIDF virtual machines. From within a browser, users can interact with an EIDF virtual machine via a user interface that mimics a command-line SSH session or, if the virtual machine has a remote desktop service installed, via a user interface that provides access to this remote desktop.</p>
+<p>The EIDF VDI service can be used to access a project's <a href="../services/virtualmachines/">EIDF virtual machines</a> and virtual machines within a <a href="../services/confidentialdataworkspace/">Confidential Data Workspace (CDW)</a>.</p>
+<p>Applications to use the EIDF VDI service, and to access EIDF virtual machines, are made through the EIDF Portal.</p>
+<p>For more information, see:</p>
+<ul>
+<li><a href="project/">EIDF Portal</a>: how to ask to join an existing EIDF project and how to apply for a new project.</li>
+<li><a href="virtualmachines-vdi/">VDI access to virtual machines</a>: how to connect to the virtual desktop interface, and so to EIDF virtual machines, from a browser.</li>
+</ul>
+<h2 id="ssh-access-to-eidf-virtual-machines">SSH Access to EIDF Virtual Machines</h2>
+<p>Users who have been granted the appropriate permissions by a project lead can also access EIDF virtual machines via SSH from their local host. See <a href="ssh/">SSH access to EIDF VMs</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">SSH Access to Confidential Data Workspace service</p>
+<p>SSH access to Confidential Data Workspace VMs is <strong>disabled</strong> for security of the Confidential Data Workspace service, access is provided through the EIDF Virtual Desktop Interface service only.</p>
+</div>
+<h2 id="remote-desktop-client-access-to-eidf-virtual-machines">Remote Desktop Client Access to EIDF Virtual Machines</h2>
+<p>Users who have been granted access to an EIDF virtual machine via SSH can also connect to the virtual machine via a remote desktop client on their local host, if the EIDF virtual machine has a remote desktop service installed. See <a href="ssh-rdp/">Remote desktop client access via SSH</a>.</p>
+<h2 id="ssh-access-to-other-eidf-computing-services">SSH Access to Other EIDF Computing Services</h2>
+<p>SSH is used to access the following services:</p>
 <ul>
 <li><a href="../services/ultra2/">Ultra2</a></li>
 <li><a href="../services/experimental/">EIDF Interim and Experimental Systems</a></li>
 </ul>
-<p>To login to most command-line services with <code>ssh</code> you should use the username and password
-you obtained from SAFE when you applied for access, along with the SSH Key you
-registered when creating the account. You can then login to the host following the appropriately linked instructions
-above.</p>
 
 
 

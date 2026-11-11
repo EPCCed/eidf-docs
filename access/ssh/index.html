@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://docs.eidf.ac.uk/access/ssh/">
       
       
-        <link rel="prev" href="../../services/virtualmachines/sharedfs/">
+        <link rel="prev" href="../virtualmachines-vdi/">
       
       
-        <link rel="next" href="../../services/virtualmachines/flavours/">
+        <link rel="next" href="../ssh-rdp/">
       
       
       <link rel="icon" href="../../images/favicon.ico">
@@ -22,7 +22,7 @@
     
     
       
-        <title>SSH Access to VMs - EIDF User Documentation</title>
+        <title>SSH access to EIDF VMs - EIDF User Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host" class="md-skip">
+        <a href="#ssh-access-to-eidf-vms" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SSH Access to VMs
+              SSH access to EIDF VMs
             
           </span>
         </div>
@@ -394,18 +394,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -421,7 +423,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Service Access
@@ -440,7 +442,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -463,7 +465,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -486,7 +488,335 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-ssh-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set up SSH access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up SSH access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-ssh-private-and-public-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create SSH private and public keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-public-key-to-your-project-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add the public key to your project account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-a-multi-factor-authentication-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get a multi-factor authentication app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-multi-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set up multi-factor authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-an-eidf-vm-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect to an EIDF VM via SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect to an EIDF VM via SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-warning-identity-file-sshid_ed25519_eidf000-not-accessible-no-such-file-or-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: 'Warning: Identity file .ssh/id_ed25519_eidf000 not accessible: No such file or directory'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-permission-denied-publickey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: 'Permission denied (publickey)'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-no-mfa-key-for-this-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: 'No MFA key for this user'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-multiple-prompts-to-enter-passphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: Multiple prompts to 'Enter passphrase'
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-services-on-an-eidf-vm-via-port-forwarding-and-ssh-tunnelling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access services on an EIDF VM via port forwarding and SSH tunnelling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-an-ssh-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write an SSH configuration file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Write an SSH configuration file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-the-ssh-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      About the SSH configuration file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specify-port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify port forwarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-other-hosts-for-the-same-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add other hosts for the same project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-hosts-for-other-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add hosts for other project(s)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-private-keys-using-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache private keys using 'ssh-agent'
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache private keys using &#39;ssh-agent&#39;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-private-key-to-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a private key to the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-the-keys-currently-cached-by-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      List the keys currently cached by the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-private-keys-from-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove private keys from the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-a-public-key-from-your-project-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove a public key from your project account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eidf-vm-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      EIDF VM passwords
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -599,20 +929,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -628,7 +956,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Computing Services
@@ -639,20 +967,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -668,7 +994,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             Virtual Desktops
@@ -751,29 +1077,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../services/virtualmachines/sharedfs/" class="md-nav__link">
         
   
@@ -785,245 +1088,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#generating-and-adding-an-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating and Adding an SSH Key
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Generating and Adding an SSH Key">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-for-an-existing-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check for an existing SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generate-a-new-ssh-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate a new SSH Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-the-new-ssh-key-to-your-account-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding the new SSH Key to your account via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Adding the new SSH Key to your account via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-new-ssh-key-via-safe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a new SSH Key via SAFE
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enabling-mfa-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enabling MFA via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling MFA via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing From MacOS/Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing from Windows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing from Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-and-using-openssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing and using OpenSSH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing EIDF via a Terminal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-with-putty" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing with PuTTY
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing with PuTTY">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-gateway-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Gateway Config
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-clientvm-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a client/VM config
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-aliases" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH Aliases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
-    <span class="md-ellipsis">
-      sudo, Password Setting and Password Resets
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1065,29 +1129,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../services/virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3413,76 +3454,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#generating-and-adding-an-ssh-key" class="md-nav__link">
+  <a href="#set-up-ssh-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Generating and Adding an SSH Key
+      Set up SSH access
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Generating and Adding an SSH Key">
+    <nav class="md-nav" aria-label="Set up SSH access">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#check-for-an-existing-ssh-key" class="md-nav__link">
+  <a href="#create-ssh-private-and-public-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Check for an existing SSH Key
+      Create SSH private and public keys
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#generate-a-new-ssh-key" class="md-nav__link">
+  <a href="#add-the-public-key-to-your-project-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Generate a new SSH Key
+      Add the public key to your project account
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adding-the-new-ssh-key-to-your-account-via-the-portal" class="md-nav__link">
+  <a href="#get-a-multi-factor-authentication-app" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding the new SSH Key to your account via the Portal
+      Get a multi-factor authentication app
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Adding the new SSH Key to your account via the Portal">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#adding-a-new-ssh-key-via-safe" class="md-nav__link">
+  <a href="#set-up-multi-factor-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding a new SSH Key via SAFE
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enabling-mfa-via-the-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enabling MFA via the Portal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling MFA via the Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux
+      Set up multi-factor authentication
     </span>
   </a>
   
@@ -3494,65 +3505,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-from-macoslinux" class="md-nav__link">
+  <a href="#connect-to-an-eidf-vm-via-ssh" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing From MacOS/Linux
+      Connect to an EIDF VM via SSH
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-from-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing from Windows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing from Windows">
+    <nav class="md-nav" aria-label="Connect to an EIDF VM via SSH">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-and-using-openssh" class="md-nav__link">
+  <a href="#troubleshooting-warning-identity-file-sshid_ed25519_eidf000-not-accessible-no-such-file-or-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing and using OpenSSH
+      Troubleshooting: 'Warning: Identity file .ssh/id_ed25519_eidf000 not accessible: No such file or directory'
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accessing-eidf-via-a-terminal" class="md-nav__link">
+  <a href="#troubleshooting-permission-denied-publickey" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing EIDF via a Terminal
+      Troubleshooting: 'Permission denied (publickey)'
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accessing-with-putty" class="md-nav__link">
+  <a href="#troubleshooting-no-mfa-key-for-this-user" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing with PuTTY
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing with PuTTY">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-gateway-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Gateway Config
+      Troubleshooting: 'No MFA key for this user'
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adding-a-clientvm-config" class="md-nav__link">
+  <a href="#troubleshooting-multiple-prompts-to-enter-passphrase" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding a client/VM config
+      Troubleshooting: Multiple prompts to 'Enter passphrase'
     </span>
   </a>
   
@@ -3562,6 +3554,61 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#access-services-on-an-eidf-vm-via-port-forwarding-and-ssh-tunnelling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access services on an EIDF VM via port forwarding and SSH tunnelling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-an-ssh-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write an SSH configuration file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Write an SSH configuration file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-the-ssh-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      About the SSH configuration file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specify-port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify port forwarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-other-hosts-for-the-same-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add other hosts for the same project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-hosts-for-other-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add hosts for other project(s)
+    </span>
+  </a>
+  
+</li>
         
       </ul>
     </nav>
@@ -3569,18 +3616,78 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh-aliases" class="md-nav__link">
+  <a href="#cache-private-keys-using-ssh-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      SSH Aliases
+      Cache private keys using 'ssh-agent'
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache private keys using &#39;ssh-agent&#39;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-private-key-to-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a private key to the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-the-keys-currently-cached-by-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      List the keys currently cached by the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-private-keys-from-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove private keys from the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-the-ssh-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop the 'ssh-agent'
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-a-public-key-from-your-project-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove a public key from your project account
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sudo-password-setting-and-password-resets" class="md-nav__link">
+  <a href="#eidf-vm-passwords" class="md-nav__link">
     <span class="md-ellipsis">
-      sudo, Password Setting and Password Resets
+      EIDF VM passwords
     </span>
   </a>
   
@@ -3605,240 +3712,590 @@
   
 
 
-<h1 id="ssh-access-to-virtual-machines-using-the-eidf-gateway-jump-host">SSH Access to Virtual Machines using the EIDF-Gateway Jump Host</h1>
-<p>The EIDF-Gateway is an SSH gateway suitable for accessing EIDF Services via a console or terminal. As the gateway cannot be 'landed' on, a user can only pass through it and so the destination (the VM IP) has to be known for the service to work. Users connect to their VM through the jump host using their given accounts.
-You will require three things to use the gateway:</p>
+<h1 id="ssh-access-to-eidf-vms">SSH access to EIDF VMs</h1>
+<p>EIDF virtual machines (VMs) can be accessed via SSH from a terminal or console on your own host. SSH offers an alternative to using the <a href="../virtualmachines-vdi/">EIDF Virtual Desktop Interface (VDI)</a> to access the EIDF VMs.</p>
+<p>Access to EIDF VMs via SSH uses the EIDF Gateway, a secure 'jump host' which is accessible from anywhere which manages authorised connections from arbitrary hosts to EIDF VMs.</p>
+<div class="admonition important">
+<p class="admonition-title">SSH access prerequisites</p>
+<p>You can only access an EIDF VM via SSH and the EIDF Gateway if your project lead has granted you permission to access both the VM and the EIDF Gateway.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">SSH access is not the same as SSH via the EIDF Virtual Desktop Interface</p>
+<p>You may have noticed that the EIDF Virtual Desktop Interface allows you to create an SSH session. This is not the same as running an SSH session from your local host, that is described on this page. An SSH session run within the VDI offers the same look-and-feel as an actual SSH session but there is no SSH connection from your local host to an EIDF VM.</p>
+</div>
+<p>SSH (OpenSSH) is available under Linux, Windows 11 (Windows Subsystem for Linux, Powershell, or Git Bash) and MacOS. Unless noted otherwise, all commands on this page can be run under any of these environments.</p>
+<hr />
+<h2 id="set-up-ssh-access">Set up SSH access</h2>
+<p>To access an EIDF VM via SSH from your terminal or console, you will need:</p>
 <ol>
-<li>A user within a project allowed to access the gateway and a password set.</li>
-<li>An SSH-key linked to this account, used to authenticate against the gateway.</li>
-<li>Have MFA setup with your project account via SAFE.</li>
+<li>An EIDF project account to have been created for you.</li>
+<li>Access to the project VM to have been granted for your project account.</li>
+<li>Access to the EIDF Gateway, eidf-gateway.epcc.ed.ac.uk, to have been granted.</li>
 </ol>
-<p>Steps to meet all of these requirements are explained below.</p>
-<h2 id="generating-and-adding-an-ssh-key">Generating and Adding an SSH Key</h2>
-<p>In order to make use of the EIDF-Gateway, your EIDF account needs an SSH-Key associated with it.
-If you added one while creating your EIDF account, you can skip this step.</p>
-<h3 id="check-for-an-existing-ssh-key">Check for an existing SSH Key</h3>
-<p>To check if you have an SSH Key associated with your account:</p>
+<p>The above steps need to be done by your project lead.</p>
+<p>Once your account has been created and access granted, you need to set up your SSH access as follows:</p>
 <ol>
-<li>Login to the <a href="https://portal.eidf.ac.uk">Portal</a></li>
-<li>Select 'Your Projects'</li>
-<li>Select your project name</li>
-<li>Select your username</li>
+<li><a href="#create-ssh-private-and-public-keys">Create SSH private and public keys</a> on the host from which you want to access the EIDF VM via SSH.</li>
+<li><a href="#add-the-public-key-to-your-project-account">Add the public key to your project account</a> within the EIDF Portal.</li>
+<li><a href="#get-a-multi-factor-authentication-app">Get a multi-factor authentication app</a>.</li>
+<li><a href="#set-up-multi-factor-authentication">Set up multi-factor authentication</a> for your project account within the EIDF Portal.</li>
 </ol>
-<p>If there is an entry under 'Credentials', then you're all setup.
-If not, you'll need to generate an SSH-Key, to do this:</p>
-<h3 id="generate-a-new-ssh-key">Generate a new SSH Key</h3>
+<p>Once you have done these setup steps, you can <a href="#connect-to-an-eidf-vm-via-ssh">connect to your EIDF VM via SSH</a>.</p>
+<h3 id="create-ssh-private-and-public-keys">Create SSH private and public keys</h3>
+<p>To create SSH private and public keys on the host from which you want to access the EIDF VM via SSH:</p>
 <ol>
-<li>Open a new window of whatever terminal you will use to SSH to EIDF.</li>
 <li>
-<p>Generate a new SSH Key:</p>
+<p>Run <code>ssh-keygen</code> as follows:</p>
+<ul>
+<li>
+<p><strong>EITHER</strong> (recommended) Create private and public keys with a custom file name defined by you, where <code>-f &lt;key_file&gt;</code> specifies the path of the private key file to be created:</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-f<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-f<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Naming the private key file</p>
+<p>It is recommended that the private key file name include both the default algorithm used to create the key, <code>ed25519</code>, and the EIDF project number, <code>&lt;project_id&gt;</code> i.e., <code>&lt;key_file&gt;</code> is <code>id_ed25519_eidf&lt;project_id&gt;</code>. This can be useful if you have multiple keys for multiple projects or for other services. However, your choice of key name is up to you.</p>
+</div>
+</li>
+<li>
+<p><strong>OR</strong> Create private and public keys with a default OpenSSH file name:</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen
 </code></pre></div>
+<p>You will be prompted to specify the key file name. For example:</p>
+<div class="highlight"><pre><span></span><code>Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/home/some-user/.ssh/id_ed25519<span class="o">)</span>:
+</code></pre></div>
+<p>Press Enter/Return to accept the default.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>.ssh/id_ed25519 already exists. Overwrite (y/n)?</code></p>
+<p>If you have an existing key with the default name, then you will see this request. It is recommended that you enter <code>n</code> and then go down to <a href="#add-the-public-key-to-your-project-account">Add the public key to your project account</a>.</p>
+<p>If you enter <code>y</code>, your current key will be overwritten, and a new public and private key created, and any services that you currently use it to access will need to have your new public key registered with them.</p>
+</div>
+<p>The default private key file name has a prefix <code>id_</code> followed by the default algorithm used to create the key e.g., <code>ed25519</code>.</p>
+</li>
+</ul>
 </li>
 <li>
-<p>It is fine to accept the default name and path for the key unless you manage a number of keys.</p>
+<p>You will be prompted to enter, then re-enter a passphrase to protect your private key. For example:</p>
+<div class="highlight"><pre><span></span><code>Generating<span class="w"> </span>public/private<span class="w"> </span>ed25519<span class="w"> </span>key<span class="w"> </span>pair.
+Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">"/home/some-user/.ssh/id_ed25519_eidf000"</span><span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
+Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
+</code></pre></div>
+<p>Whenever you use the private key, you will be prompted for the passphrase.</p>
+<div class="admonition tip">
+<p class="admonition-title">Use a unique non-empty passphrase</p>
+<p>It is <strong>strongly recommended</strong> that you use a unique, <strong>non-empty</strong>, passphrase for each key that your create.</p>
+</div>
 </li>
-<li>Press enter to finish generating the key</li>
+<li>
+<p>Private and public key files will be created in your <code>.ssh</code> directory:</p>
+<div class="highlight"><pre><span></span><code>Your identification has been saved in /home/some-user/.ssh/id_ed25519_eidf000
+Your public key has been saved in /home/some-user/.ssh/id_ed25519_eidf000.pub
+...
+</code></pre></div>
+<p>The files are:</p>
+<ul>
+<li><code>.ssh/&lt;key_file&gt;</code>, the private key file, which includes the private key itself. <strong>Do not</strong> share your private key with anyone.</li>
+<li>
+<p><code>.ssh/&lt;key_file&gt;.pub</code>, a complementary public key file, which shares the private key file name with a <code>.pub</code> suffix. The public key file has content:</p>
+<div class="highlight"><pre><span></span><code>&lt;key_type&gt; &lt;base64_encoded_public_key&gt; &lt;comment&gt;
+</code></pre></div>
+<p>The default <code>&lt;key_type&gt;</code> is <code>ssh-ed25519</code>.</p>
+<p>The default <code>&lt;comment&gt;</code> is <code>&lt;username&gt;@&lt;hostname&gt;</code> where <code>&lt;username&gt;</code> and <code>&lt;hostname&gt;</code> are inferred by <code>ssh-keygen</code> from your local host. You can specify a comment by using the <code>ssh-keygen</code> parameter <code>-C &lt;comment&gt;</code>.</p>
+</li>
+</ul>
+</li>
 </ol>
-<h3 id="adding-the-new-ssh-key-to-your-account-via-the-portal">Adding the new SSH Key to your account via the Portal</h3>
+<h3 id="add-the-public-key-to-your-project-account">Add the public key to your project account</h3>
+<p>To add the public key to your project account:</p>
 <ol>
-<li>Login into the <a href="https://portal.eidf.ac.uk">Portal</a></li>
-<li>Select 'Your Projects'</li>
-<li>Select the relevant project</li>
-<li>Select your username</li>
-<li>Select the plus button under  'Credentials'</li>
-<li>Select 'Choose File' to upload the PUBLIC (.pub) ssh key generated in the last step, or open the <code>&lt;ssh-key&gt;.pub</code> file you just created and copy its contents into the text box.</li>
-<li>Click 'Upload Credential' - it should look something like this:</li>
+<li>On the <a href="https://portal.eidf.ac.uk/project">Your Projects</a> page within the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>, click your project.</li>
+<li>Your selected project's page will appear.</li>
+<li>Within the 'Your Accounts' table, click your account username.</li>
+<li>Your 'User Account Info' page will appear.</li>
+<li>Under 'Credentials', click the <strong>+ (plus)</strong> button.</li>
+<li>Either, the paste contents of the public key file, <code>$HOME/.ssh/&lt;key_file&gt;.pub</code>, into the <strong>Credential</strong> field.</li>
+<li>Or, click <strong>Choose File</strong> and select the public key file, <code>$HOME/.ssh/&lt;key_file&gt;.pub</code></li>
+<li>Click <strong>Upload Credential</strong>.</li>
+<li>The 'User Account Info' page will reappear.</li>
+<li>Your public key will be shown in the 'Credentials' table. An excerpt of the start of the public key will be shown under 'Credential' and the public key's comment will be shown under 'Identifier'.</li>
+<li>Initially, the public key will have a 'Status' of 'Pending'. If you refresh the page, the 'Status' will eventually update to 'Active'.</li>
 </ol>
-<p><img alt="eidf-portal-ssh" class="border-img" src="../../images/access/eidf-portal-ssh.png" /></p>
-<h4 id="adding-a-new-ssh-key-via-safe">Adding a new SSH Key via SAFE</h4>
-<p>This should not be necessary for most users, so only follow this process if you have an issue or have been told to by the EPCC Helpdesk.
-If you need to add an SSH Key directly to SAFE, you can follow this <a href="https://epcced.github.io/safe-docs/safe-for-users/#how-to-add-an-ssh-public-key-to-your-account">guide.</a>
-However, select your '[username]@EIDF' login account, not 'Archer2' as specified in that guide.</p>
-<h2 id="enabling-mfa-via-the-portal">Enabling MFA via the Portal</h2>
-<p>A multi-factor Time-Based One-Time Password is now required to access the SSH Gateway.</p>
-<p>To enable this for your EIDF account:</p>
-<ol>
-<li>Login to the <a href="https://portal.eidf.ac.uk">portal.</a></li>
-<li>Select 'Projects' then 'Your Projects'</li>
-<li>Select the project containing the account you'd like to add MFA to.</li>
-<li>Under 'Your Accounts', select the account you would like to add MFA to.</li>
-<li>Select 'Set MFA Token'</li>
-<li>Within your chosen MFA application, scan the QR Code or enter the key and add the token.</li>
-<li>Enter the code displayed in the app into the 'Verification Code' box and select 'Set Token'</li>
-<li>You will be redirected to the User Account page and a green 'Added MFA Token' message will confirm the token has been added successfully.</li>
-</ol>
+<div class="admonition warning">
+<p class="admonition-title">Delay in public key being usable</p>
+<p>There may be a lag, possibly of a few minutes, between a public key being added and it being usable, even if the public key is marked as 'Active'. This is due to the time taken for the update to be reflected across the EIDF infrastructure.</p>
+</div>
+<h3 id="get-a-multi-factor-authentication-app">Get a multi-factor authentication app</h3>
+<p>To provide additional security, the EIDF Gateway uses multi-factor authentication (MFA). When you access an EIDF VM with the EIDF Gateway you will be prompted not only for your private key's passphrase but also for a time-based one-time password (TOTP) code. To provide this password you will need to have installed a suitable authenticator app on your mobile device. There are many such apps available. Popular options include:</p>
+<ul>
+<li><a href="https://support.apple.com/en-gb/120758">Apple Passwords app</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Google Authenticator</a></li>
+<li><a href="https://www.microsoft.com/en-gb/security/mobile-authenticator-app">Microsoft Authenticator</a></li>
+</ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TOTP is only required for the SSH Gateway, not to the VMs themselves, and not through the VDI.
-An MFA token will have to be set for each account you'd like to use to access the EIDF SSH Gateway.</p>
+<p class="admonition-title">Your mobile device and EIDF</p>
+<p>Use of these apps does not require you to register your mobile device with the EIDF infrastructure. Instead, these apps rely on the use of a shared secret between the EIDF infrastructure and the app. How this secret is shared is described in the next section.</p>
 </div>
-<h3 id="using-the-ssh-key-and-totp-code-to-access-eidf-windows-and-linux">Using the SSH-Key and TOTP Code to access EIDF - Windows and Linux</h3>
+<h3 id="set-up-multi-factor-authentication">Set up multi-factor authentication</h3>
+<p>To set up multi-factor authentication for your project account within the EIDF Portal:</p>
+<ol>
+<li>On the <a href="https://portal.eidf.ac.uk/project">Your Projects</a> page within the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>, click your project.</li>
+<li>Your selected project's page will appear.</li>
+<li>Within the 'Your Accounts' table, click your account username.</li>
+<li>Your 'User Account Info' page will appear.</li>
+<li>Click <strong>Set MFA Token</strong>.</li>
+<li>The 'Set MFA token' page will appear. This will show both a QR code and a <strong>Key</strong> field with a complementary key.</li>
+<li>Within your authenticator app, either scan the QR code or enter the key value.</li>
+<li>Your authenticator app will add an entry for your project account username and display a TOTP code.</li>
+<li>Enter the TOTP code from your authenticator app into the <strong>Verification code</strong> field.</li>
+<li>Click <strong>Set Token</strong>.</li>
+<li>The 'User Account Info' page will reappear, with the text 'Added MFA Token'. The 'MFA token' entry on the 'User Account Info' page will show a tick/check mark.</li>
+</ol>
+<hr />
+<h2 id="connect-to-an-eidf-vm-via-ssh">Connect to an EIDF VM via SSH</h2>
+<p>To connect to an EIDF VM via SSH:</p>
 <ol>
 <li>
-<p>From your local terminal, import the SSH Key you generated above:
-    <code>ssh-add /path/to/ssh-key</code></p>
+<p>Run 'ssh' to connect to the EIDF VM via SSH and the EIDF Gateway:</p>
+<ul>
+<li>
+<p><strong>EITHER</strong> If your private key file has a custom name defined by you, then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/&lt;key_file&gt; -W %h:%p &lt;user&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>-i</code> specifies your private key file.</li>
+<li><code>&lt;key_file&gt;</code> is your private key file.</li>
+<li><code>&lt;user&gt;</code> is your project account username.</li>
+<li><code>&lt;host_ip&gt;</code> is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.</li>
+<li><code>-o ProxyCommand="..."</code> requests a connection to the EIDF Gateway.</li>
+<li><code>-W %h:%p</code> requests that the EIDF Gateway forward standard input and output to the EIDF VM.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000<span class="w"> </span>some-eidf-user@10.24.999.999
+</code></pre></div>
 </li>
 <li>
-<p>This should return "Identity added [Path to SSH Key]" if successful. You can then follow the steps below to access your VM.</p>
+<p><strong>OR</strong> If your private key file has a default OpenSSH name (e.g., id_ed25519 or id_rsa) then run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>&lt;user&gt;@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;user&gt;</code> is your project account username.</li>
+<li><code>&lt;host_ip&gt;</code> is the IP address of the EIDF VM. IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>some-eidf-user@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>some-eidf-user@10.24.999.999
+</code></pre></div>
 </li>
+</ul>
+</li>
+<li>
+<p>The first time that you connect to the EIDF Gateway you will be asked if you want to connect. For example:</p>
+<div class="highlight"><pre><span></span><code>The<span class="w"> </span>authenticity<span class="w"> </span>of<span class="w"> </span>host<span class="w"> </span><span class="s1">'eidf-gateway.epcc.ed.ac.uk (129.215.62.65)'</span><span class="w"> </span>can<span class="err">'</span>t<span class="w"> </span>be<span class="w"> </span>established.
+ED25519<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is<span class="w"> </span>SHA256:........
+This<span class="w"> </span>key<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>known<span class="w"> </span>by<span class="w"> </span>any<span class="w"> </span>other<span class="w"> </span>names.
+Are<span class="w"> </span>you<span class="w"> </span>sure<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span><span class="w"> </span>connecting<span class="w"> </span><span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>?
+</code></pre></div>
+</li>
+<li>
+<p>Enter <code>yes</code>.</p>
+</li>
+<li>
+<p>When you connect to the EIDF Gateway, a welcome message will be displayed. You will then be prompted for your private key's passphrase, to log into the EIDF Gateway. For example:</p>
+<div class="highlight"><pre><span></span><code>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="s1">'/home/some-user/.ssh/id_ed25519_eidf000'</span>:
+</code></pre></div>
+</li>
+<li>
+<p>Enter your private key's passphrase.</p>
+</li>
+<li>
+<p>The first time that you connect to an EIDF VM each day, you will be prompted for a TOTP code. For example:</p>
+<div class="highlight"><pre><span></span><code>Expecting<span class="w"> </span>a<span class="w"> </span>code<span class="w"> </span><span class="k">for</span><span class="w"> </span>eidf-ipa:some-user
+
+<span class="o">(</span>some-eidf-user@eidf-gateway.epcc.ed.ac.uk<span class="o">)</span><span class="w"> </span>TOTP<span class="w"> </span>code:
+</code></pre></div>
+</li>
+<li>
+<p>Open your authenticator app, and enter the TOTP code shown.</p>
+</li>
+<li>
+<p>The first time you connect to the EIDF VM, you will be asked if you want to connect. For example:</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host '10.24.999.999 (&lt;no hostip for proxy command&gt;)' can't be established.
+ED25519 key fingerprint is SHA256:........
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</code></pre></div>
+</li>
+<li>
+<p>Enter <code>yes</code>.</p>
+</li>
+<li>
+<p>You will again be prompted for your private key's passphrase, this time to log into the EIDF VM. For example:</p>
+<div class="highlight"><pre><span></span><code>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="s1">'/home/some-user/.ssh/id_ed25519_eidf000'</span>:
+</code></pre></div>
+</li>
+<li>
+<p>Again, enter your private key's passphrase.</p>
+</li>
+<li>All going well, you will be logged into the EIDF VM and its prompt will appear.</li>
 </ol>
-<h2 id="accessing-from-macoslinux">Accessing From MacOS/Linux</h2>
-<p>OpenSSH is installed on Linux and MacOS usually by default, so you can access the gateway natively from the terminal.</p>
-<p>Ensure you have created and added an ssh key as specified in the 'Generating and Adding an SSH Key' section above, then run the commands below:</p>
-<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>/path/to/ssh-key
-ssh<span class="w"> </span>-J<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span><span class="o">[</span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span>
+<p>What you are prompted for depends upon when you SSH into an EIDF VM via the EIDF Gateway as shown in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Connect to EIDF Gateway?</th>
+<th>Passphrase</th>
+<th>Connect to EIDF VM?</th>
+<th>TOTP code</th>
+<th>Passphrase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First connection via SSH ever</td>
+<td>&#10004;</td>
+<td>&#10004;</td>
+<td>&#10004;</td>
+<td>&#10004;</td>
+<td>&#10004;</td>
+</tr>
+<tr>
+<td>First connection via SSH on a specific day</td>
+<td></td>
+<td>&#10004;</td>
+<td></td>
+<td>&#10004;</td>
+<td>&#10004;</td>
+</tr>
+<tr>
+<td>Subsequent connection via SSH on the same day</td>
+<td></td>
+<td>&#10004;</td>
+<td></td>
+<td></td>
+<td>&#10004;</td>
+</tr>
+</tbody>
+</table>
+<p>As the 'ssh' connection command is verbose, you can <a href="#write-an-ssh-configuration-file">Write an SSH configuration file</a>, described below, to reduce the verbosity.</p>
+<h3 id="troubleshooting-warning-identity-file-sshid_ed25519_eidf000-not-accessible-no-such-file-or-directory">Troubleshooting: 'Warning: Identity file .ssh/id_ed25519_eidf000 not accessible: No such file or directory'</h3>
+<p>If you see an error like:</p>
+<div class="highlight"><pre><span></span><code>Warning: Identity file /home/some-user/.ssh/id_ed25519_eidf000 not accessible: No such file or directory.
+Warning: Identity file /home/some-user/.ssh/id_ed25519_eidf000 not accessible: No such file or directory.
+...
+some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+</code></pre></div>
+<p>then this means that your private key file could not be found on your local host.</p>
+<h3 id="troubleshooting-permission-denied-publickey">Troubleshooting: 'Permission denied (publickey)'</h3>
+<p>If you see an error like:</p>
+<div class="highlight"><pre><span></span><code>some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+</code></pre></div>
+<p>then this means that your public key is not known to the EIDF Gateway.</p>
+<div class="admonition warning">
+<p class="admonition-title">Delay in public key being usable</p>
+<p>There may be a lag, possibly of a few minutes, between a public key being added and it being usable, even if the public key is marked as 'Active'. This is due to the time taken for the update to be reflected across the EIDF infrastructure.</p>
+</div>
+<h3 id="troubleshooting-no-mfa-key-for-this-user">Troubleshooting: 'No MFA key for this user'</h3>
+<p>If you see an error like:</p>
+<div class="highlight"><pre><span></span><code>No MFA key for this user
+</code></pre></div>
+<p>then you need to <a href="#set-up-multi-factor-authentication">Set up multi-factor authentication</a> for your project account within the EIDF Portal.</p>
+<h3 id="troubleshooting-multiple-prompts-to-enter-passphrase">Troubleshooting: Multiple prompts to 'Enter passphrase'</h3>
+<p>You can expect to be prompted for your private key's passphrase twice. If you are prompted more than twice then this implies that you have entered the wrong passphrase.</p>
+<p>For each passphrase prompt - to access the EIDF Gateway and to access the EIDF VM - you have three attempts.</p>
+<p>If you fail all three attempts when prompted by the EIDF Gateway, you will see:</p>
+<div class="highlight"><pre><span></span><code>some-eidf-user@eidf-gateway.epcc.ed.ac.uk: Permission denied (publickey).
+Connection closed by UNKNOWN port 65535
+</code></pre></div>
+<p>If you fail all three attempts when prompted by the EIDF VM, you will see:</p>
+<div class="highlight"><pre><span></span><code>(some-eidf-user@10.24.999.999) Password:
+</code></pre></div>
+<p>i.e., you will be prompted for your EIDF VM password. If you have set an EIDF VM password (as described in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>), then you can use it. If not, then you will need to try connecting again, remembering to use the correct passphrase.</p>
+<hr />
+<h2 id="access-services-on-an-eidf-vm-via-port-forwarding-and-ssh-tunnelling">Access services on an EIDF VM via port forwarding and SSH tunnelling</h2>
+<p>There may be services running on your EIDF VM what you want to connect to from your local host. This can be done via port forwarding and SSH tunnelling. A common example is connecting to your EIDF VM's remote desktop service, if available, from a remote desktop client running on your local host (as described in <a href="../ssh-rdp/">Remote desktop client access via SSH</a>).</p>
+<p>For each port you want to access on your EIDF VM, add a parameter of form <code>-L &lt;local_port&gt;:localhost:&lt;eidf_vm_port&gt;</code> to your 'ssh' command, where <code>&lt;local_port&gt;</code> is a port on your local host, <code>localhost</code> refers to your EIDF VM, and <code>&lt;eidf_vm_port&gt;</code> is a port on your EIDF host. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/&lt;key_file&gt; -W %h:%p &lt;user&gt;@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:&lt;eidf_vm_port&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>&lt;user&gt;@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>&lt;user&gt;@&lt;host_ip&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:&lt;eidf_vm_port&gt;
+</code></pre></div>
+<p>Interactions with the local port on your local host are securely forwarded, or 'tunnelled', to the port on your EIDF host.</p>
+<p>For example, in each of the following, the port 23001 on a user's local host is forwarded to the remote desktop service port 3389 on their EIDF VM:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">ProxyCommand</span><span class="o">=</span><span class="s2">"ssh -i </span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519_eidf000 -W %h:%p some-eidf-user@eidf-gateway.epcc.ed.ac.uk"</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000<span class="w"> </span>some-eidf-user@10.24.999.999<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>some-eidf-user@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>some-eidf-user@10.24.999.999<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389
+</code></pre></div>
+<p>Multiple <code>-L</code> parameters can be used, if required. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>...<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389<span class="w"> </span>-L<span class="w"> </span><span class="m">18192</span>:localhost:8192
+</code></pre></div>
+<hr />
+<h2 id="write-an-ssh-configuration-file">Write an SSH configuration file</h2>
+<p>The commands to <a href="#connect-to-an-eidf-vm-via-ssh">connect to the EIDF VM via SSH</a>, described above, can become very verbose. An SSH configuration file can be used to specify some, or all, of these parameters and so reduce the verbosity of this command.</p>
+<p>Create a file, <code>$HOME/.ssh/config</code>, with the following content, or, if you already have an <code>$HOME/.ssh/config</code> file, then add the following content, where:</p>
+<ul>
+<li><code>&lt;project_id&gt;</code> is your EIDF project ID.</li>
+<li><code>&lt;host_name&gt;</code> is the name of the EIDF VM. Host names and IP addresses of EIDF VMs which your account can access can be found in the 'Your Accounts' table on your project's page in the EIDF Portal.</li>
+<li><code>&lt;host_ip&gt;</code> is the IP address of the EIDF VM.</li>
+<li><code>&lt;user&gt;</code> is your project account username.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-&lt;project_id&gt;
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host &lt;host_name&gt;
+    HostName &lt;host_ip&gt;
+    ProxyJump eidf-gateway-&lt;project_id&gt;
+Host eidf-gateway-&lt;project_id&gt; &lt;host_name&gt;
+    User &lt;user&gt;
+    IdentityFile ~/.ssh/&lt;key_file&gt;
+    IdentitiesOnly yes
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>~/.ssh/keys/id_ed25519
-ssh<span class="w"> </span>-J<span class="w"> </span>alice@eidf-gateway.epcc.ed.ac.uk<span class="w"> </span>alice@10.24.1.1
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-000
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+Host eidf-gateway-000 eidf000-vm
+    User some-eidf-user
+    IdentityFile ~/.ssh/id_ed25519_eidf000
+    IdentitiesOnly yes
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If the <code>ssh-add</code> command fails saying the SSH Agent is not running, run the below command:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="sb">`</span>ssh-agent<span class="sb">`</span>
+<p>In the configuration above:</p>
+<ul>
+<li><code>Host eidf-gateway-&lt;project_id&gt;</code> includes configuration parameters specific to the EIDF Gateway only.</li>
+<li><code>Host &lt;host_name&gt;</code> includes configuration parameters specific to the EIDF VM only.</li>
+<li><code>Host eidf-gateway-&lt;project_id&gt; &lt;host_name&gt;</code> includes configuration parameters common to both.</li>
+</ul>
+<p>One the SSH configuration file has been edited, to connect to a EIDF VM via SSH, run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>&lt;host_name&gt;
 </code></pre></div>
-<p>Then re-run the ssh-add command above.</p>
-</div>
-<p>The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
-<p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
-<h2 id="accessing-from-windows">Accessing from Windows</h2>
-<p>Windows will require the installation of OpenSSH-Server to use SSH. Putty or MobaXTerm can also be used but won’t be covered in this tutorial.</p>
-<h3 id="installing-and-using-openssh">Installing and using OpenSSH</h3>
-<ol>
-<li>Click the ‘Start’ button at the bottom of the screen</li>
-<li>Click the ‘Settings’ cog icon</li>
-<li>Select 'System'</li>
-<li>Select the ‘Optional Features’ option at the bottom of the list</li>
-<li>If ‘OpenSSH Client’ is not under ‘Installed Features’, click the ‘View Features’ button</li>
-<li>Search ‘OpenSSH Client’</li>
-<li>Select the check box next to ‘OpenSSH Client’ and click ‘Install’</li>
-</ol>
-<h3 id="accessing-eidf-via-a-terminal">Accessing EIDF via a Terminal</h3>
-<ol>
-<li>Open either Powershell or the Windows Terminal</li>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>eidf000-vm
+</code></pre></div>
+<h3 id="about-the-ssh-configuration-file">About the SSH configuration file</h3>
+<p>The SSH configuration file parameters are as follows (from <a href="https://man7.org/linux/man-pages/man5/ssh_config.5.html">ssh_config</a>):</p>
+<ul>
+<li><code>Host</code>, pattern that matches to host names provided on the command-line when running 'ssh'.</li>
+<li><code>User</code>, username to log in as.</li>
+<li><code>HostName</code>, actual host name or IP address.</li>
+<li><code>IdentityFile</code>, private key file.</li>
+<li><code>IdentitiesOnly yes</code>, require that only the key specified in <code>IdentityFile</code> be used. This is of use if you <a href="#cache-private-keys-using-ssh-agent">Cache private keys using 'ssh-agent'</a>. By default, an 'ssh-agent' will try every private key it knows about in turn which, if there are many keys, can raise a 'Too many authentication failures' error. This SSH configuration file parameter tells the 'ssh-agent' to only use this key.</li>
+<li><code>ProxyJump</code>, jump proxy.</li>
+</ul>
+<p>When <code>ssh &lt;host_name&gt;</code> is run, the following happens:</p>
+<ul>
 <li>
-<p>Import the SSH Key you generated above:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh-add</span> <span class="p">.\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
+<p>A search is done in the SSH configuration file for all blocks whose <code>Host</code> includes the pattern <code>&lt;host_name&gt;</code> and the configuration parameters from all matching blocks are aggregated. This gives the following parameters for <code>&lt;host_name&gt;</code>, that is, everything needed to connect to the EIDF VM at <code>&lt;host_ip&gt;</code> via the EIDF Gateway:</p>
+<div class="highlight"><pre><span></span><code>HostName &lt;host_ip&gt;
+ProxyJump eidf-gateway-&lt;project_id&gt;
+User &lt;user&gt;
+IdentityFile ~/.ssh/&lt;key_file&gt;
+IdentitiesOnly yes
 </code></pre></div>
 </li>
 <li>
-<p>This should return "Identity added [Path to SSH Key]" if successful. If it doesn't, run the following in Powershell:</p>
+<p>As these configuration parameters include a <code>ProxyJump</code>, a search is done for all blocks whose <code>Host</code> includes the pattern <code>eidf-gateway-&lt;project_id&gt;</code> and, again, the parameters are aggregated. This gives the following parameters for <code>eidf-gateway-&lt;project_id&gt;</code>, that is, everything needed to connect to the EIDF Gateway:</p>
+<div class="highlight"><pre><span></span><code>HostName eidf-gateway.epcc.ed.ac.uk
+User &lt;user&gt;
+IdentityFile ~/.ssh/&lt;key_file&gt;
+IdentitiesOnly yes
+</code></pre></div>
+</li>
+<li>
+<p>A connection is made to the EIDF Gateway, using the username (<code>User</code>) and private key (<code>IdentityFile</code>), and then on to the EIDF VM, again, using the username (<code>User</code>) and private key (<code>IdentityFile</code>).</p>
+</li>
+</ul>
+<h3 id="specify-port-forwarding">Specify port forwarding</h3>
+<p>If using a SSH configuration file, you can still forward ports by using <code>-L &lt;local_port&gt;:localhost:&lt;eidf_vm_port&gt;</code> parameters:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>&lt;host_name&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:&lt;eidf_vm_port&gt;
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>eidf000-vm<span class="w"> </span>-L<span class="w"> </span><span class="m">23001</span>:localhost:3389
+</code></pre></div>
+<p>To save typing, you can add port forwarding parameters to the EIDF VM's host block in your SSH configuration file, using the <code>LocalForward</code> parameter. An additional SSH parameter, <code>ServerAliveInterval</code>, is also useful, to configure SSH to regularly request a response from the server which can help to avoid connection timeouts:</p>
+<div class="highlight"><pre><span></span><code>    LocalForward &lt;local_port&gt; localhost:&lt;eidf_vm_port&gt;
+    ServerAliveInterval &lt;interval_in_seconds&gt;
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+    LocalForward 23001 localhost:3389
+    ServerAliveInterval 60
+</code></pre></div>
+<p>Multiple <code>LocalForward</code> parameters can be used, if required. For example:</p>
+<div class="highlight"><pre><span></span><code>Host eidf000-vm
+    HostName 10.24.999.999
+    ProxyJump eidf-gateway-000
+    LocalForward 23001 localhost:3389
+    LocalForward 18192 localhost:8192
+    ServerAliveInterval 60
+</code></pre></div>
+<h3 id="add-other-hosts-for-the-same-project">Add other hosts for the same project</h3>
+<p>To add other hosts for the same project, add a new <code>Host</code> block for the host, with <code>HostName</code> and <code>ProxyJump</code> parameters for the host, and edit the <code>Host eidf-gateway-&lt;project_id&gt; &lt;host_name&gt;</code> pattern to add the new host name. For example, the following adds to the example above content for another project host <code>&lt;other_host&gt;</code> with IP address <code>&lt;other_host_ip&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code>Host eidf-gateway-&lt;project_id&gt;
+    HostName eidf-gateway.epcc.ed.ac.uk
+Host &lt;host_name&gt;
+    HostName &lt;host_ip&gt;
+    ProxyJump eidf-gateway-&lt;project_id&gt;
+Host &lt;other_host_name&gt;
+    HostName &lt;other_host_ip&gt;
+    ProxyJump eidf-gateway-&lt;project_id&gt;
+Host eidf-gateway-&lt;project_id&gt; &lt;host_name&gt; &lt;other_host_name&gt;
+    User &lt;user&gt;
+    IdentityFile ~/.ssh/&lt;key_file&gt;
+    IdentitiesOnly yes
+</code></pre></div>
+<h3 id="add-hosts-for-other-projects">Add hosts for other project(s)</h3>
+<p>If you have access to EIDF VMs in multiple projects, then you can add entries for each project using the template given at the start of this <a href="#write-an-ssh-configuration-file">Write an SSH configuration file</a> section, and replacing <code>&lt;project_id&gt;</code> and <code>&lt;key_file&gt;</code> with the appropriate EIDF VM project ID and private key file name in each case.</p>
+<hr />
+<h2 id="cache-private-keys-using-ssh-agent">Cache private keys using 'ssh-agent'</h2>
+<p>'ssh-agent' is an SSH key manager which caches decrypted private keys in-memory. You can add private keys to the 'ssh-agent' and, once you've provided your passphrase to decrypt the key, you will not be prompted for that private key's passphrase again when using the private key until either you remove the private key from the 'ssh-agent' or the 'ssh-agent' is stopped.</p>
+<h3 id="start-the-ssh-agent">Start the 'ssh-agent'</h3>
+<p>To start the 'ssh-agent':</p>
+<ol>
+<li>
+<p>Check if the 'ssh-agent' is running:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>-l
+</code></pre></div>
+<p>If the output is <code>The agent has no identities.</code>, then the 'ssh-agent' is running.</p>
+<p>If the output is either of the following, then the 'ssh-agent' is not running:</p>
+<ul>
+<li>Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS: <code>Could not open a connection to your authentication agent.</code></li>
+<li>Windows (Powershell): <code>Error connecting to agent: No such file or directory</code></li>
+</ul>
+</li>
+<li>
+<p>Start the 'ssh-agent' if it is not running:</p>
+<p>Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>ssh-agent<span class="k">)</span>
+</code></pre></div>
+<p>Windows (Powershell), as Administrator:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="p">|</span> <span class="nb">Set-Service</span> <span class="n">-StartupType</span> <span class="n">Manual</span>
-<span class="nb">Start-Service</span> <span class="n">ssh-agent</span>
-<span class="n">ssh-add</span> <span class="p">\</span><span class="n">path</span><span class="p">\</span><span class="n">to</span><span class="p">\</span><span class="n">sshkey</span>
-</code></pre></div>
-</li>
-<li>
-<p>Login by jumping through the gateway.</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="no">[EIDF username]</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="no">[EIDF username]</span><span class="p">@</span><span class="no">[vm_ip]</span>
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">-J</span> <span class="n">alice</span><span class="nv">@eidf</span><span class="n">-gateway</span><span class="p">.</span><span class="n">epcc</span><span class="p">.</span><span class="n">ed</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">uk</span> <span class="n">alice</span><span class="nv">@10</span><span class="p">.</span><span class="n">24</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span>
+<span class="nb">Start-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span>
+<span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span>
 </code></pre></div>
 </li>
 </ol>
-<p>You will be prompted for a 'TOTP' code upon successful public key authentication to the gateway. At the TOTP prompt, enter the code displayed in your MFA Application.</p>
-<h3 id="accessing-with-putty">Accessing with PuTTY</h3>
-<h4 id="creating-the-gateway-config">Creating the Gateway Config</h4>
-<ol>
-<li>Install PuTTY v0.81 or greater and launch it</li>
-<li>From the default 'Session' menu, input the gateway URL: <code>eidf-gateway.epcc.ed.ac.uk</code></li>
-<li>Set the port to <code>22</code></li>
-<li>Naviagte to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials'</li>
-<li>Specify your gateway private key by selecting the 'Browse' button next to 'Private key file for authentication'</li>
-<li>Select the path to your SSH key for your gateway account</li>
-<li>Return to the main 'Session' tab and in the empty box under 'Saved Sessions' input a memorable name, for example 'eidf-gateway'</li>
-<li>Click Save</li>
-</ol>
-<h4 id="adding-a-clientvm-config">Adding a client/VM config</h4>
-<p>Now we can create a config session for a VM which can be connected to through the gateway</p>
-<ol>
-<li>From the 'Sessions' tab, select 'Default Settings' in the 'Saved Settings' box and select 'Load'</li>
-<li>Input the hostname/IP of the VM, e.g. 10.24.X.Y.</li>
-<li>Ensure the port is <code>22</code></li>
-<li>From the navigation menu, move to 'Connection' &gt; 'Proxy'</li>
-<li>Select 'Proxy Type' at the top to 'SSH to proxy and use port forward'. <em>Note this doesn't exist in older versions of PuTTY</em></li>
-<li>Under 'Proxy Hostname', set the name of the gateway session you created above. In the SOP this was called 'eidf-gateway'</li>
-<li>Set the Port to <code>22</code></li>
-<li>Put your eidf-gateway username into the 'Username' box</li>
-<li>Set 'Do DNS name lookup at proxy end' to 'Yes'</li>
-<li>Navigate to 'Connection' &gt; 'SSH' &gt; 'Auth' &gt; 'Credentials' and select 'Browse' next to the 'Private key file for authentication' box</li>
-<li>Select your private key for your VM account (this may be the same as the gateway)</li>
-<li>Navigate to 'Connection' &gt; 'Data'</li>
-<li>Put your VM username into the 'Auto-Login username' box</li>
-<li>Return to the original 'Sesstion' tab</li>
-<li>Put the VM name or a nickname into the 'Saved Settings' name box</li>
-<li>Select 'Save'</li>
-<li>Select 'Open' and you should connect to your VM.</li>
-</ol>
-<h2 id="ssh-aliases">SSH Aliases</h2>
-<p>You can use SSH Aliases to access your VMs with a single command.</p>
+<h3 id="add-a-private-key-to-the-ssh-agent">Add a private key to the 'ssh-agent'</h3>
+<p>To add a private key to the 'ssh-agent':</p>
 <ol>
 <li>
-<p>Create a new entry for the EIDF-Gateway in your ~/.ssh/config file. Using the text editor of your choice (vi used as an example), edit the .ssh/config file:</p>
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>~/.ssh/config
-</code></pre></div>
-</li>
-<li>
-<p>Insert the following lines:</p>
-<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
-<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
-<span class="w">  </span>User<span class="w"> </span>&lt;eidf<span class="w"> </span>project<span class="w"> </span>username&gt;
-<span class="w">  </span>IdentityFile<span class="w"> </span>/path/to/ssh/key
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span><span class="nv">$HOME</span>/.ssh/&lt;key_file&gt;
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>Host<span class="w"> </span>eidf-gateway
-<span class="w">  </span>Hostname<span class="w"> </span>eidf-gateway.epcc.ed.ac.uk
-<span class="w">  </span>User<span class="w"> </span>alice
-<span class="w">  </span>IdentityFile<span class="w"> </span>~/.ssh/id_ed25519
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span><span class="nv">$HOME</span>/.ssh/id_ed25519_eidf000
 </code></pre></div>
 </li>
 <li>
-<p>Save and quit the file.</p>
-</li>
-<li>
-<p>Now you can ssh to your VM using the below command:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span><span class="o">[</span>EIDF<span class="w"> </span>username<span class="o">]</span>@<span class="o">[</span>vm_ip<span class="o">]</span><span class="w"> </span>-i<span class="w"> </span>/path/to/ssh/key
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-J<span class="w"> </span>eidf-gateway<span class="w"> </span>alice@10.24.1.1<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519
+<p>You will be prompted for your private key's passphrase. For example:</p>
+<div class="highlight"><pre><span></span><code>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>/home/someuser/.ssh/id_ed25519_eidf000
 </code></pre></div>
 </li>
 <li>
-<p>You can add further alias options to make accessing your VM quicker. For example, if you use the below template to create an entry below the EIDF-Gateway entry in ~/.ssh/config, you can use the alias name to automatically jump through the EIDF-Gateway and onto your VM:</p>
-<div class="highlight"><pre><span></span><code>Host &lt;vm name/alias&gt;
-  HostName 10.24.VM.IP
-  User &lt;vm username&gt;
-  IdentityFile /path/to/ssh/key
-  ProxyCommand ssh eidf-gateway -W %h:%p
-</code></pre></div>
-<p>For Example:</p>
-<div class="highlight"><pre><span></span><code>Host demo
-  HostName 10.24.1.1
-  User alice
-  IdentityFile ~/.ssh/id_ed25519
-  ProxyCommand ssh eidf-gateway -W %h:%p
-</code></pre></div>
-<p>If your key is RSA, you will need to add the following line to the bottom of the 'demo' alias:
-<code>HostKeyAlgorithms +ssh-rsa</code></p>
+<p>Enter your private key's passphrase.</p>
 </li>
 <li>
-<p>Now, by running <code>ssh demo</code> your ssh agent will automatically follow the 'ProxyCommand' section in the 'demo' alias and jump through the gateway before following its own instructions to reach your VM.</p>
+<p>The private key will be added and a message displayed which includes the comment from when you created your key. For example:</p>
+<div class="highlight"><pre><span></span><code>Identity added: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+</code></pre></div>
 </li>
 </ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This has added an 'Alias' entry to your ssh config, so whenever you ssh to 'eidf-gateway' your ssh agent will automatically fill the hostname, your username and ssh key.
-This method allows for a much less complicated ssh command to reach your VMs.
-You can replace the alias name with whatever you like, just change the 'Host' line from saying 'eidf-gateway' to the alias you would like.
-The <code>-J</code> flag is use to specify that we will access the second specified host by jumping through the first specified host.</p>
+<p>Now, when you connect to a EIDF VM via the 'ssh' command, if SSH finds your private key in the 'ssh-agent', then it will not prompt you to enter your private key's passphrase.</p>
+<h3 id="list-the-keys-currently-cached-by-the-ssh-agent">List the keys currently cached by the 'ssh-agent'</h3>
+<p>To list the keys currently cached by the 'ssh-agent':</p>
+<ol>
+<li>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>-L
+</code></pre></div>
+</li>
+<li>
+<p>A list of public keys corresponding to the private keys will be displayed. For example:</p>
+<div class="highlight"><pre><span></span><code>ssh-ed25519 AABACHRza72l6Q31ZTD5ABAEIB/kq6tgG4chsEgI7BhGDhngFJ6SyjgU4Q53S3tGpmya some-user@somedept.ed.ac.uk
+</code></pre></div>
+<p>If there are no private keys, then the output will be:</p>
+<div class="highlight"><pre><span></span><code>The agent has no identities.
+</code></pre></div>
+</li>
+</ol>
+<h3 id="remove-private-keys-from-the-ssh-agent">Remove private keys from the 'ssh-agent'</h3>
+<p>To remove a private key from the 'ssh-agent':</p>
+<ol>
+<li>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>-d<span class="w"> </span>~/.ssh/&lt;key_file&gt;
+</code></pre></div>
+</li>
+<li>
+<p>The private key will be removed and a message displayed which includes the comment from when you created your key:</p>
+<div class="highlight"><pre><span></span><code>Identity removed: /home/someuser/.ssh/id_ed25519_eidf000 (some-user@somedept.ed.ac.uk)
+</code></pre></div>
+</li>
+</ol>
+<p>To remove all the private keys from the 'ssh-agent', run:</p>
+<div class="highlight"><pre><span></span><code>ssh-add<span class="w"> </span>-D
+</code></pre></div>
+<h3 id="stop-the-ssh-agent">Stop the 'ssh-agent'</h3>
+<p>The 'ssh-agent' runs until one of the following occurs:</p>
+<ul>
+<li>Your local host is restarted or rebooted.</li>
+<li>You manually stop the 'ssh-agent'.</li>
+</ul>
+<p>To manually stop the 'ssh-agent':</p>
+<ul>
+<li>
+<p>Linux, Windows (Git Bash, Windows Subsystem for Linux), MacOS:</p>
+<p>Run, in the same terminal in which you started the 'ssh-agent':</p>
+<div class="highlight"><pre><span></span><code>ssh-agent<span class="w"> </span>-k
+</code></pre></div>
+<p>If you no longer have that terminal open, then run:</p>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ssh-agent
+</code></pre></div>
+<p>And, using te 'ssh-agent' process ID from the second column, kill the 'ssh-agent' process:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span><span class="w"> </span>&lt;process_id&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Windows (Powershell), as Administrator:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Stop-Service</span> <span class="n">ssh-agent</span>
+<span class="nb">Get-Service</span> <span class="n">ssh-agent</span>
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Stopping 'ssh-agent' under Powershell does not delete cached private keys</p>
+<p>Stopping 'ssh-agent' under Powershell does not delete the cached private keys. When the 'ssh-agent' is restarted, then the private keys will still be available. This is because the keys are cached in the Windows registry, encrypted in a Windows-specific way.</p>
+<p>To ensure that the keys are deleted, run <code>ssh-add -D</code> when the 'ssh-agent' is running.</p>
 </div>
-<h2 id="sudo-password-setting-and-password-resets">sudo, Password Setting and Password Resets</h2>
-<p>You do not have to set a password to log into virtual machines. However, if you have been given sudo permission, you will need to set a password to be able to make use of sudo. You can set (or reset) a password using the web form in the EIDF Portal following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
+<hr />
+<h2 id="remove-a-public-key-from-your-project-account">Remove a public key from your project account</h2>
+<p>To remove a public key from your project account:</p>
+<ol>
+<li>On the <a href="https://portal.eidf.ac.uk/project">Your Projects</a> page within the <a href="https://portal.eidf.ac.uk/">EIDF Portal</a>, click your project.</li>
+<li>Your selected project's page will appear.</li>
+<li>Within the 'Your Accounts' table, click your account username.</li>
+<li>Your 'User Account Info' page will appear.</li>
+<li>Under 'Credentials', click the <strong>bin</strong> button.</li>
+<li>Select a public key to delete.</li>
+<li>Click <strong>Delete Selected</strong>.</li>
+<li>The 'User Account Info' page will reappear.</li>
+<li>Initially, the public key will have a 'Status' of 'Deleting'.</li>
+<li>If you refresh the page, the public key will eventually disappear from the table.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Delay in public key being no longer usable</p>
+<p>There may be a lag, possibly of a few minutes, between a public key being removed and it being no longer usable, even if the public key is no longer shown. This is due to the time taken for the update to be reflected across the EIDF infrastructure.</p>
+</div>
+<hr />
+<h2 id="eidf-vm-passwords">EIDF VM passwords</h2>
+<p>An SSH private-public key pair is sufficient to access an EIDF VM via SSH and the EIDF Gateway, you do not have to set a password for your account on that VM.</p>
+<p>However, if you intend to run commands via 'sudo' once logged in, then you will need your EIDF VM password. You can set (or reset) a password via the 'User Account Info' page in the EIDF Portal by following the instructions in <a href="../../services/virtualmachines/quickstart/#set-or-change-the-password-for-a-user-account">Set or change the password for a user account</a>.</p>
 
 
 

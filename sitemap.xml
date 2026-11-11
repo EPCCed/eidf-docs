@@ -13,6 +13,10 @@
          <lastmod>2026-11-11</lastmod>
     </url>
     <url>
+         <loc>https://docs.eidf.ac.uk/access/ssh-rdp/</loc>
+         <lastmod>2026-11-11</lastmod>
+    </url>
+    <url>
          <loc>https://docs.eidf.ac.uk/access/ssh/</loc>
          <lastmod>2026-11-11</lastmod>
     </url>
@@ -418,10 +422,6 @@
     </url>
     <url>
          <loc>https://docs.eidf.ac.uk/services/virtualmachines/quickstart/</loc>
-         <lastmod>2026-11-11</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.eidf.ac.uk/services/virtualmachines/rdp-tunnelling/</loc>
          <lastmod>2026-11-11</lastmod>
     </url>
     <url>

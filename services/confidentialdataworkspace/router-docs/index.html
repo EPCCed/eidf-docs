@@ -440,7 +440,7 @@
   
   
   <span class="md-ellipsis">
-    Web and SSH
+    Overview
     
   </span>
   
@@ -463,7 +463,7 @@
   
   
   <span class="md-ellipsis">
-    EIDF Web Portal
+    EIDF Portal
     
   </span>
   
@@ -486,7 +486,53 @@
   
   
   <span class="md-ellipsis">
-    Virtual Desktop Interface
+    Virtual Desktop Interface (VDI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH access to EIDF VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access/ssh-rdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remote desktop client access via SSH
     
   </span>
   
@@ -749,58 +795,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../access/virtualmachines-vdi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Virtual Desktop Interface
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../virtualmachines/sharedfs/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Shared Filesystem
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../access/ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSH Access to VMs
     
   </span>
   
@@ -847,29 +847,6 @@
   
   <span class="md-ellipsis">
     Policies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../virtualmachines/rdp-tunnelling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RDP tunnelling over SSH
     
   </span>
   
@@ -3395,8 +3372,11 @@
 <li><code>/etc/pki/ca-trust/source/anchors/squid_proxyCA.crt</code> for Rocky</li>
 </ul>
 <h2 id="ssh-access-to-the-cdw-router">SSH Access to the CDW Router</h2>
-<p>Data Managers and VM Admins can access the CDW Router <code>&lt;project_code&gt;-router</code> machine via SSH. This is easiest done using a SSH config file with the appropriate ProxyJump configuration.</p>
-<p>This requires users have set up the EIDF Gateway for their user, as this must be jumped through to access the router. An example SSH config file entry for the router is shown below:</p>
+<p>Data Managers and VM Admins can access the CDW Router <code>&lt;project_code&gt;-router</code> machine via SSH.</p>
+<p>This requires users have set up the EIDF Gateway for their user, as this must be jumped through to access the router.</p>
+<p>Specifically, SSH credentials are needed for access. If you do not have SSH credentials, then see <a href="../../../access/ssh/#create-ssh-private-and-public-keys">Create SSH private and public keys</a> in <a href="../../../access/ssh/">SSH access to EIDF VMs</a> for how to create an SSH private and public key.</p>
+<p>Your SSH public key can then be added in the EIDF Portal under the project details page. See <a href="../../../access/ssh/#add-the-public-key-to-your-project-account">Add the public key to your project account</a> in <a href="../../../access/ssh/">SSH access to EIDF VMs</a>.</p>
+<p>Configuring SSH is easiest done using a SSH configuration file (<code>~/.ssh/config</code>) with the appropriate <code>ProxyJump</code> configuration. An example SSH configuration file entry for the router is shown below:</p>
 <div class="highlight"><pre><span></span><code>Host eidf-gateway
     HostName eidf-gateway.epcc.ed.ac.uk
 
@@ -3404,24 +3384,23 @@ Host eidfxxx-router
     HostName &lt;Router IP Address&gt;
     User &lt;VM Admin Username&gt;
     ProxyJump %r@eidf-gateway
-    IdentityFile &lt;SSH credential for user&gt;
+    IdentityFile &lt;Path to Private Key File&gt;
 </code></pre></div>
-<p>Where the <code>&lt;Router IP Address&gt;</code> can be found in the EIDF Portal under the project details page. Note that the CDW Proxy Address is not the IP address that you use to SSH to the router, the address under <code>machines</code>, <code>eidfxxx-router</code> is the correct address to use for ssh access to the router.</p>
-<p>SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on <a href="../../../access/ssh/#generate-a-new-ssh-key">SSH Credentials in the EIDF Portal</a>.</p>
+<p>Where the <code>&lt;Router IP Address&gt;</code> can be found in the EIDF Portal under the project details page. Note that the CDW Proxy Address is not the IP address that you use to SSH to the router, the address under <code>machines</code>, <code>eidfxxx-router</code> is the correct address to use for SSH access to the router.</p>
 <p>You can then connect to the router using the command:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>eidfxxx-router
 </code></pre></div>
-<p>Where <code>eidfxxx-router</code> is the name of the host entry in the SSH config file for the router.</p>
+<p>Where <code>eidfxxx-router</code> is the name of the host entry in the SSH configuration file for the router.</p>
 <h2 id="ssh-access-to-cdw-vms-via-the-router">SSH Access to CDW VMs via the Router</h2>
-<p>Data Managers and VM Admins can access the CDW VMs via SSH by first connecting to the project router <code>&lt;project_code&gt;-router</code> and then jumping from there to the target VM. This is the only way to access the VMs via SSH as direct SSH access to the VMs is disabled. This is most easily achieved by using an SSH config file with the appropriate <code>ProxyJump</code> configuration, adding to the existing <code>~/.ssh/config</code> entry described above for the router.</p>
+<p>Data Managers and VM Admins can access the CDW VMs via SSH by first connecting to the project router <code>&lt;project_code&gt;-router</code> and then jumping from there to the target VM. This is the only way to access the VMs via SSH as direct SSH access to the VMs is disabled.</p>
+<p>This is most easily achieved by using an SSH configuration file (<code>~/.ssh/config</code>) with the appropriate <code>ProxyJump</code> configuration, adding to the existing SSH configuration file entry described above for the router, an entry as follows:</p>
 <div class="highlight"><pre><span></span><code>Host eidfxxx-&lt;vm-name&gt;
     HostName &lt;VM IP Address&gt;
     User &lt;VM Admin Username&gt;
     ProxyJump %r@eidfxxx-router
-    IdentityFile &lt;SSH credential for user&gt;
+    IdentityFile &lt;Path to Private Key File&gt;
 </code></pre></div>
-<p>Where the VM IP Address can be found in the EIDF Portal under the project details page, under the <code>machines</code> section for the relevant VM.</p>
-<p>SSH credentials for the router can be added in the EIDF Portal under the project details page, more information on how to do this can be seen in the documentation section on <a href="../../../access/ssh/#generate-a-new-ssh-key">ssh Credentials in the EIDF Portal</a>.</p>
+<p>Where the <code>&lt;VM IP Address&gt;</code> can be found in the EIDF Portal under the project details page, under the <code>machines</code> section for the relevant VM.</p>
 <p>You can then connect to the VM using the command:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>eidfxxx-&lt;vm-name&gt;
 </code></pre></div>
