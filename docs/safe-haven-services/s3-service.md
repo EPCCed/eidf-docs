@@ -18,7 +18,7 @@ To access files you need to know:
 * The "Region" of the service (e.g., for the National Safe Haven this is `us-east-1`)
 * A "bucket" name (similar to a folder name)
 * An "access key" (similar to a username)
-* A "private key" (similar to a password)
+* A "secret key" (similar to a password)
 
 All of the above will be supplied to you by your Research Coordinator. S3 access and secret key details are confidential and must never be shared or allowed to be seen by others.
 
