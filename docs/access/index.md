@@ -33,5 +33,4 @@ Users who have been granted access to an EIDF virtual machine via SSH can also c
 
 SSH is used to access the following services:
 
-* [Ultra2](../services/ultra2/index.md)
 * [EIDF Interim and Experimental Systems](../services/experimental/index.md)
