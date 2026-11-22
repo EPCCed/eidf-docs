@@ -2,18 +2,16 @@
 
 ## Computing Services
 
-[Data Science Virtual Desktops](./virtualmachines/index.md)
+[EIDF Virtual Desktops](./virtualmachines/index.md) to access a virtual desktop environment in a web browser and via secure shell access (SSH).
 
-[Managed File Transfer](./mft/index.md)
-
-[Notebooks](./jhub/index.md)
-
-[Ultra2](./ultra2/index.md)
-
-[GitLab Code Storage](./gitlab/index.md)
+[EIDF Notebooks](./jhub/index.md) to run Jupyter notebooks in a web browser.
 
 ## Data Services
 
-[S3](./s3/index.md)
+[Managed File Transfer](./mft/index.md) to transfer large files to and from the EIDF.
 
-[Data Catalogue](./datacatalogue/index.md)
+[EIDF S3](./s3/index.md)
+
+[EIDF Data Catalogue](./datacatalogue/index.md)
+
+[EIDF GitLab](./gitlab/index.md) to collaborate on code, data and projects.

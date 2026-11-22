@@ -52,14 +52,14 @@ nav:
     - "Overview": storage/overview.md
     - "FAQs": storage/faq.md
   - "Computing Services":
-    - "Virtual Desktops":
+    - "EIDF Virtual Desktops":
       - "Overview": services/virtualmachines/index.md
       - "QuickStart": services/virtualmachines/quickstart.md
       - "Managing VMs": services/virtualmachines/docs.md
       - "Shared Filesystem": services/virtualmachines/sharedfs.md
       - "VM Flavours": services/virtualmachines/flavours.md
       - "Policies": services/virtualmachines/policies.md
-    - "Confidential Data Workspace":
+    - "EIDF Confidential Data Workspace":
       - "Overview": services/confidentialdataworkspace/index.md
       - "Admin Quickstart": services/confidentialdataworkspace/quickstart.md
       - "VM & User Management": services/confidentialdataworkspace/docs.md
@@ -67,15 +67,11 @@ nav:
       - "Policies": services/confidentialdataworkspace/policies.md
       - "Storage": services/confidentialdataworkspace/storage.md
       - "FAQs": services/confidentialdataworkspace/faq.md
-    - "Ultra2":
-      - "Overview": services/ultra2/access.md
-      - "Connect": services/ultra2/connect.md
-      - "Running codes": services/ultra2/run.md
-    - "Cerebras":
+    - "EIDF Cerebras":
       - "Overview": services/cerebras/access.md
       - "Connect": services/cerebras/connect.md
       - "Running codes": services/cerebras/run.md
-    - "GPU Service":
+    - "EIDF GPU":
       - "Overview": services/gpuservice/index.md
       - "Policies": services/gpuservice/policies.md
       - "Kueue": services/gpuservice/kueue.md
@@ -86,34 +82,40 @@ nav:
          - "Running a Pytorch Pod": services/gpuservice/training/L3_running_a_pytorch_task.md
          - "Template K8s Workflow": services/gpuservice/training/L4_template_workflow.md
       - "GPU Service FAQ": services/gpuservice/faq.md
-    - "Notebooks":
+    - "EIDF Notebooks":
       - "Overview": services/jhub/index.md
       - "Quickstart": services/jhub/quickstart.md
     - "Cirrus HPC System":
       - "Overview": services/cirrus/index.md
   - "Data Services":
-    - "S3":
+    - "EIDF S3":
       - "Overview": services/s3/index.md
       - "Getting started": services/s3/getting-started.md
       - "Using the EIDF S3 Service via Python": services/s3/python.md
       - "Using S3 policies": services/s3/policies.md
       - "Using the EIDF S3 Browser": services/s3/s3browser.md
       - "Managing a project's S3 object store allocation": services/s3/manage.md
-    - "Data Publishing":
-       - "Getting started": services/datapublishing/service.md
-       - "Your Data Catalogue entry": services/datapublishing/catalogue.md
-    - "Data Catalogue":
+    - "EIDF Data Publishing":
+      - "Getting started": services/datapublishing/service.md
+      - "Your Data Catalogue entry": services/datapublishing/catalogue.md
+    - "EIDF Data Catalogue":
       - "Metadata information": services/datacatalogue/metadata.md
     #- "Managed File Transfer":
     #    - "Quickstart": services/mft/quickstart.md
     #    - "Using the MFT": services/mft/using-the-mft.md
-    - "Code Collaboration":
+    - "EIDF Gitlab":
       - "Gitlab Overview": services/gitlab/index.md
       - "Gitlab Quickstart": services/gitlab/quickstart.md
+    - "EIDF Container Image Registry"
       - "Container Image Registry Overview": services/registry/index.md
       - "Container Image Registry Projects and Caches": services/registry/projects.md
       - "Container Image Registry Use": services/registry/working-with.md
       - "Container Image Registry FAQ": services/registry/faq.md
+    - "EIDF Container Service":
+      - "Accessing and running containers in Safe Havens": safe-haven-services/shs-container-user-guide/introduction.md
+      - "Development Workflow": safe-haven-services/shs-container-user-guide/development-workflow.md
+      - "Workflow Examples": safe-haven-services/shs-container-user-guide/workflow-examples.md
+      - "Container Examples": safe-haven-services/shs-container-user-guide/container-examples.md
   - "Safe Haven Services":
      - "Overview": safe-haven-services/overview.md
      - "Access": safe-haven-services/safe-haven-access.md
@@ -136,11 +138,6 @@ nav:
           - "Transfer Data Inside the SHS GPU Cluster": safe-haven-services/shs-gpu-cluster/training/L5_accessing_the_beegfs_inside_the_epcc_shs.md
           - "Persistent Volumes": safe-haven-services/shs-gpu-cluster/training/L6_requesting_persistent_volumes.md
        - "SHS GPU Cluster FAQ": safe-haven-services/shs-gpu-cluster/faq.md
-     - "Container Service":
-       - "Accessing and running containers in Safe Havens": safe-haven-services/shs-container-user-guide/introduction.md
-       - "Development Workflow": safe-haven-services/shs-container-user-guide/development-workflow.md
-       - "Workflow Examples": safe-haven-services/shs-container-user-guide/workflow-examples.md
-       - "Container Examples": safe-haven-services/shs-container-user-guide/container-examples.md
      - "Software Management": safe-haven-services/software-management.md
 
      # Application Services (Open OnDemand) docs can be uncommented
